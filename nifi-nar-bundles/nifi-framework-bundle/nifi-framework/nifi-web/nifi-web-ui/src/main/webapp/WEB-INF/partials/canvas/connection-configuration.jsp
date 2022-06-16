@@ -22,7 +22,7 @@
             <div id="connection-settings-tab-content" class="configuration-tab">
                 <div class="settings-left">
                     <div class="setting">
-                        <div class="setting-name">Name</div>
+                        <div class="setting-name">名称</div>
                         <div class="setting-field">
                             <input type="text" id="connection-name" name="connection-name" class="setting-input"/>
                         </div>
@@ -35,8 +35,8 @@
                     </div>
                     <div class="setting">
                         <div class="setting-name">
-                            FlowFile expiration
-                            <div class="fa fa-question-circle" alt="Info" title="The maximum amount of time an object may be in the flow before it will be automatically aged out of the flow."></div>
+                            FlowFile 过期时长
+                            <div class="fa fa-question-circle" alt="Info" title="被自动过期丢弃到数据流程之外前，一个对象可以在数据流程中存在的最大时长."></div>
                         </div>
                         <div class="setting-field">
                             <input type="text" id="flow-file-expiration" name="flow-file-expiration" class="setting-input"/>
@@ -45,8 +45,8 @@
                     <div class="multi-column-settings">
                         <div class="setting">
                             <div class="setting-name">
-                                Back Pressure<br/>Object threshold
-                                <div class="fa fa-question-circle" alt="Info" title="The maximum number of objects that can be queued before back pressure is applied."></div>
+                                背压<br/>对象数量阈值
+                                <div class="fa fa-question-circle" alt="Info" title="背压应用之前, 可排队的对象数量."></div>
                             </div>
                             <div class="setting-field">
                                 <input type="text" id="back-pressure-object-threshold" name="back-pressure-object-threshold" class="setting-input"/>
@@ -55,8 +55,8 @@
                         <div class="separator">&nbsp;</div>
                         <div class="setting">
                             <div class="setting-name">
-                                &nbsp;<br/>Size threshold
-                                <div class="fa fa-question-circle" alt="Info" title="The maximum data size of objects that can be queued before back pressure is applied."></div>
+                                &nbsp;<br/>大小阈值
+                                <div class="fa fa-question-circle" alt="Info" title=".背压应用之前, 可排队的对象存储大小."></div>
                             </div>
                             <div class="setting-field">
                                 <input type="text" id="back-pressure-data-size-threshold" name="back-pressure-data-size-threshold" class="setting-input"/>
@@ -67,8 +67,8 @@
                         <div class="multi-column-settings">
                             <div class="setting">
                                 <div class="setting-name">
-                                    Load Balance Strategy
-                                    <div class="fa fa-question-circle" alt="Info" title="How to load balance the data in this Connection across the nodes in the cluster."></div>
+                                    负载均衡策略
+                                    <div class="fa fa-question-circle" alt="Info" title="该连接在集群中节点间如何进行数据的负载均衡."></div>
                                 </div>
                                 <div class="setting-field">
                                     <div id="load-balance-strategy-combo"></div>
@@ -77,8 +77,8 @@
                             <div id="load-balance-partition-attribute-setting-separator" class="separator">&nbsp;</div>
                             <div id="load-balance-partition-attribute-setting" class="setting">
                                 <div class="setting-name">
-                                    Attribute Name
-                                    <div class="fa fa-question-circle" alt="Info" title="The FlowFile Attribute to use for determining which node a FlowFile will go to."></div>
+                                    属性名称
+                                    <div class="fa fa-question-circle" alt="Info" title="用以决定一个 FlowFile 应该到哪个节点的 FlowFile 属性."></div>
                                 </div>
                                 <div class="setting-field">
                                     <input type="text" id="load-balance-partition-attribute" name="load-balance-partition-attribute" class="setting-input"/>
@@ -87,8 +87,8 @@
                         </div>
                         <div id="load-balance-compression-setting" class="setting">
                             <div class="setting-name">
-                                Load Balance Compression
-                                <div class="fa fa-question-circle" alt="Info" title="Whether or not data should be compressed when being transferred between nodes in the cluster."></div>
+                                负载均衡传输压缩
+                                <div class="fa fa-question-circle" alt="Info" title="在集群中节点间传输时数据是否应该被压缩."></div>
                             </div>
                             <div class="setting-field">
                                 <div id="load-balance-compression-combo"></div>
@@ -100,8 +100,8 @@
                 <div class="settings-right">
                     <div class="setting">
                         <div class="setting-name">
-                            Available prioritizers
-                            <div class="fa fa-question-circle" alt="Info" title="Available prioritizers that could reprioritize FlowFiles in this work queue."></div>
+                            可用优先器
+                            <div class="fa fa-question-circle" alt="Info" title="在该处理器工作队列中用来设置 FlowFile 优先级别的可选优先器."></div>
                         </div>
                         <div class="setting-field">
                             <ol id="prioritizer-available"></ol>
@@ -109,8 +109,8 @@
                     </div>
                     <div class="setting">
                         <div class="setting-name">
-                            Selected prioritizers
-                            <div class="fa fa-question-circle" alt="Info" title="Prioritizers that have been selected to reprioritize FlowFiles in this work queue."></div>
+                            选中的优先器
+                            <div class="fa fa-question-circle" alt="Info" title="在该处理器工作队列中用来设置 FlowFile 优先级别的优先器."></div>
                         </div>
                         <div class="setting-field">
                             <ul id="prioritizer-selected"></ul>
@@ -128,31 +128,31 @@
             <div id="connection-details-tab-content" class="configuration-tab">
                 <div class="settings-left">
                     <div id="read-only-output-port-source" class="setting hidden">
-                        <div class="setting-name">From output</div>
+                        <div class="setting-name">从以下输出端口</div>
                         <div class="setting-field connection-terminal-label">
                             <div id="read-only-output-port-name" class="ellipsis"></div>
                         </div>
                     </div>
                     <div id="output-port-source" class="setting hidden">
-                        <div class="setting-name">From output</div>
+                        <div class="setting-name">从以下输出端口</div>
                         <div class="setting-field connection-terminal-label">
                             <div id="output-port-options"></div>
                         </div>
                     </div>
                     <div id="input-port-source" class="setting hidden">
-                        <div class="setting-name">From input</div>
+                        <div class="setting-name">从以下输入端口</div>
                         <div class="setting-field connection-terminal-label">
                             <div id="input-port-source-name" class="label ellipsis"></div>
                         </div>
                     </div>
                     <div id="funnel-source" class="setting hidden">
-                        <div class="setting-name">From funnel</div>
+                        <div class="setting-name">从以下漏斗</div>
                         <div class="setting-field connection-terminal-label">
-                            <div id="funnel-source-name" class="label ellipsis" title="funnel">funnel</div>
+                            <div id="funnel-source-name" class="label ellipsis" title="漏斗">漏斗</div>
                         </div>
                     </div>
                     <div id="processor-source" class="setting hidden">
-                        <div class="setting-name">From processor</div>
+                        <div class="setting-name">从以下处理器</div>
                         <div class="setting-field connection-terminal-label">
                             <div id="processor-source-details">
                                 <div id="processor-source-name" class="label ellipsis"></div>
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div id="connection-source-group" class="setting">
-                        <div class="setting-name">Within group</div>
+                        <div class="setting-name">所属处理组</div>
                         <div class="setting-field">
                             <div id="connection-source-group-name"></div>
                         </div>
@@ -170,7 +170,7 @@
                         </div>
                     </div>
                     <div id="relationship-names-container" class="hidden">
-                        <div class="setting-name">For relationships</div>
+                        <div class="setting-name">输出数据流</div>
                         <div class="setting-field">
                             <div id="relationship-names"></div>
                         </div>
@@ -179,25 +179,25 @@
                 <div class="spacer">&nbsp;</div>
                 <div class="settings-right">
                     <div id="input-port-destination" class="setting hidden">
-                        <div class="setting-name">To input</div>
+                        <div class="setting-name">到以下输入端口</div>
                         <div class="setting-field connection-terminal-label">
                             <div id="input-port-options"></div>
                         </div>
                     </div>
                     <div id="output-port-destination" class="setting hidden">
-                        <div class="setting-name">To output</div>
+                        <div class="setting-name">到以下输出端口</div>
                         <div class="setting-field connection-terminal-label">
                             <div id="output-port-destination-name" class="label ellipsis"></div>
                         </div>
                     </div>
                     <div id="funnel-destination" class="setting hidden">
-                        <div class="setting-name">To funnel</div>
+                        <div class="setting-name">到以下漏斗</div>
                         <div class="setting-field connection-terminal-label">
-                            <div id="funnel-destination-name" class="label ellipsis" title="funnel">funnel</div>
+                            <div id="funnel-destination-name" class="label ellipsis" title="漏斗">漏斗</div>
                         </div>
                     </div>
                     <div id="processor-destination" class="setting hidden">
-                        <div class="setting-name">To processor</div>
+                        <div class="setting-name">到以下处理器</div>
                         <div class="setting-field connection-terminal-label">
                             <div id="processor-destination-details">
                                 <div id="processor-destination-name" class="label ellipsis"></div>
@@ -206,7 +206,7 @@
                         </div>
                     </div>
                     <div id="connection-destination-group" class="setting">
-                        <div class="setting-name">Within group</div>
+                        <div class="setting-name">所属处理组</div>
                         <div class="setting-field">
                             <div id="connection-destination-group-name"></div>
                         </div>

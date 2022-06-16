@@ -16,27 +16,27 @@
 --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="history">
-    <div id="history-header-text">NiFi History</div>
+    <div id="history-header-text">NiFi 历史记录</div>
     <div id="history-filter-container">
         <div id="cluster-history-message" class="hidden">
-            Viewing history for the current node only. Browse to another node to view its history.
+            仅查看当前节点历史. 请浏览到另一个节点查看其历史.
         </div>
         <div style="float: right">
             <div id="history-filter-overview">
-                A filter has been applied.&nbsp;
-                <span id="clear-history-filter" class="link">Clear filter</span>
+                一个过虑器已被使用.&nbsp;
+                <span id="clear-history-filter" class="link">清除过滤</span>
             </div>
-            <button id="history-filter-button" title="Filter History" class="fa fa-filter"></button>
-            <button id="history-purge-button" title="Purge History" class="fa fa-eraser hidden"></button>
+            <button id="history-filter-button" title="过滤历史" class="fa fa-filter"></button>
+            <button id="history-purge-button" title="清除历史" class="fa fa-eraser hidden"></button>
         </div>
         <div class="clear"></div>
     </div>
     <div id="history-table"></div>
 </div>
 <div id="history-refresh-container">
-    <button id="refresh-button" class="refresh-button pointer fa fa-refresh" title="Refresh"></button>
+    <button id="refresh-button" class="refresh-button pointer fa fa-refresh" title="刷新"></button>
     <div id="history-last-refreshed-container" class="last-refreshed-container">
-        Last updated:&nbsp;<span id="history-last-refreshed" class="value-color"></span>
+        最后更新:&nbsp;<span id="history-last-refreshed" class="value-color"></span>
     </div>
     <div id="history-loading-container" class="loading-container"></div>
 </div>

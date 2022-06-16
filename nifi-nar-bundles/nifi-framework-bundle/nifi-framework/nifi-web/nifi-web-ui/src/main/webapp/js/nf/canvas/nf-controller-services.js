@@ -280,8 +280,8 @@
         // ensure something was selected
         if (selectedServiceType === '') {
             nfDialog.showOkDialog({
-                headerText: 'Controller Service',
-                dialogContent: 'The type of controller service to create must be selected.'
+                headerText: '控制器服务',
+                dialogContent: '必须选定要创建的控制器服务类型.'
             });
         } else {
             addControllerService(controllerServicesUri, serviceTable, selectedServiceType, selectedServiceBundle);
@@ -351,7 +351,7 @@
         var controllerServiceTypesColumns = [
             {
                 id: 'type',
-                name: 'Type',
+                name: '类型',
                 field: 'label',
                 formatter: nfCommon.typeFormatter,
                 sortable: true,
@@ -359,7 +359,7 @@
             },
             {
                 id: 'version',
-                name: 'Version',
+                name: '版本',
                 field: 'version',
                 formatter: nfCommon.typeVersionFormatter,
                 sortable: true,
@@ -367,7 +367,7 @@
             },
             {
                 id: 'tags',
-                name: 'Tags',
+                name: '标签',
                 field: 'tags',
                 sortable: true,
                 resizable: true,
@@ -415,7 +415,7 @@
                     if (nfCommon.isBlank(controllerServiceType.description)) {
                         $('#controller-service-type-description')
                             .attr('title', '')
-                            .html('<span class="unset">No description specified</span>');
+                            .html('<span class="unset">无说明</span>');
                     } else {
                         $('#controller-service-type-description')
                             .width($('#controller-service-description-container').innerWidth() - 1)
@@ -470,7 +470,7 @@
                     var restrictionTip = $('<div></div>');
 
                     if (nfCommon.isBlank(item.usageRestriction)) {
-                        restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text('Requires the following permissions:'));
+                        restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text('需要以下权限:'));
                     } else {
                         restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text(item.usageRestriction + ' Requires the following permissions:'));
                     }
@@ -513,7 +513,7 @@
                     var formattedControllerServiceApis = nfCommon.getFormattedServiceApis(item.controllerServiceApis);
                     var serviceTips = nfCommon.formatUnorderedList(formattedControllerServiceApis);
 
-                    var tipContent = $('<div style="padding: 4px;"><p>Supports Controller Services</p><br/></div>').append(serviceTips);
+                    var tipContent = $('<div style="padding: 4px;"><p>支持控制器服务</p><br/></div>').append(serviceTips);
 
                     serviceApis.qtip($.extend({}, nfCommon.config.tooltipConfig, {
                         content: tipContent,
@@ -635,7 +635,7 @@
 
             // build the combo options
             var options = [{
-                text: 'all groups',
+                text: '全部 maven 工程组',
                 value: ''
             }];
             groups.each(function (group) {
@@ -654,7 +654,7 @@
 
         // initialize the controller service dialog
         $('#new-controller-service-dialog').modal({
-            headerText: 'Add Controller Service',
+            headerText: '添加控制器服务',
             scrollableContentStyle: 'scrollable',
             handler: {
                 close: function () {
@@ -866,7 +866,7 @@
             }
 
             // always include a button to view the usage
-            var markup = '<div title="Usage" class="pointer controller-service-usage fa fa-book"></div>';
+            var markup = '<div title="用法" class="pointer controller-service-usage fa fa-book"></div>';
 
             var hasErrors = !nfCommon.isEmpty(dataContext.component.validationErrors);
             var hasBulletins = !nfCommon.isEmpty(dataContext.bulletins);
@@ -940,41 +940,41 @@
 
                 if (canRead) {
                     if (canWrite && isDisabled) {
-                        markup += '<div class="pointer edit-controller-service fa fa-gear" title="Configure"></div>';
+                        markup += '<div class="pointer edit-controller-service fa fa-gear" title="配置"></div>';
                     } else {
-                        markup += '<div class="pointer view-controller-service fa fa-gear" title="View Configuration"></div>';
+                        markup += '<div class="pointer view-controller-service fa fa-gear" title="查看配置"></div>';
                     }
                 }
 
                 if (canOperate) {
                     if (dataContext.status.runStatus === 'ENABLED' || dataContext.status.runStatus === 'ENABLING') {
-                        markup += '<div class="pointer disable-controller-service icon icon-enable-false" title="Disable"></div>';
+                        markup += '<div class="pointer disable-controller-service icon icon-enable-false" title="禁用"></div>';
                     } else if (isDisabled && dataContext.status.validationStatus === 'VALID') {
                         // if there are no validation errors allow enabling
-                        markup += '<div class="pointer enable-controller-service fa fa-flash" title="Enable"></div>';
+                        markup += '<div class="pointer enable-controller-service fa fa-flash" title="启用"></div>';
                     }
                 }
 
                 if (isDisabled && canRead && canWrite && dataContext.component.multipleVersionsAvailable === true) {
-                    markup += '<div title="Change Version" class="pointer change-version-controller-service fa fa-exchange"></div>';
+                    markup += '<div title="改变版本" class="pointer change-version-controller-service fa fa-exchange"></div>';
                 }
 
                 if (isDisabled && canRead && canWrite && canWriteControllerServiceParent(dataContext)) {
-                    markup += '<div class="pointer delete-controller-service fa fa-trash" title="Remove"></div>';
+                    markup += '<div class="pointer delete-controller-service fa fa-trash" title="移除"></div>';
                 }
 
                 if (canRead && canWrite && dataContext.component.persistsState === true) {
-                    markup += '<div title="View State" class="pointer view-state-controller-service fa fa-tasks"></div>';
+                    markup += '<div title="查看状态" class="pointer view-state-controller-service fa fa-tasks"></div>';
                 }
 
             } else {
                 // not defined in current group... show go to arrow
-                markup += '<div class="pointer go-to-controller-service fa fa-long-arrow-right" title="Go To"></div>';
+                markup += '<div class="pointer go-to-controller-service fa fa-long-arrow-right" title="到"></div>';
             }
 
             // allow policy configuration conditionally
             if (nfCanvasUtils.isManagedAuthorizer() && nfCommon.canAccessTenants()) {
-                markup += '<div title="Access Policies" class="pointer edit-access-policies fa fa-key"></div>';
+                markup += '<div title="访问策略" class="pointer edit-access-policies fa fa-key"></div>';
             }
 
             return markup;
@@ -994,35 +994,35 @@
             },
             {
                 id: 'name',
-                name: 'Name',
+                name: '名称',
                 formatter: nameFormatter,
                 sortable: true,
                 resizable: true
             },
             {
                 id: 'type',
-                name: 'Type',
+                name: '类型',
                 formatter: nfCommon.instanceTypeFormatter,
                 sortable: true,
                 resizable: true
             },
             {
                 id: 'bundle',
-                name: 'Bundle',
+                name: '扩展包',
                 formatter: nfCommon.instanceBundleFormatter,
                 sortable: true,
                 resizable: true
             },
             {
                 id: 'state',
-                name: 'State',
+                name: '状态',
                 formatter: controllerServiceStateFormatter,
                 sortable: true,
                 resizeable: true
             },
             {
                 id: 'parentGroupId',
-                name: 'Scope',
+                name: '范围',
                 formatter: groupIdFormatter,
                 sortable: true,
                 resizeable: true
@@ -1317,7 +1317,7 @@
 
             // update the button model and show the dialog
             $('#new-controller-service-dialog').modal('setButtonModel', [{
-                buttonText: 'Add',
+                buttonText: '添加',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1340,7 +1340,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',

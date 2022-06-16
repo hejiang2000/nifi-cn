@@ -310,7 +310,7 @@
                             'y': 5,
                             'class': 'stats-label'
                         })
-                        .text('Sent');
+                        .text('已发送');
 
                     // received label
                     remoteProcessGroupStatsLabel.append('text')
@@ -321,7 +321,7 @@
                             'y': 23,
                             'class': 'stats-label'
                         })
-                        .text('Received');
+                        .text('接收到');
 
                     // stats value container
                     var remoteProcessGroupStatsValue = details.append('g')
@@ -400,7 +400,7 @@
                             'y': 5,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // received info
                     processGroupStatsInfo.append('text')
@@ -411,7 +411,7 @@
                             'y': 23,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // -------------------
                     // last refreshed time

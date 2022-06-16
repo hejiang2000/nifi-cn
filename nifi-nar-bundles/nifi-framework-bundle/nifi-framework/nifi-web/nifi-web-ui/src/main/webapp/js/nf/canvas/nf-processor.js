@@ -206,7 +206,7 @@
                 'y': 40,
                 'class': 'is-primary'
             })
-            .text('P')
+            .text('主')
             .append('title').text(function (d) {
                 return 'This component is only scheduled to execute on the Primary Node';
             });
@@ -388,7 +388,7 @@
                             'y': 9,
                             'class': 'stats-label'
                         })
-                        .text('In');
+                        .text('输入');
 
                     // read/write label
                     processorStatsLabel.append('text')
@@ -398,7 +398,7 @@
                             'y': 27,
                             'class': 'stats-label'
                         })
-                        .text('Read/Write');
+                        .text('读/写');
 
                     // out label
                     processorStatsLabel.append('text')
@@ -408,7 +408,7 @@
                             'y': 46,
                             'class': 'stats-label'
                         })
-                        .text('Out');
+                        .text('输出');
 
                     // tasks/time label
                     processorStatsLabel.append('text')
@@ -418,7 +418,7 @@
                             'y': 65,
                             'class': 'stats-label'
                         })
-                        .text('Tasks/Time');
+                        .text('任务/运行');
 
                     // stats value container
                     var processorStatsValue = details.append('g')
@@ -498,7 +498,7 @@
                             'y': 9,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // read/write info
                     processorStatsInfo.append('text')
@@ -508,7 +508,7 @@
                             'y': 27,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // out info
                     processorStatsInfo.append('text')
@@ -518,7 +518,7 @@
                             'y': 46,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // tasks/time info
                     processorStatsInfo.append('text')
@@ -528,7 +528,7 @@
                             'y': 65,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // --------
                     // comments

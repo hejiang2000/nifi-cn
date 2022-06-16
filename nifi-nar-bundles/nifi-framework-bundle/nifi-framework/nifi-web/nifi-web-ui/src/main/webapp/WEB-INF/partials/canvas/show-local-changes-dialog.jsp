@@ -22,7 +22,7 @@
         </div>
         <div id="show-local-changes-filter-controls">
             <div id="show-local-changes-filter-status" class="filter-status">
-                Displaying&nbsp;<span id="displayed-show-local-changes-entries"></span>&nbsp;of&nbsp;<span id="total-show-local-changes-entries"></span>
+                显示&nbsp;<span id="displayed-show-local-changes-entries"></span>,&nbsp;共&nbsp;<span id="total-show-local-changes-entries"></span>
             </div>
             <div id="show-local-changes-filter-container">
                 <input type="text" id="show-local-changes-filter" placeholder="Filter"/>

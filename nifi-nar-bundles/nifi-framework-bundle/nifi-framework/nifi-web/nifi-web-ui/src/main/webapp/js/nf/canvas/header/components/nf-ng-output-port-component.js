@@ -148,22 +148,22 @@
                  * Show the modal.
                  */
                 show: function () {
-                    $('#new-port-dialog > .dialog-header > .dialog-header-text').text('Add Output Port')
+                    $('#new-port-dialog > .dialog-header > .dialog-header-text').text('添加输出端口')
 
                     var optionLocal = {
-                                text: 'Local connections',
+                                text: '本地连接',
                                 value: 'false',
-                                description: 'Send FlowFiles to components in parent process groups.'
+                                description: '发送 FlowFile 到父处理组内的组件.'
                             };
 
                     var optionRemote = {
-                                text: 'Remote connections (site-to-site)',
+                                text: '远程连接 (site-to-site)',
                                 value: 'true',
-                                description: 'Send FlowFiles to remote process group (site-to-site).'
+                                description: '发送 FlowFile 到远程处理组 (site-to-site).'
                             };
 
                     // initialize the remote access combo
-                    $('#port-allow-remote-access-label').text('Send to');
+                    $('#port-allow-remote-access-label').text('发送到');
                     $('#port-allow-remote-access-info').attr('title', 'Specify where FlowFiles are sent.');
                     if (nfCanvasUtils.getParentGroupId() === null) {
                         $('#port-allow-remote-access-setting').hide();
@@ -248,7 +248,7 @@
                 };
 
                 this.modal.update('setButtonModel', [{
-                    buttonText: 'Add',
+                    buttonText: '添加',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -259,7 +259,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',
@@ -273,7 +273,7 @@
                     }]);
 
                 // update the port type
-                $('#new-port-type').text('Output');
+                $('#new-port-type').text('输出');
 
                 // set the focus and show the dialog
                 this.modal.show();

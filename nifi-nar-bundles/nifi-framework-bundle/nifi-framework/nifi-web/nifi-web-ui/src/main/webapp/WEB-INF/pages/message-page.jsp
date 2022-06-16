@@ -52,7 +52,7 @@
             <div id="user-links-container" style="margin-left: 20px; float: left;">
                 <ul class="links">
                     <li>
-                        <span id="user-home" class="link">home</span>
+                        <span id="user-home" class="link">首页</span>
                     </li>
                 </ul>
             </div>

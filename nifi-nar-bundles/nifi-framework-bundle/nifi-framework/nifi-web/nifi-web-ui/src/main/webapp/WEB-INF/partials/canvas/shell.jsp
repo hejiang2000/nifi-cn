@@ -18,10 +18,10 @@
 <div id="shell-dialog" class="hidden cancellable">
     <div id="shell-container" class="dialog-content">
         <div id="shell-close-container">
-            <button id="shell-undock-button" class="undock-normal pointer " title="Open in New Window">
+            <button id="shell-undock-button" class="undock-normal pointer " title="在新窗口中打开">
                 <div class="fa fa-external-link-square"></div>
             </button>
-            <button id="shell-close-button" class="close-normal pointer" title="Close">
+            <button id="shell-close-button" class="close-normal pointer" title="关闭">
                 <div class="fa fa-times"></div>
             </button>
             <div class="clear"></div>

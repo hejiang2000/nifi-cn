@@ -17,7 +17,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="bulletin-board">
     <div id="bulletin-board-header-and-filter">
-        <div id="bulletin-board-header-text">NiFi Templates</div>
+        <div id="bulletin-board-header-text">NiFi 模板</div>
         <div id="bulletin-board-filter-controls">
             <div id="bulletin-board-filter-container" class="filter-container">
                 <input type="text" placeholder="Filter" id="bulletin-board-filter" class="filter"/>
@@ -29,15 +29,15 @@
 </div>
 <div id="bulletin-board-refresh-container">
     <md-switch class="md-primary refresh-toggle" aria-label="Toggle auto refresh" ng-change="appCtrl.serviceProvider.bulletinBoardCtrl.togglePolling()" ng-model="appCtrl.serviceProvider.bulletinBoardCtrl.polling">
-        Auto-refresh
+        自动刷新
     </md-switch>
-    <button id="refresh-button" ng-click="appCtrl.serviceProvider.bulletinBoardCtrl.loadBulletins()" class="refresh-button pointer fa fa-refresh" title="Start/Stop auto refresh"></button>
+    <button id="refresh-button" ng-click="appCtrl.serviceProvider.bulletinBoardCtrl.loadBulletins()" class="refresh-button pointer fa fa-refresh" title="启动/停止自动刷新"></button>
     <div id="bulletin-board-last-refreshed-container" class="last-refreshed-container">
-        Last updated:&nbsp;<span id="bulletin-board-last-refreshed" class="value-color"></span>
+        最后更新:&nbsp;<span id="bulletin-board-last-refreshed" class="value-color"></span>
     </div>
     <div id="bulletin-board-loading-container" class="loading-container"></div>
     <div id="bulletin-board-status-container">
         <div id="bulletin-error-message"></div>
-        <span id="clear-bulletins-button" class="link pointer">Clear</span>
+        <span id="clear-bulletins-button" class="link pointer">清除</span>
     </div>
 </div>

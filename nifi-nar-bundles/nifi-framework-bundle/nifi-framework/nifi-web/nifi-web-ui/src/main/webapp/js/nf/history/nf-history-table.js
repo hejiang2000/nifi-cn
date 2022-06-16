@@ -67,9 +67,9 @@
     var initDetailsDialog = function () {
         $('#action-details-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Action Details',
+            headerText: '动作详细信息',
             buttons: [{
-                buttonText: 'Ok',
+                buttonText: '确定',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -100,13 +100,13 @@
         // filter type
         $('#history-filter-type').combo({
             options: [{
-                text: 'by id',
+                text: '按 id',
                 value: 'by id',
-                description: 'Filters based on the id of the component that was modified'
+                description: '按被修改组件 id 的过滤器'
             }, {
-                text: 'by user',
+                text: '按用户',
                 value: 'by user',
-                description: 'Filters based on the user that performed the action'
+                description: '按执行操作用户的过滤器'
             }]
         });
 
@@ -126,9 +126,9 @@
         // configure the filter dialog
         $('#history-filter-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Filter History',
+            headerText: '过滤历史',
             buttons: [{
-                buttonText: 'Filter',
+                buttonText: '过滤',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -184,7 +184,7 @@
                 }
             },
                 {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -217,9 +217,9 @@
         // configure the filter dialog
         $('#history-purge-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Purge History',
+            headerText: '清理历史',
             buttons: [{
-                buttonText: 'Purge',
+                buttonText: '清理',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -241,23 +241,23 @@
                             var endDateTime = endDate + ' ' + endTime;
                             var timezone = $('.timezone:first').text();
                             nfDialog.showYesNoDialog({
-                                headerText: 'History',
-                                dialogContent: "Are you sure you want to delete all history before '" + nfCommon.escapeHtml(endDateTime) + " " + nfCommon.escapeHtml(timezone) + "'?",
+                                headerText: '历史',
+                                dialogContent: "你确定要在 '" + nfCommon.escapeHtml(endDateTime) + " " + nfCommon.escapeHtml(timezone) + "' 之前删除所有历史?",
                                 yesHandler: function () {
                                     purgeHistory(endDateTime);
                                 }
                             });
                         } else {
                             nfDialog.showOkDialog({
-                                headerText: 'History',
-                                dialogContent: 'The end date must be specified.'
+                                headerText: '历史',
+                                dialogContent: '必须指定结束日期.'
                             });
                         }
                     }
                 }
             },
                 {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -301,7 +301,7 @@
         // define a custom formatter for the more details column
         var moreDetailsFormatter = function (row, cell, value, columnDef, dataContext) {
             if (dataContext.canRead === true) {
-                return '<div title="View Details" class="pointer show-action-details fa fa-info-circle"></div>';
+                return '<div title="查看详细信息" class="pointer show-action-details fa fa-info-circle"></div>';
             }
             return "";
         };
@@ -309,7 +309,7 @@
         // define how general values are formatted
         var valueFormatter = function (row, cell, value, columnDef, dataContext) {
             if (dataContext.canRead !== true) {
-                return '<span class="unset" style="font-size: 13px; padding-top: 2px;">Not authorized</span>';
+                return '<span class="unset" style="font-size: 13px; padding-top: 2px;">无权限</span>';
             }
             return nfCommon.formatValue(dataContext.action[columnDef.field]);
         };
@@ -327,7 +327,7 @@
             },
             {
                 id: 'timestamp',
-                name: 'Date/Time',
+                name: '日期/时间',
                 field: 'timestamp',
                 sortable: true,
                 resizable: true,
@@ -335,7 +335,7 @@
             },
             {
                 id: 'sourceName',
-                name: 'Name',
+                name: '名称',
                 field: 'sourceName',
                 sortable: true,
                 resizable: true,
@@ -343,7 +343,7 @@
             },
             {
                 id: 'sourceType',
-                name: 'Type',
+                name: '类型',
                 field: 'sourceType',
                 sortable: true,
                 resizable: true,
@@ -351,7 +351,7 @@
             },
             {
                 id: 'operation',
-                name: 'Operation',
+                name: '操作',
                 field: 'operation',
                 sortable: true,
                 resizable: true,
@@ -359,7 +359,7 @@
             },
             {
                 id: 'userIdentity',
-                name: 'User',
+                name: '用户',
                 field: 'userIdentity',
                 sortable: true,
                 resizable: true,
@@ -470,7 +470,7 @@
         if (nfCommon.isDefinedAndNotNull(componentDetails)) {
             if (action.sourceType === 'Processor' || action.sourceType === 'ControllerService' || action.sourceType === 'ReportingTask') {
                 detailsMarkup.append(
-                    $('<div class="action-detail"><div class="history-details-name">Type</div>' + nfCommon.escapeHtml(componentDetails.type) + '</div>'));
+                    $('<div class="action-detail"><div class="history-details-name">类型</div>' + nfCommon.escapeHtml(componentDetails.type) + '</div>'));
             } else if (action.sourceType === 'RemoteProcessGroup') {
                 detailsMarkup.append(
                     $('<div class="action-detail"><div class="history-details-name">Uri</div>' + nfCommon.formatValue(componentDetails.uri) + '</div>'));
@@ -484,27 +484,27 @@
         if (nfCommon.isDefinedAndNotNull(actionDetails)) {
             if (action.operation === 'Configure') {
                 detailsMarkup.append(
-                    $('<div class="action-detail"><div class="history-details-name">Name</div>' + nfCommon.formatValue(actionDetails.name) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Value</div>' + nfCommon.formatValue(actionDetails.value) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Previous Value</div>' + nfCommon.formatValue(actionDetails.previousValue) + '</div>'));
+                    $('<div class="action-detail"><div class="history-details-name">名称</div>' + nfCommon.formatValue(actionDetails.name) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">值</div>' + nfCommon.formatValue(actionDetails.value) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">之前的值</div>' + nfCommon.formatValue(actionDetails.previousValue) + '</div>'));
             } else if (action.operation === 'Connect' || action.operation === 'Disconnect') {
                 detailsMarkup.append(
-                    $('<div class="action-detail"><div class="history-details-name">Source Id</div>' + nfCommon.escapeHtml(actionDetails.sourceId) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Source Name</div>' + nfCommon.formatValue(actionDetails.sourceName) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Source Type</div>' + nfCommon.escapeHtml(actionDetails.sourceType) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Relationship(s)</div>' + nfCommon.formatValue(actionDetails.relationship) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Destination Id</div>' + nfCommon.escapeHtml(actionDetails.destinationId) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Destination Name</div>' + nfCommon.formatValue(actionDetails.destinationName) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Destination Type</div>' + nfCommon.escapeHtml(actionDetails.destinationType) + '</div>'));
+                    $('<div class="action-detail"><div class="history-details-name">源组件 Id</div>' + nfCommon.escapeHtml(actionDetails.sourceId) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">源组件名称</div>' + nfCommon.formatValue(actionDetails.sourceName) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">源组件类型</div>' + nfCommon.escapeHtml(actionDetails.sourceType) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">输出数据流</div>' + nfCommon.formatValue(actionDetails.relationship) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">目标 Id</div>' + nfCommon.escapeHtml(actionDetails.destinationId) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">目标名称</div>' + nfCommon.formatValue(actionDetails.destinationName) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">目标类型</div>' + nfCommon.escapeHtml(actionDetails.destinationType) + '</div>'));
             } else if (action.operation === 'Move') {
                 detailsMarkup.append(
-                    $('<div class="action-detail"><div class="history-details-name">Group</div>' + nfCommon.formatValue(actionDetails.group) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Group Id</div>' + nfCommon.escapeHtml(actionDetails.groupId) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Previous Group</div>' + nfCommon.formatValue(actionDetails.previousGroup) + '</div>')).append(
-                    $('<div class="action-detail"><div class="history-details-name">Previous Group Id</div>' + nfCommon.escapeHtml(actionDetails.previousGroupId) + '</div>'));
+                    $('<div class="action-detail"><div class="history-details-name">组</div>' + nfCommon.formatValue(actionDetails.group) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">组 Id</div>' + nfCommon.escapeHtml(actionDetails.groupId) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">之前的组</div>' + nfCommon.formatValue(actionDetails.previousGroup) + '</div>')).append(
+                    $('<div class="action-detail"><div class="history-details-name">之前的组 Id</div>' + nfCommon.escapeHtml(actionDetails.previousGroupId) + '</div>'));
             } else if (action.operation === 'Purge') {
                 detailsMarkup.append(
-                    $('<div class="action-detail"><div class="history-details-name">End Date</div>' + nfCommon.escapeHtml(actionDetails.endDate) + '</div>'));
+                    $('<div class="action-detail"><div class="history-details-name">结束日期</div>' + nfCommon.escapeHtml(actionDetails.endDate) + '</div>'));
             }
         }
 

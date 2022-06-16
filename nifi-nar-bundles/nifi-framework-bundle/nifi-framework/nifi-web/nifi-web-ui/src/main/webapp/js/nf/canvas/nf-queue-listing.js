@@ -77,7 +77,7 @@
         // configure the drop request status dialog
         $('#listing-request-status-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Queue Listing',
+            headerText: '获取队列数据',
             handler: {
                 close: function () {
                     // clear the current button model
@@ -93,7 +93,7 @@
     var getListingColumnModel = function () {
         // define a custom formatter for showing more processor details
         var moreDetailsFormatter = function (row, cell, value, columnDef, dataContext) {
-            return '<div class="pointer show-flowfile-details fa fa-info-circle" title="View Details" style="float: left;"></div>';
+            return '<div class="pointer show-flowfile-details fa fa-info-circle" title="查看详细信息" style="float: left;"></div>';
         };
 
         // function for formatting data sizes
@@ -129,7 +129,7 @@
             },
             {
                 id: 'position',
-                name: 'Position',
+                name: '位置',
                 field: 'position',
                 sortable: false,
                 resizable: false,
@@ -147,7 +147,7 @@
             },
             {
                 id: 'filename',
-                name: 'Filename',
+                name: '文件名称',
                 field: 'filename',
                 sortable: false,
                 resizable: true,
@@ -155,7 +155,7 @@
             },
             {
                 id: 'size',
-                name: 'File Size',
+                name: '文件大小',
                 field: 'size',
                 sortable: false,
                 resizable: true,
@@ -164,7 +164,7 @@
             },
             {
                 id: 'queuedDuration',
-                name: 'Queued Duration',
+                name: '排队时长',
                 field: 'queuedDuration',
                 sortable: false,
                 resizable: true,
@@ -172,7 +172,7 @@
             },
             {
                 id: 'lineageDuration',
-                name: 'Lineage Duration',
+                name: '血缘持续时间',
                 field: 'lineageDuration',
                 sortable: false,
                 resizable: true,
@@ -180,7 +180,7 @@
             },
             {
                 id: 'penalized',
-                name: 'Penalized',
+                name: '已惩罚',
                 field: 'penaltyExpiresIn',
                 sortable: false,
                 resizable: false,
@@ -194,7 +194,7 @@
         if (nfClusterSummary.isConnectedToCluster()) {
             queueListingColumns.push({
                 id: 'clusterNodeAddress',
-                name: 'Node',
+                name: '节点',
                 field: 'clusterNodeAddress',
                 sortable: false,
                 resizable: true,
@@ -208,15 +208,15 @@
 
             var disabled = (dataContext.size > 0)?false:true;
             formatted += '<div class="icon download-flowfile-content fa fa-download '+((disabled)?'disabled':'pointer')+'"'+
-                ' title="'+((disabled)?'No content available to download':'Download content')+'" aria-hidden="true"></div>';
+                ' title="'+((disabled)?'无正文可下载':'下载正文')+'" aria-hidden="true"></div>';
 
             if(nfCommon.isContentViewConfigured()){
                 formatted += '<div class="icon view-flowfile-content fa fa-eye '+((disabled)?'disabled':'pointer')+'"'+
-                    ' title="'+((disabled)?'No content available to view':'View content')+'" aria-hidden="true"></div>';
+                    ' title="'+((disabled)?'无正文可查看':'查看正文')+'" aria-hidden="true"></div>';
             }
 
             if(nfCommon.canAccessProvenance()){
-                formatted += '<div title="Provenance" class="pointer icon icon-provenance view-provenance" aria-hidden="true"></div>';
+                formatted += '<div title="朔源" class="pointer icon icon-provenance view-provenance" aria-hidden="true"></div>';
             }
 
             return formatted;
@@ -330,8 +330,8 @@
 
             // update the button model of the drop request status dialog
             $('#listing-request-status-dialog').modal('setButtonModel', [{
-                headerText: 'Queue Listing',
-                buttonText: 'Stop',
+                headerText: '获取队列数据',
+                buttonText: '停止',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -374,8 +374,8 @@
 
                             // show the dialog
                             nfDialog.showOkDialog({
-                                headerText: 'Queue Listing',
-                                dialogContent: 'The queue has no FlowFiles.'
+                                headerText: '获取队列数据',
+                                dialogContent: '队列中没有 FlowFile.'
                             });
                         }
                     } else {
@@ -391,11 +391,11 @@
                         var queueListingMessage = $('#queue-listing-message');
                         if (listingRequest.sourceRunning === true || listingRequest.destinationRunning === true) {
                             if (listingRequest.souceRunning === true && listingRequest.destinationRunning === true) {
-                                queueListingMessage.text('The source and destination of this queue are currently running. This listing may no longer be accurate.').show();
+                                queueListingMessage.text('该队列的源组件和目标组件正在运行. 当前列举可能不再准确.').show();
                             } else if (listingRequest.sourceRunning === true) {
-                                queueListingMessage.text('The source of this queue is currently running. This listing may no longer be accurate.').show();
+                                queueListingMessage.text('该队列的源组件正在运行, 当前列举可能不再准确.').show();
                             } else if (listingRequest.destinationRunning === true) {
-                                queueListingMessage.text('The destination of this queue is currently running. This listing may no longer be accurate.').show();
+                                queueListingMessage.text('该队列目标组件正在运行. 当前列举可能不再准确.').show();
                             }
                         } else {
                             queueListingMessage.text('').hide();
@@ -496,7 +496,7 @@
             if (nfCommon.isDefinedAndNotNull(value)) {
                 element.removeClass('unset').text(value);
             } else {
-                element.addClass('unset').text('No value set');
+                element.addClass('unset').text('未设置值');
             }
         };
 
@@ -681,10 +681,10 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Details',
+                    name: '详细信息',
                     tabContentId: 'flowfile-details-tab-content'
                 }, {
-                    name: 'Attributes',
+                    name: '属性',
                     tabContentId: 'flowfile-attributes-tab-content'
                 }]
             });
@@ -693,7 +693,7 @@
                 scrollableContentStyle: 'scrollable',
                 headerText: 'FlowFile',
                 buttons: [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -743,7 +743,7 @@
                     connectionName = nfCanvasUtils.formatConnectionName(connection.component);
                 }
                 if (connectionName === '') {
-                    connectionName = 'Connection';
+                    connectionName = '连接';
                 }
                 $('#queue-listing-header-text').text(connectionName);
 

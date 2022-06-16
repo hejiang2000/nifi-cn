@@ -48,7 +48,7 @@
      * Configuration object used to hold a number of configuration items.
      */
     var config = {
-        primaryNode: 'Primary Node',
+        primaryNode: '主节点',
         clusterCoordinator: 'Cluster Coordinator',
         urls: {
             cluster: '../nifi-api/controller/cluster',
@@ -77,7 +77,7 @@
     };
 
     var nodesTab = {
-        name: 'Nodes',
+        name: '节点',
         data: {
             dataSet: 'cluster',
             update: updateNodesTableData
@@ -94,16 +94,16 @@
         onSort: sort,
         onTabSelected: onSelectTab,
         filterOptions: [{
-            text: 'by address',
+            text: '按地址',
             value: 'address'
         }, {
-            text: 'by status',
+            text: '按状态',
             value: 'status'
         }]
     };
 
     var jvmTab = {
-        name: 'JVM',
+        name: 'Java 虚拟机',
         data: {
             dataSet: 'systemDiagnostics',
             update: updateJvmTableData
@@ -120,13 +120,13 @@
         onSort: sort,
         onTabSelected: onSelectTab,
         filterOptions: [{
-            text: 'by address',
+            text: '按地址',
             value: 'node'
         }]
     };
 
     var systemTab = {
-        name: 'System',
+        name: '系统',
         data: {
             dataSet: 'systemDiagnostics',
             update: updateSystemTableData
@@ -137,7 +137,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node Address',
+                name: '节点地址',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -145,7 +145,7 @@
             {
                 id: 'processors',
                 field: 'processors',
-                name: 'Cores',
+                name: '核心',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -155,7 +155,7 @@
             {
                 id: 'processorLoadAverage',
                 field: 'processorLoadAverage',
-                name: 'Core Load Average',
+                name: '核心平均负载',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -165,7 +165,7 @@
             {
                 id: 'totalThreads',
                 field: 'totalThreads',
-                name: 'Total Threads',
+                name: '总线程数',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -175,7 +175,7 @@
             {
                 id: 'daemonThreads',
                 field: 'daemonThreads',
-                name: 'Daemon Threads',
+                name: '后台线程',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -192,13 +192,13 @@
         onSort: sort,
         onTabSelected: onSelectTab,
         filterOptions: [{
-            text: 'by address',
+            text: '按地址',
             value: 'node'
         }]
     };
 
     var flowFileTab = {
-        name: 'FlowFile Storage',
+        name: 'FlowFile 存储',
         data: {
             dataSet: 'systemDiagnostics',
             update: updateFlowFileTableData
@@ -209,7 +209,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node Address',
+                name: '节点地址',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -217,7 +217,7 @@
             {
                 id: 'ffRepoTotal',
                 field: 'ffRepoTotal',
-                name: 'Total Space',
+                name: '总空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -227,7 +227,7 @@
             {
                 id: 'ffRepoUsed',
                 field: 'ffRepoUsed',
-                name: 'Used Space',
+                name: '已用空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -237,7 +237,7 @@
             {
                 id: 'ffRepoFree',
                 field: 'ffRepoFree',
-                name: 'Free Space',
+                name: '空闲空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -247,7 +247,7 @@
             {
                 id: 'ffStoreUtil',
                 field: 'ffRepoUtil',
-                name: 'Utilization',
+                name: '利用率',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -264,13 +264,13 @@
         onSort: sort,
         onTabSelected: onSelectTab,
         filterOptions: [{
-            text: 'by address',
+            text: '按地址',
             value: 'node'
         }]
     };
 
     var contentTab = {
-        name: 'Content Storage',
+        name: '正文存储',
         data: {
             dataSet: 'systemDiagnostics',
             update: updateContentTableData
@@ -281,7 +281,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node Address',
+                name: '节点地址',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -289,7 +289,7 @@
             {
                 id: 'contentRepoId',
                 field: 'contentRepoId',
-                name: 'Content Repository',
+                name: '正文仓库',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -297,7 +297,7 @@
             {
                 id: 'contentRepoTotal',
                 field: 'contentRepoTotal',
-                name: 'Total Space',
+                name: '总空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -307,7 +307,7 @@
             {
                 id: 'contentRepoUsed',
                 field: 'contentRepoUsed',
-                name: 'Used Space',
+                name: '已用空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -317,7 +317,7 @@
             {
                 id: 'contentRepoFree',
                 field: 'contentRepoFree',
-                name: 'Free Space',
+                name: '空闲空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -327,7 +327,7 @@
             {
                 id: 'contentRepoUtil',
                 field: 'contentRepoUtil',
-                name: 'Utilization',
+                name: '利用率',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -344,16 +344,16 @@
         onSort: sort,
         onTabSelected: onSelectTab,
         filterOptions: [{
-            text: 'by address',
+            text: '按地址',
             value: 'node'
         }, {
-            text: 'by repository',
+            text: '按仓库',
             value: 'contentRepoId'
         }]
     };
 
     var provenanceTab = {
-        name: 'Provenance Storage',
+        name: '溯源存储',
         data: {
             dataSet: 'systemDiagnostics',
             update: updateProvenanceTableData
@@ -364,7 +364,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node Address',
+                name: '节点地址',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -372,7 +372,7 @@
             {
                 id: 'provenanceRepoId',
                 field: 'provenanceRepoId',
-                name: 'Provenance Repository',
+                name: '溯源仓库',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -380,7 +380,7 @@
             {
                 id: 'provenanceRepoTotal',
                 field: 'provenanceRepoTotal',
-                name: 'Total Space',
+                name: '总空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -390,7 +390,7 @@
             {
                 id: 'provenanceRepoUsed',
                 field: 'provenanceRepoUsed',
-                name: 'Used Space',
+                name: '已用空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -400,7 +400,7 @@
             {
                 id: 'provenanceRepoFree',
                 field: 'provenanceRepoFree',
-                name: 'Free Space',
+                name: '空闲空间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -410,7 +410,7 @@
             {
                 id: 'provenanceRepoUtil',
                 field: 'provenanceRepoUtil',
-                name: 'Utilization',
+                name: '利用率',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -427,16 +427,16 @@
         onSort: sort,
         onTabSelected: onSelectTab,
         filterOptions: [{
-            text: 'by address',
+            text: '按地址',
             value: 'node'
         }, {
-            text: 'by repository',
+            text: '按仓库',
             value: 'contentRepoId'
         }]
     };
 
     var versionTab = {
-        name: 'Versions',
+        name: '版本',
         data: {
             dataSet: 'systemDiagnostics',
             update: updateVersionTableData
@@ -447,7 +447,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node Address',
+                name: '节点地址',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -455,7 +455,7 @@
             {
                 id: 'version',
                 field: 'version',
-                name: 'NiFi Version',
+                name: 'NiFi 版本',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -463,7 +463,7 @@
             {
                 id: 'javavendor',
                 field: 'javaVendor',
-                name: 'Java Vendor',
+                name: 'Java 供应商',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -471,7 +471,7 @@
             {
                 id: 'javaversion',
                 field: 'javaVersion',
-                name: 'Java Version',
+                name: 'Java 版本',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -479,7 +479,7 @@
             {
                 id: 'osname',
                 field: 'osName',
-                name: 'OS Name',
+                name: 'OS 名称',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -487,7 +487,7 @@
             {
                 id: 'osversion',
                 field: 'osVersion',
-                name: 'OS Version',
+                name: 'OS 版本',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -495,7 +495,7 @@
             {
                 id: 'osarch',
                 field: 'osArchitecture',
-                name: 'OS Architecture',
+                name: 'OS 架构',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -510,7 +510,7 @@
         onSort: sort,
         onTabSelected: onSelectTab,
         filterOptions: [{
-            text: 'by address',
+            text: '按地址',
             value: 'address'
         }]
     };
@@ -545,7 +545,7 @@
      */
     function createNodeTableColumnModel() {
         var moreDetailsFormatter = function (row, cell, value, columnDef, dataContext) {
-            return '<div title="View Details" class="pointer show-node-details fa fa-info-circle"></div>';
+            return '<div title="查看详细信息" class="pointer show-node-details fa fa-info-circle"></div>';
         };
 
         // define a custom formatter for the run status column
@@ -576,7 +576,7 @@
             {
                 id: 'formattedNodeAddress',
                 field: 'formattedNodeAddress',
-                name: 'Node Address',
+                name: '节点地址',
                 formatter: nodeFormatter,
                 resizable: true,
                 sortable: true
@@ -584,7 +584,7 @@
             {
                 id: 'activeThreadCount',
                 field: 'activeThreadCount',
-                name: 'Active Thread Count',
+                name: '活跃线程数',
                 resizable: true,
                 sortable: true,
                 defaultSortAsc: false,
@@ -593,7 +593,7 @@
             {
                 id: 'queued',
                 field: 'queued',
-                name: '<span class="queued-title">Queue</span>&nbsp;/&nbsp;<span class="queued-size-title">Size</span>',
+                name: '<span class="queued-title">排队</span>&nbsp;/&nbsp;<span class="queued-size-title">大小</span>',
                 resizable: true,
                 sortable: true,
                 defaultSortAsc: false,
@@ -602,7 +602,7 @@
             {
                 id: 'status',
                 field: 'status',
-                name: 'Status',
+                name: '状态',
                 formatter: statusFormatter,
                 resizable: true,
                 sortable: true
@@ -610,7 +610,7 @@
             {
                 id: 'uptime',
                 field: 'nodeStartTime',
-                name: 'Started At',
+                name: '开始于',
                 formatter: valueFormatter,
                 resizable: true,
                 sortable: true,
@@ -619,7 +619,7 @@
             {
                 id: 'heartbeat',
                 field: 'heartbeat',
-                name: 'Last Heartbeat',
+                name: '最后心跳',
                 formatter: valueFormatter,
                 resizable: true,
                 sortable: true,
@@ -630,10 +630,10 @@
         // only allow the admin to modify the cluster
         if (nfCommon.canModifyController()) {
             var actionFormatter = function (row, cell, value, columnDef, dataContext) {
-                var connectDiv = '<div title="Connect" class="pointer prompt-for-connect fa fa-plug"></div>';
-                var deleteDiv = '<div title="Delete" class="pointer prompt-for-removal fa fa-trash"></div>';
-                var disconnectDiv = '<div title="Disconnect" class="pointer prompt-for-disconnect fa fa-power-off"></div>';
-                var offloadDiv = '<div title="Offload" class="pointer prompt-for-offload fa fa-rotate-90 fa-upload" ' +
+                var connectDiv = '<div title="连接" class="pointer prompt-for-connect fa fa-plug"></div>';
+                var deleteDiv = '<div title="删除" class="pointer prompt-for-removal fa fa-trash"></div>';
+                var disconnectDiv = '<div title="断开" class="pointer prompt-for-disconnect fa fa-power-off"></div>';
+                var offloadDiv = '<div title="卸载" class="pointer prompt-for-offload fa fa-rotate-90 fa-upload" ' +
                     'style="margin-top: 5px;margin-left: 5px;margin-right: -2px;"></div>';
                 var markup = '';
 
@@ -715,7 +715,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node Address',
+                name: '节点地址',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -723,7 +723,7 @@
             {
                 id: 'heapMax',
                 field: 'maxHeap',
-                name: 'Heap Max',
+                name: '堆内存最大值',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -733,7 +733,7 @@
             {
                 id: 'heapTotal',
                 field: 'totalHeap',
-                name: 'Heap Total',
+                name: '堆内存总量',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -743,7 +743,7 @@
             {
                 id: 'heapUsed',
                 field: 'usedHeap',
-                name: 'Heap Used',
+                name: '已用堆内存',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -753,7 +753,7 @@
             {
                 id: 'heapUtilPct',
                 field: 'heapUtilization',
-                name: 'Heap Utilization',
+                name: '堆内存使用率',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -763,7 +763,7 @@
             {
                 id: 'nonHeapTotal',
                 field: 'totalNonHeap',
-                name: 'Non-Heap Total',
+                name: '非堆内存总量',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -773,7 +773,7 @@
             {
                 id: 'nonHeapUsed',
                 field: 'usedNonHeap',
-                name: 'Non-Heap Used',
+                name: '已用非堆内存',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -792,7 +792,7 @@
             {
                 id: 'uptime',
                 field: 'uptime',
-                name: 'Uptime',
+                name: '已运行时间',
                 sortable: true,
                 resizable: true,
                 cssClass: 'cell-right',
@@ -913,8 +913,8 @@
     var promptForConnect = function (node) {
         // prompt to connect
         nfDialog.showYesNoDialog({
-            headerText: 'Connect Node',
-            dialogContent: 'Connect \'' + formatNodeAddress(node) + '\' to this cluster?',
+            headerText: '连接节点',
+            dialogContent: '将 \'' + formatNodeAddress(node) + '\' 连接到集群?',
             yesHandler: function () {
                 connect(node.nodeId);
             }
@@ -956,8 +956,8 @@
      */
     var promptForOffload = function (node) {
         nfDialog.showYesNoDialog({
-            headerText: 'Offload Node',
-            dialogContent: 'Offload \'' + formatNodeAddress(node) + '\'?',
+            headerText: '卸载节点',
+            dialogContent: '卸载 \'' + formatNodeAddress(node) + '\'?',
             yesHandler: function () {
                 offload(node.nodeId);
             }
@@ -1001,8 +1001,8 @@
     var promptForDisconnect = function (node) {
         // prompt for disconnect
         nfDialog.showYesNoDialog({
-            headerText: 'Disconnect Node',
-            dialogContent: 'Disconnect \'' + formatNodeAddress(node) + '\' from the cluster?',
+            headerText: '断开节点',
+            dialogContent: '将 \'' + formatNodeAddress(node) + '\' 与集群断开?',
             yesHandler: function () {
                 disconnect(node.nodeId);
             }
@@ -1046,8 +1046,8 @@
     var promptForRemoval = function (node) {
         // prompt for disconnect
         nfDialog.showYesNoDialog({
-            headerText: 'Remove Node',
-            dialogContent: 'Remove \'' + formatNodeAddress(node) + '\' from the cluster?',
+            headerText: '移除节点',
+            dialogContent: '从 \'' + formatNodeAddress(node) + '\' from the cluster?',
             yesHandler: function () {
                 remove(node.nodeId);
             }
@@ -1195,7 +1195,7 @@
                 });
                 $('<div></div>').append(nfCommon.formatUnorderedList(eventMessages)).appendTo(events);
             } else {
-                events.append('<div><span class="unset">None</span></div>');
+                events.append('<div><span class="unset">无</span></div>');
             }
 
             // show the dialog
@@ -1561,9 +1561,9 @@
             // initialize the user details dialog
             $('#node-details-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Node Details',
+                headerText: '节点详细信息',
                 buttons: [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',

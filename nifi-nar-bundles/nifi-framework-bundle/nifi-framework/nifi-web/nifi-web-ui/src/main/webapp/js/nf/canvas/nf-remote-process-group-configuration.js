@@ -62,10 +62,10 @@
     return {
         init: function () {
             $('#remote-process-group-configuration').modal({
-                headerText: 'Configure Remote Process Group',
+                headerText: '配置远程处理组',
                 scrollableContentStyle: 'scrollable',
                 buttons: [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -115,7 +115,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',

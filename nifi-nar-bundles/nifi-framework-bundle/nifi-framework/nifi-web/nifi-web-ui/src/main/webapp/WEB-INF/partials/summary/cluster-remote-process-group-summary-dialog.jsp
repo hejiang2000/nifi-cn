@@ -30,9 +30,9 @@
         </div>
         <div id="cluster-remote-process-group-summary-table"></div>
     </div>
-    <button id="cluster-remote-process-group-refresh-button" class="refresh-button pointer fa fa-refresh" title="Refresh"></button>
+    <button id="cluster-remote-process-group-refresh-button" class="refresh-button pointer fa fa-refresh" title="刷新"></button>
     <div id="cluster-remote-process-group-summary-last-refreshed-container" class="last-refreshed-container">
-        Last updated:&nbsp;<span id="cluster-remote-process-group-summary-last-refreshed" class="value-color"></span>
+        最后更新:&nbsp;<span id="cluster-remote-process-group-summary-last-refreshed" class="value-color"></span>
     </div>
     <div id="cluster-remote-process-group-summary-loading-container" class="loading-container"></div>
 </div>

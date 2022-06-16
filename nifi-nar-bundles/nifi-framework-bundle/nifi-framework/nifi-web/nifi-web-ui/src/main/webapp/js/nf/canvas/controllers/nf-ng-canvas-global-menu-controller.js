@@ -421,12 +421,12 @@
 
                         this.getElement().modal({
                             scrollableContentStyle: 'scrollable',
-                            headerText: 'About Apache NiFi',
+                            headerText: '关于 Apache NiFi',
                             handler: {
                                 resize: resizeAbout
                             },
                             buttons: [{
-                                buttonText: 'Ok',
+                                buttonText: '确定',
                                 color: {
                                     base: '#728E9B',
                                     hover: '#004849',

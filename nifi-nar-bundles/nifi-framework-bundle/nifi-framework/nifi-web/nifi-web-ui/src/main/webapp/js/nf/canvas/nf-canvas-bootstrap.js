@@ -421,8 +421,8 @@
                 }
             }));
         } else {
-            $('#message-title').text('Unsupported Browser');
-            $('#message-content').text('Flow graphs are shown using SVG. Please use a browser that supports rendering SVG.');
+            $('#message-title').text('不支持的浏览器');
+            $('#message-content').text('流程图使用 SVG 显示. 请使用支持 SVG 的浏览器访问.');
 
             // show the error pane
             $('#message-pane').show();

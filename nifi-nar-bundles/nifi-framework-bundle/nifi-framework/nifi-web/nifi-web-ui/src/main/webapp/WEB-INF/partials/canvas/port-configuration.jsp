@@ -18,13 +18,13 @@
 <div id="port-configuration" class="hidden medium-dialog">
     <div class="dialog-content">
         <div class="port-setting">
-            <div class="setting-name">Port name</div>
+            <div class="setting-name">端口名称</div>
             <div class="setting-field">
                 <div id="port-name-container">
                     <input type="text" id="port-name"/>
                     <div class="port-enabled-container">
                         <div id="port-enabled" class="port-enabled nf-checkbox checkbox-unchecked"></div>
-                        <span class="nf-checkbox-label"> Enabled</span>
+                        <span class="nf-checkbox-label"> 启用</span>
                     </div>
                 </div>
             </div>
@@ -39,15 +39,15 @@
         </div>
         <div id="port-concurrent-task-container" class="port-setting">
             <div class="setting-name">
-                Concurrent tasks
-                <div class="fa fa-question-circle" alt="Info" title="The number of tasks that should be concurrently scheduled for this port."></div>
+                并行任务
+                <div class="fa fa-question-circle" alt="Info" title="该端口应该被并行调度的任务数量."></div>
             </div>
             <div class="setting-field">
                 <input type="text" id="port-concurrent-tasks" class="port-field"></divnput>
             </div>
         </div>
         <div class="port-setting">
-            <div class="setting-name">Comments</div>
+            <div class="setting-name">说明</div>
             <div class="setting-field">
                 <textarea cols="30" rows="4" id="port-comments" class="port-field"></textarea>
             </div>

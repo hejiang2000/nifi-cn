@@ -66,9 +66,9 @@
             // make the new property dialog draggable
             $('#label-configuration').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Configure Label',
+                headerText: '配置标签',
                 buttons: [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -119,7 +119,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',

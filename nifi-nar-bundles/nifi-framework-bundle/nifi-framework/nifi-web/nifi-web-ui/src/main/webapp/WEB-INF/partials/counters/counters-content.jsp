@@ -17,10 +17,10 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="counters">
     <div id="counters-header-and-filter">
-        <div id="counters-header-text">NiFi Counters</div>
+        <div id="counters-header-text">NiFi 计数器</div>
         <div id="counters-filter-controls">
             <div id="counters-filter-stats" class="filter-status">
-                Displaying&nbsp;<span id="displayed-counters"></span>&nbsp;of&nbsp;<span id="total-counters"></span>
+                显示&nbsp;<span id="displayed-counters"></span>,&nbsp;共&nbsp;<span id="total-counters"></span>
             </div>
             <div id="counters-filter-container" class="filter-container">
                 <input type="text" id="counters-filter" placeholder="Filter" class="filter"/>
@@ -31,9 +31,9 @@
     <div id="counters-table"></div>
 </div>
 <div id="counters-refresh-container">
-    <button id="refresh-button" class="refresh-button pointer fa fa-refresh" title="Refresh"></button>
+    <button id="refresh-button" class="refresh-button pointer fa fa-refresh" title="刷新"></button>
     <div id="counters-last-refreshed-container" class="last-refreshed-container">
-        Last updated:&nbsp;<span id="counters-last-refreshed" class="value-color"></span>
+        最后更新:&nbsp;<span id="counters-last-refreshed" class="value-color"></span>
     </div>
     <div id="counters-loading-container" class="loading-container"></div>
 </div>

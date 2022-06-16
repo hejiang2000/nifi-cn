@@ -18,7 +18,7 @@
 <div id="instantiate-template-dialog" class="hidden small-dialog">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Choose Template:</div>
+            <div class="setting-name">选择模板:</div>
             <div id="available-templates" name="available-templates"></div>
         </div>
     </div>

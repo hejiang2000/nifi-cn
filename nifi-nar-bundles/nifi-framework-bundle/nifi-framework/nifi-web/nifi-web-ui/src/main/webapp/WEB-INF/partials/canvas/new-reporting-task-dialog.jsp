@@ -19,11 +19,11 @@
     <div class="dialog-content">
         <div layout="row" style="padding-bottom:0">
             <div flex="25" layout="row" layout-align="start center">
-                <div class="setting-name" style="margin-top: 10px;">Source</div>
+                <div class="setting-name" style="margin-top: 10px;">源组件</div>
             </div>
             <div flex layout="row" layout-align="space-between center" id="reporting-task-type-filter-controls" class="filter-status">
                 <div id="reporting-task-type-filter-status">
-                    Displaying&nbsp;<span id="displayed-reporting-task-types"></span>&nbsp;of&nbsp;<span id="total-reporting-task-types"></span>
+                    显示&nbsp;<span id="displayed-reporting-task-types"></span>,&nbsp;共&nbsp;<span id="total-reporting-task-types"></span>
                 </div>
                 <div id="controller-service-type-filter-container">
                     <input type="text" id="reporting-task-type-filter" placeholder="Filter"/>

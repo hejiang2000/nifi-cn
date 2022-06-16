@@ -18,7 +18,7 @@
 <div id="port-details" class="hidden medium-dialog">
     <div class="dialog-content">
         <div class="port-setting">
-            <div class="setting-name">Port name</div>
+            <div class="setting-name">端口名称</div>
             <div class="setting-field">
                 <span id="read-only-port-name"></span>
             </div>
@@ -30,23 +30,23 @@
             </div>
         </div>
         <div class="port-setting">
-            <div class="setting-name">Allow Remote Access
-                <div class="fa fa-question-circle" alt="Info" title="Whether this port can be accessed as a RemoteGroupPort via Site-to-Site protocol."></div>
+            <div class="setting-name">允许远程访问
+                <div class="fa fa-question-circle" alt="Info" title="是否该端口可以作为远程处理组端口, 经由 Site-to-Site 协议被访问."></div>
             </div>
             <div class="setting-field">
                 <span id="read-only-port-allow-remote-access"></span>
             </div>
         </div>
         <div class="port-setting">
-            <div class="setting-name">Concurrent Tasks
-                <div class="fa fa-question-circle" alt="Info" title="The number of tasks that should be concurrently scheduled for this port."></div>
+            <div class="setting-name">并行任务
+                <div class="fa fa-question-circle" alt="Info" title="该端口应该被并行调度的任务数量."></div>
             </div>
             <div class="setting-field">
                 <span id="read-only-port-concurrent-tasks"></span>
             </div>
         </div>
         <div class="port-setting">
-            <div class="setting-name">Comments</div>
+            <div class="setting-name">说明</div>
             <div class="setting-field">
                 <div id="read-only-port-comments"></div>
             </div>

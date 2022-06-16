@@ -18,7 +18,7 @@
 <div id="new-port-dialog" class="hidden small-dialog">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name"><span id="new-port-type">Input</span>&nbsp;port name</div>
+            <div class="setting-name"><span id="new-port-type">输入</span>&nbsp;端口名称</div>
             <div class="setting-field">
                 <input id="new-port-name" type="text"/>
             </div>

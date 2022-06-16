@@ -18,43 +18,43 @@
 <div id="component-version-dialog" layout="column" class="hidden">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Name</div>
+            <div class="setting-name">名称</div>
             <div class="setting-field">
                 <div id="component-version-name"></div>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Bundle</div>
+            <div class="setting-name">扩展包</div>
             <div class="setting-field">
                 <div id="component-version-bundle"></div>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Version</div>
+            <div class="setting-name">版本</div>
             <div class="setting-field">
                 <div id="component-version-selector"></div>
             </div>
         </div>
         <div id="component-version-controller-service-apis-container" class="setting hidden">
-            <div class="setting-name">Supports Controller Services</div>
+            <div class="setting-name">支持控制器服务</div>
             <div class="setting-field">
                 <div id="component-version-controller-service-apis"></div>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Tags</div>
+            <div class="setting-name">标签</div>
             <div class="setting-field">
                 <div id="component-version-tags"></div>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Restriction</div>
+            <div class="setting-name">限制</div>
             <div class="setting-field">
                 <div id="component-version-restriction"></div>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Description</div>
+            <div class="setting-name">描述</div>
             <div class="setting-field">
                 <div id="component-version-description"></div>
             </div>
