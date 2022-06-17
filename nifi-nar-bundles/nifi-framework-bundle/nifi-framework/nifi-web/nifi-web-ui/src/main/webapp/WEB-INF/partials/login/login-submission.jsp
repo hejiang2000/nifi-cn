@@ -16,5 +16,5 @@
 --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="login-submission-container" class="login-container hidden">
-    <div id="login-submission-button" class="button">Log in</div>
+    <div id="login-submission-button" class="button">登录</div>
 </div>

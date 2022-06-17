@@ -98,16 +98,16 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Settings',
+                    name: '设置',
                     tabContentId: 'details-standard-settings-tab-content'
                 }, {
-                    name: 'Scheduling',
+                    name: '调度',
                     tabContentId: 'details-scheduling-tab-content'
                 }, {
-                    name: 'Properties',
+                    name: '属性',
                     tabContentId: 'details-processor-properties-tab-content'
                 }, {
-                    name: 'Comments',
+                    name: '说明',
                     tabContentId: 'details-processor-comments-tab-content'
                 }],
                 select: function () {
@@ -115,7 +115,7 @@
                     nfUniversalCapture.removeAllPropertyDetailDialogs();
 
                     // resize the property grid in case this is the first time its rendered
-                    if ($(this).text() === 'Properties') {
+                    if ($(this).text() === '属性') {
                         $('#read-only-processor-properties').propertytable('resetTableSize');
                     }
 
@@ -129,7 +129,7 @@
 
             // configure the processor details dialog
             $('#processor-details').modal({
-                headerText: 'Processor Details',
+                headerText: '处理器详细信息',
                 scrollableContentStyle: 'scrollable',
                 handler: {
                     close: function () {
@@ -228,13 +228,13 @@
                     // make the scheduling strategy human readable
                     if (schedulingStrategy === 'EVENT_DRIVEN') {
                         showRunSchedule = false;
-                        schedulingStrategy = 'Event driven';
+                        schedulingStrategy = '事件驱动';
                     } else if (schedulingStrategy === 'CRON_DRIVEN') {
-                        schedulingStrategy = 'CRON driven';
+                        schedulingStrategy = 'CRON 驱动';
                     } else if (schedulingStrategy === 'TIMER_DRIVEN') {
-                        schedulingStrategy = "Timer driven";
+                        schedulingStrategy = "定时器驱动";
                     } else {
-                        schedulingStrategy = "On primary node";
+                        schedulingStrategy = "在主节点上";
                     }
                     nfCommon.populateField('read-only-scheduling-strategy', schedulingStrategy);
 
@@ -248,9 +248,9 @@
                     var executionNode = details.config['executionNode'];
 
                     if (executionNode === 'ALL') {
-                        executionNode = "All nodes";
+                        executionNode = "全部节点";
                     } else if (executionNode === 'PRIMARY') {
-                        executionNode = "Primary node only";
+                        executionNode = "仅主节点";
                     }
 
                     nfCommon.populateField('read-only-execution-node', executionNode);
@@ -263,7 +263,7 @@
                             createRelationshipOption(relationship);
                         });
                     } else {
-                        $('#read-only-auto-terminate-relationship-names').append('<div class="unset">This processor has no relationships.</div>');
+                        $('#read-only-auto-terminate-relationship-names').append('<div class="unset">该处理器无输出数据流.</div>');
                     }
                 }
             });
@@ -294,7 +294,7 @@
                     .propertytable('loadProperties', processor.config.properties, processor.config.descriptors, history.propertyHistory);
 
                 var buttons = [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -311,7 +311,7 @@
                 // determine if we should show the advanced button
                 if (top === window && nfCommon.isDefinedAndNotNull(nfCustomUi) && nfCommon.isDefinedAndNotNull(processor.config.customUiUrl) && processor.config.customUiUrl !== '') {
                     buttons.push({
-                        buttonText: 'Advanced',
+                        buttonText: '高级',
                         clazz: 'fa fa-cog button-icon',
                         color: {
                             base: '#E3E8EB',
@@ -353,7 +353,7 @@
                         };
 
                         $("#processor-details-status-bar").statusbar('buttons',[{
-                            buttonHtml: '<i class="fa fa-stop stop-configure-icon" aria-hidden="true"></i><span>Stop & Configure</span>',
+                            buttonHtml: '<i class="fa fa-stop stop-configure-icon" aria-hidden="true"></i><span>停止 & 配置</span>',
                             clazz: 'button button-icon auto-width',
                             color: {
                                 hover: '#C7D2D7',
@@ -372,7 +372,7 @@
                             }
                         },
                         {
-                            buttonText: 'Configure',
+                            buttonText: '配置',
                             clazz: 'fa fa-cog button-icon',
                             color: {
                                 hover: '#C7D2D7',

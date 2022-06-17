@@ -131,7 +131,7 @@
         if (nfCommon.isDefinedAndNotNull(documentedType.usageRestriction)) {
             $('#component-version-restriction').text(documentedType.usageRestriction);
         } else {
-            $('#component-version-restriction').addClass('unset').text('No restriction');
+            $('#component-version-restriction').addClass('unset').text('无限制');
         }
 
         // update the service apis if necessary
@@ -155,9 +155,9 @@
             // initialize the component version dialog
             $('#component-version-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Component Version',
+                headerText: '组件版本',
                 buttons: [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -260,7 +260,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',

@@ -132,16 +132,16 @@
             // filter type
             $('#bulletin-board-filter-type').combo({
                 options: [{
-                    text: 'by message',
+                    text: '按消息',
                     value: 'message'
                 }, {
-                    text: 'by name',
+                    text: '按名称',
                     value: 'sourceName'
                 }, {
-                    text: 'by id',
+                    text: '按 id',
                     value: 'sourceId'
                 }, {
-                    text: 'by group id',
+                    text: '按组 id',
                     value: 'groupId'
                 }]
             });
@@ -153,7 +153,7 @@
                 dataType: 'json'
             }).done(function (response) {
                 var aboutDetails = response.about;
-                var bulletinBoardTitle = aboutDetails.title + ' Bulletin Board';
+                var bulletinBoardTitle = aboutDetails.title + ' 公告栏';
 
                 // set the document title and the about title
                 document.title = bulletinBoardTitle;
@@ -224,7 +224,7 @@
             var refreshButton = $('#refresh-button');
             var bulletinContainer = $('#bulletin-board-container');
 
-            appendAndScroll(bulletinContainer, '<div class="bulletin-action">Auto refresh started</div>');
+            appendAndScroll(bulletinContainer, '<div class="bulletin-action">自动刷新已启动</div>');
 
             // clear any error messages
             $('#bulletin-error-message').text('').hide();
@@ -238,7 +238,7 @@
             var refreshButton = $('#refresh-button');
             var bulletinContainer = $('#bulletin-board-container');
 
-            appendAndScroll(bulletinContainer, '<div class="bulletin-action">Auto refresh stopped</div>');
+            appendAndScroll(bulletinContainer, '<div class="bulletin-action">自动刷新已停止</div>');
 
             // reset state
             lastBulletin = null;
@@ -370,7 +370,7 @@
                         filterType = filterOption.text;
                     }
                 } else if (filterText !== null) {
-                    appendAndScroll(bulletinContainer, '<div class="bulletin-action">Filter removed</div>');
+                    appendAndScroll(bulletinContainer, '<div class="bulletin-action">已移除过滤</div>');
                     filterText = null;
                     filterType = null;
                 }

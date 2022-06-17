@@ -355,8 +355,8 @@
                             deferred.resolve();
                         }).fail(function (xhr, status, error) {
                             nfDialog.showOkDialog({
-                                headerText: 'Error',
-                                dialogContent: 'Unable to load the group for the specified component.'
+                                headerText: '错误',
+                                dialogContent: '加载特定组件的处理组失败.'
                             });
                             deferred.reject(xhr, status, error);
                         });
@@ -373,8 +373,8 @@
                         nfActions.show(component);
                     } else {
                         nfDialog.showOkDialog({
-                            headerText: 'Error',
-                            dialogContent: 'Unable to find the specified component.'
+                            headerText: '错误',
+                            dialogContent: '查找特定组件失败.'
                         });
                     }
                 });
@@ -458,8 +458,8 @@
                             deferred.resolve();
                         }).fail(function (xhr, status, error) {
                             nfDialog.showOkDialog({
-                                headerText: 'Error',
-                                dialogContent: 'Unable to enter the selected group.'
+                                headerText: '错误',
+                                dialogContent: '进入选定处理组失败.'
                             });
 
                             deferred.reject(xhr, status, error);
@@ -481,10 +481,10 @@
                     });
 
                     if (componentIds.length > 0) {
-                        var dialogContent = $('<p></p>').text('Specified component(s) not found: ' + componentIds.join(', ') + '.').append('<br/><br/>').append($('<p>Unable to select component(s).</p>'));
+                        var dialogContent = $('<p></p>').text('Specified component(s) not found: ' + componentIds.join(', ') + '.').append('<br/><br/>').append($('<p>不能选择组件.</p>'));
 
                         nfDialog.showOkDialog({
-                            headerText: 'Error',
+                            headerText: '错误',
                             dialogContent: dialogContent
                         });
                     }
@@ -1943,8 +1943,8 @@
             // if the group id is null, we're already in the top most group
             if (groupId === null) {
                 nfDialog.showOkDialog({
-                    headerText: 'Process Group',
-                    dialogContent: 'Components are already in the topmost group.'
+                    headerText: '处理组',
+                    dialogContent: '组件已经在顶级组中.'
                 });
             } else {
                 moveComponents(components, groupId);

@@ -183,7 +183,7 @@
                         dataType: 'json'
                     }).done(function (response) {
                         var aboutDetails = response.about;
-                        var historyTitle = aboutDetails.title + ' History';
+                        var historyTitle = aboutDetails.title + ' 历史';
 
                         // set the document title and the about title
                         document.title = historyTitle;

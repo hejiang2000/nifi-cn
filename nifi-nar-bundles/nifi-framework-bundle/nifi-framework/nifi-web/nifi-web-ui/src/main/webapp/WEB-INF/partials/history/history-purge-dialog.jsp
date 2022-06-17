@@ -20,8 +20,8 @@
         <div class="setting" style="margin-bottom: 0px;">
             <div class="end-date-setting">
                 <div class="setting-name">
-                    End date
-                    <div class="fa fa-question-circle" alt="Info" title="The purge end date in the format 'mm/dd/yyyy'. Must also specify end time."></div>
+                    结束日期
+                    <div class="fa fa-question-circle" alt="Info" title="清理结束日期格式为 'mm/dd/yyyy'. 您必须同时指定结束时间."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" id="history-purge-end-date" class="history-small-input"/>
@@ -29,8 +29,8 @@
             </div>
             <div class="end-time-setting">
                 <div class="setting-name">
-                    End time (<span class="timezone"></span>)
-                    <div class="fa fa-question-circle" id="purge-end-time-info" alt="Info" title="The end time in the format 'hh:mm:ss'. Must also specify end date."></div>
+                    结束时间 (<span class="timezone"></span>)
+                    <div class="fa fa-question-circle" id="purge-end-time-info" alt="Info" title="结束时间格式为 'hh:mm:ss'. 您必须同时指定结束日期."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" id="history-purge-end-time" class="history-small-input"/>

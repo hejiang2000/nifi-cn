@@ -48,15 +48,15 @@
         handleAjaxError: function (xhr, status, error) {
             if (status === 'canceled') {
                 if ($('#splash').is(':visible')) {
-                    $('#message-title').text('Session Expired');
-                    $('#message-content').text('Your session has expired. Please reload to log in again.');
+                    $('#message-title').text('会话已过期');
+                    $('#message-content').text('您的会话已过期. 请重新加载页面进行登录.');
 
                     // show the error pane
                     $('#message-pane').show();
                 } else {
                     nfDialog.showOkDialog({
-                        headerText: 'Session Expired',
-                        dialogContent: 'Your session has expired. Please press Ok to log in again.',
+                        headerText: '会话已过期',
+                        dialogContent: '您的会话已过期. 请点击确定重新登录.',
                         okHandler: function () {
                             window.location = '../nifi/';
                         }
@@ -68,19 +68,19 @@
             // if an error occurs while the splash screen is visible close the canvas show the error message
             if ($('#splash').is(':visible')) {
                 if (xhr.status === 401) {
-                    $('#message-title').text('Unauthorized');
+                    $('#message-title').text('未授权');
                 } else if (xhr.status === 403) {
-                    $('#message-title').text('Insufficient Permissions');
+                    $('#message-title').text('权限不足');
                 } else if (xhr.status === 409) {
-                    $('#message-title').text('Invalid State');
+                    $('#message-title').text('无效状态');
                 } else if (xhr.status === 413) {
-                    $('#message-title').text('Payload Too Large');
+                    $('#message-title').text('负荷太大');
                 } else {
-                    $('#message-title').text('An unexpected error has occurred');
+                    $('#message-title').text('发生未知错误');
                 }
 
                 if ($.trim(xhr.responseText) === '') {
-                    $('#message-content').text('Please check the logs.');
+                    $('#message-content').text('请检查日志.');
                 } else {
                     $('#message-content').text(xhr.responseText);
                 }
@@ -93,52 +93,52 @@
             // status code 400, 404, 409, and 413 are expected response codes for nfCommon errors.
             if (xhr.status === 400 || xhr.status === 404 || xhr.status === 409 || xhr.status == 413 || xhr.status === 503) {
                 nfDialog.showOkDialog({
-                    headerText: 'Error',
+                    headerText: '错误',
                     dialogContent: nfCommon.escapeHtml(xhr.responseText)
                 });
             } else if (xhr.status === 403) {
                 nfDialog.showOkDialog({
-                    headerText: 'Insufficient Permissions',
+                    headerText: '权限不足',
                     dialogContent: nfCommon.escapeHtml(xhr.responseText)
                 });
             } else {
                 if (xhr.status < 99 || xhr.status === 12007 || xhr.status === 12029) {
-                    var content = 'Please ensure the application is running and check the logs for any errors.';
+                    var content = '请确认应用程序运行正常并检查日志中的错误信息.';
                     if (nfCommon.isDefinedAndNotNull(status)) {
                         if (status === 'timeout') {
-                            content = 'Request has timed out. Please ensure the application is running and check the logs for any errors.';
+                            content = '请求超时. 请确认应用程序运行正常并检查日志中的错误信息.';
                         } else if (status === 'abort') {
-                            content = 'Request has been aborted.';
+                            content = '请求已失败.';
                         } else if (status === 'No Transport') {
-                            content = 'Request transport mechanism failed. Please ensure the host where the application is running is accessible.';
+                            content = '请求传输机制失败. 请检查应用程序所在主机通信正常.';
                         }
                     }
-                    $('#message-title').text('Unable to communicate with NiFi');
+                    $('#message-title').text('与 NiFi 通信失败');
                     $('#message-content').text(content);
                 } else if (xhr.status === 401) {
-                    $('#message-title').text('Unauthorized');
+                    $('#message-title').text('未授权');
                     if ($.trim(xhr.responseText) === '') {
-                        $('#message-content').text('Authentication is required to use this NiFi.');
+                        $('#message-content').text('使用该 NiFi 需要登录认证.');
                     } else {
                         $('#message-content').text(xhr.responseText);
                     }
                 } else if (xhr.status === 500) {
-                    $('#message-title').text('An unexpected error has occurred');
+                    $('#message-title').text('发生未知错误');
                     if ($.trim(xhr.responseText) === '') {
-                        $('#message-content').text('An error occurred communicating with the application core. Please check the logs and fix any configuration issues before restarting.');
+                        $('#message-content').text('与应用内核通信时发生错误. 请检查日志, 解决任何配置问题, 然后重新启动.');
                     } else {
                         $('#message-content').text(xhr.responseText);
                     }
                 } else if (xhr.status === 200 || xhr.status === 201) {
-                    $('#message-title').text('Parse Error');
+                    $('#message-title').text('解析错误');
                     if ($.trim(xhr.responseText) === '') {
-                        $('#message-content').text('Unable to interpret response from NiFi.');
+                        $('#message-content').text('解释来自 NiFi 的响应出错.');
                     } else {
                         $('#message-content').text(xhr.responseText);
                     }
                 } else {
                     $('#message-title').text(xhr.status + ': Unexpected Response');
-                    $('#message-content').text('An unexpected error has occurred. Please check the logs.');
+                    $('#message-content').text('发生未知错误. 请检查日志.');
                 }
 
                 // show the error pane
@@ -168,7 +168,7 @@
 
                 nfDialog.showOkDialog({
                     dialogContent: content,
-                    headerText: 'Configuration Error'
+                    headerText: '配置错误'
                 });
             } else {
                 self.handleAjaxError(xhr, status, error);

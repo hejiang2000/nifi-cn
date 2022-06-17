@@ -251,7 +251,7 @@
                             dataType: 'json'
                         }).done(function (response) {
                             var aboutDetails = response.about;
-                            var statusTitle = aboutDetails.title + ' Summary';
+                            var statusTitle = aboutDetails.title + ' 信息汇总';
 
                             // set the document title and the about title
                             document.title = statusTitle;

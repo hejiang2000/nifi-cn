@@ -21,10 +21,10 @@
         <div id="user-links-container">
             <ul class="links">
                 <li id="user-logout-container" style="display: none;">
-                    <span id="user-logout" class="link">log out</span>
+                    <span id="user-logout" class="link">退出</span>
                 </li>
                 <li>
-                    <span id="user-home" class="link">home</span>
+                    <span id="user-home" class="link">首页</span>
                 </li>
             </ul>
         </div>

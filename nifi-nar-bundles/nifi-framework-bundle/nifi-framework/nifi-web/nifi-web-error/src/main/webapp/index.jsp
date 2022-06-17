@@ -25,7 +25,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="shortcut icon" href="<%= contextPath %>/nifi/images/nifi16.ico"/>
-    <title>NiFi</title>
+    <title>NiFi 中文版</title>
     <link rel="stylesheet" href="<%= contextPath %>/nifi/assets/reset.css/reset.css" type="text/css"/>
     <link rel="stylesheet" href="<%= contextPath %>/nifi/css/common-ui.css" type="text/css"/>
     <link rel="stylesheet" href="<%= contextPath %>/nifi/fonts/flowfont/flowfont.css" type="text/css"/>
@@ -38,9 +38,9 @@
 <body class="message-pane">
 <div class="message-pane-message-box">
     <p class="message-pane-title">
-        Did you mean: <a href="<%= contextPath %>/nifi/">/nifi</a>
+        你的意思是: <a href="<%= contextPath %>/nifi/">/nifi</a>
     </p>
-    <p class="message-pane-content">You may have mistyped... but we'll try to redirect you in 5 seconds.</p>
+    <p class="message-pane-content">也许你输入有误... 5 秒后将会自动重定向.</p>
 </div>
 </body>
 </html>

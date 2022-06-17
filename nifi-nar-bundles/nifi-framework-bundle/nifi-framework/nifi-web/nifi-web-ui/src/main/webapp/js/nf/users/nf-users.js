@@ -219,7 +219,7 @@
                             dataType: 'json'
                         }).done(function (response) {
                             var aboutDetails = response.about;
-                            var countersTitle = aboutDetails.title + ' Users';
+                            var countersTitle = aboutDetails.title + ' 用户';
 
                             // set the document title and the about title
                             document.title = countersTitle;

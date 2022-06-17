@@ -59,7 +59,7 @@
             {
                 id: 'key',
                 field: 'key',
-                name: 'Key',
+                name: '键',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -67,7 +67,7 @@
             {
                 id: 'value',
                 field: 'value',
-                name: 'Value',
+                name: '值',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -79,7 +79,7 @@
             componentStateColumns.push({
                 id: 'scope',
                 field: 'scope',
-                name: 'Scope',
+                name: '范围',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -273,9 +273,9 @@
             // initialize the component state dialog
             $('#component-state-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Component State',
+                headerText: '组件状态',
                 buttons: [{
-                    buttonText: 'Close',
+                    buttonText: '关闭',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -324,8 +324,8 @@
                         }).fail(nfErrorHandler.handleAjaxError);
                     } else {
                         nfDialog.showOkDialog({
-                            headerText: 'Component State',
-                            dialogContent: 'This component has no state to clear.'
+                            headerText: '组件状态',
+                            dialogContent: '该组件没有状态需要清理.'
                         });
                     }
                 }

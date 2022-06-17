@@ -131,7 +131,7 @@
     var backpressurePredictionColumn = {
         id: 'backpressurePrediction',
         field: 'backpressurePrediction',
-        name: 'Estimated Time to Back Pressure',
+        name: '预计背压时间',
         sortable: true,
         defaultSortAsc: false,
         formatter: backpressurePredictionFormatter,
@@ -156,27 +156,27 @@
             selectedTabStyle: 'selected-tab',
             scrollableTabContentStyle: 'scrollable',
             tabs: [{
-                name: 'Processors',
+                name: '处理器',
                 tabContentId: 'processor-summary-tab-content'
             }, {
-                name: 'Input Ports',
+                name: '输入端口',
                 tabContentId: 'input-port-summary-tab-content'
             }, {
-                name: 'Output Ports',
+                name: '输出端口',
                 tabContentId: 'output-port-summary-tab-content'
             }, {
-                name: 'Remote Process Groups',
+                name: '远程处理组',
                 tabContentId: 'remote-process-group-summary-tab-content'
             }, {
-                name: 'Connections',
+                name: '连接',
                 tabContentId: 'connection-summary-tab-content'
             }, {
-                name: 'Process Groups',
+                name: '处理组',
                 tabContentId: 'process-group-summary-tab-content'
             }],
             select: function () {
                 var tab = $(this).text();
-                if (tab === 'Processors') {
+                if (tab === '处理器') {
                     // ensure the processor table is sized properly
                     var processorsGrid = $('#processor-summary-table').data('gridInstance');
                     if (nfCommon.isDefinedAndNotNull(processorsGrid)) {
@@ -190,17 +190,17 @@
                     // update the combo for processors
                     $('#summary-filter-type').combo({
                         options: [{
-                            text: 'by name',
+                            text: '按名称',
                             value: 'name'
                         }, {
-                            text: 'by type',
+                            text: '按类型',
                             value: 'type'
                         }],
                         select: function (option) {
                             applyFilter();
                         }
                     });
-                } else if (tab === 'Connections') {
+                } else if (tab === '连接') {
                     // ensure the connection table is size properly
                     var connectionsGrid = $('#connection-summary-table').data('gridInstance');
                     if (nfCommon.isDefinedAndNotNull(connectionsGrid)) {
@@ -214,20 +214,20 @@
                     // update the combo for connections
                     $('#summary-filter-type').combo({
                         options: [{
-                            text: 'by source',
+                            text: '按来源',
                             value: 'sourceName'
                         }, {
-                            text: 'by name',
+                            text: '按名称',
                             value: 'name'
                         }, {
-                            text: 'by destination',
+                            text: '按目标',
                             value: 'destinationName'
                         }],
                         select: function (option) {
                             applyFilter();
                         }
                     });
-                } else if (tab === 'Input Ports') {
+                } else if (tab === '输入端口') {
                     // ensure the connection table is size properly
                     var inputPortsGrid = $('#input-port-summary-table').data('gridInstance');
                     if (nfCommon.isDefinedAndNotNull(inputPortsGrid)) {
@@ -241,14 +241,14 @@
                     // update the combo for input ports
                     $('#summary-filter-type').combo({
                         options: [{
-                            text: 'by name',
+                            text: '按名称',
                             value: 'name'
                         }],
                         select: function (option) {
                             applyFilter();
                         }
                     });
-                } else if (tab === 'Output Ports') {
+                } else if (tab === '输出端口') {
                     // ensure the connection table is size properly
                     var outputPortsGrid = $('#output-port-summary-table').data('gridInstance');
                     if (nfCommon.isDefinedAndNotNull(outputPortsGrid)) {
@@ -262,14 +262,14 @@
                     // update the combo for output ports
                     $('#summary-filter-type').combo({
                         options: [{
-                            text: 'by name',
+                            text: '按名称',
                             value: 'name'
                         }],
                         select: function (option) {
                             applyFilter();
                         }
                     });
-                } else if (tab === 'Remote Process Groups') {
+                } else if (tab === '远程处理组') {
                     // ensure the connection table is size properly
                     var remoteProcessGroupsGrid = $('#remote-process-group-summary-table').data('gridInstance');
                     if (nfCommon.isDefinedAndNotNull(remoteProcessGroupsGrid)) {
@@ -283,10 +283,10 @@
                     // update the combo for remote process groups
                     $('#summary-filter-type').combo({
                         options: [{
-                            text: 'by name',
+                            text: '按名称',
                             value: 'name'
                         }, {
-                            text: 'by uri',
+                            text: '按 uri',
                             value: 'targetUri'
                         }],
                         select: function (option) {
@@ -307,7 +307,7 @@
                     // update the combo for process groups
                     $('#summary-filter-type').combo({
                         options: [{
-                            text: 'by name',
+                            text: '按名称',
                             value: 'name'
                         }],
                         select: function (option) {
@@ -324,7 +324,7 @@
 
         // define a custom formatter for showing more processor details
         var moreProcessorDetails = function (row, cell, value, columnDef, dataContext) {
-            var markup = '<div title="View Processor Details" class="pointer show-processor-details fa fa-info-circle"></div>';
+            var markup = '<div title="查看处理器详细信息" class="pointer show-processor-details fa fa-info-circle"></div>';
 
             // if there are bulletins, render them on the graph
             if (!nfCommon.isEmpty(dataContext.bulletins)) {
@@ -339,7 +339,7 @@
             var markup = '';
 
             if (isClustered && dataContext.executionNode === 'PRIMARY') {
-                markup += '<div class="is-primary-icon" title="This component is only scheduled to execute on the Primary Node">P</div>';
+                markup += '<div class="is-primary-icon" title="该组件仅在主节点上调度执行">主</div>';
             }
 
             markup += nfCommon.escapeHtml(value);
@@ -415,7 +415,7 @@
         var nameColumn = {
             id: 'name',
             field: 'name',
-            name: 'Name',
+            name: '名称',
             formatter: nameFormatter,
             sortable: true,
             resizable: true
@@ -423,14 +423,14 @@
         var runStatusColumn = {
             id: 'runStatus',
             field: 'runStatus',
-            name: 'Run Status',
+            name: '运行状态',
             formatter: runStatusFormatter,
             sortable: true
         };
         var inputColumn = {
             id: 'input',
             field: 'input',
-            name: '<span class="input-title">In</span>&nbsp;(<span class="input-size-title">Size</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 min</span>',
+            name: '<span class="input-title">输入</span>&nbsp;(<span class="input-size-title">大小</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 分钟</span>',
             toolTip: 'Count / data size in the last 5 min',
             sortable: true,
             defaultSortAsc: false,
@@ -440,7 +440,7 @@
         var ioColumn = {
             id: 'io',
             field: 'io',
-            name: '<span class="read-title">Read</span>' + DATA_SEPARATOR + '<span class="written-title">Write</span>&nbsp;<span style="font-weight: normal; overflow: hidden;">5 min</span>',
+            name: '<span class="read-title">读取</span>' + DATA_SEPARATOR + '<span class="written-title">写入</span>&nbsp;<span style="font-weight: normal; overflow: hidden;">5 分钟</span>',
             toolTip: 'Data size in the last 5 min',
             formatter: ioFormatter,
             sortable: true,
@@ -450,7 +450,7 @@
         var outputColumn = {
             id: 'output',
             field: 'output',
-            name: '<span class="output-title">Out</span>&nbsp;(<span class="output-size-title">Size</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 min</span>',
+            name: '<span class="output-title">输出</span>&nbsp;(<span class="output-size-title">大小</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 分钟</span>',
             toolTip: 'Count / data size in the last 5 min',
             sortable: true,
             defaultSortAsc: false,
@@ -460,7 +460,7 @@
         var tasksTimeColumn = {
             id: 'tasks',
             field: 'tasks',
-            name: '<span class="tasks-title">Tasks</span>' + DATA_SEPARATOR + '<span class="time-title">Time</span>&nbsp;<span style="font-weight: normal; overflow: hidden;">5 min</span>',
+            name: '<span class="tasks-title">任务</span>' + DATA_SEPARATOR + '<span class="time-title">时间</span>&nbsp;<span style="font-weight: normal; overflow: hidden;">5 分钟</span>',
             toolTip: 'Count / duration in the last 5 min',
             formatter: taskTimeFormatter,
             sortable: true,
@@ -485,7 +485,7 @@
             {
                 id: 'type',
                 field: 'type',
-                name: 'Type',
+                name: '类型',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -493,7 +493,7 @@
             {
                 id: 'parentGroup',
                 field: 'parentProcessGroupName',
-                name: 'Process Group',
+                name: '处理组',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter,
@@ -516,15 +516,15 @@
                 var markup = '';
 
                 if (isInShell) {
-                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="Go To Processor in ' + nfCommon.escapeHtml(dataContext.processGroupNamePath) + '"></div>';
+                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="到处理器, 位于处理组 ' + nfCommon.escapeHtml(dataContext.processGroupNamePath) + '"></div>';
                 }
 
                 if (nfCommon.SUPPORTS_SVG) {
-                    markup += '<div class="pointer show-processor-status-history fa fa-area-chart" title="View Status History"></div>';
+                    markup += '<div class="pointer show-processor-status-history fa fa-area-chart" title="查看状态历史"></div>';
                 }
 
                 if (isClustered) {
-                    markup += '<div class="pointer show-cluster-processor-summary fa fa-cubes" title="View Processor Details"></div>';
+                    markup += '<div class="pointer show-cluster-processor-summary fa fa-cubes" title="查看处理器详细信息"></div>';
                 }
 
                 return markup;
@@ -664,9 +664,9 @@
         // initialize the cluster processor summary dialog
         $('#cluster-processor-summary-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Cluster Processor Summary',
+            headerText: '集群处理器信息汇总',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -701,7 +701,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node',
+                name: '节点',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -763,7 +763,7 @@
 
         // define a custom formatter for showing more processor details
         var moreConnectionDetails = function (row, cell, value, columnDef, dataContext) {
-            return '<div class="pointer show-connection-details fa fa-info-circle" title="View Connection Details"></div>';
+            return '<div class="pointer show-connection-details fa fa-info-circle" title="查看连接详细信息"></div>';
         };
 
         var formatPercent = function (value) {
@@ -786,7 +786,7 @@
         var queueColumn = {
             id: 'queued',
             field: 'queued',
-            name: '<span class="queued-title">Queue</span>&nbsp;(<span class="queued-size-title">Size</span>)',
+            name: '<span class="queued-title">排队</span>&nbsp;(<span class="queued-size-title">大小</span>)',
             sortable: true,
             defaultSortAsc: false,
             resize: true,
@@ -797,7 +797,7 @@
         var backpressureColumn = {
             id: 'backpressure',
             field: 'backpressure',
-            name: 'Threshold %: <span class="backpressure-object-title">Queue</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="backpressure-data-size-title">Size</span>',
+            name: '阈值 %: <span class="backpressure-object-title">队列</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="backpressure-data-size-title">大小</span>',
             sortable: true,
             defaultSortAsc: false,
             formatter: backpressureFormatter,
@@ -818,7 +818,7 @@
             {
                 id: 'name',
                 field: 'name',
-                name: 'Name',
+                name: '名称',
                 sortable: true,
                 resizable: true,
                 formatter: valueFormatter
@@ -830,7 +830,7 @@
             {
                 id: 'sourceName',
                 field: 'sourceName',
-                name: 'From Source',
+                name: '从源组件',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -839,7 +839,7 @@
             {
                 id: 'destinationName',
                 field: 'destinationName',
-                name: 'To Destination',
+                name: '到目标组件',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -853,15 +853,15 @@
                 var markup = '';
 
                 if (isInShell) {
-                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="Go To Connection"></div>';
+                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="到连接"></div>';
                 }
 
                 if (nfCommon.SUPPORTS_SVG) {
-                    markup += '<div class="pointer show-connection-status-history fa fa-area-chart" title="View Status History"></div>';
+                    markup += '<div class="pointer show-connection-status-history fa fa-area-chart" title="查看状态历史"></div>';
                 }
 
                 if (isClustered) {
-                    markup += '<div class="pointer show-cluster-connection-summary fa fa-cubes" title="View Connection Details"></div>';
+                    markup += '<div class="pointer show-cluster-connection-summary fa fa-cubes" title="查看连接详细信息"></div>';
                 }
 
                 return markup;
@@ -973,9 +973,9 @@
         // initialize the cluster connection summary dialog
         $('#cluster-connection-summary-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Cluster Connection Summary',
+            headerText: '集群连接信息汇总',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1010,7 +1010,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node',
+                name: '节点',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -1096,7 +1096,7 @@
         var transferredColumn = {
             id: 'transferred',
             field: 'transferred',
-            name: '<span class="transferred-title">Transferred</span>&nbsp;(<span class="transferred-size-title">Size</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 min</span>',
+            name: '<span class="transferred-title">已传输</span>&nbsp;(<span class="transferred-size-title">大小</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 分钟</span>',
             toolTip: 'Count / data size transferred to and from connections in the last 5 min',
             resizable: true,
             defaultSortAsc: false,
@@ -1106,7 +1106,7 @@
         var sentColumn = {
             id: 'sent',
             field: 'sent',
-            name: '<span class="sent-title">Sent</span>&nbsp;(<span class="sent-size-title">Size</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 min</span>',
+            name: '<span class="sent-title">已发送</span>&nbsp;(<span class="sent-size-title">大小</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 分钟</span>',
             toolTip: 'Count / data size in the last 5 min',
             sortable: true,
             defaultSortAsc: false,
@@ -1116,7 +1116,7 @@
         var receivedColumn = {
             id: 'received',
             field: 'received',
-            name: '<span class="received-title">Received</span>&nbsp;(<span class="received-size-title">Size</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 min</span>',
+            name: '<span class="received-title">已接收</span>&nbsp;(<span class="received-size-title">大小</span>)&nbsp;<span style="font-weight: normal; overflow: hidden;">5 分钟</span>',
             toolTip: 'Count / data size in the last 5 min',
             sortable: true,
             defaultSortAsc: false,
@@ -1161,7 +1161,7 @@
             {
                 id: 'name',
                 field: 'name',
-                name: 'Name',
+                name: '名称',
                 sortable: true,
                 resizable: true,
                 formatter: valueFormatter
@@ -1169,7 +1169,7 @@
             {
                 id: 'versionedFlowState',
                 field: 'versionedFlowState',
-                name: 'Version State',
+                name: '版本状态',
                 sortable: true,
                 resizable: true,
                 formatter: versionStateFormatter
@@ -1189,15 +1189,15 @@
                 var markup = '';
 
                 if (isInShell && dataContext.groupId !== null) {
-                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="Go To Process Group"></div>';
+                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="到处理组"></div>';
                 }
 
                 if (nfCommon.SUPPORTS_SVG) {
-                    markup += '<div class="pointer show-process-group-status-history fa fa-area-chart" title="View Status History"></div>';
+                    markup += '<div class="pointer show-process-group-status-history fa fa-area-chart" title="查看状态历史"></div>';
                 }
 
                 if (isClustered) {
-                    markup += '<div class="pointer show-cluster-process-group-summary fa fa-cubes" title="View Process Group Details"></div>';
+                    markup += '<div class="pointer show-cluster-process-group-summary fa fa-cubes" title="查看处理组详细信息"></div>';
                 }
 
                 return markup;
@@ -1336,9 +1336,9 @@
         // initialize the cluster process group summary dialog
         $('#cluster-process-group-summary-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Cluster Process Group Summary',
+            headerText: '集群处理组信息汇总',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1373,7 +1373,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node',
+                name: '节点',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -1449,11 +1449,11 @@
                 var markup = '';
 
                 if (isInShell) {
-                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="Go To Input Port"></div>';
+                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="到输入端口"></div>';
                 }
 
                 if (isClustered) {
-                    markup += '<div class="pointer show-cluster-input-port-summary fa fa-cubes" title="View Input Port Details"></div>';
+                    markup += '<div class="pointer show-cluster-input-port-summary fa fa-cubes" title="查看输入端口详细信息"></div>';
                 }
 
                 return markup;
@@ -1587,9 +1587,9 @@
         // initialize the cluster input port summary dialog
         $('#cluster-input-port-summary-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Cluster Input Port Summary',
+            headerText: '集群输入端口信息汇总',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1624,7 +1624,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node',
+                name: '节点',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -1696,11 +1696,11 @@
                 var markup = '';
 
                 if (isInShell) {
-                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="Go To Output Port"></div>';
+                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="到输出端口"></div>';
                 }
 
                 if (isClustered) {
-                    markup += '<div class="pointer show-cluster-output-port-summary fa fa-cubes" title="View Output Port Details"></div>';
+                    markup += '<div class="pointer show-cluster-output-port-summary fa fa-cubes" title="查看输出端口详细信息"></div>';
                 }
 
                 return markup;
@@ -1834,9 +1834,9 @@
         // initialize the cluster output port summary dialog
         $('#cluster-output-port-summary-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Cluster Output Port Summary',
+            headerText: '集群输出端口信息汇总',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1871,7 +1871,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node',
+                name: '节点',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -1954,7 +1954,7 @@
         var transmissionStatusColumn = {
             id: 'transmissionStatus',
             field: 'transmissionStatus',
-            name: 'Transmitting',
+            name: '正在传输',
             formatter: transmissionStatusFormatter,
             sortable: true,
             resizable: true
@@ -1962,7 +1962,7 @@
         var targetUriColumn = {
             id: 'targetUri',
             field: 'targetUri',
-            name: 'Target URI',
+            name: '目标 URI',
             sortable: true,
             resizable: true,
             formatter: nfCommon.genericValueFormatter
@@ -1995,15 +1995,15 @@
                 var markup = '';
 
                 if (isInShell) {
-                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="Go To Process Group"></div>';
+                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="到处理组"></div>';
                 }
 
                 if (nfCommon.SUPPORTS_SVG) {
-                    markup += '<div class="pointer show-remote-process-group-status-history fa fa-area-chart" title="View Status History"></div>';
+                    markup += '<div class="pointer show-remote-process-group-status-history fa fa-area-chart" title="查看状态历史"></div>';
                 }
 
                 if (isClustered) {
-                    markup += '<div class="pointer show-cluster-remote-process-group-summary fa fa-cubes" title="View Remote Process Group Details"></div>';
+                    markup += '<div class="pointer show-cluster-remote-process-group-summary fa fa-cubes" title="查看远程处理组详细信息"></div>';
                 }
 
                 return markup;
@@ -2139,9 +2139,9 @@
         // initialize the cluster remote process group summary dialog
         $('#cluster-remote-process-group-summary-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Cluster Remote Process Group Summary',
+            headerText: '集群远程处理组信息汇总',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -2176,7 +2176,7 @@
             {
                 id: 'node',
                 field: 'node',
-                name: 'Node',
+                name: '节点',
                 sortable: true,
                 resizable: true,
                 formatter: nfCommon.genericValueFormatter
@@ -2251,13 +2251,13 @@
             selectedTabStyle: 'selected-tab',
             scrollableTabContentStyle: 'scrollable',
             tabs: [{
-                name: 'JVM',
+                name: 'Java 虚拟机',
                 tabContentId: 'jvm-tab-content'
             }, {
-                name: 'System',
+                name: '系统',
                 tabContentId: 'system-tab-content'
             }, {
-                name: 'Version',
+                name: '版本',
                 tabContentId: 'version-tab-content'
             }]
         });
@@ -2265,9 +2265,9 @@
         // initialize the system diagnostics dialog
         $('#system-diagnostics-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'System Diagnostics',
+            headerText: '系统诊断',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -2621,7 +2621,7 @@
                 if (dataField) {
                     $(versionSpanSelector).text(dataField);
                 } else {
-                    $(versionSpanSelector).text('(not available)').addClass('unset');
+                    $(versionSpanSelector).text('(不可用)').addClass('unset');
                 }
             }
 
@@ -2655,7 +2655,7 @@
         var storageUsageContainer = $('<div class="storage-usage"></div>').appendTo(container);
 
         var storage = $('<div class="storage-identifier setting-name"></div>');
-        storage.text('Usage:');
+        storage.text('用法:');
         if (nfCommon.isDefinedAndNotNull(storageUsage.identifier)) {
             storage.text('Usage for ' + storageUsage.identifier + ':');
         }
@@ -2912,7 +2912,7 @@
 
                 // populate the processor details
                 $('#cluster-connection-name').text(connectionStatus.name).ellipsis();
-                $('#cluster-connection-type').text('Connection').ellipsis();
+                $('#cluster-connection-type').text('连接').ellipsis();
                 $('#cluster-connection-id').text(connectionStatus.id);
                 $('#cluster-connection-group-id').text(connectionStatus.groupId);
 
@@ -2973,7 +2973,7 @@
 
                 // populate the input port details
                 $('#cluster-process-group-name').text(processGroupStatus.name).ellipsis();
-                $('#cluster-process-group-type').text('Process Group').ellipsis();
+                $('#cluster-process-group-type').text('处理组').ellipsis();
                 $('#cluster-process-group-id').text(processGroupStatus.id);
 
                 // update the stats last refreshed timestamp
@@ -3025,7 +3025,7 @@
 
                 // populate the input port details
                 $('#cluster-input-port-name').text(inputPortStatus.name).ellipsis();
-                $('#cluster-input-port-type').text('Input Port').ellipsis();
+                $('#cluster-input-port-type').text('输入端口').ellipsis();
                 $('#cluster-input-port-id').text(inputPortStatus.id);
                 $('#cluster-input-port-group-id').text(inputPortStatus.groupId);
 
@@ -3078,7 +3078,7 @@
 
                 // populate the output port details
                 $('#cluster-output-port-name').text(outputPortStatus.name).ellipsis();
-                $('#cluster-output-port-type').text('Output Port').ellipsis();
+                $('#cluster-output-port-type').text('输出端口').ellipsis();
                 $('#cluster-output-port-id').text(outputPortStatus.id);
                 $('#cluster-output-port-group-id').text(outputPortStatus.groupId);
 
@@ -3133,7 +3133,7 @@
 
                 // populate the remote process group details
                 $('#cluster-remote-process-group-name').text(remoteProcessGroupStatus.name).ellipsis();
-                $('#cluster-remote-process-group-type').text('Remote Process Group').ellipsis();
+                $('#cluster-remote-process-group-type').text('远程处理组').ellipsis();
                 $('#cluster-remote-process-group-id').text(remoteProcessGroupStatus.id);
                 $('#cluster-remote-process-group-group-id').text(remoteProcessGroupStatus.groupId);
 

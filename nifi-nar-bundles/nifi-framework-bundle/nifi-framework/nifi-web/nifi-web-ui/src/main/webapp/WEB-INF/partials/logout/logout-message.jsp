@@ -16,6 +16,6 @@
 --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="logout-message-container">
-    <div id="logout-message-title"><p>Logout successful</p></div>
-    <div id="logout-message"><p>You have have successfully logged out. You may now close the window.</p></div>
+    <div id="logout-message-title"><p>退出成功</p></div>
+    <div id="logout-message"><p>您已成功退出登录. 您现在可以安全地关闭浏览器窗口.</p></div>
 </div>

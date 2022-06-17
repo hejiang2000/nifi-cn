@@ -138,8 +138,8 @@
     var resetCounter = function (item) {
         // prompt reset confirmation
         nfDialog.showYesNoDialog({
-            headerText: 'Reset Counter',
-            dialogContent: 'Reset counter \'' + nfCommon.escapeHtml(item.name) + '\' to default value?',
+            headerText: '重置计数器',
+            dialogContent: '重置计数器 \'' + nfCommon.escapeHtml(item.name) + '\' 为默认值?',
             yesHandler: function () {
                 $.ajax({
                     type: 'PUT',
@@ -170,10 +170,10 @@
             // filter type
             $('#counters-filter-type').combo({
                 options: [{
-                    text: 'by name',
+                    text: '按名称',
                     value: 'name'
                 }, {
-                    text: 'by context',
+                    text: '按上下文',
                     value: 'context'
                 }],
                 select: function (option) {
@@ -185,7 +185,7 @@
             var countersColumns = [
                 {
                     id: 'context',
-                    name: 'Context',
+                    name: '上下文',
                     field: 'context',
                     sortable: true,
                     resizable: true,
@@ -193,7 +193,7 @@
                 },
                 {
                     id: 'name',
-                    name: 'Name',
+                    name: '名称',
                     field: 'name',
                     sortable: true,
                     resizable: true,
@@ -201,7 +201,7 @@
                 },
                 {
                     id: 'value',
-                    name: 'Value',
+                    name: '值',
                     field: 'value',
                     sortable: true,
                     resizable: true,
@@ -214,7 +214,7 @@
             if (nfCommon.canModifyCounters()) {
                 // function for formatting the actions column
                 var actionFormatter = function (row, cell, value, columnDef, dataContext) {
-                    return '<div title="Reset Counter" class="pointer reset-counter fa fa-undo"></div>';
+                    return '<div title="重置计数器" class="pointer reset-counter fa fa-undo"></div>';
                 };
 
                 // add the action column

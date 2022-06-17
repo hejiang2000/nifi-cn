@@ -17,10 +17,10 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="override-policy-dialog" class="hidden small-dialog">
     <div class="dialog-content">
-        <div>Do you want to override with a copy of the inherited policy or an empty policy?</div>
+        <div>您想用继承策略或空策略覆盖吗?</div>
         <div style="margin-top: 10px;">
-            <label for="copy-policy-radio-button"><input id="copy-policy-radio-button" type="radio" name="emptyOrCopy" value="copy" checked="checked"/> Copy</label>
-            <label for="empty-policy-radio-button"><input id="empty-policy-radio-button" type="radio" name="emptyOrCopy" value="policy"/> Empty</label>
+            <label for="copy-policy-radio-button"><input id="copy-policy-radio-button" type="radio" name="emptyOrCopy" value="copy" checked="checked"/> 拷贝</label>
+            <label for="empty-policy-radio-button"><input id="empty-policy-radio-button" type="radio" name="emptyOrCopy" value="policy"/> 空</label>
         </div>
     </div>
 </div>

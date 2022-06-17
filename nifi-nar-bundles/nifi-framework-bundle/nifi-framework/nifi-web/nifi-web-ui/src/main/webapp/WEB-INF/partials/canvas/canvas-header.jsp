@@ -85,11 +85,11 @@
                 </div>
                 <div id="login-link-container">
                     <span id="login-link" class="link"
-                          ng-click="appCtrl.serviceProvider.headerCtrl.loginCtrl.shell.launch();">log in</span>
+                          ng-click="appCtrl.serviceProvider.headerCtrl.loginCtrl.shell.launch();">登录</span>
                 </div>
                 <div id="logout-link-container" style="display: none;">
                     <span id="logout-link" class="link"
-                          ng-click="appCtrl.serviceProvider.headerCtrl.logoutCtrl.logout();">log out</span>
+                          ng-click="appCtrl.serviceProvider.headerCtrl.logoutCtrl.logout();">退出</span>
                 </div>
             </div>
             <md-menu md-position-mode="target-right target" md-offset="-1 44">
@@ -100,20 +100,20 @@
                     <md-menu-item layout-align="space-around center">
                         <a id="reporting-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.summary.shell.launch();">
-                            <i class="fa fa-table"></i>Summary
+                            <i class="fa fa-table"></i>系统信息
                         </a>
                     </md-menu-item>
                     <md-menu-item layout-align="space-around center">
                         <a id="counters-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.counters.shell.launch();"
                            ng-class="{disabled: !appCtrl.nf.Common.canAccessCounters()}">
-                            <i class="icon icon-counter"></i>Counters
+                            <i class="icon icon-counter"></i>计数器
                         </a>
                     </md-menu-item>
                     <md-menu-item layout-align="space-around center">
                         <a id="bulletin-board-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.bulletinBoard.shell.launch();">
-                            <i class="fa fa-sticky-note-o"></i>Bulletin Board
+                            <i class="fa fa-sticky-note-o"></i>公告栏
                         </a>
                     </md-menu-item>
                     <md-menu-divider></md-menu-divider>
@@ -122,20 +122,20 @@
                         <a id="provenance-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.dataProvenance.shell.launch();"
                            ng-class="{disabled: !appCtrl.nf.Common.canAccessProvenance()}">
-                            <i class="icon icon-provenance"></i>Data Provenance
+                            <i class="icon icon-provenance"></i>数据朔源
                         </a>
                     </md-menu-item>
                     <md-menu-divider></md-menu-divider>
                     <md-menu-item layout-align="space-around center">
                         <a id="flow-settings-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.controllerSettings.shell.launch();">
-                            <i class="fa fa-wrench"></i>Controller Settings
+                            <i class="fa fa-wrench"></i>系统设置
                         </a>
                     </md-menu-item>
                     <md-menu-item layout-align="space-around center">
                         <a id="parameter-contexts-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.parameterContexts.shell.launch();">
-                            <i class="fa"></i>Parameter Contexts
+                            <i class="fa"></i>参数上下文
                         </a>
                     </md-menu-item>
                     <md-menu-item ng-if="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.cluster.visible();"
@@ -143,19 +143,19 @@
                         <a id="cluster-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.cluster.shell.launch();"
                            ng-class="{disabled: !appCtrl.nf.Common.canAccessController()}">
-                            <i class="fa fa-cubes"></i>Cluster
+                            <i class="fa fa-cubes"></i>集群信息
                         </a>
                     </md-menu-item>
                     <md-menu-item layout-align="space-around center">
                         <a id="history-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.flowConfigHistory.shell.launch();">
-                            <i class="fa fa-history"></i>Flow Configuration History
+                            <i class="fa fa-history"></i>流程配置历史
                         </a>
                     </md-menu-item>
                     <md-menu-item layout-align="space-around center">
                         <a id="status-history-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.nodeStatusHistory.shell.launch();">
-                            <i class="fa fa-area-chart"></i>Node Status History
+                            <i class="fa fa-area-chart"></i>节点状态历史
                         </a>
                     </md-menu-item>
                     <md-menu-divider ng-if="appCtrl.nf.CanvasUtils.isManagedAuthorizer()"></md-menu-divider>
@@ -163,34 +163,34 @@
                         <a id="users-link" layout="row"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.users.shell.launch();"
                            ng-class="{disabled: !(appCtrl.nf.Common.canAccessTenants())}">
-                            <i class="fa fa-users"></i>Users
+                            <i class="fa fa-users"></i>管理用户
                         </a>
                     </md-menu-item>
                     <md-menu-item layout-align="space-around center" ng-if="appCtrl.nf.CanvasUtils.isManagedAuthorizer()">
                         <a id="policies-link" layout="row"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.policies.shell.launch();"
                            ng-class="{disabled: !(appCtrl.nf.Common.canAccessTenants() && appCtrl.nf.Common.canModifyPolicies())}">
-                            <i class="fa fa-key"></i>Policies
+                            <i class="fa fa-key"></i>访问策略
                         </a>
                     </md-menu-item>
                     <md-menu-divider></md-menu-divider>
                     <md-menu-item layout-align="space-around center">
                         <a id="templates-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.templates.shell.launch();">
-                            <i class="icon icon-template"></i>Templates
+                            <i class="icon icon-template"></i>模板
                         </a>
                     </md-menu-item>
                     <md-menu-divider></md-menu-divider>
                     <md-menu-item layout-align="space-around center">
                         <a id="help-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.help.shell.launch();">
-                            <i class="fa fa-question-circle"></i>Help
+                            <i class="fa fa-question-circle"></i>帮助
                         </a>
                     </md-menu-item>
                     <md-menu-item layout-align="space-around center">
                         <a id="about-link"
                            ng-click="appCtrl.serviceProvider.headerCtrl.globalMenuCtrl.about.modal.show();">
-                            <i class="fa fa-info-circle"></i>About
+                            <i class="fa fa-info-circle"></i>关于
                         </a>
                     </md-menu-item>
                 </md-menu-content>

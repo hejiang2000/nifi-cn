@@ -18,7 +18,7 @@
 <div id="save-flow-version-dialog" layout="column" class="hidden large-dialog">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Registry</div>
+            <div class="setting-name">数据流版本注册库</div>
             <div class="setting-field">
                 <div id="save-flow-version-registry-combo" class="hidden"></div>
                 <div id="save-flow-version-registry" class="hidden"></div>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Flow Name</div>
+            <div class="setting-name">流程名称</div>
             <div id="save-flow-version-registry-container" class="setting-field">
                 <span id="save-flow-version-process-group-id" class="hidden"></span>
                 <span id="save-flow-version-action" class="hidden"></span>
@@ -42,14 +42,14 @@
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Flow Description</div>
+            <div class="setting-name">流程描述</div>
             <div class="setting-field">
                 <textarea id="save-flow-version-description-field" class="setting-input hidden"></textarea>
                 <div id="save-flow-version-description" class="hidden"></div>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Version Comments</div>
+            <div class="setting-name">版本说明</div>
             <div class="setting-field">
                 <textarea id="save-flow-version-change-comments" class="setting-input"></textarea>
             </div>

@@ -20,7 +20,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="../nifi/images/nifi16.ico"/>
-        <title>NiFi</title>
+        <title>NiFi 中文版</title>
         <link rel="stylesheet" href="../nifi/assets/reset.css/reset.css" type="text/css" />
         <link rel="stylesheet" href="css/main.css" type="text/css" />
         <link rel="stylesheet" href="../nifi/css/common-ui.css" type="text/css" />
@@ -129,8 +129,8 @@
                 <div id="content-viewer-message"></div>
             </div>
         </div>
-        <div id="view-as-label">View as:</div>
+        <div id="view-as-label">查看类型:</div>
         <div id="view-as" class="pointer button-normal"></div>
-        <div id="content-filename"><span class="content-label">Filename:</span><%= request.getAttribute("filename") == null ? "" : org.apache.nifi.util.EscapeUtils.escapeHtml(request.getAttribute("filename").toString()) %></div>
-        <div id="content-type"><span class="content-label">Content Type:</span><%= request.getAttribute("contentType") == null ? "" : org.apache.nifi.util.EscapeUtils.escapeHtml(request.getAttribute("contentType").toString()) %></div>
+        <div id="content-filename"><span class="content-label">文件名称:</span><%= request.getAttribute("filename") == null ? "" : org.apache.nifi.util.EscapeUtils.escapeHtml(request.getAttribute("filename").toString()) %></div>
+        <div id="content-type"><span class="content-label">正文类型:</span><%= request.getAttribute("contentType") == null ? "" : org.apache.nifi.util.EscapeUtils.escapeHtml(request.getAttribute("contentType").toString()) %></div>
         <div class="message-pane-message-box">

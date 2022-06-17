@@ -18,22 +18,22 @@
 <div id="component-state-dialog" layout="column" class="hidden large-dialog">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Name</div>
+            <div class="setting-name">名称</div>
             <div class="setting-field">
                 <div id="component-state-name"></div>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Description</div>
+            <div class="setting-name">描述</div>
             <div id="component-state-description" class="ellipsis multiline"></div>
         </div>
         <div>
             <div id="component-state-partial-results-container" class="hidden">
-                Showing partial results
+                显示部分结果
             </div>
             <div id="component-state-filter-controls">
                 <div id="component-state-filter-status" class="filter-status">
-                    Displaying&nbsp;<span id="displayed-component-state-entries"></span>&nbsp;of&nbsp;<span id="total-component-state-entries"></span>
+                    显示&nbsp;<span id="displayed-component-state-entries"></span>,&nbsp;共&nbsp;<span id="total-component-state-entries"></span>
                 </div>
                 <div id="component-state-filter-container">
                     <input type="text" id="component-state-filter" placeholder="Filter"/>
@@ -43,7 +43,7 @@
         </div>
         <div id="component-state-table"></div>
         <div id="clear-link-container">
-            <span id="clear-link" class="link">Clear state</span>
+            <span id="clear-link" class="link">清除状态</span>
         </div>
     </div>
 </div>

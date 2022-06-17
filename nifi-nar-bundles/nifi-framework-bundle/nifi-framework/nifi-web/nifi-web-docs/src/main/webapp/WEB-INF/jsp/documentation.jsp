@@ -22,7 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="../nifi/images/nifi16.ico"/>
-        <title>NiFi Documentation</title>
+        <title>NiFi 文档</title>
         <script type="text/javascript" src="../nifi/assets/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="js/application.js"></script>
         <link href="css/main.css" rel="stylesheet" type="text/css" />
@@ -45,7 +45,7 @@
         <div id="documentation-header" class="documentation-header">
             <div id="component-list-toggle-link">-</div>
             <div id="header-contents">
-                <div id="nf-title">NiFi Documentation</div>
+                <div id="nf-title">NiFi 文档</div>
                 <div id="nf-version" class="version"></div>
                 <div id="selected-component"></div>
             </div>
@@ -54,34 +54,34 @@
             <div id="component-listing-container">
                 <div id="component-listing" class="component-listing">
                     <div class="section">
-                        <div class="header">General</div>
+                        <div class="header">通用</div>
                         <div id="general-links" class="component-links">
                             <ul>
-                                <li class="component-item"><a class="document-link overview" href="html/overview.html" target="component-usage">Overview</a></li>
-                                <li class="component-item"><a class="document-link getting-started" href="html/getting-started.html" target="component-usage">Getting Started</a></li>
-                                <li class="component-item"><a class="document-link user-guide" href="html/user-guide.html" target="component-usage">User Guide</a></li>
-                                <li class="component-item"><a class="document-link expression-language-guide" href="html/expression-language-guide.html" target="component-usage">Expression Language Guide</a></li>
-                                <li class="component-item"><a class="document-link record-path-guide" href="html/record-path-guide.html" target="component-usage">RecordPath Guide</a></li>
-                                <li class="component-item"><a class="document-link admin-guide" href="html/administration-guide.html" target="component-usage">Admin Guide</a></li>
-                                <li class="component-item"><a class="document-link toolkit-guide" href="html/toolkit-guide.html" target="component-usage">Toolkit Guide</a></li>
-                                <li class="component-item"><a class="document-link walkthroughs" href="html/walkthroughs.html" target="component-usage">Walkthroughs</a></li>
+                                <li class="component-item"><a class="document-link overview" href="html/overview.html" target="component-usage">总览</a></li>
+                                <li class="component-item"><a class="document-link getting-started" href="html/getting-started.html" target="component-usage">快速入门</a></li>
+                                <li class="component-item"><a class="document-link user-guide" href="html/user-guide.html" target="component-usage">用户指南</a></li>
+                                <li class="component-item"><a class="document-link expression-language-guide" href="html/expression-language-guide.html" target="component-usage">表达式语言指南</a></li>
+                                <li class="component-item"><a class="document-link record-path-guide" href="html/record-path-guide.html" target="component-usage">RecordPath 指南</a></li>
+                                <li class="component-item"><a class="document-link admin-guide" href="html/administration-guide.html" target="component-usage">管理人员指南</a></li>
+                                <li class="component-item"><a class="document-link toolkit-guide" href="html/toolkit-guide.html" target="component-usage">Toolkit 指南</a></li>
+                                <li class="component-item"><a class="document-link walkthroughs" href="html/walkthroughs.html" target="component-usage">引导教程</a></li>
                             </ul>
-                            <span class="no-matching no-components hidden">No matching guides</span>
+                            <span class="no-matching no-components hidden">没有匹配的指南文档</span>
                         </div>
                     </div>
                     <div class="section">
-                        <div class="header">Developer</div>
+                        <div class="header">开发人员</div>
                         <div id="developer-links" class="component-links">
                             <ul>
-                                <li class="component-item"><a class="document-link rest-api" href="rest-api/index.html" target="component-usage">REST API</a></li>
-                                <li class="component-item"><a class="document-link developer-guide" href="html/developer-guide.html" target="component-usage">Developer Guide</a></li>
-                                <li class="component-item"><a class="document-link apache-nifi-in-depth" href="html/nifi-in-depth.html" target="component-usage">Apache NiFi In Depth</a></li>
+                                <li class="component-item"><a class="document-link rest-api" href="rest-api/index.html" target="component-usage">REST API 接口</a></li>
+                                <li class="component-item"><a class="document-link developer-guide" href="html/developer-guide.html" target="component-usage">开发人员指南</a></li>
+                                <li class="component-item"><a class="document-link apache-nifi-in-depth" href="html/nifi-in-depth.html" target="component-usage">Apache NiFi 深度理解</a></li>
                             </ul>
-                            <span class="no-matching no-components hidden">No matching developer guides</span>
+                            <span class="no-matching no-components hidden">没有匹配的开发指南</span>
                         </div>
                     </div>
                     <div class="section">
-                        <div class="header">Processors</div>
+                        <div class="header">处理器</div>
                         <div id="processor-links" class="component-links">
                             <c:choose>
                                 <c:when test="${not empty processors}">
@@ -107,16 +107,16 @@
                                         </c:forEach>
                                     </c:forEach>
                                     </ul>
-                                    <span class="no-matching no-components hidden">No matching processors</span>
+                                    <span class="no-matching no-components hidden">没有匹配的处理器</span>
                                 </c:when>
                                 <c:otherwise>
-                                    <span class="no-components">No processor documentation found</span>
+                                    <span class="no-components">未发现处理器文档</span>
                                 </c:otherwise>
                             </c:choose>
                         </div>
                     </div>
                     <div class="section">
-                        <div class="header">Controller Services</div>
+                        <div class="header">控制器服务</div>
                         <div id="controller-service-links" class="component-links">
                             <c:choose>
                                 <c:when test="${not empty controllerServices}">
@@ -143,16 +143,16 @@
                                         </c:forEach>
                                     </c:forEach>
                                     </ul>
-                                    <span class="no-matching no-components hidden">No matching controller services</span>
+                                    <span class="no-matching no-components hidden">没有匹配的控制器服务</span>
                                 </c:when>
                                 <c:otherwise>
-                                    <span class="no-components">No controller service documentation found</span>
+                                    <span class="no-components">未发现控制器服务文档</span>
                                 </c:otherwise>
                             </c:choose>
                         </div>
                     </div>
                     <div class="section">
-                        <div class="header">Reporting Tasks</div>
+                        <div class="header">报告任务</div>
                         <div id="reporting-task-links" class="component-links">
                             <c:choose>
                                 <c:when test="${not empty reportingTasks}">
@@ -178,10 +178,10 @@
                                         </c:forEach>
                                     </c:forEach>
                                     </ul>
-                                    <span class="no-matching no-components hidden">No matching reporting tasks</span>
+                                    <span class="no-matching no-components hidden">没有匹配的报告任务</span>
                                 </c:when>
                                 <c:otherwise>
-                                    <span class="no-components">No reporting task documentation found</span>
+                                    <span class="no-components">未发现报告任务文档</span>
                                 </c:otherwise>
                             </c:choose>
                         </div>
@@ -192,7 +192,7 @@
                         <input type="text" id="component-filter"/>
                     </div>
                     <div id="component-filter-stats">
-                        Displaying&nbsp;<span id="displayed-components">${totalComponents}</span>&nbsp;of&nbsp;${totalComponents}
+                        显示&nbsp;<span id="displayed-components">${totalComponents}</span>&nbsp;of&nbsp;${totalComponents}
                     </div>
                 </div>
             </div>

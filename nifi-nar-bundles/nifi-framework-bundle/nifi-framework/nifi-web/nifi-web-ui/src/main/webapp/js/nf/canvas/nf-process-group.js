@@ -313,7 +313,7 @@
                         })
                         .text('\uf140')
                         .append("title")
-                        .text("Transmitting Remote Process Groups");
+                        .text("正在传输的远程处理组");
 
 
                     // transmitting count
@@ -332,7 +332,7 @@
                         })
                         .text('\ue80a')
                         .append("title")
-                        .text("Not Transmitting Remote Process Groups");
+                        .text("未在传输的远程处理组");
 
                     // not transmitting count
                     details.append('text')
@@ -350,7 +350,7 @@
                         })
                         .text('\uf04b')
                         .append("title")
-                        .text("Running Components");
+                        .text("正在运行的组件");
 
                     // running count
                     details.append('text')
@@ -368,7 +368,7 @@
                         })
                         .text('\uf04d')
                         .append("title")
-                        .text("Stopped Components");
+                        .text("已停止的组件");
 
                     // stopped count
                     details.append('text')
@@ -386,7 +386,7 @@
                         })
                         .text('\uf071')
                         .append("title")
-                        .text("Invalid Components");
+                        .text("无效组件");
 
                     // invalid count
                     details.append('text')
@@ -404,7 +404,7 @@
                         })
                         .text('\ue802')
                         .append("title")
-                        .text("Disabled Components");
+                        .text("已禁用的组件");
 
                     // disabled count
                     details.append('text')
@@ -425,7 +425,7 @@
                         })
                         .text('\uf00c')
                         .append("title")
-                        .text("Up to date Versioned Process Groups");
+                        .text("已同步的版本化处理组");
 
                     // up to date count
                     details.append('text')
@@ -447,7 +447,7 @@
                         })
                         .text('\uf069')
                         .append("title")
-                        .text("Locally modified Versioned Process Groups");
+                        .text("本地已修改的版本化处理组");
 
                     // locally modified count
                     details.append('text')
@@ -469,7 +469,7 @@
                         })
                         .text('\uf0aa')
                         .append("title")
-                        .text("Stale Versioned Process Groups");
+                        .text("未同步的版本化处理组");
 
                     // stale count
                     details.append('text')
@@ -491,7 +491,7 @@
                         })
                         .text('\uf06a')
                         .append("title")
-                        .text("Locally modified and stale Versioned Process Groups");
+                        .text("本地已修改和未同步的版本化处理组");
 
                     // locally modified and stale count
                     details.append('text')
@@ -513,7 +513,7 @@
                         })
                         .text('\uf128')
                         .append("title")
-                        .text("Sync failure Versioned Process Groups");
+                        .text("同步失败的版本化处理组");
 
                     // sync failure count
                     details.append('text')
@@ -631,7 +631,7 @@
                             'y': 5,
                             'class': 'stats-label'
                         })
-                        .text('Queued');
+                        .text('排队中');
 
                     // in label
                     processGroupStatsLabel.append('text')
@@ -642,7 +642,7 @@
                             'y': 24,
                             'class': 'stats-label'
                         })
-                        .text('In');
+                        .text('输入');
 
                     // read/write label
                     processGroupStatsLabel.append('text')
@@ -653,7 +653,7 @@
                             'y': 42,
                             'class': 'stats-label'
                         })
-                        .text('Read/Write');
+                        .text('读/写');
 
                     // out label
                     processGroupStatsLabel.append('text')
@@ -664,7 +664,7 @@
                             'y': 60,
                             'class': 'stats-label'
                         })
-                        .text('Out');
+                        .text('输出');
 
                     // stats value container
                     var processGroupStatsValue = details.append('g')
@@ -787,7 +787,7 @@
                             'y': 24,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // read/write info
                     processGroupStatsInfo.append('text')
@@ -798,7 +798,7 @@
                             'y': 42,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // out info
                     processGroupStatsInfo.append('text')
@@ -809,7 +809,7 @@
                             'y': 60,
                             'class': 'stats-info'
                         })
-                        .text('5 min');
+                        .text('5 分钟');
 
                     // --------
                     // comments
@@ -885,7 +885,7 @@
                     .text(function (d) {
                         return d.activeRemotePortCount;
                     });
-                transmittingCount.append("title").text("Transmitting Remote Process Groups");
+                transmittingCount.append("title").text("正在传输的远程处理组");
 
                 // update not transmitting
                 var notTransmitting = details.select('text.process-group-not-transmitting')
@@ -907,7 +907,7 @@
                     .text(function (d) {
                         return d.inactiveRemotePortCount;
                     });
-                notTransmittingCount.append("title").text("Not transmitting Remote Process Groups")
+                notTransmittingCount.append("title").text("未在传输的远程处理组")
 
                 // update running
                 var running = details.select('text.process-group-running')
@@ -929,7 +929,7 @@
                     .text(function (d) {
                         return d.runningCount;
                     });
-                runningCount.append("title").text("Running Components");
+                runningCount.append("title").text("正在运行的组件");
 
                 // update stopped
                 var stopped = details.select('text.process-group-stopped')
@@ -951,7 +951,7 @@
                     .text(function (d) {
                         return d.stoppedCount;
                     });
-                stoppedCount.append("title").text("Stopped Components");
+                stoppedCount.append("title").text("已停止的组件");
 
                 // update invalid
                 var invalid = details.select('text.process-group-invalid')
@@ -973,7 +973,7 @@
                     .text(function (d) {
                         return d.invalidCount;
                     });
-                invalidCount.append("title").text("Invalid Components");
+                invalidCount.append("title").text("无效组件");
 
                 // update disabled
                 var disabled = details.select('text.process-group-disabled')
@@ -995,7 +995,7 @@
                     .text(function (d) {
                         return d.disabledCount;
                     });
-                disabledCount.append("title").text("Disabled Components");
+                disabledCount.append("title").text("已禁用的组件");
 
                 // up to date current
                 var upToDate = details.select('text.process-group-up-to-date')
@@ -1013,7 +1013,7 @@
                     .text(function (d) {
                         return d.upToDateCount;
                     });
-                upToDateCount.append("title").text("Up to date Versioned Process Groups");
+                upToDateCount.append("title").text("已同步的版本化处理组");
 
                 // update locally modified
                 var locallyModified = details.select('text.process-group-locally-modified')
@@ -1035,7 +1035,7 @@
                     .text(function (d) {
                         return d.locallyModifiedCount;
                     });
-                locallyModifiedCount.append("title").text("Locally modified Versioned Process Groups");
+                locallyModifiedCount.append("title").text("本地已修改的版本化处理组");
 
                 // update stale
                 var stale = details.select('text.process-group-stale')
@@ -1057,7 +1057,7 @@
                     .text(function (d) {
                         return d.staleCount;
                     });
-                staleCount.append("title").text("Stale Versioned Process Groups");
+                staleCount.append("title").text("未同步的版本化处理组");
 
                 // update locally modified and stale
                 var locallyModifiedAndStale = details.select('text.process-group-locally-modified-and-stale')
@@ -1079,7 +1079,7 @@
                     .text(function (d) {
                         return d.locallyModifiedAndStaleCount;
                     });
-                locallyModifiedAndStaleCount.append("title").text("Locally modified and stale Versioned Process Groups");
+                locallyModifiedAndStaleCount.append("title").text("本地已修改和未同步的版本化处理组");
 
                 // update sync failure
                 var syncFailure = details.select('text.process-group-sync-failure')
@@ -1101,7 +1101,7 @@
                     .text(function (d) {
                         return d.syncFailureCount;
                     });
-                syncFailureCount.append("title").text("Sync failure Versioned Process Groups");
+                syncFailureCount.append("title").text("同步失败的版本化处理组");
 
                 // update version control information
                 var versionControl = processGroup.select('text.version-control')
@@ -1689,8 +1689,8 @@
 
             }).fail(function () {
                 nfDialog.showOkDialog({
-                    headerText: 'Process Group',
-                    dialogContent: 'Unable to enter the selected group.'
+                    headerText: '处理组',
+                    dialogContent: '进入选定处理组失败.'
                 });
             });
         }

@@ -152,7 +152,7 @@
 
                             // show all processors
                             if (!nfCommon.isEmpty(searchResults.processorResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-processor"></div>Processors</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-processor"></div>处理器</li>');
                                 $.each(searchResults.processorResults, function (i, processorMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, processorMatch, { type: 'processor' }));
                                 });
@@ -160,7 +160,7 @@
 
                             // show all process groups
                             if (!nfCommon.isEmpty(searchResults.processGroupResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-group"></div>Process Groups</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-group"></div>处理组</li>');
                                 $.each(searchResults.processGroupResults, function (i, processGroupMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, processGroupMatch, { type: 'process group' }));
                                 });
@@ -168,7 +168,7 @@
 
                             // show all remote process groups
                             if (!nfCommon.isEmpty(searchResults.remoteProcessGroupResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-group-remote"></div>Remote Process Groups</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-group-remote"></div>远程处理组</li>');
                                 $.each(searchResults.remoteProcessGroupResults, function (i, remoteProcessGroupMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, remoteProcessGroupMatch, { type: 'remote process group' }));
                                 });
@@ -176,7 +176,7 @@
 
                             // show all connections
                             if (!nfCommon.isEmpty(searchResults.connectionResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-connect"></div>Connections</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-connect"></div>连接</li>');
                                 $.each(searchResults.connectionResults, function (i, connectionMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, connectionMatch, { type: 'connection' }));
                                 });
@@ -184,7 +184,7 @@
 
                             // show all input ports
                             if (!nfCommon.isEmpty(searchResults.inputPortResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-port-in"></div>Input Ports</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-port-in"></div>输入端口</li>');
                                 $.each(searchResults.inputPortResults, function (i, inputPortMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, inputPortMatch, { type: 'input port' }));
                                 });
@@ -192,7 +192,7 @@
 
                             // show all output ports
                             if (!nfCommon.isEmpty(searchResults.outputPortResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-port-out"></div>Output Ports</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-port-out"></div>输出端口</li>');
                                 $.each(searchResults.outputPortResults, function (i, outputPortMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, outputPortMatch, { type: 'output port' }));
                                 });
@@ -200,7 +200,7 @@
 
                             // show all funnels
                             if (!nfCommon.isEmpty(searchResults.funnelResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-funnel"></div>Funnels</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-funnel"></div>漏斗</li>');
                                 $.each(searchResults.funnelResults, function (i, funnelMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, funnelMatch, { type: 'funnel' }));
                                 });
@@ -208,7 +208,7 @@
 
                             // show all labels
                             if (!nfCommon.isEmpty(searchResults.labelResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-label"></div>Labels</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon icon-label"></div>标签</li>');
                                 $.each(searchResults.labelResults, function (i, labelMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, labelMatch, { type: 'label' }));
                                 });
@@ -216,7 +216,7 @@
 
                             // show all controller services
                             if (!nfCommon.isEmpty(searchResults.controllerServiceNodeResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon"></div>Controller Services</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon"></div>控制器服务</li>');
                                 $.each(searchResults.controllerServiceNodeResults, function (i, controllerServiceMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, controllerServiceMatch, { type: 'controller service' }));
                                 });
@@ -224,7 +224,7 @@
 
                             // show all parameter contexts and parameters
                             if (!nfCommon.isEmpty(searchResults.parameterContextResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon"></div>Parameter Contexts</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon"></div>参数上下文</li>');
                                 $.each(searchResults.parameterContextResults, function (i, parameterContextMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, parameterContextMatch, { type: 'parameter context' }));
                                 });
@@ -232,7 +232,7 @@
 
                             // show all parameters
                             if (!nfCommon.isEmpty(searchResults.parameterResults)) {
-                                ul.append('<li class="search-header"><div class="search-result-icon icon"></div>Parameters</li>');
+                                ul.append('<li class="search-header"><div class="search-result-icon icon"></div>参数</li>');
                                 $.each(searchResults.parameterResults, function (i, parameterMatch) {
                                     nfSearchAutocomplete._renderItem(ul, $.extend({}, parameterMatch, { type: 'parameter' }));
                                 });
@@ -240,7 +240,7 @@
 
                             // ensure there were some results
                             if (ul.children().length === 0) {
-                                ul.append('<li class="unset search-no-matches">No results matched the search terms</li>');
+                                ul.append('<li class="unset search-no-matches">无匹配搜索条件的结果</li>');
                             }
                         },
                         _renderItem: function (ul, match) {

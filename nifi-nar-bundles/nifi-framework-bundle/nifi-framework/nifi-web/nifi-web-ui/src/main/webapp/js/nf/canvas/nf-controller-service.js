@@ -412,13 +412,13 @@
     var createReferencingComponents = function (serviceTable, referenceContainer, controllerServiceEntity) {
 
         if (controllerServiceEntity.permissions.canRead === false) {
-            referenceContainer.append('<div class="unset">Unauthorized</div>');
+            referenceContainer.append('<div class="unset">未授权</div>');
             return;
         }
 
         var referencingComponents = controllerServiceEntity.component.referencingComponents;
         if (nfCommon.isEmpty(referencingComponents)) {
-            referenceContainer.append('<div class="unset">No referencing components.</div>');
+            referenceContainer.append('<div class="unset">无引用组件.</div>');
             return;
         }
 
@@ -497,7 +497,7 @@
                         if (serviceTwist.hasClass('collapsed')) {
                             // create the markup for the references
                             if (referencingComponent.referenceCycle === true) {
-                                referencingServiceReferencesContainer.append('<div class="unset">Reference cycle detected.</div>');
+                                referencingServiceReferencesContainer.append('<div class="unset">发现循环引用.</div>');
                             } else {
                                 var controllerServiceGrid = serviceTable.data('gridInstance');
                                 var controllerServiceData = controllerServiceGrid.getData();
@@ -1114,7 +1114,7 @@
 
         // build the button model
         var buttons = [{
-            buttonText: 'Disable',
+            buttonText: '禁用',
             color: {
                 base: '#728E9B',
                 hover: '#004849',
@@ -1126,7 +1126,7 @@
                 }
             }
         }, {
-            buttonText: 'Cancel',
+            buttonText: '取消',
             color: {
                 base: '#E3E8EB',
                 hover: '#C7D2D7',
@@ -1166,7 +1166,7 @@
 
         // build the button model
         var buttons = [{
-            buttonText: 'Enable',
+            buttonText: '启用',
             color: {
                 base: '#728E9B',
                 hover: '#004849',
@@ -1178,7 +1178,7 @@
                 }
             }
         }, {
-            buttonText: 'Cancel',
+            buttonText: '取消',
             color: {
                 base: '#E3E8EB',
                 hover: '#C7D2D7',
@@ -1219,7 +1219,7 @@
 
         // only provide a cancel option
         disableDialog.modal('setButtonModel', [{
-            buttonText: 'Cancel',
+            buttonText: '取消',
             color: {
                 base: '#E3E8EB',
                 hover: '#C7D2D7',
@@ -1254,7 +1254,7 @@
         var setCloseButton = function () {
             $('#disable-controller-service-dialog div.controller-service-canceling').hide();
             disableDialog.modal('setButtonModel', [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1271,7 +1271,7 @@
             setCloseButton();
 
             nfDialog.showOkDialog({
-                headerText: 'Controller Service',
+                headerText: '控制器服务',
                 dialogContent: controllerServiceEntity.permissions.canRead === false
                                     // Unknown references.
                                     ? 'Unable to disable due to a lack of read permission to see referencing components.'
@@ -1326,8 +1326,8 @@
             // inform the user if the action was canceled
             if (canceled === true && $('#nf-ok-dialog').not(':visible')) {
                 nfDialog.showOkDialog({
-                    headerText: 'Controller Service',
-                    dialogContent: 'The request to disable has been canceled. Parts of this request may have already completed. Please verify the state of this service and all referencing components.'
+                    headerText: '控制器服务',
+                    dialogContent: '禁用请求已取消. 该请求可能已部分完成. 请校验该服务和所有引用组件状态.'
                 });
             }
         });
@@ -1384,7 +1384,7 @@
 
         // only provide a cancel option
         enableDialog.modal('setButtonModel', [{
-            buttonText: 'Cancel',
+            buttonText: '取消',
             color: {
                 base: '#E3E8EB',
                 hover: '#C7D2D7',
@@ -1413,7 +1413,7 @@
         var setCloseButton = function () {
             $('#enable-controller-service-dialog div.controller-service-canceling').hide();
             enableDialog.modal('setButtonModel', [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1430,7 +1430,7 @@
             setCloseButton();
 
             nfDialog.showOkDialog({
-                headerText: 'Controller Service',
+                headerText: '控制器服务',
                 dialogContent: controllerServiceEntity.permissions.canRead === false
                                     // Unknown references.
                                     ? 'Unable to enable due to a lack of read permission to see referencing components.'
@@ -1495,8 +1495,8 @@
             // inform the user if the action was canceled
             if (canceled === true && $('#nf-ok-dialog').not(':visible')) {
                 nfDialog.showOkDialog({
-                    headerText: 'Controller Service',
-                    dialogContent: 'The request to enable has been canceled. Parts of this request may have already completed. Please verify the state of this service and all referencing components.'
+                    headerText: '控制器服务',
+                    dialogContent: '启用请求已取消. 该请求可能已部分完成. 请校验该服务和所有引用组件状态.'
                 });
             }
         });
@@ -1582,8 +1582,8 @@
             if (isSaveRequired()) {
                 // see if those changes should be saved
                 nfDialog.showYesNoDialog({
-                    headerText: 'Save',
-                    dialogContent: 'Save changes before going to this Controller Service?',
+                    headerText: '保存',
+                    dialogContent: '跳转到该控制器服务前保存修改?',
                     noHandler: function () {
                         deferred.resolve();
                     },
@@ -1744,13 +1744,13 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Settings',
+                    name: '设置',
                     tabContentId: 'controller-service-standard-settings-tab-content'
                 }, {
-                    name: 'Properties',
+                    name: '属性',
                     tabContentId: 'controller-service-properties-tab-content'
                 }, {
-                    name: 'Comments',
+                    name: '说明',
                     tabContentId: 'controller-service-comments-tab-content'
                 }],
                 select: function () {
@@ -1758,7 +1758,7 @@
                     nfUniversalCapture.removeAllPropertyDetailDialogs();
 
                     // update the property table size in case this is the first time its rendered
-                    if ($(this).text() === 'Properties') {
+                    if ($(this).text() === '属性') {
                         $('#controller-service-properties').propertytable('resetTableSize');
                     }
 
@@ -1773,7 +1773,7 @@
 
             // initialize the conroller service configuration dialog
             $('#controller-service-configuration').modal({
-                headerText: 'Configure Controller Service',
+                headerText: '配置控制器服务',
                 scrollableContentStyle: 'scrollable',
                 handler: {
                     close: function () {
@@ -1814,7 +1814,7 @@
 
             // initialize the disable service dialog
             $('#disable-controller-service-dialog').modal({
-                headerText: 'Disable Controller Service',
+                headerText: '禁用控制器服务',
                 scrollableContentStyle: 'scrollable',
                 handler: {
                     close: function () {
@@ -1847,19 +1847,19 @@
             // initialize the enable scope combo
             $('#enable-controller-service-scope').combo({
                 options: [{
-                    text: 'Service only',
+                    text: '仅服务',
                     value: config.serviceOnly,
-                    description: 'Enable only this controller service'
+                    description: '仅启用该控制其服务'
                 }, {
-                    text: 'Service and referencing components',
+                    text: '服务和引用组件',
                     value: config.serviceAndReferencingComponents,
-                    description: 'Enable this controller service and enable/start all referencing components'
+                    description: '启用该控制器服务, 同时启用/启动所有引用(该控制器服务)的组件'
                 }]
             });
 
             // initialize the enable service dialog
             $('#enable-controller-service-dialog').modal({
-                headerText: 'Enable Controller Service',
+                headerText: '启用控制器服务',
                 scrollableContentStyle: 'scrollable',
                 handler: {
                     close: function () {
@@ -1903,7 +1903,7 @@
             }
             var controllerServiceDialog = $('#controller-service-configuration');
 
-            controllerServiceDialog.find('.dialog-header .dialog-header-text').text('Configure Controller Service');
+            controllerServiceDialog.find('.dialog-header .dialog-header-text').text('配置控制器服务');
             if (controllerServiceDialog.data('mode') !== config.edit || currentTable !== serviceTable) {
                 // update the visibility
                 $('#controller-service-configuration .controller-service-read-only').hide();
@@ -1993,7 +1993,7 @@
                     var serviceTips = nfCommon.formatUnorderedList(formattedControllerServiceApis);
                     $('#controller-service-compatible-apis').append(serviceTips);
                 } else {
-                    $('#controller-service-compatible-apis').append('<span class="unset">None</span>');
+                    $('#controller-service-compatible-apis').append('<span class="unset">无</span>');
                 }
 
                 // get the reference container
@@ -2003,7 +2003,7 @@
                 createReferencingComponents(serviceTable, referenceContainer, controllerServiceEntity);
 
                 var buttons = [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -2024,7 +2024,7 @@
                         }
                     }
                 }, {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -2040,7 +2040,7 @@
                 // determine if we should show the advanced button
                 if (nfCommon.isDefinedAndNotNull(controllerService.customUiUrl) && controllerService.customUiUrl !== '') {
                     buttons.push({
-                        buttonText: 'Advanced',
+                        buttonText: '高级',
                         clazz: 'fa fa-cog button-icon',
                         color: {
                             base: '#E3E8EB',
@@ -2073,8 +2073,8 @@
                                 if (isSaveRequired()) {
                                     // see if those changes should be saved
                                     nfDialog.showYesNoDialog({
-                                        headerText: 'Save',
-                                        dialogContent: 'Save changes before opening the advanced configuration?',
+                                        headerText: '保存',
+                                        dialogContent: '打开高级配置前保存修改?',
                                         noHandler: openCustomUi,
                                         yesHandler: function () {
                                             saveControllerService(serviceTable, controllerServiceEntity).done(function () {
@@ -2122,7 +2122,7 @@
         showDetails: function (serviceTable, controllerServiceEntity) {
             var controllerServiceDialog = $('#controller-service-configuration');
 
-            controllerServiceDialog.find('.dialog-header .dialog-header-text').text('Controller Service Details');
+            controllerServiceDialog.find('.dialog-header .dialog-header-text').text('控制器服务器详细信息');
             if (controllerServiceDialog.data('mode') !== config.readOnly) {
                 // update the visibility
                 $('#controller-service-configuration .controller-service-read-only').show();
@@ -2182,7 +2182,7 @@
                     var serviceTips = nfCommon.formatUnorderedList(formattedControllerServiceApis);
                     $('#controller-service-compatible-apis').append(serviceTips);
                 } else {
-                    $('#controller-service-compatible-apis').append('<span class="unset">None</span>');
+                    $('#controller-service-compatible-apis').append('<span class="unset">无</span>');
                 }
 
                 // get the reference container
@@ -2192,7 +2192,7 @@
                 createReferencingComponents(serviceTable, referenceContainer, controllerServiceEntity);
 
                 var buttons = [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -2209,7 +2209,7 @@
                 // determine if we should show the advanced button
                 if (nfCommon.isDefinedAndNotNull(nfCustomUi) && nfCommon.isDefinedAndNotNull(controllerService.customUiUrl) && controllerService.customUiUrl !== '') {
                     buttons.push({
-                        buttonText: 'Advanced',
+                        buttonText: '高级',
                         clazz: 'fa fa-cog button-icon',
                         color: {
                             base: '#E3E8EB',
@@ -2294,8 +2294,8 @@
         promptToDeleteController: function (serviceTable, controllerServiceEntity) {
             // prompt for deletion
             nfDialog.showYesNoDialog({
-                headerText: 'Delete Controller Service',
-                dialogContent: 'Delete controller service \'' + nfCommon.escapeHtml(controllerServiceEntity.component.name) + '\'?',
+                headerText: '删除控制器服务',
+                dialogContent: '删除控制器服务 \'' + nfCommon.escapeHtml(controllerServiceEntity.component.name) + '\'?',
                 yesHandler: function () {
                     nfControllerService.remove(serviceTable, controllerServiceEntity);
                 }

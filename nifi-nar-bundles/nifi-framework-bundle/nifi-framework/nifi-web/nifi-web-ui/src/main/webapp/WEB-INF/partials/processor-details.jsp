@@ -23,7 +23,7 @@
             <div id="details-standard-settings-tab-content" class="details-tab">
                 <div class="settings-left">
                     <div class="setting">
-                        <div class="setting-name">Name</div>
+                        <div class="setting-name">名称</div>
                         <div class="setting-field">
                             <span id="read-only-processor-name"></span>
                         </div>
@@ -36,20 +36,20 @@
                         </div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Type</div>
+                        <div class="setting-name">类型</div>
                         <div id="read-only-processor-type" class="setting-field"></div>
                         <div class="clear"></div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Bundle</div>
+                        <div class="setting-name">扩展包</div>
                         <div id="read-only-processor-bundle" class="setting-field"></div>
                         <div class="clear"></div>
                     </div>
                     <div class="setting">
                         <div class="penalty-duration-setting">
                             <div class="setting-name">
-                                Penalty duration
-                                <div class="fa fa-question-circle" alt="Info" title="The amount of time used when this processor penalizes a FlowFile."></div>
+                                惩罚处理间隔
+                                <div class="fa fa-question-circle" alt="Info" title="该处理器惩罚一个 FlowFile 的时间长度."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-penalty-duration"></span>
@@ -57,8 +57,8 @@
                         </div>
                         <div class="yield-duration-setting">
                             <div class="setting-name">
-                                Yield duration
-                                <div class="fa fa-question-circle" alt="Info" title="When a processor yields, it will not be scheduled again until this amount of time elapses."></div>
+                                调度间隔
+                                <div class="fa fa-question-circle" alt="Info" title="当处理器放弃调度后, 该时间之前不会被再次调度."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-yield-duration"></span>
@@ -69,8 +69,8 @@
                     <div class="setting">
                         <div class="bulletin-setting">
                             <div class="setting-name">
-                                Bulletin level
-                                <div class="fa fa-question-circle" alt="Info" title="The level at which this processor will generate bulletins."></div>
+                                公告级别
+                                <div class="fa fa-question-circle" alt="Info" title="处理器该级别以上的日志将会产生公告."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-bulletin-level"></span>
@@ -83,8 +83,8 @@
                 <div class="settings-right">
                     <div class="setting">
                         <div class="setting-name">
-                            Automatically terminate relationships
-                            <div class="fa fa-question-circle" alt="Info" title="Will automatically terminate FlowFiles sent to all relationships in bold."></div>
+                            自动终止输出数据流
+                            <div class="fa fa-question-circle" alt="Info" title="发送到以下黑体字输出数据流的 FlowFile 将会自动终止."></div>
                         </div>
                         <div class="setting-field">
                             <div id="read-only-auto-terminate-relationship-names"></div>
@@ -97,8 +97,8 @@
                     <div class="setting">
                         <div class="scheduling-strategy-setting">
                             <div class="setting-name">
-                                Scheduling strategy
-                                <div class="fa fa-question-circle" alt="Info" title="The strategy used to schedule this processor."></div>
+                                调度策略
+                                <div class="fa fa-question-circle" alt="Info" title="调度该处理器的策略."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-scheduling-strategy"></span>
@@ -109,8 +109,8 @@
                     <div class="setting">
                         <div class="concurrently-schedulable-tasks-setting">
                             <div class="setting-name">
-                                Concurrent tasks
-                                <div class="fa fa-question-circle" alt="Info" title="The number of tasks that should be concurrently scheduled for this processor."></div>
+                                并行任务
+                                <div class="fa fa-question-circle" alt="Info" title="该处理器应该被并行调度的任务数量."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-concurrently-schedulable-tasks"></span>
@@ -118,8 +118,8 @@
                         </div>
                         <div id="read-only-run-schedule" class="scheduling-period-setting">
                             <div class="setting-name">
-                                Run schedule
-                                <div class="fa fa-question-circle" alt="Info" title="The minimum number of seconds that should elapse between task executions."></div>
+                                调度间隔
+                                <div class="fa fa-question-circle" alt="Info" title="任务两次执行之间的最小间隔秒数."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-scheduling-period"></span>
@@ -130,8 +130,8 @@
                     <div id="read-only-execution-node-options" class="setting">
                         <div class="execution-node-setting">
                             <div class="setting-name">
-                                Execution
-                                <div class="fa fa-question-circle" alt="Info" title="The node(s) that this processor will be scheduled to run on."></div>
+                                执行节点
+                                <div class="fa fa-question-circle" alt="Info" title="集群模式下处理器被调度执行的节点."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-execution-node"></span>
@@ -144,8 +144,8 @@
                 <div class="settings-right">
                     <div class="setting">
                         <div class="setting-name">
-                            Run duration
-                            <div class="fa fa-question-circle" alt="Info" title="When scheduled to run, the processor will continue running for up to this duration. A run duration of 0ms will execute once when scheduled."></div>
+                            运行时长
+                            <div class="fa fa-question-circle" alt="Info" title="被调度之后, 该处理器将会连续运行, 直到达到运行时长. 运行时长设置为 0ms 时, 处理器一旦被调度, 将会一直运行."></div>
                         </div>
                         <div class="setting-field">
                             <span id="read-only-run-duration"></span>
@@ -158,7 +158,7 @@
             </div>
             <div id="details-processor-comments-tab-content" class="details-tab">
                 <div class="setting">
-                    <div class="setting-name">Comments</div>
+                    <div class="setting-name">说明</div>
                     <div class="setting-field">
                         <div id="read-only-processor-comments"></div>
                     </div>

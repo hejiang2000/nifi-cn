@@ -121,56 +121,56 @@
     var tokenRefreshInterval = null;
 
     var policyTypeListing = [{
-        text: 'view the user interface',
+        text: '查看用户界面',
         value: 'flow',
-        description: 'Allows users to view the user interface'
+        description: '允许用户查看 UI'
     }, {
-        text: 'access the controller',
+        text: '访问控制器',
         value: 'controller',
-        description: 'Allows users to view/modify the controller including Reporting Tasks, Controller Services, Parameter Contexts, and Nodes in the Cluster'
+        description: '允许用户查看/修改控制器, 包括报告任务, 控制器服务, 参数上下文, 以及集群中的节点'
     }, {
-        text: 'access parameter contexts',
+        text: '访问参数上下文',
         value: 'parameter-contexts',
-        description: 'Allows users to view/modify Parameter Contexts'
+        description: '允许用户查看/修改参数上下文'
     }, {
-        text: 'query provenance',
+        text: '朔源查询',
         value: 'provenance',
-        description: 'Allows users to submit a Provenance Search and request Event Lineage'
+        description: '允许用户提交一个溯源搜索并请求事件血缘'
     }, {
-        text: 'access restricted components',
+        text: '访问限制组件',
         value: 'restricted-components',
-        description: 'Allows users to create/modify restricted components assuming other permissions are sufficient'
+        description: '允许用户创建/修改限制组件, 假定有足够的其他权限'
     }, {
-        text: 'access all policies',
+        text: '访问所有策略',
         value: 'policies',
-        description: 'Allows users to view/modify the policies for all components'
+        description: '允许用户查看/修改所有组件访问策略'
     }, {
-        text: 'access users/user groups',
+        text: '访问用户/用户组',
         value: 'tenants',
-        description: 'Allows users to view/modify the users and user groups'
+        description: '允许用户查看/修改用户和用户组'
     }, {
-        text: 'retrieve site-to-site details',
+        text: '提取 site-to-site 详细信息',
         value: 'site-to-site',
-        description: 'Allows other NiFi instances to retrieve Site-To-Site details of this NiFi'
+        description: '允许其他 NiFi 实例提取该 NiFi 的 Site-To-Site 详细信息'
     }, {
-        text: 'view system diagnostics',
+        text: '查看系统诊断信息',
         value: 'system',
-        description: 'Allows users to view System Diagnostics'
+        description: '允许用户查看系统诊断信息'
     }, {
-        text: 'proxy user requests',
+        text: '代理用户请求',
         value: 'proxy',
-        description: 'Allows proxy machines to send requests on the behalf of others'
+        description: '允许代理机器代表其他机器发送请求'
     }, {
-        text: 'access counters',
+        text: '访问计数器',
         value: 'counters',
-        description: 'Allows users to view/modify Counters'
+        description: '允许用户查看/修改计数器'
     }];
 
     var nfCommon = {
-        ANONYMOUS_USER_TEXT: 'Anonymous user',
+        ANONYMOUS_USER_TEXT: '匿名用户',
 
         config: {
-            sensitiveText: 'Sensitive value set',
+            sensitiveText: '已设置敏感值',
             tooltipConfig: {
                 style: {
                     classes: 'nifi-tooltip'
@@ -391,11 +391,11 @@
             if (nfCommon.isDefinedAndNotNull(dataContext.bundle)) {
                 markup += ('<div style="float: left;">' + nfCommon.escapeHtml(dataContext.bundle.version) + '</div>');
             } else {
-                markup += '<div style="float: left;">unversioned</div>';
+                markup += '<div style="float: left;">无版本管控</div>';
             }
 
             if (!nfCommon.isEmpty(dataContext.controllerServiceApis)) {
-                markup += '<div class="controller-service-apis fa fa-list" title="Compatible Controller Service" style="margin-left: 4px;"></div><span class="hidden row-id">' + nfCommon.escapeHtml(dataContext.id) + '</span>';
+                markup += '<div class="controller-service-apis fa fa-list" title="兼容控制器服务" style="margin-left: 4px;"></div><span class="hidden row-id">' + nfCommon.escapeHtml(dataContext.id) + '</span>';
             }
 
             markup += '<div class="clear"></div>';
@@ -520,7 +520,7 @@
                         if ($('#current-user').text() !== nfCommon.ANONYMOUS_USER_TEXT && !$('#anonymous-user-alert').is(':visible')) {
                             // if the token will expire before the next interval minus some bonus time, notify the user to re-login
                             $('#anonymous-user-alert').show().qtip($.extend({}, nfCommon.config.tooltipConfig, {
-                                content: 'Your session will expire soon. Please log in again to avoid being automatically logged out.',
+                                content: '您的会话即将过期. 请重新登录避免系统自动退出.',
                                 position: {
                                     my: 'top right',
                                     at: 'bottom left'
@@ -549,7 +549,7 @@
 
             // alert user's of anonymous access
             anonymousUserAlert.show().qtip($.extend({}, nfCommon.config.tooltipConfig, {
-                content: 'You are accessing with limited authority. Log in or request an account to access with additional authority granted to you by an administrator.',
+                content: '您的访问受限. 使用其他账号或请求管理员授予更多权限.',
                 position: {
                     my: 'top right',
                     at: 'bottom left'
@@ -911,9 +911,9 @@
          */
         populateField: function (target, value) {
             if (nfCommon.isUndefined(value) || nfCommon.isNull(value)) {
-                return $('#' + target).addClass('unset').text('No value set');
+                return $('#' + target).addClass('unset').text('未设置值');
             } else if (value === '') {
-                return $('#' + target).addClass('blank').text('Empty string set');
+                return $('#' + target).addClass('blank').text('已设置空字符串');
             } else {
                 return $('#' + target).text(value);
             }
@@ -961,13 +961,13 @@
                     tipContent.push(nfCommon.escapeHtml(propertyDescriptor.description));
                 }
                 if (!nfCommon.isBlank(propertyDescriptor.defaultValue)) {
-                    tipContent.push('<b>Default value:</b> ' + nfCommon.escapeHtml(propertyDescriptor.defaultValue));
+                    tipContent.push('<b>默认值:</b> ' + nfCommon.escapeHtml(propertyDescriptor.defaultValue));
                 }
                 if (!nfCommon.isBlank(propertyDescriptor.supportsEl)) {
-                    tipContent.push('<b>Expression language scope:</b> ' + nfCommon.escapeHtml(propertyDescriptor.expressionLanguageScope));
+                    tipContent.push('<b>表达式语言范围:</b> ' + nfCommon.escapeHtml(propertyDescriptor.expressionLanguageScope));
                 }
                 if (!nfCommon.isBlank(propertyDescriptor.sensitive)) {
-                    tipContent.push('<b>Sensitive property:</b> ' + nfCommon.escapeHtml(propertyDescriptor.sensitive));
+                    tipContent.push('<b>敏感属性:</b> ' + nfCommon.escapeHtml(propertyDescriptor.sensitive));
                 }
                 if (!nfCommon.isBlank(propertyDescriptor.identifiesControllerService)) {
                     var formattedType = nfCommon.formatType({
@@ -975,7 +975,7 @@
                         'bundle': propertyDescriptor.identifiesControllerServiceBundle
                     });
                     var formattedBundle = nfCommon.formatBundle(propertyDescriptor.identifiesControllerServiceBundle);
-                    tipContent.push('<b>Requires Controller Service:</b> ' + nfCommon.escapeHtml(formattedType + ' from ' + formattedBundle));
+                    tipContent.push('<b>需要的处理器服务:</b> ' + nfCommon.escapeHtml(formattedType + ' from ' + formattedBundle));
                 }
             }
 
@@ -985,7 +985,7 @@
                     $.each(propertyHistory.previousValues, function (_, previousValue) {
                         history.push('<li>' + nfCommon.escapeHtml(previousValue.previousValue) + ' - ' + nfCommon.escapeHtml(previousValue.timestamp) + ' (' + nfCommon.escapeHtml(previousValue.userIdentity) + ')</li>');
                     });
-                    tipContent.push('<b>History:</b><ul class="property-info">' + history.join('') + '</ul>');
+                    tipContent.push('<b>历史:</b><ul class="property-info">' + history.join('') + '</ul>');
                 }
             }
 
@@ -1014,12 +1014,12 @@
         formatValue: function (value) {
             if (nfCommon.isDefinedAndNotNull(value)) {
                 if (value === '') {
-                    return '<span class="blank" style="font-size: 13px; padding-top: 2px;">Empty string set</span>';
+                    return '<span class="blank" style="font-size: 13px; padding-top: 2px;">已置为空字符串</span>';
                 } else {
                     return nfCommon.escapeHtml(value);
                 }
             } else {
-                return '<span class="unset" style="font-size: 13px; padding-top: 2px;">No value set</span>';
+                return '<span class="unset" style="font-size: 13px; padding-top: 2px;">无设置值</span>';
             }
         },
 
@@ -1238,37 +1238,37 @@
          * Constants for combo options.
          */
         loadBalanceStrategyOptions: [{
-                text: 'Do not load balance',
+                text: '不要负载均衡',
                 value: 'DO_NOT_LOAD_BALANCE',
-                description: 'Do not load balance FlowFiles between nodes in the cluster.'
+                description: '不在集群中节点间进行 FlowFile 负载均衡.'
             }, {
-                text: 'Partition by attribute',
+                text: '按属性分区',
                 value: 'PARTITION_BY_ATTRIBUTE',
-                description: 'Determine which node to send a given FlowFile to based on the value of a user-specified FlowFile Attribute.'
-                                + ' All FlowFiles that have the same value for said Attribute will be sent to the same node in the cluster.'
+                description: '根据用户指定的 FlowFile 属性值决定把 FlowFile 发送到哪个节点.'
+                                + ' 所有该属性值相同的 FlowFile 将会被发送到集群中同一节点.'
             }, {
-                text: 'Round robin',
+                text: 'Round robin 轮换',
                 value: 'ROUND_ROBIN',
-                description: 'FlowFiles will be distributed to nodes in the cluster in a Round-Robin fashion. However, if a node in the cluster is not able to receive data as fast as other nodes,'
-                                + ' that node may be skipped in one or more iterations in order to maximize throughput of data distribution across the cluster.'
+                description: 'FlowFile 将按 Round-Robin 方式在集群节点间重分布. 但是, 如果集群中的某个节点接收数据较慢,'
+                                + ' 为了最大化跨节点数据重分布效率, 一个或多个循环该慢节点可能会被轮空.'
             }, {
-                text: 'Single node',
+                text: '单节点',
                 value: 'SINGLE_NODE',
-                description: 'All FlowFiles will be sent to the same node. Which node they are sent to is not defined.'
+                description: '所有 FlowFile 将被发送到同一节点. 但发送到哪个节点并不确定.'
         }],
 
         loadBalanceCompressionOptions: [{
-                text: 'Do not compress',
+                text: '不要压缩',
                 value: 'DO_NOT_COMPRESS',
-                description: 'FlowFiles will not be compressed'
+                description: 'FlowFile 不会被压缩'
             }, {
-                text: 'Compress attributes only',
+                text: '仅压缩属性',
                 value: 'COMPRESS_ATTRIBUTES_ONLY',
-                description: 'FlowFiles\' attributes will be compressed, but the FlowFiles\' contents will not be'
+                description: 'FlowFile 的属性将被压缩, 但 FlowFile 的内容不会(被压缩)'
             }, {
-                text: 'Compress attributes and content',
+                text: '压缩属性和正文',
                 value: 'COMPRESS_ATTRIBUTES_AND_CONTENT',
-                description: 'FlowFiles\' attributes and content will be compressed'
+                description: 'FlowFile 的属性和内容将被压缩'
         }],
 
         /**

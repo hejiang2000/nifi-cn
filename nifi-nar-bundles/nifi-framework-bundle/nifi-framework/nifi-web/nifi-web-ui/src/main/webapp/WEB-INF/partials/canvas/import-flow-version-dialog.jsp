@@ -18,7 +18,7 @@
 <div id="import-flow-version-dialog" layout="column" class="hidden large-dialog">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Registry</div>
+            <div class="setting-name">数据流版本注册库</div>
             <div class="setting-field">
                 <div id="import-flow-version-registry-combo"></div>
                 <div id="import-flow-version-registry" class="hidden"></div>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Flow Name</div>
+            <div class="setting-name">流程名称</div>
             <div class="setting-field">
                 <span id="import-flow-version-process-group-id" class="hidden"></span>
                 <div id="import-flow-version-name-combo"></div>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div id="import-flow-version-container" class="setting hidden">
-            <div class="setting-name">Current Version</div>
+            <div class="setting-name">当前版本</div>
             <div class="setting-field">
                 <div id="import-flow-version-label"></div>
             </div>

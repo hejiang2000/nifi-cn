@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>NiFi Logout</title>
+        <title>NiFi 退出登录</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="shortcut icon" href="images/nifi16.ico"/>
         <link rel="stylesheet" href="assets/reset.css/reset.css" type="text/css" />
@@ -43,7 +43,7 @@
     <div id="logout-user-links-container">
         <ul id="logout-user-links" class="links">
             <li>
-                <span id="user-home" class="link">home</span>
+                <span id="user-home" class="link">首页</span>
             </li>
         </ul>
     </div>

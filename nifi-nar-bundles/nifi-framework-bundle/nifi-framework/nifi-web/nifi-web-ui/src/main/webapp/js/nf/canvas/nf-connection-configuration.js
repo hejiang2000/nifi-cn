@@ -118,7 +118,7 @@
 
                         // configure the button model
                         $('#connection-configuration').modal('setButtonModel', [{
-                            buttonText: 'Add',
+                            buttonText: '添加',
                             color: {
                                 base: '#728E9B',
                                 hover: '#004849',
@@ -135,7 +135,7 @@
                             }
                         },
                             {
-                                buttonText: 'Cancel',
+                                buttonText: '取消',
                                 color: {
                                     base: '#E3E8EB',
                                     hover: '#C7D2D7',
@@ -157,8 +157,8 @@
                     } else {
                         // there are no relationships for this processor
                         nfDialog.showOkDialog({
-                            headerText: 'Connection Configuration',
-                            dialogContent: '\'' + nfCommon.escapeHtml(processor.name) + '\' does not support any relationships.'
+                            headerText: '连接配置',
+                            dialogContent: '处理器 \'' + nfCommon.escapeHtml(processor.name) + '\' 不支持任何输出数据流.'
                         });
 
                         // reset the dialog
@@ -188,7 +188,7 @@
                 connectionSourceDeferred.done(function () {
                     // configure the button model
                     $('#connection-configuration').modal('setButtonModel', [{
-                        buttonText: 'Add',
+                        buttonText: '添加',
                         color: {
                             base: '#728E9B',
                             hover: '#004849',
@@ -206,7 +206,7 @@
                         }
                     },
                         {
-                            buttonText: 'Cancel',
+                            buttonText: '取消',
                             color: {
                                 base: '#E3E8EB',
                                 hover: '#C7D2D7',
@@ -389,7 +389,7 @@
 
                     // there are no output ports for this process group
                     nfDialog.showOkDialog({
-                        headerText: 'Connection Configuration',
+                        headerText: '连接配置',
                         dialogContent: message
                     });
 
@@ -458,7 +458,7 @@
                     $('#connection-source-component-id').val(remoteProcessGroup.id);
 
                     // populate the group details
-                    $('#connection-source-group div.setting-name').text('Within Remote Group')
+                    $('#connection-source-group div.setting-name').text('所属远程处理组')
                     $('#connection-remote-source-url').text(remoteProcessGroup.targetUri).show();
                     $('#connection-source-group-id').val(remoteProcessGroup.id);
                     $('#connection-source-group-name').text(remoteProcessGroup.name);
@@ -467,8 +467,8 @@
                 } else {
                     // there are no relationships for this processor
                     nfDialog.showOkDialog({
-                        headerText: 'Connection Configuration',
-                        dialogContent: '\'' + nfCommon.escapeHtml(remoteProcessGroup.name) + '\' does not have any output ports.'
+                        headerText: '连接配置',
+                        dialogContent: '远程处理组 \'' + nfCommon.escapeHtml(remoteProcessGroup.name) + '\' 没有任何输出端口.'
                     });
 
                     // reset the dialog
@@ -618,8 +618,8 @@
                 } else {
                     // there are no relationships for this processor
                     nfDialog.showOkDialog({
-                        headerText: 'Connection Configuration',
-                        dialogContent: '\'' + nfCommon.escapeHtml(processGroupName) + '\' does not have any local input ports.'
+                        headerText: '连接配置',
+                        dialogContent: '处理组 \'' + nfCommon.escapeHtml(processGroupName) + '\' 没有任何本地输入端口.'
                     });
 
                     // reset the dialog
@@ -687,7 +687,7 @@
                     $('#connection-destination-component-id').val(remoteProcessGroup.id);
 
                     // populate the group details
-                    $('#connection-destination-group div.setting-name').text('Within Remote Group')
+                    $('#connection-destination-group div.setting-name').text('所属远程处理组')
                     $('#connection-remote-destination-url').text(remoteProcessGroup.targetUri).show();
                     $('#connection-destination-group-id').val(remoteProcessGroup.id);
                     $('#connection-destination-group-name').text(remoteProcessGroup.name);
@@ -696,8 +696,8 @@
                 } else {
                     // there are no relationships for this processor
                     nfDialog.showOkDialog({
-                        headerText: 'Connection Configuration',
-                        dialogContent: '\'' + nfCommon.escapeHtml(remoteProcessGroup.name) + '\' does not have any input ports.'
+                        headerText: '连接配置',
+                        dialogContent: '远程处理组 \'' + nfCommon.escapeHtml(remoteProcessGroup.name) + '\' 没有任何输入端口.'
                     });
 
                     // reset the dialog
@@ -735,7 +735,7 @@
             $('#connection-source-group-name').text(sourceName);
 
             if (nfCanvasUtils.isRemoteProcessGroup(source)) {
-                $('#connection-source-group div.setting-name').text('Within Remote Group');
+                $('#connection-source-group div.setting-name').text('所属远程处理组');
                 if (sourceData.permissions.canRead) {
                     $('#connection-remote-source-url').text(sourceData.component.targetUri).show();
                 }
@@ -1181,7 +1181,7 @@
 
         if (errors.length > 0) {
             nfDialog.showOkDialog({
-                headerText: 'Configuration Error',
+                headerText: '配置错误',
                 dialogContent: nfCommon.formatUnorderedList(errors)
             });
             return false;
@@ -1277,7 +1277,7 @@
             // initialize the configure connection dialog
             $('#connection-configuration').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Configure Connection',
+                headerText: '配置连接',
                 handler: {
                     close: function () {
                         // reset the dialog on close
@@ -1295,10 +1295,10 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Details',
+                    name: '详细信息',
                     tabContentId: 'connection-details-tab-content'
                 }, {
-                    name: 'Settings',
+                    name: '设置',
                     tabContentId: 'connection-settings-tab-content'
                 }]
             });
@@ -1390,8 +1390,8 @@
             }
 
             // reset labels
-            $('#connection-source-group div.setting-name').text('Within Group')
-            $('#connection-destination-group div.setting-name').text('Within Group')
+            $('#connection-source-group div.setting-name').text('所属处理组')
+            $('#connection-destination-group div.setting-name').text('所属处理组')
             $('#connection-remote-source-url').hide();
             $('#connection-remote-destination-url').hide();
 
@@ -1448,8 +1448,8 @@
                 }
 
                 // reset labels
-                $('#connection-source-group div.setting-name').text('Within Group')
-                $('#connection-destination-group div.setting-name').text('Within Group')
+                $('#connection-source-group div.setting-name').text('所属处理组')
+                $('#connection-destination-group div.setting-name').text('所属处理组')
                 $('#connection-remote-source-url').hide();
                 $('#connection-remote-destination-url').hide();
 
@@ -1534,7 +1534,7 @@
 
                     // configure the button model
                     $('#connection-configuration').modal('setButtonModel', [{
-                        buttonText: 'Apply',
+                        buttonText: '应用',
                         color: {
                             base: '#728E9B',
                             hover: '#004849',
@@ -1574,7 +1574,7 @@
                         }
                     },
                         {
-                            buttonText: 'Cancel',
+                            buttonText: '取消',
                             color: {
                                 base: '#E3E8EB',
                                 hover: '#C7D2D7',

@@ -58,9 +58,9 @@
 
     var initUserDeleteDialog = function () {
         $('#user-delete-dialog').modal({
-            headerText: 'Delete Account',
+            headerText: '删除账号',
             buttons: [{
-                buttonText: 'Delete',
+                buttonText: '删除',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -92,7 +92,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -409,9 +409,9 @@
      */
     var initUserDialog = function () {
         $('#user-dialog').modal({
-            headerText: 'User/Group',
+            headerText: '用户/组',
             buttons: [{
-                buttonText: 'Ok',
+                buttonText: '确定',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -468,7 +468,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -514,9 +514,9 @@
      */
     var initUserPoliciesDialog = function () {
         $('#user-policies-dialog').modal({
-            headerText: 'User Policies',
+            headerText: '用户策略',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -650,27 +650,27 @@
             if (dataContext.permissions.canRead === true) {
                 if (nfCommon.isDefinedAndNotNull(dataContext.component.componentReference)) {
                     if (dataContext.component.resource.indexOf('/processors') >= 0) {
-                        markup += '<div title="Go To" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
+                        markup += '<div title="到" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
                     } else if (dataContext.component.resource.indexOf('/controller-services') >= 0) {
                         //TODO: implement go to for CS
                     } else if (dataContext.component.resource.indexOf('/funnels') >= 0) {
-                        markup += '<div title="Go To" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
+                        markup += '<div title="到" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
                     } else if (dataContext.component.resource.indexOf('/input-ports') >= 0) {
-                        markup += '<div title="Go To" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
+                        markup += '<div title="到" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
                     } else if (dataContext.component.resource.indexOf('/labels') >= 0) {
-                        markup += '<div title="Go To" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
+                        markup += '<div title="到" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
                     } else if (dataContext.component.resource.indexOf('/output-ports') >= 0) {
-                        markup += '<div title="Go To" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
+                        markup += '<div title="到" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
                     } else if (dataContext.component.resource.indexOf('/process-groups') >= 0) {
-                        markup += '<div title="Go To" class="pointer go-to-process-group fa fa-long-arrow-right" style="float: left;"></div>';
+                        markup += '<div title="到" class="pointer go-to-process-group fa fa-long-arrow-right" style="float: left;"></div>';
                     } else if (dataContext.component.resource.indexOf('/remote-process-groups') >= 0) {
-                        markup += '<div title="Go To" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
+                        markup += '<div title="到" class="pointer go-to-component fa fa-long-arrow-right" style="float: left;"></div>';
                     } else if (dataContext.component.resource.indexOf('/reporting-tasks') >= 0) {
                         //TODO: implement go to for RT
                     } else if (dataContext.component.resource.indexOf('/templates') >= 0) {
                         //TODO: implement go to for Templates
                     } else if (dataContext.component.resource.indexOf('/parameter-contexts') >= 0) {
-                        markup += '<div title="Go To" class="pointer go-to-parameter-context fa fa-long-arrow-right" style="float: left;"></div>';
+                        markup += '<div title="到" class="pointer go-to-parameter-context fa fa-long-arrow-right" style="float: left;"></div>';
                     }
                 }
             }
@@ -692,7 +692,7 @@
         var userPoliciesColumns = [
             {
                 id: 'policy',
-                name: 'Policy',
+                name: '策略',
                 sortable: true,
                 resizable: true,
                 formatter: policyDisplayNameFormatter,
@@ -700,7 +700,7 @@
             },
             {
                 id: 'action',
-                name: 'Action',
+                name: '动作',
                 sortable: true,
                 resizable: false,
                 formatter: actionFormatter,
@@ -807,7 +807,7 @@
         // filter type
         $('#users-filter-type').combo({
             options: [{
-                text: 'by user',
+                text: '按用户',
                 value: 'identity'
             }],
             select: function (option) {
@@ -846,12 +846,12 @@
 
             // ensure user can modify the user
             if (configurableUsersAndGroups && dataContext.component.configurable === true && nfCommon.canModifyTenants()) {
-                markup += '<div title="Edit" class="pointer edit-user fa fa-pencil"></div>';
-                markup += '<div title="Remove" class="pointer delete-user fa fa-trash"></div>';
+                markup += '<div title="编辑" class="pointer edit-user fa fa-pencil"></div>';
+                markup += '<div title="移除" class="pointer delete-user fa fa-trash"></div>';
             }
 
             if (!nfCommon.isEmpty(dataContext.component.accessPolicies)) {
-                markup += '<div title="View User Policies" class="pointer view-user-policies fa fa-key" style="margin-left: 3px;"></div>';
+                markup += '<div title="查看用户策略" class="pointer view-user-policies fa fa-key" style="margin-left: 3px;"></div>';
             }
 
             return markup;
@@ -861,7 +861,7 @@
         var usersColumns = [
             {
                 id: 'identity',
-                name: 'User',
+                name: '用户',
                 sortable: true,
                 resizable: true,
                 formatter: identityFormatter

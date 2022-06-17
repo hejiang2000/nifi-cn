@@ -742,8 +742,8 @@
                             var destinationComponentId = nfCanvasUtils.getConnectionDestinationComponentId(connectionData);
                             if (sourceComponentId === destinationComponentId && d.component.bends.length <= 2) {
                                 nfDialog.showOkDialog({
-                                    headerText: 'Connection',
-                                    dialogContent: 'Looping connections must have at least two bend points.'
+                                    headerText: '连接',
+                                    dialogContent: '自关联连接至少要保留两个端点.'
                                 });
                                 return;
                             }
@@ -895,7 +895,7 @@
                                         'x': 5,
                                         'y': 14
                                     })
-                                    .text('From');
+                                    .text('从');
 
                                 connectionFrom.append('text')
                                     .attrs({
@@ -1004,7 +1004,7 @@
                                         'x': 5,
                                         'y': 14
                                     })
-                                    .text('To');
+                                    .text('到');
 
                                 connectionTo.append('text')
                                     .attrs({
@@ -1116,7 +1116,7 @@
                                         'x': 5,
                                         'y': 14
                                     })
-                                    .text('Name');
+                                    .text('名称');
 
                                 connectionName.append('text')
                                     .attrs({
@@ -1196,7 +1196,7 @@
                                 'x': 5,
                                 'y': 14
                             })
-                            .text('Queued');
+                            .text('排队中');
 
                         var queuedText = queued.append('text')
                             .attrs({
@@ -1570,7 +1570,7 @@
                 tooltipContent = nfCommon.formatUnorderedList(tooltipLines)
             }
         } else {
-            tooltipContent = 'Back Pressure Object Threshold is not configured';
+            tooltipContent = '尚未配置背压对象数量阈值';
         }
 
         return tooltipContent;
@@ -1621,7 +1621,7 @@
                 tooltipContent = nfCommon.formatUnorderedList(tooltipLines)
             }
         } else {
-            tooltipContent = 'Back Pressure Data Size Threshold is not configured';
+            tooltipContent = '尚未配置背压数据大小阈值';
         }
 
         return tooltipContent;
@@ -2084,7 +2084,7 @@
                             }).fail(function (xhr, status, error) {
                                 if (xhr.status === 400 || xhr.status === 401 || xhr.status === 403 || xhr.status === 404 || xhr.status === 409) {
                                     nfDialog.showOkDialog({
-                                        headerText: 'Connection',
+                                        headerText: '连接',
                                         dialogContent: nfCommon.escapeHtml(xhr.responseText)
                                     });
 

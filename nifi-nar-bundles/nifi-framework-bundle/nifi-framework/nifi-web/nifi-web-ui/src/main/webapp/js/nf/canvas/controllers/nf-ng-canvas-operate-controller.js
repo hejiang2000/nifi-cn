@@ -98,7 +98,7 @@
                         // configure the create template dialog
                         this.getElement().modal({
                             scrollableContentStyle: 'scrollable',
-                            headerText: 'Create Template'
+                            headerText: '创建模板'
                         });
                     },
 
@@ -169,12 +169,12 @@
                                 // see if the import was successful and inform the user
                                 if (response.documentElement.tagName === 'templateEntity') {
                                     nfDialog.showOkDialog({
-                                        headerText: 'Success',
-                                        dialogContent: 'Template successfully imported.'
+                                        headerText: '成功',
+                                        dialogContent: '模板已成功导入.'
                                     });
                                 } else {
                                     // import failed
-                                    var statusText = 'Unable to import template. Please check the log for errors.';
+                                    var statusText = '导入模板失败. 请检查日志中的错误信息.';
                                     if (response.documentElement.tagName === 'errorResponse') {
                                         // if a more specific error was given, use it
                                         var errorMessage = response.documentElement.getAttribute('statusText');
@@ -185,7 +185,7 @@
 
                                     // show reason
                                     nfDialog.showOkDialog({
-                                        headerText: 'Unable to Upload',
+                                        headerText: '未能上传',
                                         dialogContent: nfCommon.escapeHtml(statusText)
                                     });
                                 }
@@ -193,7 +193,7 @@
                             error: function (xhr, statusText, error) {
                                 // request failed
                                 nfDialog.showOkDialog({
-                                    headerText: 'Unable to Upload',
+                                    headerText: '未能上传',
                                     dialogContent: nfCommon.escapeHtml(xhr.responseText)
                                 });
                             }
@@ -201,9 +201,9 @@
 
                         // configure the upload template dialog
                         this.getElement().modal({
-                            headerText: 'Upload Template',
+                            headerText: '上传模板',
                             buttons: [{
-                                buttonText: 'Upload',
+                                buttonText: '上传',
                                 color: {
                                     base: '#728E9B',
                                     hover: '#004849',
@@ -215,7 +215,7 @@
 
                                         // submit the template if necessary
                                         if (nfCommon.isBlank(selectedTemplate)) {
-                                            $('#upload-template-status').text('No template selected. Please browse to select a template.');
+                                            $('#upload-template-status').text('未选中模板. 请先选择模板.');
                                         } else {
                                             templateForm.submit();
 
@@ -225,7 +225,7 @@
                                     }
                                 }
                             }, {
-                                buttonText: 'Cancel',
+                                buttonText: '取消',
                                 color: {
                                     base: '#E3E8EB',
                                     hover: '#C7D2D7',
@@ -319,9 +319,9 @@
                         // configure the create fillcolor dialog
                         this.getElement().modal({
                             scrollableContentStyle: 'scrollable',
-                            headerText: 'Change Color',
+                            headerText: '修改颜色',
                             buttons: [{
-                                buttonText: 'Apply',
+                                buttonText: '应用',
                                 color: {
                                     base: '#728E9B',
                                     hover: '#004849',
@@ -366,7 +366,7 @@
                                                 }).fail(function (xhr, status, error) {
                                                     if (xhr.status === 400 || xhr.status === 404 || xhr.status === 409) {
                                                         nfDialog.showOkDialog({
-                                                            headerText: 'Error',
+                                                            headerText: '错误',
                                                             dialogContent: nfCommon.escapeHtml(xhr.responseText)
                                                         });
                                                     }
@@ -382,7 +382,7 @@
                                 }
                             },
                                 {
-                                    buttonText: 'Cancel',
+                                    buttonText: '取消',
                                     color: {
                                         base: '#E3E8EB',
                                         hover: '#C7D2D7',

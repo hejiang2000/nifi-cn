@@ -173,7 +173,7 @@
                             dataType: 'json'
                         }).done(function (response) {
                             var aboutDetails = response.about;
-                            var countersTitle = aboutDetails.title + ' Counters';
+                            var countersTitle = aboutDetails.title + ' 计数器';
 
                             // set the document title and the about title
                             document.title = countersTitle;
