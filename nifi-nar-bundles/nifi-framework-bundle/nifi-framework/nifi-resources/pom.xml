@@ -35,7 +35,7 @@
         <nifi.administrative.yield.duration>30 sec</nifi.administrative.yield.duration>
         <nifi.bored.yield.duration>10 millis</nifi.bored.yield.duration>
         <nifi.queue.backpressure.count>10000</nifi.queue.backpressure.count>
-        <nifi.queue.backpressure.size>1 GB</nifi.queue.backpressure.size>
+        <nifi.queue.backpressure.size>100 MB</nifi.queue.backpressure.size>
 
         <nifi.flow.configuration.file>./conf/flow.xml.gz</nifi.flow.configuration.file>
         <nifi.flow.configuration.json.file>./conf/flow.json.gz</nifi.flow.configuration.json.file>
@@ -57,7 +57,7 @@
         <nifi.flowfile.repository.implementation>org.apache.nifi.controller.repository.WriteAheadFlowFileRepository</nifi.flowfile.repository.implementation>
         <nifi.flowfile.repository.wal.implementation>org.apache.nifi.wali.SequentialAccessWriteAheadLog</nifi.flowfile.repository.wal.implementation>
         <nifi.flowfile.repository.directory>./flowfile_repository</nifi.flowfile.repository.directory>
-        <nifi.flowfile.repository.checkpoint.interval>20 secs</nifi.flowfile.repository.checkpoint.interval>
+        <nifi.flowfile.repository.checkpoint.interval>1 min</nifi.flowfile.repository.checkpoint.interval>
         <nifi.flowfile.repository.always.sync>false</nifi.flowfile.repository.always.sync>
         <nifi.flowfile.repository.retain.orphaned.flowfiles>true</nifi.flowfile.repository.retain.orphaned.flowfiles>
         <nifi.swap.manager.implementation>org.apache.nifi.controller.FileSystemSwapManager</nifi.swap.manager.implementation>
@@ -68,7 +68,7 @@
         <nifi.content.repository.directory.default>./content_repository</nifi.content.repository.directory.default>
         <nifi.content.repository.archive.max.retention.period>7 days</nifi.content.repository.archive.max.retention.period>
         <nifi.content.repository.archive.max.usage.percentage>50%</nifi.content.repository.archive.max.usage.percentage>
-        <nifi.content.repository.archive.enabled>true</nifi.content.repository.archive.enabled>
+        <nifi.content.repository.archive.enabled>false</nifi.content.repository.archive.enabled>
         <nifi.content.repository.always.sync>false</nifi.content.repository.always.sync>
         <nifi.content.viewer.url>../nifi-content-viewer/</nifi.content.viewer.url>
 
@@ -87,10 +87,10 @@
         <nifi.h2.url.append>;LOCK_TIMEOUT=25000;WRITE_DELAY=0;AUTO_SERVER=FALSE</nifi.h2.url.append>
 
         <nifi.remote.input.socket.port>9990</nifi.remote.input.socket.port>
-        <nifi.remote.input.secure>true</nifi.remote.input.secure>
+        <nifi.remote.input.secure>false</nifi.remote.input.secure>
 
         <!-- persistent provenance repository properties -->
-        <nifi.provenance.repository.implementation>org.apache.nifi.provenance.WriteAheadProvenanceRepository</nifi.provenance.repository.implementation>
+        <nifi.provenance.repository.implementation>org.apache.nifi.provenance.VolatileProvenanceRepository</nifi.provenance.repository.implementation>
         <nifi.provenance.repository.directory.default>./provenance_repository</nifi.provenance.repository.directory.default>
         <nifi.provenance.repository.max.storage.time>30 days</nifi.provenance.repository.max.storage.time>
         <nifi.provenance.repository.max.storage.size>10 GB</nifi.provenance.repository.max.storage.size>
@@ -120,11 +120,11 @@
         <nifi.status.repository.questdb.persist.location>./status_repository</nifi.status.repository.questdb.persist.location>
 
         <!-- nifi.properties: web properties -->
-        <nifi.web.http.host />
-        <nifi.web.http.port />
+        <nifi.web.http.host>0.0.0.0</nifi.web.http.host>
+        <nifi.web.http.port>8080</nifi.web.http.port>
         <nifi.web.http.network.interface.default />
-        <nifi.web.https.host>127.0.0.1</nifi.web.https.host>
-        <nifi.web.https.port>8443</nifi.web.https.port>
+        <nifi.web.https.host />
+        <nifi.web.https.port />
         <nifi.web.https.network.interface.default />
         <nifi.jetty.work.dir>./work/jetty</nifi.jetty.work.dir>
         <nifi.web.jetty.threads>200</nifi.web.jetty.threads>
@@ -141,16 +141,16 @@
         <!-- nifi.properties: security properties -->
         <nifi.security.autoreload.enabled>false</nifi.security.autoreload.enabled>
         <nifi.security.autoreload.interval>10 secs</nifi.security.autoreload.interval>
-        <nifi.security.keystore>./conf/keystore.p12</nifi.security.keystore>
+        <nifi.security.keystore />
         <nifi.security.keystoreType>PKCS12</nifi.security.keystoreType>
         <nifi.security.keystorePasswd />
         <nifi.security.keyPasswd />
-        <nifi.security.truststore>./conf/truststore.p12</nifi.security.truststore>
+        <nifi.security.truststore />
         <nifi.security.truststoreType>PKCS12</nifi.security.truststoreType>
         <nifi.security.truststorePasswd />
-        <nifi.security.user.authorizer>single-user-authorizer</nifi.security.user.authorizer>
+        <nifi.security.user.authorizer />
         <nifi.security.allow.anonymous.authentication>false</nifi.security.allow.anonymous.authentication>
-        <nifi.security.user.login.identity.provider>single-user-provider</nifi.security.user.login.identity.provider>
+        <nifi.security.user.login.identity.provider />
         <nifi.security.user.jws.key.rotation.period>PT1H</nifi.security.user.jws.key.rotation.period>
         <nifi.security.x509.principal.extractor />
         <nifi.security.ocsp.responder.url />
