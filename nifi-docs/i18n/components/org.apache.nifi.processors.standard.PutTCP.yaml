@@ -1,0 +1,67 @@
+relationships:
+  success: {en: FlowFiles that are sent successfully to the destination are sent out
+      this relationship., zh: 成功发送到目标的FlowFiles将发送到此关系。}
+  failure: {en: FlowFiles that failed to send to the destination are sent out this
+      relationship., zh: 未能发送到目标的FlowFiles将发送到此关系。}
+capabilityDescription: {en: 'The PutTCP processor receives a FlowFile and transmits
+    the FlowFile content over a TCP connection to the configured TCP server. By default,
+    the FlowFiles are transmitted over the same TCP connection (or pool of TCP connections
+    if multiple input threads are configured). To assist the TCP server with determining
+    message boundaries, an optional "Outgoing Message Delimiter" string can be configured
+    which is appended to the end of each FlowFiles content when it is transmitted
+    over the TCP connection. An optional "Connection Per FlowFile" parameter can be
+    specified to change the behaviour so that each FlowFiles content is transmitted
+    over a single TCP connection which is opened when the FlowFile is received and
+    closed after the FlowFile has been sent. This option should only be used for low
+    message volume scenarios, otherwise the platform may run out of TCP sockets.',
+  zh: PutTCP处理器接收FlowFile并通过TCP连接将FlowFile内容传输到配置的TCP服务器。默认情况下，FlowFiles通过同一TCP连接（如果配置了多个输入线程，则通过TCP连接池）传输。为了帮助TCP服务器确定消息边界，可以配置可选的“传出消息分隔符”字符串，该字符串在通过TCP连接传输时附加到每个FlowFiles内容的末尾。可以指定可选的“每个FlowFile的连接”参数来更改行为，以便每个FlowFile内容通过单个TCP连接传输，该TCP连接在接收FlowFile时打开，在发送FlowFile后关闭。此选项应仅用于低消息量场景，否则平台可能会耗尽TCP套接字。}
+properties:
+  Idle Connection Expiration:
+    en: {displayName: Idle Connection Expiration, description: The amount of time
+        a connection should be held open without being used before closing the connection.
+        A value of 0 seconds will disable this feature.}
+    zh: {description: 在关闭连接之前，连接应保持打开而不使用的时间。值为0秒将禁用此功能。, displayName: 空闲连接到期}
+  Outgoing Message Delimiter:
+    en: {displayName: Outgoing Message Delimiter, description: Specifies the delimiter
+        to use when sending messages out over the same TCP stream. The delimiter is
+        appended to each FlowFile message that is transmitted over the stream so that
+        the receiver can determine when one message ends and the next message begins.
+        Users should ensure that the FlowFile content does not contain the delimiter
+        character to avoid errors. In order to use a new line character you can enter
+        '\n'. For a tab character use '\t'. Finally for a carriage return use '\r'.}
+    zh: {description: 指定通过同一TCP流发送消息时要使用的分隔符。分隔符被附加到通过流传输的每个FlowFile消息，以便接收器可以确定一条消息何时结束，下一条消息开始。用户应确保FlowFile内容不包含分隔符，以避免错误。要使用换行符，可以输入“\n”。对于制表符，请使用“\t”。最后，对于回车，请使用“\r”。,
+      displayName: 传出消息分隔符}
+  Max Size of Socket Send Buffer:
+    en: {displayName: Max Size of Socket Send Buffer, description: 'The maximum size
+        of the socket send buffer that should be used. This is a suggestion to the
+        Operating System to indicate how big the socket buffer should be. If this
+        value is set too low, the buffer may fill up before the data can be read,
+        and incoming data will be dropped.'}
+    zh: {description: 应使用的套接字发送缓冲区的最大大小。这是给操作系统的一个建议，说明套接字缓冲区应该有多大。如果该值设置得太低，缓冲区可能会在读取数据之前填满，并且传入的数据将被丢弃。,
+      displayName: 套接字发送缓冲区的最大大小}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'The Controller Service to
+        use in order to obtain an SSL Context. If this property is set, messages will
+        be sent over a secure connection.'}
+    zh: {description: 用于获取SSL上下文的控制器服务。如果设置了此属性，消息将通过安全连接发送。, displayName: SSL上下文服务}
+  Timeout:
+    en: {displayName: Timeout, description: The timeout for connecting to and communicating
+        with the destination. Does not apply to UDP}
+    zh: {description: 连接到目标并与目标通信的超时。不适用于UDP, displayName: 超时}
+  Port:
+    en: {displayName: Port, description: The port on the destination.}
+    zh: {description: 目的地上的端口。, displayName: 港口城市}
+  Hostname:
+    en: {displayName: Hostname, description: The ip address or hostname of the destination.}
+    zh: {description: 目标的ip地址或主机名。, displayName: 主机名}
+  Connection Per FlowFile:
+    en: {displayName: Connection Per FlowFile, description: Specifies whether to send
+        each FlowFile's content on an individual connection.}
+    zh: {description: 指定是否在单个连接上发送每个FlowFile的内容。, displayName: 每个FlowFile的连接}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        data being sent.}
+    zh: {description: 指定要发送的数据的字符集。, displayName: 字符集}
+tags:
+  en: [remote, egress, put, tcp]
+  zh: [遥远的, 出口, 放, tcp协议]

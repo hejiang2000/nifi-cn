@@ -1,0 +1,98 @@
+relationships:
+  success: {en: A FlowFile is transferred to this relationship if the operation completed
+      successfully., zh: 如果操作成功完成，FlowFile将传输到此关系。}
+  failure: {en: A FlowFile is transferred to this relationship if the operation failed.,
+    zh: 如果操作失败，FlowFile将传输到此关系。}
+  retry: {en: A FlowFile is transferred to this relationship if the operation cannot
+      be completed but attempting it again may succeed., zh: 如果操作无法完成，则将FlowFile传输到此关系，但再次尝试可能会成功。}
+capabilityDescription: {en: 'Execute provided Cassandra Query Language (CQL) select
+    query on a Cassandra 1.x, 2.x, or 3.0.x cluster. Query result may be converted
+    to Avro or JSON format. Streaming is used so arbitrarily large result sets are
+    supported. This processor can be scheduled to run on a timer, or cron expression,
+    using the standard scheduling methods, or it can be triggered by an incoming FlowFile.
+    If it is triggered by an incoming FlowFile, then attributes of that FlowFile will
+    be available when evaluating the select query. FlowFile attribute ''executecql.row.count''
+    indicates how many rows were selected.', zh: 在Cassandra 1.x、2.x或3.0.x集群上执行提供的Cassandra查询语言（CQL）选择查询。查询结果可以转换为Avro或JSON格式。使用流式处理，因此支持任意大的结果集。可以使用标准调度方法将此处理器调度为在计时器或cron表达式上运行，也可以由传入的FlowFile触发。如果它由传入的FlowFile触发，则在评估选择查询时，该FlowFile的属性将可用。FlowFile属性'executeql.row。count”表示选择了多少行。}
+properties:
+  CQL select query:
+    en: {displayName: CQL select query, description: CQL select query}
+    zh: {description: CQL选择查询, displayName: CQL选择查询}
+  Max Wait Time:
+    en: {displayName: Max Wait Time, description: 'The maximum amount of time allowed
+        for a running CQL select query. Must be of format <duration> <TimeUnit> where
+        <duration> is a non-negative integer and TimeUnit is a supported Time Unit,
+        such as: nanos, millis, secs, mins, hrs, days. A value of zero means there
+        is no limit. '}
+    zh: {description: 运行CQL选择查询所允许的最长时间。必须采用<duration><TimeUnit>格式，其中<duration>是非负整数，TimeUnit是受支持的时间单位，例如：纳米、毫秒、秒、分钟、小时、天。值为零表示没有限制。,
+      displayName: 最长等待时间}
+  Compression Type:
+    en: {displayName: Compression Type, description: Enable compression at transport-level
+        requests and responses}
+    zh: {description: 在传输级别启用压缩请求和响应, displayName: 压缩类型}
+  Output Format:
+    en: {displayName: Output Format, description: 'The format to which the result
+        rows will be converted. If JSON is selected, the output will contain an object
+        with field ''results'' containing an array of result rows. Each row in the
+        array is a map of the named column to its value. For example: { "results":
+        [{"userid":1, "name":"Joe Smith"}]}'}
+    zh: {description: 结果行将转换为的格式。如果选择了JSON，输出将包含一个对象，该对象的字段“results”包含一个结果行数组。数组中的每一行都是命名列与其值的映射。例如：｛“results”：〔｛“userid”：1，“name”：“Joe
+        Smith”｝〕｝, displayName: 输出格式}
+  cassandra-connection-provider:
+    en: {displayName: Cassandra Connection Provider, description: Specifies the Cassandra
+        connection providing controller service to be used to connect to Cassandra
+        cluster.}
+    zh: {description: 指定用于连接到Cassandra群集的Cassandra连接提供控制器服务。, displayName: Cassandra连接提供程序}
+  Cassandra Contact Points:
+    en: {displayName: Cassandra Contact Points, description: 'Contact points are addresses
+        of Cassandra nodes. The list of contact points should be comma-separated and
+        in hostname:port format. Example node1:port,node2:port,.... The default client
+        port for Cassandra is 9042, but the port(s) must be explicitly specified.'}
+    zh: {description: '联系点是Cassandra节点的地址。联系人列表应以逗号分隔，并采用主机名：端口格式。示例node1:port，node2:port，….Cassandra的默认客户端端口是9042，但必须显式指定端口。',
+      displayName: Cassandra联络点}
+  Fetch size:
+    en: {displayName: Fetch size, description: The number of result rows to be fetched
+        from the result set at a time. Zero is the default and means there is no limit.}
+    zh: {description: 一次从结果集中提取的结果行数。默认值为零，表示没有限制。, displayName: 提取大小}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username to access the Cassandra cluster}
+    zh: {description: 访问Cassandra群集的用户名, displayName: 用户名}
+  Consistency Level:
+    en: {displayName: Consistency Level, description: The strategy for how many replicas
+        must respond before results are returned.}
+    zh: {description: 返回结果之前必须响应多少副本的策略。, displayName: 一致性级别}
+  Keyspace:
+    en: {displayName: Keyspace, description: 'The Cassandra Keyspace to connect to.
+        If no keyspace is specified, the query will need to include the keyspace name
+        before any table reference, in case of ''query'' native processors or if the
+        processor exposes the ''Table'' property, the keyspace name has to be provided
+        with the table name in the form of <KEYSPACE>.<TABLE>'}
+    zh: {description: 要连接到的Cassandra密钥空间。如果未指定密钥空间，则查询需要在任何表引用之前包含密钥空间名称，如果是“query”本机处理器，或者如果处理器公开了“table”属性，则必须以＜Keyspace＞的形式将密钥空间名称与表名称一起提供。＜table＞,
+      displayName: 密钥空间}
+  timestamp-format-pattern:
+    en: {displayName: Timestamp Format Pattern for JSON output, description: 'Pattern
+        to use when converting timestamp fields to JSON. Note: the formatted timestamp
+        will be in UTC timezone.'}
+    zh: {description: 将时间戳字段转换为JSON时使用的模式。注意：格式化的时间戳将采用UTC时区。, displayName: JSON输出的时间戳格式模式}
+  Client Auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        record data.}
+    zh: {description: 指定记录数据的字符集。, displayName: 字符集}
+  Password:
+    en: {displayName: Password, description: Password to access the Cassandra cluster}
+    zh: {description: 访问Cassandra群集的密码, displayName: 暗语}
+writeAttributes:
+  executecql.row.count: {en: The number of rows returned by the CQL query, zh: CQL查询返回的行数}
+tags:
+  en: [cassandra, cql, select]
+  zh: [卡桑德拉, cql公司, 选择]

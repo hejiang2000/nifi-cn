@@ -1,0 +1,53 @@
+relationships:
+  original: {en: Request FlowFiles transferred when receiving HTTP responses with
+      a status code between 200 and 299., zh: 收到状态代码介于200和299之间的HTTP响应时传输的请求流文件。}
+  success: {en: Response FlowFiles transferred when receiving HTTP responses with
+      a status code between 200 and 299., zh: 收到状态代码介于200和299之间的HTTP响应时传输的响应流文件。}
+  failure: {en: Request FlowFiles transferred when receiving socket communication
+      errors., zh: 接收套接字通信错误时传输的请求FlowFiles。}
+capabilityDescription: {en: 'A processor which can interact with a configurable Workday
+    Report. The processor can forward the content without modification, or you can
+    transform it by providing the specific Record Reader and Record Writer services
+    based on your needs. You can also remove fields by defining schema in the Record
+    Writer. Supported Workday report formats are: csv, simplexml, json', zh: 可与可配置工作日报告交互的处理器。处理器可以不经修改地转发内容，也可以根据您的需要提供特定的记录读取器和记录写入器服务来转换内容。您还可以通过在记录编写器中定义架构来删除字段。支持的Workday报告格式为：csv、simplexml、json}
+properties:
+  Workday Password:
+    en: {displayName: Workday Password, description: The password provided for authentication
+        of Workday requests. Encoded using Base64 for HTTP Basic Authentication as
+        described in RFC 7617.}
+    zh: {description: 为Workday请求的身份验证提供的密码。如RFC 7617所述，使用Base64进行HTTP基本认证编码。, displayName: 工作日密码}
+  record-writer:
+    en: {displayName: Record Writer, description: The Record Writer to use for serializing
+        Records to an output FlowFile.}
+    zh: {description: 用于将记录序列化为输出FlowFile的记录编写器。, displayName: 记录编写器}
+  Workday Username:
+    en: {displayName: Workday Username, description: The username provided for authentication
+        of Workday requests. Encoded using Base64 for HTTP Basic Authentication as
+        described in RFC 7617.}
+    zh: {description: 为Workday请求的身份验证提供的用户名。如RFC 7617所述，使用Base64进行HTTP基本认证编码。, displayName: 工作日用户名}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema.}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务。, displayName: 记录读取器}
+  Workday Report URL:
+    en: {displayName: Workday Report URL, description: 'HTTP remote URL of Workday
+        report including a scheme of http or https, as well as a hostname or IP address
+        with optional port and path elements.'}
+    zh: {description: Workday报告的HTTP远程URL，包括HTTP或https方案，以及带有可选端口和路径元素的主机名或IP地址。,
+      displayName: 工作日报告URL}
+  Web Client Service Provider:
+    en: {displayName: Web Client Service Provider, description: Web client which is
+        used to communicate with the Workday API.}
+    zh: {description: 用于与Workday API通信的Web客户端。, displayName: Web客户端服务提供商}
+writeAttributes:
+  getworkdayreport.java.exception.class: {en: The Java exception class raised when
+      the processor fails, zh: 处理器出现故障时引发的Java异常类}
+  getworkdayreport.java.exception.message: {en: The Java exception message raised
+      when the processor fails, zh: 处理器出现故障时引发的Java异常消息}
+  record.count: {en: The number of records in an outgoing FlowFile. This is only populated
+      on the 'success' relationship when Record Reader and Writer is set., zh: 传出FlowFile中的记录数。仅当设置了“记录读取器和写入器”时，才会在“成功”关系中填充此值。}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Source
+      / Record Writer, zh: 设置mime。type属性设置为源/记录编写器指定的MIME类型}
+tags:
+  en: [Workday, report]
+  zh: [工作日, 汇报]

@@ -1,0 +1,60 @@
+relationships:
+  original: {en: 'Once all records in an incoming FlowFile have been partitioned,
+      the original FlowFile is routed to this relationship.', zh: 一旦传入FlowFile中的所有记录都已分区，原始FlowFile将路由到此关系。}
+  success: {en: FlowFiles that are successfully partitioned will be routed to this
+      relationship, zh: 成功分区的FlowFiles将路由到此关系}
+  failure: {en: 'If a FlowFile cannot be partitioned from the configured input format
+      to the configured output format, the unchanged FlowFile will be routed to this
+      relationship', zh: 如果无法将FlowFile从配置的输入格式分区为配置的输出格式，则未更改的FlowFile将路由到此关系}
+dynamicProperties:
+  ? The name given to the dynamic property is the name of the attribute that will
+    be used to denote the value of the associted RecordPath.
+  : en: {description: 'Each dynamic property represents a RecordPath that will be
+        evaluated against each record in an incoming FlowFile. When the value of the
+        RecordPath is determined for a Record, an attribute is added to the outgoing
+        FlowFile. The name of the attribute is the same as the name of this property.
+        The value of the attribute is the same as the value of the field in the Record
+        that the RecordPath points to. Note that no attribute will be added if the
+        value returned for the RecordPath is null or is not a scalar value (i.e.,
+        the value is an Array, Map, or Record).', value: A RecordPath that points
+        to a field in the Record.}
+    zh: {description: 每个动态属性表示一个RecordPath，将针对传入FlowFile中的每个记录进行评估。当为记录确定RecordPath的值时，将向传出的FlowFile添加一个属性。属性的名称与此属性的名称相同。属性的值与RecordPath指向的记录中字段的值相同。请注意，如果为RecordPath返回的值为空或不是标量值（即，该值是数组、映射或记录），则不会添加属性。,
+      value: 指向记录中字段的RecordPath。}
+capabilityDescription: {en: 'Receives Record-oriented data (i.e., data that can be
+    read by the configured Record Reader) and evaluates one or more RecordPaths against
+    the each record in the incoming FlowFile. Each record is then grouped with other
+    "like records" and a FlowFile is created for each group of "like records." What
+    it means for two records to be "like records" is determined by user-defined properties.
+    The user is required to enter at least one user-defined property whose value is
+    a RecordPath. Two records are considered alike if they have the same value for
+    all configured RecordPaths. Because we know that all records in a given output
+    FlowFile have the same value for the fields that are specified by the RecordPath,
+    an attribute is added for each field. See Additional Details on the Usage page
+    for more information and examples.', zh: 接收面向记录的数据（即，可由配置的记录读取器读取的数据），并根据传入流文件中的每个记录评估一个或多个RecordPath。然后，将每条记录与其他“类似记录”分组，并为每组“类似记录“创建FlowFile。两条记录“类似”的含义由用户定义的属性决定。用户需要输入至少一个值为RecordPath的用户定义属性。如果两个记录对于所有配置的RecordPath具有相同的值，则认为它们是相同的。因为我们知道给定输出FlowFile中的所有记录对于RecordPath指定的字段具有相同的值，所以会为每个字段添加一个属性。有关更多信息和示例，请参阅用法页上的其他详细信息。}
+properties:
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+writeAttributes:
+  'segment.original.filename ': {en: The filename of the parent FlowFile, zh: 父FlowFile的文件名}
+  record.count: {en: The number of records in an outgoing FlowFile, zh: 传出FlowFile中的记录数}
+  fragment.identifier: {en: All partitioned FlowFiles produced from the same parent
+      FlowFile will have the same randomly generated UUID added for this attribute,
+    zh: 从同一父FlowFile生成的所有分区FlowFiles都将为此属性添加相同的随机生成UUID}
+  fragment.index: {en: A one-up number that indicates the ordering of the partitioned
+      FlowFiles that were created from a single parent FlowFile, zh: 一个向上的数字，表示从单个父FlowFile创建的分区FlowFile的顺序}
+  mime.type: {en: The MIME Type that the configured Record Writer indicates is appropriate,
+    zh: 配置的记录编写器指示的MIME类型是适当的}
+  fragment.count: {en: The number of partitioned FlowFiles generated from the parent
+      FlowFile, zh: 从父FlowFile生成的分区FlowFiles的数量}
+  <dynamic property name>: {en: 'For each dynamic property that is added, an attribute
+      may be added to the FlowFile. See the description for Dynamic Properties for
+      more information.', zh: 对于添加的每个动态属性，可以向FlowFile添加一个属性。有关详细信息，请参见动态特性的说明。}
+tags:
+  en: [record, partition, recordpath, rpath, segment, split, group, bin, organize]
+  zh: [记录, 隔断, 记录路径, rpath公司, 段, 分裂, 组, 箱子, 组织]

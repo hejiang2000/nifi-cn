@@ -1,0 +1,30 @@
+capabilityDescription: {en: Provides access to SMB Sessions with shared authentication
+    credentials., zh: 提供对具有共享身份验证凭据的SMB会话的访问。}
+properties:
+  hostname:
+    en: {displayName: Hostname, description: The network host of the SMB file server.}
+    zh: {description: SMB文件服务器的网络主机。, displayName: 主机名}
+  password:
+    en: {displayName: Password, description: The password used for authentication.}
+    zh: {description: 用于身份验证的密码。, displayName: 暗语}
+  port:
+    en: {displayName: Port, description: Port to use for connection.}
+    zh: {description: 用于连接的端口。, displayName: 港口城市}
+  domain:
+    en: {displayName: Domain, description: 'The domain used for authentication. Optional,
+        in most cases username and password is sufficient.'}
+    zh: {description: 用于身份验证的域。可选，在大多数情况下，用户名和密码就足够了。, displayName: 领域}
+  share:
+    en: {displayName: Share, description: 'The network share to which files should
+        be listed from. This is the "first folder"after the hostname: smb://hostname:port/[share]/dir1/dir2'}
+    zh: {description: '应从中列出文件的网络共享。这是主机名之后的“第一个文件夹”：smb://hostname:port/[共享]/dir1/dir2',
+      displayName: 共有}
+  timeout:
+    en: {displayName: Timeout, description: Timeout for read and write operations.}
+    zh: {description: 读写操作超时。, displayName: 超时}
+  username:
+    en: {displayName: Username, description: The username used for authentication.}
+    zh: {description: 用于身份验证的用户名。, displayName: 用户名}
+tags:
+  en: ['samba, smb, cifs, files']
+  zh: [samba、smb、cifs、文件]

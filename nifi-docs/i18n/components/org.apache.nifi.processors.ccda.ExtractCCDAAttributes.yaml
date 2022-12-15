@@ -1,0 +1,18 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship if it is properly parsed
+      as CDA and its contents extracted as attributes., zh: 如果FlowFile被正确解析为CDA，并且其内容被提取为属性，则FlowFile将被路由到此关系。}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be parsed as
+      CDA or its contents extracted as attributes., zh: 如果FlowFile无法解析为CDA或其内容无法提取为属性，则将其路由到此关系。}
+capabilityDescription: {en: 'Extracts information from an Consolidated CDA formatted
+    FlowFile and provides individual attributes as FlowFile attributes. The attributes
+    are named as <Parent> <dot> <Key>. If the Parent is repeating, the naming will
+    be <Parent> <underscore> <Parent Index> <dot> <Key>. For example, section.act_07.observation.name=Essential
+    hypertension', zh: 从合并CDA格式的FlowFile中提取信息，并将各个属性作为FlowFile属性提供。属性命名为<Parent><dot><Key>。如果父级重复，则命名将为＜父级＞＜下划线＞＜父级索引＞＜点＞＜键＞。例如，section.act_07.observation。name=原发性高血压}
+properties:
+  skip-validation:
+    en: {displayName: Skip Validation, description: Whether or not to validate CDA
+        message values}
+    zh: {description: 是否验证CDA消息值, displayName: 跳过验证}
+tags:
+  en: [CCDA, healthcare, extract, attributes]
+  zh: [CCDA, 医疗保健, 摘录, 属性]

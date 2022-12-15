@@ -1,0 +1,54 @@
+capabilityDescription: {en: Provides connection session for Cassandra processors to
+    work with Apache Cassandra., zh: 为Cassandra处理器提供与Apache Cassandra一起工作的连接会话。}
+properties:
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username to access the Cassandra cluster}
+    zh: {description: 访问Cassandra群集的用户名, displayName: 用户名}
+  Consistency Level:
+    en: {displayName: Consistency Level, description: The strategy for how many replicas
+        must respond before results are returned.}
+    zh: {description: 返回结果之前必须响应多少副本的策略。, displayName: 一致性级别}
+  Compression Type:
+    en: {displayName: Compression Type, description: Enable compression at transport-level
+        requests and responses}
+    zh: {description: 在传输级别启用压缩请求和响应, displayName: 压缩类型}
+  connect-timeout-ms:
+    en: {displayName: Connect Timout (ms), description: 'Connection timeout (in milliseconds).
+        0 means no timeout. If no value is set, the underlying default will be used.'}
+    zh: {description: 连接超时（毫秒）。0表示无超时。如果未设置值，则将使用基础默认值。, displayName: 连接超时（毫秒）}
+  Keyspace:
+    en: {displayName: Keyspace, description: 'The Cassandra Keyspace to connect to.
+        If no keyspace is specified, the query will need to include the keyspace name
+        before any table reference, in case of ''query'' native processors or if the
+        processor supports the ''Table'' property, the keyspace name has to be provided
+        with the table name in the form of <KEYSPACE>.<TABLE>'}
+    zh: {description: 要连接到的Cassandra密钥空间。如果未指定密钥空间，则查询将需要在任何表引用之前包含密钥空间名称，如果是“query”本机处理器，或者如果处理器支持“table”属性，则密钥空间名称必须与表名称一起以＜Keyspace＞的形式提供。＜table＞,
+      displayName: 密钥空间}
+  read-timeout-ms:
+    en: {displayName: Read Timout (ms), description: 'Read timeout (in milliseconds).
+        0 means no timeout. If no value is set, the underlying default will be used.'}
+    zh: {description: 读取超时（毫秒）。0表示无超时。如果未设置值，则将使用基础默认值。, displayName: 读取超时（毫秒）}
+  Client Auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  Cassandra Contact Points:
+    en: {displayName: Cassandra Contact Points, description: 'Contact points are addresses
+        of Cassandra nodes. The list of contact points should be comma-separated and
+        in hostname:port format. Example node1:port,node2:port,.... The default client
+        port for Cassandra is 9042, but the port(s) must be explicitly specified.'}
+    zh: {description: '联系点是Cassandra节点的地址。联系人列表应以逗号分隔，并采用主机名：端口格式。示例node1:port，node2:port，….Cassandra的默认客户端端口是9042，但必须显式指定端口。',
+      displayName: Cassandra联络点}
+  Password:
+    en: {displayName: Password, description: Password to access the Cassandra cluster}
+    zh: {description: 访问Cassandra群集的密码, displayName: 暗语}
+tags:
+  en: [cassandra, dbcp, database, connection, pooling]
+  zh: [卡桑德拉, 数据库cp, 数据库, 联系, 汇集，汇集]

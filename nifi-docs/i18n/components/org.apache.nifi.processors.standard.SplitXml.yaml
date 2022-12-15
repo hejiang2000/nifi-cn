@@ -1,0 +1,36 @@
+relationships:
+  original: {en: 'The original FlowFile that was split into segments. If the FlowFile
+      fails processing, nothing will be sent to this relationship', zh: 拆分为多个段的原始FlowFile。如果FlowFile处理失败，则不会向此关系发送任何内容}
+  split: {en: All segments of the original FlowFile will be routed to this relationship,
+    zh: 原始FlowFile的所有段都将路由到此关系}
+  failure: {en: 'If a FlowFile fails processing for any reason (for example, the FlowFile
+      is not valid XML), it will be routed to this relationship', zh: 如果FlowFile由于任何原因（例如，FlowFile不是有效的XML）处理失败，它将被路由到此关系}
+systemResourceConsiderations:
+  en: ['The entirety of the FlowFile''s content (as a Document object) is read into
+      memory, in addition to all of the generated FlowFiles representing the split
+      XML. A Document object can take approximately 10 times as much memory as the
+      size of the XML. For example, a 1 MB XML document may use 10 MB of memory. If
+      many splits are generated due to the size of the XML, a two-phase approach may
+      be necessary to avoid excessive use of memory.']
+  zh: [除了表示拆分XML的所有生成的FlowFile之外，FlowFile的全部内容（作为文档对象）都被读入内存。Document对象占用的内存大约是XML大小的10倍。例如，1
+      MB的XML文档可以使用10 MB的内存。如果由于XML的大小而产生了许多拆分，则可能需要两阶段方法来避免过度使用内存。]
+capabilityDescription: {en: 'Splits an XML File into multiple separate FlowFiles,
+    each comprising a child or descendant of the original root element', zh: 将XML文件拆分为多个单独的FlowFiles，每个FlowFiles包含原始根元素的子元素或后代}
+properties:
+  Split Depth:
+    en: {displayName: Split Depth, description: 'Indicates the XML-nesting depth to
+        start splitting XML fragments. A depth of 1 means split the root''s children,
+        whereas a depth of 2 means split the root''s children''s children and so forth.'}
+    zh: {description: 指示开始拆分XML片段的XML嵌套深度。深度为1表示分割根的子对象，而深度为2表示分割根对象的子对象等等。, displayName: 拆分深度（Split
+        Depth）}
+writeAttributes:
+  'segment.original.filename ': {en: The filename of the parent FlowFile, zh: 父FlowFile的文件名}
+  fragment.identifier: {en: All split FlowFiles produced from the same parent FlowFile
+      will have the same randomly generated UUID added for this attribute, zh: 从同一父FlowFile生成的所有拆分FlowFile都将为此属性添加相同的随机生成UUID}
+  fragment.index: {en: A one-up number that indicates the ordering of the split FlowFiles
+      that were created from a single parent FlowFile, zh: 一个向上的数字，表示从单个父FlowFile创建的拆分FlowFile的顺序}
+  fragment.count: {en: The number of split FlowFiles generated from the parent FlowFile,
+    zh: 从父FlowFile生成的拆分FlowFile的数量}
+tags:
+  en: [xml, split]
+  zh: [xml格式, 分裂]

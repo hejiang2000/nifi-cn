@@ -1,0 +1,66 @@
+relationships:
+  success: {en: All FlowFiles are routed to success, zh: 所有FlowFiles都被路由成功}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+capabilityDescription: {en: 'Pulls messages from a ActiveMQ JMS Topic, creating a
+    FlowFile for each JMS Message or bundle of messages, as configured.', zh: 从ActiveMQ
+    JMS主题中提取消息，根据配置为每个JMS消息或消息束创建流文件。}
+properties:
+  Copy JMS Properties to Attributes:
+    en: {displayName: Copy JMS Properties to Attributes, description: 'Whether or
+        not the JMS Message Properties should be copied to the FlowFile Attributes;
+        if so, the attribute name will be jms.XXX, where XXX is the JMS Property name'}
+    zh: {description: 是否应将JMS消息属性复制到流文件属性；如果是，则属性名称将为jms。三十、 其中XXX是JMS属性名称, displayName: 将JMS属性复制到属性}
+  Destination Name:
+    en: {displayName: Destination Name, description: The name of the JMS Topic or
+        queue to use}
+    zh: {description: 要使用的JMS主题或队列的名称, displayName: 目标名称}
+  URL:
+    en: {displayName: URL, description: The URL of the JMS Server}
+    zh: {description: JMS服务器的URL, displayName: 统一资源定位地址}
+  Message Selector:
+    en: {displayName: Message Selector, description: The JMS Message Selector to use
+        in order to narrow the messages that are pulled}
+    zh: {description: 要使用的JMS消息选择器，以缩小拉取的消息, displayName: 消息选择器}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The Controller Service to
+        use in order to obtain an SSL Context.}
+    zh: {description: 用于获取SSL上下文的控制器服务。, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username used for authentication and
+        authorization}
+    zh: {description: 用于身份验证和授权的用户名, displayName: 用户名}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: The amount of time to wait
+        when attempting to receive a message before giving up and assuming failure}
+    zh: {description: 在放弃并假设失败之前尝试接收消息时等待的时间, displayName: 通信超时}
+  Message Batch Size:
+    en: {displayName: Message Batch Size, description: The number of messages to pull/push
+        in a single iteration of the processor}
+    zh: {description: 在处理器的一次迭代中要拉/推的消息数, displayName: 消息批大小}
+  Acknowledgement Mode:
+    en: {displayName: Acknowledgement Mode, description: The JMS Acknowledgement Mode.
+        Using Auto Acknowledge can cause messages to be lost on restart of NiFi but
+        may provide better performance than Client Acknowledge.}
+    zh: {description: JMS确认模式。使用自动确认会导致重新启动NiFi时消息丢失，但可能提供比客户端确认更好的性能。, displayName: 确认模式}
+  Use Durable Subscription:
+    en: {displayName: Use Durable Subscription, description: 'If true, connections
+        to the specified topic will use Durable Subscription so that messages are
+        queued when we are not pulling them'}
+    zh: {description: 如果为true，则到指定主题的连接将使用持久订阅，以便在不拉动消息时将其排队, displayName: 使用持久订阅}
+  Client ID Prefix:
+    en: {displayName: Client ID Prefix, description: A human-readable ID that can
+        be used to associate connections with yourself so that the maintainers of
+        the JMS Server know who to contact if problems arise}
+    zh: {description: 一个人类可读的ID，可用于将连接与自己关联起来，以便JMS服务器的维护人员知道在出现问题时应该联系谁, displayName: 客户端ID前缀}
+  JMS Provider:
+    en: {displayName: JMS Provider, description: The Provider used for the JMS Server}
+    zh: {description: 用于JMS服务器的提供程序, displayName: 提供者}
+  Password:
+    en: {displayName: Password, description: Password used for authentication and
+        authorization}
+    zh: {description: 用于身份验证和授权的密码, displayName: 暗语}
+tags:
+  en: [jms, topic, subscription, durable, non-durable, listen, get, pull, source,
+    consume, consumer]
+  zh: [jms公司, 话题, 订阅, 耐用的, 不耐用的, 听, 收到, 拉, 来源, 消费, 消费者]

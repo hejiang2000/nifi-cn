@@ -1,0 +1,108 @@
+relationships:
+  original: {en: The FlowFiles that were used to create the bundle, zh: 用于创建捆绑包的FlowFiles}
+  failure: {en: 'If the bundle cannot be created, all FlowFiles that would have been
+      used to created the bundle will be transferred to failure', zh: 如果无法创建捆绑包，则用于创建捆绑包的所有FlowFiles都将转移到失败状态}
+  merged: {en: The FlowFile containing the merged records, zh: 包含合并记录的FlowFile}
+capabilityDescription: {en: 'This Processor merges together multiple record-oriented
+    FlowFiles into a single FlowFile that contains all of the Records of the input
+    FlowFiles. This Processor works by creating ''bins'' and then adding FlowFiles
+    to these bins until they are full. Once a bin is full, all of the FlowFiles will
+    be combined into a single output FlowFile, and that FlowFile will be routed to
+    the ''merged'' Relationship. A bin will consist of potentially many ''like FlowFiles''.
+    In order for two FlowFiles to be considered ''like FlowFiles'', they must have
+    the same Schema (as identified by the Record Reader) and, if the <Correlation
+    Attribute Name> property is set, the same value for the specified attribute. See
+    Processor Usage and Additional Details for more information.', zh: 此处理器将多个面向记录的流文件合并到一个包含输入流文件的所有记录的单个流文件中。此处理器的工作方式是创建“箱”，然后将FlowFiles添加到这些箱中，直到箱满为止。一旦容器已满，所有FlowFile将合并为一个输出FlowFile，该FlowFile将路由到“合并”关系。一个bin可能包含许多“类似FlowFiles”。为了使两个FlowFiles被视为“类似于FlowFiles”，它们必须具有相同的架构（由记录读取器标识），并且如果设置了<Correlation
+    Attribute Name>属性，则指定属性的值必须相同。有关更多信息，请参阅处理器使用情况和其他详细信息。}
+readAttributes:
+  fragment.identifier: {en: Applicable only if the <Merge Strategy> property is set
+      to Defragment. All FlowFiles with the same value for this attribute will be
+      bundled together., zh: 仅当＜合并策略＞属性设置为碎片整理时适用。此属性值相同的所有FlowFiles将绑定在一起。}
+  fragment.count: {en: Applicable only if the <Merge Strategy> property is set to
+      Defragment. This attribute must be present on all FlowFiles with the same value
+      for the fragment.identifier attribute. All FlowFiles in the same bundle must
+      have the same value for this attribute. The value of this attribute indicates
+      how many FlowFiles should be expected in the given bundle., zh: 仅当＜合并策略＞属性设置为碎片整理时适用。此属性必须存在于具有片段相同值的所有FlowFiles上。标识符属性。同一捆绑包中的所有FlowFiles必须具有该属性的相同值。此属性的值指示给定捆绑包中应包含多少FlowFiles。}
+properties:
+  max-bin-age:
+    en: {displayName: Max Bin Age, description: 'The maximum age of a Bin that will
+        trigger a Bin to be complete. Expected format is <duration> <time unit> where
+        <duration> is a positive integer and time unit is one of seconds, minutes,
+        hours'}
+    zh: {description: 将触发Bin完成的Bin的最长期限。预期格式为＜持续时间＞＜时间单位＞，其中＜持续时间＜是正整数，时间单位为秒、分钟、小时之一,
+      displayName: 最大箱龄}
+  correlation-attribute-name:
+    en: {displayName: Correlation Attribute Name, description: 'If specified, two
+        FlowFiles will be binned together only if they have the same value for this
+        Attribute. If not specified, FlowFiles are bundled by the order in which they
+        are pulled from the queue.'}
+    zh: {description: 如果指定，则只有当两个FlowFiles具有相同的该属性值时，才会将它们合并在一起。如果未指定，FlowFiles将按照从队列中提取的顺序进行绑定。,
+      displayName: 相关属性名称}
+  Attribute Strategy:
+    en: {displayName: Attribute Strategy, description: 'Determines which FlowFile
+        attributes should be added to the bundle. If ''Keep All Unique Attributes''
+        is selected, any attribute on any FlowFile that gets bundled will be kept
+        unless its value conflicts with the value from another FlowFile. If ''Keep
+        Only Common Attributes'' is selected, only the attributes that exist on all
+        FlowFiles in the bundle, with the same value, will be preserved.'}
+    zh: {description: 确定应将哪些FlowFile属性添加到捆绑包中。如果选择“保留所有唯一属性”，则任何绑定的FlowFile上的任何属性都将被保留，除非其值与另一个FlowFile的值冲突。如果选择“仅保留公共属性”，则仅保留捆绑包中所有FlowFiles上存在的具有相同值的属性。,
+      displayName: 属性策略}
+  min-records:
+    en: {displayName: Minimum Number of Records, description: The minimum number of
+        records to include in a bin}
+    zh: {description: 要包含在bin中的最小记录数, displayName: 最小记录数}
+  max-bin-size:
+    en: {displayName: Maximum Bin Size, description: 'The maximum size for the bundle.
+        If not specified, there is no maximum. This is a ''soft limit'' in that if
+        a FlowFile is added to a bin, all records in that FlowFile will be added,
+        so this limit may be exceeded by up to the number of bytes in last input FlowFile.'}
+    zh: {description: 捆绑包的最大大小。如果未指定，则没有最大值。这是一个“软限制”，因为如果将FlowFile添加到bin中，则将添加该FlowFile中的所有记录，因此该限制可能会超过上一个输入FlowFile的字节数。,
+      displayName: 最大纸盒大小}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  merge-strategy:
+    en: {displayName: Merge Strategy, description: Specifies the algorithm used to
+        merge records. The 'Defragment' algorithm combines fragments that are associated
+        by attributes back into a single cohesive FlowFile. The 'Bin-Packing Algorithm'
+        generates a FlowFile populated by arbitrarily chosen FlowFiles}
+    zh: {description: 指定用于合并记录的算法。“碎片整理”算法将由属性关联的片段组合回单个内聚的FlowFile。“Bin Packing Algorithm”生成由任意选择的FlowFile填充的FlowFile,
+      displayName: 合并策略}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  max-records:
+    en: {displayName: Maximum Number of Records, description: 'The maximum number
+        of Records to include in a bin. This is a ''soft limit'' in that if a FlowFIle
+        is added to a bin, all records in that FlowFile will be added, so this limit
+        may be exceeded by up to the number of records in the last input FlowFile.'}
+    zh: {description: 要包含在bin中的最大记录数。这是一个“软限制”，因为如果将FlowFIle添加到bin，则将添加该FlowFIle中的所有记录，因此可以超过此限制，最多可以超过最后一个输入FlowFIle中记录的数量。,
+      displayName: 最大记录数}
+  min-bin-size:
+    en: {displayName: Minimum Bin Size, description: The minimum size of for the bin}
+    zh: {description: 垃圾箱的最小尺寸, displayName: 最小纸盒大小}
+  max.bin.count:
+    en: {displayName: Maximum Number of Bins, description: 'Specifies the maximum
+        number of bins that can be held in memory at any one time. This number should
+        not be smaller than the maximum number of concurrent threads for this Processor,
+        or the bins that are created will often consist only of a single incoming
+        FlowFile.'}
+    zh: {description: 指定一次可以保存在内存中的最大箱数。此数量不应小于此处理器的最大并发线程数，否则创建的容器通常只包含一个传入的FlowFile。,
+      displayName: 最大箱数}
+writeAttributes:
+  merge.uuid: {en: UUID of the merged FlowFile that will be added to the original
+      FlowFiles attributes, zh: 将添加到原始FlowFiles属性的合并FlowFile的UUID}
+  record.count: {en: The merged FlowFile will have a 'record.count' attribute indicating
+      the number of records that were written to the FlowFile., zh: 合并的FlowFile将有一个“”记录。count”属性，指示写入FlowFile的记录数。}
+  mime.type: {en: The MIME Type indicated by the Record Writer, zh: 记录编写器指示的MIME类型}
+  merge.count: {en: The number of FlowFiles that were merged into this bundle, zh: 合并到此捆绑包中的FlowFiles数}
+  merge.bin.age: {en: 'The age of the bin, in milliseconds, when it was merged and
+      output. Effectively this is the greatest amount of time that any FlowFile in
+      this bundle remained waiting in this processor before it was output', zh: 合并和输出bin时bin的年龄（以毫秒为单位）。实际上，这是此捆绑包中的任何FlowFile在输出之前在此处理器中等待的最长时间}
+  <Attributes from Record Writer>: {en: Any Attribute that the configured Record Writer
+      returns will be added to the FlowFile., zh: 配置的记录编写器返回的任何属性都将添加到FlowFile中。}
+tags:
+  en: [merge, record, content, correlation, stream, event]
+  zh: [合并, 记录, 所容纳之物, 相关性, 流动, 事件]

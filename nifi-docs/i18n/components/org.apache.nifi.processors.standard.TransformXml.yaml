@@ -1,0 +1,51 @@
+relationships:
+  success: {en: The FlowFile with transformed content will be routed to this relationship,
+    zh: 具有转换内容的FlowFile将路由到此关系}
+  failure: {en: 'If a FlowFile fails processing for any reason (for example, the FlowFile
+      is not valid XML), it will be routed to this relationship', zh: 如果FlowFile由于任何原因（例如，FlowFile不是有效的XML）处理失败，它将被路由到此关系}
+dynamicProperties:
+  An XSLT transform parameter name:
+    en: {description: These XSLT parameters are passed to the transformer, value: An
+        XSLT transform parameter value}
+    zh: {description: 这些XSLT参数传递给转换器, value: XSLT转换参数值}
+capabilityDescription: {en: 'Applies the provided XSLT file to the FlowFile XML payload.
+    A new FlowFile is created with transformed content and is routed to the ''success''
+    relationship. If the XSL transform fails, the original FlowFile is routed to the
+    ''failure'' relationship', zh: 将提供的XSLT文件应用于FlowFile XML负载。使用转换后的内容创建新的FlowFile，并将其路由到“成功”关系。如果XSL转换失败，原始FlowFile将路由到“失败”关系}
+properties:
+  xslt-controller-key:
+    en: {displayName: XSLT Lookup key, description: Key used to retrieve the XSLT
+        definition from the XSLT lookup controller. This property must be set when
+        using the XSLT controller property.}
+    zh: {description: 用于从XSLT查找控制器检索XSLT定义的键。使用XSLT控制器属性时必须设置此属性。, displayName: XSLT查找键}
+  xslt-controller:
+    en: {displayName: XSLT Lookup, description: 'Controller lookup used to store XSLT
+        definitions. One of the ''XSLT file name'' and ''XSLT Lookup'' properties
+        must be defined. WARNING: note that the lookup controller service should not
+        be used to store large XSLT files.'}
+    zh: {description: 用于存储XSLT定义的控制器查找。必须定义“XSLT文件名”和“XSLT查找”属性之一。警告：请注意，查找控制器服务不应用于存储大型XSLT文件。,
+      displayName: XSLT查找}
+  secure-processing:
+    en: {displayName: Secure processing, description: Whether or not to mitigate various
+        XML-related attacks like XXE (XML External Entity) attacks.}
+    zh: {description: 是否减轻各种与XML相关的攻击，如XXE（XML外部实体）攻击。, displayName: 安全处理}
+  cache-size:
+    en: {displayName: Cache size, description: Maximum number of stylesheets to cache.
+        Zero disables the cache.}
+    zh: {description: 要缓存的样式表的最大数量。零将禁用缓存。, displayName: 缓存大小}
+  indent-output:
+    en: {displayName: Indent, description: Whether or not to indent the output.}
+    zh: {description: 是否缩进输出。, displayName: 缩进}
+  XSLT file name:
+    en: {displayName: XSLT file name, description: Provides the name (including full
+        path) of the XSLT file to apply to the FlowFile XML content.One of the 'XSLT
+        file name' and 'XSLT Lookup' properties must be defined.}
+    zh: {description: 提供要应用于FlowFile XML内容的XSLT文件的名称（包括完整路径）。必须定义“XSLT文件名”和“XSLT查找”属性之一。,
+      displayName: XSLT文件名}
+  cache-ttl-after-last-access:
+    en: {displayName: Cache TTL after last access, description: The cache TTL (time-to-live)
+        or how long to keep stylesheets in the cache after last access.}
+    zh: {description: 缓存TTL（生存时间）或上次访问后在缓存中保留样式表的时间。, displayName: 上次访问后的缓存TTL}
+tags:
+  en: [xml, xslt, transform]
+  zh: [xml格式, xslt公司, 使改变]

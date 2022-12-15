@@ -74,7 +74,7 @@
 
         // format the connection name.. fall back to id
         var connectionStyle = 'unset';
-        var connectionName = 'Connection';
+        var connectionName = '连接';
         if (connectionEntity.permissions.canRead === true) {
             var formattedConnectionName = nfCanvasUtils.formatConnectionName(connectionEntity.component);
             if (formattedConnectionName !== '') {
@@ -423,7 +423,7 @@
             $('#connections-dialog').modal({
                 scrollableContentStyle: 'scrollable',
                 buttons: [{
-                    buttonText: 'Close',
+                    buttonText: '关闭',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -477,7 +477,7 @@
 
             // ensure there are downstream components
             if ($('#connections-container').is(':empty')) {
-                $('#connections-container').html('<span class="unset">No downstream components</span>');
+                $('#connections-container').html('<span class="unset">无下游组件</span>');
             }
 
             // show the downstream dialog
@@ -517,7 +517,7 @@
 
             // ensure there are upstream components
             if ($('#connections-container').is(':empty')) {
-                $('#connections-container').html('<span class="unset">No upstream components</span>');
+                $('#connections-container').html('<span class="unset">无上游组件</span>');
             }
 
             // show the upstream dialog
@@ -562,7 +562,7 @@
 
             // ensure there are downstream components
             if ($('#connections-container').is(':empty')) {
-                $('#connections-container').html('<span class="unset">No downstream components</span>');
+                $('#connections-container').html('<span class="unset">无下游组件</span>');
             }
 
             // show the downstream dialog
@@ -607,7 +607,7 @@
 
             // ensure there are upstream components
             if ($('#connections-container').is(':empty')) {
-                $('#connections-container').html('<span class="unset">No upstream components</span>');
+                $('#connections-container').html('<span class="unset">无上游组件</span>');
             }
 
             // show the dialog
@@ -647,7 +647,7 @@
 
             // ensure there are downstream components
             if ($('#connections-container').is(':empty')) {
-                $('#connections-container').html('<span class="unset">No downstream components</span>');
+                $('#connections-container').html('<span class="unset">无下游组件</span>');
             }
 
             // show the downstream dialog
@@ -697,7 +697,7 @@
 
                 // ensure there are upstream components
                 if ($('#connections-container').is(':empty')) {
-                    $('#connections-container').html('<span class="unset">No upstream components</span>');
+                    $('#connections-container').html('<span class="unset">无上游组件</span>');
                 }
 
                 // show the upstream dialog
@@ -748,7 +748,7 @@
 
                 // ensure there are downstream components
                 if ($('#connections-container').is(':empty')) {
-                    $('#connections-container').html('<span class="unset">No downstream components</span>');
+                    $('#connections-container').html('<span class="unset">无下游组件</span>');
                 }
 
                 // show the downstream dialog
@@ -789,7 +789,7 @@
 
             // ensure there are upstream components
             if ($('#connections-container').is(':empty')) {
-                $('#connections-container').html('<span class="unset">No upstream components</span>');
+                $('#connections-container').html('<span class="unset">无上游组件</span>');
             }
 
             // show the upstream dialog
@@ -814,7 +814,7 @@
             // populate the downstream dialog
             $('#connections-context')
                 .append('<div class="search-result-icon icon-funnel"></div>')
-                .append($('<div class="connections-component-name"></div>').text('Funnel'))
+                .append($('<div class="connections-component-name"></div>').text('漏斗'))
                 .append('<div class="clear"></div>');
 
             // add the destination for each connection
@@ -827,7 +827,7 @@
 
             // ensure there are downstream components
             if ($('#connections-container').is(':empty')) {
-                $('#connections-container').html('<span class="unset">No downstream components</span>');
+                $('#connections-container').html('<span class="unset">无下游组件</span>');
             }
 
             // show the downstream dialog
@@ -852,7 +852,7 @@
             // populate the upstream dialog
             $('#connections-context')
                 .append('<div class="search-result-icon icon-funnel"></div>')
-                .append($('<div class="upstream-destination-name"></div>').text('Funnel'))
+                .append($('<div class="upstream-destination-name"></div>').text('漏斗'))
                 .append('<div class="clear"></div>');
 
             // add the source for each connection
@@ -865,7 +865,7 @@
 
             // ensure there are upstream components
             if ($('#connections-container').is(':empty')) {
-                $('#connections-container').html('<span class="unset">No upstream components</span>');
+                $('#connections-container').html('<span class="unset">无上游组件</span>');
             }
 
             // show the upstream dialog

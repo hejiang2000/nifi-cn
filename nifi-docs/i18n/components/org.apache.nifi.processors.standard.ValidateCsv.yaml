@@ -1,0 +1,51 @@
+relationships:
+  valid: {en: FlowFiles that are successfully validated against the schema are routed
+      to this relationship, zh: 根据架构成功验证的FlowFiles将路由到此关系}
+  invalid: {en: FlowFiles that are not valid according to the specified schema are
+      routed to this relationship, zh: 根据指定架构无效的FlowFiles将路由到此关系}
+capabilityDescription: {en: Validates the contents of FlowFiles against a user-specified
+    CSV schema. Take a look at the additional documentation of this processor for
+    some schema examples., zh: 根据用户指定的CSV架构验证FlowFiles的内容。请查看此处理器的其他文档以获取一些模式示例。}
+properties:
+  validate-csv-schema:
+    en: {displayName: Schema, description: 'The schema to be used for validation.
+        Is expected a comma-delimited string representing the cell processors to apply.
+        The following cell processors are allowed in the schema definition: [ParseBigDecimal,
+        ParseBool, ParseChar, ParseDate, ParseDouble, ParseInt, ParseLong, Optional,
+        DMinMax, Equals, ForbidSubStr, LMinMax, NotNull, Null, RequireHashCode, RequireSubStr,
+        Strlen, StrMinMax, StrNotNullOrEmpty, StrRegEx, Unique, UniqueHashCode, IsIncludedIn].
+        Note: cell processors cannot be nested except with Optional.'}
+    zh: {description: '要用于验证的架构。应为逗号分隔的字符串，表示要应用的单元格处理器。架构定义中允许使用以下单元格处理器：[ParseBigDecimal、ParseBool、ParseChar、ParseDate、ParseDouble、ParseInt、ParseLong、Optional、DMinMax、Equals、ForbidSubStr、LMinMax、NotNull、Null、RequireHashCode、RequireSubStr、Strlen、StrMinMax、StrNotNullOrEmpty、StrRegEx、Unique、UniqueHashCode、IsIncludedIn]。注意：单元格处理器不能嵌套，除非带有可选。',
+      displayName: 架构}
+  validate-csv-eol:
+    en: {displayName: End of line symbols, description: 'Symbols used as ''end of
+        line'' in the incoming data. Example: \n'}
+    zh: {description: 在传入数据中用作“行尾”的符号。示例：\n, displayName: 行尾符号}
+  validate-csv-delimiter:
+    en: {displayName: Delimiter character, description: 'Character used as ''delimiter''
+        in the incoming data. Example: ,'}
+    zh: {description: 在传入数据中用作“分隔符”的字符。示例：，, displayName: 分隔符字符}
+  validate-csv-header:
+    en: {displayName: Header, description: 'True if the incoming flow file contains
+        a header to ignore, false otherwise.'}
+    zh: {description: 如果传入流文件包含要忽略的标头，则为True，否则为false。, displayName: 收割台}
+  validate-csv-quote:
+    en: {displayName: Quote character, description: 'Character used as ''quote'' in
+        the incoming data. Example: "'}
+    zh: {description: 在传入数据中用作“引号”的字符。示例：“, displayName: 引号字符}
+  validate-csv-strategy:
+    en: {displayName: Validation strategy, description: Strategy to apply when routing
+        input files to output relationships.}
+    zh: {description: 将输入文件路由到输出关系时要应用的策略。, displayName: 验证策略}
+writeAttributes:
+  count.valid.lines: {en: 'If line by line validation, number of valid lines extracted
+      from the source data', zh: 如果逐行验证，则从源数据中提取的有效行数}
+  count.total.lines: {en: 'If line by line validation, total number of lines in the
+      source data', zh: 如果逐行验证，则源数据中的行总数}
+  validation.error.message: {en: 'For flow files routed to invalid, message of the
+      first validation error', zh: 对于路由到无效的流文件，第一个验证错误的消息}
+  count.invalid.lines: {en: 'If line by line validation, number of invalid lines extracted
+      from the source data', zh: 如果逐行验证，则从源数据中提取的无效行数}
+tags:
+  en: [csv, schema, validation]
+  zh: [csv格式, 模式, 验证]

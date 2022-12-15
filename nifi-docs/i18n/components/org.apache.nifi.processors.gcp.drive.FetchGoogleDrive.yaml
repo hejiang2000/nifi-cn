@@ -1,0 +1,30 @@
+relationships:
+  success: {en: A flowfile will be routed here for each successfully fetched File.,
+    zh: 对于每个成功获取的文件，将在此处路由一个流文件。}
+  failure: {en: A flowfile will be routed here for each File for which fetch was attempted
+      but failed., zh: 对于尝试获取但失败的每个文件，将在此处路由一个流文件。}
+capabilityDescription: {en: Fetches files from a Google Drive Folder. Designed to
+    be used in tandem with ListGoogleDrive. For how to setup access to Google Drive
+    please see additional details., zh: 从Google驱动器文件夹获取文件。设计用于与ListGoogleDrive配合使用。有关如何设置对Google
+    Drive的访问，请参阅其他详细信息。}
+properties:
+  drive-file-id:
+    en: {displayName: File ID, description: The Drive ID of the File to fetch}
+    zh: {description: 要获取的文件的驱动器ID, displayName: 文件ID}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  gcp-credentials-provider-service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+writeAttributes:
+  error.message: {en: The error message returned by Google Drive when the fetch of
+      a file fails, zh: 当文件提取失败时，Google Drive返回的错误消息}
+  error.code: {en: The error code returned by Google Drive when the fetch of a file
+      fails, zh: 获取文件失败时Google Drive返回的错误代码}
+tags:
+  en: [google, drive, storage, fetch]
+  zh: [谷歌, 驾驶, 存储, 取来]

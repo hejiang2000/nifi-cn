@@ -1,0 +1,117 @@
+relationships:
+  success: {en: FlowFiles containing an array of one or more Tweets, zh: 包含一个或多个推特数组的FlowFiles}
+capabilityDescription: {en: 'Streams tweets from Twitter''s streaming API v2. The
+    stream provides a sample stream or a search stream based on previously uploaded
+    rules. This processor also provides a pass through for certain fields of the tweet
+    to be returned as part of the response. See https://developer.twitter.com/en/docs/twitter-api/data-dictionary/introduction
+    for more information regarding the Tweet object model.', zh: '来自Twitter的流API v2的推特流。该流提供基于先前上传的规则的样本流或搜索流。该处理器还为作为响应的一部分返回的推特的某些字段提供传递。看见https://developer.twitter.com/en/docs/twitter-api/data-dictionary/introduction有关Tweet对象模型的更多信息。'}
+properties:
+  read-timeout:
+    en: {displayName: Read Timeout, description: The maximum time of inactivity between
+        receiving tweets from Twitter through the API before a timeout. Setting the
+        value to 0 disables read timeouts.}
+    zh: {description: 超时前通过API从Twitter接收推文之间的最长不活动时间。将值设置为0将禁用读取超时。, displayName: 读取超时}
+  poll-fields:
+    en: {displayName: Poll Fields, description: 'A comma-separated list of poll fields
+        to be returned as part of the tweet. Refer to https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/poll
+        for proper usage. Possible field values include: duration_minutes, end_datetime,
+        id, options, voting_status'}
+    zh: {description: '以逗号分隔的投票字段列表，作为推文的一部分返回。提到https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/poll以便正确使用。可能的字段值包括：duration_minutes、end_datetime、id、options、voting_status',
+      displayName: 轮询字段}
+  backoff-attempts:
+    en: {displayName: Backoff Attempts, description: 'The number of reconnection tries
+        the processor will attempt in the event of a disconnection of the stream for
+        any reason, before throwing an exception. To start a stream after this exception
+        occur and the connection is fixed, please stop and restart the processor.
+        If the valueof this property is 0, then backoff will never occur and the processor
+        will always need to be restartedif the stream fails.'}
+    zh: {description: 如果流因任何原因断开，处理器在引发异常之前将尝试的重新连接次数。若要在发生此异常且连接已修复后启动流，请停止并重新启动处理器。如果此属性的值为0，则永远不会发生回退，并且在流失败时始终需要重新启动处理器。,
+      displayName: 后退尝试次数}
+  bearer-token:
+    en: {displayName: Bearer Token, description: The Bearer Token provided by Twitter.}
+    zh: {description: Twitter提供的承载令牌。, displayName: 不记名代币}
+  place-fields:
+    en: {displayName: Place Fields, description: 'A comma-separated list of place
+        fields to be returned as part of the tweet. Refer to https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/place
+        for proper usage. Possible field values include: contained_within, country,
+        country_code, full_name, geo, id, name, place_type'}
+    zh: {description: '一个逗号分隔的位置字段列表，作为推文的一部分返回。提到https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/place以便正确使用。可能的字段值包括：contained_inten、country、country_code、full_name、geo、id、name、place_type',
+      displayName: 放置字段}
+  media-fields:
+    en: {displayName: Media Fields, description: 'A comma-separated list of media
+        fields to be returned as part of the tweet. Refer to https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media
+        for proper usage. Possible field values include: alt_text, duration_ms, height,
+        media_key, non_public_metrics, organic_metrics, preview_image_url, promoted_metrics,
+        public_metrics, type, url, width'}
+    zh: {description: '以逗号分隔的媒体字段列表，作为推文的一部分返回。提到https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media以便正确使用。可能的字段值包括：alt_text、duration_ms、height、media_key、non_public_metrics、organic_metrics、preview_image_url、promoted_metrics、public_metrics，type、url、width',
+      displayName: 媒体字段}
+  batch-size:
+    en: {displayName: Batch Size, description: The maximum size of the number of Tweets
+        to be written to a single FlowFile. Will write fewer Tweets based on the number
+        available in the queue at the time of processor invocation.}
+    zh: {description: 要写入单个FlowFile的Tweet数的最大大小。将根据处理器调用时队列中可用的数量编写更少的Tweet。, displayName: 批量大小}
+  connect-timeout:
+    en: {displayName: Connect Timeout, description: The maximum time in which client
+        should establish a connection with the Twitter API before a time out. Setting
+        the value to 0 disables connection timeouts.}
+    zh: {description: 超时前客户端应与Twitter API建立连接的最长时间。将值设置为0将禁用连接超时。, displayName: 连接超时}
+  backoff-time:
+    en: {displayName: Backoff Time, description: The duration to backoff before requesting
+        a new stream ifthe current one fails for any reason. Will increase by factor
+        of 2 every time a restart fails}
+    zh: {description: 如果当前流由于任何原因失败，则请求新流之前要回退的持续时间。每次重启失败时将增加2倍, displayName: 退避时间}
+  queue-size:
+    en: {displayName: Queue Size, description: Maximum size of internal queue for
+        streamed messages}
+    zh: {description: 流式消息的最大内部队列大小, displayName: 队列大小}
+  stream-endpoint:
+    en: {displayName: Stream Endpoint, description: The source from which the processor
+        will consume Tweets.}
+    zh: {description: 处理器将使用推特的来源。, displayName: 流终结点}
+  base-path:
+    en: {displayName: Base Path, description: The base path that the processor will
+        use for making HTTP requests. The default value should be sufficient for most
+        use cases.}
+    zh: {description: 处理器用于发出HTTP请求的基本路径。对于大多数用例，默认值应该足够了。, displayName: 基本路径}
+  tweet-fields:
+    en: {displayName: Tweet Fields, description: 'A comma-separated list of tweet
+        fields to be returned as part of the tweet. Refer to https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
+        for proper usage. Possible field values include: attachments, author_id, context_annotations,
+        conversation_id, created_at, entities, geo, id, in_reply_to_user_id, lang,
+        non_public_metrics, organic_metrics, possibly_sensitive, promoted_metrics,
+        public_metrics, referenced_tweets, reply_settings, source, text, withheld'}
+    zh: {description: '以逗号分隔的推文字段列表，作为推文的一部分返回。提到https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet以便正确使用。可能的字段值包括：attachments、author_id、context_annotations、conversation_id、created_at、entities、geo、id、in_reply_to_user_id、lang、non_public_metrics、organic_metrics、possibly_sensitive、promoted_metrics、public_metrics、referenced_weets、reply_settings、source、text、retried',
+      displayName: 推特字段}
+  maximum-backoff-time:
+    en: {displayName: Maximum Backoff Time, description: The maximum duration to backoff
+        to start attempting a new stream.It is recommended that this number be much
+        higher than the 'Backoff Time' property}
+    zh: {description: 开始尝试新流所需的最长回退时间。建议此数字远高于“回退时间”属性, displayName: 最大退避时间}
+  backfill-minutes:
+    en: {displayName: Backfill Minutes, description: 'The number of minutes (up to
+        5 minutes) of streaming data to be requested after a disconnect. Only available
+        for project with academic research access. See https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/integrate/recovery-and-redundancy-features'}
+    zh: {description: '断开连接后请求的流数据的分钟数（最多5分钟）。仅适用于具有学术研究访问权限的项目。看见https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/integrate/recovery-and-redundancy-features',
+      displayName: 回填分钟数}
+  user-fields:
+    en: {displayName: User Fields, description: 'A comma-separated list of user fields
+        to be returned as part of the tweet. Refer to https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user
+        for proper usage. Possible field values include: created_at, description,
+        entities, id, location, name, pinned_tweet_id, profile_image_url, protected,
+        public_metrics, url, username, verified, withheld'}
+    zh: {description: '以逗号分隔的用户字段列表，作为推文的一部分返回。提到https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user以便正确使用。可能的字段值包括：created_at、description、entities、id、location、name、pinned_weet_id、profile-image_url、protected、public_metrics、url、用户名、已验证、已保留',
+      displayName: 用户字段}
+  expansions:
+    en: {displayName: Expansions, description: 'A comma-separated list of expansions
+        for objects in the returned tweet. See https://developer.twitter.com/en/docs/twitter-api/expansions
+        for proper usage. Possible field values include: author_id, referenced_tweets.id,
+        referenced_tweets.id.author_id, entities.mentions.username, attachments.poll_ids,
+        attachments.media_keys ,in_reply_to_user_id, geo.place_id'}
+    zh: {description: '返回的推文中对象的扩展列表，以逗号分隔。看见https://developer.twitter.com/en/docs/twitter-api/expansions以便正确使用。可能的字段值包括：author_id、referenced_tweets。id，referenced_weets.id.author_id，entities.mentions。用户名、附件。poll_id、附件。媒体密钥，in_reply_to_user_id，geo.place_id',
+      displayName: 扩展}
+writeAttributes:
+  mime.type: {en: The MIME Type set to application/json, zh: MIME类型设置为application/json}
+  tweets: {en: The number of Tweets in the FlowFile, zh: FlowFile中的推特数}
+tags:
+  en: [twitter, tweets, social media, status, json]
+  zh: [啁啾, 推特, 社会化媒体, 地位, json文件]

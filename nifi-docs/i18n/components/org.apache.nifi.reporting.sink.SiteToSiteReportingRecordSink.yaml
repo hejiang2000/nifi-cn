@@ -1,0 +1,65 @@
+capabilityDescription: {en: Provides a service to write records using a configured
+    RecordSetWriter over a Site-to-Site connection., zh: 提供一种服务，通过站点到站点连接使用配置的RecordSetWriter写入记录。}
+properties:
+  Input Port Name:
+    en: {displayName: Input Port Name, description: The name of the Input Port to
+        deliver data to.}
+    zh: {description: 要向其传递数据的输入端口的名称。, displayName: 输入端口名称}
+  s2s-transport-protocol:
+    en: {displayName: Transport Protocol, description: Specifies which transport protocol
+        to use for Site-to-Site communication.}
+    zh: {description: 指定用于站点到站点通信的传输协议。, displayName: 传输协议}
+  s2s-http-proxy-password:
+    en: {displayName: HTTP Proxy password, description: 'Specify an user password
+        to connect to the proxy server, optional.'}
+    zh: {description: 指定连接到代理服务器的用户密码（可选）。, displayName: HTTP代理密码}
+  s2s-http-proxy-hostname:
+    en: {displayName: HTTP Proxy hostname, description: 'Specify the proxy server''s
+        hostname to use. If not specified, HTTP traffics are sent directly to the
+        target NiFi instance.'}
+    zh: {description: 指定要使用的代理服务器的主机名。如果未指定，HTTP流量将直接发送到目标NiFi实例。, displayName: HTTP代理主机名}
+  Destination URL:
+    en: {displayName: Destination URL, description: 'The URL of the destination NiFi
+        instance or, if clustered, a comma-separated list of address in the format
+        of http(s)://host:port/nifi. This destination URL will only be used to initiate
+        the Site-to-Site connection. The data sent by this reporting task will be
+        load-balanced on all the nodes of the destination (if clustered).'}
+    zh: {description: '目标NiFi实例的URL，如果是群集的，则为以逗号分隔的地址列表，格式为http://host:port/NiFi。此目标URL将仅用于启动站点到站点的连接。此报告任务发送的数据将在目标的所有节点（如果已群集）上进行负载平衡。',
+      displayName: 目标网址}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'The SSL Context Service to
+        use when communicating with the destination. If not specified, communications
+        will not be secure.'}
+    zh: {description: 与目标通信时要使用的SSL上下文服务。如果未指定，通信将不安全。, displayName: SSL上下文服务}
+  Compress Events:
+    en: {displayName: Compress Events, description: Indicates whether or not to compress
+        the data being sent.}
+    zh: {description: 指示是否压缩正在发送的数据。, displayName: 压缩事件}
+  s2s-http-proxy-port:
+    en: {displayName: HTTP Proxy port, description: 'Specify the proxy server''s port
+        number, optional. If not specified, default port 80 will be used.'}
+    zh: {description: 指定代理服务器的端口号（可选）。如果未指定，将使用默认端口80。, displayName: HTTP代理端口}
+  Batch Size:
+    en: {displayName: Batch Size, description: 'Specifies how many records to send
+        in a single batch, at most.'}
+    zh: {description: 指定在单个批处理中最多发送多少条记录。, displayName: 批量大小}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: Specifies how long to wait
+        to a response from the destination before deciding that an error has occurred
+        and canceling the transaction}
+    zh: {description: 指定在确定发生错误并取消事务之前等待目标响应的时间, displayName: 通信超时}
+  s2s-http-proxy-username:
+    en: {displayName: HTTP Proxy username, description: 'Specify an user name to connect
+        to the proxy server, optional.'}
+    zh: {description: 指定要连接到代理服务器的用户名（可选）。, displayName: HTTP代理用户名}
+  record-sink-record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records.}
+    zh: {description: 指定用于写入记录的控制器服务。, displayName: 记录编写器}
+  Instance URL:
+    en: {displayName: Instance URL, description: The URL of this instance to use in
+        the Content URI of each event.}
+    zh: {description: 要在每个事件的内容URI中使用的此实例的URL。, displayName: 实例URL}
+tags:
+  en: [db, s2s, site, record]
+  zh: [数据库, 秒, 地点, 记录]

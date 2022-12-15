@@ -1,0 +1,49 @@
+relationships:
+  success: {en: '', zh: ''}
+dynamicProperties:
+  Generated FlowFile attribute name:
+    en: {description: 'Specifies an attribute on generated FlowFiles defined by the
+        Dynamic Property''s key and value. If Expression Language is used, evaluation
+        will be performed only once per batch of generated FlowFiles.', value: Generated
+        FlowFile attribute value}
+    zh: {description: 指定由动态属性的键和值定义的生成FlowFiles的属性。如果使用表达式语言，则每批生成的FlowFiles只执行一次评估。,
+      value: 生成的FlowFile属性值}
+capabilityDescription: {en: 'This processor creates FlowFiles with random data or
+    custom content. GenerateFlowFile is useful for load testing, configuration, and
+    simulation. Also see DuplicateFlowFile for additional load testing.', zh: 此处理器使用随机数据或自定义内容创建FlowFiles。GenerateFlowFile可用于负载测试、配置和模拟。有关其他负载测试，请参见DuplicateFlowFile。}
+properties:
+  character-set:
+    en: {displayName: Character Set, description: Specifies the character set to use
+        when writing the bytes of Custom Text to a flow file.}
+    zh: {description: 指定将自定义文本的字节写入流文件时要使用的字符集。, displayName: 字符集}
+  File Size:
+    en: {displayName: File Size, description: The size of the file that will be used}
+    zh: {description: 将使用的文件的大小, displayName: 文件大小}
+  mime-type:
+    en: {displayName: Mime Type, description: Specifies the value to set for the "mime.type"
+        attribute.}
+    zh: {description: 指定要为“mime.type”属性设置的值。, displayName: Mime类型}
+  generate-ff-custom-text:
+    en: {displayName: Custom Text, description: 'If Data Format is text and if Unique
+        FlowFiles is false, then this custom text will be used as content of the generated
+        FlowFiles and the File Size will be ignored. Finally, if Expression Language
+        is used, evaluation will be performed only once per batch of generated FlowFiles'}
+    zh: {description: 如果数据格式为文本，如果Unique FlowFiles为false，则此自定义文本将用作生成的FlowFiles的内容，并且文件大小将被忽略。最后，如果使用表达式语言，则每批生成的FlowFiles只执行一次求值,
+      displayName: 自定义文本}
+  Batch Size:
+    en: {displayName: Batch Size, description: The number of FlowFiles to be transferred
+        in each invocation}
+    zh: {description: 每次调用中要传输的FlowFiles数, displayName: 批量大小}
+  Unique FlowFiles:
+    en: {displayName: Unique FlowFiles, description: 'If true, each FlowFile that
+        is generated will be unique. If false, a random value will be generated and
+        all FlowFiles will get the same content but this offers much higher throughput'}
+    zh: {description: 如果为true，则生成的每个FlowFile都是唯一的。如果为false，将生成一个随机值，所有FlowFiles将获得相同的内容，但这提供了更高的吞吐量,
+      displayName: 唯一流文件}
+  Data Format:
+    en: {displayName: Data Format, description: Specifies whether the data should
+        be Text or Binary}
+    zh: {description: 指定数据应为文本还是二进制, displayName: 数据格式}
+tags:
+  en: [test, random, generate, load]
+  zh: [测验, 随机的, 生成, 负载]

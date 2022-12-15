@@ -1,0 +1,97 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      Cloud Storage operation., zh: 在成功的Google云存储操作之后，FlowFiles被路由到此关系。}
+  failure: {en: FlowFiles are routed to this relationship if the Google Cloud Storage
+      operation fails., zh: 如果Google云存储操作失败，FlowFiles将路由到此关系。}
+capabilityDescription: {en: Fetches a file from a Google Cloud Bucket. Designed to
+    be used in tandem with ListGCSBucket., zh: 从Google Cloud Bucket获取文件。设计用于与ListGCSBucket一起使用。}
+properties:
+  gcp-proxy-host:
+    en:
+      displayName: Proxy host
+      description: |-
+        IP or hostname of the proxy to be used.
+         You might need to set the following properties in bootstrap for https proxy usage:
+        -Djdk.http.auth.tunneling.disabledSchemes=
+        -Djdk.http.auth.proxying.disabledSchemes=
+    zh: {description: 要使用的代理的IP或主机名。, displayName: 代理主机}
+  gcp-retry-count:
+    en: {displayName: Number of retries, description: How many retry attempts should
+        be made before routing to the failure relationship.}
+    zh: {description: 在路由到失败关系之前应进行多少次重试尝试。, displayName: 重试次数}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  gcs-server-side-encryption-key:
+    en: {displayName: Server Side Encryption Key, description: An AES256 Key (encoded
+        in base64) which the object has been encrypted in.}
+    zh: {description: 对象已加密的AES256密钥（以base64编码）。, displayName: 服务器端加密密钥}
+  gcs-object-range-length:
+    en: {displayName: Range Length, description: 'The number of bytes to download
+        from the object, starting from the Range Start. An empty value or a value
+        that extends beyond the end of the object will read to the end of the object.'}
+    zh: {description: 要从对象下载的字节数，从Range Start开始。空值或超出对象结尾的值将读取到对象结尾。, displayName: 范围长度}
+  gcp-proxy-user-name:
+    en: {displayName: HTTP Proxy Username, description: HTTP Proxy Username}
+    zh: {description: HTTP代理用户名, displayName: HTTP代理用户名}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+  gcs-generation:
+    en: {displayName: Object Generation, description: 'The generation of the Object
+        to download. If not set, the latest generation will be downloaded.'}
+    zh: {description: 要下载的对象的生成。如果未设置，将下载最新一代。, displayName: 对象生成}
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  gcs-object-range-start:
+    en: {displayName: Range Start, description: The byte position at which to start
+        reading from the object. An empty value or a value of zero will start reading
+        at the beginning of the object.}
+    zh: {description: 从对象开始读取的字节位置。空值或零值将从对象的开头开始读取。, displayName: 范围起始值}
+  gcs-key:
+    en: {displayName: Name, description: Name of the object.}
+    zh: {description: 对象的名称。, displayName: 名称}
+  gcp-proxy-user-password:
+    en: {displayName: HTTP Proxy Password, description: HTTP Proxy Password}
+    zh: {description: HTTP代理密码, displayName: HTTP代理密码}
+  gcp-proxy-port:
+    en: {displayName: Proxy port, description: Proxy port number}
+    zh: {description: 代理端口号, displayName: 代理服务器端口}
+  gcs-bucket:
+    en: {displayName: Bucket, description: Bucket of the object.}
+    zh: {description: 对象的Bucket。, displayName: 水桶}
+writeAttributes:
+  gcs.owner: {en: The owner (uploader) of the object., zh: 对象的所有者（上传者）。}
+  gcs.cache.control: {en: Data cache control of the object., zh: 对象的数据缓存控制。}
+  gcs.bucket: {en: Bucket of the object., zh: 对象的Bucket。}
+  gcs.metageneration: {en: The metageneration of the object., zh: 对象的元生成。}
+  gcs.content.language: {en: The content language of the object., zh: 对象的内容语言。}
+  gcs.encryption.algorithm: {en: The algorithm used to encrypt the object., zh: 用于加密对象的算法。}
+  gcs.size: {en: Size of the object., zh: 对象的大小。}
+  gcs.update.time: {en: The last modification time of the object (milliseconds), zh: 对象的上次修改时间（毫秒）}
+  gcs.uri: {en: The URI of the object as a string., zh: 字符串形式的对象的URI。}
+  mime.type: {en: The MIME/Content-Type of the object, zh: 对象的MIME/Content-Type}
+  gcs.crc32c: {en: 'The CRC32C checksum of object''s data, encoded in base64 in big-endian
+      order.', zh: 对象数据的CRC32C校验和，按大端顺序以base64编码。}
+  gcs.generation: {en: The data generation of the object., zh: 对象的数据生成。}
+  gcs.content.encoding: {en: The content encoding of the object., zh: 对象的内容编码。}
+  gcs.media.link: {en: The media download link to the object., zh: 指向对象的媒体下载链接。}
+  gcs.component.count: {en: The number of components which make up the object., zh: 构成对象的组件数。}
+  filename: {en: 'The name of the file, parsed if possible from the Content-Disposition
+      response header', zh: 如果可能，从Content-Disposition响应头解析文件的名称}
+  gcs.key: {en: Name of the object., zh: 对象的名称。}
+  gcs.content.disposition: {en: The data content disposition of the object., zh: 对象的数据内容处置。}
+  gcs.generated.id: {en: The service-generated for the object, zh: 为对象生成的服务}
+  gcs.etag: {en: The HTTP 1.1 Entity tag for the object., zh: 对象的HTTP 1.1实体标记。}
+  gcs.md5: {en: The MD5 hash of the object's data encoded in base64., zh: 以base64编码的对象数据的MD5哈希。}
+  gcs.encryption.sha256: {en: The SHA256 hash of the key used to encrypt the object,
+    zh: 用于加密对象的密钥的SHA256哈希}
+  gcs.create.time: {en: The creation time of the object (milliseconds), zh: 对象的创建时间（毫秒）}
+  gcs.owner.type: {en: The ACL entity type of the uploader of the object., zh: 对象上载器的ACL实体类型。}
+tags:
+  en: [google cloud, google, storage, gcs, fetch]
+  zh: [谷歌云, 谷歌, 存储, 通用计算机系统, 取来]

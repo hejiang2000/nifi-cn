@@ -16,6 +16,6 @@
 <div id="user-delete-dialog" class="hidden">
     <div class="dialog-content">
         <input type="hidden" id="user-extended-id-delete-dialog"/>
-        Are you sure you want to delete the account for '<span id="user-identity-delete-dialog"></span>'?
+        你确定想要删除账号: '<span id="user-identity-delete-dialog"></span>'?
     </div>
 </div>

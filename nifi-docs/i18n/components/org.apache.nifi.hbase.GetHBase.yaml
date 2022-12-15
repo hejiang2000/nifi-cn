@@ -1,0 +1,65 @@
+relationships:
+  success: {en: All FlowFiles are routed to this relationship, zh: 所有FlowFiles都路由到此关系}
+capabilityDescription: {en: 'This Processor polls HBase for any records in the specified
+    table. The processor keeps track of the timestamp of the cells that it receives,
+    so that as new records are pushed to HBase, they will automatically be pulled.
+    Each record is output in JSON format, as {"row": "<row key>", "cells": { "<column
+    1 family>:<column 1 qualifier>": "<cell 1 value>", "<column 2 family>:<column
+    2 qualifier>": "<cell 2 value>", ... }}. For each record received, a Provenance
+    RECEIVE event is emitted with the format hbase://<table name>/<row key>, where
+    <row key> is the UTF-8 encoded value of the row''s key.', zh: '此处理器轮询HBase以查找指定表中的任何记录。处理器会跟踪它接收到的单元格的时间戳，这样当新记录被推送到HBase时，它们就会被自动拉取。每个记录都以JSON格式输出，如｛“row”：“＜row
+    key＞”，“cells”：｛“＜column 1 family＞：＜column 2 qualifier＞”：“<cell 1 value＞”，”＜column
+    3 family＞“：＜column2 qualifier>”，…｝｝。对于接收到的每条记录，将以hbase://<表名>/<行键>的格式发出普罗旺斯RECEIVE事件，其中<行键＞是行键的UTF-8编码值。'}
+statefulDescription: {en: 'After performing a fetching from HBase, stores a timestamp
+    of the last-modified cell that was found. In addition, it stores the ID of the
+    row(s) and the value of each cell that has that timestamp as its modification
+    date. This is stored across the cluster and allows the next fetch to avoid duplicating
+    data, even if this Processor is run on Primary Node only and the Primary Node
+    changes.', zh: 从HBase执行提取后，存储找到的最后一个修改单元的时间戳。此外，它还存储行的ID以及将该时间戳作为修改日期的每个单元格的值。这存储在整个集群中，并允许下次提取以避免重复数据，即使此处理器仅在主节点上运行且主节点发生更改。}
+properties:
+  Table Name:
+    en: {displayName: Table Name, description: The name of the HBase Table to put
+        data into}
+    zh: {description: 要将数据放入的HBase表的名称, displayName: 表名称}
+  hbase-fetch-row-authorizations:
+    en: {displayName: Authorizations, description: The list of authorizations to pass
+        to the scanner. This will be ignored if cell visibility labels are not in
+        use.}
+    zh: {description: 要传递给扫描仪的授权列表。如果未使用单元格可见性标签，则将忽略此项。, displayName: 授权}
+  Filter Expression:
+    en: {displayName: Filter Expression, description: An HBase filter expression that
+        will be applied to the scan. This property can not be used when also using
+        the Columns property.}
+    zh: {description: 将应用于扫描的HBase筛选器表达式。同时使用Columns属性时不能使用此属性。, displayName: 筛选器表达式}
+  Distributed Cache Service:
+    en: {displayName: Distributed Cache Service, description: 'Specifies the Controller
+        Service that should be used to maintain state about what has been pulled from
+        HBase so that if a new node begins pulling data, it won''t duplicate all of
+        the work that has been done.'}
+    zh: {description: 指定应用于维护已从HBase中提取的内容的状态的控制器服务，以便如果新节点开始提取数据，它不会复制已完成的所有工作。,
+      displayName: 分布式缓存服务}
+  Columns:
+    en: {displayName: Columns, description: 'A comma-separated list of "<colFamily>:<colQualifier>"
+        pairs to return when scanning. To return all columns for a given family, leave
+        off the qualifier such as "<colFamily1>,<colFamily2>".'}
+    zh: {description: 扫描时要返回的逗号分隔的“<colFamily>：<colQualifier>”对列表。要返回给定族的所有列，请省略限定符，例如“<colFamily1>，<colFamily2>”。,
+      displayName: 柱}
+  HBase Client Service:
+    en: {displayName: HBase Client Service, description: Specifies the Controller
+        Service to use for accessing HBase.}
+    zh: {description: 指定用于访问HBase的控制器服务。, displayName: HBase客户端服务}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies which character set is
+        used to encode the data in HBase}
+    zh: {description: 指定用于编码HBase中数据的字符集, displayName: 字符集}
+  Initial Time Range:
+    en: {displayName: Initial Time Range, description: 'The time range to use on the
+        first scan of a table. None will pull the entire table on the first scan,
+        Current Time will pull entries from that point forward.'}
+    zh: {description: 在表的第一次扫描中使用的时间范围。“无”将在第一次扫描时拉动整个表，“当前时间”将从该点向前拉动条目。, displayName: 初始时间范围}
+writeAttributes:
+  hbase.table: {en: The name of the HBase table that the data was pulled from, zh: 从中提取数据的HBase表的名称}
+  mime.type: {en: Set to application/json to indicate that output is JSON, zh: 设置为application/json以指示输出为json}
+tags:
+  en: [hbase, get, ingest]
+  zh: [数据库, 收到, 摄入]

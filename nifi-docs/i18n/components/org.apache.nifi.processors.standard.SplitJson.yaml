@@ -1,0 +1,41 @@
+relationships:
+  original: {en: 'The original FlowFile that was split into segments. If the FlowFile
+      fails processing, nothing will be sent to this relationship', zh: 拆分为多个段的原始FlowFile。如果FlowFile处理失败，则不会向此关系发送任何内容}
+  split: {en: All segments of the original FlowFile will be routed to this relationship,
+    zh: 原始FlowFile的所有段都将路由到此关系}
+  failure: {en: 'If a FlowFile fails processing for any reason (for example, the FlowFile
+      is not valid JSON or the specified path does not exist), it will be routed to
+      this relationship', zh: 如果FlowFile由于任何原因（例如，FlowFile不是有效的JSON或指定的路径不存在）而处理失败，它将被路由到此关系}
+systemResourceConsiderations:
+  en: ['The entirety of the FlowFile''s content (as a JsonNode object) is read into
+      memory, in addition to all of the generated FlowFiles representing the split
+      JSON. If many splits are generated due to the size of the JSON, or how the JSON
+      is configured to be split, a two-phase approach may be necessary to avoid excessive
+      use of memory.']
+  zh: [FlowFile的全部内容（作为一个JsonNode对象）都被读入内存，此外，所有生成的FlowFile都表示拆分的JSON。如果由于JSON的大小或JSON如何配置为拆分而生成了许多拆分，则可能需要两阶段方法来避免过度使用内存。]
+capabilityDescription: {en: 'Splits a JSON File into multiple, separate FlowFiles
+    for an array element specified by a JsonPath expression. Each generated FlowFile
+    is comprised of an element of the specified array and transferred to relationship
+    ''split,'' with the original file transferred to the ''original'' relationship.
+    If the specified JsonPath is not found or does not evaluate to an array element,
+    the original file is routed to ''failure'' and no files are generated.', zh: 为JsonPath表达式指定的数组元素将JSON文件拆分为多个单独的FlowFiles。每个生成的FlowFile由指定数组的一个元素组成，并传输到关系“split”，原始文件传输到“original”关系。如果未找到指定的JsonPath或其计算结果未为数组元素，则原始文件将被路由到“failure”，并且不会生成任何文件。}
+properties:
+  Null Value Representation:
+    en: {displayName: Null Value Representation, description: Indicates the desired
+        representation of JSON Path expressions resulting in a null value.}
+    zh: {description: 指示导致空值的JSON路径表达式的所需表示形式。, displayName: 空值表示法}
+  JsonPath Expression:
+    en: {displayName: JsonPath Expression, description: A JsonPath expression that
+        indicates the array element to split into JSON/scalar fragments.}
+    zh: {description: JsonPath表达式，指示要拆分为JSON/标量片段的数组元素。, displayName: JsonPath表达式}
+writeAttributes:
+  'segment.original.filename ': {en: The filename of the parent FlowFile, zh: 父FlowFile的文件名}
+  fragment.identifier: {en: All split FlowFiles produced from the same parent FlowFile
+      will have the same randomly generated UUID added for this attribute, zh: 从同一父FlowFile生成的所有拆分FlowFile都将为此属性添加相同的随机生成UUID}
+  fragment.index: {en: A one-up number that indicates the ordering of the split FlowFiles
+      that were created from a single parent FlowFile, zh: 一个向上的数字，表示从单个父FlowFile创建的拆分FlowFile的顺序}
+  fragment.count: {en: The number of split FlowFiles generated from the parent FlowFile,
+    zh: 从父FlowFile生成的拆分FlowFile的数量}
+tags:
+  en: [json, split, jsonpath]
+  zh: [json文件, 分裂, JSON路径]

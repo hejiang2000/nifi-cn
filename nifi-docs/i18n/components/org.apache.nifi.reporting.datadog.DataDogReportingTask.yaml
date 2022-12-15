@@ -1,0 +1,22 @@
+capabilityDescription: {en: 'Publishes metrics from NiFi to datadog. For accurate
+    and informative reporting, components should have unique names.', zh: 发布从NiFi到数据狗的指标。为了准确和信息丰富的报告，组件应具有唯一的名称。}
+properties:
+  API key:
+    en: {displayName: API key, description: 'Datadog API key. If specified value is
+        ''agent'', local Datadog agent will be used.'}
+    zh: {description: Datadog API密钥。如果指定的值为“agent”，则将使用本地Datadog代理。, displayName: API密钥}
+  Metrics prefix:
+    en: {displayName: Metrics prefix, description: Prefix to be added before every
+        metric}
+    zh: {description: 要在每个度量之前添加的前缀, displayName: 指标前缀}
+  Datadog transport:
+    en: {displayName: Datadog transport, description: Transport through which metrics
+        will be sent to Datadog}
+    zh: {description: 将通过其向Datadog发送度量的传输, displayName: 数据狗传输}
+  Environment:
+    en: {displayName: Environment, description: 'Environment, dataflow is running
+        in. This property will be included as metrics tag.'}
+    zh: {description: 环境，数据流正在运行。此属性将作为度量标记包含。, displayName: 环境}
+tags:
+  en: [reporting, datadog, metrics]
+  zh: [报告, 数据狗, 韵律学]

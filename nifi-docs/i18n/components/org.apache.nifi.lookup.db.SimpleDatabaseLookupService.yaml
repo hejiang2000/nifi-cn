@@ -1,0 +1,46 @@
+capabilityDescription: {en: 'A relational-database-based lookup service. When the
+    lookup key is found in the database, the specified lookup value column is returned.
+    Only one value will be returned for each lookup, duplicate database entries are
+    ignored.', zh: 基于关系数据库的查找服务。当在数据库中找到查找关键字时，将返回指定的查找值列。每次查找只返回一个值，重复的数据库条目将被忽略。}
+properties:
+  dbrecord-lookup-dbcp-service:
+    en: {displayName: Database Connection Pooling Service, description: The Controller
+        Service that is used to obtain connection to database}
+    zh: {description: 用于获取数据库连接的控制器服务, displayName: 数据库连接池服务}
+  dbrecord-lookup-clear-cache-on-enabled:
+    en: {displayName: Clear Cache on Enabled, description: Whether to clear the cache
+        when this service is enabled. If the Cache Size is zero then this property
+        is ignored. Clearing the cache when the service is enabled ensures that the
+        service will first go to the database to get the most recent data.}
+    zh: {description: 启用此服务时是否清除缓存。如果“缓存大小”为零，则忽略此属性。启用服务时清除缓存可确保服务首先转到数据库以获取最新数据。,
+      displayName: 启用时清除缓存}
+  lookup-value-column:
+    en: {displayName: Lookup Value Column, description: The column whose value will
+        be returned when the Lookup value is matched}
+    zh: {description: 匹配查找值时将返回其值的列, displayName: 查找值列}
+  dbrecord-lookup-cache-size:
+    en: {displayName: Cache Size, description: 'Specifies how many lookup values/records
+        should be cached. The cache is shared for all tables and keeps a map of lookup
+        values to records. Setting this property to zero means no caching will be
+        done and the table will be queried for each lookup value in each record. If
+        the lookup table changes often or the most recent data must be retrieved,
+        do not use the cache.'}
+    zh: {description: 指定应缓存多少查找值/记录。缓存为所有表共享，并保持查找值到记录的映射。将此属性设置为零意味着将不进行缓存，并且将针对每个记录中的每个查找值查询表。如果查找表经常更改或必须检索最新的数据，请不要使用缓存。,
+      displayName: 缓存大小}
+  dbrecord-lookup-key-column:
+    en: {displayName: Lookup Key Column, description: The column in the table that
+        will serve as the lookup key. This is the column that will be matched against
+        the property specified in the lookup processor. Note that this may be case-sensitive
+        depending on the database.}
+    zh: {description: 表中用作查找关键字的列。这是将与查找处理器中指定的属性匹配的列。请注意，这可能区分大小写，具体取决于数据库。, displayName: 查找关键字列}
+  Cache Expiration:
+    en: {displayName: Cache Expiration, description: Time interval to clear all cache
+        entries. If the Cache Size is zero then this property is ignored.}
+    zh: {description: 清除所有缓存项的时间间隔。如果“缓存大小”为零，则忽略此属性。, displayName: 缓存过期}
+  dbrecord-lookup-table-name:
+    en: {displayName: Table Name, description: The name of the database table to be
+        queried. Note that this may be case-sensitive depending on the database.}
+    zh: {description: 要查询的数据库表的名称。请注意，这可能区分大小写，具体取决于数据库。, displayName: 表名称}
+tags:
+  en: [lookup, cache, enrich, join, rdbms, database, reloadable, key, value]
+  zh: [查找, 隐藏物, 充实, 参加, 关系数据库系统, 数据库, 可重新加载的, 钥匙, 价值]

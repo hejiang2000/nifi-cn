@@ -1,0 +1,69 @@
+relationships:
+  not-found: {en: 'If a FlowFile''s Cache Entry Identifier was not found in the cache,
+      it will be routed to this relationship', zh: 如果在缓存中找不到FlowFile的缓存条目标识符，它将被路由到此关系}
+  success: {en: If the cache was successfully communicated with it will be routed
+      to this relationship, zh: 如果缓存已成功与通信，它将被路由到此关系}
+  failure: {en: 'If unable to communicate with the cache or if the cache entry is
+      evaluated to be blank, the FlowFile will be penalized and routed to this relationship',
+    zh: 如果无法与缓存通信，或者缓存条目被评估为空白，FlowFile将受到惩罚并路由到此关系}
+capabilityDescription: {en: 'Computes cache key(s) from FlowFile attributes, for each
+    incoming FlowFile, and fetches the value(s) from the Distributed Map Cache associated
+    with each key. If configured without a destination attribute, the incoming FlowFile''s
+    content is replaced with the binary data received by the Distributed Map Cache.
+    If there is no value stored under that key then the flow file will be routed to
+    ''not-found''. Note that the processor will always attempt to read the entire
+    cached value into memory before placing it in it''s destination. This could be
+    potentially problematic if the cached value is very large.', zh: 计算每个传入FlowFile的FlowFile属性中的缓存键，并从与每个键关联的分布式映射缓存中获取值。如果未配置目标属性，则传入FlowFile的内容将替换为分布式映射缓存接收的二进制数据。如果该密钥下没有存储值，则流文件将被路由到“未找到”。请注意，在将整个缓存值放入其目标之前，处理器将始终尝试将其读取到内存中。如果缓存的值非常大，这可能会有问题。}
+properties:
+  Cache Entry Identifier:
+    en: {displayName: Cache Entry Identifier, description: 'A comma-delimited list
+        of FlowFile attributes, or the results of Attribute Expression Language statements,
+        which will be evaluated against a FlowFile in order to determine the value(s)
+        used to identify duplicates; it is these values that are cached. NOTE: Only
+        a single Cache Entry Identifier is allowed unless Put Cache Value In Attribute
+        is specified. Multiple cache lookups are only supported when the destination
+        is a set of attributes (see the documentation for ''Put Cache Value In Attribute''
+        for more details including naming convention.'}
+    zh: {description: FlowFile属性或属性表达式语言语句的结果的逗号分隔列表，将根据FlowFile进行评估，以确定用于标识重复项的值；正是这些值被缓存。注意：除非指定了“将缓存值放入属性”，否则只允许使用单个缓存条目标识符。只有当目标是一组属性时，才支持多个缓存查找（有关包括命名约定在内的更多详细信息，请参阅“将缓存值放入属性”的文档。,
+      displayName: 缓存条目标识符}
+  Put Cache Value In Attribute:
+    en: {displayName: Put Cache Value In Attribute, description: 'If set, the cache
+        value received will be put into an attribute of the FlowFile instead of a
+        the content of theFlowFile. The attribute key to put to is determined by evaluating
+        value of this property. If multiple Cache Entry Identifiers are selected,
+        multiple attributes will be written, using the evaluated value of this property,
+        appended by a period (.) and the name of the cache entry identifier.'}
+    zh: {description: 如果设置，接收的缓存值将被放入FlowFile的属性中，而不是FlowFile的内容中。要放入的属性键是通过计算此属性的值来确定的。如果选择了多个缓存条目标识符，则将使用此属性的评估值（后面加上句点（.）和缓存条目标识符的名称）写入多个属性。,
+      displayName: 将缓存值放入属性}
+  Distributed Cache Service:
+    en: {displayName: Distributed Cache Service, description: The Controller Service
+        that is used to get the cached values.}
+    zh: {description: 用于获取缓存值的控制器服务。, displayName: 分布式缓存服务}
+  Max Length To Put In Attribute:
+    en: {displayName: Max Length To Put In Attribute, description: 'If routing the
+        cache value to an attribute of the FlowFile (by setting the "Put Cache Value
+        in attribute" property), the number of characters put to the attribute value
+        will be at most this amount. This is important because attributes are held
+        in memory and large attributes will quickly cause out of memory issues. If
+        the output goes longer than this value, it will be truncated to fit. Consider
+        making this smaller if able.'}
+    zh: {description: 如果将缓存值路由到FlowFile的某个属性（通过设置“将缓存值放入属性”属性），则放入该属性值的字符数最多为此数量。这一点很重要，因为属性保存在内存中，大型属性会很快导致内存不足问题。如果输出的长度超过此值，则会将其截断以适合。如果可能的话，考虑将其缩小。,
+      displayName: 要放入属性的最大长度}
+  Character Set:
+    en: {displayName: Character Set, description: The Character Set in which the cached
+        value is encoded. This will only be used when routing to an attribute.}
+    zh: {description: 对缓存值进行编码的字符集。这仅在路由到属性时使用。, displayName: 字符集}
+writeAttributes:
+  user-defined: {en: 'If the ''Put Cache Value In Attribute'' property is set then
+      whatever it is set to will become the attribute key and the value would be whatever
+      the response was from the Distributed Map Cache. If multiple cache entry identifiers
+      are selected, multiple attributes will be written, using the evaluated value
+      of this property, appended by a period (.) and the name of the cache entry identifier.
+      For example, if the Cache Entry Identifier property is set to ''id,name'', and
+      the user-defined property is named ''fetched'', then two attributes will be
+      written, fetched.id and fetched.name, containing their respective values.',
+    zh: 如果设置了“将缓存值放入属性”属性，则其设置的值将成为属性键，并且该值将是来自分布式映射缓存的响应。如果选择了多个缓存条目标识符，则将使用此属性的评估值（后面加上句点（.）和缓存条目标识符的名称）写入多个属性。例如，如果Cache
+      Entry Identifier属性设置为“id，name”，而用户定义的属性名为“fetched”，则将写入和获取两个属性。id和已提取。名称，包含它们各自的值。}
+tags:
+  en: [map, cache, fetch, distributed]
+  zh: [地图, 隐藏物, 取来, 分布式的]

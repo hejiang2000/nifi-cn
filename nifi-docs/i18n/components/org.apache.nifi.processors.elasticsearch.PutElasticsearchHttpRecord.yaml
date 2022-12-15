@@ -1,0 +1,179 @@
+relationships:
+  success: {en: All FlowFiles that are written to Elasticsearch are routed to this
+      relationship, zh: 写入Elasticsearch的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be written to Elasticsearch are routed to
+      this relationship, zh: 无法写入Elasticsearch的所有FlowFiles都将路由到此关系}
+  retry: {en: A FlowFile is routed to this relationship if the database cannot be
+      updated but attempting the operation again may succeed, zh: 如果无法更新数据库，则将FlowFile路由到此关系，但再次尝试操作可能会成功}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+dynamicProperties:
+  A URL query parameter:
+    en: {description: Adds the specified property name/value as a query parameter
+        in the Elasticsearch URL used for processing, value: The value to set it to}
+    zh: {description: 在用于处理的Elasticsearch URL中添加指定的属性名称/值作为查询参数, value: 要将其设置为的值}
+capabilityDescription: {en: 'Writes the records from a FlowFile into to Elasticsearch,
+    using the specified parameters such as the index to insert into and the type of
+    the document, as well as the operation type (index, upsert, delete, etc.). Note:
+    The Bulk API is used to send the records. This means that the entire contents
+    of the incoming flow file are read into memory, and each record is transformed
+    into a JSON document which is added to a single HTTP request body. For very large
+    flow files (files with a large number of records, e.g.), this could cause memory
+    usage issues.', zh: 使用指定的参数（如要插入的索引、文档类型以及操作类型（索引、upstart、删除等），将FlowFile中的记录写入Elasticsearch。注意：BulkAPI用于发送记录。这意味着传入流文件的全部内容都被读入内存，每个记录都被转换为一个JSON文档，并添加到单个HTTP请求体中。对于非常大的流文件（例如，具有大量记录的文件），这可能会导致内存使用问题。}
+properties:
+  elasticsearch-http-response-timeout:
+    en: {displayName: Response Timeout, description: Max wait time for a response
+        from the Elasticsearch REST API.}
+    zh: {description: Elasticsearch REST API响应的最长等待时间。, displayName: 响应超时}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: SOCKS, HTTP +
+        AuthN In case of SOCKS, it is not guaranteed that the selected SOCKS Version
+        will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：SOCKS、HTTP+AuthN如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  put-es-record-index-op:
+    en: {displayName: Index Operation, description: 'The type of the operation used
+        to index (create, index, update, upsert, delete)'}
+    zh: {description: 用于索引的操作类型（创建、索引、更新、追加启动、删除）, displayName: 索引操作}
+  elasticsearch-http-url:
+    en: {displayName: Elasticsearch URL, description: 'Elasticsearch URL which will
+        be connected to, including scheme (http, e.g.), host, and port. The default
+        port for the REST API is 9200.'}
+    zh: {description: 将连接到的Elasticsearch URL，包括scheme（例如http）、host和port。REST API的默认端口是9200。,
+      displayName: 弹性搜索URL}
+  put-es-record-record-writer:
+    en: {displayName: Record Writer, description: 'After sending a batch of records,
+        Elasticsearch will report if individual records failed to insert. As an example,
+        this can happen if the record doesn''t match the mappingfor the index it is
+        being inserted into. This property specifies the Controller Service to use
+        for writing out those individual records sent to ''failure''. If this is not
+        set, then the whole FlowFile will be routed to failure (including any records
+        which may have been inserted successfully). Note that this will only be used
+        if Elasticsearch reports that individual records failed and that in the event
+        that the entire FlowFile fails (e.g. in the event ES is down), the FF will
+        be routed to failure without being interpreted by this record writer. If there
+        is an error while attempting to route the failures, the entire FlowFile will
+        be routed to Failure. Also if every record failed individually, the entire
+        FlowFile will be routed to Failure without being parsed by the writer.'}
+    zh: {description: 发送一批记录后，Elasticsearch将报告单个记录是否插入失败。例如，如果记录与要插入的索引的映射不匹配，就会发生这种情况。此属性指定用于写入发送到“failure”的那些单独记录的控制器服务。如果未设置此项，则整个FlowFile将被路由到失败（包括可能已成功插入的任何记录）。请注意，仅当Elasticsearch报告单个记录失败，并且在整个FlowFile失败的情况下（例如，在ES关闭的情况下），FF将被路由到失败，而不会被该记录写入器解释。如果在尝试路由失败时出现错误，则整个FlowFile将被路由到Failure。此外，如果每个记录都单独失败，则整个FlowFile将被路由到Failure，而不会被编写器解析。,
+      displayName: 记录编写器}
+  Date Format:
+    en: {displayName: Date Format, description: 'Specifies the format to use when
+        reading/writing Date fields. If not specified, the default format ''yyyy-MM-dd''
+        is used. If specified, the value must match the Java Simple Date Format (for
+        example, MM/dd/yyyy for a two-digit month, followed by a two-digit day, followed
+        by a four-digit year, all separated by ''/'' characters, as in 01/25/2017).'}
+    zh: {description: 指定读取/写入日期字段时使用的格式。如果未指定，则使用默认格式“yyyy-MM-dd”。如果指定，则该值必须与Java简单日期格式匹配（例如，MM/dd/yyyy表示两位数的月份，后跟两位数的日期，后跟四位数的年份，均由“/”字符分隔，如2017年1月25日）。,
+      displayName: 日期格式}
+  elasticsearch-http-connect-timeout:
+    en: {displayName: Connection Timeout, description: Max wait time for the connection
+        to the Elasticsearch REST API.}
+    zh: {description: 连接到Elasticsearch REST API的最长等待时间。, displayName: 连接超时}
+  suppress-nulls:
+    en: {displayName: Suppress Null Values, description: Specifies how the writer
+        should handle a null field}
+    zh: {description: 指定编写器应如何处理空字段, displayName: 抑制空值}
+  elasticsearch-http-proxy-host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  proxy-username:
+    en: {displayName: Proxy Username, description: Proxy Username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Time Format:
+    en: {displayName: Time Format, description: 'Specifies the format to use when
+        reading/writing Time fields. If not specified, the default format ''HH:mm:ss''
+        is used. If specified, the value must match the Java Simple Date Format (for
+        example, HH:mm:ss for a two-digit hour in 24-hour format, followed by a two-digit
+        minute, followed by a two-digit second, all separated by '':'' characters,
+        as in 18:04:15).'}
+    zh: {description: '指定读取/写入时间字段时使用的格式。如果未指定，则使用默认格式“HH:mm:ss”。如果指定，则该值必须与Java简单日期格式匹配（例如，HH:mm:ss表示24小时格式的两位数小时，后跟两位数分钟，后跟两位秒，均以“：”字符分隔，如18:04:15所示）。',
+      displayName: 时间格式}
+  Password:
+    en: {displayName: Password, description: Password to access the Elasticsearch
+        cluster}
+    zh: {description: 访问Elasticsearch集群的密码, displayName: 暗语}
+  put-es-record-log-all-errors:
+    en: {displayName: Log all errors in batch, description: 'After sending a batch
+        of records, Elasticsearch will report if individual records failed to insert.
+        As an example, this can happen if the record doesn''t match the mapping for
+        the index it is being inserted into. If this is set to true, the processor
+        will log the failure reason for the every failed record. When set to false
+        only the first error in the batch will be logged.'}
+    zh: {description: 发送一批记录后，Elasticsearch将报告单个记录是否插入失败。例如，如果记录与要插入的索引的映射不匹配，就会发生这种情况。如果设置为true，处理器将记录每个失败记录的失败原因。设置为false时，仅记录批处理中的第一个错误。,
+      displayName: 批量记录所有错误}
+  put-es-record-record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema.}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务。, displayName: 记录读取器}
+  put-es-record-index:
+    en: {displayName: Index, description: The name of the index to insert into}
+    zh: {description: 要插入的索引的名称, displayName: 指数}
+  put-es-record-type:
+    en: {displayName: Type, description: The type of this document (required by Elasticsearch
+        versions < 7.0 for indexing and searching). This must be unset or '_doc' for
+        Elasticsearch 7.0+.}
+    zh: {description: 此文档的类型（Elasticsearch 7.0以下版本需要索引和搜索）。对于Elasticsearch 7.0+，必须为unset或“_doc”。,
+      displayName: 类型}
+  put-es-record-id-path:
+    en: {displayName: Identifier Record Path, description: 'A RecordPath pointing
+        to a field in the record(s) that contains the identifier for the document.
+        If the Index Operation is "index" or "create", this property may be left empty
+        or evaluate to an empty value, in which case the document''s identifier will
+        be auto-generated by Elasticsearch. For all other Index Operations, the field''s
+        value must be non-empty.'}
+    zh: {description: 指向记录中包含文档标识符的字段的RecordPath。如果索引操作为“Index”或“create”，则此属性可能为空或计算为空值，在这种情况下，Elasticsearch将自动生成文档的标识符。对于所有其他索引操作，字段的值必须为非空。,
+      displayName: 标识符记录路径}
+  Timestamp Format:
+    en: {displayName: Timestamp Format, description: 'Specifies the format to use
+        when reading/writing Timestamp fields. If not specified, the default format
+        ''yyyy-MM-dd HH:mm:ss'' is used. If specified, the value must match the Java
+        Simple Date Format (for example, MM/dd/yyyy HH:mm:ss for a two-digit month,
+        followed by a two-digit day, followed by a four-digit year, all separated
+        by ''/'' characters; and then followed by a two-digit hour in 24-hour format,
+        followed by a two-digit minute, followed by a two-digit second, all separated
+        by '':'' characters, as in 01/25/2017 18:04:15).'}
+    zh: {description: '指定读取/写入时间戳字段时使用的格式。如果未指定，则使用默认格式“yyyy-MM-dd HH:MM:ss”。如果指定，则该值必须与Java简单日期格式匹配（例如，MM/dd/yyyy
+        HH:MM:ss表示两位数的月份，后跟两位数的日期，后跟四位数的年份，均以“/”字符分隔；然后，后跟24小时格式的两位数的小时，后跟两位的分钟，然后是两位数的秒，全部以“：”字符分隔，如2017年1月25日18:04:15所示）。',
+      displayName: 时间戳格式}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections. This service
+        only applies if the Elasticsearch endpoint(s) have been secured with TLS/SSL.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。此服务仅适用于Elasticsearch端点已通过TLS/SSL进行安全保护的情况。,
+      displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username to access the Elasticsearch
+        cluster}
+    zh: {description: 访问Elasticsearch集群的用户名, displayName: 用户名}
+  put-es-record-at-timestamp:
+    en: {displayName: '@timestamp Value', description: The value to use as the @timestamp
+        field (required for Elasticsearch Data Streams)}
+    zh: {description: 用作@timestamp字段的值（Elasticsearch数据流需要）, displayName: '@时间戳值'}
+  proxy-password:
+    en: {displayName: Proxy Password, description: Proxy Password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  elasticsearch-http-proxy-port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  put-es-record-at-timestamp-path:
+    en: {displayName: '@timestamp Record Path', description: A RecordPath pointing
+        to a field in the record(s) that contains the @timestamp for the document.
+        If left blank the @timestamp will be determined using the main @timestamp
+        property}
+    zh: {description: 指向记录中包含文档的@时间戳的字段的RecordPath。如果留空，将使用主@timestamp属性确定@timestaff,
+      displayName: '@时间戳记录路径'}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        document data.}
+    zh: {description: 指定文档数据的字符集。, displayName: 字符集}
+writeAttributes:
+  record.count: {en: The number of records in an outgoing FlowFile. This is only populated
+      on the 'success' relationship., zh: 传出FlowFile中的记录数。这仅填充在“成功”关系上。}
+  failure.count: {en: The number of records found by Elasticsearch to have errors.
+      This is only populated on the 'failure' relationship., zh: Elasticsearch找到的错误记录数。这仅在“失败”关系上填充。}
+tags:
+  en: [elasticsearch, insert, update, upsert, delete, write, put, http, record]
+  zh: [弹性搜索, 插入, 使现代化, 沮丧的, 删去, 写, 放, http, 记录]

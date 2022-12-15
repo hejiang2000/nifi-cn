@@ -1,0 +1,87 @@
+relationships:
+  success: {en: All files are routed to success, zh: 所有文件都被路由到成功}
+capabilityDescription: {en: 'Reads file from a samba network location to FlowFiles.
+    Use this processor instead of a cifs mounts if share access control is important.
+    Configure the Hostname, Share and Directory accordingly: \\[Hostname]\[Share]\[path\to\Directory]',
+  zh: '将文件从samba网络位置读取到FlowFiles。如果共享访问控制很重要，请使用此处理器而不是cifs装载。相应地配置主机名、共享和目录：\\[Hostname]\[Share]\[path\to\Directory]'}
+properties:
+  Keep Source File:
+    en: {displayName: Keep Source File, description: 'If true, the file is not deleted
+        after it has been copied to the Content Repository; this causes the file to
+        be picked up continually and is useful for testing purposes.  If not keeping
+        original NiFi will need write permissions on the directory it is pulling from
+        otherwise it will ignore the file.'}
+    zh: {description: 如果为true，则文件在复制到内容存储库后不会被删除；这会导致文件不断被拾取，并对测试有用。如果不保留原始的NiFi，则需要对其所提取的目录具有写权限，否则将忽略该文件。,
+      displayName: 保留源文件}
+  Polling Interval:
+    en: {displayName: Polling Interval, description: Indicates how long to wait before
+        performing a directory listing}
+    zh: {description: 指示在执行目录列表之前等待多长时间, displayName: 轮询间隔}
+  Share Access Strategy:
+    en: {displayName: Share Access Strategy, description: 'Indicates which shared
+        access are granted on the file during the read. None is the most restrictive,
+        but the safest setting to prevent corruption.'}
+    zh: {description: 指示在读取期间授予文件的共享访问权限。没有一项是最严格的，但却是防止腐败的最安全的设置。, displayName: 共享访问策略}
+  Hostname:
+    en: {displayName: Hostname, description: The network host to which files should
+        be written.}
+    zh: {description: 文件应写入的网络主机。, displayName: 主机名}
+  Recurse Subdirectories:
+    en: {displayName: Recurse Subdirectories, description: Indicates whether or not
+        to pull files from subdirectories}
+    zh: {description: 指示是否从子目录中提取文件, displayName: 定期子目录}
+  File Filter:
+    en: {displayName: File Filter, description: Only files whose names match the given
+        regular expression will be picked up}
+    zh: {description: 只有名称与给定正则表达式匹配的文件才会被拾取, displayName: 文件筛选器}
+  Path Filter:
+    en: {displayName: Path Filter, description: 'When Recurse Subdirectories is true,
+        then only subdirectories whose path matches the given regular expression will
+        be scanned'}
+    zh: {description: 当Recurse Subdirectories为true时，将仅扫描路径与给定正则表达式匹配的子目录, displayName: 路径筛选器}
+  Username:
+    en: {displayName: Username, description: The username used for authentication.
+        If no username is set then anonymous authentication is attempted.}
+    zh: {description: 用于身份验证的用户名。如果未设置用户名，则尝试匿名身份验证。, displayName: 用户名}
+  Batch Size:
+    en: {displayName: Batch Size, description: The maximum number of files to pull
+        in each iteration}
+    zh: {description: 每次迭代中要提取的最大文件数, displayName: 批量大小}
+  Ignore Hidden Files:
+    en: {displayName: Ignore Hidden Files, description: Indicates whether or not hidden
+        files should be ignored}
+    zh: {description: 指示是否应忽略隐藏文件, displayName: 忽略隐藏文件}
+  Domain:
+    en: {displayName: Domain, description: 'The domain used for authentication. Optional,
+        in most cases username and password is sufficient.'}
+    zh: {description: 用于身份验证的域。可选，在大多数情况下，用户名和密码就足够了。, displayName: 领域}
+  Share:
+    en: {displayName: Share, description: 'The network share to which files should
+        be written. This is the "first folder"after the hostname: \\hostname\[share]\dir1\dir2'}
+    zh: {description: '文件应写入的网络共享。这是主机名之后的“第一个文件夹”：\\hostname\[share]\dir1\dir2',
+      displayName: 共有}
+  Directory:
+    en: {displayName: Directory, description: 'The network folder to which files should
+        be written. This is the remaining relative path after the share: \\hostname\share\[dir1\dir2].'}
+    zh: {description: '文件应写入的网络文件夹。这是共享之后的剩余相对路径：\\hostname\share\[dir1\dir2]。', displayName: 目录}
+  Password:
+    en: {displayName: Password, description: The password used for authentication.
+        Required if Username is set.}
+    zh: {description: 用于身份验证的密码。如果设置了用户名，则为必填项。, displayName: 暗语}
+writeAttributes:
+  absolute.path: {en: The full path from where a file was picked up. This includes
+      the hostname and the share name, zh: 从中拾取文件的完整路径。这包括主机名和共享名}
+  path: {en: 'The path is set to the relative path of the file''s network share name.
+      For example, if the input is set to \\hostname\share\tmp, files picked up from
+      \tmp will have the path attribute set to tmp', zh: 路径设置为文件网络共享名的相对路径。例如，如果输入设置为\\hostname\share\tmp，则从\tmp拾取的文件的路径属性将设置为tmp}
+  filename: {en: The filename is set to the name of the file on the network share,
+    zh: 文件名设置为网络共享上的文件名}
+  file.lastModifiedTime: {en: The date and time that the file was last modified. May
+      not work on all file systems, zh: 上次修改文件的日期和时间。可能不适用于所有文件系统}
+  file.creationTime: {en: The date and time that the file was created. May not work
+      on all file systems, zh: 创建文件的日期和时间。可能不适用于所有文件系统}
+  file.lastAccessTime: {en: The date and time that the file was last accessed. May
+      not work on all file systems, zh: 上次访问文件的日期和时间。可能不适用于所有文件系统}
+tags:
+  en: ['samba, smb, cifs, files, get']
+  zh: [samba，smb，cifs，文件，获取]

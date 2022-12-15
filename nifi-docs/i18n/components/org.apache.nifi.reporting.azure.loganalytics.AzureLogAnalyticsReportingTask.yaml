@@ -1,0 +1,45 @@
+capabilityDescription: {en: Sends JVM-metrics as well as Apache NiFi-metrics to a
+    Azure Log Analytics workspace.Apache NiFi-metrics can be either configured global
+    or on process-group level., zh: 将JVM度量以及Apache NiFi度量发送到Azure日志分析工作区。Apache NiFi度量可以全局配置，也可以在进程组级别配置。}
+properties:
+  Log Analytics Workspace Key:
+    en: {displayName: Log Analytics Workspace Key, description: Azure Log Analytic
+        Worskspace Key}
+    zh: {description: Azure日志分析Worskspace密钥, displayName: 日志分析工作区密钥}
+  Send JVM Metrics:
+    en: {displayName: Send JVM Metrics, description: Send JVM Metrics in addition
+        to the NiFi-metrics}
+    zh: {description: 除了NiFi指标外，还发送JVM指标, displayName: 发送JVM度量}
+  Job Name:
+    en: {displayName: Job Name, description: The name of the exporting job}
+    zh: {description: 导出作业的名称, displayName: 作业名称}
+  Log Analytics Workspace Id:
+    en: {displayName: Log Analytics Workspace Id, description: Log Analytics Workspace
+        Id}
+    zh: {description: 日志分析工作区Id, displayName: 日志分析工作区Id}
+  Application ID:
+    en: {displayName: Application ID, description: The Application ID to be included
+        in the metrics sent to Azure Log Analytics WS}
+    zh: {description: 要包含在发送到Azure日志分析WS的度量中的应用程序ID, displayName: 应用程序ID}
+  Log Analytics Custom Log Name:
+    en: {displayName: Log Analytics Custom Log Name, description: Log Analytics Custom
+        Log Name}
+    zh: {description: 日志分析自定义日志名称, displayName: 日志分析自定义日志名称}
+  Instance ID:
+    en: {displayName: Instance ID, description: Id of this NiFi instance to be included
+        in the metrics sent to Azure Log Analytics WS}
+    zh: {description: 要包含在发送到Azure Log Analytics WS的度量中的此NiFi实例的Id, displayName: 实例ID}
+  Log Analytics URL Endpoint Format:
+    en: {displayName: Log Analytics URL Endpoint Format, description: Log Analytics
+        URL Endpoint Format}
+    zh: {description: 日志分析URL终结点格式, displayName: 日志分析URL终结点格式}
+  Process group ID(s):
+    en: {displayName: Process group ID(s), description: 'If specified, the reporting
+        task will send metrics the configured ProcessGroup(s) only. Multiple IDs should
+        be separated by a comma. If none of the group-IDs could be found or no IDs
+        are defined, the Root Process Group is used and global metrics are sent.'}
+    zh: {description: 如果指定，报告任务将仅向配置的ProcessGroup发送度量。多个ID应该用逗号分隔。如果找不到组ID或未定义ID，则使用根进程组并发送全局度量。,
+      displayName: 进程组ID}
+tags:
+  en: [azure, metrics, reporting, log analytics]
+  zh: [蔚蓝色的, 韵律学, 报告, 日志分析]

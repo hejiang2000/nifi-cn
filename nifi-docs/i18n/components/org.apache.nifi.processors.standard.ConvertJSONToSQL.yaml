@@ -1,0 +1,129 @@
+relationships:
+  original: {en: 'When a FlowFile is converted to SQL, the original JSON FlowFile
+      is routed to this relationship', zh: 当FlowFile转换为SQL时，原始JSON FlowFile将路由到此关系}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be converted
+      into a SQL statement. Common causes include invalid JSON content or the JSON
+      content missing a required field (if using an INSERT statement type)., zh: 如果FlowFile无法转换为SQL语句，则将其路由到此关系。常见原因包括无效的JSON内容或JSON内容缺少必填字段（如果使用INSERT语句类型）。}
+  sql: {en: A FlowFile is routed to this relationship when its contents have successfully
+      been converted into a SQL statement, zh: 当FlowFile的内容成功转换为SQL语句时，FlowFile将被路由到此关系}
+capabilityDescription: {en: 'Converts a JSON-formatted FlowFile into an UPDATE, INSERT,
+    or DELETE SQL statement. The incoming FlowFile is expected to be "flat" JSON message,
+    meaning that it consists of a single JSON element and each field maps to a simple
+    type. If a field maps to a JSON object, that JSON object will be interpreted as
+    Text. If the input is an array of JSON elements, each element in the array is
+    output as a separate FlowFile to the ''sql'' relationship. Upon successful conversion,
+    the original FlowFile is routed to the ''original'' relationship and the SQL is
+    routed to the ''sql'' relationship.', zh: 将JSON格式的FlowFile转换为UPDATE、INSERT或DELETE
+    SQL语句。传入的FlowFile应该是“扁平”JSON消息，这意味着它由一个JSON元素组成，每个字段映射到一个简单类型。如果字段映射到JSON对象，则该JSON对象将被解释为文本。如果输入是一个JSON元素数组，则数组中的每个元素都将作为单独的FlowFile输出到“sql”关系。成功转换后，原始FlowFile将被路由到“原始”关系，SQL将被路由至“SQL”关系。}
+properties:
+  table-schema-cache-size:
+    en: {displayName: Table Schema Cache Size, description: Specifies how many Table
+        Schemas should be cached}
+    zh: {description: 指定应缓存多少表架构, displayName: 表架构缓存大小}
+  Table Name:
+    en: {displayName: Table Name, description: The name of the table that the statement
+        should update}
+    zh: {description: 语句应更新的表的名称, displayName: 表名称}
+  Catalog Name:
+    en: {displayName: Catalog Name, description: 'The name of the catalog that the
+        statement should update. This may not apply for the database that you are
+        updating. In this case, leave the field empty'}
+    zh: {description: 语句应更新的目录的名称。这可能不适用于您正在更新的数据库。在这种情况下，将字段留空, displayName: 目录名称}
+  jts-sql-param-attr-prefix:
+    en: {displayName: SQL Parameter Attribute Prefix, description: 'The string to
+        be prepended to the outgoing flow file attributes, such as <sql>.args.1.value,
+        where <sql> is replaced with the specified value'}
+    zh: {description: 要附加到传出流文件属性的字符串，例如<sql>.args..value，其中<sql>将替换为指定值, displayName: SQL参数属性前缀}
+  Schema Name:
+    en: {displayName: Schema Name, description: 'The name of the schema that the table
+        belongs to. This may not apply for the database that you are updating. In
+        this case, leave the field empty'}
+    zh: {description: 表所属的架构的名称。这可能不适用于正在更新的数据库。在这种情况下，将字段留空, displayName: 架构名称}
+  Unmatched Field Behavior:
+    en: {displayName: Unmatched Field Behavior, description: 'If an incoming JSON
+        element has a field that does not map to any of the database table''s columns,
+        this property specifies how to handle the situation'}
+    zh: {description: 如果传入的JSON元素的字段没有映射到数据库表的任何列，则此属性指定如何处理这种情况, displayName: 不匹配的字段行为}
+  Unmatched Column Behavior:
+    en: {displayName: Unmatched Column Behavior, description: 'If an incoming JSON
+        element does not have a field mapping for all of the database table''s columns,
+        this property specifies how to handle the situation'}
+    zh: {description: 如果传入的JSON元素没有数据库表的所有列的字段映射，则此属性指定如何处理这种情况, displayName: 不匹配的列行为}
+  jts-quoted-identifiers:
+    en: {displayName: Quote Column Identifiers, description: 'Enabling this option
+        will cause all column names to be quoted, allowing you to use reserved words
+        as column names in your tables.'}
+    zh: {description: 启用此选项将导致所有列名都被引用，从而允许您在表中使用保留字作为列名。, displayName: 引用列标识符}
+  jts-quoted-table-identifiers:
+    en: {displayName: Quote Table Identifiers, description: Enabling this option will
+        cause the table name to be quoted to support the use of special characters
+        in the table name}
+    zh: {description: 启用此选项将导致引用表名，以支持在表名中使用特殊字符, displayName: 报价表标识符}
+  JDBC Connection Pool:
+    en: {displayName: JDBC Connection Pool, description: Specifies the JDBC Connection
+        Pool to use in order to convert the JSON message to a SQL statement. The Connection
+        Pool is necessary in order to determine the appropriate database column types.}
+    zh: {description: 指定要用于将JSON消息转换为SQL语句的JDBC连接池。连接池是确定适当的数据库列类型所必需的。, displayName: JDBC连接池}
+  Update Keys:
+    en: {displayName: Update Keys, description: 'A comma-separated list of column
+        names that uniquely identifies a row in the database for UPDATE statements.
+        If the Statement Type is UPDATE and this property is not set, the table''s
+        Primary Keys are used. In this case, if no Primary Key exists, the conversion
+        to SQL will fail if Unmatched Column Behaviour is set to FAIL. This property
+        is ignored if the Statement Type is INSERT'}
+    zh: {description: 以逗号分隔的列名列表，用于唯一标识数据库中UPDATE语句的行。如果Statement Type为UPDATE且未设置此属性，则使用表的主键。在这种情况下，如果不存在主键，则如果Unmatch
+        Column Behavior设置为fail，则转换为SQL将失败。如果语句类型为INSERT，则忽略此属性, displayName: 更新密钥}
+  Translate Field Names:
+    en: {displayName: Translate Field Names, description: 'If true, the Processor
+        will attempt to translate JSON field names into the appropriate column names
+        for the table specified. If false, the JSON field names must match the column
+        names exactly, or the column will not be updated'}
+    zh: {description: 如果为true，处理器将尝试将JSON字段名转换为指定表的适当列名。如果为false，则JSON字段名必须与列名完全匹配，否则将不会更新该列,
+      displayName: 翻译字段名称}
+  Statement Type:
+    en: {displayName: Statement Type, description: Specifies the type of SQL Statement
+        to generate}
+    zh: {description: 指定要生成的SQL语句的类型, displayName: 报表类型}
+writeAttributes:
+  <sql>.table: {en: 'Sets the <sql>.table attribute of FlowFile that is routed to
+      ''sql'' to the name of the table that is updated by the SQL statement. The prefix
+      for this attribute (''sql'', e.g.) is determined by the SQL Parameter Attribute
+      Prefix property.', zh: 设置＜sql＞。FlowFile的table属性，该属性被路由到sql语句更新的表的名称“sql”。此属性的前缀（例如'sql'）由sql参数属性前缀属性确定。}
+  <sql>.args.N.type: {en: 'The output SQL statements are parametrized in order to
+      avoid SQL Injection Attacks. The types of the Parameters to use are stored in
+      attributes named <sql>.args.1.type, <sql>.args.2.type, <sql>.args.3.type, and
+      so on. The type is a number representing a JDBC Type constant. Generally, this
+      is useful only for software to read and interpret but is added so that a processor
+      such as PutSQL can understand how to interpret the values. The prefix for this
+      attribute (''sql'', e.g.) is determined by the SQL Parameter Attribute Prefix
+      property.', zh: 输出SQL语句被参数化，以避免SQL注入攻击。要使用的参数类型存储在名为<sql>.args..type、<sql>.args.2.type、<sql>.args.3.type等的属性中。该类型是表示JDBC类型常量的数字。通常，这只对软件读取和解释有用，但它是为了让PutSQL等处理器能够理解如何解释值而添加的。此属性的前缀（例如'sql'）由sql参数属性前缀属性确定。}
+  fragment.identifier: {en: All FlowFiles routed to the 'sql' relationship for the
+      same incoming FlowFile (multiple will be output for the same incoming FlowFile
+      if the incoming FlowFile is a JSON Array) will have the same value for the fragment.identifier
+      attribute. This can then be used to correlate the results., zh: 对于同一传入FlowFile，所有路由到“sql”关系的FlowFile（如果传入FlowFile是JSON数组，则将为同一传入流文件输出多个）将具有相同的片段值。标识符属性。然后，这可以用于关联结果。}
+  fragment.index: {en: The position of this FlowFile in the list of outgoing FlowFiles
+      that were all derived from the same incoming FlowFile. This can be used in conjunction
+      with the fragment.identifier and fragment.count attributes to know which FlowFiles
+      originated from the same incoming FlowFile and in what order the SQL FlowFiles
+      were produced, zh: 此FlowFile在所有来自同一传入FlowFile的传出FlowFile列表中的位置。这可以与片段一起使用。标识符和片段。计数属性，以了解哪些FlowFiles源自同一传入FlowFile以及SQL
+      FlowFiles的生成顺序}
+  mime.type: {en: Sets mime.type of FlowFile that is routed to 'sql' to 'text/plain'.,
+    zh: 设置mime。路由到“sql”到“text/plain”的FlowFile类型。}
+  fragment.count: {en: The number of SQL FlowFiles that were produced for same incoming
+      FlowFile. This can be used in conjunction with the fragment.identifier attribute
+      in order to know how many FlowFiles belonged to the same incoming FlowFile.,
+    zh: 为同一传入FlowFile生成的SQL FlowFile数。这可以与片段一起使用。identifier属性，以便知道有多少FlowFiles属于同一传入FlowFile。}
+  <sql>.args.N.value: {en: 'The output SQL statements are parametrized in order to
+      avoid SQL Injection Attacks. The values of the Parameters to use are stored
+      in the attributes named sql.args.1.value, sql.args.2.value, sql.args.3.value,
+      and so on. Each of these attributes has a corresponding <sql>.args.N.type attribute
+      that indicates how the value should be interpreted when inserting it into the
+      database.The prefix for this attribute (''sql'', e.g.) is determined by the
+      SQL Parameter Attribute Prefix property.', zh: 输出SQL语句被参数化，以避免SQL注入攻击。要使用的Parameters的值存储在名为sql.args.1.value、sql.args.2.value、sql.args.3.value等属性中。这些属性中的每一个都有一个对应的<sql>.args.N.type属性，指示在将值插入数据库时应如何解释该值。此属性的前缀（例如'sql'）由sql参数属性前缀属性确定。}
+  <sql>.catalog: {en: 'If the Catalog name is set for this database, specifies the
+      name of the catalog that the SQL statement will update. If no catalog is used,
+      this attribute will not be added. The prefix for this attribute (''sql'', e.g.)
+      is determined by the SQL Parameter Attribute Prefix property.', zh: 如果为此数据库设置了目录名称，请指定SQL语句将更新的目录的名称。如果未使用目录，则不会添加此属性。此属性的前缀（例如'sql'）由sql参数属性前缀属性确定。}
+tags:
+  en: [json, sql, database, rdbms, insert, update, delete, relational, flat]
+  zh: [json文件, sql语言, 数据库, 关系数据库系统, 插入, 使现代化, 删去, 关系型的, 平的]

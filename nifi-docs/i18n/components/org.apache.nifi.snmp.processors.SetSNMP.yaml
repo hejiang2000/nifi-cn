@@ -1,0 +1,84 @@
+relationships:
+  success: {en: All FlowFiles that have been successfully used to perform SNMP Set
+      are routed to this relationship, zh: 已成功用于执行SNMP设置的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that failed during the SNMP Set care routed to this
+      relationship, zh: 在SNMP设置过程中失败的所有FlowFiles都会路由到此关系}
+capabilityDescription: {en: 'Based on incoming FlowFile attributes, the processor
+    will execute SNMP Set requests. When finding attributes with the name snmp$<OID>,
+    the processor will attempt to set the value of the attribute to the corresponding
+    OID given in the attribute name.', zh: 根据传入的FlowFile属性，处理器将执行SNMP Set请求。当查找名称为snmp$＜OID＞的属性时，处理器将尝试将属性的值设置为属性名称中给定的相应OID。}
+properties:
+  snmp-security-level:
+    en: {displayName: SNMP Security Level, description: SNMP version 3 provides extra
+        security with User Based Security Model (USM). The three levels of security
+        is 1. Communication without authentication and encryption (NoAuthNoPriv).
+        2. Communication with authentication and without encryption (AuthNoPriv).
+        3. Communication with authentication and encryption (AuthPriv).}
+    zh: {description: SNMP版本3通过基于用户的安全模型（USM）提供了额外的安全性。三个安全级别是1.无身份验证和加密的通信（NoAuthNoPriv）。2.具有身份验证且无加密的通信（AuthNoPriv）。3.使用身份验证和加密（AuthPriv）进行通信。,
+      displayName: SNMP安全级别}
+  snmp-authentication-passphrase:
+    en: {displayName: SNMP Authentication Passphrase, description: Passphrase used
+        for SNMP authentication protocol.}
+    zh: {description: 用于SNMP身份验证协议的密码短语。, displayName: SNMP身份验证密码短语}
+  snmp-port:
+    en: {displayName: SNMP Agent Port, description: Port of the SNMP Agent.}
+    zh: {description: SNMP代理的端口。, displayName: SNMP代理端口}
+  snmp-retries:
+    en: {displayName: Number of Retries, description: Set the number of retries when
+        requesting the SNMP Agent.}
+    zh: {description: 设置请求SNMP代理时的重试次数。, displayName: 重试次数}
+  snmp-community:
+    en: {displayName: SNMP Community, description: 'SNMPv1 and SNMPv2 use communities
+        to establish trust between managers and agents. Most agents support three
+        community names, one each for read-only, read-write and trap. These three
+        community strings control different types of activities. The read-only community
+        applies to get requests. The read-write community string applies to set requests.
+        The trap community string applies to receipt of traps.'}
+    zh: {description: SNMPv1和SNMPv2使用社区在管理者和代理之间建立信任。大多数代理都支持三个社区名称，其中一个用于只读、读写和陷阱。这三个社区字符串控制不同类型的活动。只读社区应用于获取请求。读写团体字符串适用于设置请求。陷阱社区字符串适用于接收陷阱。,
+      displayName: SNMP共同体}
+  snmp-version:
+    en: {displayName: SNMP Version, description: 'Three significant versions of SNMP
+        have been developed and deployed. SNMPv1 is the original version of the protocol.
+        More recent versions, SNMPv2c and SNMPv3, feature improvements in performance,
+        flexibility and security.'}
+    zh: {description: 已经开发和部署了三个重要版本的SNMP。SNMPv1是协议的原始版本。最新版本SNMPv2c和SNMPv3在性能、灵活性和安全性方面有所改进。,
+      displayName: SNMP版本}
+  snmp-private-protocol-passphrase:
+    en: {displayName: SNMP Privacy Passphrase, description: Passphrase used for SNMP
+        privacy protocol.}
+    zh: {description: 用于SNMP隐私协议的密码短语。, displayName: SNMP隐私密码短语}
+  snmp-hostname:
+    en: {displayName: SNMP Agent Hostname, description: Hostname or network address
+        of the SNMP Agent.}
+    zh: {description: SNMP代理的主机名或网络地址。, displayName: SNMP代理主机名}
+  snmp-security-name:
+    en: {displayName: SNMP Security Name, description: User name used for SNMP v3
+        Authentication.}
+    zh: {description: 用于SNMP v3身份验证的用户名。, displayName: SNMP安全名称}
+  snmp-private-protocol:
+    en: {displayName: SNMP Privacy Protocol, description: Privacy allows for encryption
+        of SNMP v3 messages to ensure confidentiality of data.}
+    zh: {description: 隐私允许对SNMP v3消息进行加密，以确保数据的机密性。, displayName: SNMP隐私协议}
+  snmp-timeout:
+    en: {displayName: Timeout (ms), description: Set the timeout in ms when requesting
+        the SNMP Agent.}
+    zh: {description: 设置请求SNMP代理时的超时（毫秒）。, displayName: 超时（毫秒）}
+  snmp-authentication-protocol:
+    en: {displayName: SNMP Authentication Protocol, description: Hash based authentication
+        protocol for secure authentication.}
+    zh: {description: 用于安全身份验证的基于哈希的身份验证协议。, displayName: SNMP身份验证协议}
+writeAttributes:
+  snmp$errorStatusText: {en: The description of error status., zh: 错误状态的描述。}
+  snmp$requestID: {en: The request ID associated with the PDU., zh: 与PDU关联的请求ID。}
+  snmp$errorIndex: {en: Denotes the variable binding in which the error occured.,
+    zh: 表示发生错误的变量绑定。}
+  snmp$type: {en: The snmp4j numeric representation of the type of the PDU., zh: PDU类型的snmp4j数字表示。}
+  snmp$nonRepeaters: {en: The number of non repeater variable bindings in a GETBULK
+      PDU (currently not supported)., zh: GETBULK PDU中非中继器变量绑定的数量（当前不支持）。}
+  snmp$<OID>: {en: 'Response variable binding: OID (e.g. 1.3.6.1.4.1.343) and its
+      value.', zh: 响应变量绑定：OID（例如1.3.6.1.4.1.343）及其值。}
+  snmp$typeString: {en: The name of the PDU type., zh: PDU类型的名称。}
+  snmp$errorStatus: {en: The snmp4j error status of the PDU., zh: PDU的snmp4j错误状态。}
+tags:
+  en: [snmp, set, oid]
+  zh: [snmp协议, 设置, 类]

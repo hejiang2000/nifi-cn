@@ -1,0 +1,31 @@
+relationships:
+  success: {en: The original FlowFile will be routed to this relationship if the records
+      were transmitted successfully, zh: 如果记录传输成功，原始FlowFile将被路由到此关系}
+  failure: {en: A FlowFile is routed to this relationship if the records could not
+      be transmitted and retrying the operation will also fail, zh: 如果无法传输记录，FlowFile将路由到此关系，并且重试操作也将失败}
+  retry: {en: The original FlowFile is routed to this relationship if the records
+      could not be transmitted but attempting the operation again may succeed, zh: 如果无法传输记录，则将原始FlowFile路由到此关系，但再次尝试操作可能会成功}
+capabilityDescription: {en: 'The PutRecord processor uses a specified RecordReader
+    to input (possibly multiple) records from an incoming flow file, and sends them
+    to a destination specified by a Record Destination Service (i.e. record sink).',
+  zh: PutRecord处理器使用指定的RecordReader从传入流文件中输入（可能是多个）记录，并将其发送到记录目的地服务指定的目的地（即记录接收器）。}
+properties:
+  put-record-include-zero-record-results:
+    en: {displayName: Include Zero Record Results, description: 'If no records are
+        read from the incoming FlowFile, this property specifies whether or not an
+        empty record set will be transmitted. The original FlowFile will still be
+        routed to success, but if no transmission occurs, no provenance SEND event
+        will be generated.'}
+    zh: {description: 如果没有从传入的FlowFile中读取记录，则此属性指定是否传输空记录集。原始FlowFile仍将路由成功，但如果未发生传输，则不会生成起源SEND事件。,
+      displayName: 包括零记录结果}
+  put-record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  put-record-sink:
+    en: {displayName: Record Destination Service, description: Specifies the Controller
+        Service to use for writing out the query result records to some destination.}
+    zh: {description: 指定用于将查询结果记录写入某个目标的控制器服务。, displayName: 记录目的地服务}
+tags:
+  en: [record, put, sink]
+  zh: [记录, 放, 下沉]

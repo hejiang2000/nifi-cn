@@ -1,0 +1,15 @@
+capabilityDescription: {en: Allows to choose a distributed map cache client to retrieve
+    the value associated to a key. The coordinates that are passed to the lookup must
+    contain the key 'key'., zh: 允许选择分布式映射缓存客户端以检索与密钥关联的值。传递给查找的坐标必须包含键“key”。}
+properties:
+  character-encoding:
+    en: {displayName: Character Encoding, description: Specifies a character encoding
+        to use.}
+    zh: {description: 指定要使用的字符编码。, displayName: 字符编码}
+  distributed-map-cache-service:
+    en: {displayName: Distributed Cache Service, description: The Controller Service
+        that is used to get the cached values.}
+    zh: {description: 用于获取缓存值的控制器服务。, displayName: 分布式缓存服务}
+tags:
+  en: [lookup, enrich, key, value, map, cache, distributed]
+  zh: [查找, 充实, 钥匙, 价值, 地图, 隐藏物, 分布式的]

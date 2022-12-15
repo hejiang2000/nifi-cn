@@ -1,0 +1,105 @@
+relationships:
+  success: {en: FlowFiles received from Event Hub., zh: 从事件中心接收到FlowFiles。}
+  parse.failure: {en: 'If a message from event hub cannot be parsed using the configured
+      Record Reader or failed to be written by the configured Record Writer, the contents
+      of the message will be routed to this Relationship as its own individual FlowFile.',
+    zh: 如果无法使用配置的记录读取器解析来自事件中心的消息，或者无法通过配置的记录写入器写入消息，则消息的内容将作为其自身的流文件路由到此关系。}
+capabilityDescription: {en: 'Receives messages from Azure Event Hubs, writing the
+    contents of the message to the content of the FlowFile.', zh: 从Azure事件中心接收消息，将消息内容写入FlowFile的内容。}
+properties:
+  use-managed-identity:
+    en: {displayName: Use Azure Managed Identity, description: Choose whether or not
+        to use the managed identity of Azure VM/VMSS}
+    zh: {description: 选择是否使用Azure VM/VMSS的托管标识, displayName: 使用Azure托管身份}
+  Service Bus Endpoint:
+    en: {displayName: Service Bus Endpoint, description: To support namespaces not
+        in the default windows.net domain.}
+    zh: {description: 支持不在默认窗口中的命名空间。net域。, displayName: 服务总线终结点}
+  event-hub-shared-access-policy-name:
+    en: {displayName: Shared Access Policy Name, description: The name of the shared
+        access policy. This policy must have Listen claims.}
+    zh: {description: 共享访问策略的名称。此策略必须具有Listen声明。, displayName: 共享访问策略名称}
+  event-hub-namespace:
+    en: {displayName: Event Hub Namespace, description: The namespace that the Azure
+        Event Hubs is assigned to. This is generally equal to <Event Hub Names>-ns.}
+    zh: {description: Azure事件中心分配给的命名空间。这通常等于<Event Hub Names>-ns。, displayName: 事件中心命名空间}
+  record-writer:
+    en: {displayName: Record Writer, description: 'The Record Writer to use for serializing
+        Records to an output FlowFile. The event hub name can be referred by Expression
+        Language ''${eventhub.name}'' to access a schema. If not specified, each message
+        will create a FlowFile.'}
+    zh: {description: 用于将记录序列化为输出FlowFile的记录编写器。表达式语言“$｛eventhub.name｝”可以引用事件中心名称以访问架构。如果未指定，则每条消息将创建一个FlowFile。,
+      displayName: 记录编写器}
+  event-hub-prefetch-count:
+    en: {displayName: Prefetch Count, description: ''}
+    zh: {description: '', displayName: 预取计数}
+  event-hub-initial-offset:
+    en: {displayName: Initial Offset, description: Specify where to start receiving
+        messages if offset is not stored in Azure Storage.}
+    zh: {description: 如果偏移量未存储在Azure存储中，请指定开始接收消息的位置。, displayName: 初始偏移量}
+  storage-container-name:
+    en: {displayName: Storage Container Name, description: 'Name of the Azure Storage
+        container to store the event hub consumer group state. If not specified, event
+        hub name is used.'}
+    zh: {description: 用于存储事件中心使用者组状态的Azure存储容器的名称。如果未指定，则使用事件中心名称。, displayName: 存储容器名称}
+  storage-account-name:
+    en: {displayName: Storage Account Name, description: Name of the Azure Storage
+        account to store event hub consumer group state.}
+    zh: {description: 用于存储事件中心使用者组状态的Azure存储帐户的名称。, displayName: 存储帐户名称}
+  event-hub-batch-size:
+    en: {displayName: Batch Size, description: 'The number of messages to process
+        within a NiFi session. This parameter affects throughput and consistency.
+        NiFi commits its session and Event Hubs checkpoints after processing this
+        number of messages. If NiFi session is committed, but fails to create an Event
+        Hubs checkpoint, then it is possible that the same messages will be received
+        again. The higher number, the higher throughput, but possibly less consistent.'}
+    zh: {description: NiFi会话中要处理的消息数。此参数影响吞吐量和一致性。NiFi在处理此数量的消息后提交其会话和事件中心检查点。如果NiFi会话已提交，但未能创建事件中心检查点，则可能会再次收到相同的消息。数量越大，吞吐量越高，但可能不太一致。,
+      displayName: 批量大小}
+  storage-sas-token:
+    en: {displayName: Storage SAS Token, description: 'The Azure Storage SAS token
+        to store Event Hub consumer group state. Always starts with a ? character.'}
+    zh: {description: 用于存储事件中心使用者组状态的Azure Storage SAS令牌。总是以a开头？性格, displayName: 存储SAS令牌}
+  event-hub-consumer-hostname:
+    en: {displayName: Consumer Hostname, description: 'DEPRECATED: This property is
+        no longer used.'}
+    zh: {description: 已弃用：不再使用此属性。, displayName: 消费者主机名}
+  event-hub-shared-access-policy-primary-key:
+    en: {displayName: Shared Access Policy Primary Key, description: The primary key
+        of the shared access policy}
+    zh: {description: 共享访问策略的主键, displayName: 共享访问策略主键}
+  event-hub-message-receive-timeout:
+    en: {displayName: Message Receive Timeout, description: The amount of time this
+        consumer should wait to receive the Prefetch Count before returning.}
+    zh: {description: 此消费者在返回之前应等待接收预取计数的时间。, displayName: 消息接收超时}
+  storage-account-key:
+    en: {displayName: Storage Account Key, description: The Azure Storage account
+        key to store event hub consumer group state.}
+    zh: {description: 用于存储事件中心使用者组状态的Azure存储帐户密钥。, displayName: 存储帐户密钥}
+  record-reader:
+    en: {displayName: Record Reader, description: 'The Record Reader to use for reading
+        received messages. The event hub name can be referred by Expression Language
+        ''${eventhub.name}'' to access a schema.'}
+    zh: {description: 用于读取接收到的消息的记录读取器。表达式语言“$｛eventhub.name｝”可以引用事件中心名称以访问架构。, displayName: 记录读取器}
+  event-hub-consumer-group:
+    en: {displayName: Consumer Group, description: The name of the consumer group
+        to use.}
+    zh: {description: 要使用的使用者组的名称。, displayName: 消费者群体}
+  event-hub-name:
+    en: {displayName: Event Hub Name, description: The name of the event hub to pull
+        messages from.}
+    zh: {description: 要从中提取消息的事件中心的名称。, displayName: 事件中心名称}
+writeAttributes:
+  eventhub.sequence: {en: The sequence number associated with the message, zh: 与消息关联的序列号}
+  eventhub.property.*: {en: 'The application properties of this message. IE: ''application''
+      would be ''eventhub.property.application''', zh: '此消息的应用程序属性。IE:“application”将是“eventhub.properties.application”'}
+  eventhub.partition: {en: The name of the partition from which the message was pulled,
+    zh: 从中提取消息的分区的名称}
+  eventhub.name: {en: The name of the event hub from which the message was pulled,
+    zh: 从中提取消息的事件中心的名称}
+  eventhub.enqueued.timestamp: {en: 'The time (in milliseconds since epoch, UTC) at
+      which the message was enqueued in the event hub', zh: 消息在事件中心排队的时间（以毫秒为单位，自epoch，UTC）}
+  eventhub.offset: {en: The offset into the partition at which the message was stored,
+    zh: 存储消息的分区的偏移量}
+tags:
+  en: [azure, microsoft, cloud, eventhub, events, streaming, streams]
+  zh: [蔚蓝色的, 微软, 云, Eventhub, 事件, 流动, 溪流]

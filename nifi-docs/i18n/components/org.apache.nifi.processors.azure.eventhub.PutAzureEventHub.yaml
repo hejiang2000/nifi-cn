@@ -1,0 +1,45 @@
+relationships:
+  success: {en: Any FlowFile that is successfully sent to the event hubs will be transferred
+      to this Relationship., zh: 成功发送到事件中心的任何FlowFile都将传输到此关系。}
+  failure: {en: Any FlowFile that could not be sent to the event hub will be transferred
+      to this Relationship., zh: 无法发送到事件中心的任何FlowFile都将传输到此关系。}
+systemResourceConsiderations:
+  en: [The Processor buffers FlowFile contents in memory before sending]
+  zh: [处理器在发送前将FlowFile内容缓冲在内存中]
+capabilityDescription: {en: Send FlowFile contents to Azure Event Hubs, zh: 将FlowFile内容发送到Azure事件中心}
+properties:
+  Event Hub Name:
+    en: {displayName: Event Hub Name, description: Name of Azure Event Hubs destination}
+    zh: {description: Azure事件中心目标的名称, displayName: 事件中心名称}
+  partitioning-key-attribute-name:
+    en: {displayName: Partitioning Key Attribute Name, description: 'If specified,
+        the value from argument named by this field will be used as a partitioning
+        key to be used by event hub.'}
+    zh: {description: 如果指定，则由该字段命名的参数值将用作事件中心使用的分区键。, displayName: 分区密钥属性名称}
+  use-managed-identity:
+    en: {displayName: Use Azure Managed Identity, description: Choose whether or not
+        to use the managed identity of Azure VM/VMSS}
+    zh: {description: 选择是否使用Azure VM/VMSS的托管标识, displayName: 使用Azure托管身份}
+  Service Bus Endpoint:
+    en: {displayName: Service Bus Endpoint, description: To support namespaces not
+        in the default windows.net domain.}
+    zh: {description: 支持不在默认窗口中的命名空间。net域。, displayName: 服务总线终结点}
+  Shared Access Policy Name:
+    en: {displayName: Shared Access Policy Name, description: The name of the shared
+        access policy. This policy must have Send claims.}
+    zh: {description: 共享访问策略的名称。此策略必须具有发送声明。, displayName: 共享访问策略名称}
+  Shared Access Policy Primary Key:
+    en: {displayName: Shared Access Policy Primary Key, description: The primary key
+        of the shared access policy}
+    zh: {description: 共享访问策略的主键, displayName: 共享访问策略主键}
+  Event Hub Namespace:
+    en: {displayName: Event Hub Namespace, description: Namespace of Azure Event Hubs
+        prefixed to Service Bus Endpoint domain}
+    zh: {description: 前缀为服务总线终结点域的Azure事件中心命名空间, displayName: 事件中心命名空间}
+  max-batch-size:
+    en: {displayName: Maximum Batch Size, description: Maximum number of FlowFiles
+        processed for each Processor invocation}
+    zh: {description: 每个处理器调用处理的最大FlowFiles数, displayName: 最大批量大小}
+tags:
+  en: [microsoft, azure, cloud, eventhub, events, streams, streaming]
+  zh: [微软, 蔚蓝色的, 云, Eventhub, 事件, 溪流, 流动]

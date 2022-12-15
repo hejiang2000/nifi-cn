@@ -1,0 +1,54 @@
+relationships:
+  success: {en: For FlowFiles created as a result of a successful HTTP request., zh: 对于由于成功的HTTP请求而创建的FlowFiles。}
+capabilityDescription: {en: Retrieves JSON data from a private HubSpot application.
+    This processor is intended to be run on the Primary Node only., zh: 从专用HubSpot应用程序检索JSON数据。此处理器只能在主节点上运行。}
+statefulDescription: {en: 'In case of incremental loading, the start and end timestamps
+    of the last query time window are stored in the state. When the ''Result Limit''
+    property is set, the paging cursor is saved after executing a request. Only the
+    objects after the paging cursor will be retrieved. The maximum number of retrieved
+    objects can be set in the ''Result Limit'' property.', zh: 在增量加载的情况下，最后一个查询时间窗口的开始和结束时间戳存储在状态中。设置“Result
+    Limit”属性后，执行请求后将保存分页光标。仅检索分页光标之后的对象。可以在“Result Limit”属性中设置检索对象的最大数量。}
+properties:
+  result-limit:
+    en: {displayName: Result Limit, description: The maximum number of results to
+        request for each invocation of the Processor}
+    zh: {description: 每次调用处理器时请求的最大结果数, displayName: 结果限制}
+  incremental-delay:
+    en: {displayName: Incremental Delay, description: 'The ending timestamp of the
+        time window will be adjusted earlier by the amount configured in this property.
+        For example, with a property value of 10 seconds, an ending timestamp of 12:30:45
+        would be changed to 12:30:35. Set this property to avoid missing objects when
+        the clock of your local machines and HubSpot servers'' clock are not in sync
+        and to protect against HubSpot''s mechanism that changes last updated timestamps
+        after object creation.'}
+    zh: {description: '时间窗口的结束时间戳将根据此属性中配置的数量提前调整。例如，如果属性值为10秒，则12:30:45的结束时间戳将更改为12:30:35。设置此属性以避免在本地计算机的时钟和HubSpot服务器的时钟不同步时丢失对象，并防止HubSpot的机制在创建对象后更改上次更新的时间戳。',
+      displayName: 增量延迟}
+  object-type:
+    en: {displayName: Object Type, description: The HubSpot Object Type requested}
+    zh: {description: 请求的HubSpot对象类型, displayName: 对象类型}
+  is-incremental:
+    en: {displayName: Incremental Loading, description: 'The processor can incrementally
+        load the queried objects so that each object is queried exactly once. For
+        each query, the processor queries objects within a time window where the objects
+        were modified between the previous run time and the current time (optionally
+        adjusted by the Incremental Delay property).'}
+    zh: {description: 处理器可以增量加载所查询的对象，以便每个对象只查询一次。对于每个查询，处理器都会在一个时间窗口内查询对象，在该时间窗口中，对象在上一次运行时间和当前时间之间进行了修改（可以通过“增量延迟”属性进行调整）。,
+      displayName: 增量加载}
+  access-token:
+    en: {displayName: Access Token, description: Access Token to authenticate requests}
+    zh: {description: 用于验证请求的访问令牌, displayName: 访问令牌}
+  incremental-initial-start-time:
+    en: {displayName: Incremental Initial Start Time, description: 'This property
+        specifies the start time that the processor applies when running the first
+        request. The expected format is a UTC date-time such as ''2011-12-03T10:15:30Z'''}
+    zh: {description: '此属性指定处理器在运行第一个请求时应用的开始时间。预期格式为UTC日期时间，如“2011-12-03T10:15:30Z”',
+      displayName: 增量初始启动时间}
+  web-client-service-provider:
+    en: {displayName: Web Client Service Provider, description: Controller service
+        for HTTP client operations}
+    zh: {description: 用于HTTP客户端操作的控制器服务, displayName: Web客户端服务提供商}
+writeAttributes:
+  mime.type: {en: Sets the MIME type to application/json, zh: 将MIME类型设置为application/json}
+tags:
+  en: [hubspot]
+  zh: [轮毂斑点]

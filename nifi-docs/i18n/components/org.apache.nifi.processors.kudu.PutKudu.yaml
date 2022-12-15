@@ -1,0 +1,138 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship after it has been successfully
+      stored in Kudu, zh: FlowFile成功存储到Kudu后，将路由到此关系}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be sent to
+      Kudu, zh: 如果FlowFile无法发送到Kudu，则将其路由到此关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Reads records from an incoming FlowFile using the provided
+    Record Reader, and writes those records to the specified Kudu''s table. The schema
+    for the Kudu table is inferred from the schema of the Record Reader. If any error
+    occurs while reading records from the input, or writing records to Kudu, the FlowFile
+    will be routed to failure', zh: 使用提供的记录读取器从传入的FlowFile读取记录，并将这些记录写入指定的Kudu表。Kudu表的模式是从记录读取器的模式中推断出来的。如果从输入读取记录或将记录写入Kudu时发生任何错误，FlowFile将被路由到失败}
+properties:
+  Ignore NULL:
+    en: {displayName: Ignore NULL, description: 'Ignore NULL on Kudu Put Operation,
+        Update only non-Null columns if set true'}
+    zh: {description: 在Kudu Put操作中忽略NULL，如果设置为true，则仅更新非NULL列, displayName: 忽略NULL}
+  Table Name:
+    en: {displayName: Table Name, description: The name of the Kudu Table to put data
+        into}
+    zh: {description: 要将数据放入的Kudu表的名称, displayName: 表名称}
+  kerberos-password:
+    en: {displayName: Kerberos Password, description: The password to use when specifying
+        the principal and password directly in the processor for authenticating via
+        Kerberos.}
+    zh: {description: 在处理器中直接指定主体和密码以通过Kerberos进行身份验证时使用的密码。, displayName: Kerberos密码}
+  Handle Schema Drift:
+    en: {displayName: Handle Schema Drift, description: 'If set to true, when fields
+        with names that are not in the target Kudu table are encountered, the Kudu
+        table will be altered to include new columns for those fields.'}
+    zh: {description: 如果设置为true，当遇到名称不在目标Kudu表中的字段时，Kudu表将被更改为包含这些字段的新列。, displayName: 处理架构漂移}
+  kudu-sasl-protocol-name:
+    en: {displayName: Kudu SASL Protocol Name, description: The SASL protocol name
+        to use for authenticating via Kerberos. Must match the service principal name.}
+    zh: {description: 用于通过Kerberos进行身份验证的SASL协议名称。必须与服务主体名称匹配。, displayName: Kudu
+        SASL协议名称}
+  kerberos-principal:
+    en: {displayName: Kerberos Principal, description: The principal to use when specifying
+        the principal and password directly in the processor for authenticating via
+        Kerberos.}
+    zh: {description: 在处理器中直接指定用于通过Kerberos进行身份验证的主体和密码时要使用的主体。, displayName: Kerberos主体}
+  Lowercase Field Names:
+    en: {displayName: Lowercase Field Names, description: Convert column names to
+        lowercase when finding index of Kudu table columns}
+    zh: {description: 查找Kudu表列的索引时，将列名转换为小写, displayName: 小写字段名称}
+  Insert Operation:
+    en:
+      displayName: Kudu Operation Type
+      description: |-
+        Specify operationType for this processor.
+        Valid values are: INSERT, INSERT_IGNORE, UPSERT, UPDATE, DELETE, UPDATE_IGNORE, DELETE_IGNORE. This Property will be ignored if the <Operation RecordPath> property is set.
+    zh: {description: 为此处理器指定operationType。, displayName: Kudu操作类型}
+  kudu-operations-timeout-ms:
+    en: {displayName: Kudu Operation Timeout, description: Default timeout used for
+        user operations (using sessions and scanners)}
+    zh: {description: 用于用户操作的默认超时（使用会话和扫描仪）, displayName: Kudu操作超时}
+  Skip head line:
+    en: {displayName: Skip head line, description: 'Deprecated. Used to ignore header
+        lines, but this should be handled by a RecordReader (e.g. "Treat First Line
+        as Header" property of CSVReader)'}
+    zh: {description: 已弃用。用于忽略标题行，但这应由RecordReader处理（例如CSVReader的“将第一行视为标题”属性）, displayName: 跳过标题行}
+  FlowFiles per Batch:
+    en: {displayName: FlowFiles per Batch, description: 'The maximum number of FlowFiles
+        to process in a single execution, between 1 - 100000. Depending on your memory
+        size, and data size per row set an appropriate batch size for the number of
+        FlowFiles to process per client connection setup.Gradually increase this number,
+        only if your FlowFiles typically contain a few records.'}
+    zh: {description: 一次执行中要处理的FlowFiles的最大数量，介于1-100000之间。根据内存大小和每行数据大小，为每个客户端连接设置要处理的FlowFiles数量设置适当的批处理大小。仅当FlowFiles通常包含少量记录时，才逐渐增加此数字。,
+      displayName: 每批流文件数}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials to use for authentication}
+    zh: {description: 指定用于身份验证的Kerberos凭据, displayName: Kerberos凭据服务}
+  Kudu Masters:
+    en: {displayName: Kudu Masters, description: Comma separated addresses of the
+        Kudu masters to connect to.}
+    zh: {description: 要连接的Kudu主机的逗号分隔地址。, displayName: 库杜大师}
+  Flush Mode:
+    en:
+      displayName: Flush Mode
+      description: |-
+        Set the new flush mode for a kudu session.
+        AUTO_FLUSH_SYNC: the call returns when the operation is persisted, else it throws an exception.
+        AUTO_FLUSH_BACKGROUND: the call returns when the operation has been added to the buffer. This call should normally perform only fast in-memory operations but it may have to wait when the buffer is full and there's another buffer being flushed.
+        MANUAL_FLUSH: the call returns when the operation has been added to the buffer, else it throws a KuduException if the buffer is full.
+    zh: {description: 为kudu会话设置新的刷新模式。, displayName: 刷新模式}
+  Failure Strategy:
+    en: {displayName: Failure Strategy, description: 'If one or more Records in a
+        batch cannot be transferred to Kudu, specifies how to handle the failure'}
+    zh: {description: 如果批次中的一个或多个记录无法传输到Kudu，请指定如何处理失败, displayName: 故障策略}
+  Batch Size:
+    en: {displayName: Max Records per Batch, description: 'The maximum number of Records
+        to process in a single Kudu-client batch, between 1 - 100000. Depending on
+        your memory size, and data size per row set an appropriate batch size. Gradually
+        increase this number to find out the best one for best performances.'}
+    zh: {description: 在单个Kudu客户端批处理中要处理的最大记录数，介于1-100000之间。根据内存大小和每行的数据大小设置适当的批处理大小。逐渐增加这个数字，以找出最佳性能。,
+      displayName: 每批最大记录数}
+  Data RecordPath:
+    en: {displayName: Data RecordPath, description: 'If specified, this property denotes
+        a RecordPath that will be evaluated against each incoming Record and the Record
+        that results from evaluating the RecordPath will be sent to Kudu instead of
+        sending the entire incoming Record. If not specified, the entire incoming
+        Record will be published to Kudu.'}
+    zh: {description: 如果指定，此属性表示将针对每个传入记录进行评估的RecordPath，评估RecordPath的结果将发送给Kudu，而不是发送整个传入记录。如果未指定，整个传入记录将发布到Kudu。,
+      displayName: 数据记录路径}
+  kerberos-user-service:
+    en: {displayName: Kerberos User Service, description: Specifies the Kerberos User
+        Controller Service that should be used for authenticating with Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos用户控制器服务, displayName: Kerberos用户服务}
+  record-reader:
+    en: {displayName: Record Reader, description: The service for reading records
+        from incoming flow files.}
+    zh: {description: 用于从传入流文件读取记录的服务。, displayName: 记录读取器}
+  worker-count:
+    en: {displayName: Kudu Client Worker Count, description: The maximum number of
+        worker threads handling Kudu client read and write operations. Defaults to
+        the number of available processors.}
+    zh: {description: 处理Kudu客户端读写操作的工作线程的最大数量。默认为可用处理器的数量。, displayName: Kudu客户端工作人员计数}
+  kudu-keep-alive-period-timeout-ms:
+    en: {displayName: Kudu Keep Alive Period Timeout, description: Default timeout
+        used for user operations}
+    zh: {description: 用于用户操作的默认超时, displayName: Kudu保持活动期超时}
+  Operation RecordPath:
+    en: {displayName: Operation RecordPath, description: 'If specified, this property
+        denotes a RecordPath that will be evaluated against each incoming Record in
+        order to determine the Kudu Operation Type. When evaluated, the RecordPath
+        must evaluate to one of hte valid Kudu Operation Types, or the incoming FlowFile
+        will be routed to failure. If this property is specified, the <Kudu Operation
+        Type> property will be ignored.'}
+    zh: {description: 如果指定，此属性表示一个RecordPath，它将针对每个传入的记录进行评估，以确定Kudu操作类型。评估时，RecordPath必须评估为有效的Kudu操作类型之一，否则传入的FlowFile将被路由到失败。如果指定了此属性，将忽略＜Kudu
+        Operation Type＞属性。, displayName: 操作记录路径}
+writeAttributes:
+  record.count: {en: Number of records written to Kudu, zh: 写入Kudu的记录数}
+tags:
+  en: [put, database, NoSQL, kudu, HDFS, record]
+  zh: [放, 数据库, 无SQL, 库杜语, 高密度光纤, 记录]

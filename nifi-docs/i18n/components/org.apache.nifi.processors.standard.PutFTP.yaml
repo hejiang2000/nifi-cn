@@ -1,0 +1,147 @@
+relationships:
+  success: {en: FlowFiles that are successfully sent will be routed to success, zh: 成功发送的FlowFiles将路由到成功}
+  reject: {en: FlowFiles that were rejected by the destination system, zh: 目标系统拒绝的FlowFiles}
+  failure: {en: FlowFiles that failed to send to the remote system; failure is usually
+      looped back to this processor, zh: 未能发送到远程系统的FlowFiles；故障通常会反馈到此处理器}
+dynamicProperties:
+  pre.cmd._____:
+    en: {description: 'The command specified in the key will be executed before doing
+        a put.  You may add these optional properties  to send any commands to the
+        FTP server before the file is actually transferred (before the put command).
+        This option is only available for the PutFTP processor, as only FTP has this
+        functionality. This is essentially the same as sending quote commands to an
+        FTP server from the command line.  While this is the same as sending a quote
+        command, it is very important that you leave off the .', value: Not used}
+    zh: {description: 键中指定的命令将在执行put之前执行。您可以添加这些可选属性，以便在实际传输文件之前（在put命令之前）向FTP服务器发送任何命令。此选项仅适用于PutFTP处理器，因为只有FTP具有此功能。这与从命令行向FTP服务器发送报价命令基本相同。虽然这与发送引号命令相同，但重要的是不要使用。,
+      value: 未使用}
+  post.cmd._____:
+    en: {description: 'The command specified in the key will be executed after doing
+        a put.  You may add these optional properties  to send any commands to the
+        FTP server before the file is actually transferred (before the put command).
+        This option is only available for the PutFTP processor, as only FTP has this
+        functionality. This is essentially the same as sending quote commands to an
+        FTP server from the command line.  While this is the same as sending a quote
+        command, it is very important that you leave off the .', value: Not used}
+    zh: {description: 键中指定的命令将在执行put后执行。您可以添加这些可选属性，以便在实际传输文件之前（在put命令之前）向FTP服务器发送任何命令。此选项仅适用于PutFTP处理器，因为只有FTP具有此功能。这与从命令行向FTP服务器发送报价命令基本相同。虽然这与发送引号命令相同，但重要的是不要使用。,
+      value: 未使用}
+capabilityDescription: {en: Sends FlowFiles to an FTP Server, zh: 将FlowFiles发送到FTP服务器}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  Http Proxy Password:
+    en: {displayName: Http Proxy Password, description: Http Proxy Password}
+    zh: {description: Http代理密码, displayName: Http代理密码}
+  Port:
+    en: {displayName: Port, description: The port that the remote system is listening
+        on for file transfers}
+    zh: {description: 远程系统正在侦听文件传输的端口, displayName: 港口城市}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: SOCKS + AuthN,
+        HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：SOCKS+AuthN、HTTP+AuthN,
+      displayName: 代理配置服务}
+  Create Directory:
+    en: {displayName: Create Directory, description: Specifies whether or not the
+        remote directory should be created if it does not exist.}
+    zh: {description: 指定如果远程目录不存在，是否应创建该目录。, displayName: 创建目录}
+  Conflict Resolution:
+    en: {displayName: Conflict Resolution, description: Determines how to handle the
+        problem of filename collisions}
+    zh: {description: 确定如何处理文件名冲突问题, displayName: 冲突解决方案}
+  Temporary Filename:
+    en: {displayName: Temporary Filename, description: 'If set, the filename of the
+        sent file will be equal to the value specified during the transfer and after
+        successful completion will be renamed to the original filename. If this value
+        is set, the Dot Rename property is ignored.'}
+    zh: {description: 如果设置，发送文件的文件名将等于传输过程中指定的值，成功完成后将重命名为原始文件名。如果设置了此值，则会忽略“点重命名”属性。,
+      displayName: 临时文件名}
+  Proxy Type:
+    en: {displayName: Proxy Type, description: Proxy type used for file transfers}
+    zh: {description: 用于文件传输的代理类型, displayName: 代理类型}
+  Connection Mode:
+    en: {displayName: Connection Mode, description: The FTP Connection Mode}
+    zh: {description: FTP连接模式, displayName: 连接模式}
+  Connection Timeout:
+    en: {displayName: Connection Timeout, description: Amount of time to wait before
+        timing out while creating a connection}
+    zh: {description: 创建连接时超时前等待的时间量, displayName: 连接超时}
+  Permissions:
+    en: {displayName: Permissions, description: 'The permissions to assign to the
+        file after transferring it. Format must be either UNIX rwxrwxrwx with a -
+        in place of denied permissions (e.g. rw-r--r--) or an octal number (e.g. 644).
+        If not set, the permissions will not be changed. You may also use expression
+        language such as ${file.permissions}. If the value is invalid, the processor
+        will not be invalid but will fail to change permissions of the file.'}
+    zh: {description: 传输文件后要分配给该文件的权限。格式必须是UNIX rwxrwxrwx，并用-代替被拒绝的权限（例如rw-r-r-）或八进制数（例如644）。如果未设置，则不会更改权限。您还可以使用表达式语言，例如$｛file.ppermissions｝。如果该值无效，处理器将不会无效，但无法更改文件的权限。,
+      displayName: 权限}
+  Internal Buffer Size:
+    en: {displayName: Internal Buffer Size, description: Set the internal buffer size
+        for buffered data streams}
+    zh: {description: 设置缓冲数据流的内部缓冲区大小, displayName: 内部缓冲区大小}
+  Dot Rename:
+    en: {displayName: Dot Rename, description: 'If true, then the filename of the
+        sent file is prepended with a "." and then renamed back to the original once
+        the file is completely sent. Otherwise, there is no rename. This property
+        is ignored if the Temporary Filename property is set.'}
+    zh: {description: 如果为true，则发送文件的文件名将以“.”开头，然后在文件完全发送后重命名回原始文件。否则，没有重命名。如果设置了“临时文件名”属性，则忽略此属性。,
+      displayName: 点重命名}
+  Last Modified Time:
+    en: {displayName: Last Modified Time, description: 'The lastModifiedTime to assign
+        to the file after transferring it. If not set, the lastModifiedTime will not
+        be changed. Format must be yyyy-MM-dd''T''HH:mm:ssZ. You may also use expression
+        language such as ${file.lastModifiedTime}. If the value is invalid, the processor
+        will not be invalid but will fail to change lastModifiedTime of the file.'}
+    zh: {description: '传输文件后要分配给文件的lastModifiedTime。如果未设置，则不会更改lastModifiedTime。格式必须为yyyy-MM-dd''T''HH:MM:ssZ。您也可以使用表达式语言，例如${file.lastModifiedTime}。如果该值无效，处理器将不会无效，但无法更改文件的lastModifiedTime。',
+      displayName: 上次修改时间}
+  Password:
+    en: {displayName: Password, description: Password for the user account}
+    zh: {description: 用户帐户的密码, displayName: 暗语}
+  Http Proxy Username:
+    en: {displayName: Http Proxy Username, description: Http Proxy Username}
+    zh: {description: Http代理用户名, displayName: Http代理用户名}
+  Hostname:
+    en: {displayName: Hostname, description: The fully qualified hostname or IP address
+        of the remote system}
+    zh: {description: 远程系统的完全限定主机名或IP地址, displayName: 主机名}
+  Reject Zero-Byte Files:
+    en: {displayName: Reject Zero-Byte Files, description: Determines whether or not
+        Zero-byte files should be rejected without attempting to transfer}
+    zh: {description: 确定是否应拒绝零字节文件而不尝试传输, displayName: 拒绝零字节文件}
+  Remote Path:
+    en: {displayName: Remote Path, description: The path on the remote system from
+        which to pull or push files}
+    zh: {description: 远程系统上用于提取或推送文件的路径, displayName: 远程路径}
+  Use Compression:
+    en: {displayName: Use Compression, description: Indicates whether or not ZLIB
+        compression should be used when transferring files}
+    zh: {description: 指示传输文件时是否应使用ZLIB压缩, displayName: 使用压缩}
+  Proxy Port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  ftp-use-utf8:
+    en: {displayName: Use UTF-8 Encoding, description: 'Tells the client to use UTF-8
+        encoding when processing files and filenames. If set to true, the server must
+        also support UTF-8 encoding.'}
+    zh: {description: 告诉客户端在处理文件和文件名时使用UTF-8编码。如果设置为true，则服务器还必须支持UTF-8编码。, displayName: 使用UTF-8编码}
+  Data Timeout:
+    en: {displayName: Data Timeout, description: 'When transferring a file between
+        the local and remote system, this value specifies how long is allowed to elapse
+        without any data being transferred between systems'}
+    zh: {description: 在本地和远程系统之间传输文件时，此值指定允许在系统之间传输任何数据的时间, displayName: 数据超时}
+  Transfer Mode:
+    en: {displayName: Transfer Mode, description: The FTP Transfer Mode}
+    zh: {description: FTP传输模式, displayName: 传输模式}
+  Username:
+    en: {displayName: Username, description: Username}
+    zh: {description: 用户名, displayName: 用户名}
+  Batch Size:
+    en: {displayName: Batch Size, description: The maximum number of FlowFiles to
+        send in a single connection}
+    zh: {description: 单个连接中要发送的FlowFiles的最大数量, displayName: 批量大小}
+tags:
+  en: [remote, copy, egress, put, ftp, archive, files]
+  zh: [遥远的, 复制, 出口, 放, ftp协议, 档案文件, 文件夹]

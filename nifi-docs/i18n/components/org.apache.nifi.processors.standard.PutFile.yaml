@@ -1,0 +1,54 @@
+relationships:
+  success: {en: Files that have been successfully written to the output directory
+      are transferred to this relationship, zh: 已成功写入输出目录的文件将传输到此关系}
+  failure: {en: Files that could not be written to the output directory for some reason
+      are transferred to this relationship, zh: 由于某种原因无法写入输出目录的文件将传输到此关系}
+capabilityDescription: {en: Writes the contents of a FlowFile to the local file system,
+  zh: 将FlowFile的内容写入本地文件系统}
+readAttributes:
+  filename: {en: The filename to use when writing the FlowFile to disk., zh: 将FlowFile写入磁盘时使用的文件名。}
+properties:
+  Group:
+    en: {displayName: Group, description: 'Sets the group on the output file to the
+        value of this attribute.  You may also use expression language such as ${file.group}.'}
+    zh: {description: '将输出文件上的组设置为该属性的值。您还可以使用表达式语言，例如${file.group}。', displayName: 组}
+  Owner:
+    en: {displayName: Owner, description: 'Sets the owner on the output file to the
+        value of this attribute.  You may also use expression language such as ${file.owner}.
+        Note on many operating systems Nifi must be running as a super-user to have
+        the permissions to set the file owner.'}
+    zh: {description: '将输出文件的所有者设置为该属性的值。您还可以使用表达式语言，例如${file.owner}。注意，在许多操作系统上，Nifi必须以超级用户身份运行，才能拥有设置文件所有者的权限。',
+      displayName: 物主}
+  Create Missing Directories:
+    en: {displayName: Create Missing Directories, description: 'If true, then missing
+        destination directories will be created. If false, flowfiles are penalized
+        and sent to failure.'}
+    zh: {description: 如果为true，则将创建丢失的目标目录。如果为false，则流文件将受到惩罚并发送失败。, displayName: 创建缺少的目录}
+  Permissions:
+    en: {displayName: Permissions, description: 'Sets the permissions on the output
+        file to the value of this attribute.  Format must be either UNIX rwxrwxrwx
+        with a - in place of denied permissions (e.g. rw-r--r--) or an octal number
+        (e.g. 644).  You may also use expression language such as ${file.permissions}.'}
+    zh: {description: 将输出文件的权限设置为此属性的值。格式必须是UNIX rwxrwxrwx，并用-代替被拒绝的权限（例如rw-r-r-）或八进制数（例如644）。您还可以使用表达式语言，例如$｛file.ppermissions｝。,
+      displayName: 权限}
+  Maximum File Count:
+    en: {displayName: Maximum File Count, description: Specifies the maximum number
+        of files that can exist in the output directory}
+    zh: {description: 指定输出目录中可以存在的最大文件数, displayName: 最大文件计数}
+  Last Modified Time:
+    en: {displayName: Last Modified Time, description: 'Sets the lastModifiedTime
+        on the output file to the value of this attribute.  Format must be yyyy-MM-dd''T''HH:mm:ssZ.  You
+        may also use expression language such as ${file.lastModifiedTime}.'}
+    zh: {description: '将输出文件上的lastModifiedTime设置为该属性的值。格式必须为yyyy-MM-dd''T''HH:MM:ssZ。您也可以使用表达式语言，例如${file.lastModifiedTime}。',
+      displayName: 上次修改时间}
+  Directory:
+    en: {displayName: Directory, description: 'The directory to which files should
+        be written. You may use expression language such as /aa/bb/${path}'}
+    zh: {description: 文件应写入的目录。您可以使用表达式语言，例如/aa/bb/$｛path｝, displayName: 目录}
+  Conflict Resolution Strategy:
+    en: {displayName: Conflict Resolution Strategy, description: Indicates what should
+        happen when a file with the same name already exists in the output directory}
+    zh: {description: 指示当输出目录中已存在同名文件时应执行的操作, displayName: 冲突解决策略}
+tags:
+  en: [put, local, copy, archive, files, filesystem]
+  zh: [放, 地方的, 复制, 档案文件, 文件夹, 文件系统]

@@ -1,0 +1,45 @@
+relationships:
+  original: {en: The original HTML input, zh: 原始HTML输入}
+  success: {en: Successfully parsed HTML element, zh: 已成功分析HTML元素}
+  invalid html: {en: The input HTML syntax is invalid, zh: 输入的HTML语法无效}
+  element not found: {en: Element could not be found in the HTML document. The original
+      HTML input will remain in the FlowFile content unchanged. Relationship 'original'
+      will not be invoked in this scenario., zh: 在HTML文档中找不到元素。原始HTML输入将保持FlowFile内容不变。在此方案中不会调用关系“original”。}
+capabilityDescription: {en: 'Places a new HTML element in the existing HTML DOM. The
+    desired position for the new HTML element is specified by using CSS selector syntax.
+    The incoming HTML is first converted into a HTML Document Object Model so that
+    HTML DOM location may be located in a similar manner that CSS selectors are used
+    to apply styles to HTML. The resulting HTML DOM is then "queried" using the user
+    defined CSS selector string to find the position where the user desires to add
+    the new HTML element. Once the new HTML element is added to the DOM it is rendered
+    to HTML and the result replaces the flowfile content with the updated HTML. A
+    more thorough reference for the CSS selector syntax can be found at "http://jsoup.org/apidocs/org/jsoup/select/Selector.html"',
+  zh: '在现有HTML DOM中放置一个新的HTML元素。通过使用CSS选择器语法指定新HTML元素所需的位置。首先将传入的HTML转换为HTML文档对象模型，以便HTML
+    DOM位置的定位方式与CSS选择器用于将样式应用于HTML的方式类似。然后使用用户定义的CSS选择器字符串“查询”生成的HTML DOM，以找到用户希望添加新HTML元素的位置。一旦新的HTML元素被添加到DOM中，它就被呈现为HTML，结果用更新的HTML替换流文件内容。有关CSS选择器语法的更详细参考，请参阅“http://jsoup.org/apidocs/org/jsoup/select/Selector.html"'}
+properties:
+  Element Insert Location Type:
+    en: {displayName: Element Insert Location Type, description: 'Controls whether
+        the new element is prepended or appended to the children of the Element located
+        by the CSS selector. EX: prepended value ''<b>Hi</b>'' inside of Element (using
+        CSS Selector ''p'') ''<p>There</p>'' would result in ''<p><b>Hi</b>There</p>''.
+        Appending the value would result in ''<p>There<b>Hi</b></p>'''}
+    zh: {description: '控制新元素是附加到CSS选择器所定位的元素的子级还是附加到子级。EX:Element（使用CSS选择器“p”）内部的预设值“<b>Hi</b>”“<p>There</p>”将导致“<p><b>Hi</b>There</p>”。附加值将导致“＜p＞There＜b＞Hi＜/b＞</p＞”',
+      displayName: 元素插入位置类型}
+  Put Value:
+    en: {displayName: Put Value, description: 'Value used when creating the new Element.
+        Value should be a valid HTML element. The text should be supplied unencoded:
+        characters like ''<'', ''>'', etc will be properly HTML encoded in the resulting
+        output.'}
+    zh: {description: 创建新元素时使用的值。值应为有效的HTML元素。文本应以未编码的方式提供：“<”、“>”等字符将在结果输出中进行正确的HTML编码。,
+      displayName: 卖出价值}
+  HTML Character Encoding:
+    en: {displayName: HTML Character Encoding, description: Character encoding of
+        the input HTML}
+    zh: {description: 输入HTML的字符编码, displayName: HTML字符编码}
+  CSS Selector:
+    en: {displayName: CSS Selector, description: CSS selector syntax string used to
+        extract the desired HTML element(s).}
+    zh: {description: 用于提取所需HTML元素的CSS选择器语法字符串。, displayName: CSS选择器}
+tags:
+  en: [put, html, dom, css, element]
+  zh: [放, html格式, 多姆, css格式, 要素]

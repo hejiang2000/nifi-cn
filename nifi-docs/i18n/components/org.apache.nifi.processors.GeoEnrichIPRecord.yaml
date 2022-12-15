@@ -1,0 +1,62 @@
+relationships:
+  original: {en: The original input flowfile goes to this relationship regardless
+      of whether the content was enriched or not., zh: 无论内容是否丰富，原始输入流文件都会遵循此关系。}
+  found: {en: Where to route flow files after successfully enriching attributes with
+      data provided by database, zh: 使用数据库提供的数据成功丰富属性后，将流文件路由到何处}
+  not found: {en: Where to route flow files after unsuccessfully enriching attributes
+      because no data was found, zh: 由于找不到数据，未能成功丰富属性后将流文件路由到何处}
+capabilityDescription: {en: 'Looks up geolocation information for an IP address and
+    adds the geo information to FlowFile attributes. The geo data is provided as a
+    MaxMind database. This version uses the NiFi Record API to allow large scale enrichment
+    of record-oriented data sets. Each field provided by the MaxMind database can
+    be directed to a field of the user''s choosing by providing a record path for
+    that field configuration. ', zh: 查找IP地址的地理位置信息，并将地理信息添加到FlowFile属性中。地理数据作为MaxMind数据库提供。此版本使用NiFi记录API，允许大规模丰富面向记录的数据集。MaxMind数据库提供的每个字段都可以通过为该字段配置提供记录路径而指向用户选择的字段。}
+properties:
+  geo-enrich-ip-split-found-not-found:
+    en: {displayName: Separate Enriched From Not Enriched, description: Separate records
+        that have been enriched from ones that have not. Default behavior is to send
+        everything to the found relationship if even one record is enriched.}
+    zh: {description: 将已丰富的记录与未丰富的记录分开。默认行为是，如果哪怕一条记录被丰富，则将所有内容发送到找到的关系。, displayName: 分离富集和未富集}
+  geo-enrich-ip-country-record-path:
+    en: {displayName: Country Record Path, description: Record path for putting the
+        country identified for this IP address}
+    zh: {description: 记录此IP地址标识的国家/地区的路径, displayName: 国家记录路径}
+  geo-enrich-ip-country-iso-record-path:
+    en: {displayName: Country ISO Code Record Path, description: Record path for putting
+        the ISO Code for the country identified}
+    zh: {description: 将ISO代码放入所识别国家的记录路径, displayName: 国家ISO代码记录路径}
+  geo-enrich-ip-city-record-path:
+    en: {displayName: City Record Path, description: Record path for putting the city
+        identified for the IP address}
+    zh: {description: 为IP地址标识的城市的记录路径, displayName: 城市记录路径}
+  Geo Database File:
+    en: {displayName: MaxMind Database File, description: Path to Maxmind IP Enrichment
+        Database File}
+    zh: {description: Maxmind IP扩展数据库文件的路径, displayName: MaxMind数据库文件}
+  geo-enrich-ip-record-reader:
+    en: {displayName: Record Reader, description: Record reader service to use for
+        reading the flowfile contents.}
+    zh: {description: 用于读取流文件内容的记录读取器服务。, displayName: 记录读取器}
+  geo-enrich-ip-record-writer:
+    en: {displayName: Record Writer, description: Record writer service to use for
+        enriching the flowfile contents.}
+    zh: {description: 用于丰富流文件内容的记录编写器服务。, displayName: 记录编写器}
+  geo-enrich-ip-longitude-record-path:
+    en: {displayName: Longitude Record Path, description: Record path for putting
+        the longitude identified for this IP address}
+    zh: {description: 记录用于放置为此IP地址标识的经度的路径, displayName: 经度记录路径}
+  geo-enrich-ip-country-postal-record-path:
+    en: {displayName: Country Postal Code Record Path, description: Record path for
+        putting the postal code for the country identified}
+    zh: {description: 用于输入所识别国家的邮政编码的记录路径, displayName: 国家/地区邮政编码记录路径}
+  geo-enrich-ip-ip-record-path:
+    en: {displayName: IP Address Record Path, description: The record path to retrieve
+        the IP address for doing the lookup.}
+    zh: {description: 用于检索用于执行查找的IP地址的记录路径。, displayName: IP地址记录路径}
+  geo-enrich-ip-latitude-record-path:
+    en: {displayName: Latitude Record Path, description: Record path for putting the
+        latitude identified for this IP address}
+    zh: {description: 记录用于放置为此IP地址标识的纬度的路径, displayName: 纬度记录路径}
+tags:
+  en: [geo, enrich, ip, maxmind, record]
+  zh: [地理, 充实, ip地址, 马克西姆, 记录]

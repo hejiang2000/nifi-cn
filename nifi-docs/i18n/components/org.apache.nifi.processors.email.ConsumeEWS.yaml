@@ -1,0 +1,62 @@
+relationships:
+  success: {en: All messages that are the are successfully received from Email server
+      and converted to FlowFiles are routed to this relationship, zh: 从电子邮件服务器成功接收并转换为FlowFiles的所有邮件都将路由到此关系}
+capabilityDescription: {en: Consumes messages from Microsoft Exchange using Exchange
+    Web Services. The raw-bytes of each received email message are written as contents
+    of the FlowFile, zh: 使用Exchange Web服务使用来自Microsoft Exchange的邮件。每个接收到的电子邮件的原始字节被写入FlowFile的内容}
+properties:
+  ews-include-headers:
+    en: {displayName: Original Headers to Include, description: 'Comma delimited list
+        specifying which headers from the original message to include in the exported
+        email message. Blank means copy all headers. Some headers can cause problems
+        with message parsing, specifically the ''Content-Type'' header.'}
+    zh: {description: 用逗号分隔的列表，指定要包含在导出的电子邮件中的原始邮件的标题。空白表示复制所有标题。某些标头可能会导致邮件解析问题，特别是“Content
+        Type”标头。, displayName: 要包含的原始页眉}
+  delete.messages:
+    en: {displayName: Delete Messages, description: Specify whether mail messages
+        should be deleted after retrieval.}
+    zh: {description: 指定检索后是否应删除邮件。, displayName: 删除邮件}
+  ews-autodiscover:
+    en: {displayName: Auto Discover URL, description: Whether or not to use the Exchange
+        email address to Autodiscover the EWS endpoint URL.}
+    zh: {description: 是否使用Exchange电子邮件地址自动发现EWS端点URL。, displayName: 自动发现URL}
+  ews-mark-as-read:
+    en: {displayName: Mark Messages as Read, description: Specify if messages should
+        be marked as read after retrieval.}
+    zh: {description: 指定检索后是否应将邮件标记为已读。, displayName: 将邮件标记为已读}
+  password:
+    en: {displayName: Password, description: Password used for authentication and
+        authorization with Email server.}
+    zh: {description: 用于与电子邮件服务器进行身份验证和授权的密码。, displayName: 暗语}
+  folder:
+    en: {displayName: Folder, description: 'Email folder to retrieve messages from
+        (e.g., INBOX)'}
+    zh: {description: 从中检索邮件的电子邮件文件夹（例如，INBOX）, displayName: 文件夹}
+  ews-url:
+    en: {displayName: EWS URL, description: URL of the EWS Endpoint. Required if Autodiscover
+        is false.}
+    zh: {description: EWS终结点的URL。如果自动发现为false，则为必填项。, displayName: EWS URL}
+  connection.timeout:
+    en: {displayName: Connection timeout, description: The amount of time to wait
+        to connect to Email server}
+    zh: {description: 等待连接到电子邮件服务器的时间, displayName: 连接超时}
+  ews-exclude-headers:
+    en: {displayName: Original Headers to Exclude, description: Comma delimited list
+        specifying which headers from the original message to exclude in the exported
+        email message. Blank means don't exclude any headers.}
+    zh: {description: 用逗号分隔的列表，指定要在导出的电子邮件中排除原始邮件中的哪些邮件头。空白表示不排除任何标头。, displayName: 要排除的原始标头}
+  mail-ews-version:
+    en: {displayName: Exchange Version, description: What version of Exchange Server
+        the server is running.}
+    zh: {description: 服务器正在运行的Exchange Server版本。, displayName: Exchange版本}
+  user:
+    en: {displayName: User Name, description: User Name used for authentication and
+        authorization with Email server.}
+    zh: {description: 用于与电子邮件服务器进行身份验证和授权的用户名。, displayName: 用户名}
+  fetch.size:
+    en: {displayName: Fetch Size, description: Specify the maximum number of Messages
+        to fetch per call to Email Server.}
+    zh: {description: 指定每次调用电子邮件服务器时获取的最大邮件数。, displayName: 提取大小}
+tags:
+  en: [Email, EWS, Exchange, Get, Ingest, Ingress, Message, Consume]
+  zh: [电子邮件, EWS, 交换, 收到, 摄入, 进入, 消息, 消费]

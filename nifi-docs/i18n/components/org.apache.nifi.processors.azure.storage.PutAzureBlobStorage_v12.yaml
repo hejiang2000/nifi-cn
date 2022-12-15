@@ -1,0 +1,56 @@
+relationships:
+  success: {en: All successfully processed FlowFiles are routed to this relationship,
+    zh: 所有成功处理的FlowFiles都将路由到此关系}
+  failure: {en: Unsuccessful operations will be transferred to the failure relationship.,
+    zh: 未成功的操作将转移到失败关系。}
+capabilityDescription: {en: Puts content into a blob on Azure Blob Storage. The processor
+    uses Azure Blob Storage client library v12., zh: 将内容放入Azure blob存储上的blob中。处理器使用Azure
+    Blob Storage客户端库v12。}
+properties:
+  conflict-resolution-strategy:
+    en: {displayName: Conflict Resolution Strategy, description: Specifies whether
+        an existing blob will have its contents replaced upon conflict.}
+    zh: {description: 指定冲突时是否替换现有blob的内容。, displayName: 冲突解决策略}
+  blob-name:
+    en: {displayName: Blob Name, description: The full name of the blob}
+    zh: {description: blob的全名, displayName: Blob名称}
+  create-container:
+    en: {displayName: Create Container, description: 'Specifies whether to check if
+        the container exists and to automatically create it if it does not. Permission
+        to list containers is required. If false, this check is not made, but the
+        Put operation will fail if the container does not exist.'}
+    zh: {description: 指定是否检查容器是否存在，如果不存在则自动创建容器。需要列出容器的权限。如果为false，则不进行此检查，但如果容器不存在，则Put操作将失败。,
+      displayName: 创建容器}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        SOCKS, HTTP In case of SOCKS, it is not guaranteed that the selected SOCKS
+        Version will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：SOCKS、HTTP如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  storage-credentials-service:
+    en: {displayName: Storage Credentials, description: Controller Service used to
+        obtain Azure Blob Storage Credentials.}
+    zh: {description: 用于获取Azure Blob存储凭据的控制器服务。, displayName: 存储凭据}
+  container-name:
+    en: {displayName: Container Name, description: 'Name of the Azure storage container.
+        In case of PutAzureBlobStorage processor, container can be created if it does
+        not exist.'}
+    zh: {description: Azure存储容器的名称。对于PutAzureBlobStorage处理器，如果容器不存在，则可以创建容器。, displayName: 容器名称}
+writeAttributes:
+  azure.ignored: {en: 'When Conflict Resolution Strategy is ''ignore'', this property
+      will be true/false depending on whether the blob was ignored.', zh: 当冲突解决策略为“忽略”时，此属性将为真/假，具体取决于blob是否被忽略。}
+  azure.container: {en: The name of the Azure Blob Storage container, zh: Azure Blob存储容器的名称}
+  azure.error.code: {en: Error code reported during blob operation, zh: blob操作期间报告的错误代码}
+  azure.primaryUri: {en: Primary location of the blob, zh: blob的主要位置}
+  azure.etag: {en: ETag of the blob, zh: blob的ETag}
+  azure.blobtype: {en: 'Type of the blob (either BlockBlob, PageBlob or AppendBlob)',
+    zh: blob的类型（BlockBlob、PageBlob或AppendBlob）}
+  azure.blobname: {en: The name of the blob on Azure Blob Storage, zh: Azure blob存储上blob的名称}
+  mime.type: {en: MIME Type of the content, zh: 内容的MIME类型}
+  lang: {en: Language code for the content, zh: 内容的语言代码}
+  azure.timestamp: {en: Timestamp of the blob, zh: blob的时间戳}
+  azure.length: {en: Length of the blob, zh: blob的长度}
+tags:
+  en: [azure, microsoft, cloud, storage, blob]
+  zh: [蔚蓝色的, 微软, 云, 存储, 斑点]

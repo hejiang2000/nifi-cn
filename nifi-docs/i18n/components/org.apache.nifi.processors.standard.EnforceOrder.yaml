@@ -1,0 +1,98 @@
+relationships:
+  wait: {en: A FlowFile with non matching order will be routed to this relationship,
+    zh: 订单不匹配的FlowFile将路由到此关系}
+  overtook: {en: 'A FlowFile that waited for preceding FlowFiles longer than Wait
+      Timeout and overtook those FlowFiles, will be routed to this relationship.',
+    zh: 等待前一个FlowFiles的时间超过等待超时并超过这些FlowFiles的FlowFile将被路由到此关系。}
+  success: {en: A FlowFile with a matching order number will be routed to this relationship.,
+    zh: 具有匹配订单号的FlowFile将路由到此关系。}
+  failure: {en: 'A FlowFiles which does not have required attributes, or fails to
+      compute those will be routed to this relationship', zh: 没有所需属性或无法计算这些属性的FlowFiles将路由到此关系}
+  skipped: {en: 'A FlowFile that has an order younger than current, which means arrived
+      too late and skipped, will be routed to this relationship.', zh: 如果FlowFile的订单早于当前订单，这意味着太晚到达并被跳过，则该FlowFile将被路由到此关系。}
+capabilityDescription: {en: 'Enforces expected ordering of FlowFiles that belong to
+    the same data group within a single node.  Although PriorityAttributePrioritizer
+    can be used on a connection to ensure that flow files going through that connection
+    are in priority order, depending on error-handling, branching, and other flow
+    designs, it is possible for FlowFiles to get out-of-order. EnforceOrder can be
+    used to enforce original ordering for those FlowFiles. [IMPORTANT] In order to
+    take effect of EnforceOrder, FirstInFirstOutPrioritizer should be used at EVERY
+    downstream relationship UNTIL the order of FlowFiles physically get FIXED by operation
+    such as MergeContent or being stored to the final destination.', zh: '在单个节点内强制执行属于同一数据组的FlowFiles的预期排序。尽管PriorityAttributePrioritier可以在连接上使用，以确保通过该连接的流文件按照优先级顺序排列，这取决于错误处理、分支和其他流设计，但FlowFiles也有可能出现故障。EnforceOrder可用于强制执行这些FlowFiles的原始排序。[重要信息]为了使EnforceOrder生效，应在每个下游关系中使用FirstInFirstOutPriorityr，直到FlowFiles的顺序通过操作（如MergeContent）物理固定或存储到最终目的地。'}
+statefulDescription: {en: 'EnforceOrder uses following states per ordering group:
+    ''<groupId>.target'' is a order number which is being waited to arrive next. When
+    a FlowFile with a matching order arrives, or a FlowFile overtakes the FlowFile
+    being waited for because of wait timeout, target order will be updated to (FlowFile.order
+    + 1). ''<groupId>.max is the maximum order number for a group. ''<groupId>.updatedAt''
+    is a timestamp when the order of a group was updated last time. These managed
+    states will be removed automatically once a group is determined as inactive, see
+    ''Inactive Timeout'' for detail.', zh: EnforceOrder对每个订购组使用以下状态：'<groupId>。target'是等待下一个到达的订单号。当具有匹配订单的FlowFile到达，或由于等待超时，FlowFile超过正在等待的FlowFile时，目标订单将更新为（FlowFile.order+1）。'<groupId>。max是组的最大订单号。'<groupId>。updatedAt'是上次更新组顺序时的时间戳。一旦组被确定为非活动状态，这些管理状态将自动删除，有关详细信息，请参阅“非活动超时”。}
+properties:
+  initial-order:
+    en: {displayName: Initial Order, description: 'When the first FlowFile of a group
+        arrives, initial target order will be computed and stored in the managed state.
+        After that, target order will start being tracked by EnforceOrder and stored
+        in the state management store. If Expression Language is used but evaluated
+        result was not an integer, then the FlowFile will be routed to failure, and
+        initial order will be left unknown until consecutive FlowFiles provide a valid
+        initial order.'}
+    zh: {description: 当组的第一个FlowFile到达时，将计算初始目标订单并将其存储在托管状态。之后，EnforceOrder将开始跟踪目标订单并将其存储在状态管理存储中。如果使用了表达式语言，但计算结果不是整数，则FlowFile将被路由到失败，并且初始顺序将保持未知，直到连续的FlowFile提供有效的初始顺序。,
+      displayName: 初始订单}
+  group-id:
+    en: {displayName: Group Identifier, description: 'EnforceOrder is capable of multiple
+        ordering groups. ''Group Identifier'' is used to determine which group a FlowFile
+        belongs to. This property will be evaluated with each incoming FlowFile. If
+        evaluated result is empty, the FlowFile will be routed to failure.'}
+    zh: {description: EnforceOrder支持多个排序组。'“组标识符”用于确定FlowFile属于哪个组。此属性将与每个传入的FlowFile一起计算。如果评估结果为空，FlowFile将被路由到失败。,
+      displayName: 组标识符}
+  inactive-timeout:
+    en: {displayName: Inactive Timeout, description: 'Indicates the duration after
+        which state for an inactive group will be cleared from managed state. Group
+        is determined as inactive if any new incoming FlowFile has not seen for a
+        group for specified duration. Inactive Timeout must be longer than Wait Timeout.
+        If a FlowFile arrives late after its group is already cleared, it will be
+        treated as a brand new group, but will never match the order since expected
+        preceding FlowFiles are already gone. The FlowFile will eventually timeout
+        for waiting and routed to ''overtook''. To avoid this, group states should
+        be kept long enough, however, shorter duration would be helpful for reusing
+        the same group identifier again.'}
+    zh: {description: 指示从管理状态清除非活动组状态的持续时间。如果在指定的持续时间内没有看到任何新的传入FlowFile，则组被确定为不活动。非活动超时必须长于等待超时。如果FlowFile在其组被清除后延迟到达，它将被视为一个全新的组，但由于预期的前一个FlowFile已经消失，因此永远不会与订单匹配。FlowFile最终将超时等待并路由到“已超越”。为了避免这种情况，组状态应该保持足够长的时间，然而，更短的持续时间将有助于再次使用相同的组标识符。,
+      displayName: 非活动超时}
+  wait-timeout:
+    en: {displayName: Wait Timeout, description: Indicates the duration after which
+        waiting FlowFiles will be routed to the 'overtook' relationship.}
+    zh: {description: 指示等待的FlowFiles将被路由到“已超越”关系的持续时间。, displayName: 等待超时}
+  batch-count:
+    en: {displayName: Batch Count, description: The maximum number of FlowFiles that
+        EnforceOrder can process at an execution.}
+    zh: {description: 执行时EnforceOrder可以处理的最大FlowFiles数。, displayName: 批次计数}
+  maximum-order:
+    en: {displayName: Maximum Order, description: 'If specified, any FlowFiles that
+        have larger order will be routed to failure. This property is computed only
+        once for a given group. After a maximum order is computed, it will be persisted
+        in the state management store and used for other FlowFiles belonging to the
+        same group. If Expression Language is used but evaluated result was not an
+        integer, then the FlowFile will be routed to failure, and maximum order will
+        be left unknown until consecutive FlowFiles provide a valid maximum order.'}
+    zh: {description: 如果指定，任何具有较大顺序的FlowFiles都将被路由到失败。对于给定组，此属性只计算一次。计算出最大顺序后，它将保存在状态管理存储中，并用于属于同一组的其他FlowFiles。如果使用了表达式语言，但计算结果不是整数，则FlowFile将被路由到失败，最大顺序将保持未知，直到连续的FlowFile提供有效的最大顺序。,
+      displayName: 最大订单数}
+  order-attribute:
+    en: {displayName: Order Attribute, description: 'A name of FlowFile attribute
+        whose value will be used to enforce order of FlowFiles within a group. If
+        a FlowFile does not have this attribute, or its value is not an integer, the
+        FlowFile will be routed to failure.'}
+    zh: {description: FlowFile属性的名称，其值将用于在组中强制执行FlowFiles的顺序。如果FlowFile没有此属性，或者其值不是整数，则FlowFile将被路由到失败。,
+      displayName: 订单属性}
+writeAttributes:
+  EnforceOrder.startedAt: {en: All FlowFiles going through this processor will have
+      this attribute. This value is used to determine wait timeout., zh: 通过此处理器的所有FlowFiles都将具有此属性。此值用于确定等待超时。}
+  EnforceOrder.result: {en: All FlowFiles going through this processor will have this
+      attribute denoting which relationship it was routed to., zh: 通过此处理器的所有FlowFiles都将具有此属性，该属性表示它被路由到的关系。}
+  EnforceOrder.detail: {en: FlowFiles routed to 'failure' or 'skipped' relationship
+      will have this attribute describing details., zh: 路由到“failure”或“skipped”关系的FlowFiles将具有描述详细信息的此属性。}
+  EnforceOrder.expectedOrder: {en: FlowFiles routed to 'wait' or 'skipped' relationship
+      will have this attribute denoting expected order when the FlowFile was processed.,
+    zh: 路由到“wait”或“skipped”关系的FlowFiles将具有此属性，表示处理FlowFile时的预期顺序。}
+tags:
+  en: [sort, order]
+  zh: [分类, 顺序]

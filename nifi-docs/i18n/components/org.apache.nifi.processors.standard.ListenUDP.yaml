@@ -1,0 +1,72 @@
+relationships:
+  success: {en: Messages received successfully will be sent out this relationship.,
+    zh: 成功接收的消息将发送到此关系。}
+capabilityDescription: {en: 'Listens for Datagram Packets on a given port. The default
+    behavior produces a FlowFile per datagram, however for higher throughput the Max
+    Batch Size property may be increased to specify the number of datagrams to batch
+    together in a single FlowFile. This processor can be restricted to listening for
+    datagrams from  a specific remote host and port by specifying the Sending Host
+    and Sending Host Port properties, otherwise it will listen for datagrams from
+    all hosts and ports.', zh: 侦听给定端口上的数据报数据包。默认行为为每个数据报生成一个FlowFile，但为了提高吞吐量，可以增加“最大批处理大小”属性，以指定在单个FlowFile中一起批处理的数据报数量。通过指定“发送主机”和“发送主机端口”属性，可以将此处理器限制为侦听来自特定远程主机和端口的数据报，否则它将侦听来自所有主机和端口。}
+properties:
+  Sending Host:
+    en: {displayName: Sending Host, description: 'IP, or name, of a remote host. Only
+        Datagrams from the specified Sending Host Port and this host will be accepted.
+        Improves Performance. May be a system property or an environment variable.'}
+    zh: {description: 远程主机的IP或名称。仅接受来自指定发送主机端口和此主机的数据报。提高性能。可以是系统属性或环境变量。, displayName: 发送主机}
+  Max Size of Socket Buffer:
+    en: {displayName: Max Size of Socket Buffer, description: 'The maximum size of
+        the socket buffer that should be used. This is a suggestion to the Operating
+        System to indicate how big the socket buffer should be. If this value is set
+        too low, the buffer may fill up before the data can be read, and incoming
+        data will be dropped.'}
+    zh: {description: 应使用的套接字缓冲区的最大大小。这是给操作系统的一个建议，说明套接字缓冲区应该有多大。如果该值设置得太低，缓冲区可能会在读取数据之前填满，并且传入的数据将被丢弃。,
+      displayName: 套接字缓冲区的最大大小}
+  Local Network Interface:
+    en: {displayName: Local Network Interface, description: The name of a local network
+        interface to be used to restrict listening to a specific LAN.}
+    zh: {description: 用于限制监听特定LAN的本地网络接口的名称。, displayName: 本地网络接口}
+  Max Batch Size:
+    en: {displayName: Max Batch Size, description: 'The maximum number of messages
+        to add to a single FlowFile. If multiple messages are available, they will
+        be concatenated along with the <Message Delimiter> up to this configured maximum
+        number of messages'}
+    zh: {description: 要添加到单个FlowFile的最大消息数。如果有多条消息可用，它们将与＜消息分隔符＞一起连接，直到达到配置的最大消息数,
+      displayName: 最大批量大小}
+  Port:
+    en: {displayName: Port, description: The port to listen on for communication.}
+    zh: {description: 用于侦听通信的端口。, displayName: 港口城市}
+  Sending Host Port:
+    en: {displayName: Sending Host Port, description: Port being used by remote host
+        to send Datagrams. Only Datagrams from the specified Sending Host and this
+        port will be accepted. Improves Performance. May be a system property or an
+        environment variable.}
+    zh: {description: 远程主机用于发送数据报的端口。仅接受来自指定发送主机和此端口的数据报。提高性能。可以是系统属性或环境变量。, displayName: 发送主机端口}
+  Receive Buffer Size:
+    en: {displayName: Receive Buffer Size, description: The size of each buffer used
+        to receive messages. Adjust this value appropriately based on the expected
+        size of the incoming messages.}
+    zh: {description: 用于接收消息的每个缓冲区的大小。根据传入消息的预期大小适当调整此值。, displayName: 接收缓冲区大小}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        received data.}
+    zh: {description: 指定接收数据的字符集。, displayName: 字符集}
+  Max Size of Message Queue:
+    en: {displayName: Max Size of Message Queue, description: 'The maximum size of
+        the internal queue used to buffer messages being transferred from the underlying
+        channel to the processor. Setting this value higher allows more messages to
+        be buffered in memory during surges of incoming messages, but increases the
+        total memory used by the processor.'}
+    zh: {description: 用于缓冲从基础通道传输到处理器的消息的内部队列的最大大小。将此值设置得更高允许在传入消息激增期间在内存中缓冲更多消息，但会增加处理器使用的总内存。,
+      displayName: 消息队列的最大大小}
+  Message Delimiter:
+    en: {displayName: Batching Message Delimiter, description: Specifies the delimiter
+        to place between messages when multiple messages are bundled together (see
+        <Max Batch Size> property).}
+    zh: {description: 指定当多条消息捆绑在一起时，要在消息之间放置的分隔符（请参见<Max Batch Size>属性）。, displayName: 批处理消息分隔符}
+writeAttributes:
+  udp.port: {en: The sending port the messages were received., zh: 接收消息的发送端口。}
+  udp.sender: {en: The sending host of the messages., zh: 消息的发送主机。}
+tags:
+  en: [ingest, udp, listen, source]
+  zh: [摄入, 通用数据包, 听, 来源]

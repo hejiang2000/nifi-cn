@@ -21,7 +21,7 @@
         <%--settings-left--%>
         <div class="settings-left">
             <div id="fetch-parameters-provider-groups-container" class="setting">
-                <div class="setting-name">Name</div>
+                <div class="setting-name">名称</div>
                 <div class="setting-field">
                     <span id="fetch-parameters-id" class="hidden"></span>
                     <div id="fetch-parameters-name"></div>
@@ -30,13 +30,13 @@
             </div>
             <div id="fetch-parameters-usage-container" class="setting">
                 <div class="setting-name">
-                    Select to configure a parameter group
-                    <div class="fa fa-question-circle" alt="Info" title="Discovered parameter groups from this parameter provider. Select a group to create a parameter context, then configure its parameter sensitivities."></div>
+                    选择一个参数组开始配置
+                    <div class="fa fa-question-circle" alt="Info" title="从该参数提供者发现的参数组. 选择一个组以创建参数上下文, 然后配置其参数敏感性."></div>
                 </div>
                 <div id="parameter-groups-table"></div>
             </div>
             <div id="apply-groups-container" class="setting hidden">
-                <div class="setting-name">Parameter Groups</div>
+                <div class="setting-name">参数组</div>
                 <div class="setting-field">
                     <div id="apply-groups-list"></div>
                 </div>
@@ -52,8 +52,8 @@
                 <div id="create-parameter-context-checkbox-container" class="setting-field"></div>
                 <div id="fetched-parameters-container" class="setting">
                     <div class="setting-name">
-                        Fetched parameters
-                        <div class="fa fa-question-circle" alt="Info" title="Discovered parameters from the selected parameter group."></div>
+                        获取到的参数
+                        <div class="fa fa-question-circle" alt="Info" title="从选定参数组发现的参数."></div>
                     </div>
                     <div id="fetched-parameters-listing-container" class="setting-field">
                         <ol id="fetched-parameters-listing"></ol>
@@ -61,8 +61,8 @@
                 </div>
                 <div id="selectable-parameters-container" class="setting">
                     <div class="setting-name">
-                        Select parameters to be set as sensitive
-                        <div class="fa fa-question-circle" alt="Info" title="Only parameters that are not referenced can be modified."></div>
+                        选择设置为敏感信息的参数
+                        <div class="fa fa-question-circle" alt="Info" title="仅可修改未被引用的参数."></div>
                     </div>
                     <div id="selectable-parameters-buttons">
                         <button id="select-all-fetched-parameters" class="selectable-parameters-buttons">
@@ -82,7 +82,7 @@
                 <div id="fetch-parameters-update-status" class="hidden">
                     <div class="setting">
                         <div class="setting-name">
-                            Steps to update parameters
+                            更新参数步骤
                         </div>
                         <div class="setting-field">
                             <ol id="fetch-parameters-update-steps"></ol>
@@ -99,8 +99,8 @@
         <div class="settings-right">
             <div class="setting">
                 <div class="setting-name">
-                    Parameter Contexts To Create
-                    <div class="fa fa-question-circle" alt="Info" title="Parameter groups set to be created as parameter contexts, pending apply."></div>
+                    待创建的参数上下文
+                    <div class="fa fa-question-circle" alt="Info" title="参数组集合待创建为参数上下文, 尚未生效."></div>
                 </div>
                 <div class="setting-field">
                     <div id="parameter-contexts-to-create-container" class="ellipsis"></div>
@@ -108,8 +108,8 @@
             </div>
             <div class="setting">
                 <div class="setting-name">
-                    Parameter Contexts To Update
-                    <div class="fa fa-question-circle" alt="Info" title="Synced parameter contexts to be updated, pending apply."></div>
+                    待更新的参数上下文
+                    <div class="fa fa-question-circle" alt="Info" title="已同步参数上下文待更新, 尚未生效."></div>
                     <div class="referencing-components-loading"></div>
                 </div>
                 <div class="setting-field">
@@ -119,8 +119,8 @@
 
             <div id="fetch-parameters-referencing-components-container" class="setting hidden">
                 <div class="setting-name">
-                    Referencing Components
-                    <div class="fa fa-question-circle" alt="Info" title="Components referencing this selected parameter."></div>
+                    引用组件
+                    <div class="fa fa-question-circle" alt="Info" title="引用选定参数的组件."></div>
                     <div class="referencing-components-loading"></div>
                 </div>
                 <div id="fetch-parameter-referencing-components-container" class="setting-field">
@@ -128,7 +128,7 @@
             </div>
             <div id="fetch-parameters-referencing-components-template" class="fetch-parameters-referencing-components-template hidden clear">
                 <div class="setting">
-                    <div class="setting-name">Referencing Processors
+                    <div class="setting-name">引用处理器
                     </div>
                     <div class="setting-field">
                         <ul class="fetch-parameters-referencing-processors"></ul>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="setting">
                     <div class="setting-name">
-                        Referencing Controller Services
+                        引用控制器服务
                     </div>
                     <div class="setting-field">
                         <ul class="fetch-parameters-referencing-controller-services"></ul>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="setting">
                     <div class="setting-name">
-                        Unauthorized referencing components
+                        未授权的组件引用
                     </div>
                     <div class="setting-field">
                         <ul class="fetch-parameters-referencing-unauthorized-components"></ul>
@@ -154,8 +154,8 @@
 
             <div id="fetch-parameters-affected-referencing-components-container" class="setting">
                 <div class="setting-name">
-                    Affected Referencing Components
-                    <div class="fa fa-question-circle" alt="Info" title="Affected components referencing this parameter provider."></div>
+                    受影响的引用到的组件
+                    <div class="fa fa-question-circle" alt="Info" title="受影响的引用到的参数提供者."></div>
                     <div class="referencing-components-loading"></div>
                 </div>
                 <div id="affected-referencing-components-container" class="setting-field">
@@ -163,7 +163,7 @@
             </div>
             <div id="affected-referencing-components-template" class="affected-referencing-components-template hidden clear">
                 <div class="setting">
-                    <div class="setting-name">Referencing Processors
+                    <div class="setting-name">引用处理器
                     </div>
                     <div class="setting-field">
                         <ul class="fetch-parameters-referencing-processors"></ul>
@@ -171,7 +171,7 @@
                 </div>
                 <div class="setting">
                     <div class="setting-name">
-                        Referencing Controller Services
+                        引用控制器服务
                     </div>
                     <div class="setting-field">
                         <ul class="fetch-parameters-referencing-controller-services"></ul>
@@ -179,7 +179,7 @@
                 </div>
                 <div class="setting">
                     <div class="setting-name">
-                        Unauthorized referencing components
+                        未授权的组件引用
                     </div>
                     <div class="setting-field">
                         <ul class="fetch-parameters-referencing-unauthorized-components"></ul>
@@ -190,15 +190,15 @@
     </div>
     <%--end settings-right--%>
     <div id="fetch-parameters-permissions-parameter-contexts-message" class="ellipsis fetch-parameters-dialog-message hidden">
-        You do not have permissions to modify one or more synced parameter contexts.
+        你没有权限修改部分已同步参数上下文.
     </div>
     <div id="fetch-parameters-permissions-affected-components-message" class="ellipsis fetch-parameters-dialog-message hidden">
-        You do not have permissions to modify one or more affected components.
+        你没有权限修改部分受影响组件.
     </div>
     <div id="fetch-parameters-missing-context-name-message" class="ellipsis fetch-parameters-dialog-message hidden">
-        Missing parameter context name.
+        没有参数上下文名称.
     </div>
     <div class="fetch-parameters-canceling hidden unset">
-        Canceling...
+        正在取消...
     </div>
 </div>

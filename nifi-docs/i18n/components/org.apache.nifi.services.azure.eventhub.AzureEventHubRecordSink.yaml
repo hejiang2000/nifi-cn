@@ -1,0 +1,37 @@
+capabilityDescription: {en: Format and send Records to Azure Event Hubs, zh: 格式化记录并将其发送到Azure事件中心}
+properties:
+  Event Hub Name:
+    en: {displayName: Event Hub Name, description: Provides the Event Hub Name for
+        connections}
+    zh: {description: 提供连接的事件中心名称, displayName: 事件中心名称}
+  Service Bus Endpoint:
+    en: {displayName: Service Bus Endpoint, description: Provides the domain for connecting
+        to Azure Event Hubs}
+    zh: {description: 提供用于连接到Azure事件中心的域, displayName: 服务总线终结点}
+  Authentication Strategy:
+    en: {displayName: Authentication Strategy, description: Strategy for authenticating
+        to Azure Event Hubs}
+    zh: {description: Azure事件中心身份验证策略, displayName: 身份验证策略}
+  Event Hub Namespace:
+    en: {displayName: Event Hub Namespace, description: Provides provides the host
+        for connecting to Azure Event Hubs}
+    zh: {description: 提供用于连接到Azure事件中心的主机, displayName: 事件中心命名空间}
+  Partition Key:
+    en: {displayName: Partition Key, description: A hint for Azure Event Hub message
+        broker how to distribute messages across one or more partitions}
+    zh: {description: Azure Event Hub消息代理如何跨一个或多个分区分发消息的提示, displayName: 分区密钥}
+  Shared Access Policy:
+    en: {displayName: Shared Access Policy, description: The name of the shared access
+        policy. This policy must have Send claims}
+    zh: {description: 共享访问策略的名称。此策略必须具有发送声明, displayName: 共享访问策略}
+  Shared Access Policy Key:
+    en: {displayName: Shared Access Policy Key, description: The primary or secondary
+        key of the shared access policy}
+    zh: {description: 共享访问策略的主密钥或辅助密钥, displayName: 共享访问策略密钥}
+  record-sink-record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records.}
+    zh: {description: 指定用于写入记录的控制器服务。, displayName: 记录编写器}
+tags:
+  en: [azure, record, sink]
+  zh: [蔚蓝色的, 记录, 下沉]

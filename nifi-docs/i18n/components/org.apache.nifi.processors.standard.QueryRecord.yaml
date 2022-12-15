@@ -1,0 +1,94 @@
+relationships:
+  original: {en: The original FlowFile is routed to this relationship, zh: 原始FlowFile路由到此关系}
+  failure: {en: 'If a FlowFile fails processing for any reason (for example, the SQL
+      statement contains columns not present in input data), the original FlowFile
+      it will be routed to this relationship', zh: 如果FlowFile由于任何原因（例如，SQL语句包含输入数据中不存在的列）处理失败，则原始FlowFile将被路由到此关系}
+dynamicProperties:
+  The name of the relationship to route data to:
+    en: {description: 'Each user-defined property specifies a SQL SELECT statement
+        to run over the data, with the data that is selected being routed to the relationship
+        whose name is the property name', value: A SQL SELECT statement that is used
+        to determine what data should be routed to this relationship.}
+    zh: {description: 每个用户定义的属性都指定一个SQL SELECT语句来运行数据，所选数据将路由到名称为属性名称的关系, value: 用于确定应将哪些数据路由到此关系的SQL
+        SELECT语句。}
+capabilityDescription: {en: 'Evaluates one or more SQL queries against the contents
+    of a FlowFile. The result of the SQL query then becomes the content of the output
+    FlowFile. This can be used, for example, for field-specific filtering, transformation,
+    and row-level filtering. Columns can be renamed, simple calculations and aggregations
+    performed, etc. The Processor is configured with a Record Reader Controller Service
+    and a Record Writer service so as to allow flexibility in incoming and outgoing
+    data formats. The Processor must be configured with at least one user-defined
+    property. The name of the Property is the Relationship to route data to, and the
+    value of the Property is a SQL SELECT statement that is used to specify how input
+    data should be transformed/filtered. The SQL statement must be valid ANSI SQL
+    and is powered by Apache Calcite. If the transformation fails, the original FlowFile
+    is routed to the ''failure'' relationship. Otherwise, the data selected will be
+    routed to the associated relationship. If the Record Writer chooses to inherit
+    the schema from the Record, it is important to note that the schema that is inherited
+    will be from the ResultSet, rather than the input Record. This allows a single
+    instance of the QueryRecord processor to have multiple queries, each of which
+    returns a different set of columns and aggregations. As a result, though, the
+    schema that is derived will have no schema name, so it is important that the configured
+    Record Writer not attempt to write the Schema Name as an attribute if inheriting
+    the Schema from the Record. See the Processor Usage documentation for more information.',
+  zh: 根据FlowFile的内容计算一个或多个SQL查询。然后，SQL查询的结果成为输出FlowFile的内容。例如，这可以用于特定于字段的过滤、转换和行级过滤。可以重命名列，执行简单的计算和聚合等。处理器配置有记录读取器控制器服务和记录写入器服务，以便在传入和传出数据格式方面具有灵活性。处理器必须至少配置一个用户定义的属性。属性的名称是要将数据路由到的关系，属性的值是SQL
+    SELECT语句，用于指定如何转换/过滤输入数据。SQL语句必须是有效的ANSI SQL，并且由Apache Calcite提供支持。如果转换失败，则将原始FlowFile路由到“失败”关系。否则，所选数据将路由到关联关系。如果记录编写器选择从记录中继承模式，请务必注意，所继承的模式将来自ResultSet，而不是输入记录。这允许QueryRecord处理器的单个实例具有多个查询，每个查询都返回一组不同的列和聚合。因此，派生的架构将没有架构名称，因此，如果从记录继承架构，则配置的记录编写器不要尝试将架构名称作为属性写入，这一点很重要。有关更多信息，请参阅处理器使用文档。}
+dynamicRelationships:
+  <Property Name>: {en: Each user-defined property defines a new Relationship for
+      this Processor., zh: 每个用户定义的属性为此处理器定义一个新的关系。}
+properties:
+  cache-schema:
+    en: {displayName: Cache Schema, description: 'This property is no longer used.
+        It remains solely for backward compatibility in order to avoid making existing
+        Processors invalid upon upgrade. This property will be removed in future versions.
+        Now, instead of forcing the user to understand the semantics of schema caching,
+        the Processor caches up to 25 schemas and automatically rolls off the old
+        schemas. This provides the same performance when caching was enabled previously
+        and in some cases very significant performance improvements if caching was
+        previously disabled.'}
+    zh: {description: 此属性不再使用。它仅用于向后兼容，以避免在升级时使现有处理器无效。此属性将在以后的版本中删除。现在，处理器不再强迫用户理解模式缓存的语义，而是缓存多达25个模式并自动删除旧模式。这在以前启用缓存时提供了相同的性能，在某些情况下，如果以前禁用了缓存，则会显著提高性能。,
+      displayName: 缓存架构}
+  dbf-default-precision:
+    en: {displayName: Default Decimal Precision, description: 'When a DECIMAL/NUMBER
+        value is written as a ''decimal'' Avro logical type, a specific ''precision''
+        denoting number of available digits is required. Generally, precision is defined
+        by column data type definition or database engines default. However undefined
+        precision (0) can be returned from some database engines. ''Default Decimal
+        Precision'' is used when writing those undefined precision numbers.'}
+    zh: {description: 当DECIMAL/NUMBER值写为“十进制”Avro逻辑类型时，需要一个表示可用位数的特定“精度”。通常，精度由列数据类型定义或数据库引擎默认值定义。但是，某些数据库引擎可以返回未定义的精度（0）写入那些未定义的精度数字时使用“默认十进制精度”。,
+      displayName: 默认小数精度}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing results to a FlowFile}
+    zh: {description: 指定用于将结果写入FlowFile的控制器服务, displayName: 记录编写器}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务, displayName: 记录读取器}
+  include-zero-record-flowfiles:
+    en: {displayName: Include Zero Record FlowFiles, description: 'When running the
+        SQL statement against an incoming FlowFile, if the result has no data, this
+        property specifies whether or not a FlowFile will be sent to the corresponding
+        relationship'}
+    zh: {description: 对传入的FlowFile运行SQL语句时，如果结果没有数据，则此属性指定是否将FlowFile发送到相应的关系, displayName: 包括零记录流文件}
+  dbf-default-scale:
+    en: {displayName: Default Decimal Scale, description: 'When a DECIMAL/NUMBER value
+        is written as a ''decimal'' Avro logical type, a specific ''scale'' denoting
+        number of available decimal digits is required. Generally, scale is defined
+        by column data type definition or database engines default. However when undefined
+        precision (0) is returned, scale can also be uncertain with some database
+        engines. ''Default Decimal Scale'' is used when writing those undefined numbers.
+        If a value has more decimals than specified scale, then the value will be
+        rounded-up, e.g. 1.53 becomes 2 with scale 0, and 1.5 with scale 1.'}
+    zh: {description: 当DECIMAL/NUMBER值写为“十进制”Avro逻辑类型时，需要一个表示可用十进制位数的特定“刻度”。通常，比例由列数据类型定义或数据库引擎默认值定义。然而，当返回未定义的精度（0）时，某些数据库引擎的规模也可能不确定写入未定义的数字时使用“默认小数位数”。如果某个值的小数位数比指定的小数位数多，则该值将向上舍入，例如，1.53在小数位数为0时变为2，在小数位数1时变为1.5。,
+      displayName: 默认小数位数}
+writeAttributes:
+  record.count: {en: The number of records selected by the query, zh: 查询选择的记录数}
+  QueryRecord.Route: {en: The relation to which the FlowFile was routed, zh: FlowFile路由到的关系}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer, zh: 设置mime。type属性设置为记录编写器指定的MIME类型}
+tags:
+  en: [sql, query, calcite, route, record, transform, select, update, modify, etl,
+    filter, record, csv, json, logs, text, avro, aggregate]
+  zh: [sql语言, 查询, 方解石, 路线, 记录, 使改变, 选择, 使现代化, 修改, 电子交易日志, 滤器, 记录, csv格式, json文件, 日志,
+    文本, 我没有吗？, 总数的]

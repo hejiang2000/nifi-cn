@@ -1,0 +1,45 @@
+relationships:
+  success: {en: FlowFiles will be routed to this Relationship after the response has
+      been successfully sent to the requestor, zh: 响应成功发送给请求者后，FlowFiles将被路由到此关系}
+  failure: {en: 'FlowFiles will be routed to this Relationship if the Processor is
+      unable to respond to the requestor. This may happen, for instance, if the connection
+      times out or if NiFi is restarted before responding to the HTTP Request.', zh: 如果处理器无法响应请求者，FlowFiles将被路由到此关系。例如，如果连接超时或NiFi在响应HTTP请求之前重新启动，则可能会发生这种情况。}
+dynamicProperties:
+  An HTTP header name:
+    en: {description: These HTTPHeaders are set in the HTTP Response, value: An HTTP
+        header value}
+    zh: {description: 这些HTTPHeader在HTTP响应中设置, value: HTTP标头值}
+capabilityDescription: {en: Sends an HTTP Response to the Requestor that generated
+    a FlowFile. This Processor is designed to be used in conjunction with the HandleHttpRequest
+    in order to create a web service., zh: 向生成FlowFile的请求者发送HTTP响应。此处理器被设计为与HandleHttpRequest一起使用，以便创建web服务。}
+readAttributes:
+  http.request.uri: {en: Value of the URI requested by the client. Used for provenance
+      event., zh: 客户端请求的URI的值。用于起源事件。}
+  http.context.identifier: {en: 'The value of this attribute is used to lookup the
+      HTTP Response so that the proper message can be sent back to the requestor.
+      If this attribute is missing, the FlowFile will be routed to ''failure.''',
+    zh: 此属性的值用于查找HTTP响应，以便将正确的消息发送回请求者。如果缺少此属性，FlowFile将被路由到“failure”}
+  http.remote.host: {en: IP address of the client. Used for provenance event., zh: 客户端的IP地址。用于起源事件。}
+  http.subject.dn: {en: SSL distinguished name (if any). Used for provenance event.,
+    zh: SSL可分辨名称（如果有）。用于起源事件。}
+  http.local.name: {en: IP address/hostname of the server. Used for provenance event.,
+    zh: 服务器的IP地址/主机名。用于起源事件。}
+  http.server.port: {en: Listening port of the server. Used for provenance event.,
+    zh: 服务器的侦听端口。用于起源事件。}
+properties:
+  HTTP Context Map:
+    en: {displayName: HTTP Context Map, description: The HTTP Context Map Controller
+        Service to use for caching the HTTP Request Information}
+    zh: {description: 用于缓存HTTP请求信息的HTTP上下文映射控制器服务, displayName: HTTP上下文映射}
+  Attributes to add to the HTTP Response (Regex):
+    en: {displayName: Attributes to add to the HTTP Response (Regex), description: Specifies
+        the Regular Expression that determines the names of FlowFile attributes that
+        should be added to the HTTP response}
+    zh: {description: 指定正则表达式，该表达式确定应添加到HTTP响应的FlowFile属性的名称, displayName: 要添加到HTTP响应（Regex）的属性}
+  HTTP Status Code:
+    en: {displayName: HTTP Status Code, description: The HTTP Status Code to use when
+        responding to the HTTP Request. See Section 10 of RFC 2616 for more information.}
+    zh: {description: 响应HTTP请求时要使用的HTTP状态代码。有关更多信息，请参阅RFC 2616的第10节。, displayName: HTTP状态代码}
+tags:
+  en: [http, https, response, egress, web service]
+  zh: [http, https, 回答, 出口, web服务]

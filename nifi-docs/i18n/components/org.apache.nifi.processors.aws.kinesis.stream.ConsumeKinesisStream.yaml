@@ -1,0 +1,138 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+dynamicProperties:
+  Kinesis Client Library (KCL) Configuration property name:
+    en: {description: 'Override default KCL Configuration properties with required
+        values. Supports setting of values via the "with" methods on the KCL Configuration
+        class. Specify the property to be set without the leading prefix, e.g. "maxInitialisationAttempts"
+        will call "withMaxInitialisationAttempts" and set the provided value. Only
+        supports setting of simple property values, e.g. String, int, long and boolean.
+        Does not allow override of KCL Configuration settings handled by non-dynamic
+        processor properties.', value: Value to set in the KCL Configuration property}
+    zh: {description: 使用所需值覆盖默认KCL配置属性。支持通过KCL配置类上的“with”方法设置值。指定不带前导前缀的要设置的属性，例如，“maxInitializationAttempts”将调用“withMaxInitializationImpempts”并设置提供的值。仅支持设置简单属性值，例如String、int、long和boolean。不允许重写由非动态处理器属性处理的KCL配置设置。,
+      value: 要在KCL配置属性中设置的值}
+systemResourceConsiderations:
+  en: ['Kinesis Client Library is used to create a Worker thread for consumption of
+      Kinesis Records. The Worker is initialised and started when this Processor has
+      been triggered. It runs continually, spawning Kinesis Record Processors as required
+      to fetch Kinesis Records. The Worker Thread (and any child Record Processor
+      threads) are not controlled by the normal NiFi scheduler as part of the Concurrent
+      Thread pool and are not released until this processor is stopped.', 'Kinesis
+      Client Library will continually poll for new Records, requesting up to a maximum
+      number of Records/bytes per call. This can result in sustained network usage.']
+  zh: [Kinesis客户端库用于创建Worker线程以使用Kinesis记录。触发此处理器后，Worker将初始化并启动。它持续运行，根据需要生成Kinesis记录处理器以获取Kinesis纪录。作为并发线程池的一部分，工作线程（以及任何子记录处理器线程）不受正常NiFi调度程序的控制，并且在该处理器停止之前不会被释放。,
+    Kinesis客户端库将持续轮询新记录，每次调用最多请求记录/字节数。这会导致持续的网络使用。]
+capabilityDescription: {en: Reads data from the specified AWS Kinesis stream and outputs
+    a FlowFile for every processed Record (raw)  or a FlowFile for a batch of processed
+    records if a Record Reader and Record Writer are configured. At-least-once delivery
+    of all Kinesis Records within the Stream while the processor is running. AWS Kinesis
+    Client Library can take several seconds to initialise before starting to fetch
+    data. Uses DynamoDB for check pointing and CloudWatch (optional) for metrics.
+    Ensure that the credentials provided have access to DynamoDB and CloudWatch (optional)
+    along with Kinesis., zh: 从指定的AWS Kinesis流中读取数据，并为每个已处理记录（原始）输出FlowFile，如果配置了记录读取器和记录写入器，则为一批已处理记录输出FlowFile。处理器运行时，流中的所有Kinesis记录至少传送一次。AWS
+    Kinesis客户端库在开始获取数据之前可能需要几秒钟的时间来初始化。使用DynamoDB进行检查指向，使用CloudWatch（可选）进行度量。确保提供的凭据可以访问DynamoDB和CloudWatch（可选）以及Kinesis。}
+properties:
+  amazon-kinesis-stream-cloudwatch-flag:
+    en: {displayName: Report Metrics to CloudWatch, description: Whether to report
+        Kinesis usage metrics to CloudWatch.}
+    zh: {description: 是否向CloudWatch报告Kinesis使用指标。, displayName: 向CloudWatch报告指标}
+  kinesis-stream-name:
+    en: {displayName: Amazon Kinesis Stream Name, description: The name of Kinesis
+        Stream}
+    zh: {description: Kinesis流的名称, displayName: 亚马逊Kinesis流名称}
+  amazon-kinesis-stream-initial-position:
+    en: {displayName: Initial Stream Position, description: Initial position to read
+        Kinesis streams.}
+    zh: {description: 读取Kinesis流的初始位置。, displayName: 初始流位置}
+  amazon-kinesis-stream-record-writer:
+    en: {displayName: Record Writer, description: 'The Record Writer to use for serializing
+        Records to an output FlowFile. The Kinesis Stream name can be referred to
+        by Expression Language ''${kinesis.name}'' to access a schema. If Record Reader/Writer
+        are not specified, each Kinesis Record will create a FlowFile.'}
+    zh: {description: 用于将记录序列化为输出FlowFile的记录编写器。表达式语言“$｛kinisis.name｝”可以引用Kinesis流名称来访问架构。如果未指定记录读取器/写入器，每个Kinesis记录将创建一个FlowFile。,
+      displayName: 记录编写器}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  amazon-kinesis-stream-application-name:
+    en: {displayName: Application Name, description: The Kinesis stream reader application
+        name.}
+    zh: {description: Kinesis流读取器应用程序名称。, displayName: 应用程序名称}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  amazon-kinesis-stream-failover-timeout:
+    en: {displayName: Failover Timeout, description: Kinesis Client Library failover
+        timeout}
+    zh: {description: Kinesis客户端库故障切换超时, displayName: 故障切换超时}
+  amazon-kinesis-stream-retry-count:
+    en: {displayName: Retry Count, description: 'Number of times to retry a Kinesis
+        operation (process record, checkpoint, shutdown)'}
+    zh: {description: 重试Kinesis操作的次数（进程记录、检查点、关闭）, displayName: 重试计数}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  amazon-kinesis-stream-timestamp-format:
+    en: {displayName: Timestamp Format, description: Format to use for parsing the
+        Stream Position Timestamp into a Date and converting the Kinesis Record's
+        Approximate Arrival Timestamp into a FlowFile attribute.}
+    zh: {description: 用于将流位置时间戳解析为日期并将Kinesis记录的近似到达时间戳转换为FlowFile属性的格式。, displayName: 时间戳格式}
+  amazon-kinesis-stream-graceful-shutdown-timeout:
+    en: {displayName: Graceful Shutdown Timeout, description: Kinesis Client Library
+        graceful shutdown timeout}
+    zh: {description: Kinesis客户端库正常关闭超时, displayName: 正常关机超时}
+  amazon-kinesis-stream-record-reader:
+    en: {displayName: Record Reader, description: 'The Record Reader to use for reading
+        received messages. The Kinesis Stream name can be referred to by Expression
+        Language ''${kinesis.name}'' to access a schema. If Record Reader/Writer are
+        not specified, each Kinesis Record will create a FlowFile.'}
+    zh: {description: 用于读取接收到的消息的记录读取器。表达式语言“$｛kinisis.name｝”可以引用Kinesis流名称来访问架构。如果未指定记录读取器/写入器，每个Kinesis记录将创建一个FlowFile。,
+      displayName: 记录读取器}
+  amazon-kinesis-stream-checkpoint-interval:
+    en: {displayName: Checkpoint Interval, description: Interval between Kinesis checkpoints}
+    zh: {description: Kinesis检查点之间的间隔, displayName: 检查点间隔}
+  amazon-kinesis-stream-dynamodb-override:
+    en: {displayName: DynamoDB Override, description: DynamoDB override to use non-AWS
+        deployments}
+    zh: {description: DynamoDB覆盖以使用非AWS部署, displayName: DynamoDB覆盖}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  amazon-kinesis-stream-retry-wait:
+    en: {displayName: Retry Wait, description: 'Interval between Kinesis operation
+        retries (process record, checkpoint, shutdown)'}
+    zh: {description: Kinesis操作重试间隔（进程记录、检查点、关闭）, displayName: 重试等待}
+  amazon-kinesis-stream-position-timestamp:
+    en: {displayName: Stream Position Timestamp, description: Timestamp position in
+        stream from which to start reading Kinesis Records. Required if Initial position
+        to read Kinesis streams. is AT_TIMESTAMP. Uses the Timestamp Format to parse
+        value into a Date.}
+    zh: {description: 开始读取Kinesis记录的流中的时间戳位置。如果读取Kinesis流的初始位置是必需的。是AT_TIMESTAMP。使用时间戳格式将值解析为日期。,
+      displayName: 流位置时间戳}
+writeAttributes:
+  record.error.message: {en: This attribute provides on failure the error message
+      encountered by the Record Reader or Record Writer (if configured), zh: 此属性在失败时提供记录读取器或记录写入器（如果已配置）遇到的错误消息}
+  aws.kinesis.shard.id: {en: Shard ID from which the Kinesis Record was read, zh: 从中读取Kinesis记录的碎片ID}
+  aws.kinesis.sequence.number: {en: The unique identifier of the (last) Kinesis Record
+      within its Shard, zh: 碎片中（最后一个）Kinesis记录的唯一标识符}
+  record.count: {en: Number of records written to the FlowFiles by the Record Writer
+      (if configured), zh: 记录写入器写入FlowFiles的记录数（如果已配置）}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer (if configured), zh: 设置mime。type属性设置为记录编写器指定的MIME类型（如果已配置）}
+  aws.kinesis.partition.key: {en: Partition key of the (last) Kinesis Record read
+      from the Shard, zh: 从碎片读取的（最后一个）Kinesis记录的分区键}
+  aws.kinesis.approximate.arrival.timestamp: {en: Approximate arrival timestamp of
+      the (last) Kinesis Record read from the stream, zh: 从流中读取的（最后）Kinesis记录的近似到达时间戳}
+tags:
+  en: [amazon, aws, kinesis, consume, stream]
+  zh: [亚马逊, 自动售货机, 驱动剂, 消费, 流动]

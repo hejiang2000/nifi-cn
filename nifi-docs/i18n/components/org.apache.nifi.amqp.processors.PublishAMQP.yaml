@@ -1,0 +1,101 @@
+relationships:
+  success: {en: All FlowFiles that are sent to the AMQP destination are routed to
+      this relationship, zh: 发送到AMQP目标的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be routed to the AMQP destination are routed
+      to this relationship, zh: 无法路由到AMQP目标的所有FlowFiles都将路由到此关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Creates an AMQP Message from the contents of a FlowFile
+    and sends the message to an AMQP Exchange. In a typical AMQP exchange model, the
+    message that is sent to the AMQP Exchange will be routed based on the ''Routing
+    Key'' to its final destination in the queue (the binding). If due to some misconfiguration
+    the binding between the Exchange, Routing Key and Queue is not set up, the message
+    will have no final destination and will return (i.e., the data will not make it
+    to the queue). If that happens you will see a log in both app-log and bulletin
+    stating to that effect, and the FlowFile will be routed to the ''failure'' relationship.',
+  zh: 从FlowFile的内容创建AMQP消息，并将该消息发送到AMQP Exchange。在典型的AMQP交换模型中，发送到AMQP交换的消息将基于“路由密钥”路由到队列中的最终目的地（绑定）。如果由于某些错误配置，未设置Exchange、路由密钥和队列之间的绑定，则邮件将没有最终目的地并将返回（即，数据将无法到达队列）。如果发生这种情况，您将在应用程序日志和公告中看到一个日志，说明这一点，FlowFile将被路由到“失败”关系。}
+readAttributes:
+  amqp$clusterId: {en: The ID of the AMQP Cluster, zh: AMQP群集的ID}
+  amqp$messageId: {en: The unique ID of the Message, zh: 消息的唯一ID}
+  amqp$contentType: {en: The Content Type to set on the AMQP Message, zh: 要在AMQP消息上设置的内容类型}
+  amqp$appId: {en: The App ID field to set on the AMQP Message, zh: 要在AMQP消息上设置的应用程序ID字段}
+  amqp$type: {en: The type of message, zh: 消息的类型}
+  amqp$userId: {en: The ID of the user, zh: 用户的ID}
+  amqp$headers: {en: The headers to set on the AMQP Message, zh: 要在AMQP消息上设置的标头}
+  amqp$timestamp: {en: 'The timestamp of the Message, as the number of milliseconds
+      since epoch', zh: 消息的时间戳，作为自epoch以来的毫秒数}
+  amqp$expiration: {en: The Message Expiration, zh: 邮件过期时间}
+  amqp$correlationId: {en: The Message's Correlation ID, zh: 消息的相关ID}
+  amqp$priority: {en: The Message priority, zh: 消息优先级}
+  amqp$deliveryMode: {en: The numeric indicator for the Message's Delivery Mode, zh: 消息传递模式的数字指示器}
+  amqp$replyTo: {en: The value of the Message's Reply-To field, zh: 邮件回复字段的值}
+  amqp$contentEncoding: {en: The Content Encoding to set on the AMQP Message, zh: 要在AMQP消息上设置的内容编码}
+properties:
+  Routing Key:
+    en: {displayName: Routing Key, description: 'The name of the Routing Key that
+        will be used by AMQP to route messages from the exchange to a destination
+        queue(s). Usually provided by the administrator (e.g., ''myKey'')In the event
+        when messages are sent to a default exchange this property corresponds to
+        a destination queue name, otherwise a binding from the Exchange to a Queue
+        via Routing Key must be set (usually by the AMQP administrator)'}
+    zh: {description: AMQP将用于将消息从交换机路由到目标队列的路由密钥的名称。通常由管理员提供（例如，“myKey”）在将消息发送到默认交换机的情况下，此属性对应于目标队列名称，否则必须设置从exchange通过路由密钥到队列的绑定（通常由AMQP管理员设置）,
+      displayName: 路由密钥}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  User Name:
+    en: {displayName: User Name, description: User Name used for authentication and
+        authorization.}
+    zh: {description: 用于身份验证和授权的用户名。, displayName: 用户名}
+  ssl-client-auth:
+    en: {displayName: Client Auth, description: The property has no effect and therefore
+        deprecated.}
+    zh: {description: 该属性无效，因此已弃用。, displayName: 客户端身份验证}
+  Exchange Name:
+    en: {displayName: Exchange Name, description: 'The name of the AMQP Exchange the
+        messages will be sent to. Usually provided by the AMQP administrator (e.g.,
+        ''amq.direct''). It is an optional property. If kept empty the messages will
+        be sent to a default AMQP exchange.'}
+    zh: {description: 消息将发送到的AMQP Exchange的名称。通常由AMQP管理员提供（例如，“amq.direct”）。它是一个可选属性。如果保持为空，消息将发送到默认AMQP交换机。,
+      displayName: Exchange名称}
+  Port:
+    en: {displayName: Port, description: 'Numeric value identifying Port of AMQP broker
+        (e.g., 5671). If Brokers is set, then this property is ignored.'}
+    zh: {description: 标识AMQP代理端口的数值（例如5671）。如果设置了Broker，则忽略此属性。, displayName: 港口城市}
+  Brokers:
+    en: {displayName: Brokers, description: 'A comma-separated list of known AMQP
+        Brokers in the format <host>:<port> (e.g., localhost:5672). If this is set,
+        Host Name and Port are ignored. Only include hosts from the same AMQP cluster.'}
+    zh: {description: '已知AMQP代理的逗号分隔列表，格式为＜host＞：＜port＞（例如，localhost:5678）。如果设置了此选项，将忽略主机名和端口。仅包括来自同一AMQP集群的主机。',
+      displayName: 经纪人}
+  cert-authentication:
+    en: {displayName: Use Client Certificate Authentication, description: Authenticate
+        using the SSL certificate rather than user name/password.}
+    zh: {description: 使用SSL证书而不是用户名/密码进行身份验证。, displayName: 使用客户端证书身份验证}
+  Host Name:
+    en: {displayName: Host Name, description: 'Network address of AMQP broker (e.g.,
+        localhost). If Brokers is set, then this property is ignored.'}
+    zh: {description: AMQP代理的网络地址（例如，localhost）。如果设置了Broker，则忽略此属性。, displayName: 主机名}
+  header.separator:
+    en: {displayName: Header Separator, description: The character that is used to
+        split key-value for headers. The value must only one character. Otherwise
+        you will get an error message}
+    zh: {description: 用于拆分标头键值的字符。该值只能包含一个字符。否则，您将收到错误消息, displayName: 收割台分离器}
+  AMQP Version:
+    en: {displayName: AMQP Version, description: AMQP Version. Currently only supports
+        AMQP v0.9.1.}
+    zh: {description: AMQP版本。目前仅支持AMQP v0.9.1。, displayName: AMQP版本}
+  Virtual Host:
+    en: {displayName: Virtual Host, description: Virtual Host name which segregates
+        AMQP system for enhanced security.}
+    zh: {description: 隔离AMQP系统以增强安全性的虚拟主机名。, displayName: 虚拟主机}
+  Password:
+    en: {displayName: Password, description: Password used for authentication and
+        authorization.}
+    zh: {description: 用于身份验证和授权的密码。, displayName: 暗语}
+tags:
+  en: [amqp, rabbit, put, message, send, publish]
+  zh: [amqp公司, 兔子, 放, 消息, 邮寄, 出版]

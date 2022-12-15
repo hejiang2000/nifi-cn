@@ -1,0 +1,24 @@
+capabilityDescription: {en: 'Reports metrics to Ganglia so that Ganglia can be used
+    for external monitoring of the application. Metrics reported include JVM Metrics
+    (optional); the following 5-minute NiFi statistics: FlowFiles Received, Bytes
+    Received, FlowFiles Sent, Bytes Sent, Bytes Read, Bytes Written, Total Task Duration;
+    and the current values for FlowFiles Queued, Bytes Queued, and number of Active
+    Threads.', zh: 向Ganglia报告度量，以便Ganglia可以用于应用程序的外部监控。报告的指标包括JVM指标（可选）；以下5分钟NiFi统计数据：FlowFiles
+    Received、Bytes Received、FlowFiles Sent、Bytes Sent、字节Read、Bytes Written、Total Task
+    Duration；以及FlowFiles Queued、Bytes Queued和Active Threads数量的当前值。}
+properties:
+  Send JVM Metrics:
+    en: {displayName: Send JVM Metrics, description: 'Specifies whether or not JVM
+        Metrics should be gathered and sent, in addition to NiFi-specific metrics'}
+    zh: {description: 指定除了NiFi特定指标之外，是否应收集和发送JVM指标, displayName: 发送JVM度量}
+  Port:
+    en: {displayName: Port, description: The Port on which Ganglia is listening for
+        incoming connections}
+    zh: {description: Ganglia正在侦听传入连接的端口, displayName: 港口城市}
+  Hostname:
+    en: {displayName: Hostname, description: The fully-qualified name of the host
+        on which Ganglia is running}
+    zh: {description: 运行Ganglia的主机的完全限定名称, displayName: 主机名}
+tags:
+  en: [ganglia, stats]
+  zh: [神经节, 统计数据]

@@ -1,0 +1,87 @@
+relationships:
+  success: {en: All FlowFiles that are received are routed to success, zh: 接收到的所有FlowFiles都将路由成功}
+capabilityDescription: {en: 'Generates a set of flow files, each containing attributes
+    corresponding to metadata about a table from a database connection. Once metadata
+    about a table has been fetched, it will not be fetched again until the Refresh
+    Interval (if set) has elapsed, or until state has been manually cleared.', zh: 生成一组流文件，每个流文件包含与来自数据库连接的表的元数据相对应的属性。一旦获取了有关表的元数据，在刷新间隔（如果设置）过去之前，或者在手动清除状态之前，将不会再次获取该表。}
+statefulDescription: {en: 'After performing a listing of tables, the timestamp of
+    the query is stored. This allows the Processor to not re-list tables the next
+    time that the Processor is run. Specifying the refresh interval in the processor
+    properties will indicate that when the processor detects the interval has elapsed,
+    the state will be reset and tables will be re-listed as a result. This processor
+    is meant to be run on the primary node only.', zh: 执行表列表后，将存储查询的时间戳。这允许处理器在下次运行处理器时不重新列出表。在处理器属性中指定刷新间隔将表明，当处理器检测到间隔已过时，状态将被重置，因此将重新列出表。此处理器只能在主节点上运行。}
+properties:
+  list-db-tables-db-connection:
+    en: {displayName: Database Connection Pooling Service, description: The Controller
+        Service that is used to obtain connection to database}
+    zh: {description: 用于获取数据库连接的控制器服务, displayName: 数据库连接池服务}
+  list-db-refresh-interval:
+    en: {displayName: Refresh Interval, description: 'The amount of time to elapse
+        before resetting the processor state, thereby causing all current tables to
+        be listed. During this interval, the processor may continue to run, but tables
+        that have already been listed will not be re-listed. However new/added tables
+        will be listed as the processor runs. A value of zero means the state will
+        never be automatically reset, the user must Clear State manually.'}
+    zh: {description: 在重置处理器状态之前所经过的时间，从而导致列出所有当前表。在此期间，处理器可以继续运行，但已列出的表将不会重新列出。但是，新的/添加的表将在处理器运行时列出。值为零表示状态永远不会自动重置，用户必须手动清除状态。,
+      displayName: 刷新间隔}
+  list-db-tables-catalog:
+    en: {displayName: Catalog, description: 'The name of a catalog from which to list
+        database tables. The name must match the catalog name as it is stored in the
+        database. If the property is not set, the catalog name will not be used to
+        narrow the search for tables. If the property is set to an empty string, tables
+        without a catalog will be listed.'}
+    zh: {description: 要从中列出数据库表的目录的名称。名称必须与存储在数据库中的目录名称匹配。如果未设置该属性，则目录名称将不会用于缩小表的搜索范围。如果属性设置为空字符串，则将列出没有目录的表。,
+      displayName: 目录}
+  record-writer:
+    en: {displayName: Record Writer, description: 'Specifies the Record Writer to
+        use for creating the listing. If not specified, one FlowFile will be created
+        for each entity that is listed. If the Record Writer is specified, all entities
+        will be written to a single FlowFile instead of adding attributes to individual
+        FlowFiles.'}
+    zh: {description: 指定用于创建列表的记录编写器。如果未指定，将为列出的每个实体创建一个FlowFile。如果指定了记录编写器，则所有实体都将写入单个FlowFile，而不是向单个FlowFile添加属性。,
+      displayName: 记录编写器}
+  list-db-include-count:
+    en: {displayName: Include Count, description: Whether to include the table's row
+        count as a flow file attribute. This affects performance as a database query
+        will be generated for each table in the retrieved list.}
+    zh: {description: 是否将表的行计数作为流文件属性。这会影响性能，因为将为检索列表中的每个表生成数据库查询。, displayName: 包括计数}
+  list-db-tables-name-pattern:
+    en: {displayName: Table Name Pattern, description: 'A pattern for matching tables
+        in the database. Within a pattern, "%" means match any substring of 0 or more
+        characters, and "_" means match any one character. The pattern must match
+        the table name as it is stored in the database. If the property is not set,
+        all tables will be retrieved.'}
+    zh: {description: 用于匹配数据库中的表的模式。在模式中，“%”表示匹配0个或多个字符的任何子字符串，“_”表示匹配任何一个字符。模式必须与存储在数据库中的表名匹配。如果未设置该属性，则将检索所有表。,
+      displayName: 表名称模式}
+  list-db-tables-schema-pattern:
+    en: {displayName: Schema Pattern, description: 'A pattern for matching schemas
+        in the database. Within a pattern, "%" means match any substring of 0 or more
+        characters, and "_" means match any one character. The pattern must match
+        the schema name as it is stored in the database. If the property is not set,
+        the schema name will not be used to narrow the search for tables. If the property
+        is set to an empty string, tables without a schema will be listed.'}
+    zh: {description: 用于匹配数据库中模式的模式。在模式中，“%”表示匹配0个或多个字符的任何子字符串，“_”表示匹配任何一个字符。模式必须与存储在数据库中的模式名称匹配。如果未设置该属性，则不会使用架构名称来缩小表的搜索范围。如果属性设置为空字符串，则将列出没有架构的表。,
+      displayName: 架构模式}
+  list-db-tables-types:
+    en: {displayName: Table Types, description: 'A comma-separated list of table types
+        to include. For example, some databases support TABLE and VIEW types. If the
+        property is not set, tables of all types will be returned.'}
+    zh: {description: 要包含的表类型的逗号分隔列表。例如，一些数据库支持TABLE和VIEW类型。如果未设置该属性，将返回所有类型的表。, displayName: 表格类型}
+writeAttributes:
+  db.table.schema: {en: Contains the name of the schema to which the table belongs
+      (may be null), zh: 包含表所属架构的名称（可以为空）}
+  db.table.type: {en: 'Contains the type of the database table from the connection.
+      Typical types are "TABLE", "VIEW", "SYSTEM TABLE", "GLOBAL TEMPORARY", "LOCAL
+      TEMPORARY", "ALIAS", "SYNONYM"', zh: 包含连接中数据库表的类型。典型的类型有“TABLE”、“VIEW”、“SYSTEM
+      TABLE”、”GLOBAL TEMPORARY“、”LOCAL TEMPORRY“、”ALIAS“、”SYNONYM“}
+  db.table.catalog: {en: Contains the name of the catalog to which the table belongs
+      (may be null), zh: 包含表所属目录的名称（可以为空）}
+  db.table.count: {en: Contains the number of rows in the table, zh: 包含表中的行数}
+  db.table.name: {en: Contains the name of a database table from the connection, zh: 包含连接中数据库表的名称}
+  db.table.fullname: {en: 'Contains the fully-qualifed table name (possibly including
+      catalog, schema, etc.)', zh: 包含完全限定的表名（可能包括目录、架构等）}
+  db.table.remarks: {en: Contains the name of a database table from the connection,
+    zh: 包含连接中数据库表的名称}
+tags:
+  en: [sql, list, jdbc, table, database]
+  zh: [sql语言, 列表, jdbc语言, 桌子, 数据库]

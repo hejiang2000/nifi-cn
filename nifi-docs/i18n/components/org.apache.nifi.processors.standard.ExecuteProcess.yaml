@@ -1,0 +1,51 @@
+relationships:
+  success: {en: All created FlowFiles are routed to this relationship, zh: 所有创建的FlowFiles都将路由到此关系}
+dynamicProperties:
+  An environment variable name:
+    en: {description: These environment variables are passed to the process spawned
+        by this Processor, value: An environment variable value}
+    zh: {description: 这些环境变量将传递给此处理器生成的进程, value: 环境变量值}
+capabilityDescription: {en: 'Runs an operating system command specified by the user
+    and writes the output of that command to a FlowFile. If the command is expected
+    to be long-running, the Processor can output the partial data on a specified interval.
+    When this option is used, the output is expected to be in textual format, as it
+    typically does not make sense to split binary data on arbitrary time-based intervals.',
+  zh: 运行用户指定的操作系统命令，并将该命令的输出写入FlowFile。如果该命令预期长时间运行，则处理器可以按指定的间隔输出部分数据。使用此选项时，输出应为文本格式，因为按任意时间间隔分割二进制数据通常没有意义。}
+properties:
+  Command:
+    en: {displayName: Command, description: 'Specifies the command to be executed;
+        if just the name of an executable is provided, it must be in the user''s environment
+        PATH.'}
+    zh: {description: 指定要执行的命令；如果只提供了可执行文件的名称，那么它必须在用户的环境PATH中。, displayName: 命令}
+  Redirect Error Stream:
+    en: {displayName: Redirect Error Stream, description: If true will redirect any
+        error stream output of the process to the output stream. This is particularly
+        helpful for processes which write extensively to the error stream or for troubleshooting.}
+    zh: {description: 如果为true，则将进程的任何错误流输出重定向到输出流。这对于大量写入错误流或进行故障排除的进程特别有用。, displayName: 重定向错误流}
+  Working Directory:
+    en: {displayName: Working Directory, description: The directory to use as the
+        current working directory when executing the command}
+    zh: {description: 执行命令时用作当前工作目录的目录, displayName: 工作目录}
+  Argument Delimiter:
+    en: {displayName: Argument Delimiter, description: 'Delimiter to use to separate
+        arguments for a command [default: space]. Must be a single character.'}
+    zh: {description: '用于分隔命令参数的分隔符[默认值：空格]。必须是单个字符。', displayName: 参数分隔符}
+  Batch Duration:
+    en: {displayName: Batch Duration, description: 'If the process is expected to
+        be long-running and produce textual output, a batch duration can be specified
+        so that the output will be captured for this amount of time and a FlowFile
+        will then be sent out with the results and a new FlowFile will be started,
+        rather than waiting for the process to finish before sending out the results'}
+    zh: {description: 如果流程预计将长时间运行并产生文本输出，则可以指定批处理持续时间，以便在这段时间内捕获输出，然后将随结果一起发送FlowFile，并启动新的FlowFile，而不是等待流程完成后再发送结果,
+      displayName: 批次持续时间}
+  Command Arguments:
+    en: {displayName: Command Arguments, description: The arguments to supply to the
+        executable delimited by white space. White space can be escaped by enclosing
+        it in double-quotes.}
+    zh: {description: 要提供给可执行文件的参数由空格分隔。空格可以用双引号括起来来转义。, displayName: 命令参数}
+writeAttributes:
+  command.arguments: {en: Arguments of the command, zh: 命令的参数}
+  command: {en: Executed command, zh: 执行的命令}
+tags:
+  en: [command, process, source, external, invoke, script]
+  zh: [命令, 过程, 来源, 外部的, 援引, 剧本]

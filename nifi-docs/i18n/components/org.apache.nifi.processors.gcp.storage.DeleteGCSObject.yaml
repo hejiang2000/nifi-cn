@@ -1,0 +1,56 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      Cloud Storage operation., zh: 在成功的Google云存储操作之后，FlowFiles被路由到此关系。}
+  failure: {en: FlowFiles are routed to this relationship if the Google Cloud Storage
+      operation fails., zh: 如果Google云存储操作失败，FlowFiles将路由到此关系。}
+capabilityDescription: {en: 'Deletes objects from a Google Cloud Bucket. If attempting
+    to delete a file that does not exist, FlowFile is routed to success.', zh: 从Google
+    Cloud Bucket中删除对象。如果试图删除不存在的文件，FlowFile将被路由成功。}
+properties:
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  gcp-proxy-host:
+    en:
+      displayName: Proxy host
+      description: |-
+        IP or hostname of the proxy to be used.
+         You might need to set the following properties in bootstrap for https proxy usage:
+        -Djdk.http.auth.tunneling.disabledSchemes=
+        -Djdk.http.auth.proxying.disabledSchemes=
+    zh: {description: 要使用的代理的IP或主机名。, displayName: 代理主机}
+  gcs-key:
+    en: {displayName: Key, description: Name of the object.}
+    zh: {description: 对象的名称。, displayName: 钥匙}
+  gcp-proxy-user-password:
+    en: {displayName: HTTP Proxy Password, description: HTTP Proxy Password}
+    zh: {description: HTTP代理密码, displayName: HTTP代理密码}
+  gcp-retry-count:
+    en: {displayName: Number of retries, description: How many retry attempts should
+        be made before routing to the failure relationship.}
+    zh: {description: 在路由到失败关系之前应进行多少次重试尝试。, displayName: 重试次数}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  gcp-proxy-user-name:
+    en: {displayName: HTTP Proxy Username, description: HTTP Proxy Username}
+    zh: {description: HTTP代理用户名, displayName: HTTP代理用户名}
+  gcp-proxy-port:
+    en: {displayName: Proxy port, description: Proxy port number}
+    zh: {description: 代理端口号, displayName: 代理服务器端口}
+  gcs-bucket:
+    en: {displayName: Bucket, description: Bucket of the object.}
+    zh: {description: 对象的Bucket。, displayName: 水桶}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+  gcs-generation:
+    en: {displayName: Generation, description: 'The generation of the object to be
+        deleted. If null, will use latest version of the object.'}
+    zh: {description: 要删除的对象的生成。如果为空，将使用对象的最新版本。, displayName: 一代}
+tags:
+  en: [google cloud, gcs, google, storage, delete]
+  zh: [谷歌云, 通用计算机系统, 谷歌, 存储, 删去]

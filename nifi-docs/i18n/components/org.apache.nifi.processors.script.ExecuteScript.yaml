@@ -1,0 +1,37 @@
+relationships:
+  success: {en: FlowFiles that were successfully processed, zh: 已成功处理的FlowFiles}
+  failure: {en: FlowFiles that failed to be processed, zh: 未能处理的FlowFiles}
+dynamicProperties:
+  Script Engine Binding property:
+    en: {description: Updates a script engine property specified by the Dynamic Property's
+        key with the value specified by the Dynamic Property's value, value: Binding
+        property value passed to Script Runner}
+    zh: {description: 使用动态属性的值指定的值更新由动态属性的键指定的脚本引擎属性, value: 传递给脚本运行程序的绑定属性值}
+capabilityDescription: {en: 'Experimental - Executes a script given the flow file
+    and a process session.  The script is responsible for handling the incoming flow
+    file (transfer to SUCCESS or remove, e.g.) as well as any flow files created by
+    the script. If the handling is incomplete or incorrect, the session will be rolled
+    back. Experimental: Impact of sustained usage not yet verified.', zh: 实验-在给定流文件和进程会话的情况下执行脚本。脚本负责处理传入的流文件（例如传输到SUCCESS或删除）以及脚本创建的任何流文件。如果处理不完整或不正确，会话将回滚。实验性：持续使用的影响尚未验证。}
+statefulDescription: {en: Scripts can store and retrieve state using the State Management
+    APIs. Consult the State Manager section of the Developer's Guide for more details.,
+  zh: 脚本可以使用状态管理API存储和检索状态。有关详细信息，请参阅《开发人员指南》的“状态管理器”部分。}
+properties:
+  Script File:
+    en: {displayName: Script File, description: Path to script file to execute. Only
+        one of Script File or Script Body may be used}
+    zh: {description: 要执行的脚本文件的路径。只能使用脚本文件或脚本正文之一, displayName: 脚本文件}
+  Script Engine:
+    en: {displayName: Script Engine, description: The engine to execute scripts}
+    zh: {description: 执行脚本的引擎, displayName: 脚本引擎}
+  Script Body:
+    en: {displayName: Script Body, description: Body of script to execute. Only one
+        of Script File or Script Body may be used}
+    zh: {description: 要执行的脚本体。只能使用脚本文件或脚本正文之一, displayName: 脚本正文}
+  Module Directory:
+    en: {displayName: Module Directory, description: Comma-separated list of paths
+        to files and/or directories which contain modules required by the script.}
+    zh: {description: 包含脚本所需模块的文件和/或目录路径的逗号分隔列表。, displayName: 模块目录}
+tags:
+  en: [script, execute, groovy, python, jython, jruby, ruby, javascript, js, lua,
+    luaj, clojure]
+  zh: [剧本, 处决, 常规的, 蟒蛇, jython公司, 杰鲁比, 红宝石, javascript语言, js文件, 卢阿, 玩, 法律上的]

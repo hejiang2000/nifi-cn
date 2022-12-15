@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div id="read-only-connection-source-group" class="setting">
-                        <div class="setting-name">Within group</div>
+                        <div class="setting-name">所属处理组</div>
                         <div class="setting-field">
                             <div id="read-only-connection-source-group-name"></div>
                         </div>
@@ -38,8 +38,8 @@
                     </div>
                     <div id="read-only-relationship-names-container" class="setting">
                         <div class="setting-name">
-                            Relationships
-                            <div class="fa fa-question-circle" alt="Info" title="Selected relationships are in bold."></div>
+                            输出数据流
+                            <div class="fa fa-question-circle" alt="Info" title="选中的输出数据流用黑体显示."></div>
                         </div>
                         <div class="setting-field">
                             <div id="read-only-relationship-names"></div>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div id="read-only-connection-target-group" class="setting">
-                        <div class="setting-name">Within group</div>
+                        <div class="setting-name">所属处理组</div>
                         <div class="setting-field">
                             <div id="read-only-connection-target-group-name"></div>
                         </div>
@@ -68,7 +68,7 @@
             <div id="read-only-connection-settings-tab-content" class="configuration-tab">
                 <div class="settings-left">
                     <div class="setting">
-                        <div class="setting-name">Name</div>
+                        <div class="setting-name">名称</div>
                         <div class="setting-field">
                             <span id="read-only-connection-name"></span>
                         </div>
@@ -81,8 +81,8 @@
                     </div>
                     <div class="setting">
                         <div class="setting-name">
-                            FlowFile expiration
-                            <div class="fa fa-question-circle" alt="Info" title="The maximum amount of time an object may be in the flow before it will be automatically aged out of the flow."></div>
+                            FlowFile 过期时长
+                            <div class="fa fa-question-circle" alt="Info" title="被自动过期丢弃到数据流程之外前，一个对象可以在数据流程中存在的最大时长."></div>
                         </div>
                         <div class="setting-field">
                             <span id="read-only-flow-file-expiration"></span>
@@ -92,8 +92,8 @@
                     <div class="multi-column-settings">
                         <div class="setting">
                             <div class="setting-name">
-                                Back Pressure<br/>Object threshold
-                                <div class="fa fa-question-circle" alt="Info" title="The maximum number of objects that can be queued before back pressure is applied."></div>
+                                背压<br/>对象数量阈值
+                                <div class="fa fa-question-circle" alt="Info" title="背压应用之前, 可排队的对象数量."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-back-pressure-object-threshold"></span>
@@ -103,8 +103,8 @@
                         <div class="separator">&nbsp;</div>
                         <div class="setting">
                             <div class="setting-name">
-                                &nbsp;<br/>Size threshold
-                                <div class="fa fa-question-circle" alt="Info" title="The maximum data size of objects that can be queued before back pressure is applied."></div>
+                                &nbsp;<br/>大小阈值
+                                <div class="fa fa-question-circle" alt="Info" title=".背压应用之前, 可排队的对象存储大小."></div>
                             </div>
                             <div class="setting-field">
                                 <span id="read-only-back-pressure-data-size-threshold"></span>
@@ -116,8 +116,8 @@
                         <div class="multi-column-settings">
                             <div class="setting">
                                 <div class="setting-name">
-                                    Load Balance Strategy
-                                    <div class="fa fa-question-circle" alt="Info" title="How to load balance the data in this Connection across the nodes in the cluster."></div>
+                                    负载均衡策略
+                                    <div class="fa fa-question-circle" alt="Info" title="该连接在集群中节点间如何进行数据的负载均衡."></div>
                                 </div>
                                 <div class="setting-field">
                                     <div id="read-only-load-balance-strategy"></div>
@@ -126,8 +126,8 @@
                             <div class="separator">&nbsp;</div>
                             <div id="read-only-load-balance-partition-attribute-setting" class="setting">
                                 <div class="setting-name">
-                                    Attribute Name
-                                    <div class="fa fa-question-circle" alt="Info" title="The FlowFile Attribute to use for determining which node a FlowFile will go to."></div>
+                                    属性名称
+                                    <div class="fa fa-question-circle" alt="Info" title="用以决定一个 FlowFile 应该到哪个节点的 FlowFile 属性."></div>
                                 </div>
                                 <div class="setting-field">
                                     <span id="read-only-load-balance-partition-attribute"></span>
@@ -136,8 +136,8 @@
                         </div>
                         <div id="read-only-load-balance-compression-setting" class="setting">
                             <div class="setting-name">
-                                Load Balance Compression
-                                <div class="fa fa-question-circle" alt="Info" title="Whether or not data should be compressed when being transferred between nodes in the cluster."></div>
+                                负载均衡传输压缩
+                                <div class="fa fa-question-circle" alt="Info" title="在集群中节点间传输时数据是否应该被压缩."></div>
                             </div>
                             <div class="setting-field">
                                 <div id="read-only-load-balance-compression"></div>
@@ -149,8 +149,8 @@
                 <div class="settings-right">
                     <div class="setting">
                         <div class="setting-name">
-                            Prioritizers
-                            <div class="fa fa-question-circle" alt="Info" title="Prioritizers that have been selected to reprioritize FlowFiles in this processors work queue."></div>
+                            优先器
+                            <div class="fa fa-question-circle" alt="Info" title="在该处理器工作队列中用来设置 FlowFile 优先级别的优先器."></div>
                         </div>
                         <div class="setting-field">
                             <div id="read-only-prioritizers"></div>

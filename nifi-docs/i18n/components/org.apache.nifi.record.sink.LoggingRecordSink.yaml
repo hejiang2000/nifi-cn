@@ -1,0 +1,15 @@
+capabilityDescription: {en: 'Provides a RecordSinkService that can be used to log
+    records to the application log (nifi-app.log, e.g.) using the specified writer
+    for formatting.', zh: 提供RecordSinkService，该服务可用于使用指定的写入程序将记录记录到应用程序日志（例如nifi-app.log）中进行格式化。}
+properties:
+  logsink-log-level:
+    en: {displayName: Log Level, description: 'The Log Level at which to log records
+        (INFO, DEBUG, e.g.)'}
+    zh: {description: 记录记录的日志级别（INFO、DEBUG等）, displayName: 日志级别}
+  record-sink-record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records.}
+    zh: {description: 指定用于写入记录的控制器服务。, displayName: 记录编写器}
+tags:
+  en: [record, sink, log]
+  zh: [记录, 下沉, 日志]

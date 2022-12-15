@@ -1,0 +1,41 @@
+relationships:
+  success: {en: For FlowFiles created as a result of a successful HTTP request., zh: 对于由于成功的HTTP请求而创建的FlowFiles。}
+capabilityDescription: {en: Incrementally fetches data from Zendesk API., zh: 增量地从Zendesk
+    API获取数据。}
+statefulDescription: {en: Paging cursor for Zendesk API is stored. Cursor is updated
+    after each successful request., zh: 存储Zendesk API的分页光标。每次成功请求后都会更新光标。}
+properties:
+  zendesk-authentication-value-name:
+    en: {displayName: Zendesk Authentication Credential, description: Password or
+        authentication token for Zendesk login user.}
+    zh: {description: Zendesk登录用户的密码或身份验证令牌。, displayName: Zendesk身份验证凭据}
+  zendesk-export-method:
+    en: {displayName: Zendesk Export Method, description: Method for incremental export.}
+    zh: {description: 增量导出的方法。, displayName: Zendesk导出方法}
+  zendesk-subdomain:
+    en: {displayName: Zendesk Subdomain Name, description: Name of the Zendesk subdomain.}
+    zh: {description: Zendesk子域的名称。, displayName: Zendesk子域名称}
+  zendesk-user:
+    en: {displayName: Zendesk User Name, description: Login user to Zendesk subdomain.}
+    zh: {description: 将用户登录到Zendesk子域。, displayName: Zendesk用户名}
+  zendesk-resource:
+    en: {displayName: Zendesk Resource, description: The particular Zendesk resource
+        which is meant to be exported.}
+    zh: {description: 要导出的特定Zendesk资源。, displayName: Zendesk资源}
+  zendesk-query-start-timestamp:
+    en: {displayName: Zendesk Query Start Timestamp, description: Initial timestamp
+        to query Zendesk API from in Unix timestamp seconds format.}
+    zh: {description: 以Unix时间戳秒格式从中查询Zendesk API的初始时间戳。, displayName: ZealandQuery开始时间戳}
+  web-client-service-provider:
+    en: {displayName: Web Client Service Provider, description: Controller service
+        for HTTP client operations.}
+    zh: {description: HTTP客户端操作的控制器服务。, displayName: Web客户端服务提供商}
+  zendesk-authentication-type-name:
+    en: {displayName: Zendesk Authentication Type, description: Type of authentication
+        to Zendesk API.}
+    zh: {description: Zendesk API的身份验证类型。, displayName: Zendesk身份验证类型}
+writeAttributes:
+  record.count: {en: The number of records fetched by the processor., zh: 处理器获取的记录数。}
+tags:
+  en: [zendesk]
+  zh: [桌面]

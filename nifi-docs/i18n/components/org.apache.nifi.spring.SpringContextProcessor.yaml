@@ -1,0 +1,29 @@
+relationships:
+  success: {en: All FlowFiles that are successfully received from Spring Application
+      Context are routed to this relationship, zh: 从Spring应用程序上下文成功接收的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be sent to Spring Application Context are
+      routed to this relationship, zh: 无法发送到Spring应用程序上下文的所有FlowFiles都将路由到此关系}
+capabilityDescription: {en: A Processor that supports sending and receiving data from
+    application defined in Spring Application Context via predefined in/out MessageChannels.,
+  zh: 支持通过预定义的输入/输出MessageChannels从Spring应用程序上下文中定义的应用程序发送和接收数据的处理器。}
+properties:
+  Application Context class path:
+    en: {displayName: Application Context class path, description: 'Path to the directory
+        with resources (i.e., JARs, configuration files etc.) required to be on the
+        classpath of the ApplicationContext.'}
+    zh: {description: 指向ApplicationContext的类路径中所需资源（即JAR、配置文件等）的目录路径。, displayName: 应用程序上下文类路径}
+  Send Timeout:
+    en: {displayName: Send Timeout, description: Timeout for sending data to Spring
+        Application Context. Defaults to 0.}
+    zh: {description: 向Spring应用程序上下文发送数据超时。默认值为0。, displayName: 发送超时}
+  Application Context config path:
+    en: {displayName: Application Context config path, description: The path to the
+        Spring Application Context configuration file relative to the classpath}
+    zh: {description: 相对于类路径的Spring Application Context配置文件的路径, displayName: 应用程序上下文配置路径}
+  Receive Timeout:
+    en: {displayName: Receive Timeout, description: Timeout for receiving date from
+        Spring context. Defaults to 0.}
+    zh: {description: 从Spring上下文接收日期超时。默认值为0。, displayName: 接收超时}
+tags:
+  en: [Spring, Message, Get, Put, Integration]
+  zh: [春天, 消息, 收到, 放, 集成]

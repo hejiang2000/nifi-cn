@@ -1,0 +1,21 @@
+dynamicProperties:
+  Schema name:
+    en: {description: Adds a named schema using the JSON string representation of
+        an Avro schema, value: Schema Content}
+    zh: {description: 使用Avro模式的JSON字符串表示添加命名模式, value: 架构内容}
+capabilityDescription: {en: Provides a service for registering and accessing schemas.
+    You can register a schema as a dynamic property where 'name' represents the schema
+    name and 'value' represents the textual representation of the actual schema following
+    the syntax and semantics of Avro's Schema format., zh: 提供用于注册和访问架构的服务。您可以将架构注册为动态属性，其中“name”表示架构名称，“value”表示实际架构的文本表示，遵循Avro架构格式的语法和语义。}
+properties:
+  avro-reg-validated-field-names:
+    en: {displayName: Validate Field Names, description: 'Whether or not to validate
+        the field names in the Avro schema based on Avro naming rules. If set to true,
+        all field names must be valid Avro names, which must begin with [A-Za-z_],
+        and subsequently contain only [A-Za-z0-9_]. If set to false, no validation
+        will be performed on the field names.'}
+    zh: {description: '是否根据Avro命名规则验证Avro模式中的字段名。如果设置为true，则所有字段名必须是有效的Avro名称，该名称必须以[A-Za-z_]开头，随后仅包含[A-Za-z
+        0-9_]。如果设置为false，则不会对字段名执行任何验证。', displayName: 验证字段名}
+tags:
+  en: [schema, registry, avro, json, csv]
+  zh: [模式, 注册表, 我没有吗？, json文件, csv格式]

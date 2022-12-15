@@ -1,0 +1,104 @@
+relationships:
+  success: {en: FlowFiles that are successfully sent will be routed to this relationship,
+    zh: 成功发送的FlowFiles将路由到此关系}
+  failure: {en: FlowFiles that fail to send will be routed to this relationship, zh: 无法发送的FlowFiles将路由到此关系}
+dynamicProperties:
+  mail.propertyName:
+    en: {description: 'Dynamic property names that will be passed to the Mail session.
+        Possible properties can be found in: https://javaee.github.io/javamail/docs/api/com/sun/mail/smtp/package-summary.html.',
+      value: Value for a specific property to be set in the JavaMail Session object}
+    zh: {description: '将传递给邮件会话的动态属性名称。可以在以下位置找到可能的属性：https://javaee.github.io/javamail/docs/api/com/sun/mail/smtp/package-summary.html.',
+      value: 要在JavaMail会话对象中设置的特定属性的值}
+systemResourceConsiderations:
+  en: [The entirety of the FlowFile's content (as a String object) will be read into
+      memory in case the property to use the flow file content as the email body is
+      set to true.]
+  zh: [如果将流文件内容用作电子邮件正文的属性设置为true，则将将流文件的全部内容（作为字符串对象）读入内存。]
+capabilityDescription: {en: Sends an e-mail to configured recipients for each incoming
+    FlowFile, zh: 向每个传入FlowFile的已配置收件人发送电子邮件}
+properties:
+  CC:
+    en: {displayName: CC, description: The recipients to include in the CC-Line of
+        the email. Comma separated sequence of addresses following RFC822 syntax.}
+    zh: {description: 要包含在电子邮件抄送行中的收件人。遵循RFC822语法的逗号分隔的地址序列。, displayName: 科科斯群岛}
+  SMTP Socket Factory:
+    en: {displayName: SMTP Socket Factory, description: Socket Factory to use for
+        SMTP Connection}
+    zh: {description: 用于SMTP连接的套接字工厂, displayName: SMTP套接字工厂}
+  BCC:
+    en: {displayName: BCC, description: The recipients to include in the BCC-Line
+        of the email. Comma separated sequence of addresses following RFC822 syntax.}
+    zh: {description: 要包含在电子邮件密件抄送行中的收件人。遵循RFC822语法的逗号分隔的地址序列。, displayName: BCC公司}
+  Message:
+    en: {displayName: Message, description: The body of the email message}
+    zh: {description: 电子邮件正文, displayName: 消息}
+  Attach File:
+    en: {displayName: Attach File, description: Specifies whether or not the FlowFile
+        content should be attached to the email}
+    zh: {description: 指定是否应将FlowFile内容附加到电子邮件, displayName: 附加文件}
+  attribute-name-regex:
+    en: {displayName: Attributes to Send as Headers (Regex), description: 'A Regular
+        Expression that is matched against all FlowFile attribute names. Any attribute
+        whose name matches the regex will be added to the Email messages as a Header.
+        If not specified, no FlowFile attributes will be added as headers.'}
+    zh: {description: 与所有FlowFile属性名称匹配的正则表达式。任何名称与正则表达式匹配的属性都将作为Header添加到电子邮件中。如果未指定，则不会将FlowFile属性添加为标头。,
+      displayName: 要作为标头发送的属性（Regex）}
+  input-character-set:
+    en: {displayName: Input Character Set, description: 'Specifies the character set
+        of the FlowFile contents for reading input FlowFile contents to generate the
+        message body or as an attachment to the message. If not set, UTF-8 will be
+        the default value.'}
+    zh: {description: 指定用于读取输入FlowFile内容以生成消息正文或作为消息附件的FlowFile内容的字符集。如果未设置，UTF-8将是默认值。,
+      displayName: 输入字符集}
+  SMTP Port:
+    en: {displayName: SMTP Port, description: The Port used for SMTP communications}
+    zh: {description: 用于SMTP通信的端口, displayName: SMTP端口}
+  SMTP Auth:
+    en: {displayName: SMTP Auth, description: Flag indicating whether authentication
+        should be used}
+    zh: {description: 指示是否应使用身份验证的标志, displayName: SMTP身份验证}
+  From:
+    en: {displayName: From, description: Specifies the Email address to use as the
+        sender. Comma separated sequence of addresses following RFC822 syntax.}
+    zh: {description: 指定用作发件人的电子邮件地址。遵循RFC822语法的逗号分隔的地址序列。, displayName: 从…起}
+  Include All Attributes In Message:
+    en: {displayName: Include All Attributes In Message, description: Specifies whether
+        or not all FlowFile attributes should be recorded in the body of the email
+        message}
+    zh: {description: 指定是否应在电子邮件正文中记录所有FlowFile属性, displayName: 在消息中包含所有属性}
+  SMTP Hostname:
+    en: {displayName: SMTP Hostname, description: The hostname of the SMTP host}
+    zh: {description: SMTP主机的主机名, displayName: SMTP主机名}
+  Subject:
+    en: {displayName: Subject, description: The email subject}
+    zh: {description: 电子邮件主题, displayName: 主题}
+  SMTP X-Mailer Header:
+    en: {displayName: SMTP X-Mailer Header, description: X-Mailer used in the header
+        of the outgoing email}
+    zh: {description: 发送电子邮件标题中使用的X-Mailer, displayName: SMTP X-Mailer标头}
+  Content Type:
+    en: {displayName: Content Type, description: 'Mime Type used to interpret the
+        contents of the email, such as text/plain or text/html'}
+    zh: {description: 用于解释电子邮件内容的Mime类型，例如text/plain或text/html, displayName: 内容类型}
+  SMTP Username:
+    en: {displayName: SMTP Username, description: Username for the SMTP account}
+    zh: {description: SMTP帐户的用户名, displayName: SMTP用户名}
+  To:
+    en: {displayName: To, description: The recipients to include in the To-Line of
+        the email. Comma separated sequence of addresses following RFC822 syntax.}
+    zh: {description: 要包含在电子邮件的收件人行中的收件人。遵循RFC822语法的逗号分隔的地址序列。, displayName: 到}
+  SMTP Password:
+    en: {displayName: SMTP Password, description: Password for the SMTP account}
+    zh: {description: SMTP帐户的密码, displayName: SMTP密码}
+  email-ff-content-as-message:
+    en: {displayName: Flow file content as message, description: 'Specifies whether
+        or not the FlowFile content should be the message of the email. If true, the
+        ''Message'' property is ignored.'}
+    zh: {description: 指定FlowFile内容是否应为电子邮件的消息。如果为true，则忽略“Message”属性。, displayName: 将文件内容作为消息流}
+  SMTP TLS:
+    en: {displayName: SMTP STARTTLS, description: Flag indicating whether Opportunistic
+        TLS should be enabled using STARTTLS command}
+    zh: {description: 指示是否应使用STARTTLS命令启用机会TLS的标志, displayName: SMTP启动}
+tags:
+  en: [email, put, notify, smtp]
+  zh: [电子邮件, 放, 通知, smtp公司]

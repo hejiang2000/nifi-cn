@@ -1,0 +1,63 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship after it has been successfully
+      stored in HBase, zh: FlowFile成功存储在HBase中后，将被路由到此关系}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be sent to
+      HBase, zh: 如果FlowFile无法发送到HBase，则将其路由到此关系}
+dynamicProperties:
+  visibility.<COLUMN FAMILY>:
+    en: {description: Visibility label for everything under that column family when
+        a specific label for a particular column qualifier is not available., value: visibility
+        label for <COLUMN FAMILY>}
+    zh: {description: 当特定列限定符的特定标签不可用时，该列族下所有内容的可见性标签。, value: <COLUMN FAMILY>的可见性标签}
+  visibility.<COLUMN FAMILY>.<COLUMN QUALIFIER>:
+    en: {description: Visibility label for the specified column qualifier qualified
+        by a configured column family., value: 'visibility label for <COLUMN FAMILY>:<COLUMN
+        QUALIFIER>.'}
+    zh: {description: 由配置的列族限定的指定列限定符的可见性标签。, value: <COLUMN FAMILY>的可见性标签：<COLUMN-QUALIFIER>。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: Adds the Contents of a FlowFile to HBase as the value
+    of a single cell, zh: 将FlowFile的内容作为单个单元格的值添加到HBase}
+properties:
+  Row Identifier:
+    en: {displayName: Row Identifier, description: Specifies the Row ID to use when
+        inserting data into HBase}
+    zh: {description: 指定将数据插入HBase时要使用的行ID, displayName: 行标识符}
+  Table Name:
+    en: {displayName: Table Name, description: The name of the HBase Table to put
+        data into}
+    zh: {description: 要将数据放入的HBase表的名称, displayName: 表名称}
+  Row Identifier Encoding Strategy:
+    en: {displayName: Row Identifier Encoding Strategy, description: 'Specifies the
+        data type of Row ID used when inserting data into HBase. The default behavior
+        is to convert the row id to a UTF-8 byte array. Choosing Binary will convert
+        a binary formatted string to the correct byte[] representation. The Binary
+        option should be used if you are using Binary row keys in HBase'}
+    zh: {description: '指定将数据插入HBase时使用的行ID的数据类型。默认行为是将行id转换为UTF-8字节数组。选择Binary将将二进制格式的字符串转换为正确的byte[]表示形式。如果在HBase中使用Binary行键，则应使用Binary选项',
+      displayName: 行标识符编码策略}
+  Batch Size:
+    en: {displayName: Batch Size, description: 'The maximum number of FlowFiles to
+        process in a single execution. The FlowFiles will be grouped by table, and
+        a single Put per table will be performed.'}
+    zh: {description: 一次执行中要处理的最大FlowFiles数。FlowFiles将按表分组，并对每个表执行一次Put。, displayName: 批量大小}
+  Column Family:
+    en: {displayName: Column Family, description: The Column Family to use when inserting
+        data into HBase}
+    zh: {description: 在HBase中插入数据时要使用的列系列, displayName: 柱族}
+  Column Qualifier:
+    en: {displayName: Column Qualifier, description: The Column Qualifier to use when
+        inserting data into HBase}
+    zh: {description: 将数据插入HBase时使用的列限定符, displayName: 列限定符}
+  HBase Client Service:
+    en: {displayName: HBase Client Service, description: Specifies the Controller
+        Service to use for accessing HBase.}
+    zh: {description: 指定用于访问HBase的控制器服务。, displayName: HBase客户端服务}
+  timestamp:
+    en: {displayName: Timestamp, description: The timestamp for the cells being created
+        in HBase. This field can be left blank and HBase will use the current time.}
+    zh: {description: HBase中创建的单元格的时间戳。此字段可以留空，HBase将使用当前时间。, displayName: 时间戳}
+tags:
+  en: [hadoop, hbase]
+  zh: [hadoop公司, 数据库]

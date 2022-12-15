@@ -1,0 +1,99 @@
+relationships:
+  success: {en: Results retrieved from Splunk are sent out this relationship., zh: 从Splunk检索的结果将发送到此关系。}
+capabilityDescription: {en: Retrieves data from Splunk Enterprise., zh: 从Splunk Enterprise检索数据。}
+statefulDescription: {en: 'If using one of the managed Time Range Strategies, this
+    processor will store the values of the latest and earliest times from the previous
+    execution so that the next execution of the can pick up where the last execution
+    left off. The state will be cleared and start over if the query is changed.',
+  zh: 如果使用一个受管理的时间范围策略，此处理器将存储上一次执行的最新和最早时间的值，以便下一次执行可以从上次执行结束的位置开始。如果查询发生更改，状态将被清除并重新开始。}
+properties:
+  Time Zone:
+    en: {displayName: Time Zone, description: The Time Zone to use for formatting
+        dates when performing a search. Only used with Managed time strategies.}
+    zh: {description: 执行搜索时用于设置日期格式的时区。仅用于管理时间策略。, displayName: 时区}
+  Owner:
+    en: {displayName: Owner, description: The owner to pass to Splunk.}
+    zh: {description: 要传递给Splunk的所有者。, displayName: 物主}
+  Scheme:
+    en: {displayName: Scheme, description: The scheme for connecting to Splunk.}
+    zh: {description: 连接到Splunk的方案。, displayName: 计划}
+  Query:
+    en: {displayName: Query, description: 'The query to execute. Typically beginning
+        with a <search> command followed by a search clause, such as <search source="tcp:7689">
+        to search for messages received on TCP port 7689.'}
+    zh: {description: '要执行的查询。通常以<search>命令开头，后跟搜索子句，例如<search-source=“tcp:7689”>，以搜索在tcp端口7689上接收的消息。',
+      displayName: 查询}
+  Port:
+    en: {displayName: Port, description: The port of the Splunk server.}
+    zh: {description: Splunk服务器的端口。, displayName: 港口城市}
+  Hostname:
+    en: {displayName: Hostname, description: The ip address or hostname of the Splunk
+        server.}
+    zh: {description: Splunk服务器的ip地址或主机名。, displayName: 主机名}
+  Read Timeout:
+    en: {displayName: Read Timeout, description: Max wait time for response from the
+        Splunk server.}
+    zh: {description: Splunk服务器响应的最长等待时间。, displayName: 读取超时}
+  Token:
+    en: {displayName: Token, description: The token to pass to Splunk.}
+    zh: {description: 要传递给Splunk的令牌。, displayName: 代币}
+  Time Field Strategy:
+    en: {displayName: Time Field Strategy, description: 'Indicates whether to search
+        by the time attached to the event, or by the time the event was indexed in
+        Splunk.'}
+    zh: {description: 指示是按附加到事件的时间搜索，还是按在Splunk中对事件进行索引的时间搜索。, displayName: 时间场策略}
+  Time Range Strategy:
+    en: {displayName: Time Range Strategy, description: 'Indicates how to apply time
+        ranges to each execution of the query. Selecting a managed option allows the
+        processor to apply a time range from the last execution time to the current
+        execution time. When using <Managed from Beginning>, an earliest time will
+        not be applied on the first execution, and thus all records searched. When
+        using <Managed from Current> the earliest time of the first execution will
+        be the initial execution time. When using <Provided>, the time range will
+        come from the Earliest Time and Latest Time properties, or no time range will
+        be applied if these properties are left blank.'}
+    zh: {description: 指示如何将时间范围应用于每次执行查询。选择托管选项允许处理器应用从上次执行时间到当前执行时间的时间范围。使用<Managed
+        from Beging>时，第一次执行时不会应用最早的时间，因此会搜索所有记录。当使用＜Managed from Current＞时，第一次执行的最早时间将是初始执行时间。使用＜提供＞时，时间范围将来自最早时间和最晚时间属性，如果这些属性为空，则不应用时间范围。,
+      displayName: 时间范围策略}
+  Security Protocol:
+    en: {displayName: Security Protocol, description: The security protocol to use
+        for communicating with Splunk.}
+    zh: {description: 用于与Splunk通信的安全协议。, displayName: 安全协议}
+  Connection Timeout:
+    en: {displayName: Connection Timeout, description: Max wait time for connection
+        to the Splunk server.}
+    zh: {description: 连接到Splunk服务器的最长等待时间。, displayName: 连接超时}
+  Username:
+    en: {displayName: Username, description: The username to authenticate to Splunk.}
+    zh: {description: 要向Splunk进行身份验证的用户名。, displayName: 用户名}
+  Latest Time:
+    en: {displayName: Latest Time, description: The value to use for the latest time
+        when querying. Only used with a Time Range Strategy of Provided. See Splunk's
+        documentation on Search Time Modifiers for guidance in populating this field.}
+    zh: {description: 查询时用于最近时间的值。仅与提供的时间范围策略一起使用。有关填充此字段的指导，请参阅Splunk关于搜索时间修改器的文档。,
+      displayName: 最近时间}
+  Application:
+    en: {displayName: Application, description: The Splunk Application to query.}
+    zh: {description: 要查询的Splunk应用程序。, displayName: 应用}
+  Output Mode:
+    en: {displayName: Output Mode, description: The output mode for the results.}
+    zh: {description: 结果的输出模式。, displayName: 输出模式}
+  Earliest Time:
+    en: {displayName: Earliest Time, description: The value to use for the earliest
+        time when querying. Only used with a Time Range Strategy of Provided. See
+        Splunk's documentation on Search Time Modifiers for guidance in populating
+        this field.}
+    zh: {description: 查询时最早使用的值。仅与提供的时间范围策略一起使用。有关填充此字段的指导，请参阅Splunk关于搜索时间修改器的文档。,
+      displayName: 最早时间}
+  Password:
+    en: {displayName: Password, description: The password to authenticate to Splunk.}
+    zh: {description: 用于向Splunk进行身份验证的密码。, displayName: 暗语}
+writeAttributes:
+  splunk.query: {en: The query that performed to produce the FlowFile., zh: 为生成FlowFile而执行的查询。}
+  splunk.latest.time: {en: The value of the latest time that was used when performing
+      the query., zh: 执行查询时使用的最新时间值。}
+  splunk.earliest.time: {en: The value of the earliest time that was used when performing
+      the query., zh: 执行查询时使用的最早时间值。}
+tags:
+  en: [get, splunk, logs]
+  zh: [收到, 挥霍，挥霍, 日志]

@@ -19,11 +19,11 @@
     <div class="dialog-content">
         <div layout="row" style="padding-bottom:0">
             <div flex="25" layout="row" layout-align="start center">
-                <div class="setting-name" style="margin-top: 10px;">Source</div>
+                <div class="setting-name" style="margin-top: 10px;">源组件</div>
             </div>
             <div flex layout="row" layout-align="space-between center" id="processor-type-filter-controls">
                 <div id="processor-type-filter-status" class="filter-status">
-                    Displaying&nbsp;<span id="displayed-processor-types"></span>&nbsp;of&nbsp;<span
+                    显示&nbsp;<span id="displayed-processor-types"></span>,&nbsp;共&nbsp;<span
                         id="total-processor-types"></span>
                 </div>
                 <div id="processor-type-filter-container">

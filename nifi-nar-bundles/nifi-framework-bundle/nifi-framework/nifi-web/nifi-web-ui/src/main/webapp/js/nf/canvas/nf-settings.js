@@ -134,7 +134,7 @@
         if (errors.length > 0) {
             nfDialog.showOkDialog({
                 dialogContent: nfCommon.formatUnorderedList(errors),
-                headerText: 'Configuration Error'
+                headerText: '配置错误'
             });
             return false;
         } else {
@@ -172,8 +172,8 @@
             }).done(function (response) {
                 // close the settings dialog
                 nfDialog.showOkDialog({
-                    headerText: 'Settings',
-                    dialogContent: 'Settings successfully applied.'
+                    headerText: '设置',
+                    dialogContent: '已成功应用设置.'
                 });
 
                 // register the click listener for the save button
@@ -555,8 +555,8 @@
         // ensure something was selected
         if (selectedTaskType === '') {
             nfDialog.showOkDialog({
-                headerText: 'Settings',
-                dialogContent: 'The type of reporting task to create must be selected.'
+                headerText: '设置',
+                dialogContent: '必须选定要创建的任务报告类型.'
             });
         } else {
             addReportingTask(selectedTaskType, selectedTaskBundle);
@@ -573,8 +573,8 @@
         // ensure something was selected
         if (selectedParameterProviderType === '') {
             nfDialog.showOkDialog({
-                headerText: 'Settings',
-                dialogContent: 'The type of parameter provider to create must be selected.'
+                headerText: '设置',
+                dialogContent: '必须选定待创建的参数提供者类型.'
             });
         } else {
             addParameterProvider(selectedParameterProviderType, selectedParameterProviderBundle);
@@ -793,7 +793,7 @@
         var reportingTaskTypesColumns = [
             {
                 id: 'type',
-                name: 'Type',
+                name: '类型',
                 field: 'label',
                 formatter: nfCommon.typeFormatter,
                 sortable: true,
@@ -801,7 +801,7 @@
             },
             {
                 id: 'version',
-                name: 'Version',
+                name: '版本',
                 field: 'version',
                 formatter: nfCommon.typeVersionFormatter,
                 sortable: true,
@@ -809,7 +809,7 @@
             },
             {
                 id: 'tags',
-                name: 'Tags',
+                name: '标签',
                 field: 'tags',
                 sortable: true,
                 resizable: true,
@@ -857,7 +857,7 @@
                     if (nfCommon.isBlank(reportingTaskType.description)) {
                         $('#reporting-task-type-description')
                             .attr('title', '')
-                            .html('<span class="unset">No description specified</span>');
+                            .html('<span class="unset">无说明</span>');
                     } else {
                         $('#reporting-task-type-description')
                             .width($('#reporting-task-description-container').innerWidth() - 1)
@@ -918,7 +918,7 @@
                     var restrictionTip = $('<div></div>');
 
                     if (nfCommon.isBlank(item.usageRestriction)) {
-                        restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text('Requires the following permissions:'));
+                        restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text('需要以下权限:'));
                     } else {
                         restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text(item.usageRestriction + ' Requires the following permissions:'));
                     }
@@ -1053,7 +1053,7 @@
 
             // build the combo options
             var options = [{
-                text: 'all groups',
+                text: '全部 maven 工程组',
                 value: ''
             }];
             groups.each(function (group) {
@@ -1102,9 +1102,9 @@
         // initialize the reporting task dialog
         $('#new-reporting-task-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Add Reporting Task',
+            headerText: '添加报告任务',
             buttons: [{
-                buttonText: 'Add',
+                buttonText: '添加',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1128,7 +1128,7 @@
                 }
             },
                 {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -1195,7 +1195,7 @@
         var parameterProviderColumns = [
             {
                 id: 'type',
-                name: 'Type',
+                name: '类型',
                 field: 'label',
                 formatter: nfCommon.typeFormatter,
                 sortable: true,
@@ -1203,7 +1203,7 @@
             },
             {
                 id: 'version',
-                name: 'Version',
+                name: '版本',
                 field: 'version',
                 formatter: nfCommon.typeVersionFormatter,
                 sortable: true,
@@ -1211,7 +1211,7 @@
             },
             {
                 id: 'tags',
-                name: 'Tags',
+                name: '标签',
                 field: 'tags',
                 sortable: true,
                 resizable: true,
@@ -1259,7 +1259,7 @@
                     if (nfCommon.isBlank(parameterProviderType.description)) {
                         $('#parameter-provider-type-description')
                             .attr('title', '')
-                            .html('<span class="unset">No description specified</span>');
+                            .html('<span class="unset">无说明</span>');
                     } else {
                         $('#parameter-provider-type-description')
                             .width($('#parameter-provider-description-container').innerWidth() - 1)
@@ -1320,7 +1320,7 @@
                     var restrictionTip = $('<div></div>');
 
                     if (nfCommon.isBlank(item.usageRestriction)) {
-                        restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text('Requires the following permissions:'));
+                        restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text('需要以下权限:'));
                     } else {
                         restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text(item.usageRestriction + ' Requires the following permissions:'));
                     }
@@ -1455,7 +1455,7 @@
 
             // build the combo options
             var options = [{
-                text: 'all groups',
+                text: '全部 maven 工程组',
                 value: ''
             }];
             groups.each(function (group) {
@@ -1504,9 +1504,9 @@
         // initialize the parameter provider dialog
         $('#new-parameter-provider-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Add Parameter Provider',
+            headerText: '添加参数提供者',
             buttons: [{
-                buttonText: 'Add',
+                buttonText: '添加',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1530,7 +1530,7 @@
                 }
             },
                 {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -1589,10 +1589,10 @@
                 return '';
             }
 
-            var markup = '<div title="View Details" class="pointer view-reporting-task fa fa-info-circle"></div>';
+            var markup = '<div title="查看详细信息" class="pointer view-reporting-task fa fa-info-circle"></div>';
 
             // always include a button to view the usage
-            markup += '<div title="Usage" class="pointer reporting-task-usage fa fa-book"></div>';
+            markup += '<div title="用法" class="pointer reporting-task-usage fa fa-book"></div>';
 
             var hasErrors = !nfCommon.isEmpty(dataContext.component.validationErrors);
             var hasBulletins = !nfCommon.isEmpty(dataContext.bulletins);
@@ -1655,36 +1655,36 @@
 
             if (dataContext.status.runStatus === 'RUNNING') {
                 if (canOperate) {
-                    markup += '<div title="Stop" class="pointer stop-reporting-task fa fa-stop"></div>';
+                    markup += '<div title="停止" class="pointer stop-reporting-task fa fa-stop"></div>';
                 }
 
             } else if (isStopped || dataContext.status.runStatus === 'DISABLED') {
 
                 if (canRead && canWrite) {
-                    markup += '<div title="Edit" class="pointer edit-reporting-task fa fa-pencil"></div>';
+                    markup += '<div title="编辑" class="pointer edit-reporting-task fa fa-pencil"></div>';
                 }
 
                 // support starting when stopped and no validation errors
                 if (canOperate && dataContext.status.runStatus === 'STOPPED' && dataContext.status.validationStatus === 'VALID') {
-                    markup += '<div title="Start" class="pointer start-reporting-task fa fa-play"></div>';
+                    markup += '<div title="启动" class="pointer start-reporting-task fa fa-play"></div>';
                 }
 
                 if (canRead && canWrite && dataContext.component.multipleVersionsAvailable === true) {
-                    markup += '<div title="Change Version" class="pointer change-version-reporting-task fa fa-exchange"></div>';
+                    markup += '<div title="改变版本" class="pointer change-version-reporting-task fa fa-exchange"></div>';
                 }
 
                 if (canRead && canWrite && nfCommon.canModifyController()) {
-                    markup += '<div title="Remove" class="pointer delete-reporting-task fa fa-trash"></div>';
+                    markup += '<div title="移除" class="pointer delete-reporting-task fa fa-trash"></div>';
                 }
             }
 
             if (canRead && canWrite && dataContext.component.persistsState === true) {
-                markup += '<div title="View State" class="pointer view-state-reporting-task fa fa-tasks"></div>';
+                markup += '<div title="查看状态" class="pointer view-state-reporting-task fa fa-tasks"></div>';
             }
 
             // allow policy configuration conditionally
             if (nfCanvasUtils.isManagedAuthorizer() && nfCommon.canAccessTenants()) {
-                markup += '<div title="Access Policies" class="pointer edit-access-policies fa fa-key"></div>';
+                markup += '<div title="访问策略" class="pointer edit-access-policies fa fa-key"></div>';
             }
 
             return markup;
@@ -1704,28 +1704,28 @@
             },
             {
                 id: 'name',
-                name: 'Name',
+                name: '名称',
                 sortable: true,
                 resizable: true,
                 formatter: nameFormatter
             },
             {
                 id: 'type',
-                name: 'Type',
+                name: '类型',
                 formatter: nfCommon.instanceTypeFormatter,
                 sortable: true,
                 resizable: true
             },
             {
                 id: 'bundle',
-                name: 'Bundle',
+                name: '扩展包',
                 formatter: nfCommon.instanceBundleFormatter,
                 sortable: true,
                 resizable: true
             },
             {
                 id: 'state',
-                name: 'Run Status',
+                name: '运行状态',
                 sortable: true,
                 resizeable: true,
                 formatter: reportingTaskRunStatusFormatter
@@ -1892,9 +1892,9 @@
 
     var initNewRegistryDialog = function () {
         $('#new-registry-client-dialog').modal({
-            headerText: 'Add Registry Client',
+            headerText: '添加注册库客户端',
             buttons: [{
-                buttonText: 'Add',
+                buttonText: '添加',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -1906,7 +1906,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -1935,10 +1935,10 @@
 
             if (nfCommon.canModifyController()) {
                 // edit registry
-                markup += '<div title="Edit" class="pointer edit-registry fa fa-pencil"></div>';
+                markup += '<div title="编辑" class="pointer edit-registry fa fa-pencil"></div>';
 
                 // remove registry
-                markup += '<div title="Remove" class="pointer remove-registry fa fa-trash"></div>';
+                markup += '<div title="移除" class="pointer remove-registry fa fa-trash"></div>';
             }
 
             return markup;
@@ -1982,7 +1982,7 @@
             },
             {
                 id: 'name',
-                name: 'Name',
+                name: '名称',
                 field: 'name',
                 formatter: nameFormatter,
                 sortable: true,
@@ -1990,7 +1990,7 @@
             },
             {
                 id: 'description',
-                name: 'Description',
+                name: '描述',
                 field: 'description',
                 formatter: descriptionFormatter,
                 sortable: true,
@@ -2109,10 +2109,10 @@
                 return '';
             }
 
-            var markup = '<div title="View Details" class="pointer view-parameter-provider fa fa-info-circle"></div>';
+            var markup = '<div title="查看详细信息" class="pointer view-parameter-provider fa fa-info-circle"></div>';
 
             // always include a button to view the usage
-            markup += '<div title="Usage" class="pointer parameter-provider-usage fa fa-book"></div>';
+            markup += '<div title="用法" class="pointer parameter-provider-usage fa fa-book"></div>';
 
             var hasErrors = !nfCommon.isEmpty(dataContext.component.validationErrors);
             var hasBulletins = !nfCommon.isEmpty(dataContext.bulletins);
@@ -2149,7 +2149,7 @@
             }
 
             if (canRead && canWrite) {
-                markup += '<div title="Edit" class="pointer edit-parameter-provider fa fa-pencil"></div>';
+                markup += '<div title="编辑" class="pointer edit-parameter-provider fa fa-pencil"></div>';
 
                 if (hasReadParameterContextsPermissions && !hasErrors) {
                     markup += '<div title="Fetch Parameters" class="pointer fetch-parameter-provider fa fa-arrow-circle-down"></div>';
@@ -2157,12 +2157,12 @@
             }
 
             if (canRead && canWrite && nfCommon.canModifyController()) {
-                markup += '<div title="Remove" class="pointer delete-parameter-provider fa fa-trash"></div>';
+                markup += '<div title="移除" class="pointer delete-parameter-provider fa fa-trash"></div>';
             }
 
             // allow policy configuration conditionally
             if (nfCanvasUtils.isManagedAuthorizer() && nfCommon.canAccessTenants()) {
-                markup += '<div title="Access Policies" class="pointer edit-access-policies fa fa-key"></div>';
+                markup += '<div title="访问策略" class="pointer edit-access-policies fa fa-key"></div>';
             }
 
             return markup;
@@ -2182,21 +2182,21 @@
             },
             {
                 id: 'name',
-                name: 'Name',
+                name: '名称',
                 sortable: true,
                 resizable: true,
                 formatter: nameFormatter
             },
             {
                 id: 'type',
-                name: 'Type',
+                name: '类型',
                 formatter: nfCommon.instanceTypeFormatter,
                 sortable: true,
                 resizable: true
             },
             {
                 id: 'bundle',
-                name: 'Bundle',
+                name: '扩展包',
                 formatter: nfCommon.instanceBundleFormatter,
                 sortable: true,
                 resizable: true
@@ -2372,7 +2372,7 @@
 
             // show the dialog
             $('#registry-configuration-dialog').modal('setHeaderText', 'Edit Registry Client').modal('setButtonModel', [{
-                buttonText: 'Update',
+                buttonText: '更新',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -2384,7 +2384,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -2411,8 +2411,8 @@
     var promptToRemoveRegistry = function (registryEntity) {
         // prompt for deletion
         nfDialog.showYesNoDialog({
-            headerText: 'Delete Registry',
-            dialogContent: 'Delete registry \'' + nfCommon.escapeHtml(registryEntity.component.name) + '\'?',
+            headerText: '删除数据流程版本注册库',
+            dialogContent: '删除数据流程版本注册库 \'' + nfCommon.escapeHtml(registryEntity.component.name) + '\'?',
             yesHandler: function () {
                 removeRegistry(registryEntity);
             }
@@ -2447,8 +2447,8 @@
      */
     var loadSettings = function () {
         var setUnauthorizedText = function () {
-            $('#read-only-maximum-timer-driven-thread-count-field').addClass('unset').text('Unauthorized');
-            $('#read-only-maximum-event-driven-thread-count-field').addClass('unset').text('Unauthorized');
+            $('#read-only-maximum-timer-driven-thread-count-field').addClass('unset').text('未授权');
+            $('#read-only-maximum-event-driven-thread-count-field').addClass('unset').text('未授权');
         };
 
         var setEditable = function (editable) {
@@ -2667,8 +2667,8 @@
             if (isSaveRequired()) {
                 // see if those changes should be saved
                 nfDialog.showYesNoDialog({
-                    headerText: 'Save',
-                    dialogContent: 'Save changes before going to this Controller Service?',
+                    headerText: '保存',
+                    dialogContent: '跳转到该控制器服务前保存修改?',
                     noHandler: function () {
                         deferred.resolve();
                     },
@@ -2774,24 +2774,24 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'General',
+                    name: '通用',
                     tabContentId: 'general-settings-tab-content'
                 }, {
-                    name: 'Management Controller Services',
+                    name: '管理控制器服务',
                     tabContentId: 'controller-services-tab-content'
                 }, {
-                    name: 'Reporting Tasks',
+                    name: '报告任务',
                     tabContentId: 'reporting-tasks-tab-content'
                 }, {
-                    name: 'Registry Clients',
+                    name: '数据流程版本注册库客户端',
                     tabContentId: 'registries-tab-content'
                 }, {
-                    name: 'Parameter Providers',
+                    name: '参数提供者',
                     tabContentId: 'parameter-providers-tab-content'
                 }],
                 select: function () {
                     var tab = $(this).text();
-                    if (tab === 'General') {
+                    if (tab === '通用') {
                         $('#controller-cs-availability').hide();
                         $('#new-service-or-task').hide();
                         $('#settings-save').show();
@@ -2811,10 +2811,10 @@
                                 if (tab === 'Management Controller Services') {
                                     $('#settings-save').hide();
                                     return 'Create a new controller level controller service';
-                                } else if (tab === 'Reporting Tasks') {
+                                } else if (tab === '报告任务') {
                                     $('#settings-save').hide();
                                     return 'Create a new reporting task';
-                                } else if (tab === 'Registry Clients') {
+                                } else if (tab === '数据流程版本注册库客户端') {
                                     $('#settings-save').hide();
                                     return 'Register a new registry client';
                                 } else if (tab === 'Parameter Providers') {
@@ -2829,7 +2829,7 @@
 
                         if (tab === 'Management Controller Services') {
                             $('#controller-cs-availability').show();
-                        } else if (tab === 'Reporting Tasks' || tab === 'Registry Clients' || tab === 'Parameter Providers') {
+                        } else if (tab === '报告任务' || tab === '数据流程版本注册库客户端' || tab === 'Parameter Providers') {
                             $('#controller-cs-availability').hide();
                         }
 
@@ -2850,7 +2850,7 @@
                 if (selectedTab === 'Management Controller Services') {
                     var controllerServicesUri = config.urls.api + '/controller/controller-services';
                     nfControllerServices.promptNewControllerService(controllerServicesUri, getControllerServicesTable());
-                } else if (selectedTab === 'Reporting Tasks') {
+                } else if (selectedTab === '报告任务') {
                     $('#new-reporting-task-dialog').modal('show');
 
                     var reportingTaskTypesGrid = $('#reporting-task-types-table').data('gridInstance');
@@ -2868,7 +2868,7 @@
 
                     // set the initial focus
                     $('#reporting-task-type-filter').focus();
-                } else if (selectedTab === 'Registry Clients') {
+                } else if (selectedTab === '数据流程版本注册库客户端') {
                     // clear previous values
                     $('#new-registry-name').val('');
                     $('#new-registry-description').val('');
@@ -2919,10 +2919,10 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Settings',
+                    name: '设置',
                     tabContentId: 'registry-configuration-settings-tab-content'
                 }, {
-                    name: 'Properties',
+                    name: '属性',
                     tabContentId: 'registry-configuration-properties-tab-content'
                 }],
                 select: function () {

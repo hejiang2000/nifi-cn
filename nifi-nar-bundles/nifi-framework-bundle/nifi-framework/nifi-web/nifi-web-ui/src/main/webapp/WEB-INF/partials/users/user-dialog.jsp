@@ -17,13 +17,13 @@
     <div class="dialog-content">
         <div class="setting">
             <div class="setting-field">
-                <input id="individual-radio-button" type="radio" name="userOrGroup" value="individual" checked="checked"/> Individual
-                <input id="group-radio-button" type="radio" name="userOrGroup" value="group" style="margin-left: 20px;"/> Group
+                <input id="individual-radio-button" type="radio" name="userOrGroup" value="individual" checked="checked"/> 个人
+                <input id="group-radio-button" type="radio" name="userOrGroup" value="group" style="margin-left: 20px;"/> 组
             </div>
             <div class="clear"></div>
         </div>
         <div class="setting">
-            <div class="setting-name">Identity</div>
+            <div class="setting-name">身份</div>
             <div class="setting-field">
                 <span id="user-id-edit-dialog" class="hidden"></span>
                 <input type="text" id="user-identity-edit-dialog"/>
@@ -31,14 +31,14 @@
             <div class="clear"></div>
         </div>
         <div id="user-groups" class="setting">
-            <div class="setting-name">Member of</div>
+            <div class="setting-name">成员, 来自</div>
             <div class="setting-field">
                 <ul id="available-groups" class="usersGroupsList"></ul>
             </div>
             <div class="clear"></div>
         </div>
         <div id="group-members" class="setting hidden">
-            <div class="setting-name">Members</div>
+            <div class="setting-name">成员</div>
             <div class="setting-field">
                 <ul id="available-users" class="usersGroupsList"></ul>
             </div>

@@ -1,0 +1,32 @@
+relationships:
+  connected: {en: The WebSocket session is established, zh: WebSocket会话已建立}
+  binary message: {en: The WebSocket binary message output, zh: WebSocket二进制消息输出}
+  text message: {en: The WebSocket text message output, zh: WebSocket文本消息输出}
+capabilityDescription: {en: 'Acts as a WebSocket client endpoint to interact with
+    a remote WebSocket server. FlowFiles are transferred to downstream relationships
+    according to received message types as WebSocket client configured with this processor
+    receives messages from remote WebSocket server. If a new flowfile is passed to
+    the processor, the previous sessions will be closed and any data being sent will
+    be aborted.', zh: 充当WebSocket客户端端点，与远程WebSocket服务器交互。当使用此处理器配置的WebSocket客户端从远程WebSocket服务器接收消息时，FlowFiles根据接收到的消息类型传输到下游关系。如果将新的流文件传递给处理器，先前的会话将关闭，发送的任何数据都将中止。}
+properties:
+  websocket-client-controller-service:
+    en: {displayName: WebSocket Client ControllerService, description: A WebSocket
+        CLIENT Controller Service which can connect to a WebSocket server.}
+    zh: {description: 可以连接到WebSocket服务器的WebSocket CLIENT控制器服务。, displayName: WebSocket客户端控制器服务}
+  websocket-client-id:
+    en: {displayName: WebSocket Client Id, description: 'The client ID to identify
+        WebSocket session. It should be unique within the WebSocket Client Controller
+        Service. Otherwise, it throws WebSocketConfigurationException when it gets
+        started.'}
+    zh: {description: 用于标识WebSocket会话的客户端ID。它在WebSocket客户端控制器服务中应该是唯一的。否则，它会在启动时抛出WebSocketConfigurationException。,
+      displayName: WebSocket客户端Id}
+writeAttributes:
+  websocket.message.type: {en: TEXT or BINARY., zh: 文本或二进制。}
+  websocket.local.address: {en: WebSocket client address., zh: WebSocket客户端地址。}
+  websocket.session.id: {en: Established WebSocket session id., zh: 已建立WebSocket会话id。}
+  websocket.remote.address: {en: WebSocket server address., zh: WebSocket服务器地址。}
+  websocket.controller.service.id: {en: WebSocket Controller Service id., zh: WebSocket控制器服务id。}
+  websocket.endpoint.id: {en: WebSocket endpoint id., zh: WebSocket端点id。}
+tags:
+  en: [subscribe, WebSocket, consume, listen]
+  zh: [订阅, WebSocket, 消费, 听]

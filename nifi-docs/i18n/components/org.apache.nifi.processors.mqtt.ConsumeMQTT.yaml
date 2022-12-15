@@ -1,0 +1,147 @@
+relationships:
+  Message: {en: The MQTT message output, zh: MQTT消息输出}
+  parse.failure: {en: 'If a message cannot be parsed using the configured Record Reader,
+      the contents of the message will be routed to this Relationship as its own individual
+      FlowFile.', zh: 如果无法使用配置的记录读取器解析消息，则消息的内容将作为其自身的FlowFile路由到此关系。}
+systemResourceConsiderations:
+  en: [The 'Max Queue Size' specifies the maximum number of messages that can be hold
+      in memory by NiFi by a single instance of this processor. A high value for this
+      property could represent a lot of data being stored in memory.]
+  zh: [“最大队列大小”指定此处理器的单个实例可由NiFi保存在内存中的最大消息数。此属性的高值可能表示内存中存储了大量数据。]
+capabilityDescription: {en: Subscribes to a topic and receives messages from an MQTT
+    broker, zh: 订阅主题并从MQTT代理接收消息}
+properties:
+  Max Queue Size:
+    en: {displayName: Max Queue Size, description: 'The MQTT messages are always being
+        sent to subscribers on a topic regardless of how frequently the processor
+        is scheduled to run. If the ''Run Schedule'' is significantly behind the rate
+        at which the messages are arriving to this processor, then a back up can occur
+        in the internal queue of this processor. This property specifies the maximum
+        number of messages this processor will hold in memory at one time in the internal
+        queue. This data would be lost in case of a NiFi restart.'}
+    zh: {description: MQTT消息总是发送给主题的订阅者，而不管处理器计划运行的频率如何。如果“运行计划”大大低于消息到达此处理器的速度，则此处理器的内部队列中可能会发生备份。此属性指定此处理器在内部队列中一次保存在内存中的最大消息数。如果重新启动NiFi，此数据将丢失。,
+      displayName: 最大队列大小}
+  Client ID:
+    en: {displayName: Client ID, description: 'MQTT client ID to use. If not set,
+        a UUID will be generated.'}
+    zh: {description: 要使用的MQTT客户端ID。如果未设置，将生成UUID。, displayName: 客户端ID}
+  Last Will QoS Level:
+    en: {displayName: Last Will QoS Level, description: QoS level to be used when
+        publishing the Last Will Message.}
+    zh: {description: 发布最后一封邮件时使用的QoS级别。, displayName: 最后一次QoS级别}
+  Connection Timeout (seconds):
+    en: {displayName: Connection Timeout (seconds), description: Maximum time interval
+        the client will wait for the network connection to the MQTT server to be established.
+        The default timeout is 30 seconds. A value of 0 disables timeout processing
+        meaning the client will wait until the network connection is made successfully
+        or fails.}
+    zh: {description: 客户机等待建立到MQTT服务器的网络连接的最长时间间隔。默认超时为30秒。值为0将禁用超时处理，这意味着客户端将等待网络连接成功或失败。,
+      displayName: 连接超时（秒）}
+  record-writer:
+    en: {displayName: Record Writer, description: The Record Writer to use for serializing
+        Records before writing them to a FlowFile.}
+    zh: {description: 在将记录写入FlowFile之前用于序列化记录的记录编写器。, displayName: 记录编写器}
+  Broker URI:
+    en: {displayName: Broker URI, description: 'The URI(s) to use to connect to the
+        MQTT broker (e.g., tcp://localhost:1883). The ''tcp'', ''ssl'', ''ws'' and
+        ''wss'' schemes are supported. In order to use ''ssl'', the SSL Context Service
+        property must be set. When a comma-separated URI list is set (e.g., tcp://localhost:1883,tcp://localhost:1884),
+        the processor will use a round-robin algorithm to connect to the brokers on
+        connection failure.'}
+    zh: {description: '用于连接到MQTT代理的URI（例如。，tcp://localhost:1883). 支持“tcp”、“ssl”、“ws”和“wss”方案。为了使用“ssl”，必须设置ssl上下文服务属性。当设置逗号分隔的URI列表时（例如。，tcp://localhost:1883,tcp://localhost:1884)，处理器将使用循环算法在连接失败时连接到代理。',
+      displayName: Broker URI}
+  add-attributes-as-fields:
+    en: {displayName: Add attributes as fields, description: 'If setting this property
+        to true, default fields are going to be added in each record: _topic, _qos,
+        _isDuplicate, _isRetained.'}
+    zh: {description: 如果将此属性设置为true，则将在每个记录中添加默认字段：_topic、_qos、_isDplicate、_isRetain。,
+      displayName: 将属性添加为字段}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username to use when connecting to the
+        broker}
+    zh: {description: 连接到代理时使用的用户名, displayName: 用户名}
+  Session state:
+    en: {displayName: Session state, description: Whether to start a fresh or resume
+        previous flows. See the allowable value descriptions for more details.}
+    zh: {description: 是开始新的流还是恢复以前的流。有关详细信息，请参阅允许值说明。, displayName: 会话状态}
+  Session Expiry Interval:
+    en: {displayName: Session Expiry Interval, description: After this interval the
+        broker will expire the client and clear the session state.}
+    zh: {description: 在此间隔之后，代理将终止客户端并清除会话状态。, displayName: 会话到期间隔}
+  Quality of Service(QoS):
+    en: {displayName: Quality of Service (QoS), description: 'The Quality of Service
+        (QoS) to receive the message with. Accepts values ''0'', ''1'' or ''2''; ''0''
+        for ''at most once'', ''1'' for ''at least once'', ''2'' for ''exactly once''.'}
+    zh: {description: 用于接收消息的服务质量（QoS）。接受值“0”、“1”或“2”“0”表示“最多一次”，“1”表示“至少一次”；“2”表示“恰好一次”。,
+      displayName: 服务质量（QoS）}
+  Last Will Message:
+    en: {displayName: Last Will Message, description: The message to send as the client's
+        Last Will.}
+    zh: {description: 要作为客户的遗愿发送的消息。, displayName: 最后遗嘱信息}
+  Last Will Topic:
+    en: {displayName: Last Will Topic, description: The topic to send the client's
+        Last Will to.}
+    zh: {description: 发送客户遗愿的主题。, displayName: 最后遗嘱主题}
+  Topic Filter:
+    en: {displayName: Topic Filter, description: The MQTT topic filter to designate
+        the topics to subscribe to.}
+    zh: {description: 用于指定要订阅的主题的MQTT主题筛选器。, displayName: 主题筛选器}
+  record-reader:
+    en: {displayName: Record Reader, description: The Record Reader to use for parsing
+        received MQTT Messages into Records.}
+    zh: {description: 用于将接收的MQTT消息解析为记录的记录读取器。, displayName: 记录读取器}
+  Group ID:
+    en: {displayName: Group ID, description: 'MQTT consumer group ID to use. If group
+        ID not set, client will connect as individual consumer.'}
+    zh: {description: 要使用的MQTT使用者组ID。如果未设置组ID，则客户端将作为单个消费者进行连接。, displayName: 组ID}
+  message-demarcator:
+    en: {displayName: Message Demarcator, description: 'With this property, you have
+        an option to output FlowFiles which contains multiple messages. This property
+        allows you to provide a string (interpreted as UTF-8) to use for demarcating
+        apart multiple messages. This is an optional property ; if not provided, and
+        if not defining a Record Reader/Writer, each message received will result
+        in a single FlowFile. To enter special character such as ''new line'' use
+        CTRL+Enter or Shift+Enter depending on the OS.'}
+    zh: {description: 使用此属性，您可以选择输出包含多条消息的FlowFiles。此属性允许您提供一个字符串（解释为UTF-8），用于分隔多个消息。这是一个可选属性；如果未提供，并且未定义记录读取器/写入器，则收到的每条消息将生成一个流文件。要输入特殊字符，如“换行”，请根据操作系统使用CTRL+enter或Shift+enter。,
+      displayName: 消息标定器}
+  MQTT Specification Version:
+    en: {displayName: MQTT Specification Version, description: The MQTT specification
+        version when connecting with the broker. See the allowable value descriptions
+        for more details.}
+    zh: {description: 与代理连接时的MQTT规范版本。有关详细信息，请参阅允许值说明。, displayName: MQTT规范版本}
+  Keep Alive Interval (seconds):
+    en: {displayName: Keep Alive Interval (seconds), description: 'Defines the maximum
+        time interval between messages sent or received. It enables the client to
+        detect if the server is no longer available, without having to wait for the
+        TCP/IP timeout. The client will ensure that at least one message travels across
+        the network within each keep alive period. In the absence of a data-related
+        message during the time period, the client sends a very small "ping" message,
+        which the server will acknowledge. A value of 0 disables keepalive processing
+        in the client.'}
+    zh: {description: 定义发送或接收消息之间的最大时间间隔。它使客户端能够检测服务器是否不再可用，而无需等待TCP/IP超时。客户端将确保在每个保活周期内至少有一条消息通过网络。如果在该时间段内没有数据相关消息，客户端将发送一个非常小的“ping”消息，服务器将对此进行确认。值为0将禁用客户端中的保活处理。,
+      displayName: 保持活动间隔（秒）}
+  Password:
+    en: {displayName: Password, description: Password to use when connecting to the
+        broker}
+    zh: {description: 连接到代理时使用的密码, displayName: 暗语}
+  Last Will Retain:
+    en: {displayName: Last Will Retain, description: Whether to retain the client's
+        Last Will.}
+    zh: {description: 是否保留客户的遗愿。, displayName: 最后将保留}
+writeAttributes:
+  mqtt.qos: {en: The quality of service for this message., zh: 此邮件的服务质量。}
+  record.count: {en: The number of records received, zh: 收到的记录数}
+  mqtt.broker: {en: MQTT broker that was the message source, zh: 作为消息源的MQTT代理}
+  mqtt.isDuplicate: {en: Whether or not this message might be a duplicate of one which
+      has already been received., zh: 此消息是否可能与已收到的消息重复。}
+  mqtt.isRetained: {en: 'Whether or not this message was from a current publisher,
+      or was "retained" by the server as the last message published on the topic.',
+    zh: 此消息是否来自当前发布者，或是否作为主题上发布的最后一条消息被服务器“保留”。}
+  mqtt.topic: {en: MQTT topic on which message was received, zh: 接收消息的MQTT主题}
+tags:
+  en: [subscribe, MQTT, IOT, consume, listen]
+  zh: [订阅, MQTT公司, 物联网, 消费, 听]

@@ -1,0 +1,24 @@
+relationships:
+  success: {en: Signature Verification Succeeded, zh: 签名验证成功}
+  failure: {en: Signature Verification Failed, zh: 签名验证失败}
+capabilityDescription: {en: Verify signatures using OpenPGP Public Keys, zh: 使用OpenPGP公钥验证签名}
+properties:
+  public-key-service:
+    en: {displayName: Public Key Service, description: PGP Public Key Service for
+        verifying signatures with Public Key Encryption}
+    zh: {description: PGP公钥服务，用于使用公钥加密验证签名, displayName: 公钥服务}
+writeAttributes:
+  pgp.signature.algorithm: {en: Signature Algorithm including key and hash algorithm
+      names, zh: 签名算法，包括密钥和哈希算法名称}
+  pgp.literal.data.modified: {en: Modified Date Time from Literal Data in milliseconds,
+    zh: 文字数据的修改日期时间（毫秒）}
+  pgp.signature.hash.algorithm.id: {en: Signature Hash Algorithm Identifier, zh: 签名哈希算法标识符}
+  pgp.literal.data.filename: {en: Filename from Literal Data, zh: 文字数据的文件名}
+  pgp.signature.version: {en: Signature Version Number, zh: 签名版本号}
+  pgp.signature.key.id: {en: Signature Public Key Identifier, zh: 签名公钥标识符}
+  pgp.signature.key.algorithm.id: {en: Signature Key Algorithm Identifier, zh: 签名密钥算法标识符}
+  pgp.signature.created: {en: Signature Creation Time in milliseconds, zh: 签名创建时间（毫秒）}
+  pgp.signature.type.id: {en: Signature Type Identifier, zh: 签名类型标识符}
+tags:
+  en: [PGP, GPG, OpenPGP, Encryption, Signing, RFC 4880]
+  zh: [前列腺素, 地质勘探局, 打开PGP, 加密, 签字, 射频4880]

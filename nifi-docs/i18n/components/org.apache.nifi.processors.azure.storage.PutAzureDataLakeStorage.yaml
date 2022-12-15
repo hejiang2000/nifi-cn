@@ -1,0 +1,53 @@
+relationships:
+  success: {en: Files that have been successfully written to Azure storage are transferred
+      to this relationship, zh: 已成功写入Azure存储的文件将传输到此关系}
+  failure: {en: Files that could not be written to Azure storage for some reason are
+      transferred to this relationship, zh: 由于某种原因无法写入Azure存储的文件已传输到此关系}
+capabilityDescription: {en: Puts content into an Azure Data Lake Storage Gen 2, zh: 将内容放入Azure
+    Data Lake Storage Gen 2}
+properties:
+  filesystem-name:
+    en: {displayName: Filesystem Name, description: Name of the Azure Storage File
+        System (also called Container). It is assumed to be already existing.}
+    zh: {description: Azure存储文件系统（也称为容器）的名称。假设它已经存在。, displayName: 文件系统名称}
+  conflict-resolution-strategy:
+    en: {displayName: Conflict Resolution Strategy, description: Indicates what should
+        happen when a file with the same name already exists in the output directory}
+    zh: {description: 指示当输出目录中已存在同名文件时应执行的操作, displayName: 冲突解决策略}
+  adls-credentials-service:
+    en: {displayName: ADLS Credentials, description: Controller Service used to obtain
+        Azure Credentials.}
+    zh: {description: 用于获取Azure凭据的控制器服务。, displayName: ADLS证书}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        SOCKS, HTTP In case of SOCKS, it is not guaranteed that the selected SOCKS
+        Version will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：SOCKS、HTTP如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  directory-name:
+    en: {displayName: Directory Name, description: 'Name of the Azure Storage Directory.
+        The Directory Name cannot contain a leading ''/''. The root directory can
+        be designated by the empty string value. In case of the PutAzureDataLakeStorage
+        processor, the directory will be created if not already existing.'}
+    zh: {description: Azure存储目录的名称。目录名不能包含前导“/”。根目录可以由空字符串值指定。对于PutAzureDataLakeStorage处理器，如果尚未存在，则将创建目录。,
+      displayName: 目录名称}
+  file-name:
+    en: {displayName: File Name, description: The filename}
+    zh: {description: 文件名, displayName: 文件名}
+  base-temporary-path:
+    en: {displayName: Base Temporary Path, description: The Path where the temporary
+        directory will be created. The Path name cannot contain a leading '/'. The
+        root directory can be designated by the empty string value. Non-existing directories
+        will be created.The Temporary File Directory name is _nifitempdirectory}
+    zh: {description: 将创建临时目录的路径。路径名不能包含前导“/”。根目录可以由空字符串值指定。将创建不存在的目录。临时文件目录名称为_niftempdirectory,
+      displayName: 基础临时路径}
+writeAttributes:
+  azure.directory: {en: The name of the Azure Directory, zh: Azure目录的名称}
+  azure.filesystem: {en: The name of the Azure File System, zh: Azure文件系统的名称}
+  azure.primaryUri: {en: Primary location for file content, zh: 文件内容的主要位置}
+  azure.filename: {en: The name of the Azure File, zh: Azure文件的名称}
+  azure.length: {en: The length of the Azure File, zh: Azure文件的长度}
+tags:
+  en: [azure, microsoft, cloud, storage, adlsgen2, datalake]
+  zh: [蔚蓝色的, 微软, 云, 存储, 广告广告2, 数据库]

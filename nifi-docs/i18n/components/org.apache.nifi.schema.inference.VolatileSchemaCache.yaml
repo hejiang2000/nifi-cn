@@ -1,0 +1,12 @@
+capabilityDescription: {en: 'Provides a Schema Cache that evicts elements based on
+    a Least-Recently-Used algorithm. This cache is not persisted, so any restart of
+    NiFi will result in the cache being cleared. Additionally, the cache will be cleared
+    any time that the Controller Service is stopped and restarted.', zh: 提供一个架构缓存，该缓存基于最近最少使用的算法驱逐元素。此缓存未持久化，因此重新启动NiFi将导致缓存被清除。此外，每当控制器服务停止并重新启动时，将清除缓存。}
+properties:
+  max-cache-size:
+    en: {displayName: Maximum Cache Size, description: The maximum number of Schemas
+        to cache.}
+    zh: {description: 要缓存的最大架构数。, displayName: 最大缓存大小}
+tags:
+  en: [record, schema, cache]
+  zh: [记录, 模式, 隐藏物]

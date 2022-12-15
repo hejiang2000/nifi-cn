@@ -1,0 +1,108 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+capabilityDescription: {en: 'Deletes FlowFiles on an Amazon S3 Bucket. If attempting
+    to delete a file that does not exist, FlowFile is routed to success.', zh: 删除Amazon
+    S3 Bucket上的FlowFiles。如果试图删除不存在的文件，FlowFile将被路由成功。}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  FullControl User List:
+    en: {displayName: FullControl User List, description: A comma-separated list of
+        Amazon User ID's or E-mail addresses that specifies who should have Full Control
+        for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，指定谁应该对对象拥有完全控制权, displayName: 完全控制用户列表}
+  Owner:
+    en: {displayName: Owner, description: The Amazon ID to use for the object's owner}
+    zh: {description: 用于对象所有者的Amazon ID, displayName: 物主}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  Object Key:
+    en: {displayName: Object Key, description: ''}
+    zh: {description: '', displayName: 对象密钥}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  Signer Override:
+    en: {displayName: Signer Override, description: The AWS libraries use the default
+        signer but this property allows you to specify a custom signer to support
+        older S3-compatible services.}
+    zh: {description: AWS库使用默认签名者，但此属性允许您指定自定义签名者以支持较旧的S3兼容服务。, displayName: 签名者覆盖}
+  Bucket:
+    en: {displayName: Bucket, description: ''}
+    zh: {description: '', displayName: 水桶}
+  Version:
+    en: {displayName: Version, description: The Version of the Object to delete}
+    zh: {description: 要删除的对象的版本, displayName: 版本}
+  Write Permission User List:
+    en: {displayName: Write Permission User List, description: A comma-separated list
+        of Amazon User ID's or E-mail addresses that specifies who should have Write
+        Access for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，用于指定谁应具有对象的写入权限, displayName: 写入权限用户列表}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  Read Permission User List:
+    en: {displayName: Read Permission User List, description: A comma-separated list
+        of Amazon User ID's or E-mail addresses that specifies who should have Read
+        Access for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，用于指定对象的读取权限, displayName: 读取权限用户列表}
+  Write ACL User List:
+    en: {displayName: Write ACL User List, description: A comma-separated list of
+        Amazon User ID's or E-mail addresses that specifies who should have permissions
+        to change the Access Control List for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，用于指定谁有权更改对象的访问控制列表, displayName: 写入ACL用户列表}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+  Read ACL User List:
+    en: {displayName: Read ACL User List, description: A comma-separated list of Amazon
+        User ID's or E-mail addresses that specifies who should have permissions to
+        read the Access Control List for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，用于指定谁应该有权读取对象的访问控制列表, displayName: 读取ACL用户列表}
+writeAttributes:
+  s3.statusCode: {en: The HTTP error code (if available) from the failed operation,
+    zh: 失败操作的HTTP错误代码（如果可用）}
+  s3.errorCode: {en: The S3 moniker of the failed operation, zh: 失败操作的S3名字对象}
+  s3.exception: {en: The class name of the exception thrown during processor execution,
+    zh: 处理器执行期间引发的异常的类名}
+  s3.additionalDetails: {en: The S3 supplied detail from the failed operation, zh: S3提供了失败操作的详细信息}
+  s3.errorMessage: {en: The S3 exception message from the failed operation, zh: 来自失败操作的S3异常消息}
+tags:
+  en: [Amazon, S3, AWS, Archive, Delete]
+  zh: [亚马逊, 第3页, 自动售货机, 档案文件, 删去]

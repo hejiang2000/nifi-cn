@@ -1,0 +1,37 @@
+relationships:
+  valid: {en: 'FlowFiles that are successfully validated against the schema, if provided,
+      or verified to be well-formed XML are routed to this relationship', zh: 根据架构成功验证的FlowFiles（如果提供）或验证为格式良好的XML，将路由到此关系}
+  invalid: {en: FlowFiles that are not valid according to the specified schema or
+      contain invalid XML are routed to this relationship, zh: 根据指定架构无效或包含无效XML的FlowFiles将路由到此关系}
+systemResourceConsiderations:
+  en: ['While this processor supports processing XML within attributes, it is strongly
+      discouraged to hold large amounts of data in attributes. In general, attribute
+      values should be as small as possible and hold no more than a couple hundred
+      characters.']
+  zh: [虽然该处理器支持在属性中处理XML，但强烈建议在属性中保存大量数据。通常，属性值应该尽可能小，最多只能容纳几百个字符。]
+capabilityDescription: {en: 'Validates XML contained in a FlowFile. By default, the
+    XML is contained in the FlowFile content. If the ''XML Source Attribute'' property
+    is set, the XML to be validated is contained in the specified attribute. It is
+    not recommended to use attributes to hold large XML documents; doing so could
+    adversely affect system performance. Full schema validation is performed if the
+    processor is configured with the XSD schema details. Otherwise, the only validation
+    performed is to ensure the XML syntax is correct and well-formed, e.g. all opening
+    tags are properly closed.', zh: 验证FlowFile中包含的XML。默认情况下，XML包含在FlowFile内容中。如果设置了“XML源属性”属性，则要验证的XML包含在指定的属性中。不建议使用属性来保存大型XML文档；这样做可能会对系统性能产生不利影响。如果处理器配置了XSD架构详细信息，则执行完整的架构验证。否则，执行的唯一验证是确保XML语法正确且格式良好，例如，所有打开的标记都正确关闭。}
+properties:
+  XML Source Attribute:
+    en: {displayName: XML Source Attribute, description: 'The name of the attribute
+        containing XML to be validated. If this property is blank, the FlowFile content
+        will be validated.'}
+    zh: {description: 包含要验证的XML的属性的名称。如果此属性为空，将验证FlowFile内容。, displayName: XML源属性}
+  Schema File:
+    en: {displayName: Schema File, description: 'The file path or URL to the XSD Schema
+        file that is to be used for validation. If this property is blank, only XML
+        syntax/structure will be validated.'}
+    zh: {description: 要用于验证的XSD架构文件的文件路径或URL。如果此属性为空，则只验证XML语法/结构。, displayName: 架构文件}
+writeAttributes:
+  validatexml.invalid.error: {en: If the flow file is routed to the invalid relationship
+      the attribute will contain the error message resulting from the validation failure.,
+    zh: 如果流文件被路由到无效关系，则该属性将包含验证失败导致的错误消息。}
+tags:
+  en: [xml, schema, validation, xsd]
+  zh: [xml格式, 模式, 验证, 安全数据表]

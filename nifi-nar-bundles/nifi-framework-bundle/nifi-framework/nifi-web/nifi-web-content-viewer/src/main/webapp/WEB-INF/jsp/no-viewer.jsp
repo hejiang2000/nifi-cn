@@ -16,5 +16,5 @@
 --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="no-viewer">
-    No viewer is registered for this content type.
+    没有与该正文类型匹配的数据视图.
 </div>

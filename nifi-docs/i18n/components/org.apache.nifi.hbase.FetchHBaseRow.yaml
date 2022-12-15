@@ -1,0 +1,64 @@
+relationships:
+  success: {en: All successful fetches are routed to this relationship., zh: 所有成功的回迁都将路由到此关系。}
+  failure: {en: All failed fetches are routed to this relationship., zh: 所有失败的回迁都将路由到此关系。}
+  not found: {en: All fetches where the row id is not found are routed to this relationship.,
+    zh: 未找到行id的所有提取都将路由到此关系。}
+capabilityDescription: {en: 'Fetches a row from an HBase table. The Destination property
+    controls whether the cells are added as flow file attributes, or the row is written
+    to the flow file content as JSON. This processor may be used to fetch a fixed
+    row on a interval by specifying the table and row id directly in the processor,
+    or it may be used to dynamically fetch rows by referencing the table and row id
+    from incoming flow files.', zh: 从HBase表中提取一行。Destination属性控制是将单元格作为流文件属性添加，还是将行作为JSON写入流文件内容。该处理器可用于通过直接在处理器中指定表和行id来每隔一段时间获取固定行，或者可用于通过引用来自传入流文件的表和行id来动态获取行。}
+properties:
+  Row Identifier:
+    en: {displayName: Row Identifier, description: The identifier of the row to fetch.}
+    zh: {description: 要提取的行的标识符。, displayName: 行标识符}
+  Table Name:
+    en: {displayName: Table Name, description: The name of the HBase Table to fetch
+        from.}
+    zh: {description: 要从中提取的HBase表的名称。, displayName: 表名称}
+  Destination:
+    en: {displayName: Destination, description: Indicates whether the row fetched
+        from HBase is written to FlowFile content or FlowFile Attributes.}
+    zh: {description: 指示从HBase获取的行是写入FlowFile内容还是FlowFile属性。, displayName: 目的地}
+  hbase-fetch-row-authorizations:
+    en: {displayName: Authorizations, description: The list of authorizations to pass
+        to the scanner. This will be ignored if cell visibility labels are not in
+        use.}
+    zh: {description: 要传递给扫描仪的授权列表。如果未使用单元格可见性标签，则将忽略此项。, displayName: 授权}
+  Encode Character Set:
+    en: {displayName: Encode Character Set, description: The character set used to
+        encode the JSON representation of the row.}
+    zh: {description: 用于编码行的JSON表示的字符集。, displayName: 编码字符集}
+  Columns:
+    en: {displayName: Columns, description: 'An optional comma-separated list of "<colFamily>:<colQualifier>"
+        pairs to fetch. To return all columns for a given family, leave off the qualifier
+        such as "<colFamily1>,<colFamily2>".'}
+    zh: {description: 要获取的“<colFamily>：<colQualifier>”对的可选逗号分隔列表。要返回给定族的所有列，请省略限定符，例如“<colFamily1>，<colFamily2>”。,
+      displayName: 柱}
+  HBase Client Service:
+    en: {displayName: HBase Client Service, description: Specifies the Controller
+        Service to use for accessing HBase.}
+    zh: {description: 指定用于访问HBase的控制器服务。, displayName: HBase客户端服务}
+  Decode Character Set:
+    en: {displayName: Decode Character Set, description: The character set used to
+        decode data from HBase.}
+    zh: {description: 用于解码HBase数据的字符集。, displayName: 解码字符集}
+  JSON Value Encoding:
+    en: {displayName: JSON Value Encoding, description: 'Specifies how to represent
+        row ids, column families, column qualifiers, and values when stored in FlowFile
+        attributes, or written to JSON.'}
+    zh: {description: 指定存储在FlowFile属性中或写入JSON时如何表示行ID、列族、列限定符和值。, displayName: JSON值编码}
+  JSON Format:
+    en: {displayName: JSON Format, description: Specifies how to represent the HBase
+        row as a JSON document.}
+    zh: {description: 指定如何将HBase行表示为JSON文档。, displayName: JSON格式}
+writeAttributes:
+  hbase.table: {en: The name of the HBase table that the row was fetched from, zh: 从中提取行的HBase表的名称}
+  hbase.row: {en: A JSON document representing the row. This property is only written
+      when a Destination of flowfile-attributes is selected., zh: 表示行的JSON文档。仅当选择了流文件属性的目标时，才会写入此属性。}
+  mime.type: {en: 'Set to application/json when using a Destination of flowfile-content,
+      not set or modified otherwise', zh: 使用流文件内容的Destination时设置为application/json，否则不设置或修改}
+tags:
+  en: [hbase, scan, fetch, get, enrich]
+  zh: [数据库, 扫描, 取来, 收到, 充实]

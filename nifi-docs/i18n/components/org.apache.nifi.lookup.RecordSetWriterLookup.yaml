@@ -1,0 +1,17 @@
+dynamicProperties:
+  Name of the RecordSetWriter:
+    en: {description: '', value: A RecordSetWriterFactory controller service}
+    zh: {description: '', value: RecordSetWriterFactory控制器服务}
+capabilityDescription: {en: 'Provides a RecordSetWriterFactory that can be used to
+    dynamically select another RecordSetWriterFactory. This will allow multiple RecordSetWriterFactory''s
+    to be defined and registered, and then selected dynamically at runtime by tagging
+    FlowFiles with the attributes and referencing those attributes in the Service
+    to Use property.', zh: 提供可用于动态选择另一个RecordSetWriterFactory的RecordSetWriterFactory。这将允许定义和注册多个RecordSetWriterFactory，然后在运行时通过使用属性标记FlowFiles并在“要使用的服务”属性中引用这些属性来动态选择。}
+properties:
+  Service to Use:
+    en: {displayName: Service to Use, description: Specifies the name of the user-defined
+        property whose associated Controller Service should be used.}
+    zh: {description: 指定应使用其关联控制器服务的用户定义属性的名称。, displayName: 要使用的服务}
+tags:
+  en: [lookup, result, set, writer, serializer, record, recordset, row]
+  zh: [查找, 后果, 设置, 作家, 串行化器, 记录, 记录集, 一行]

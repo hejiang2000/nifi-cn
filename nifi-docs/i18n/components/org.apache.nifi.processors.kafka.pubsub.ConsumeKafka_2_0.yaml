@@ -1,0 +1,168 @@
+relationships:
+  success: {en: FlowFiles received from Kafka. Depending on demarcation strategy it
+      is a flow file per message or a bundle of messages grouped by topic and partition.,
+    zh: 从Kafka收到的FlowFiles。根据划分策略，它是每个消息的流文件或按主题和分区分组的消息束。}
+dynamicProperties:
+  The name of a Kafka configuration property.:
+    en: {description: 'These properties will be added on the Kafka configuration after
+        loading any provided configuration properties. In the event a dynamic property
+        represents a property that was already set, its value will be ignored and
+        WARN message logged. For the list of available Kafka properties please refer
+        to: http://kafka.apache.org/documentation.html#configuration. ', value: The
+        value of a given Kafka configuration property.}
+    zh: {description: '这些属性将在加载任何提供的配置属性后添加到Kafka配置中。如果动态属性表示已设置的属性，则将忽略其值并记录WARN消息。有关可用Kafka属性的列表，请参阅：http://kafka.apache.org/documentation.html#configuration.',
+      value: 给定Kafka配置属性的值。}
+capabilityDescription: {en: Consumes messages from Apache Kafka specifically built
+    against the Kafka 2.0 Consumer API. The complementary NiFi processor for sending
+    messages is PublishKafka_2_0., zh: 使用Apache Kafka专门针对Kafka 2.0 Consumer API构建的消息。用于发送消息的补充NiFi处理器是PublishKafka_2_0。}
+properties:
+  header-name-regex:
+    en: {displayName: Headers to Add as Attributes (Regex), description: 'A Regular
+        Expression that is matched against all message headers. Any message header
+        whose name matches the regex will be added to the FlowFile as an Attribute.
+        If not specified, no Header values will be added as FlowFile attributes. If
+        two messages have a different value for the same header and that header is
+        selected by the provided regex, then those two messages must be added to different
+        FlowFiles. As a result, users should be cautious about using a regex like
+        ".*" if messages are expected to have header values that are unique per message,
+        such as an identifier or timestamp, because it will prevent NiFi from bundling
+        the messages together efficiently.'}
+    zh: {description: 与所有邮件头匹配的正则表达式。任何名称与正则表达式匹配的消息头都将作为属性添加到FlowFile中。如果未指定，则不会将Header值添加为FlowFile属性。如果两条消息对于同一个标头具有不同的值，并且所提供的正则表达式选择了该标头，则必须将这两条消息添加到不同的FlowFiles中。因此，如果消息预期具有每个消息唯一的标头值（例如标识符或时间戳），用户应谨慎使用类似“.*”的正则表达式，因为这将阻止NiFi有效地将消息捆绑在一起。,
+      displayName: 要添加为属性的标头（Regex）}
+  sasl.username:
+    en: {displayName: Username, description: Username provided with configured password
+        when using PLAIN or SCRAM SASL Mechanisms}
+    zh: {description: 使用PLAIN或SCRAM SASL机制时提供的用户名和配置的密码, displayName: 用户名}
+  max.poll.records:
+    en: {displayName: Max Poll Records, description: Specifies the maximum number
+        of records Kafka should return in a single poll.}
+    zh: {description: 指定Kafka在单个轮询中应返回的最大记录数。, displayName: 最大轮询记录数}
+  group.id:
+    en: {displayName: Group ID, description: A Group ID is used to identify consumers
+        that are within the same consumer group. Corresponds to Kafka's 'group.id'
+        property.}
+    zh: {description: 组ID用于标识同一消费者组内的消费者。对应于卡夫卡的小组。id”属性。, displayName: 组ID}
+  bootstrap.servers:
+    en: {displayName: Kafka Brokers, description: 'Comma-separated list of Kafka Brokers
+        in the format host:port'}
+    zh: {description: 'Kafka Broker的逗号分隔列表，格式为host:port', displayName: 卡夫卡经纪人}
+  topic_type:
+    en: {displayName: Topic Name Format, description: Specifies whether the Topic(s)
+        provided are a comma separated list of names or a single regular expression}
+    zh: {description: 指定提供的主题是逗号分隔的名称列表还是单个正则表达式, displayName: 主题名称格式}
+  sasl.kerberos.principal:
+    en: {displayName: Kerberos Principal, description: Principal used for authentication
+        with Kerberos}
+    zh: {description: 用于Kerberos身份验证的主体, displayName: Kerberos主体}
+  sasl.kerberos.service.name:
+    en: {displayName: Kerberos Service Name, description: The service name that matches
+        the primary name of the Kafka server configured in the broker JAAS configuration}
+    zh: {description: 与代理JAAS配置中配置的Kafka服务器的主名称匹配的服务名称, displayName: Kerberos服务名称}
+  security.protocol:
+    en: {displayName: Security Protocol, description: Security protocol used to communicate
+        with brokers. Corresponds to Kafka Client security.protocol property}
+    zh: {description: 用于与经纪人通信的安全协议。对应于Kafka客户端安全。协议属性, displayName: 安全协议}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Service supporting
+        generalized credentials authentication with Kerberos}
+    zh: {description: 支持Kerberos通用凭据身份验证的服务, displayName: Kerberos凭据服务}
+  ssl.context.service:
+    en: {displayName: SSL Context Service, description: Service supporting SSL communication
+        with Kafka brokers}
+    zh: {description: 支持与Kafka代理进行SSL通信的服务, displayName: SSL上下文服务}
+  max-uncommit-offset-wait:
+    en: {displayName: Max Uncommitted Time, description: Specifies the maximum amount
+        of time allowed to pass before offsets must be committed. This value impacts
+        how often offsets will be committed.  Committing offsets less often increases
+        throughput but also increases the window of potential data duplication in
+        the event of a rebalance or JVM restart between commits.  This value is also
+        related to maximum poll records and the use of a message demarcator.  When
+        using a message demarcator we can have far more uncommitted messages than
+        when we're not as there is much less for us to keep track of in memory.}
+    zh: {description: 指定在必须提交偏移之前允许经过的最长时间。该值影响提交偏移的频率。提交偏移量通常会增加吞吐量，但在提交之间重新平衡或JVM重新启动时，也会增加潜在的数据复制窗口。该值还与最大轮询记录和消息分隔符的使用有关。当使用消息分隔符时，我们可以得到比不使用时多得多的未提交消息，因为我们在内存中要跟踪的消息要少得多。,
+      displayName: 最长未提交时间}
+  sasl.mechanism:
+    en: {displayName: SASL Mechanism, description: SASL mechanism used for authentication.
+        Corresponds to Kafka Client sasl.mechanism property}
+    zh: {description: 用于身份验证的SASL机制。对应Kafka Client sasl。机械特性, displayName: SASL机制}
+  sasl.token.auth:
+    en: {displayName: Token Authentication, description: Enables or disables Token
+        authentication when using SCRAM SASL Mechanisms}
+    zh: {description: 使用SCRAM SASL机制时启用或禁用令牌身份验证, displayName: 令牌身份验证}
+  sasl.kerberos.keytab:
+    en: {displayName: Kerberos Keytab, description: Keytab credentials used for authentication
+        with Kerberos}
+    zh: {description: 用于Kerberos身份验证的Keytab凭据, displayName: Kerberos密钥选项卡}
+  honor-transactions:
+    en: {displayName: Honor Transactions, description: 'Specifies whether or not NiFi
+        should honor transactional guarantees when communicating with Kafka. If false,
+        the Processor will use an "isolation level" of read_uncomitted. This means
+        that messages will be received as soon as they are written to Kafka but will
+        be pulled, even if the producer cancels the transactions. If this value is
+        true, NiFi will not receive any messages for which the producer''s transaction
+        was canceled, but this can result in some latency since the consumer must
+        wait for the producer to finish its entire transaction instead of pulling
+        as the messages become available.'}
+    zh: {description: 指定NiFi在与Kafka通信时是否应遵守事务性保证。如果为false，处理器将使用read_uncommitted的“隔离级别”。这意味着消息一旦被写入卡夫卡，就会被接收，但即使制作人取消了交易，也会被拉取。如果该值为真，NiFi将不会接收到生产者的交易被取消的任何消息，但这可能会导致一些延迟，因为消费者必须等待生产者完成其整个交易，而不是在消息可用时拉取。,
+      displayName: 荣誉交易}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: Specifies the timeout that
+        the consumer should use when communicating with the Kafka Broker}
+    zh: {description: 指定消费者与Kafka Broker通信时应使用的超时, displayName: 通信超时}
+  topic:
+    en: {displayName: Topic Name(s), description: The name of the Kafka Topic(s) to
+        pull from. More than one can be supplied if comma separated.}
+    zh: {description: 要从中提取的卡夫卡主题的名称。如果逗号分隔，则可以提供多个。, displayName: 主题名称}
+  separate-by-key:
+    en: {displayName: Separate By Key, description: 'If true, and the <Message Demarcator>
+        property is set, two messages will only be added to the same FlowFile if both
+        of the Kafka Messages have identical keys.'}
+    zh: {description: 如果为true，并且设置了＜Message Demarcator＞属性，则只有当两个Kafka消息具有相同的密钥时，才会将两个消息添加到同一FlowFile中。,
+      displayName: 按关键字分隔}
+  message-header-encoding:
+    en: {displayName: Message Header Encoding, description: Any message header that
+        is found on a Kafka message will be added to the outbound FlowFile as an attribute.
+        This property indicates the Character Encoding to use for deserializing the
+        headers.}
+    zh: {description: 在Kafka消息中找到的任何消息头都将作为属性添加到出站FlowFile中。此属性指示用于反序列化标头的字符编码。, displayName: 消息头编码}
+  sasl.password:
+    en: {displayName: Password, description: Password provided with configured username
+        when using PLAIN or SCRAM SASL Mechanisms}
+    zh: {description: 使用PLAIN或SCRAM SASL机制时，密码随配置的用户名一起提供, displayName: 暗语}
+  message-demarcator:
+    en: {displayName: Message Demarcator, description: 'Since KafkaConsumer receives
+        messages in batches, you have an option to output FlowFiles which contains
+        all Kafka messages in a single batch for a given topic and partition and this
+        property allows you to provide a string (interpreted as UTF-8) to use for
+        demarcating apart multiple Kafka messages. This is an optional property and
+        if not provided each Kafka message received will result in a single FlowFile
+        which  time it is triggered. To enter special character such as ''new line''
+        use CTRL+Enter or Shift+Enter depending on the OS'}
+    zh: {description: 由于KafkaConsumer成批接收消息，您可以选择输出FlowFiles，该文件包含给定主题和分区的单个批中的所有Kafka消息，该属性允许您提供一个字符串（解释为UTF-8），用于分隔多个Kafka信息。这是一个可选属性，如果不提供，则收到的每个Kafka消息将在触发时生成一个FlowFile。要输入特殊字符（如“换行”），请根据操作系统使用CTRL+enter或Shift+enter,
+      displayName: 消息标定器}
+  key-attribute-encoding:
+    en: {displayName: Key Attribute Encoding, description: FlowFiles that are emitted
+        have an attribute named 'kafka.key'. This property dictates how the value
+        of the attribute should be encoded.}
+    zh: {description: 发出的FlowFiles具有名为“kafka.key”的属性。此属性指定属性值的编码方式。, displayName: 关键属性编码}
+  auto.offset.reset:
+    en: {displayName: Offset Reset, description: Allows you to manage the condition
+        when there is no initial offset in Kafka or if the current offset does not
+        exist any more on the server (e.g. because that data has been deleted). Corresponds
+        to Kafka's 'auto.offset.reset' property.}
+    zh: {description: 允许您在Kafka中没有初始偏移量或服务器上不再存在当前偏移量（例如，因为数据已删除）时管理条件。对应于卡夫卡的“auto.offset”。reset”属性。,
+      displayName: 偏移重置}
+writeAttributes:
+  kafka.partition: {en: The partition of the topic the message or message bundle is
+      from, zh: 消息或消息包所在主题的分区}
+  kafka.offset: {en: The offset of the message in the partition of the topic., zh: 主题分区中消息的偏移量。}
+  kafka.count: {en: The number of messages written if more than one, zh: 如果多于一条，则写入的消息数}
+  kafka.timestamp: {en: The timestamp of the message in the partition of the topic.,
+    zh: 主题分区中消息的时间戳。}
+  kafka.topic: {en: The topic the message or message bundle is from, zh: 消息或消息包的主题}
+  kafka.key: {en: The key of message if present and if single message. How the key
+      is encoded depends on the value of the 'Key Attribute Encoding' property., zh: 消息密钥（如果存在）和单个消息。密钥的编码方式取决于“key
+      Attribute Encoding”属性的值。}
+tags:
+  en: [Kafka, Get, Ingest, Ingress, Topic, PubSub, Consume, '2.0']
+  zh: [卡夫卡, 收到, 摄入, 进入, 话题, 发布Sub, 消费, '2.0']

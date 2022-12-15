@@ -1,0 +1,46 @@
+relationships:
+  success: {en: All successful FlowFiles are routed to this relationship, zh: 所有成功的FlowFiles都将路由到此关系}
+dynamicProperties:
+  A FlowFile attribute to update:
+    en: {description: Updates a FlowFile attribute specified by the Dynamic Property's
+        key with the value specified by the Dynamic Property's value, value: The value
+        to set it to}
+    zh: {description: 使用动态属性值指定的值更新动态属性键指定的FlowFile属性, value: 要将其设置为的值}
+capabilityDescription: {en: Updates the Attributes for a FlowFile by using the Attribute
+    Expression Language and/or deletes the attributes based on a regular expression,
+  zh: 使用属性表达式语言更新FlowFile的属性和/或基于正则表达式删除属性}
+statefulDescription: {en: Gives the option to store values not only on the FlowFile
+    but as stateful variables to be referenced in a recursive manner., zh: 提供了不仅将值存储在FlowFile上，而且将值存储为以递归方式引用的有状态变量的选项。}
+properties:
+  Delete Attributes Expression:
+    en: {displayName: Delete Attributes Expression, description: Regular expression
+        for attributes to be deleted from FlowFiles.  Existing attributes that match
+        will be deleted regardless of whether they are updated by this processor.}
+    zh: {description: 要从FlowFiles中删除的属性的正则表达式。无论此处理器是否更新匹配的现有属性，都将删除这些属性。, displayName: 删除属性表达式}
+  Store State:
+    en: {displayName: Store State, description: Select whether or not state will be
+        stored. Selecting 'Stateless' will offer the default functionality of purely
+        updating the attributes on a FlowFile in a stateless manner. Selecting a stateful
+        option will not only store the attributes on the FlowFile but also in the
+        Processors state. See the 'Stateful Usage' topic of the 'Additional Details'
+        section of this processor's documentation for more information}
+    zh: {description: 选择是否存储状态。选择“无状态”将提供以无状态方式纯粹更新FlowFile上属性的默认功能。选择有状态选项不仅将属性存储在FlowFile上，还将存储在Processors状态下。有关详细信息，请参阅此处理器文档“其他详细信息”部分的“状态使用”主题,
+      displayName: 存储状态}
+  canonical-value-lookup-cache-size:
+    en: {displayName: Cache Value Lookup Cache Size, description: Specifies how many
+        canonical lookup values should be stored in the cache}
+    zh: {description: 指定应在缓存中存储多少规范查找值, displayName: 缓存值查找缓存大小}
+  Stateful Variables Initial Value:
+    en: {displayName: Stateful Variables Initial Value, description: If using state
+        to set/reference variables then this value is used to set the initial value
+        of the stateful variable. This will only be used in the @OnScheduled method
+        when state does not contain a value for the variable. This is required if
+        running statefully but can be empty if needed.}
+    zh: {description: 如果使用状态设置/引用变量，则该值用于设置有状态变量的初始值。只有当状态不包含变量值时，才会在@OnScheduled方法中使用此选项。如果以状态运行，这是必需的，但如果需要，可以为空。,
+      displayName: 状态变量初始值}
+writeAttributes:
+  See additional details: {en: This processor may write or remove zero or more attributes
+      as described in additional details, zh: 此处理器可以写入或删除零个或多个属性，如其他详细信息所述}
+tags:
+  en: [attributes, modification, update, delete, Attribute Expression Language, state]
+  zh: [属性, 修改, 使现代化, 删去, 属性表达式语言, 状态]

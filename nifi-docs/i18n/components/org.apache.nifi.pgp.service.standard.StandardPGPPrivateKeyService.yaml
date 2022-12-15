@@ -1,0 +1,18 @@
+capabilityDescription: {en: PGP Private Key Service provides Private Keys loaded from
+    files or properties, zh: PGP私钥服务提供从文件或属性加载的私钥}
+properties:
+  keyring-file:
+    en: {displayName: Keyring File, description: File path to PGP Keyring or Secret
+        Key encoded in binary or ASCII Armor}
+    zh: {description: 以二进制或ASCII Armor编码的PGP密钥环或密钥的文件路径, displayName: 钥匙环文件}
+  key-password:
+    en: {displayName: Key Password, description: Password used for decrypting Private
+        Keys}
+    zh: {description: 用于解密私钥的密码, displayName: 密钥密码}
+  keyring:
+    en: {displayName: Keyring, description: PGP Keyring or Secret Key encoded in ASCII
+        Armor}
+    zh: {description: PGP密钥环或以ASCII Armor编码的密钥, displayName: 钥匙环}
+tags:
+  en: [PGP, GPG, OpenPGP, Encryption, Private, Key, RFC 4880]
+  zh: [前列腺素, 地质勘探局, 打开PGP, 加密, 私有的, 钥匙, 射频4880]

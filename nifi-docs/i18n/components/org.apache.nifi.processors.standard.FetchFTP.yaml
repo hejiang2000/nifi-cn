@@ -1,0 +1,117 @@
+relationships:
+  comms.failure: {en: Any FlowFile that could not be fetched from the remote server
+      due to a communications failure will be transferred to this Relationship., zh: 由于通信故障而无法从远程服务器获取的任何FlowFile都将传输到此关系。}
+  success: {en: All FlowFiles that are received are routed to success, zh: 接收到的所有FlowFiles都将路由成功}
+  permission.denied: {en: Any FlowFile that could not be fetched from the remote server
+      due to insufficient permissions will be transferred to this Relationship., zh: 由于权限不足而无法从远程服务器获取的任何FlowFile都将传输到此关系。}
+  not.found: {en: Any FlowFile for which we receive a 'Not Found' message from the
+      remote server will be transferred to this Relationship., zh: 我们从远程服务器收到“未找到”消息的任何FlowFile都将被传输到此关系。}
+capabilityDescription: {en: Fetches the content of a file from a remote FTP server
+    and overwrites the contents of an incoming FlowFile with the content of the remote
+    file., zh: 从远程FTP服务器获取文件的内容，并用远程文件的内容覆盖传入FlowFile的内容。}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  Http Proxy Password:
+    en: {displayName: Http Proxy Password, description: Http Proxy Password}
+    zh: {description: Http代理密码, displayName: Http代理密码}
+  Port:
+    en: {displayName: Port, description: The port to connect to on the remote host
+        to fetch the data from}
+    zh: {description: 要连接到远程主机以从中获取数据的端口, displayName: 港口城市}
+  Remote File:
+    en: {displayName: Remote File, description: The fully qualified filename on the
+        remote system}
+    zh: {description: 远程系统上的完全限定文件名, displayName: 远程文件}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: SOCKS + AuthN,
+        HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：SOCKS+AuthN、HTTP+AuthN,
+      displayName: 代理配置服务}
+  Http Proxy Username:
+    en: {displayName: Http Proxy Username, description: Http Proxy Username}
+    zh: {description: Http代理用户名, displayName: Http代理用户名}
+  Hostname:
+    en: {displayName: Hostname, description: The fully-qualified hostname or IP address
+        of the host to fetch the data from}
+    zh: {description: 要从中提取数据的主机的完全限定主机名或IP地址, displayName: 主机名}
+  Create Directory:
+    en: {displayName: Create Directory, description: Used when 'Completion Strategy'
+        is 'Move File'. Specifies whether or not the remote directory should be created
+        if it does not exist.}
+    zh: {description: 当“完成策略”为“移动文件”时使用。指定如果远程目录不存在，是否应创建该目录。, displayName: 创建目录}
+  Use Compression:
+    en: {displayName: Use Compression, description: Indicates whether or not ZLIB
+        compression should be used when transferring files}
+    zh: {description: 指示传输文件时是否应使用ZLIB压缩, displayName: 使用压缩}
+  Proxy Type:
+    en: {displayName: Proxy Type, description: Proxy type used for file transfers}
+    zh: {description: 用于文件传输的代理类型, displayName: 代理类型}
+  Completion Strategy:
+    en: {displayName: Completion Strategy, description: 'Specifies what to do with
+        the original file on the server once it has been pulled into NiFi. If the
+        Completion Strategy fails, a warning will be logged but the data will still
+        be transferred.'}
+    zh: {description: 指定将原始文件拉入NiFi后，如何处理服务器上的原始文件。如果完成策略失败，将记录警告，但仍将传输数据。, displayName: 完成策略}
+  Connection Mode:
+    en: {displayName: Connection Mode, description: The FTP Connection Mode}
+    zh: {description: FTP连接模式, displayName: 连接模式}
+  Proxy Port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  fetchfiletransfer-notfound-loglevel:
+    en: {displayName: Log level when file not found, description: Log level to use
+        in case the file does not exist when the processor is triggered}
+    zh: {description: 触发处理器时文件不存在时使用的日志级别, displayName: 找不到文件时的日志级别}
+  Connection Timeout:
+    en: {displayName: Connection Timeout, description: Amount of time to wait before
+        timing out while creating a connection}
+    zh: {description: 创建连接时超时前等待的时间量, displayName: 连接超时}
+  ftp-use-utf8:
+    en: {displayName: Use UTF-8 Encoding, description: 'Tells the client to use UTF-8
+        encoding when processing files and filenames. If set to true, the server must
+        also support UTF-8 encoding.'}
+    zh: {description: 告诉客户端在处理文件和文件名时使用UTF-8编码。如果设置为true，则服务器还必须支持UTF-8编码。, displayName: 使用UTF-8编码}
+  Data Timeout:
+    en: {displayName: Data Timeout, description: 'When transferring a file between
+        the local and remote system, this value specifies how long is allowed to elapse
+        without any data being transferred between systems'}
+    zh: {description: 在本地和远程系统之间传输文件时，此值指定允许在系统之间传输任何数据的时间, displayName: 数据超时}
+  Transfer Mode:
+    en: {displayName: Transfer Mode, description: The FTP Transfer Mode}
+    zh: {description: FTP传输模式, displayName: 传输模式}
+  Username:
+    en: {displayName: Username, description: Username}
+    zh: {description: 用户名, displayName: 用户名}
+  Move Destination Directory:
+    en: {displayName: Move Destination Directory, description: 'The directory on the
+        remote server to move the original file to once it has been ingested into
+        NiFi. This property is ignored unless the Completion Strategy is set to ''Move
+        File''. The specified directory must already exist on the remote system if
+        ''Create Directory'' is disabled, or the rename will fail.'}
+    zh: {description: 将原始文件导入NiFi后，将其移动到远程服务器上的目录。除非“完成策略”设置为“移动文件”，否则将忽略此属性。如果禁用“创建目录”，则远程系统上必须已存在指定的目录，否则重命名将失败。,
+      displayName: 移动目标目录}
+  Internal Buffer Size:
+    en: {displayName: Internal Buffer Size, description: Set the internal buffer size
+        for buffered data streams}
+    zh: {description: 设置缓冲数据流的内部缓冲区大小, displayName: 内部缓冲区大小}
+  Password:
+    en: {displayName: Password, description: Password for the user account}
+    zh: {description: 用户帐户的密码, displayName: 暗语}
+writeAttributes:
+  path: {en: 'If the Remote File contains a directory name, that directory name will
+      be added to the FlowFile using the ''path'' attribute', zh: 如果远程文件包含目录名，则将使用“path”属性将该目录名添加到FlowFile中}
+  ftp.remote.host: {en: The hostname or IP address from which the file was pulled,
+    zh: 从中提取文件的主机名或IP地址}
+  filename: {en: The filename is updated to point to the filename fo the remote file,
+    zh: 更新文件名以指向远程文件的文件名}
+  ftp.remote.filename: {en: The name of the remote file that was pulled, zh: 提取的远程文件的名称}
+  ftp.remote.port: {en: The port that was used to communicate with the remote FTP
+      server, zh: 用于与远程FTP服务器通信的端口}
+tags:
+  en: [ftp, get, retrieve, files, fetch, remote, ingest, source, input]
+  zh: [ftp协议, 收到, 检索, 文件夹, 取来, 遥远的, 摄入, 来源, 输入]

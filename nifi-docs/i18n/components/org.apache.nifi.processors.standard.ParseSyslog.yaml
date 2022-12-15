@@ -1,0 +1,31 @@
+relationships:
+  success: {en: Any FlowFile that is successfully parsed as a Syslog message will
+      be to this Relationship., zh: 成功解析为Syslog消息的任何FlowFile都将属于此关系。}
+  failure: {en: Any FlowFile that could not be parsed as a Syslog message will be
+      transferred to this Relationship without any attributes being added, zh: 无法解析为Syslog消息的任何FlowFile都将传输到此关系，而不添加任何属性}
+capabilityDescription: {en: 'Attempts to parses the contents of a Syslog message in
+    accordance to RFC5424 and RFC3164 formats and adds attributes to the FlowFile
+    for each of the parts of the Syslog message.Note: Be mindfull that RFC3164 is
+    informational and a wide range of different implementations are present in the
+    wild. If messages fail parsing, considering using RFC5424 or using a generic parsing
+    processors such as ExtractGrok.', zh: 尝试根据RFC5424和RFC3164格式解析Syslog消息的内容，并将Syslog消息每个部分的属性添加到FlowFile中。注意：请注意，RFC3164是信息性的，并且有大量不同的实现。如果消息解析失败，请考虑使用RFC5424或使用诸如ExtractGrok之类的通用解析处理器。}
+properties:
+  Character Set:
+    en: {displayName: Character Set, description: Specifies which character set of
+        the Syslog messages}
+    zh: {description: 指定Syslog消息的字符集, displayName: 字符集}
+writeAttributes:
+  syslog.sender: {en: The hostname of the Syslog server that sent the message., zh: 发送消息的Syslog服务器的主机名。}
+  syslog.severity: {en: The severity of the Syslog message derived from the priority.,
+    zh: 从优先级派生的Syslog消息的严重性。}
+  syslog.version: {en: The optional version from the Syslog message., zh: Syslog消息中的可选版本。}
+  syslog.timestamp: {en: The timestamp of the Syslog message., zh: Syslog消息的时间戳。}
+  syslog.body: {en: 'The body of the Syslog message, everything after the hostname.',
+    zh: Syslog消息的正文，主机名之后的所有内容。}
+  syslog.priority: {en: The priority of the Syslog message., zh: Syslog消息的优先级。}
+  syslog.facility: {en: The facility of the Syslog message derived from the priority.,
+    zh: 从优先级派生的Syslog消息的功能。}
+  syslog.hostname: {en: The hostname or IP address of the Syslog message., zh: Syslog消息的主机名或IP地址。}
+tags:
+  en: [logs, syslog, attributes, system, event, message]
+  zh: [日志, 系统日志, 属性, 系统, 事件, 消息]

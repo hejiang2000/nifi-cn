@@ -1,0 +1,158 @@
+relationships:
+  output: {en: Any FlowFiles that are transferred to an Output Port in the configured
+      dataflow will be routed to this Relationship, zh: 在配置的数据流中传输到输出端口的任何流文件都将路由到此关系}
+  original: {en: 'For any incoming FlowFile that is successfully processed, the original
+      incoming FlowFile will be transferred to this Relationship', zh: 对于任何成功处理的传入FlowFile，原始传入FlowFile将被传输到此关系}
+  failure: {en: 'If the dataflow fails to process an incoming FlowFile, that FlowFile
+      will be routed to this relationship', zh: 如果数据流无法处理传入的FlowFile，则该FlowFile将被路由到此关系}
+  timeout: {en: 'If the dataflow fails to complete in the configured amount of time,
+      any incoming FlowFile will be routed to this relationship', zh: 如果数据流未能在配置的时间内完成，则任何传入的FlowFile都将路由到此关系}
+dynamicProperties:
+  Any Parameter name:
+    en: {description: 'Any dynamic property that is added will be provided to the
+        stateless flow as a Parameter. The name of the property will be the name of
+        the Parameter, and the value of the property will be the value of the Parameter.
+        Because Parameter values may or may not be sensitive, all dynamic properties
+        will be considered sensitive in order to protect their integrity.', value: Any
+        value}
+    zh: {description: 添加的任何动态属性都将作为参数提供给无状态流。属性的名称将是参数的名称，属性的值将是参数值。因为参数值可能敏感，也可能不敏感，所以为了保护其完整性，所有动态属性都将被视为敏感。,
+      value: 任何值}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.,
+    An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.,
+    An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.,
+    An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。, 此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。,
+    此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。, 此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Runs the configured dataflow using the Stateless NiFi
+    engine. Please see documentation in order to understand the differences between
+    the traditional NiFi runtime engine and the Stateless NiFi engine. If the Processor
+    is configured with an incoming connection, the incoming FlowFiles will be queued
+    up into the specified Input Port in the dataflow. Data that is transferred out
+    of the flow via an Output Port will be sent to the ''output'' relationship, and
+    an attribute will be added to indicate which Port that FlowFile was transferred
+    to. See Additional Details for more information.', zh: 使用无状态NiFi引擎运行配置的数据流。请参阅文档以了解传统NiFi运行时引擎和无状态NiFi引擎之间的差异。如果处理器配置了传入连接，传入的FlowFiles将排队到数据流中指定的输入端口。通过输出端口传输出流的数据将被发送到“输出”关系，并且将添加一个属性以指示FlowFile传输到哪个端口。有关详细信息，请参阅其他详细信息。}
+properties:
+  Max Ingest FlowFiles:
+    en: {displayName: Max Ingest FlowFiles, description: 'During the course of a stateless
+        dataflow, some processors may require more data than they have available in
+        order to proceed. For example, MergeContent may require a minimum number of
+        FlowFiles before it can proceed. In this case, the dataflow may bring in additional
+        data from its source Processor. However, this data may all be held in memory,
+        so this property provides a mechanism for limiting the maximum number of FlowFiles
+        that the source Processor can ingest before it will no longer be triggered
+        to ingest additional data.'}
+    zh: {description: 在无状态数据流的过程中，一些处理器可能需要比可用数据更多的数据才能继续。例如，MergeContent可能需要最少数量的FlowFiles才能继续。在这种情况下，数据流可能会从其源处理器带来额外的数据。但是，这些数据可能都保存在内存中，因此该属性提供了一种机制，用于限制源处理器在不再被触发接收其他数据之前可以接收的最大FlowFiles数量。,
+      displayName: 最大摄入流量文件}
+  Registry Bucket:
+    en: {displayName: Registry Bucket, description: The name of the Bucket in the
+        NiFi Registry that the flow should retrieved from}
+    zh: {description: NiFi注册表中应从中检索流的Bucket的名称, displayName: 注册表存储桶}
+  NAR Directory:
+    en: {displayName: NAR Directory, description: The directory to retrieve NAR's
+        from}
+    zh: {description: 从中检索NAR的目录, displayName: NAR目录}
+  Dataflow Timeout:
+    en: {displayName: Dataflow Timeout, description: 'If the flow does not complete
+        within this amount of time, the incoming FlowFile, if any, will be routed
+        to the timeout relationship,the dataflow will be cancelled, and the invocation
+        will end.'}
+    zh: {description: 如果流没有在这段时间内完成，则传入的FlowFile（如果有）将被路由到超时关系，数据流将被取消，调用将结束。, displayName: 数据流超时}
+  Input Port:
+    en: {displayName: Input Port, description: Specifies the name of the Input Port
+        to send incoming FlowFiles to. This property is required if this processor
+        has any incoming connections.}
+    zh: {description: 指定要将传入FlowFiles发送到的输入端口的名称。如果此处理器有任何传入连接，则需要此属性。, displayName: 输入端口}
+  Stateless SSL Context Service:
+    en: {displayName: Stateless SSL Context Service, description: The SSL Context
+        to use as the Stateless System SSL Context}
+    zh: {description: 用作无状态系统SSL上下文的SSL上下文, displayName: 无状态SSL上下文服务}
+  Content Storage Strategy:
+    en: {displayName: Content Storage Strategy, description: Specifies where the content
+        of FlowFiles that the Stateless dataflow is operating on should be stored.
+        Note that the data is always considered temporary and may be deleted at any
+        time. It is not intended to be persisted across restarted.}
+    zh: {description: 指定无状态数据流正在运行的FlowFiles的内容应存储在何处。请注意，数据始终被视为临时数据，可能随时被删除。它不打算在重新启动时持久化。,
+      displayName: 内容存储战略}
+  Flow Version:
+    en: {displayName: Flow Version, description: 'The version of the flow in the NiFi
+        Registry that should be retrieved. If not specified, the latest version will
+        always be used.'}
+    zh: {description: NiFi注册表中应检索的流的版本。如果未指定，将始终使用最新版本。, displayName: 流程版本}
+  Max Ingest Data Size:
+    en: {displayName: Max Ingest Data Size, description: 'During the course of a stateless
+        dataflow, some processors may require more data than they have available in
+        order to proceed. For example, MergeContent may require a minimum number of
+        FlowFiles before it can proceed. In this case, the dataflow may bring in additional
+        data from its source Processor. However, this data may all be held in memory,
+        so this property provides a mechanism for limiting the maximum amount of data
+        that the source Processor can ingest before it will no longer be triggered
+        to ingest additional data.'}
+    zh: {description: 在无状态数据流的过程中，一些处理器可能需要比可用数据更多的数据才能继续。例如，MergeContent可能需要最少数量的FlowFiles才能继续。在这种情况下，数据流可能会从其源处理器带来额外的数据。然而，这些数据可能都保存在内存中，因此该属性提供了一种机制，用于限制源处理器在不再被触发接收额外数据之前可以接收的最大数据量。,
+      displayName: 最大摄取数据大小}
+  Krb5 Conf File:
+    en: {displayName: Krb5 Conf File, description: The KRB5 Conf file to use for configuring
+        components that rely on Kerberos}
+    zh: {description: 用于配置依赖Kerberos的组件的KRB5 Conf文件, displayName: Krb5 Conf文件}
+  Registry URL:
+    en: {displayName: Registry URL, description: The URL of the NiFi Registry to retrieve
+        the flow from}
+    zh: {description: 要从中检索流的NiFi注册表的URL, displayName: 注册表URL}
+  Max Input FlowFile Size:
+    en: {displayName: Max Input FlowFile Size, description: 'This Processor is configured
+        to load all incoming FlowFiles into memory. Because of that, it is important
+        to limit the maximum size of any incoming FlowFile that would get loaded into
+        memory, in order to prevent Out Of Memory Errors and excessive Garbage Collection.
+        Any FlowFile whose content size is greater than the configured size will be
+        routed to failure and not sent to the Stateless Engine.'}
+    zh: {description: 此处理器配置为将所有传入的FlowFiles加载到内存中。因此，必须限制将加载到内存中的任何传入FlowFile的最大大小，以防止内存不足错误和过度垃圾收集。任何内容大小大于配置大小的FlowFile都将被路由到失败，而不会发送到无状态引擎。,
+      displayName: 最大输入流文件大小}
+  Status Task Interval:
+    en: {displayName: Status Task Interval, description: 'The Stateless engine periodically
+        logs the status of the dataflow''s processors.  This property allows the interval
+        to be changed, or the status logging to be skipped altogether if the property
+        is not set.'}
+    zh: {description: 无状态引擎定期记录数据流处理器的状态。如果未设置该属性，则该属性允许更改间隔，或完全跳过状态日志记录。, displayName: 状态任务间隔}
+  Dataflow Specification Strategy:
+    en: {displayName: Dataflow Specification Strategy, description: Specifies how
+        the Processor should obtain a copy of the dataflow that it is to run}
+    zh: {description: 指定处理器应如何获取要运行的数据流的副本, displayName: 数据流规范策略}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: Specifies how long to wait
+        before timing out when attempting to communicate with NiFi Registry}
+    zh: {description: 指定尝试与NiFi注册表通信时超时前等待的时间, displayName: 通信超时}
+  Failure Ports:
+    en: {displayName: Failure Ports, description: 'A comma-separated list of the names
+        of Output Ports that exist at the root level of the dataflow. If any FlowFile
+        is routed to one of the Ports whose name is listed here, the dataflow will
+        be considered a failure, and the incoming FlowFile (if any) will be routed
+        to ''failure''. If not specified, all Output Ports will be considered successful.'}
+    zh: {description: 数据流根级别上存在的输出端口名称的逗号分隔列表。如果任何FlowFile被路由到此处列出的端口之一，则数据流将被视为失败，并且传入的FlowFile（如果有）将被路由到“失败”。如果未指定，则所有输出端口将被视为成功。,
+      displayName: 故障端口}
+  Dataflow File:
+    en: {displayName: Dataflow File/URL, description: The filename or URL that specifies
+        the dataflow that is to be run}
+    zh: {description: 指定要运行的数据流的文件名或URL, displayName: 数据流文件/URL}
+  Flow Name:
+    en: {displayName: Flow Name, description: The name of the flow in the NiFi Registry}
+    zh: {description: NiFi注册表中流的名称, displayName: 流程名称}
+  Work Directory:
+    en: {displayName: Work Directory, description: 'A directory that can be used to
+        create temporary files, such as expanding NAR files, temporary FlowFile content,
+        caching the dataflow, etc.'}
+    zh: {description: 可用于创建临时文件的目录，如扩展NAR文件、临时FlowFile内容、缓存数据流等。, displayName: 工作目录}
+  Registry SSL Context Service:
+    en: {displayName: Registry SSL Context Service, description: The SSL Context Service
+        to use for interacting with the NiFi Registry}
+    zh: {description: 用于与NiFi注册表交互的SSL上下文服务, displayName: 注册表SSL上下文服务}
+writeAttributes:
+  failure.port.name: {en: 'If one or more FlowFiles is routed to one of the Output
+      Ports that is configured as a Failure Port, the input FlowFile (if any) will
+      have this attribute added to it, indicating the name of the Port that caused
+      the dataflow to be considered a failure.', zh: 如果一个或多个FlowFile被路由到配置为故障端口的一个输出端口，则输入FlowFile（如果有）将添加此属性，指示导致数据流被视为故障的端口的名称。}
+  output.port.name: {en: The name of the Output Port that the FlowFile was transferred
+      to, zh: FlowFile传输到的输出端口的名称}

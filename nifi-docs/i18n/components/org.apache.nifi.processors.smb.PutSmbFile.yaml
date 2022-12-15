@@ -1,0 +1,66 @@
+relationships:
+  success: {en: Files that have been successfully written to the output network path
+      are transferred to this relationship, zh: 已成功写入输出网络路径的文件将传输到此关系}
+  failure: {en: Files that could not be written to the output network path for some
+      reason are transferred to this relationship, zh: 由于某种原因无法写入输出网络路径的文件将传输到此关系}
+capabilityDescription: {en: 'Writes the contents of a FlowFile to a samba network
+    location. Use this processor instead of a cifs mounts if share access control
+    is important.Configure the Hostname, Share and Directory accordingly: \\[Hostname]\[Share]\[path\to\Directory]',
+  zh: '将FlowFile的内容写入samba网络位置。如果共享访问控制很重要，请使用此处理器而不是cifs装载。相应地配置主机名、共享和目录：\\[Hostname]\[Share]\[path\to\Directory]'}
+readAttributes:
+  filename: {en: The filename to use when writing the FlowFile to the network folder.,
+    zh: 将FlowFile写入网络文件夹时使用的文件名。}
+properties:
+  Temporary Suffix:
+    en: {displayName: Temporary Suffix, description: 'A temporary suffix which will
+        be apended to the filename while it''s transfering. After the transfer is
+        complete, the suffix will be removed.'}
+    zh: {description: 一个临时后缀，当文件名传输时，它将附加在文件名后面。传输完成后，后缀将被删除。, displayName: 临时后缀}
+  Username:
+    en: {displayName: Username, description: The username used for authentication.
+        If no username is set then anonymous authentication is attempted.}
+    zh: {description: 用于身份验证的用户名。如果未设置用户名，则尝试匿名身份验证。, displayName: 用户名}
+  Share Access Strategy:
+    en: {displayName: Share Access Strategy, description: 'Indicates which shared
+        access are granted on the file during the write. None is the most restrictive,
+        but the safest setting to prevent corruption.'}
+    zh: {description: 指示在写入期间授予文件的共享访问权限。没有一项是最严格的，但却是防止腐败的最安全的设置。, displayName: 共享访问策略}
+  Batch Size:
+    en: {displayName: Batch Size, description: The maximum number of files to put
+        in each iteration}
+    zh: {description: 每次迭代中要放入的最大文件数, displayName: 批量大小}
+  Hostname:
+    en: {displayName: Hostname, description: The network host to which files should
+        be written.}
+    zh: {description: 文件应写入的网络主机。, displayName: 主机名}
+  Create Missing Directories:
+    en: {displayName: Create Missing Directories, description: 'If true, then missing
+        destination directories will be created. If false, flowfiles are penalized
+        and sent to failure.'}
+    zh: {description: 如果为true，则将创建丢失的目标目录。如果为false，则流文件将受到惩罚并发送失败。, displayName: 创建缺少的目录}
+  Domain:
+    en: {displayName: Domain, description: 'The domain used for authentication. Optional,
+        in most cases username and password is sufficient.'}
+    zh: {description: 用于身份验证的域。可选，在大多数情况下，用户名和密码就足够了。, displayName: 领域}
+  Share:
+    en: {displayName: Share, description: 'The network share to which files should
+        be written. This is the "first folder"after the hostname: \\hostname\[share]\dir1\dir2'}
+    zh: {description: '文件应写入的网络共享。这是主机名之后的“第一个文件夹”：\\hostname\[share]\dir1\dir2',
+      displayName: 共有}
+  Directory:
+    en: {displayName: Directory, description: 'The network folder to which files should
+        be written. This is the remaining relative path after the share: \\hostname\share\[dir1\dir2].
+        You may use expression language.'}
+    zh: {description: '文件应写入的网络文件夹。这是共享之后的剩余相对路径：\\hostname\share\[dir1\dir2]。您可以使用表达式语言。',
+      displayName: 目录}
+  Password:
+    en: {displayName: Password, description: The password used for authentication.
+        Required if Username is set.}
+    zh: {description: 用于身份验证的密码。如果设置了用户名，则为必填项。, displayName: 暗语}
+  Conflict Resolution Strategy:
+    en: {displayName: Conflict Resolution Strategy, description: Indicates what should
+        happen when a file with the same name already exists in the output directory}
+    zh: {description: 指示当输出目录中已存在同名文件时应执行的操作, displayName: 冲突解决策略}
+tags:
+  en: ['samba, smb, cifs, files, put']
+  zh: [samba、smb、cifs、文件、put]

@@ -1,0 +1,42 @@
+relationships:
+  success: {en: All messages that are the are successfully received from Email server
+      and converted to FlowFiles are routed to this relationship, zh: 从电子邮件服务器成功接收并转换为FlowFiles的所有邮件都将路由到此关系}
+capabilityDescription: {en: Consumes messages from Email Server using POP3 protocol.
+    The raw-bytes of each received email message are written as contents of the FlowFile,
+  zh: 使用POP3协议使用来自电子邮件服务器的邮件。每个接收到的电子邮件的原始字节被写入FlowFile的内容}
+properties:
+  delete.messages:
+    en: {displayName: Delete Messages, description: Specify whether mail messages
+        should be deleted after retrieval.}
+    zh: {description: 指定检索后是否应删除邮件。, displayName: 删除邮件}
+  password:
+    en: {displayName: Password, description: Password used for authentication and
+        authorization with Email server.}
+    zh: {description: 用于与电子邮件服务器进行身份验证和授权的密码。, displayName: 暗语}
+  folder:
+    en: {displayName: Folder, description: 'Email folder to retrieve messages from
+        (e.g., INBOX)'}
+    zh: {description: 从中检索邮件的电子邮件文件夹（例如，INBOX）, displayName: 文件夹}
+  port:
+    en: {displayName: Port, description: 'Numeric value identifying Port of Email
+        server (e.g., 993)'}
+    zh: {description: 标识电子邮件服务器端口的数字值（例如993）, displayName: 港口城市}
+  connection.timeout:
+    en: {displayName: Connection timeout, description: The amount of time to wait
+        to connect to Email server}
+    zh: {description: 等待连接到电子邮件服务器的时间, displayName: 连接超时}
+  host:
+    en: {displayName: Host Name, description: 'Network address of Email server (e.g.,
+        pop.gmail.com, imap.gmail.com . . .)'}
+    zh: {description: 电子邮件服务器的网络地址（例如pop.gmail.com、imap.gmail.com…）, displayName: 主机名}
+  user:
+    en: {displayName: User Name, description: User Name used for authentication and
+        authorization with Email server.}
+    zh: {description: 用于与电子邮件服务器进行身份验证和授权的用户名。, displayName: 用户名}
+  fetch.size:
+    en: {displayName: Fetch Size, description: Specify the maximum number of Messages
+        to fetch per call to Email Server.}
+    zh: {description: 指定每次调用电子邮件服务器时获取的最大邮件数。, displayName: 提取大小}
+tags:
+  en: [Email, POP3, Get, Ingest, Ingress, Message, Consume]
+  zh: [电子邮件, 流行3, 收到, 摄入, 进入, 消息, 消费]

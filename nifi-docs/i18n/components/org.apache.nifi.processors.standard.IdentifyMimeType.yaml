@@ -1,0 +1,33 @@
+relationships:
+  success: {en: All FlowFiles are routed to success, zh: 所有FlowFiles都被路由成功}
+capabilityDescription: {en: 'Attempts to identify the MIME Type used for a FlowFile.
+    If the MIME Type can be identified, an attribute with the name ''mime.type'' is
+    added with the value being the MIME Type. If the MIME Type cannot be determined,
+    the value will be set to ''application/octet-stream''. In addition, the attribute
+    mime.extension will be set if a common file extension for the MIME Type is known.
+    If both Config File and Config Body are not set, the default NiFi MIME Types will
+    be used.', zh: 尝试标识用于FlowFile的MIME类型。如果可以标识MIME类型，则使用名为“MIME”的属性。type”，值为MIME类型。如果无法确定MIME类型，则该值将设置为“application/octet
+    stream”。此外，属性mime。如果MIME类型的通用文件扩展名已知，则将设置扩展名。如果未设置配置文件和配置正文，则将使用默认的NiFi MIME类型。}
+properties:
+  config-file:
+    en: {displayName: Config File, description: Path to MIME type config file. Only
+        one of Config File or Config Body may be used.}
+    zh: {description: MIME类型配置文件的路径。只能使用配置文件或配置正文中的一个。, displayName: 配置文件}
+  use-filename-in-detection:
+    en: {displayName: Use Filename In Detection, description: If true will pass the
+        filename to Tika to aid in detection.}
+    zh: {description: 如果为true，则将文件名传递给Tika以帮助检测。, displayName: 在检测中使用文件名}
+  config-body:
+    en: {displayName: Config Body, description: Body of MIME type config file. Only
+        one of Config File or Config Body may be used.}
+    zh: {description: MIME类型配置文件的正文。只能使用配置文件或配置正文中的一个。, displayName: 配置正文}
+writeAttributes:
+  mime.type: {en: 'This Processor sets the FlowFile''s mime.type attribute to the
+      detected MIME Type. If unable to detect the MIME Type, the attribute''s value
+      will be set to application/octet-stream', zh: 此处理器设置FlowFile的mime。type属性设置为检测到的MIME类型。如果无法检测MIME类型，则属性的值将设置为application/octet流}
+  mime.extension: {en: 'This Processor sets the FlowFile''s mime.extension attribute
+      to the file extension associated with the detected MIME Type. If there is no
+      correlated extension, the attribute''s value will be empty', zh: 此处理器设置FlowFile的mime。extension属性设置为与检测到的MIME类型关联的文件扩展名。如果没有相关的扩展，则属性的值将为空}
+tags:
+  en: [compression, gzip, bzip2, zip, MIME, mime.type, file, identify]
+  zh: [压缩, gzip语言, bzip2, 拉链, 默剧, 模拟类型, 文件, 识别]

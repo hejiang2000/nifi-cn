@@ -1,0 +1,94 @@
+relationships:
+  success: {en: Files that are successfully send will be transferred to success, zh: 成功发送的文件将传输成功}
+  failure: {en: Files that fail to send will transferred to failure, zh: 无法发送的文件将传输到失败}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+capabilityDescription: {en: Please be aware this processor is deprecated and may be
+    removed in the near future. Use InvokeHTTP instead. Performs an HTTP Post with
+    the content of the FlowFile. Uses a connection pool with max number of connections
+    equal to the number of possible endpoints multiplied by the Concurrent Tasks configuration.,
+  zh: 请注意，此处理器已弃用，可能会在不久的将来被删除。请改用InvokeHTTP。使用FlowFile的内容执行HTTP Post。使用最大连接数等于可能端点数乘以并发任务配置的连接池。}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  Max Data to Post per Second:
+    en: {displayName: Max Data to Post per Second, description: 'The maximum amount
+        of data to send per second; this allows the bandwidth to be throttled to a
+        specified data rate; if not specified, the data rate is not throttled'}
+    zh: {description: 每秒发送的最大数据量；这允许带宽被限制到指定的数据速率；如果未指定，则不限制数据速率, displayName: 每秒要发布的最大数据}
+  Max Batch Size:
+    en: {displayName: Max Batch Size, description: 'If the Send as FlowFile property
+        is true, specifies the max data size for a batch of FlowFiles to send in a
+        single HTTP POST. If not specified, each FlowFile will be sent separately.
+        If the Send as FlowFile property is false, this property is ignored'}
+    zh: {description: 如果Send as FlowFile属性为true，则指定要在单个HTTP POST中发送的一批FlowFile的最大数据大小。如果未指定，将单独发送每个FlowFile。如果Send
+        as FlowFile属性为false，则忽略此属性, displayName: 最大批量大小}
+  Compression Level:
+    en: {displayName: Compression Level, description: Determines the GZIP Compression
+        Level to use when sending the file; the value must be in the range of 0-9.
+        A value of 0 indicates that the file will not be GZIP'ed}
+    zh: {description: 确定发送文件时要使用的GZIP压缩级别；该值必须在0-9的范围内。值0表示该文件不会被GZIP'ed, displayName: 压缩级别}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Send as FlowFile:
+    en: {displayName: Send as FlowFile, description: 'If true, will package the FlowFile''s
+        contents and attributes together and send the FlowFile Package; otherwise,
+        will send only the FlowFile''s content'}
+    zh: {description: 如果为true，将将FlowFile的内容和属性打包在一起并发送FlowFile包；否则，将仅发送FlowFile的内容,
+      displayName: 作为FlowFile发送}
+  User Agent:
+    en: {displayName: User Agent, description: What to report as the User Agent when
+        we connect to the remote server}
+    zh: {description: 当我们连接到远程服务器时，作为用户代理报告什么, displayName: 用户代理}
+  Proxy Port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  URL:
+    en: {displayName: URL, description: 'The URL to POST to. The URL may be defined
+        using the Attribute Expression Language. A separate connection pool will be
+        created for each unique host:port combination.'}
+    zh: {description: POST的URL。URL可以使用属性表达式语言定义。将为每个唯一的主机：端口组合创建单独的连接池。, displayName: 统一资源定位地址}
+  Connection Timeout:
+    en: {displayName: Connection Timeout, description: How long to wait when attempting
+        to connect to the remote server before giving up}
+    zh: {description: 尝试连接到远程服务器时要等待多长时间才能放弃, displayName: 连接超时}
+  Data Timeout:
+    en: {displayName: Data Timeout, description: How long to wait between receiving
+        segments of data from the remote server before giving up and discarding the
+        partial file}
+    zh: {description: 在放弃和丢弃部分文件之前，从远程服务器接收数据段之间要等待多长时间, displayName: 数据超时}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The Controller Service to
+        use in order to obtain an SSL Context}
+    zh: {description: 用于获取SSL上下文的控制器服务, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username required to access the URL}
+    zh: {description: 访问URL所需的用户名, displayName: 用户名}
+  Use Chunked Encoding:
+    en: {displayName: Use Chunked Encoding, description: Specifies whether or not
+        to use Chunked Encoding to send the data. This property is ignored in the
+        event the contents are compressed or sent as FlowFiles.}
+    zh: {description: 指定是否使用分块编码发送数据。如果内容被压缩或作为FlowFiles发送，则忽略此属性。, displayName: 使用分块编码}
+  Password:
+    en: {displayName: Password, description: Password required to access the URL}
+    zh: {description: 访问URL所需的密码, displayName: 暗语}
+  Attributes to Send as HTTP Headers (Regex):
+    en: {displayName: Attributes to Send as HTTP Headers (Regex), description: Specifies
+        the Regular Expression that determines the names of FlowFile attributes that
+        should be sent as HTTP Headers}
+    zh: {description: 指定用于确定应作为HTTP头发送的FlowFile属性的名称的正则表达式, displayName: 要作为HTTP头发送的属性（Regex）}
+  Content-Type:
+    en: {displayName: Content-Type, description: 'The Content-Type to specify for
+        the content of the FlowFile being POSTed if Send as FlowFile is false. In
+        the case of an empty value after evaluating an expression language expression,
+        Content-Type defaults to application/octet-stream'}
+    zh: {description: 如果“作为FlowFile发送”为false，则为要发布的FlowFile的内容指定的内容类型。在计算表达式语言表达式后为空值的情况下，内容类型默认为应用程序/八位字节流,
+      displayName: 内容类型}
+tags:
+  en: [http, https, remote, copy, archive]
+  zh: [http, https, 遥远的, 复制, 档案文件]

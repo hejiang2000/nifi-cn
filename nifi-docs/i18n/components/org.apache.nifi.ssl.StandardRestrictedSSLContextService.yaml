@@ -1,0 +1,42 @@
+capabilityDescription: {en: 'Restricted implementation of the SSLContextService. Provides
+    the ability to configure keystore and/or truststore properties once and reuse
+    that configuration throughout the application, but only allows a restricted set
+    of TLS/SSL protocols to be chosen (no SSL protocols are supported). The set of
+    protocols selectable will evolve over time as new protocols emerge and older protocols
+    are deprecated. This service is recommended over StandardSSLContextService if
+    a component doesn''t expect to communicate with legacy systems since it is unlikely
+    that legacy systems will support these protocols.', zh: SSLContext服务的受限实现。提供一次配置密钥库和/或信任库属性并在整个应用程序中重用该配置的能力，但只允许选择一组受限制的TLS/SSL协议（不支持SSL协议）。随着新协议的出现和旧协议的弃用，可选择的协议集将随着时间的推移而演变。如果组件不希望与传统系统通信，则建议在StandardSSLContext
+    service上使用此服务，因为传统系统不太可能支持这些协议。}
+properties:
+  Truststore Type:
+    en: {displayName: Truststore Type, description: The Type of the Truststore}
+    zh: {description: 信任库的类型, displayName: 信任存储类型}
+  SSL Protocol:
+    en: {displayName: TLS Protocol, description: TLS Protocol Version for encrypted
+        connections. Supported versions depend on the specific version of Java used.}
+    zh: {description: 加密连接的TLS协议版本。支持的版本取决于所使用的Java的特定版本。, displayName: TLS协议}
+  Keystore Type:
+    en: {displayName: Keystore Type, description: The Type of the Keystore}
+    zh: {description: 密钥库的类型, displayName: 密钥存储类型}
+  Truststore Filename:
+    en: {displayName: Truststore Filename, description: The fully-qualified filename
+        of the Truststore}
+    zh: {description: Truststore的完全限定文件名, displayName: 信任存储文件名}
+  Keystore Password:
+    en: {displayName: Keystore Password, description: The password for the Keystore}
+    zh: {description: Keystore的密码, displayName: 密钥存储密码}
+  key-password:
+    en: {displayName: Key Password, description: 'The password for the key. If this
+        is not specified, but the Keystore Filename, Password, and Type are specified,
+        then the Keystore Password will be assumed to be the same as the Key Password.'}
+    zh: {description: 密钥的密码。如果未指定，但指定了Keystore文件名、密码和类型，则假定Keystore密码与密钥密码相同。, displayName: 密钥密码}
+  Truststore Password:
+    en: {displayName: Truststore Password, description: The password for the Truststore}
+    zh: {description: Truststore的密码, displayName: 信任存储密码}
+  Keystore Filename:
+    en: {displayName: Keystore Filename, description: The fully-qualified filename
+        of the Keystore}
+    zh: {description: Keystore的完全限定文件名, displayName: Keystore文件名}
+tags:
+  en: [tls, ssl, secure, certificate, keystore, truststore, jks, p12, pkcs12, pkcs]
+  zh: [tls公司, 安全套接字层, 保护, 证明书, 密钥库, 信任库, jks公司, 第12页, pkcs12, pkcs公司]

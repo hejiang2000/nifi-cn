@@ -1,0 +1,15 @@
+capabilityDescription: {en: 'Provides a mechanism for reading RFC 5424 compliant Syslog
+    data, such as log files, and structuring the data so that it can be processed.',
+  zh: 提供一种机制，用于读取符合RFC 5424的Syslog数据（如日志文件），并对数据进行结构化，以便进行处理。}
+properties:
+  Character Set:
+    en: {displayName: Character Set, description: Specifies which character set of
+        the Syslog messages}
+    zh: {description: 指定Syslog消息的字符集, displayName: 字符集}
+  syslog-5424-reader-raw-message:
+    en: {displayName: Raw message, description: 'If true, the record will have a _raw
+        field containing the raw message'}
+    zh: {description: 如果为true，则记录将具有包含原始消息的_raw字段, displayName: 原始消息}
+tags:
+  en: [syslog 5424, syslog, logs, logfiles, parse, text, record, reader]
+  zh: [系统日志5424, 系统日志, 日志, 日志文件, 作语法分析, 文本, 记录, 读者]

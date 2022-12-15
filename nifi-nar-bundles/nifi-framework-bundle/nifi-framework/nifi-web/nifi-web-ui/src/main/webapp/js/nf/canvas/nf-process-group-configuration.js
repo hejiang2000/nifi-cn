@@ -130,8 +130,8 @@
 
             // show the result dialog
             nfDialog.showOkDialog({
-                headerText: 'Process Group Configuration',
-                dialogContent: 'Process group configuration successfully saved.'
+                headerText: '处理组配置',
+                dialogContent: '处理组配置已保存.'
             });
 
             // update the click listener for the updated revision
@@ -172,11 +172,11 @@
      */
     var loadConfiguration = function (groupId) {
         var setUnauthorizedText = function () {
-            $('#read-only-process-group-name').text('Unauthorized');
-            $('#read-only-process-group-comments').text('Unauthorized');
-            $('#read-only-process-group-default-flowfile-expiration').text('Unauthorized');
-            $('#read-only-process-group-default-back-pressure-object-threshold').text('Unauthorized');
-            $('#read-only-process-group-default-back-pressure-data-size-threshold').text('Unauthorized');
+            $('#read-only-process-group-name').text('未授权');
+            $('#read-only-process-group-comments').text('未授权');
+            $('#read-only-process-group-default-flowfile-expiration').text('未授权');
+            $('#read-only-process-group-default-back-pressure-object-threshold').text('未授权');
+            $('#read-only-process-group-default-back-pressure-data-size-threshold').text('未授权');
         };
 
         var setEditable = function (editable) {
@@ -202,7 +202,7 @@
         // update the new controller service click listener
         $('#add-process-group-configuration-controller-service').off('click').on('click', function () {
             var selectedTab = $('#process-group-configuration-tabs li.selected-tab').text();
-            if (selectedTab === 'Controller Services') {
+            if (selectedTab === '控制器服务') {
                 var controllerServicesUri = config.urls.api + '/process-groups/' + encodeURIComponent(groupId) + '/controller-services';
                 nfControllerServices.promptNewControllerService(controllerServicesUri, getControllerServicesTable());
             }
@@ -229,21 +229,21 @@
                     $('#process-group-comments').removeClass('unset').val(processGroup.comments);
                     $('#process-group-flowfile-concurrency-combo').removeClass('unset').combo({
                         options: [{
-                                text: 'Single FlowFile Per Node',
+                                text: '每节点一个 FlowFile',
                                 value: 'SINGLE_FLOWFILE_PER_NODE',
-                                description: 'Only a single FlowFile is to be allowed to enter the Process Group at a time on each node in the cluster. While that FlowFile may be split into many or '
-                                    + 'spawn many children, no additional FlowFiles will be allowed to enter the Process Group through a Local Input Port until the previous FlowFile '
-                                    + '- and all of its child/descendent FlowFiles - have been processed.'
+                                description: '集群每个节点同一时间只允许一个 FlowFile 进入. 如果该 FlowFile 被切分成多个子 FlowFile '
+                                    + '或派生出多个子 FlowFile, 这些 FlowFile 不能够通过本地输入端口进入处理组, 必须等到前一个 FlowFile, '
+                                    + '以及它的派生 FlowFile 全部被处理完成为止.'
                             }, {
-                                text: 'Single Batch Per Node',
+                                text: '每节点一批 FlowFile',
                                 value: "SINGLE_BATCH_PER_NODE",
-                                description: 'When an Input Port pulls a FlowFile into the Process Group, FlowFiles will continue to be ingested into the Process Group until all input queues '
-                                    + 'have been emptied. At that point, no additional FlowFiles will be allowed to enter the Process Group through a Local Input Port until the entire batch '
-                                    + 'of FlowFiles has been processed.'
+                                description: '当一个输入端口把一个 FlowFile 拖进一个处理组时, 其他 FlowFile 会被持续拖入处理组, 直到输入队列'
+                                    + '被拖空为止. 在这些被拖入的 FlowFile 全部被处理完成前, 没有 FlowFile 会通过本地输入端口'
+                                    + '进入处理组.'
                             },{
-                                text: 'Unbounded',
+                                text: '无限制',
                                 value: 'UNBOUNDED',
-                                description: 'The number of FlowFiles that can be processed concurrently is unbounded.'
+                                description: '能够被并行处理的  FlowFile 数量没有限制.'
                             }],
                         selectedOption: {
                             value: processGroup.flowfileConcurrency
@@ -252,16 +252,16 @@
 
                     $('#process-group-outbound-policy-combo').removeClass('unset').combo({
                         options: [{
-                                text: 'Stream When Available',
+                                text: '流可用时',
                                 value: 'STREAM_WHEN_AVAILABLE',
-                                description: 'FlowFiles that are queued up to be transferred out of a Process Group by an Output Port will be transferred out '
-                                        + 'of the Process Group as soon as they are available.'
+                                description: '一旦准备好, 排队等待的 FlowFile 就会通过输出端口从处理组中'
+                                        + '输出.'
                             }, {
-                                text: 'Batch Output',
+                                text: '批量输出',
                                 value: 'BATCH_OUTPUT',
-                                description: 'FlowFiles that are queued up to be transferred out of a Process Group by an Output Port will remain queued until '
-                                        + 'all FlowFiles in the Process Group are ready to be transferred out of the group. The FlowFiles will then be transferred '
-                                        + 'out of the group. This setting will be ignored if the FlowFile Concurrency is Unbounded.'
+                                description: 'FlowFile 会排队等待通过输出端口从处理组输出, 直到'
+                                        + '处理组中的全部 FlowFile 都准备好输出位置. 然后 FlowFile 就会从处理组输出. '
+                                        + '如果 FlowFile 并行度无限制的话, 该设置会被忽略.'
                             }],
                         selectedOption: {
                             value: processGroup.flowfileOutboundPolicy
@@ -291,13 +291,13 @@
                         // Determine the user-friendly name for the selected FlowFile Concurrency
                         var concurrencyName;
                         if (processGroup.flowfileConcurrency == "UNBOUNDED") {
-                            concurrencyName = "Unbounded";
+                            concurrencyName = "无限制";
                         } else if (processGroup.flowfileConcurrency == "SINGLE_FLOWFILE_PER_NODE") {
-                            concurrencyName = "Single FlowFile Per Node";
+                            concurrencyName = "每节点一个 FlowFile";
                         } else if (processGroup.flowfileConcurrency == "SINGLE_BATCH_PER_NODE") {
-                            concurrencyName = "Single Batch Per Node";
+                            concurrencyName = "每节点一批";
                         } else {
-                            concurrencyName = "Unknown";
+                            concurrencyName = "未知";
                         }
 
                         $('#read-only-process-group-flowfile-concurrency').text(concurrencyName);
@@ -367,7 +367,7 @@
 
             var parameterContexts = parameterContextsResponse.parameterContexts;
             var options = [{
-                text: 'No parameter context',
+                text: '没有参数上下文',
                 value: null
             }];
 
@@ -423,7 +423,7 @@
             });
 
             var createNewParameterContextOption = {
-                text: 'Create new parameter context...',
+                text: '创建新参数上下文...',
                 value: undefined,
                 optionClass: 'unset'
             };
@@ -438,7 +438,7 @@
                     var combo = this;
                     if (typeof option.value === 'undefined') {
                         $('#parameter-context-dialog').modal('setHeaderText', 'Add Parameter Context').modal('setButtonModel', [{
-                            buttonText: 'Apply',
+                            buttonText: '应用',
                             color: {
                                 base: '#728E9B',
                                 hover: '#004849',
@@ -474,7 +474,7 @@
                                 }
                             }
                         }, {
-                            buttonText: 'Cancel',
+                            buttonText: '取消',
                             color: {
                                 base: '#E3E8EB',
                                 hover: '#C7D2D7',
@@ -550,7 +550,7 @@
         $('#process-group-default-back-pressure-data-size-threshold').val('');
 
         // reset the header
-        $('#process-group-configuration-header-text').text('Process Group Configuration');
+        $('#process-group-configuration-header-text').text('处理组配置');
     };
 
     var nfProcessGroupConfiguration = {
@@ -571,10 +571,10 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'General',
+                    name: '通用',
                     tabContentId: 'general-process-group-configuration-tab-content'
                 }, {
-                    name: 'Controller Services',
+                    name: '控制器服务',
                     tabContentId: 'process-group-controller-services-tab-content'
                 }],
                 select: function () {
@@ -582,7 +582,7 @@
                     var canWrite = nfCommon.isDefinedAndNotNull(processGroup) ? processGroup.permissions.canWrite : false;
 
                     var tab = $(this).text();
-                    if (tab === 'General') {
+                    if (tab === '通用') {
                         $('#flow-cs-availability').hide();
                         $('#add-process-group-configuration-controller-service').hide();
 

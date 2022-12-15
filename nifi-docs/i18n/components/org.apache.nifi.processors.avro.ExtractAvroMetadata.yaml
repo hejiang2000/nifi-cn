@@ -1,0 +1,41 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship after metadata has been
+      extracted., zh: 提取元数据后，FlowFile将路由到此关系。}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be parsed as
+      Avro or metadata cannot be extracted for any reason, zh: 如果由于任何原因无法将FlowFile解析为Avro或无法提取元数据，则将其路由到此关系}
+capabilityDescription: {en: Extracts metadata from the header of an Avro datafile.,
+  zh: 从Avro数据文件的头中提取元数据。}
+properties:
+  Metadata Keys:
+    en: {displayName: Metadata Keys, description: 'A comma-separated list of keys
+        indicating key/value pairs to extract from the Avro file header. The key ''avro.schema''
+        can be used to extract the full schema in JSON format, and ''avro.codec''
+        can be used to extract the codec name if one exists.'}
+    zh: {description: 逗号分隔的键列表，指示要从Avro文件头中提取的键/值对。钥匙‘avro。schema”可用于提取JSON格式的完整模式，以及“avro”。如果存在编解码器名称，则可以使用“codec”来提取编解码器名称。,
+      displayName: 元数据密钥}
+  Count Items:
+    en: {displayName: Count Items, description: 'If true the number of items in the
+        datafile will be counted and stored in a FlowFile attribute ''item.count''.
+        The counting is done by reading blocks and getting the number of items for
+        each block, thus avoiding de-serializing. The items being counted will be
+        the top-level items in the datafile. For example, with a schema of type record
+        the items will be the records, and for a schema of type Array the items will
+        be the arrays (not the number of entries in each array).'}
+    zh: {description: 如果为true，数据文件中的项数将被计数并存储在FlowFile属性“item.count”中。计数是通过读取块并获取每个块的项数来完成的，从而避免了反序列化。正在计数的项将是数据文件中的顶级项。例如，对于类型为record的模式，项将是记录，对于类型Array的模式，项目将是数组（而不是每个数组中的条目数）。,
+      displayName: 计数项目}
+  Fingerprint Algorithm:
+    en: {displayName: Fingerprint Algorithm, description: The algorithm used to generate
+        the schema fingerprint. Available choices are based on the Avro recommended
+        practices for fingerprint generation.}
+    zh: {description: 用于生成架构指纹的算法。可用的选择基于Avro推荐的指纹生成实践。, displayName: 指纹算法}
+writeAttributes:
+  item.count: {en: 'The total number of items in the datafile, only written if Count
+      Items is set to true.', zh: 数据文件中的项目总数，仅当Count items设置为true时写入。}
+  schema.type: {en: 'The type of the schema (i.e. record, enum, etc.).', zh: 模式的类型（即记录、枚举等）。}
+  schema.name: {en: 'Contains the name when the type is a record, enum or fixed, otherwise
+      contains the name of the primitive type.', zh: 当类型是记录、枚举或固定类型时，包含名称，否则包含基元类型的名称。}
+  schema.fingerprint: {en: The result of the Fingerprint Algorithm as a Hex string.,
+    zh: 指纹算法的结果为十六进制字符串。}
+tags:
+  en: [avro, schema, metadata]
+  zh: [我没有吗？, 模式, 元数据]

@@ -1,0 +1,45 @@
+capabilityDescription: {en: Provides OAuth 2.0 access tokens that can be used as Bearer
+    authorization header in HTTP requests. Uses Resource Owner Password Credentials
+    Grant., zh: 提供OAuth 2.0访问令牌，可在HTTP请求中用作承载授权标头。使用资源所有者密码凭据授予。}
+properties:
+  grant-type:
+    en: {displayName: Grant Type, description: The OAuth2 Grant Type to be used when
+        acquiring an access token.}
+    zh: {description: 获取访问令牌时要使用的OAuth2授权类型。, displayName: 授予类型}
+  authorization-server-url:
+    en: {displayName: Authorization Server URL, description: The URL of the authorization
+        server that issues access tokens.}
+    zh: {description: 颁发访问令牌的授权服务器的URL。, displayName: 授权服务器URL}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: ''}
+    zh: {description: '', displayName: SSL上下文服务}
+  client-secret:
+    en: {displayName: Client secret, description: ''}
+    zh: {description: '', displayName: 客户端机密}
+  scope:
+    en: {displayName: Scope, description: 'Space-delimited, case-sensitive list of
+        scopes of the access request (as per the OAuth 2.0 specification)'}
+    zh: {description: 以空格分隔的、区分大小写的访问请求范围列表（根据OAuth 2.0规范）, displayName: 范围}
+  refresh-window:
+    en: {displayName: Refresh Window, description: 'The service will attempt to refresh
+        tokens expiring within the refresh window, subtracting the configured duration
+        from the token expiration.'}
+    zh: {description: 服务将尝试刷新在刷新窗口内过期的令牌，从令牌过期时间中减去配置的持续时间。, displayName: 刷新窗口}
+  service-password:
+    en: {displayName: Password, description: Password for the username on the service
+        that is being accessed.}
+    zh: {description: 正在访问的服务上的用户名的密码。, displayName: 暗语}
+  HTTP Protocols:
+    en: {displayName: HTTP Protocols, description: HTTP Protocols supported for Application
+        Layer Protocol Negotiation with TLS}
+    zh: {description: 支持TLS应用层协议协商的HTTP协议, displayName: HTTP协议}
+  client-id:
+    en: {displayName: Client ID, description: ''}
+    zh: {description: '', displayName: 客户端ID}
+  service-user-name:
+    en: {displayName: Username, description: Username on the service that is being
+        accessed.}
+    zh: {description: 正在访问的服务的用户名。, displayName: 用户名}
+tags:
+  en: [oauth2, provider, authorization, access token, http]
+  zh: [Oauth2, 供应商, 批准, 访问令牌, http]

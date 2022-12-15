@@ -1,0 +1,80 @@
+relationships:
+  success: {en: FlowFiles that are sent successfully to the destination are sent to
+      this relationship., zh: 成功发送到目标的FlowFiles将发送到此关系。}
+  failure: {en: FlowFiles that failed to send to the destination are sent to this
+      relationship., zh: 未能发送到目标的FlowFiles将发送到此关系。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: Sends flow file content to the specified Splunk server
+    over HTTP or HTTPS. Supports HEC Index Acknowledgement., zh: 通过HTTP或HTTPS将流文件内容发送到指定的Splunk服务器。支持HEC索引确认。}
+readAttributes:
+  mime.type: {en: Uses as value for HTTP Content-Type header if set., zh: 如果已设置，则用作HTTP内容类型标头的值。}
+properties:
+  character-set:
+    en: {displayName: Character Set, description: The name of the character set.}
+    zh: {description: 字符集的名称。, displayName: 字符集}
+  Owner:
+    en: {displayName: Owner, description: The owner to pass to Splunk.}
+    zh: {description: 要传递给Splunk的所有者。, displayName: 物主}
+  Scheme:
+    en: {displayName: Scheme, description: The scheme for connecting to Splunk.}
+    zh: {description: 连接到Splunk的方案。, displayName: 计划}
+  Port:
+    en: {displayName: HTTP Event Collector Port, description: The HTTP Event Collector
+        HTTP Port Number.}
+    zh: {description: HTTP事件收集器HTTP端口号。, displayName: HTTP事件收集器端口}
+  Hostname:
+    en: {displayName: Hostname, description: The ip address or hostname of the Splunk
+        server.}
+    zh: {description: Splunk服务器的ip地址或主机名。, displayName: 主机名}
+  index:
+    en: {displayName: Index, description: Index name. Specify with the index query
+        string parameter. Sets a default for all events when unspecified.}
+    zh: {description: 索引名称。使用索引查询字符串参数指定。未指定时为所有事件设置默认值。, displayName: 指数}
+  Token:
+    en: {displayName: HTTP Event Collector Token, description: HTTP Event Collector
+        token starting with the string Splunk. For example 'Splunk 1234578-abcd-1234-abcd-1234abcd'}
+    zh: {description: 以字符串Splunk开头的HTTP事件收集器令牌。例如“Splunk 1234578-abcd-1234-abcd-1234abbcd”,
+      displayName: HTTP事件收集器令牌}
+  source:
+    en: {displayName: Source, description: User-defined event source. Sets a default
+        for all events when unspecified.}
+    zh: {description: 用户定义的事件源。未指定时为所有事件设置默认值。, displayName: 来源}
+  Security Protocol:
+    en: {displayName: Security Protocol, description: The security protocol to use
+        for communicating with Splunk.}
+    zh: {description: 用于与Splunk通信的安全协议。, displayName: 安全协议}
+  request-channel:
+    en: {displayName: Splunk Request Channel, description: Identifier of the used
+        request channel.}
+    zh: {description: 使用的请求通道的标识符。, displayName: Splunk请求通道}
+  Username:
+    en: {displayName: Username, description: The username to authenticate to Splunk.}
+    zh: {description: 要向Splunk进行身份验证的用户名。, displayName: 用户名}
+  source-type:
+    en: {displayName: Source Type, description: User-defined event sourcetype. Sets
+        a default for all events when unspecified.}
+    zh: {description: 用户定义的事件源类型。未指定时为所有事件设置默认值。, displayName: 源类型}
+  host:
+    en: {displayName: Host, description: Specify with the host query string parameter.
+        Sets a default for all events when unspecified.}
+    zh: {description: 使用主机查询字符串参数指定。未指定时为所有事件设置默认值。, displayName: 主办}
+  content-type:
+    en: {displayName: Content Type, description: 'The media type of the event sent
+        to Splunk. If not set, "mime.type" flow file attribute will be used. In case
+        of neither of them is specified, this information will not be sent to the
+        server.'}
+    zh: {description: 发送到Splunk的事件的媒体类型。如果未设置，将使用“mime.type”流文件属性。如果两者都未指定，则不会将此信息发送到服务器。,
+      displayName: 内容类型}
+  Password:
+    en: {displayName: Password, description: The password to authenticate to Splunk.}
+    zh: {description: 用于向Splunk进行身份验证的密码。, displayName: 暗语}
+writeAttributes:
+  splunk.responded.at: {en: The time of the response of put request for Splunk., zh: Splunk的put请求的响应时间。}
+  splunk.acknowledgement.id: {en: The indexing acknowledgement id provided by Splunk.,
+    zh: Splunk提供的索引确认id。}
+tags:
+  en: [splunk, logs, http]
+  zh: [挥霍，挥霍, 日志, http]

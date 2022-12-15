@@ -1,0 +1,178 @@
+relationships:
+  success: {en: Successfully created FlowFile from SQL query result set., zh: 已成功从SQL查询结果集创建FlowFile。}
+  failure: {en: 'A FlowFile is routed to this relationship if the database cannot
+      be updated and retrying the operation will also fail, such as an invalid query
+      or an integrity constraint violation', zh: 如果无法更新数据库，则FlowFile将路由到此关系，并且重试操作也将失败，例如查询无效或违反完整性约束}
+  retry: {en: A FlowFile is routed to this relationship if the database cannot be
+      updated but attempting the operation again may succeed, zh: 如果无法更新数据库，则将FlowFile路由到此关系，但再次尝试操作可能会成功}
+capabilityDescription: {en: 'The PutDatabaseRecord processor uses a specified RecordReader
+    to input (possibly multiple) records from an incoming flow file. These records
+    are translated to SQL statements and executed as a single transaction. If any
+    errors occur, the flow file is routed to failure or retry, and if the records
+    are transmitted successfully, the incoming flow file is routed to success.  The
+    type of statement executed by the processor is specified via the Statement Type
+    property, which accepts some hard-coded values such as INSERT, UPDATE, and DELETE,
+    as well as ''Use statement.type Attribute'', which causes the processor to get
+    the statement type from a flow file attribute.  IMPORTANT: If the Statement Type
+    is UPDATE, then the incoming records must not alter the value(s) of the primary
+    keys (or user-specified Update Keys). If such records are encountered, the UPDATE
+    statement issued to the database may do nothing (if no existing records with the
+    new primary key values are found), or could inadvertently corrupt the existing
+    data (by changing records for which the new values of the primary keys exist).',
+  zh: PutDatabaseRecord处理器使用指定的RecordReader从传入流文件输入（可能是多个）记录。这些记录被转换为SQL语句并作为单个事务执行。如果发生任何错误，则将流文件路由到失败或重试，如果成功传输记录，则将传入流文件路由至成功。处理器执行的语句类型是通过statement
+    type属性指定的，该属性接受一些硬编码值，如INSERT、UPDATE和DELETE，以及'Use语句。type Attribute”，它使处理器从流文件属性中获取语句类型。重要提示：如果语句类型为UPDATE，则传入记录不能更改主键（或用户指定的更新键）的值。如果遇到这样的记录，则向数据库发出的UPDATE语句可能什么都不做（如果没有找到具有新主键值的现有记录），或者可能无意中损坏现有数据（通过更改存在主键新值的记录）。}
+readAttributes:
+  statement.type: {en: 'If ''Use statement.type Attribute'' is selected for the Statement
+      Type property, the value of this attribute will be used to determine the type
+      of statement (INSERT, UPDATE, DELETE, SQL, etc.) to generate and execute.',
+    zh: If’Use语句。如果为Statement type属性选择了type Attribute，则此属性的值将用于确定要生成和执行的语句类型（INSERT、UPDATE、DELETE、SQL等）。}
+properties:
+  put-db-record-allow-multiple-statements:
+    en: {displayName: Allow Multiple SQL Statements, description: 'If the Statement
+        Type is ''SQL'' (as set in the statement.type attribute), this field indicates
+        whether to split the field value by a semicolon and execute each statement
+        separately. If any statement causes an error, the entire set of statements
+        will be rolled back. If the Statement Type is not ''SQL'', this field is ignored.'}
+    zh: {description: 如果语句类型为“SQL”（如Statement.Type属性中所设置的），则此字段指示是否用分号分隔字段值并分别执行每个语句。如果任何语句导致错误，将回滚整个语句集。如果语句类型不是“SQL”，则忽略此字段。,
+      displayName: 允许多个SQL语句}
+  table-schema-cache-size:
+    en: {displayName: Table Schema Cache Size, description: Specifies how many Table
+        Schemas should be cached}
+    zh: {description: 指定应缓存多少表架构, displayName: 表架构缓存大小}
+  put-db-record-schema-name:
+    en: {displayName: Schema Name, description: 'The name of the schema that the table
+        belongs to. This may not apply for the database that you are updating. In
+        this case, leave the field empty. Note that if the property is set and the
+        database is case-sensitive, the schema name must match the database''s schema
+        name exactly.'}
+    zh: {description: 表所属的架构的名称。这可能不适用于正在更新的数据库。在这种情况下，将字段留空。注意，如果设置了属性并且数据库区分大小写，则模式名称必须与数据库的模式名称完全匹配。,
+      displayName: 架构名称}
+  put-db-record-field-containing-sql:
+    en: {displayName: Field Containing SQL, description: 'If the Statement Type is
+        ''SQL'' (as set in the statement.type attribute), this field indicates which
+        field in the record(s) contains the SQL statement to execute. The value of
+        the field must be a single SQL statement. If the Statement Type is not ''SQL'',
+        this field is ignored.'}
+    zh: {description: 如果语句类型为“SQL”（在Statement.Type属性中设置），则此字段指示记录中的哪个字段包含要执行的SQL语句。字段的值必须是单个SQL语句。如果语句类型不是“SQL”，则忽略此字段。,
+      displayName: 包含SQL的字段}
+  put-db-record-quoted-table-identifiers:
+    en: {displayName: Quote Table Identifiers, description: Enabling this option will
+        cause the table name to be quoted to support the use of special characters
+        in the table name.}
+    zh: {description: 启用此选项将导致引用表名，以支持在表名中使用特殊字符。, displayName: 报价表标识符}
+  Statement Type Record Path:
+    en: {displayName: Statement Type Record Path, description: 'Specifies a RecordPath
+        to evaluate against each Record in order to determine the Statement Type.
+        The RecordPath should equate to either INSERT, UPDATE, UPSERT, or DELETE.'}
+    zh: {description: 指定要针对每个记录进行评估的RecordPath，以确定语句类型。RecordPath应等于INSERT、UPDATE、UPSERT或DELETE。,
+      displayName: 语句类型记录路径}
+  put-db-record-unmatched-column-behavior:
+    en: {displayName: Unmatched Column Behavior, description: 'If an incoming record
+        does not have a field mapping for all of the database table''s columns, this
+        property specifies how to handle the situation'}
+    zh: {description: 如果传入记录没有数据库表的所有列的字段映射，则此属性指定如何处理这种情况, displayName: 不匹配的列行为}
+  put-db-record-catalog-name:
+    en: {displayName: Catalog Name, description: 'The name of the catalog that the
+        statement should update. This may not apply for the database that you are
+        updating. In this case, leave the field empty. Note that if the property is
+        set and the database is case-sensitive, the catalog name must match the database''s
+        catalog name exactly.'}
+    zh: {description: 语句应更新的目录的名称。这可能不适用于您正在更新的数据库。在这种情况下，将字段留空。请注意，如果设置了属性并且数据库区分大小写，则目录名称必须与数据库的目录名称完全匹配。,
+      displayName: 目录名称}
+  put-db-record-translate-field-names:
+    en: {displayName: Translate Field Names, description: 'If true, the Processor
+        will attempt to translate field names into the appropriate column names for
+        the table specified. If false, the field names must match the column names
+        exactly, or the column will not be updated'}
+    zh: {description: 如果为true，处理器将尝试将字段名转换为指定表的适当列名。如果为false，则字段名必须与列名完全匹配，否则将不会更新该列,
+      displayName: 翻译字段名称}
+  put-db-record-dcbp-service:
+    en: {displayName: Database Connection Pooling Service, description: The Controller
+        Service that is used to obtain a connection to the database for sending records.}
+    zh: {description: 用于获取数据库连接以发送记录的控制器服务。, displayName: 数据库连接池服务}
+  put-db-record-query-timeout:
+    en: {displayName: Max Wait Time, description: 'The maximum amount of time allowed
+        for a running SQL statement , zero means there is no limit. Max time less
+        than 1 second will be equal to zero.'}
+    zh: {description: 运行SQL语句所允许的最长时间，零表示没有限制。小于1秒的最大时间将等于零。, displayName: 最长等待时间}
+  rollback-on-failure:
+    en: {displayName: Rollback On Failure, description: 'Specify how to handle error.
+        By default (false), if an error occurs while processing a FlowFile, the FlowFile
+        will be routed to ''failure'' or ''retry'' relationship based on error type,
+        and processor can continue with next FlowFile. Instead, you may want to rollback
+        currently processed FlowFiles and stop further processing immediately. In
+        that case, you can do so by enabling this ''Rollback On Failure'' property.  If
+        enabled, failed FlowFiles will stay in the input relationship without penalizing
+        it and being processed repeatedly until it gets processed successfully or
+        removed by other means. It is important to set adequate ''Yield Duration''
+        to avoid retrying too frequently.'}
+    zh: {description: 指定如何处理错误。默认情况下（false），如果在处理FlowFile时发生错误，FlowFile将根据错误类型路由到“失败”或“重试”关系，处理器可以继续处理下一个FlowFile。相反，您可能希望回滚当前处理的FlowFiles并立即停止进一步处理。在这种情况下，可以通过启用此“失败时回滚”属性来执行此操作。如果启用，则失败的FlowFiles将保留在输入关系中，而不会对其进行惩罚并重复处理，直到成功处理或通过其他方式删除。重要的是要设置足够的“收益持续时间”，以避免过于频繁地重试。,
+      displayName: 失败时回滚}
+  put-db-record-statement-type:
+    en: {displayName: Statement Type, description: 'Specifies the type of SQL Statement
+        to generate. Please refer to the database documentation for a description
+        of the behavior of each operation. Please note that some Database Types may
+        not support certain Statement Types. If ''Use statement.type Attribute'' is
+        chosen, then the value is taken from the statement.type attribute in the FlowFile.
+        The ''Use statement.type Attribute'' option is the only one that allows the
+        ''SQL'' statement type. If ''SQL'' is specified, the value of the field specified
+        by the ''Field Containing SQL'' property is expected to be a valid SQL statement
+        on the target database, and will be executed as-is.'}
+    zh: {description: 指定要生成的SQL语句的类型。请参阅数据库文档以了解每个操作的行为描述。请注意，某些数据库类型可能不支持某些语句类型。If’Use语句。type
+        Attribute”，则从语句中获取值。FlowFile中的type属性。“Use”语句。type Attribute”选项是唯一允许“SQL”语句类型的选项。如果指定了“SQL”，则“field
+        Containing SQL”属性指定的字段值应为目标数据库上的有效SQL语句，并将按原样执行。, displayName: 报表类型}
+  db-type:
+    en: {displayName: Database Type, description: 'The type/flavor of database, used
+        for generating database-specific code. In many cases the Generic type should
+        suffice, but some databases (such as Oracle) require custom SQL clauses. '}
+    zh: {description: 数据库的类型/风格，用于生成特定于数据库的代码。在许多情况下，Generic类型应该足够了，但一些数据库（如Oracle）需要自定义SQL子句。,
+      displayName: 数据库类型}
+  put-db-record-update-keys:
+    en: {displayName: Update Keys, description: 'A comma-separated list of column
+        names that uniquely identifies a row in the database for UPDATE statements.
+        If the Statement Type is UPDATE and this property is not set, the table''s
+        Primary Keys are used. In this case, if no Primary Key exists, the conversion
+        to SQL will fail if Unmatched Column Behaviour is set to FAIL. This property
+        is ignored if the Statement Type is INSERT'}
+    zh: {description: 以逗号分隔的列名列表，用于唯一标识数据库中UPDATE语句的行。如果Statement Type为UPDATE且未设置此属性，则使用表的主键。在这种情况下，如果不存在主键，则如果Unmatch
+        Column Behavior设置为fail，则转换为SQL将失败。如果语句类型为INSERT，则忽略此属性, displayName: 更新密钥}
+  put-db-record-quoted-identifiers:
+    en: {displayName: Quote Column Identifiers, description: 'Enabling this option
+        will cause all column names to be quoted, allowing you to use reserved words
+        as column names in your tables.'}
+    zh: {description: 启用此选项将导致所有列名都被引用，从而允许您在表中使用保留字作为列名。, displayName: 引用列标识符}
+  put-db-record-table-name:
+    en: {displayName: Table Name, description: 'The name of the table that the statement
+        should affect. Note that if the database is case-sensitive, the table name
+        must match the database''s table name exactly.'}
+    zh: {description: 语句应影响的表的名称。注意，如果数据库区分大小写，则表名必须与数据库的表名完全匹配。, displayName: 表名称}
+  put-db-record-unmatched-field-behavior:
+    en: {displayName: Unmatched Field Behavior, description: 'If an incoming record
+        has a field that does not map to any of the database table''s columns, this
+        property specifies how to handle the situation'}
+    zh: {description: 如果传入记录的字段未映射到数据库表的任何列，则此属性指定如何处理这种情况, displayName: 不匹配的字段行为}
+  put-db-record-max-batch-size:
+    en: {displayName: Maximum Batch Size, description: Specifies maximum batch size
+        for INSERT and UPDATE statements. This parameter has no effect for other statements
+        specified in 'Statement Type'. Zero means the batch size is not limited.}
+    zh: {description: 指定INSERT和UPDATE语句的最大批处理大小。此参数对“语句类型”中指定的其他语句无效。零表示批次大小不受限制。,
+      displayName: 最大批量大小}
+  put-db-record-record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema.}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务。, displayName: 记录读取器}
+  Data Record Path:
+    en: {displayName: Data Record Path, description: 'If specified, this property
+        denotes a RecordPath that will be evaluated against each incoming Record and
+        the Record that results from evaluating the RecordPath will be sent to the
+        database instead of sending the entire incoming Record. If not specified,
+        the entire incoming Record will be published to the database.'}
+    zh: {description: 如果指定，此属性表示将针对每个传入记录进行评估的RecordPath，评估RecordPath的结果将发送到数据库，而不是发送整个传入记录。如果未指定，则整个传入记录将发布到数据库。,
+      displayName: 数据记录路径}
+writeAttributes:
+  putdatabaserecord.error: {en: 'If an error occurs during processing, the flow file
+      will be routed to failure or retry, and this attribute will be populated with
+      the cause of the error.', zh: 如果在处理过程中发生错误，则流文件将被路由到失败或重试，并且此属性将填充错误原因。}
+tags:
+  en: [sql, record, jdbc, put, database, update, insert, delete]
+  zh: [sql语言, 记录, jdbc语言, 放, 数据库, 使现代化, 插入, 删去]

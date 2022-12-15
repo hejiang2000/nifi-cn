@@ -1,0 +1,64 @@
+relationships:
+  success: {en: Generated Sequence Files are sent to this relationship, zh: 生成的序列文件将发送到此关系}
+  failure: {en: Incoming files that failed to generate a Sequence File are sent to
+      this relationship, zh: 未能生成序列文件的传入文件将发送到此关系}
+capabilityDescription: {en: Creates Hadoop Sequence Files from incoming flow files,
+  zh: 从传入流文件创建Hadoop序列文件}
+properties:
+  Hadoop Configuration Resources:
+    en: {displayName: Hadoop Configuration Resources, description: 'A file or comma
+        separated list of files which contains the Hadoop file system configuration.
+        Without this, Hadoop will search the classpath for a ''core-site.xml'' and
+        ''hdfs-site.xml'' file or will revert to a default configuration. To use swebhdfs,
+        see ''Additional Details'' section of PutHDFS''s documentation.'}
+    zh: {description: 包含Hadoop文件系统配置的文件或逗号分隔的文件列表。否则，Hadoop将在类路径中搜索“核心站点”。xml'和'hdfs站点。xml文件，或将恢复为默认配置。要使用swebhdfs，请参阅PutHDFS文档的“其他详细信息”部分。,
+      displayName: Hadoop配置资源}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials Controller Service that should be used for authenticating with
+        Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos凭据控制器服务, displayName: Kerberos凭据服务}
+  Kerberos Password:
+    en: {displayName: Kerberos Password, description: Kerberos password associated
+        with the principal.}
+    zh: {description: 与主体关联的Kerberos密码。, displayName: Kerberos密码}
+  Kerberos Keytab:
+    en: {displayName: Kerberos Keytab, description: Kerberos keytab associated with
+        the principal. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 与主体关联的Kerberos密钥表。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos密钥选项卡}
+  Additional Classpath Resources:
+    en: {displayName: Additional Classpath Resources, description: 'A comma-separated
+        list of paths to files and/or directories that will be added to the classpath
+        and used for loading native libraries. When specifying a directory, all files
+        with in the directory will be added to the classpath, but further sub-directories
+        will not be included.'}
+    zh: {description: 以逗号分隔的文件和/或目录路径列表，这些路径将添加到类路径中并用于加载本机库。指定目录时，目录中的所有文件都将添加到类路径中，但不包括其他子目录。,
+      displayName: 其他Classpath资源}
+  Kerberos Principal:
+    en: {displayName: Kerberos Principal, description: Kerberos principal to authenticate
+        as. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 要作为身份验证的Kerberos主体。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos主体}
+  compression type:
+    en: {displayName: Compression type, description: Type of compression to use when
+        creating Sequence File}
+    zh: {description: 创建序列文件时要使用的压缩类型, displayName: 压缩类型}
+  Compression codec:
+    en: {displayName: Compression codec, description: ''}
+    zh: {description: '', displayName: 压缩编解码器}
+  kerberos-user-service:
+    en: {displayName: Kerberos User Service, description: Specifies the Kerberos User
+        Controller Service that should be used for authenticating with Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos用户控制器服务, displayName: Kerberos用户服务}
+  Kerberos Relogin Period:
+    en:
+      displayName: Kerberos Relogin Period
+      description: |-
+        Period of time which should pass before attempting a kerberos relogin.
+
+        This property has been deprecated, and has no effect on processing. Relogins now occur automatically.
+    zh: {description: 在尝试kerberos重新登录之前应该经过的时间段。, displayName: Kerberos时钟周期}
+tags:
+  en: [hadoop, sequence file, create, sequencefile]
+  zh: [hadoop公司, 序列文件, 创造, 序列文件]

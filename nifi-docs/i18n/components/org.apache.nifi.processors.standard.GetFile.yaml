@@ -1,0 +1,85 @@
+relationships:
+  success: {en: All files are routed to success, zh: 所有文件都被路由到成功}
+capabilityDescription: {en: Creates FlowFiles from files in a directory.  NiFi will
+    ignore files it doesn't have at least read permissions for., zh: 从目录中的文件创建FlowFiles。NiFi将忽略它至少没有读取权限的文件。}
+properties:
+  Keep Source File:
+    en: {displayName: Keep Source File, description: 'If true, the file is not deleted
+        after it has been copied to the Content Repository; this causes the file to
+        be picked up continually and is useful for testing purposes.  If not keeping
+        original NiFi will need write permissions on the directory it is pulling from
+        otherwise it will ignore the file.'}
+    zh: {description: 如果为true，则文件在复制到内容存储库后不会被删除；这会导致文件不断被拾取，并对测试有用。如果不保留原始的NiFi，则需要对其所提取的目录具有写权限，否则将忽略该文件。,
+      displayName: 保留源文件}
+  Minimum File Age:
+    en: {displayName: Minimum File Age, description: The minimum age that a file must
+        be in order to be pulled; any file younger than this amount of time (according
+        to last modification date) will be ignored}
+    zh: {description: 文件必须达到的最短使用期限才能被提取；任何小于此时间（根据上次修改日期）的文件都将被忽略, displayName: 最小文件期限}
+  Polling Interval:
+    en: {displayName: Polling Interval, description: Indicates how long to wait before
+        performing a directory listing}
+    zh: {description: 指示在执行目录列表之前等待多长时间, displayName: 轮询间隔}
+  Input Directory:
+    en: {displayName: Input Directory, description: The input directory from which
+        to pull files}
+    zh: {description: 从中提取文件的输入目录, displayName: 输入目录}
+  Maximum File Age:
+    en: {displayName: Maximum File Age, description: The maximum age that a file must
+        be in order to be pulled; any file older than this amount of time (according
+        to last modification date) will be ignored}
+    zh: {description: 文件必须达到的最长使用期限才能被提取；任何早于此时间（根据上次修改日期）的文件都将被忽略, displayName: 最大文件期限}
+  Batch Size:
+    en: {displayName: Batch Size, description: The maximum number of files to pull
+        in each iteration}
+    zh: {description: 每次迭代中要提取的最大文件数, displayName: 批量大小}
+  Maximum File Size:
+    en: {displayName: Maximum File Size, description: The maximum size that a file
+        can be in order to be pulled}
+    zh: {description: 文件可以被拉取的最大大小, displayName: 最大文件大小}
+  Minimum File Size:
+    en: {displayName: Minimum File Size, description: The minimum size that a file
+        must be in order to be pulled}
+    zh: {description: 文件必须达到的最小大小才能被拉取, displayName: 最小文件大小}
+  Ignore Hidden Files:
+    en: {displayName: Ignore Hidden Files, description: Indicates whether or not hidden
+        files should be ignored}
+    zh: {description: 指示是否应忽略隐藏文件, displayName: 忽略隐藏文件}
+  Recurse Subdirectories:
+    en: {displayName: Recurse Subdirectories, description: Indicates whether or not
+        to pull files from subdirectories}
+    zh: {description: 指示是否从子目录中提取文件, displayName: 定期子目录}
+  File Filter:
+    en: {displayName: File Filter, description: Only files whose names match the given
+        regular expression will be picked up}
+    zh: {description: 只有名称与给定正则表达式匹配的文件才会被拾取, displayName: 文件筛选器}
+  Path Filter:
+    en: {displayName: Path Filter, description: 'When Recurse Subdirectories is true,
+        then only subdirectories whose path matches the given regular expression will
+        be scanned'}
+    zh: {description: 当Recurse Subdirectories为true时，将仅扫描路径与给定正则表达式匹配的子目录, displayName: 路径筛选器}
+writeAttributes:
+  absolute.path: {en: 'The full/absolute path from where a file was picked up. The
+      current ''path'' attribute is still populated, but may be a relative path',
+    zh: 从中拾取文件的完整/绝对路径。当前的“path”属性仍被填充，但可能是相对路径}
+  path: {en: 'The path is set to the relative path of the file''s directory on disk.
+      For example, if the <Input Directory> property is set to /tmp, files picked
+      up from /tmp will have the path attribute set to ./. If the <Recurse Subdirectories>
+      property is set to true and a file is picked up from /tmp/abc/1/2/3, then the
+      path attribute will be set to abc/1/2/3', zh: 路径设置为磁盘上文件目录的相对路径。例如，如果<Input
+      Directory>属性设置为/tmp，则从/tmp拾取的文件的路径属性将设置为./。如果<Recurse Subdirectories>属性设置为true，并且从/tmp/abc/1/2/3获取文件，则路径属性将设置为abc/1/2/3}
+  filename: {en: The filename is set to the name of the file on disk, zh: 文件名设置为磁盘上文件的名称}
+  file.group: {en: The group owner of the file. May not work on all file systems,
+    zh: 文件的组所有者。可能不适用于所有文件系统}
+  file.lastModifiedTime: {en: The date and time that the file was last modified. May
+      not work on all file systems, zh: 上次修改文件的日期和时间。可能不适用于所有文件系统}
+  file.creationTime: {en: The date and time that the file was created. May not work
+      on all file systems, zh: 创建文件的日期和时间。可能不适用于所有文件系统}
+  file.lastAccessTime: {en: The date and time that the file was last accessed. May
+      not work on all file systems, zh: 上次访问文件的日期和时间。可能不适用于所有文件系统}
+  file.owner: {en: The owner of the file. May not work on all file systems, zh: 文件的所有者。可能不适用于所有文件系统}
+  file.permissions: {en: The read/write/execute permissions of the file. May not work
+      on all file systems, zh: 文件的读/写/执行权限。可能不适用于所有文件系统}
+tags:
+  en: [local, files, filesystem, ingest, ingress, get, source, input]
+  zh: [地方的, 文件夹, 文件系统, 摄入, 进入, 收到, 来源, 输入]

@@ -1,0 +1,169 @@
+relationships:
+  original: {en: The FlowFiles that were used to create the bundle, zh: 用于创建捆绑包的FlowFiles}
+  failure: {en: 'If the bundle cannot be created, all FlowFiles that would have been
+      used to created the bundle will be transferred to failure', zh: 如果无法创建捆绑包，则用于创建捆绑包的所有FlowFiles都将转移到失败状态}
+  merged: {en: The FlowFile containing the merged content, zh: 包含合并内容的FlowFile}
+systemResourceConsiderations:
+  en: ['While content is not stored in memory, the FlowFiles'' attributes are. The
+      configuration of MergeContent (maximum bin size, maximum group size, maximum
+      bin age, max number of entries) will influence how much memory is used. If merging
+      together many small FlowFiles, a two-stage approach may be necessary in order
+      to avoid excessive use of memory.']
+  zh: [当内容未存储在内存中时，FlowFiles的属性为。MergeContent的配置（最大bin大小、最大组大小、最大bin年龄、最大条目数）将影响使用的内存量。如果将多个小FlowFiles合并在一起，则可能需要两阶段方法，以避免过度使用内存。]
+capabilityDescription: {en: 'Merges a Group of FlowFiles together based on a user-defined
+    strategy and packages them into a single FlowFile. It is recommended that the
+    Processor be configured with only a single incoming connection, as Group of FlowFiles
+    will not be created from FlowFiles in different connections. This processor updates
+    the mime.type attribute as appropriate.', zh: 根据用户定义的策略将一组FlowFile合并在一起，并将其打包为单个FlowFile。建议处理器仅配置一个传入连接，因为不会从不同连接中的FlowFiles创建FlowFiles组。此处理器更新mime。类型属性。}
+readAttributes:
+  tar.permissions: {en: 'Applicable only if the <Merge Format> property is set to
+      TAR. The value of this attribute must be 3 characters; each character must be
+      in the range 0 to 7 (inclusive) and indicates the file permissions that should
+      be used for the FlowFile''s TAR entry. If this attribute is missing or has an
+      invalid value, the default value of 644 will be used', zh: 仅当＜合并格式＞属性设置为TAR时才适用。此属性的值必须为3个字符；每个字符必须在0到7（包括0和7）的范围内，并指示应用于FlowFile的TAR条目的文件权限。如果此属性缺失或具有无效值，则将使用默认值644}
+  fragment.identifier: {en: Applicable only if the <Merge Strategy> property is set
+      to Defragment. All FlowFiles with the same value for this attribute will be
+      bundled together., zh: 仅当＜合并策略＞属性设置为碎片整理时适用。此属性值相同的所有FlowFiles将绑定在一起。}
+  fragment.index: {en: 'Applicable only if the <Merge Strategy> property is set to
+      Defragment. This attribute indicates the order in which the fragments should
+      be assembled. This attribute must be present on all FlowFiles when using the
+      Defragment Merge Strategy and must be a unique (i.e., unique across all FlowFiles
+      that have the same value for the "fragment.identifier" attribute) integer between
+      0 and the value of the fragment.count attribute. If two or more FlowFiles have
+      the same value for the "fragment.identifier" attribute and the same value for
+      the "fragment.index" attribute, the first FlowFile processed will be accepted
+      and subsequent FlowFiles will not be accepted into the Bin.', zh: 仅当＜合并策略＞属性设置为碎片整理时适用。该属性指示碎片的组装顺序。使用碎片整理合并策略时，此属性必须存在于所有FlowFiles上，并且必须是介于0和碎片值之间的唯一（即，在所有FlowFiles中“fragment.identifier”属性值相同）整数。count属性。如果两个或多个FlowFile的“fragment.identifier”属性值相同，而“fragment.index”属性值也相同，则处理的第一个FlowFile将被接受，后续FlowFiles将不会被接受到Bin中。}
+  segment.original.filename: {en: Applicable only if the <Merge Strategy> property
+      is set to Defragment. This attribute must be present on all FlowFiles with the
+      same value for the fragment.identifier attribute. All FlowFiles in the same
+      bundle must have the same value for this attribute. The value of this attribute
+      will be used for the filename of the completed merged FlowFile., zh: 仅当＜合并策略＞属性设置为碎片整理时适用。此属性必须存在于具有片段相同值的所有FlowFiles上。标识符属性。同一捆绑包中的所有FlowFiles必须具有该属性的相同值。此属性的值将用于完成合并的FlowFile的文件名。}
+  fragment.count: {en: Applicable only if the <Merge Strategy> property is set to
+      Defragment. This attribute must be present on all FlowFiles with the same value
+      for the fragment.identifier attribute. All FlowFiles in the same bundle must
+      have the same value for this attribute. The value of this attribute indicates
+      how many FlowFiles should be expected in the given bundle., zh: 仅当＜合并策略＞属性设置为碎片整理时适用。此属性必须存在于具有片段相同值的所有FlowFiles上。标识符属性。同一捆绑包中的所有FlowFiles必须具有该属性的相同值。此属性的值指示给定捆绑包中应包含多少FlowFiles。}
+properties:
+  Keep Path:
+    en: {displayName: Keep Path, description: 'If using the Zip or Tar Merge Format,
+        specifies whether or not the FlowFiles'' paths should be included in their
+        entry names.'}
+    zh: {description: 如果使用Zip或Tar合并格式，则指定FlowFiles的路径是否应包含在其条目名称中。, displayName: 保持路径（Keep
+        Path）}
+  Maximum Group Size:
+    en: {displayName: Maximum Group Size, description: 'The maximum size for the bundle.
+        If not specified, there is no maximum.'}
+    zh: {description: 捆绑包的最大大小。如果未指定，则没有最大值。, displayName: 最大组大小}
+  Merge Strategy:
+    en: {displayName: Merge Strategy, description: Specifies the algorithm used to
+        merge content. The 'Defragment' algorithm combines fragments that are associated
+        by attributes back into a single cohesive FlowFile. The 'Bin-Packing Algorithm'
+        generates a FlowFile populated by arbitrarily chosen FlowFiles}
+    zh: {description: 指定用于合并内容的算法。“碎片整理”算法将由属性关联的片段组合回单个内聚的FlowFile。“Bin Packing Algorithm”生成由任意选择的FlowFile填充的FlowFile,
+      displayName: 合并策略}
+  Attribute Strategy:
+    en: {displayName: Attribute Strategy, description: 'Determines which FlowFile
+        attributes should be added to the bundle. If ''Keep All Unique Attributes''
+        is selected, any attribute on any FlowFile that gets bundled will be kept
+        unless its value conflicts with the value from another FlowFile. If ''Keep
+        Only Common Attributes'' is selected, only the attributes that exist on all
+        FlowFiles in the bundle, with the same value, will be preserved.'}
+    zh: {description: 确定应将哪些FlowFile属性添加到捆绑包中。如果选择“保留所有唯一属性”，则任何绑定的FlowFile上的任何属性都将被保留，除非其值与另一个FlowFile的值冲突。如果选择“仅保留公共属性”，则仅保留捆绑包中所有FlowFiles上存在的具有相同值的属性。,
+      displayName: 属性策略}
+  Compression Level:
+    en: {displayName: Compression Level, description: 'Specifies the compression level
+        to use when using the Zip Merge Format; if not using the Zip Merge Format,
+        this value is ignored'}
+    zh: {description: 指定使用Zip合并格式时要使用的压缩级别；如果不使用Zip合并格式，则忽略此值, displayName: 压缩级别}
+  Maximum Number of Entries:
+    en: {displayName: Maximum Number of Entries, description: The maximum number of
+        files to include in a bundle}
+    zh: {description: 捆绑包中包含的最大文件数, displayName: 最大条目数}
+  Minimum Group Size:
+    en: {displayName: Minimum Group Size, description: The minimum size for the bundle}
+    zh: {description: 捆绑包的最小大小, displayName: 最小组大小}
+  Maximum number of Bins:
+    en: {displayName: Maximum number of Bins, description: Specifies the maximum number
+        of bins that can be held in memory at any one time}
+    zh: {description: 指定一次可以保存在内存中的最大箱数, displayName: 最大箱数}
+  Tar Modified Time:
+    en: {displayName: Tar Modified Time, description: 'If using the Tar Merge Format,
+        specifies if the Tar entry should store the modified timestamp either by expression
+        (e.g. ${file.lastModifiedTime} or static value, both of which must match the
+        ISO8601 format ''yyyy-MM-dd''T''HH:mm:ssZ''.'}
+    zh: {description: '如果使用焦油合并格式，则指定焦油条目是否应通过表达式（例如${file.lastModifiedTime}）或静态值存储修改后的时间戳，这两种格式都必须与ISO8601格式“yyyy-MM-dd”“HH:MM:ssZ”匹配。',
+      displayName: 焦油修改时间}
+  Delimiter Strategy:
+    en: {displayName: Delimiter Strategy, description: 'Determines if Header, Footer,
+        and Demarcator should point to files containing the respective content, or
+        if the values of the properties should be used as the content.'}
+    zh: {description: 确定页眉、页脚和分隔符是否应指向包含相应内容的文件，或者属性值是否应用作内容。, displayName: 分隔符策略}
+  Merge Format:
+    en: {displayName: Merge Format, description: Determines the format that will be
+        used to merge the content.}
+    zh: {description: 确定将用于合并内容的格式。, displayName: 合并格式}
+  Footer File:
+    en: {displayName: Footer, description: 'Filename or text specifying the footer
+        to use. If not specified, no footer is supplied.'}
+    zh: {description: 指定要使用的页脚的文件名或文本。如果未指定，则不提供页脚。, displayName: 页脚}
+  Max Bin Age:
+    en: {displayName: Max Bin Age, description: 'The maximum age of a Bin that will
+        trigger a Bin to be complete. Expected format is <duration> <time unit> where
+        <duration> is a positive integer and time unit is one of seconds, minutes,
+        hours'}
+    zh: {description: 将触发Bin完成的Bin的最长期限。预期格式为＜持续时间＞＜时间单位＞，其中＜持续时间＜是正整数，时间单位为秒、分钟、小时之一,
+      displayName: 最大箱龄}
+  Demarcator File:
+    en: {displayName: Demarcator, description: 'Filename or text specifying the demarcator
+        to use. If not specified, no demarcator is supplied.'}
+    zh: {description: 指定要使用的分界符的文件名或文本。如果未指定，则不提供标定器。, displayName: 标界者}
+  Correlation Attribute Name:
+    en: {displayName: Correlation Attribute Name, description: 'If specified, like
+        FlowFiles will be binned together, where ''like FlowFiles'' means FlowFiles
+        that have the same value for this Attribute. If not specified, FlowFiles are
+        bundled by the order in which they are pulled from the queue.'}
+    zh: {description: 如果指定，like FlowFiles将合并在一起，其中“like FlowFile”表示该属性具有相同值的FlowFiles。如果未指定，FlowFiles将按照从队列中提取的顺序进行绑定。,
+      displayName: 相关属性名称}
+  Header File:
+    en: {displayName: Header, description: 'Filename or text specifying the header
+        to use. If not specified, no header is supplied.'}
+    zh: {description: 指定要使用的标头的文件名或文本。如果未指定，则不提供标头。, displayName: 收割台}
+  mergecontent-metadata-strategy:
+    en: {displayName: Metadata Strategy, description: 'For FlowFiles whose input format
+        supports metadata (Avro, e.g.), this property determines which metadata should
+        be added to the bundle. If ''Use First Metadata'' is selected, the metadata
+        keys/values from the first FlowFile to be bundled will be used. If ''Keep
+        Only Common Metadata'' is selected, only the metadata that exists on all FlowFiles
+        in the bundle, with the same value, will be preserved. If ''Ignore Metadata''
+        is selected, no metadata is transferred to the outgoing bundled FlowFile.
+        If ''Do Not Merge Uncommon Metadata'' is selected, any FlowFile whose metadata
+        values do not match those of the first bundled FlowFile will not be merged.'}
+    zh: {description: 对于输入格式支持元数据（例如Avro）的FlowFiles，此属性确定应将哪些元数据添加到捆绑包中。如果选择“使用第一个元数据”，将使用要绑定的第一个FlowFile中的元数据键/值。如果选择“仅保留通用元数据”，则仅保留捆绑包中所有FlowFiles上存在的具有相同值的元数据。如果选择“忽略元数据”，则不会将元数据传输到传出绑定的FlowFile。如果选择“不合并非通用元数据”，则不会合并元数据值与第一个绑定FlowFile的元数据值不匹配的任何FlowFile。,
+      displayName: 元数据策略}
+  Minimum Number of Entries:
+    en: {displayName: Minimum Number of Entries, description: The minimum number of
+        files to include in a bundle}
+    zh: {description: 捆绑包中包含的最小文件数, displayName: 最小条目数}
+writeAttributes:
+  filename: {en: 'When more than 1 file is merged, the filename comes from the segment.original.filename
+      attribute. If that attribute does not exist in the source FlowFiles, then the
+      filename is set to the number of nanoseconds matching system time. Then a filename
+      extension may be applied:if Merge Format is TAR, then the filename will be appended
+      with .tar, if Merge Format is ZIP, then the filename will be appended with .zip,
+      if Merge Format is FlowFileStream, then the filename will be appended with .pkg',
+    zh: 合并多个文件时，文件名来自segment.original。文件名属性。如果源FlowFiles中不存在该属性，则将文件名设置为与系统时间匹配的纳秒数。然后可以应用文件名扩展名：如果合并格式是TAR，则文件名将附加.TAR，如果合并格式为ZIP，则文件名将附加.ZIP，如果合并格式化为FlowFileStream，则文件将附加.pkg}
+  merge.uuid: {en: UUID of the merged flow file that will be added to the original
+      flow files attributes., zh: 将添加到原始流文件属性的合并流文件的UUID。}
+  merge.count: {en: The number of FlowFiles that were merged into this bundle, zh: 合并到此捆绑包中的FlowFiles数}
+  merge.bin.age: {en: 'The age of the bin, in milliseconds, when it was merged and
+      output. Effectively this is the greatest amount of time that any FlowFile in
+      this bundle remained waiting in this processor before it was output', zh: 合并和输出bin时bin的年龄（以毫秒为单位）。实际上，这是此捆绑包中的任何FlowFile在输出之前在此处理器中等待的最长时间}
+  merge.reason: {en: 'This processor allows for several thresholds to be configured
+      for merging FlowFiles. This attribute indicates which of the Thresholds resulted
+      in the FlowFiles being merged. For an explanation of each of the possible values
+      and their meanings, see the Processor''s Usage / documentation and see the ''Additional
+      Details'' page.', zh: 此处理器允许为合并FlowFiles配置多个阈值。此属性指示哪个阈值导致合并FlowFiles。有关每个可能值及其含义的说明，请参阅处理器的用法/文档，并参阅“其他详细信息”页面。}
+tags:
+  en: [merge, content, correlation, tar, zip, stream, concatenation, archive, flowfile-stream,
+    flowfile-stream-v3]
+  zh: [合并, 所容纳之物, 相关性, 焦油, 拉链, 流动, 串联, 档案文件, 流文件流, 流文件-流-v3]

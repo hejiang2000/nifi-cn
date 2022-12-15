@@ -194,7 +194,7 @@
         if (errors.length > 0) {
             nfDialog.showOkDialog({
                 dialogContent: nfCommon.formatUnorderedList(errors),
-                headerText: 'Reporting Task'
+                headerText: '报告任务'
             });
             return false;
         } else {
@@ -258,8 +258,8 @@
             if (isSaveRequired()) {
                 // see if those changes should be saved
                 nfDialog.showYesNoDialog({
-                    headerText: 'Save',
-                    dialogContent: 'Save changes before going to this Controller Service?',
+                    headerText: '保存',
+                    dialogContent: '跳转到该控制器服务前保存修改?',
                     noHandler: function () {
                         deferred.resolve();
                     },
@@ -368,13 +368,13 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Settings',
+                    name: '设置',
                     tabContentId: 'reporting-task-standard-settings-tab-content'
                 }, {
-                    name: 'Properties',
+                    name: '属性',
                     tabContentId: 'reporting-task-properties-tab-content'
                 }, {
-                    name: 'Comments',
+                    name: '说明',
                     tabContentId: 'reporting-task-comments-tab-content'
                 }],
                 select: function () {
@@ -382,7 +382,7 @@
                     nfUniversalCapture.removeAllPropertyDetailDialogs();
 
                     // update the property table size in case this is the first time its rendered
-                    if ($(this).text() === 'Properties') {
+                    if ($(this).text() === '属性') {
                         $('#reporting-task-properties').propertytable('resetTableSize');
                     }
 
@@ -394,7 +394,7 @@
             // initialize the reporting task configuration dialog
             $('#reporting-task-configuration').data('mode', config.edit).modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Configure Reporting Task',
+                headerText: '配置任务报告',
                 handler: {
                     close: function () {
                         // cancel any active edits
@@ -444,7 +444,7 @@
         showConfiguration: function (reportingTaskEntity) {
             var reportingTaskDialog = $('#reporting-task-configuration');
 
-            reportingTaskDialog.find('.dialog-header .dialog-header-text').text('Configure Reporting Task');
+            reportingTaskDialog.find('.dialog-header .dialog-header-text').text('配置报告任务');
             if (reportingTaskDialog.data('mode') === config.readOnly) {
                 // update the visibility
                 $('#reporting-task-configuration .reporting-task-read-only').hide();
@@ -524,13 +524,13 @@
                 // initialize the scheduling strategy
                 $('#reporting-task-scheduling-strategy-combo').combo({
                     options: [{
-                        text: 'Timer driven',
+                        text: '定时驱动',
                         value: 'TIMER_DRIVEN',
-                        description: 'Reporting task will be scheduled to run on an interval defined by the run schedule.'
+                        description: '报告任务将根据运行调度指定的间隔被调度执行.'
                     }, {
-                        text: 'CRON driven',
+                        text: 'CRON 驱动',
                         value: 'CRON_DRIVEN',
-                        description: 'Reporting task will be scheduled to run on at specific times based on the specified CRON string.'
+                        description: '报告任务将根据指定的 CRON 字符串被在特定的时间被调度执行.'
                     }],
                     selectedOption: {
                         value: reportingTask['schedulingStrategy']
@@ -547,7 +547,7 @@
                 });
 
                 var buttons = [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -570,7 +570,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',
@@ -586,7 +586,7 @@
                 // determine if we should show the advanced button
                 if (nfCommon.isDefinedAndNotNull(reportingTask.customUiUrl) && reportingTask.customUiUrl !== '') {
                     buttons.push({
-                        buttonText: 'Advanced',
+                        buttonText: '高级',
                         clazz: 'fa fa-cog button-icon',
                         color: {
                             base: '#E3E8EB',
@@ -621,8 +621,8 @@
                                 if (isSaveRequired()) {
                                     // see if those changes should be saved
                                     nfDialog.showYesNoDialog({
-                                        headerText: 'Save',
-                                        dialogContent: 'Save changes before opening the advanced configuration?',
+                                        headerText: '保存',
+                                        dialogContent: '打开高级配置前保存修改?',
                                         noHandler: openCustomUi,
                                         yesHandler: function () {
                                             saveReportingTask(reportingTaskEntity).done(function () {
@@ -667,7 +667,7 @@
         showDetails: function (reportingTaskEntity) {
             var reportingTaskDialog = $('#reporting-task-configuration');
 
-            reportingTaskDialog.find('.dialog-header .dialog-header-text').text('Reporting Task Details');
+            reportingTaskDialog.find('.dialog-header .dialog-header-text').text('报告任务详细信息');
             if (reportingTaskDialog.data('mode') === config.edit) {
                 // update the visibility
                 $('#reporting-task-configuration .reporting-task-read-only').show();
@@ -716,15 +716,15 @@
                 // make the scheduling strategy human readable
                 var schedulingStrategy = reportingTask['schedulingStrategy'];
                 if (schedulingStrategy === 'CRON_DRIVEN') {
-                    schedulingStrategy = 'CRON driven';
+                    schedulingStrategy = 'CRON 驱动';
                 } else {
-                    schedulingStrategy = "Timer driven";
+                    schedulingStrategy = "定时器驱动";
                 }
                 nfCommon.populateField('read-only-reporting-task-scheduling-strategy', schedulingStrategy);
                 nfCommon.populateField('read-only-reporting-task-scheduling-period', reportingTask['schedulingPeriod']);
 
                 var buttons = [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -741,7 +741,7 @@
                 // determine if we should show the advanced button
                 if (nfCommon.isDefinedAndNotNull(nfCustomUi) && nfCommon.isDefinedAndNotNull(reportingTask.customUiUrl) && reportingTask.customUiUrl !== '') {
                     buttons.push({
-                        buttonText: 'Advanced',
+                        buttonText: '高级',
                         clazz: 'fa fa-cog button-icon',
                         color: {
                             base: '#E3E8EB',
@@ -826,8 +826,8 @@
         promptToDeleteReportingTask: function (reportingTaskEntity) {
             // prompt for deletion
             nfDialog.showYesNoDialog({
-                headerText: 'Delete Reporting Task',
-                dialogContent: 'Delete reporting task \'' + nfCommon.escapeHtml(reportingTaskEntity.component.name) + '\'?',
+                headerText: '删除报告任务',
+                dialogContent: '删除报告任务 \'' + nfCommon.escapeHtml(reportingTaskEntity.component.name) + '\'?',
                 yesHandler: function () {
                     nfReportingTask.remove(reportingTaskEntity);
                 }

@@ -1,0 +1,65 @@
+capabilityDescription: {en: 'Provides a mechanism for reading unstructured text data,
+    such as log files, and structuring the data so that it can be processed. The service
+    is configured using Grok patterns. The service reads from a stream of data and
+    splits each message that it finds into a separate Record, each containing the
+    fields that are configured. If a line in the input does not match the expected
+    message pattern, the line of text is either considered to be part of the previous
+    message or is skipped, depending on the configuration, with the exception of stack
+    traces. A stack trace that is found at the end of a log message is considered
+    to be part of the previous message but is added to the ''stackTrace'' field of
+    the Record. If a record has no stack trace, it will have a NULL value for the
+    stackTrace field (assuming that the schema does in fact include a stackTrace field
+    of type String). Assuming that the schema includes a ''_raw'' field of type String,
+    the raw message will be included in the Record.', zh: 提供一种机制，用于读取非结构化文本数据（如日志文件），并对数据进行结构化，以便对其进行处理。使用Grok模式配置服务。服务从数据流中读取，并将找到的每条消息拆分为一个单独的记录，每个记录都包含配置的字段。如果输入中的一行与预期的消息模式不匹配，则该行文本要么被视为前一消息的一部分，要么被跳过，具体取决于配置，堆栈跟踪除外。在日志消息末尾找到的堆栈跟踪被认为是前一消息的一部分，但被添加到记录的“stackTrace”字段中。如果记录没有堆栈跟踪，它的stackTrace字段将为NULL值（假设模式实际上包含String类型的stackTrace字段）。假设模式包含String类型的“_raw”字段，则原始消息将包含在记录中。}
+properties:
+  Grok Expression:
+    en: {displayName: Grok Expressions, description: 'Specifies the format of a log
+        line in Grok format. This allows the Record Reader to understand how to parse
+        each log line. The property supports one or more Grok expressions. The Reader
+        attempts to parse input lines according to the configured order of the expressions.If
+        a line in the log file does not match any expressions, the line will be assumed
+        to belong to the previous log message.If other Grok patterns are referenced
+        by this expression, they need to be supplied in the Grok Pattern File property.'}
+    zh: {description: 以Grok格式指定日志行的格式。这允许记录读取器了解如何解析每个日志行。该属性支持一个或多个Grok表达式。读取器尝试根据表达式的配置顺序解析输入行。如果日志文件中的某一行与任何表达式不匹配，则将假定该行属于上一条日志消息。如果此表达式引用了其他Grok模式，则需要在Grok
+        Pattern File属性中提供这些模式。, displayName: Grok表达式}
+  Grok Pattern File:
+    en: {displayName: Grok Patterns, description: 'Grok Patterns to use for parsing
+        logs. If not specified, a built-in default Pattern file will be used. If specified,
+        all patterns specified will override the default patterns. See the Controller
+        Service''s Additional Details for a list of pre-defined patterns.'}
+    zh: {description: 用于分析日志的Grok模式。如果未指定，将使用内置默认模式文件。如果指定，则指定的所有模式都将覆盖默认模式。有关预定义模式的列表，请参阅控制器服务的附加详细信息。,
+      displayName: Grok模式}
+  schema-branch:
+    en: {displayName: Schema Branch, description: 'Specifies the name of the branch
+        to use when looking up the schema in the Schema Registry property. If the
+        chosen Schema Registry does not support branching, this value will be ignored.'}
+    zh: {description: 指定在“架构注册表”属性中查找架构时要使用的分支的名称。如果所选的架构注册表不支持分支，则将忽略此值。, displayName: 架构分支}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry}
+    zh: {description: 指定用于架构注册表的控制器服务, displayName: 架构注册表}
+  no-match-behavior:
+    en: {displayName: No Match Behavior, description: 'If a line of text is encountered
+        and it does not match the given Grok Expression, and it is not part of a stack
+        trace, this property specifies how the text should be processed.'}
+    zh: {description: 如果遇到一行文本，并且它与给定的Grok表达式不匹配，并且它不是堆栈跟踪的一部分，则此属性指定应如何处理文本。, displayName: 无匹配行为}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that is to be used for interpreting the data.}
+    zh: {description: 指定如何获取用于解释数据的架构。, displayName: 架构访问策略}
+  schema-version:
+    en: {displayName: Schema Version, description: Specifies the version of the schema
+        to lookup in the Schema Registry. If not specified then the latest version
+        of the schema will be retrieved.}
+    zh: {description: 指定要在架构注册表中查找的架构的版本。如果未指定，则将检索架构的最新版本。, displayName: 架构版本}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+tags:
+  en: [grok, logs, logfiles, parse, unstructured, text, record, reader, regex, pattern,
+    logstash]
+  zh: [组, 日志, 日志文件, 作语法分析, 非结构化的, 文本, 记录, 读者, 正则表达式, 图案, 日志存储]

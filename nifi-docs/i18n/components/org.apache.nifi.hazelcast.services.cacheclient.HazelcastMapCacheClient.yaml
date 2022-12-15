@@ -1,0 +1,25 @@
+capabilityDescription: {en: 'An implementation of DistributedMapCacheClient that uses
+    Hazelcast as the backing cache. This service relies on an other controller service,
+    manages the actual Hazelcast calls, set in Hazelcast Cache Manager.', zh: 使用Hazelcast作为后备缓存的DistributedMapCacheClient的实现。此服务依赖于其他控制器服务，管理Hazelcast缓存管理器中设置的实际Hazelcast调用。}
+properties:
+  hazelcast-cache-name:
+    en: {displayName: Hazelcast Cache Name, description: 'The name of a given cache.
+        A Hazelcast cluster may handle multiple independent caches, each identified
+        by a name. Clients using caches with the same name are working on the same
+        data structure within Hazelcast.'}
+    zh: {description: 给定缓存的名称。Hazelcast集群可以处理多个独立的缓存，每个缓存由名称标识。使用同名缓存的客户端在Hazelcast中使用相同的数据结构。,
+      displayName: HAZELCAST缓存名称}
+  hazelcast-cache-manager:
+    en: {displayName: Hazelcast Cache Manager, description: A Hazelcast Cache Manager
+        which manages connections to Hazelcast and provides cache instances.}
+    zh: {description: Hazelcast缓存管理器，用于管理与Hazelcast的连接并提供缓存实例。, displayName: Hazelcast缓存管理器}
+  hazelcast-entry-ttl:
+    en: {displayName: Hazelcast Entry Lifetime, description: Indicates how long the
+        written entries should exist in Hazelcast. Setting it to '0 secs' means that
+        the datawill exists until its deletion or until the Hazelcast server is shut
+        down.}
+    zh: {description: 指示Hazelcast中写入的条目应存在多长时间。将其设置为“0秒”意味着数据将一直存在，直到其删除或Hazelcast服务器关闭。,
+      displayName: Hazelcast入口寿命}
+tags:
+  en: [hazelcast, cache, map]
+  zh: [榛属植物, 隐藏物, 地图]

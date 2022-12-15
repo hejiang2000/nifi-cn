@@ -1,0 +1,51 @@
+relationships:
+  original: {en: The original input flowfile goes to this relationship if the query
+      does not cause an error, zh: 如果查询未导致错误，原始输入流文件将转到此关系}
+  success: {en: 'When the operation succeeds, the flowfile is sent to this relationship.',
+    zh: 操作成功后，流程文件将发送到此关系。}
+  failure: {en: 'When there is a failure processing the flowfile, it goes to this
+      relationship.', zh: 当处理流文件失败时，将转到此关系。}
+capabilityDescription: {en: Retrieves one or more files from a GridFS bucket by file
+    name or by a user-defined query., zh: 通过文件名或用户定义的查询从GridFS存储桶中检索一个或多个文件。}
+properties:
+  mongo-operation-mode:
+    en: {displayName: Operation Mode, description: 'This option controls when results
+        are made available to downstream processors. If Stream Query Results is enabled,
+        provenance will not be tracked relative to the input flowfile if an input
+        flowfile is received and starts the query. In Stream Query Results mode errors
+        will be handled by sending a new flowfile with the original content and attributes
+        of the input flowfile to the failure relationship. Streaming should only be
+        used if there is reliable connectivity between MongoDB and NiFi.'}
+    zh: {description: 此选项控制何时向下游处理器提供结果。如果启用了流查询结果，则如果接收到输入流文件并启动查询，则不会相对于输入流文件跟踪出处。在流查询结果模式下，将通过向故障关系发送具有输入流文件的原始内容和属性的新流文件来处理错误。只有在MongoDB和NiFi之间存在可靠连接时，才应使用流媒体。,
+      displayName: 操作模式}
+  gridfs-file-name:
+    en: {displayName: File Name, description: The name of the file in the bucket that
+        is the target of this processor.}
+    zh: {description: 存储桶中作为此处理器目标的文件的名称。, displayName: 文件名}
+  gridfs-client-service:
+    en: {displayName: Client Service, description: The MongoDB client service to use
+        for database connections.}
+    zh: {description: 用于数据库连接的MongoDB客户端服务。, displayName: 客户端服务}
+  mongo-query-attribute:
+    en: {displayName: Query Output Attribute, description: 'If set, the query will
+        be written to a specified attribute on the output flowfiles.'}
+    zh: {description: 如果设置，查询将写入输出流文件上的指定属性。, displayName: 查询输出属性}
+  gridfs-database-name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  gridfs-query:
+    en: {displayName: Query, description: A valid MongoDB query to use to fetch one
+        or more files from GridFS.}
+    zh: {description: 用于从GridFS获取一个或多个文件的有效MongoDB查询。, displayName: 查询}
+  gridfs-bucket-name:
+    en: {displayName: Bucket Name, description: 'The GridFS bucket where the files
+        will be stored. If left blank, it will use the default value ''fs'' that the
+        MongoDB client driver uses.'}
+    zh: {description: 存储文件的GridFS存储桶。如果留空，它将使用MongoDB客户端驱动程序使用的默认值“fs”。, displayName: Bucket名称}
+writeAttributes:
+  gridfs.file.metadata: {en: The custom metadata stored with a file is attached to
+      this property if it exists., zh: 与文件一起存储的自定义元数据将附加到此属性（如果存在）。}
+tags:
+  en: [fetch, gridfs, mongo]
+  zh: [取来, 格里弗斯, 蒙哥]

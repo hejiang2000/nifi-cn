@@ -1,0 +1,38 @@
+relationships:
+  success: {en: The FlowFile with transformed content will be routed to this relationship,
+    zh: 具有转换内容的FlowFile将路由到此关系}
+  failure: {en: 'If a FlowFile fails processing for any reason (for example, the FlowFile
+      is not valid JSON), it will be routed to this relationship', zh: 如果FlowFile由于任何原因（例如，FlowFile不是有效的JSON）而处理失败，它将被路由到此关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Applies a JSLT transformation to the FlowFile JSON payload.
+    A new FlowFile is created with transformed content and is routed to the ''success''
+    relationship. If the JSLT transform fails, the original FlowFile is routed to
+    the ''failure'' relationship.', zh: 将JSLT转换应用于FlowFile JSON负载。使用转换后的内容创建新的FlowFile，并将其路由到“成功”关系。如果JSLT转换失败，则将原始FlowFile路由到“failure”关系。}
+properties:
+  jslt-transform-pretty_print:
+    en: {displayName: Pretty Print, description: Apply pretty-print formatting to
+        the output of the JSLT transform}
+    zh: {description: 对JSLT转换的输出应用漂亮的打印格式, displayName: 漂亮的印花}
+  jslt-transform-transformation:
+    en: {displayName: JSLT Transformation, description: 'JSLT Transformation for transform
+        of JSON data. Any NiFi Expression Language present will be evaluated first
+        to get the final transform to be applied. The JSLT Tutorial provides an overview
+        of supported expressions: https://github.com/schibsted/jslt/blob/master/tutorial.md'}
+    zh: {description: 'JSLT转换用于JSON数据的转换。任何存在的NiFi表达式语言都将首先进行评估，以获得要应用的最终转换。JSLT教程概述了支持的表达式：https://github.com/schibsted/jslt/blob/master/tutorial.md',
+      displayName: JSLT转换}
+  jslt-transform-cache-size:
+    en: {displayName: Transform Cache Size, description: 'Compiling a JSLT Transform
+        can be fairly expensive. Ideally, this will be done only once. However, if
+        the Expression Language is used in the transform, we may need a new Transform
+        for each FlowFile. This value controls how many of those Transforms we cache
+        in memory in order to avoid having to compile the Transform each time.'}
+    zh: {description: 编译JSLT转换可能相当昂贵。理想情况下，这将只进行一次。但是，如果在转换中使用表达式语言，我们可能需要为每个FlowFile创建一个新的转换。该值控制我们缓存在内存中的这些变换的数量，以避免每次都编译变换。,
+      displayName: 变换缓存大小}
+writeAttributes:
+  mime.type: {en: Always set to application/json, zh: 始终设置为application/json}
+tags:
+  en: [json, jslt, transform]
+  zh: [json文件, jslt公司, 使改变]

@@ -1,0 +1,43 @@
+relationships:
+  success: {en: Successfully converted attributes to JSON, zh: 已成功将属性转换为JSON}
+  failure: {en: Failed to convert attributes to JSON, zh: 无法将属性转换为JSON}
+capabilityDescription: {en: Generates a JSON representation of the input FlowFile
+    Attributes. The resulting JSON can be written to either a new Attribute 'JSONAttributes'
+    or written to the FlowFile as content., zh: 生成输入FlowFile属性的JSON表示。生成的JSON可以写入新的属性“JSONAttributes”，也可以作为内容写入FlowFile。}
+properties:
+  attributes-to-json-regex:
+    en: {displayName: Attributes Regular Expression, description: Regular expression
+        that will be evaluated against the flow file attributes to select the matching
+        attributes. This property can be used in combination with the attributes list
+        property.}
+    zh: {description: 将根据流文件属性进行计算以选择匹配属性的正则表达式。此属性可以与属性列表属性结合使用。, displayName: 属性正则表达式}
+  Destination:
+    en: {displayName: Destination, description: Control if JSON value is written as
+        a new flowfile attribute 'JSONAttributes' or written in the flowfile content.
+        Writing to flowfile content will overwrite any existing flowfile content.}
+    zh: {description: 控制JSON值是否作为新的流文件属性“JSONAttributes”写入或写入流文件内容。写入流文件内容将覆盖任何现有的流文件内容。,
+      displayName: 目的地}
+  Null Value:
+    en: {displayName: Null Value, description: If true a non existing selected attribute
+        will be NULL in the resulting JSON. If false an empty string will be placed
+        in the JSON}
+    zh: {description: 如果为true，则生成的JSON中不存在的选定属性将为NULL。如果为false，则将在JSON中放置一个空字符串, displayName: Null值}
+  Attributes List:
+    en: {displayName: Attributes List, description: Comma separated list of attributes
+        to be included in the resulting JSON. If this value is left empty then all
+        existing Attributes will be included. This list of attributes is case sensitive.
+        If an attribute specified in the list is not found it will be be emitted to
+        the resulting JSON with an empty string or NULL value.}
+    zh: {description: 要包含在结果JSON中的属性的逗号分隔列表。如果该值为空，则将包括所有现有属性。此属性列表区分大小写。如果未找到列表中指定的属性，则将以空字符串或NULL值将其发送到结果JSON。,
+      displayName: 属性列表}
+  Include Core Attributes:
+    en: {displayName: Include Core Attributes, description: Determines if the FlowFile
+        org.apache.nifi.flowfile.attributes.CoreAttributes which are contained in
+        every FlowFile should be included in the final JSON value generated.}
+    zh: {description: 确定FlowFile org.apache.nifi.FlowFile.attributes。每个FlowFile中包含的CoreAttributes应包含在生成的最终JSON值中。,
+      displayName: 包括核心属性}
+writeAttributes:
+  JSONAttributes: {en: JSON representation of Attributes, zh: 属性的JSON表示}
+tags:
+  en: [json, attributes, flowfile]
+  zh: [json文件, 属性, 流程文件]

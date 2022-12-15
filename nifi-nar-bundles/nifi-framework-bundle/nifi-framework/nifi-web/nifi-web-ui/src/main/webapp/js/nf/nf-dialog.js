@@ -74,7 +74,7 @@
 
             // update the button model
             $('#nf-ok-dialog').modal('setButtonModel', [{
-                buttonText: 'Ok',
+                buttonText: '确定',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -105,8 +105,8 @@
             options = $.extend({
                 headerText: '',
                 dialogContent: '',
-                yesText: 'Yes',
-                noText: 'No'
+                yesText: '是',
+                noText: '否'
             }, options);
 
             // add the content to the prompt
@@ -158,8 +158,8 @@
          */
         showDisconnectedFromClusterMessage: function (okHandler) {
             nfDialog.showOkDialog({
-                headerText: 'Cluster Connection',
-                dialogContent: 'This node is currently not connected to the cluster. Any modifications to the data flow made here will not replicate across the cluster.',
+                headerText: '集群连接',
+                dialogContent: '该节点尚未连接到集群. 对其数据流程的任何修改都不会复制到集群的其他节点.',
                 okHandler: function () {
                     if (typeof okHandler === 'function') {
                         okHandler.call(this);
@@ -173,8 +173,8 @@
          */
         showConnectedToClusterMessage: function (okHandler) {
             nfDialog.showOkDialog({
-                headerText: 'Cluster Connection',
-                dialogContent: 'This node just joined the cluster. Any modifications to the data flow made here will replicate across the cluster.',
+                headerText: '集群连接',
+                dialogContent: '该节点已加入集群. 对其数据流程的任何修改都将自动复制到集群内其他节点.',
                 okHandler: function () {
                     if (typeof okHandler === 'function') {
                         okHandler.call(this);

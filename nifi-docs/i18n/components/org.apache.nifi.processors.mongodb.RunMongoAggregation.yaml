@@ -1,0 +1,79 @@
+relationships:
+  original: {en: The input flowfile gets sent to this relationship when the query
+      succeeds., zh: 当查询成功时，输入流文件将发送到此关系。}
+  failure: {en: The input flowfile gets sent to this relationship when the query fails.,
+    zh: 当查询失败时，输入流文件将发送到此关系。}
+  results: {en: The result set of the aggregation will be sent to this relationship.,
+    zh: 聚合的结果集将发送到此关系。}
+capabilityDescription: {en: A processor that runs an aggregation query whenever a
+    flowfile is received., zh: 每当接收到流文件时运行聚合查询的处理器。}
+properties:
+  mongo-client-service:
+    en: {displayName: Client Service, description: 'If configured, this property will
+        use the assigned client service for connection pooling.'}
+    zh: {description: 如果已配置，此属性将使用分配的客户端服务进行连接池。, displayName: 客户端服务}
+  mongo-charset:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        document data.}
+    zh: {description: 指定文档数据的字符集。, displayName: 字符集}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  ssl-client-auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  mongo-date-format:
+    en: {displayName: Date Format, description: 'The date format string to use for
+        formatting Date fields that are returned from Mongo. It is only applied when
+        the JSON output format is set to Standard JSON. Full documentation for format
+        characters can be found here: https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html'}
+    zh: {description: '用于格式化从Mongo返回的日期字段的日期格式字符串。它仅在JSON输出格式设置为标准JSON时应用。格式字符的完整文档可在此处找到：https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html',
+      displayName: 日期格式}
+  json-type:
+    en: {displayName: JSON Type, description: 'By default, MongoDB''s Java driver
+        returns "extended JSON". Some of the features of this variant of JSON may
+        cause problems for other JSON parsers that expect only standard JSON types
+        and conventions. This configuration setting  controls whether to use extended
+        JSON or provide a clean view that conforms to standard JSON.'}
+    zh: {description: 默认情况下，MongoDB的Java驱动程序返回“扩展JSON”。这种JSON变体的一些特性可能会给其他JSON解析器带来问题，因为它们只需要标准JSON类型和约定。此配置设置控制是使用扩展JSON还是提供符合标准JSON的干净视图。,
+      displayName: JSON类型}
+  allow-disk-use:
+    en: {displayName: Allow Disk Use, description: Set this to true to enable writing
+        data to temporary files to prevent exceeding the maximum memory use limit
+        during aggregation pipeline staged when handling large datasets.}
+    zh: {description: 将此设置为true，以启用将数据写入临时文件，以防止在处理大型数据集时在聚合管道期间超过最大内存使用限制。, displayName: 允许使用磁盘}
+  Mongo Database Name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  mongo-agg-query:
+    en: {displayName: Query, description: The aggregation query to be executed.}
+    zh: {description: 要执行的聚合查询。, displayName: 查询}
+  mongo-query-attribute:
+    en: {displayName: Query Output Attribute, description: 'If set, the query will
+        be written to a specified attribute on the output flowfiles.'}
+    zh: {description: 如果设置，查询将写入输出流文件上的指定属性。, displayName: 查询输出属性}
+  results-per-flowfile:
+    en: {displayName: Results Per FlowFile, description: How many results to put into
+        a flowfile at once. The whole body will be treated as a JSON array of results.}
+    zh: {description: 一次将多少结果放入流文件中。整个正文将被视为结果的JSON数组。, displayName: 每个流文件的结果}
+  Mongo URI:
+    en: {displayName: Mongo URI, description: 'MongoURI, typically of the form: mongodb://host1[:port1][,host2[:port2],...]'}
+    zh: {description: 'MongoURI，通常形式为：mongodb://host1[：端口1][，主机2[：端口2]，…]', displayName: Mongo
+        URI}
+  Batch Size:
+    en: {displayName: Batch Size, description: The number of elements returned from
+        the server in one batch.}
+    zh: {description: 一个批处理中从服务器返回的元素数。, displayName: 批量大小}
+  Mongo Collection Name:
+    en: {displayName: Mongo Collection Name, description: The name of the collection
+        to use}
+    zh: {description: 要使用的集合的名称, displayName: Mongo集合名称}
+tags:
+  en: [mongo, aggregation, aggregate]
+  zh: [蒙哥, 聚合, 总数的]

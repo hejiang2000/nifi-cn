@@ -1,0 +1,33 @@
+relationships:
+  '1': {en: Where to route flowfiles for this relationship index, zh: 将此关系索引的流文件路由到何处}
+dynamicProperties:
+  The relationship name (positive number):
+    en: {description: Adding a property with the name '5' and value '10' means that
+        the relationship with name '5' will receive 10 FlowFiles in each iteration
+        instead of 1., value: The relationship Weight (positive number)}
+    zh: {description: 添加名为“5”且值为“10”的属性意味着名为“0”的关系将在每次迭代中接收10个FlowFiles，而不是1个。, value: 关系权重（正数）}
+capabilityDescription: {en: 'Distributes FlowFiles to downstream processors based
+    on a Distribution Strategy. If using the Round Robin strategy, the default is
+    to assign each destination a weighting of 1 (evenly distributed). However, optional
+    propertiescan be added to the change this; adding a property with the name ''5''
+    and value ''10'' means that the relationship with name ''5'' will be receive 10
+    FlowFiles in each iteration instead of 1.', zh: 根据分发策略将流文件分发给下游处理器。如果使用循环策略，默认情况下为每个目标分配权重1（均匀分布）。但是，可以将可选属性添加到更改this；添加名为“5”且值为“10”的属性意味着名为“0”的关系将在每次迭代中接收10个FlowFiles，而不是1个。}
+dynamicRelationships:
+  A number 1..<Number Of Relationships>: {en: FlowFiles are sent to this relationship
+      per the <Distribution Strategy>, zh: FlowFiles根据<Distribution Strategy>发送到此关系}
+properties:
+  Number of Relationships:
+    en: {displayName: Number of Relationships, description: Determines the number
+        of Relationships to which the load should be distributed}
+    zh: {description: 确定负载应分配到的关系数, displayName: 关系的数量}
+  Distribution Strategy:
+    en: {displayName: Distribution Strategy, description: Determines how the load
+        will be distributed. Relationship weight is in numeric order where '1' has
+        the greatest weight.}
+    zh: {description: 确定如何分配负载。关系权重按数字顺序排列，其中“1”权重最大。, displayName: 分销策略}
+writeAttributes:
+  distribute.load.relationship: {en: The name of the specific relationship the FlowFile
+      has been routed through, zh: FlowFile已通过的特定关系的名称}
+tags:
+  en: [distribute, load balance, route, round robin, weighted]
+  zh: [分配, 负载平衡, 路线, 循环, 加权的，加权的]

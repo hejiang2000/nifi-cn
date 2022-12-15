@@ -1,0 +1,66 @@
+capabilityDescription: {en: 'A reloadable CSV file-based lookup service. When the
+    lookup key is found in the CSV file, the columns are returned as a Record. All
+    returned fields will be strings. The first line of the csv file is considered
+    as header.', zh: 基于CSV文件的可重载查找服务。当在CSV文件中找到查找关键字时，列将作为记录返回。所有返回的字段都将是字符串。csv文件的第一行被视为标题。}
+properties:
+  Escape Character:
+    en: {displayName: Escape Character, description: 'The character that is used to
+        escape characters that would otherwise have a specific meaning to the CSV
+        Parser. If the property has been specified via Expression Language but the
+        expression gets evaluated to an invalid Escape Character at runtime, then
+        it will be skipped and the default Escape Character will be used. Setting
+        it to an empty string means no escape character should be used.'}
+    zh: {description: 用于转义否则对CSV解析器具有特定意义的字符的字符。如果已通过表达式语言指定了属性，但表达式在运行时被计算为无效的转义符，则将跳过该属性，并使用默认的转义符。将其设置为空字符串意味着不应使用转义符。,
+      displayName: 转义符}
+  lookup-key-column:
+    en: {displayName: Lookup Key Column, description: The field in the CSV file that
+        will serve as the lookup key. This is the field that will be matched against
+        the property specified in the lookup processor.}
+    zh: {description: CSV文件中用作查找关键字的字段。这是将与查找处理器中指定的属性匹配的字段。, displayName: 查找关键字列}
+  csv-file:
+    en: {displayName: CSV File, description: Path to a CSV File in which the key value
+        pairs can be looked up.}
+    zh: {description: 可以在其中查找键值对的CSV文件的路径。, displayName: CSV文件}
+  Trim Fields:
+    en: {displayName: Trim Fields, description: Whether or not white space should
+        be removed from the beginning and end of fields}
+    zh: {description: 是否应从字段的开头和结尾删除空白, displayName: 修剪字段}
+  CSV Format:
+    en: {displayName: CSV Format, description: 'Specifies which "format" the CSV data
+        is in, or specifies if custom formatting should be used.'}
+    zh: {description: 指定CSV数据的“格式”，或指定是否应使用自定义格式。, displayName: CSV格式}
+  ignore-duplicates:
+    en: {displayName: Ignore Duplicates, description: Ignore duplicate keys for records
+        in the CSV file.}
+    zh: {description: 忽略CSV文件中记录的重复键。, displayName: 忽略重复项}
+  Quote Character:
+    en: {displayName: Quote Character, description: 'The character that is used to
+        quote values so that escape characters do not have to be used. If the property
+        has been specified via Expression Language but the expression gets evaluated
+        to an invalid Quote Character at runtime, then it will be skipped and the
+        default Quote Character will be used.'}
+    zh: {description: 用于引用值的字符，以便不必使用转义字符。如果已通过表达式语言指定了属性，但表达式在运行时被计算为无效的引号字符，则将跳过该属性，并使用默认的引号字符。,
+      displayName: 引号字符}
+  Comment Marker:
+    en: {displayName: Comment Marker, description: The character that is used to denote
+        the start of a comment. Any line that begins with this comment will be ignored.}
+    zh: {description: 用于表示注释开头的字符。任何以该注释开头的行都将被忽略。, displayName: 注释标记}
+  Value Separator:
+    en: {displayName: Value Separator, description: 'The character that is used to
+        separate values/fields in a CSV Record. If the property has been specified
+        via Expression Language but the expression gets evaluated to an invalid Value
+        Separator at runtime, then it will be skipped and the default Value Separator
+        will be used.'}
+    zh: {description: 用于分隔CSV记录中的值/字段的字符。如果已通过表达式语言指定属性，但表达式在运行时被计算为无效的值分隔符，则将跳过该属性，并使用默认值分隔符。,
+      displayName: 值分隔符}
+  Character Set:
+    en: {displayName: Character Set, description: The Character Encoding that is used
+        to decode the CSV file.}
+    zh: {description: 用于解码CSV文件的字符编码。, displayName: 字符集}
+  Quote Mode:
+    en: {displayName: Quote Mode, description: Specifies how fields should be quoted
+        when they are written}
+    zh: {description: 指定写入字段时应如何引用字段, displayName: 报价模式}
+tags:
+  en: [lookup, cache, enrich, join, csv, reloadable, key, value, record]
+  zh: [查找, 隐藏物, 充实, 参加, csv格式, 可重新加载的, 钥匙, 价值, 记录]

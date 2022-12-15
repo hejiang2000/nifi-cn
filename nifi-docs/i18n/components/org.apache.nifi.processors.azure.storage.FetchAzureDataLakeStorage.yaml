@@ -1,0 +1,57 @@
+relationships:
+  success: {en: Files that have been successfully written to Azure storage are transferred
+      to this relationship, zh: 已成功写入Azure存储的文件将传输到此关系}
+  failure: {en: Files that could not be written to Azure storage for some reason are
+      transferred to this relationship, zh: 由于某种原因无法写入Azure存储的文件已传输到此关系}
+capabilityDescription: {en: Fetch the provided file from Azure Data Lake Storage,
+  zh: 从Azure Data Lake存储获取提供的文件}
+properties:
+  filesystem-name:
+    en: {displayName: Filesystem Name, description: Name of the Azure Storage File
+        System (also called Container). It is assumed to be already existing.}
+    zh: {description: Azure存储文件系统（也称为容器）的名称。假设它已经存在。, displayName: 文件系统名称}
+  number-of-retries:
+    en: {displayName: Number of Retries, description: The number of automatic retries
+        to perform if the download fails.}
+    zh: {description: 下载失败时要执行的自动重试次数。, displayName: 重试次数}
+  range-length:
+    en: {displayName: Range Length, description: 'The number of bytes to download
+        from the object, starting from the Range Start. An empty value or a value
+        that extends beyond the end of the object will read to the end of the object.'}
+    zh: {description: 要从对象下载的字节数，从Range Start开始。空值或超出对象结尾的值将读取到对象结尾。, displayName: 范围长度}
+  range-start:
+    en: {displayName: Range Start, description: The byte position at which to start
+        reading from the object. An empty value or a value of zero will start reading
+        at the beginning of the object.}
+    zh: {description: 从对象开始读取的字节位置。空值或零值将从对象的开头开始读取。, displayName: 范围起始值}
+  adls-credentials-service:
+    en: {displayName: ADLS Credentials, description: Controller Service used to obtain
+        Azure Credentials.}
+    zh: {description: 用于获取Azure凭据的控制器服务。, displayName: ADLS证书}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        SOCKS, HTTP In case of SOCKS, it is not guaranteed that the selected SOCKS
+        Version will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：SOCKS、HTTP如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  directory-name:
+    en: {displayName: Directory Name, description: 'Name of the Azure Storage Directory.
+        The Directory Name cannot contain a leading ''/''. The root directory can
+        be designated by the empty string value. In case of the PutAzureDataLakeStorage
+        processor, the directory will be created if not already existing.'}
+    zh: {description: Azure存储目录的名称。目录名不能包含前导“/”。根目录可以由空字符串值指定。对于PutAzureDataLakeStorage处理器，如果尚未存在，则将创建目录。,
+      displayName: 目录名称}
+  file-name:
+    en: {displayName: File Name, description: The filename}
+    zh: {description: 文件名, displayName: 文件名}
+writeAttributes:
+  azure.datalake.storage.statusCode: {en: The HTTP error code (if available) from
+      the failed operation, zh: 失败操作的HTTP错误代码（如果可用）}
+  azure.datalake.storage.errorCode: {en: The Azure Data Lake Storage moniker of the
+      failed operation, zh: 失败操作的Azure Data Lake存储别名}
+  azure.datalake.storage.errorMessage: {en: The Azure Data Lake Storage error message
+      from the failed operation, zh: 来自失败操作的Azure Data Lake存储错误消息}
+tags:
+  en: [azure, microsoft, cloud, storage, adlsgen2, datalake]
+  zh: [蔚蓝色的, 微软, 云, 存储, 广告广告2, 数据库]

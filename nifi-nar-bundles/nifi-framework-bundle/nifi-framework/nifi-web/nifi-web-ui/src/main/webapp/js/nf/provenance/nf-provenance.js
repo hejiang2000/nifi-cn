@@ -149,7 +149,7 @@
                 dataType: 'json'
             }).done(function (response) {
                 var aboutDetails = response.about;
-                var provenanceTitle = aboutDetails.title + ' Data Provenance';
+                var provenanceTitle = aboutDetails.title + ' 数据朔源';
 
                 // store the controller name
                 $('#nifi-controller-uri').text(aboutDetails.uri);

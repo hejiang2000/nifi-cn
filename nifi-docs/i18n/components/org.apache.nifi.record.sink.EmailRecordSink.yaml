@@ -1,0 +1,59 @@
+capabilityDescription: {en: Provides a RecordSinkService that can be used to send
+    records in email using the specified writer for formatting., zh: 提供RecordSinkService，该服务可用于使用指定的编写器发送电子邮件中的记录进行格式化。}
+properties:
+  cc:
+    en: {displayName: CC, description: The recipients to include in the CC-Line of
+        the email. Comma separated sequence of addresses following RFC822 syntax.}
+    zh: {description: 要包含在电子邮件抄送行中的收件人。遵循RFC822语法的逗号分隔的地址序列。, displayName: 科科斯群岛}
+  smtp-hostname:
+    en: {displayName: SMTP Hostname, description: The hostname of the SMTP Server
+        that is used to send Email Notifications}
+    zh: {description: 用于发送电子邮件通知的SMTP服务器的主机名, displayName: SMTP主机名}
+  smtp-password:
+    en: {displayName: SMTP Password, description: Password for the SMTP account}
+    zh: {description: SMTP帐户的密码, displayName: SMTP密码}
+  bcc:
+    en: {displayName: BCC, description: The recipients to include in the BCC-Line
+        of the email. Comma separated sequence of addresses following RFC822 syntax.}
+    zh: {description: 要包含在电子邮件密件抄送行中的收件人。遵循RFC822语法的逗号分隔的地址序列。, displayName: BCC公司}
+  subject:
+    en: {displayName: Subject, description: The email subject}
+    zh: {description: 电子邮件主题, displayName: 主题}
+  smtp-port:
+    en: {displayName: SMTP Port, description: The Port used for SMTP communications}
+    zh: {description: 用于SMTP通信的端口, displayName: SMTP端口}
+  smtp-auth:
+    en: {displayName: SMTP Auth, description: Flag indicating whether authentication
+        should be used}
+    zh: {description: 指示是否应使用身份验证的标志, displayName: SMTP身份验证}
+  smtp-ssl:
+    en: {displayName: SMTP SSL, description: Flag indicating whether SSL should be
+        enabled}
+    zh: {description: 指示是否应启用SSL的标志, displayName: SMTP SSL}
+  smtp-starttls:
+    en: {displayName: SMTP STARTTLS, description: 'Flag indicating whether STARTTLS
+        should be enabled. If the server does not support STARTTLS, the connection
+        continues without the use of TLS'}
+    zh: {description: 指示是否应启用STARTTLS的标志。如果服务器不支持STARTTLS，则连接将在不使用TLS的情况下继续, displayName: SMTP启动}
+  from:
+    en: {displayName: From, description: Specifies the Email address to use as the
+        sender. Comma separated sequence of addresses following RFC822 syntax.}
+    zh: {description: 指定用作发件人的电子邮件地址。遵循RFC822语法的逗号分隔的地址序列。, displayName: 从…起}
+  to:
+    en: {displayName: To, description: The recipients to include in the To-Line of
+        the email. Comma separated sequence of addresses following RFC822 syntax.}
+    zh: {description: 要包含在电子邮件的收件人行中的收件人。遵循RFC822语法的逗号分隔的地址序列。, displayName: 到}
+  smtp-xmailer-header:
+    en: {displayName: SMTP X-Mailer Header, description: X-Mailer used in the header
+        of the outgoing email}
+    zh: {description: 发送电子邮件标题中使用的X-Mailer, displayName: SMTP X-Mailer标头}
+  smtp-username:
+    en: {displayName: SMTP Username, description: Username for the SMTP account}
+    zh: {description: SMTP帐户的用户名, displayName: SMTP用户名}
+  record-sink-record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records.}
+    zh: {description: 指定用于写入记录的控制器服务。, displayName: 记录编写器}
+tags:
+  en: [email, smtp, record, sink, send, write]
+  zh: [电子邮件, smtp公司, 记录, 下沉, 邮寄, 写]

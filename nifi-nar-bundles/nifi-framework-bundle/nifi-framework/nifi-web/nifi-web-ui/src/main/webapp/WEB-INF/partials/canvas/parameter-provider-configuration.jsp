@@ -22,7 +22,7 @@
             <div id="parameter-provider-standard-settings-tab-content" class="configuration-tab">
                 <div class="settings-left">
                     <div class="setting">
-                        <div class="setting-name">Name</div>
+                        <div class="setting-name">名称</div>
                         <div class="parameter-provider-editable setting-field">
                             <input type="text" id="parameter-provider-name" name="parameter-provider-name"/>
                         </div>
@@ -37,13 +37,13 @@
                         </div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Type</div>
+                        <div class="setting-name">类型</div>
                         <div class="setting-field">
                             <span id="parameter-provider-type"></span>
                         </div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Bundle</div>
+                        <div class="setting-name">扩展包</div>
                         <div id="parameter-provider-bundle" class="setting-field"></div>
                     </div>
                 </div>
@@ -51,8 +51,8 @@
                 <div class="settings-right">
                     <div class="setting">
                         <div class="setting-name">
-                            Referencing Components
-                            <div class="fa fa-question-circle" alt="Info" title="Other components referencing this parameter provider."></div>
+                            引用组件
+                            <div class="fa fa-question-circle" alt="Info" title="引用该参数提供者的其他组件."></div>
                         </div>
                         <div class="setting-field">
                             <div id="parameter-provider-referencing-components"></div>
@@ -63,14 +63,14 @@
             <div id="parameter-provider-properties-tab-content" class="configuration-tab">
                 <div id="parameter-provider-properties"></div>
                 <div id="parameter-provider-properties-verification-results" class="verification-results">
-                    <div class="verification-results-header">Verification Results</div>
+                    <div class="verification-results-header">校验结果</div>
                     <div id="parameter-provider-properties-verification-results-listing" class="verification-results-listing"></div>
                 </div>
             </div>
             <div id="parameter-provider-comments-tab-content" class="configuration-tab">
                 <textarea cols="30" rows="4" id="parameter-provider-comments" name="parameter-provider-comments" class="parameter-provider-editable setting-input"></textarea>
                 <div class="setting parameter-provider-read-only hidden">
-                    <div class="setting-name">Comments</div>
+                    <div class="setting-name">说明</div>
                     <div class="setting-field">
                         <span id="read-only-parameter-provider-comments"></span>
                     </div>

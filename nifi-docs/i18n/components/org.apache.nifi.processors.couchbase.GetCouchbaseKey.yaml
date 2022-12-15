@@ -1,0 +1,53 @@
+relationships:
+  original: {en: The original input FlowFile is routed to this relationship when the
+      value is retrieved from Couchbase Server and routed to 'success'., zh: 当从Couchbase服务器检索值并将其路由到“成功”时，原始输入FlowFile将被路由到此关系。}
+  success: {en: Values retrieved from Couchbase Server are written as outgoing FlowFiles
+      content or put into an attribute of the incoming FlowFile and routed to this
+      relationship., zh: 从Couchbase服务器检索到的值将作为传出FlowFiles内容写入，或放入传入FlowFile的属性中，并路由到此关系。}
+  failure: {en: All FlowFiles failed to fetch from Couchbase Server and not retry-able
+      are routed to this relationship., zh: 所有FlowFiles无法从Couchbase服务器获取，并且无法重试。这些FlowFiles将路由到此关系。}
+  retry: {en: All FlowFiles failed to fetch from Couchbase Server but can be retried
+      are routed to this relationship., zh: 所有FlowFiles未能从Couchbase服务器获取，但可以重试。这些文件都被路由到此关系。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Get a document from Couchbase Server via Key/Value access.
+    The ID of the document to fetch may be supplied by setting the <Document Id> property.
+    NOTE: if the Document Id property is not set, the contents of the FlowFile will
+    be read to determine the Document Id, which means that the contents of the entire
+    FlowFile will be buffered in memory.', zh: 通过Key/Value访问从Couchbase Server获取文档。可以通过设置＜document
+    ID＞属性来提供要获取的文档的ID。注意：如果未设置文档Id属性，将读取FlowFile的内容以确定文档Id，这意味着整个FlowFile的属性将缓冲在内存中。}
+properties:
+  cluster-controller-service:
+    en: {displayName: Couchbase Cluster Controller Service, description: A Couchbase
+        Cluster Controller Service which manages connections to a Couchbase cluster.}
+    zh: {description: Couchbase群集控制器服务，用于管理与Couchbase集群的连接。, displayName: Couchbase群集控制器服务}
+  put-to-attribute:
+    en: {displayName: Put Value to Attribute, description: 'If set, the retrieved
+        value will be put into an attribute of the FlowFile instead of a the content
+        of the FlowFile. The attribute key to put to is determined by evaluating value
+        of this property.'}
+    zh: {description: 如果设置，检索的值将被放入FlowFile的属性中，而不是FlowFile的内容中。要放入的属性键是通过计算此属性的值来确定的。,
+      displayName: 将值放入属性}
+  bucket-name:
+    en: {displayName: Bucket Name, description: The name of bucket to access.}
+    zh: {description: 要访问的存储桶的名称。, displayName: Bucket名称}
+  document-type:
+    en: {displayName: Document Type, description: The type of contents.}
+    zh: {description: 内容的类型。, displayName: 文档类型}
+  document-id:
+    en: {displayName: Document Id, description: 'A static, fixed Couchbase document
+        id, or an expression to construct the Couchbase document id.'}
+    zh: {description: 一个静态的、固定的Couchbase文档id，或一个用于构造Couchbase文件id的表达式。, displayName: 文档Id}
+writeAttributes:
+  couchbase.doc.id: {en: Id of the document., zh: 文档的Id。}
+  couchbase.cluster: {en: Cluster where the document was retrieved from., zh: 从中检索文档的群集。}
+  couchbase.bucket: {en: Bucket where the document was retrieved from., zh: 从中检索文档的Bucket。}
+  couchbase.doc.cas: {en: CAS of the document., zh: 文件的CAS。}
+  couchbase.doc.expiry: {en: Expiration of the document., zh: 文档过期。}
+  couchbase.exception: {en: If Couchbase related error occurs the CouchbaseException
+      class name will be captured here., zh: 如果发生与Couchbase相关的错误，将在此处捕获CouchbaseException类名。}
+tags:
+  en: [nosql, couchbase, database, get]
+  zh: [nosql语言, 泊位底座, 数据库, 收到]

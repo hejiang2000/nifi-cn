@@ -1,0 +1,113 @@
+relationships:
+  success: {en: All successfully processed FlowFiles are routed to this relationship,
+    zh: 所有成功处理的FlowFiles都将路由到此关系}
+  failure: {en: Unsuccessful operations will be transferred to the failure relationship.,
+    zh: 未成功的操作将转移到失败关系。}
+deprecationNotice: {en: Processor depends on legacy Microsoft Azure SDK, zh: 处理器依赖于旧版Microsoft
+    Azure SDK}
+capabilityDescription: {en: Puts content into an Azure Storage Blob, zh: 将内容放入Azure存储Blob}
+properties:
+  storage-account-name:
+    en: {displayName: Storage Account Name, description: 'The storage account name.
+        There are certain risks in allowing the account name to be stored as a flowfile
+        attribute. While it does provide for a more flexible flow by allowing the
+        account name to be fetched dynamically from a flowfile attribute, care must
+        be taken to restrict access to the event provenance data (e.g., by strictly
+        controlling the policies governing provenance for this processor). In addition,
+        the provenance repositories may be put on encrypted disk partitions. Instead
+        of defining the Storage Account Name, Storage Account Key and SAS Token properties
+        directly on the processor, the preferred way is to configure them through
+        a controller service specified in the Storage Credentials property. The controller
+        service can provide a common/shared configuration for multiple/all Azure processors.
+        Furthermore, the credentials can also be looked up dynamically with the ''Lookup''
+        version of the service.'}
+    zh: {description: 存储帐户名。允许将帐户名存储为流文件属性存在一定风险。虽然它允许从流文件属性动态获取帐户名，从而提供了更灵活的流，但必须注意限制对事件起源数据的访问（例如，通过严格控制控制此处理器起源的策略）。此外，源存储库可以放在加密的磁盘分区上。与直接在处理器上定义存储帐户名称、存储帐户密钥和SAS令牌属性不同，首选的方法是通过存储凭据属性中指定的控制器服务来配置它们。控制器服务可以为多个/所有Azure处理器提供公共/共享配置。此外，还可以使用服务的“查找”版本动态查找凭据。,
+      displayName: 存储帐户名称}
+  cse-key-id:
+    en: {displayName: Client-Side Encryption Key ID, description: Specifies the ID
+        of the key to use for client-side encryption.}
+    zh: {description: 指定用于客户端加密的密钥的ID。, displayName: 客户端加密密钥ID}
+  storage-sas-token:
+    en: {displayName: SAS Token, description: 'Shared Access Signature token, including
+        the leading ''?''. Specify either SAS token (recommended) or Account Key.
+        There are certain risks in allowing the SAS token to be stored as a flowfile
+        attribute. While it does provide for a more flexible flow by allowing the
+        SAS token to be fetched dynamically from a flowfile attribute, care must be
+        taken to restrict access to the event provenance data (e.g., by strictly controlling
+        the policies governing provenance for this processor). In addition, the provenance
+        repositories may be put on encrypted disk partitions.'}
+    zh: {description: 共享访问签名令牌，包括前导“？”。指定SAS令牌（推荐）或帐户密钥。允许将SAS令牌存储为流文件属性存在一定风险。虽然它通过允许从流文件属性动态获取SAS令牌提供了更灵活的流，但必须注意限制对事件起源数据的访问（例如，通过严格控制控制该处理器起源的策略）。此外，源存储库可以放在加密的磁盘分区上。,
+      displayName: SAS令牌}
+  blob:
+    en: {displayName: Blob, description: The filename of the blob}
+    zh: {description: blob的文件名, displayName: Blob（Blob）}
+  storage-endpoint-suffix:
+    en: {displayName: Common Storage Account Endpoint Suffix, description: 'Storage
+        accounts in public Azure always use a common FQDN suffix. Override this endpoint
+        suffix with a different suffix in certain circumstances (like Azure Stack
+        or non-public Azure regions). The preferred way is to configure them through
+        a controller service specified in the Storage Credentials property. The controller
+        service can provide a common/shared configuration for multiple/all Azure processors.
+        Furthermore, the credentials can also be looked up dynamically with the ''Lookup''
+        version of the service.'}
+    zh: {description: 公共Azure中的存储帐户始终使用公共FQDN后缀。在某些情况下（如Azure Stack或非公共Azure区域），使用不同的后缀覆盖此端点后缀。首选方法是通过存储凭据属性中指定的控制器服务配置它们。控制器服务可以为多个/所有Azure处理器提供公共/共享配置。此外，还可以使用服务的“查找”版本动态查找凭据。,
+      displayName: 公用存储帐户终结点后缀}
+  cse-symmetric-key-hex:
+    en: {displayName: Symmetric Key, description: 'When using symmetric client-side
+        encryption, this is the raw key, encoded in hexadecimal'}
+    zh: {description: 使用对称客户端加密时，这是以十六进制编码的原始密钥, displayName: 对称密钥}
+  storage-account-key:
+    en: {displayName: Storage Account Key, description: 'The storage account key.
+        This is an admin-like password providing access to every container in this
+        account. It is recommended one uses Shared Access Signature (SAS) token instead
+        for fine-grained control with policies. There are certain risks in allowing
+        the account key to be stored as a flowfile attribute. While it does provide
+        for a more flexible flow by allowing the account key to be fetched dynamically
+        from a flowfile attribute, care must be taken to restrict access to the event
+        provenance data (e.g., by strictly controlling the policies governing provenance
+        for this processor). In addition, the provenance repositories may be put on
+        encrypted disk partitions.'}
+    zh: {description: 存储帐户密钥。这是一个类似管理员的密码，可以访问此帐户中的每个容器。建议使用共享访问签名（SAS）令牌代替策略的细粒度控制。允许将帐户密钥存储为流文件属性存在一定风险。虽然它通过允许从流文件属性动态获取帐户密钥来提供更灵活的流，但必须注意限制对事件起源数据的访问（例如，通过严格控制控制该处理器起源的策略）。此外，源存储库可以放在加密的磁盘分区上。,
+      displayName: 存储帐户密钥}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        SOCKS, HTTP In case of SOCKS, it is not guaranteed that the selected SOCKS
+        Version will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：SOCKS、HTTP如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  azure-create-container:
+    en: {displayName: Create Container, description: 'Specifies whether to check if
+        the container exists and to automatically create it if it does not. Permission
+        to list containers is required. If false, this check is not made, but the
+        Put operation will fail if the container does not exist.'}
+    zh: {description: 指定是否检查容器是否存在，如果不存在则自动创建容器。需要列出容器的权限。如果为false，则不进行此检查，但如果容器不存在，则Put操作将失败。,
+      displayName: 创建容器}
+  storage-credentials-service:
+    en: {displayName: Storage Credentials, description: 'The Controller Service used
+        to obtain Azure Storage Credentials. Instead of the processor level properties,
+        the credentials can be configured here through a common/shared controller
+        service, which is the preferred way. The ''Lookup'' version of the service
+        can also be used to select the credentials dynamically at runtime based on
+        a FlowFile attribute (if the processor has FlowFile input).'}
+    zh: {description: 用于获取Azure存储凭据的控制器服务。这里可以通过公共/共享控制器服务来配置凭据，而不是处理器级属性，这是首选方式。服务的“查找”版本还可用于在运行时根据FlowFile属性动态选择凭据（如果处理器具有FlowFile输入）。,
+      displayName: 存储凭据}
+  container-name:
+    en: {displayName: Container Name, description: 'Name of the Azure storage container.
+        In case of PutAzureBlobStorage processor, container can be created if it does
+        not exist.'}
+    zh: {description: Azure存储容器的名称。对于PutAzureBlobStorage处理器，如果容器不存在，则可以创建容器。, displayName: 容器名称}
+  cse-key-type:
+    en: {displayName: Client-Side Encryption Key Type, description: Specifies the
+        key type to use for client-side encryption.}
+    zh: {description: 指定用于客户端加密的密钥类型。, displayName: 客户端加密密钥类型}
+writeAttributes:
+  azure.container: {en: The name of the Azure container, zh: Azure容器的名称}
+  azure.primaryUri: {en: Primary location for blob content, zh: blob内容的主要位置}
+  azure.etag: {en: Etag for the Azure blob, zh: Azure blob的Etag}
+  azure.blobname: {en: The name of the Azure blob, zh: Azure blob的名称}
+  azure.length: {en: Length of the blob, zh: blob的长度}
+  azure.timestamp: {en: The timestamp in Azure for the blob, zh: Azure中blob的时间戳}
+tags:
+  en: [azure, microsoft, cloud, storage, blob]
+  zh: [蔚蓝色的, 微软, 云, 存储, 斑点]

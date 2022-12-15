@@ -1,0 +1,78 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+dynamicProperties:
+  A name of an attribute to be added to the notification:
+    en: {description: User specified dynamic Properties are added as attributes to
+        the notification, value: The attribute value}
+    zh: {description: 用户指定的动态属性将作为属性添加到通知中, value: 属性值}
+capabilityDescription: {en: Sends the content of a FlowFile as a notification to the
+    Amazon Simple Notification Service, zh: 将FlowFile的内容作为通知发送到Amazon Simple notification
+    Service}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  Deduplication Message ID:
+    en: {displayName: Deduplication Message ID, description: The token used for deduplication
+        of sent messages}
+    zh: {description: 用于对已发送邮件进行重复数据消除的令牌, displayName: 重复数据消除消息ID}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  Message Group ID:
+    en: {displayName: Message Group ID, description: 'If using FIFO, the message group
+        to which the flowFile belongs'}
+    zh: {description: 如果使用FIFO，flowFile所属的消息组, displayName: 消息组ID}
+  E-mail Subject:
+    en: {displayName: E-mail Subject, description: The optional subject to use for
+        any subscribers that are subscribed via E-mail}
+    zh: {description: 可供通过电子邮件订阅的任何订户使用的可选主题, displayName: 电子邮件主题}
+  ARN Type:
+    en: {displayName: ARN Type, description: The type of Amazon Resource Name that
+        is being used.}
+    zh: {description: 正在使用的Amazon资源名称的类型。, displayName: ARN类型}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Amazon Resource Name (ARN):
+    en: {displayName: Amazon Resource Name (ARN), description: The name of the resource
+        to which notifications should be published}
+    zh: {description: 应向其发布通知的资源的名称, displayName: 亚马逊资源名称（ARN）}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  Use JSON Structure:
+    en: {displayName: Use JSON Structure, description: 'If true, the contents of the
+        FlowFile must be JSON with a top-level element named ''default''. Additional
+        elements can be used to send different messages to different protocols. See
+        the Amazon SNS Documentation for more information.'}
+    zh: {description: 如果为true，则FlowFile的内容必须是JSON，并带有名为“default”的顶级元素。可以使用附加的元素向不同的协议发送不同的消息。有关更多信息，请参阅Amazon
+        SNS文档。, displayName: 使用JSON结构}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Character Set:
+    en: {displayName: Character Set, description: The character set in which the FlowFile's
+        content is encoded}
+    zh: {description: 对FlowFile内容进行编码的字符集, displayName: 字符集}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+tags:
+  en: [amazon, aws, sns, topic, put, publish, pubsub]
+  zh: [亚马逊, 自动售货机, sns公司, 话题, 放, 出版, 公共图书馆]

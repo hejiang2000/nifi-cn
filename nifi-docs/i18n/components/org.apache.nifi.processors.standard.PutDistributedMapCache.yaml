@@ -1,0 +1,33 @@
+relationships:
+  success: {en: Any FlowFile that is successfully inserted into cache will be routed
+      to this relationship, zh: 成功插入缓存的任何FlowFile都将路由到此关系}
+  failure: {en: Any FlowFile that cannot be inserted into the cache will be routed
+      to this relationship, zh: 无法插入缓存的任何FlowFile都将路由到此关系}
+capabilityDescription: {en: 'Gets the content of a FlowFile and puts it to a distributed
+    map cache, using a cache key computed from FlowFile attributes. If the cache already
+    contains the entry and the cache update strategy is ''keep original'' the entry
+    is not replaced.''', zh: 获取FlowFile的内容，并使用从FlowFile属性计算的缓存键将其放入分布式映射缓存。如果缓存已包含该条目，并且缓存更新策略为“保持原始”，则不会替换该条目}
+properties:
+  Cache Entry Identifier:
+    en: {displayName: Cache Entry Identifier, description: 'A FlowFile attribute,
+        or the results of an Attribute Expression Language statement, which will be
+        evaluated against a FlowFile in order to determine the cache key'}
+    zh: {description: FlowFile属性或属性表达式语言语句的结果，将根据FlowFile进行评估，以确定缓存密钥, displayName: 缓存条目标识符}
+  Cache update strategy:
+    en: {displayName: Cache update strategy, description: Determines how the cache
+        is updated if the cache already contains the entry}
+    zh: {description: 确定如果缓存已包含该项，则如何更新缓存, displayName: 缓存更新策略}
+  Distributed Cache Service:
+    en: {displayName: Distributed Cache Service, description: The Controller Service
+        that is used to cache flow files}
+    zh: {description: 用于缓存流文件的控制器服务, displayName: 分布式缓存服务}
+  Max cache entry size:
+    en: {displayName: Max cache entry size, description: The maximum amount of data
+        to put into cache}
+    zh: {description: 要放入缓存的最大数据量, displayName: 最大缓存条目大小}
+writeAttributes:
+  cached: {en: 'All FlowFiles will have an attribute ''cached''. The value of this
+      attribute is true, is the FlowFile is cached, otherwise false.', zh: 所有FlowFiles都将具有“cached”属性。如果FlowFile被缓存，则该属性的值为true，否则为false。}
+tags:
+  en: [map, cache, put, distributed]
+  zh: [地图, 隐藏物, 放, 分布式的]

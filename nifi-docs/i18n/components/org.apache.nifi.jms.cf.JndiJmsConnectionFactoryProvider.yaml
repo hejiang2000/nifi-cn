@@ -1,0 +1,44 @@
+dynamicProperties:
+  The name of a JNDI Initial Context environment variable.:
+    en: {description: 'In order to perform a JNDI Lookup, an Initial Context must
+        be established. When this is done, an Environment can be established for the
+        context. Any dynamic/user-defined property that is added to this Controller
+        Service will be added as an Environment configuration/variable to this Context.',
+      value: The value of the JNDI Initial Context environment variable.}
+    zh: {description: 为了执行JNDI查找，必须建立初始上下文。完成此操作后，可以为上下文建立环境。添加到此控制器服务的任何动态/用户定义属性都将作为环境配置/变量添加到此上下文中。,
+      value: JNDI初始上下文环境变量的值。}
+capabilityDescription: {en: Provides a service to lookup an existing JMS ConnectionFactory
+    using the Java Naming and Directory Interface (JNDI)., zh: 提供使用Java命名和目录接口（JNDI）查找现有JMS
+    ConnectionFactory的服务。}
+properties:
+  connection.factory.name:
+    en: {displayName: JNDI Name of the Connection Factory, description: The name of
+        the JNDI Object to lookup for the Connection Factory.}
+    zh: {description: 要查找连接工厂的JNDI对象的名称。, displayName: 连接工厂的JNDI名称}
+  java.naming.security.principal:
+    en: {displayName: JNDI Principal, description: The Principal to use when authenticating
+        with JNDI (java.naming.security.principal).}
+    zh: {description: 使用JNDI进行身份验证时要使用的主体（java.nameing.security.prprincipal）。, displayName: JNDI主体}
+  java.naming.factory.initial:
+    en: {displayName: JNDI Initial Context Factory Class, description: The fully qualified
+        class name of the JNDI Initial Context Factory Class (java.naming.factory.initial).}
+    zh: {description: JNDI初始上下文工厂类的完全限定类名（java.nameing.Factory.Initial）。, displayName: JNDI初始上下文工厂类}
+  java.naming.provider.url:
+    en: {displayName: JNDI Provider URL, description: The URL of the JNDI Provider
+        to use (java.naming.provider.url).}
+    zh: {description: 要使用的JNDI Provider的URL（java.nameing.Provider.URL）。, displayName: JNDI提供程序URL}
+  naming.factory.libraries:
+    en: {displayName: JNDI / JMS Client Libraries, description: 'Specifies jar files
+        and/or directories to add to the ClassPath in order to load the JNDI / JMS
+        client libraries. This should be a comma-separated list of files, directories,
+        and/or URLs. If a directory is given, any files in that directory will be
+        included, but subdirectories will not be included (i.e., it is not recursive).'}
+    zh: {description: 指定要添加到ClassPath的jar文件和/或目录，以便加载JNDI/JMS客户端库。这应该是一个逗号分隔的文件、目录和/或URL列表。如果给定了一个目录，则该目录中的任何文件都将被包含，但子目录不会被包含（即，它不是递归的）。,
+      displayName: JNDI/JMS客户端库}
+  java.naming.security.credentials:
+    en: {displayName: JNDI Credentials, description: The Credentials to use when authenticating
+        with JNDI (java.naming.security.credentials).}
+    zh: {description: 使用JNDI进行身份验证时要使用的凭据（java.nameing.security.Credentials）。, displayName: JNDI凭据}
+tags:
+  en: [jms, jndi, messaging, integration, queue, topic, publish, subscribe]
+  zh: [jms公司, jndi公司, 消息传递, 集成, 队列, 话题, 出版, 订阅]

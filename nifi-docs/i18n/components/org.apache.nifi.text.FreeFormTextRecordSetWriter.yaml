@@ -1,0 +1,20 @@
+capabilityDescription: {en: 'Writes the contents of a RecordSet as free-form text.
+    The configured text is able to make use of the Expression Language to reference
+    each of the fields that are available in a Record, as well as the attributes in
+    the FlowFile and variables. If there is a name collision, the field name/value
+    is used before attributes or variables. Each record in the RecordSet will be separated
+    by a single newline character.', zh: 以自由格式文本形式写入记录集的内容。配置的文本能够使用表达式语言引用记录中可用的每个字段，以及FlowFile和变量中的属性。如果存在名称冲突，则在属性或变量之前使用字段名称/值。RecordSet中的每条记录将由一个换行符分隔。}
+properties:
+  Text:
+    en: {displayName: Text, description: The text to use when writing the results.
+        This property will evaluate the Expression Language using any of the fields
+        available in a Record.}
+    zh: {description: 编写结果时要使用的文本。此属性将使用记录中可用的任何字段来计算表达式语言。, displayName: 文本}
+  Character Set:
+    en: {displayName: Character Set, description: The Character set to use when writing
+        the data to the FlowFile}
+    zh: {description: 将数据写入FlowFile时使用的字符集, displayName: 字符集}
+tags:
+  en: [text, freeform, expression, language, el, record, recordset, resultset, writer,
+    serialize]
+  zh: [文本, 自由形式的, 表示, 语言, 电子邮箱, 记录, 记录集, 结果集, 作家, 序列化]

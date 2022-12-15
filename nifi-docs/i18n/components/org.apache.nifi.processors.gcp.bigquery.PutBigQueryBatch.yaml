@@ -1,0 +1,149 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      BigQuery operation., zh: 在Google BigQuery操作成功后，FlowFiles将路由到此关系。}
+  failure: {en: FlowFiles are routed to this relationship if the Google BigQuery operation
+      fails., zh: 如果Google BigQuery操作失败，FlowFiles将路由到此关系。}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+capabilityDescription: {en: Please be aware this processor is deprecated and may be
+    removed in the near future. Use PutBigQuery instead. Batch loads flow files content
+    to a Google BigQuery table., zh: 请注意，此处理器已弃用，可能会在不久的将来被删除。请改用PutBigQuery。批量将流文件内容加载到Google
+    BigQuery表。}
+properties:
+  bq.readtimeout:
+    en: {displayName: Read Timeout, description: Load Job Time Out}
+    zh: {description: 加载作业超时, displayName: 读取超时}
+  gcp-proxy-host:
+    en:
+      displayName: Proxy host
+      description: |-
+        IP or hostname of the proxy to be used.
+         You might need to set the following properties in bootstrap for https proxy usage:
+        -Djdk.http.auth.tunneling.disabledSchemes=
+        -Djdk.http.auth.proxying.disabledSchemes=
+    zh: {description: 要使用的代理的IP或主机名。, displayName: 代理主机}
+  bq.table.name:
+    en: {displayName: Table Name, description: BigQuery table name}
+    zh: {description: BigQuery表名称, displayName: 表名称}
+  bq.csv.charset:
+    en: {displayName: CSV Input - Character Set, description: Sets the character encoding
+        of the data.}
+    zh: {description: 设置数据的字符编码。, displayName: CSV输入-字符集}
+  bq.load.type:
+    en: {displayName: Load file type, description: 'Data type of the file to be loaded.
+        Possible values: AVRO, NEWLINE_DELIMITED_JSON, CSV.'}
+    zh: {description: 要加载的文件的数据类型。可能的值：AVRO、NEWLINE_DELIMED_JSON、CSV。, displayName: 加载文件类型}
+  bq.csv.allow.quoted.new.lines:
+    en: {displayName: CSV Input - Allow Quoted New Lines, description: Sets whether
+        BigQuery should allow quoted data sections that contain newline characters
+        in a CSV file. By default quoted newline are not allowed.}
+    zh: {description: 设置BigQuery是否允许CSV文件中包含换行符的引用数据节。默认情况下，不允许使用引号换行。, displayName: CSV输入-允许引用新行}
+  bq.avro.use.logical.types:
+    en: {displayName: Avro Input - Use Logical Types, description: 'If format is set
+        to Avro and if this option is set to true, you can interpret logical types
+        into their corresponding types (such as TIMESTAMP) instead of only using their
+        raw types (such as INTEGER).'}
+    zh: {description: 如果format设置为Avro，并且此选项设置为true，则可以将逻辑类型解释为其对应的类型（如TIMESTAMP），而不是仅使用其原始类型（如INTEGER）。,
+      displayName: Avro输入-使用逻辑类型}
+  gcp-retry-count:
+    en: {displayName: Number of retries, description: How many retry attempts should
+        be made before routing to the failure relationship.}
+    zh: {description: 在路由到失败关系之前应进行多少次重试尝试。, displayName: 重试次数}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  bq.csv.quote:
+    en: {displayName: CSV Input - Quote, description: 'Sets the value that is used
+        to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1
+        encoding, and then uses the first byte of the encoded string to split the
+        data in its raw, binary state. The default value is a double-quote (''"'').
+        If your data does not contain quoted sections, set the property value to an
+        empty string. If your data contains quoted newline characters, you must also
+        set the Allow Quoted New Lines property to true.'}
+    zh: {description: 设置用于引用CSV文件中数据节的值。BigQuery将字符串转换为ISO-8859-1编码，然后使用编码字符串的第一个字节将数据拆分为原始二进制状态。默认值是双引号（“”）。如果数据不包含带引号的部分，请将属性值设置为空字符串。如果数据包含带引号换行符，则还必须将“允许带引号换行”属性设置为true。,
+      displayName: CSV输入-报价}
+  bq.table.schema:
+    en: {displayName: Table Schema, description: BigQuery schema in JSON format}
+    zh: {description: JSON格式的BigQuery模式, displayName: 表架构}
+  gcp-proxy-user-name:
+    en: {displayName: HTTP Proxy Username, description: HTTP Proxy Username}
+    zh: {description: HTTP代理用户名, displayName: HTTP代理用户名}
+  bq.load.ignore_unknown:
+    en: {displayName: Ignore Unknown Values, description: 'Sets whether BigQuery should
+        allow extra values that are not represented in the table schema. If true,
+        the extra values are ignored. If false, records with extra columns are treated
+        as bad records, and if there are too many bad records, an invalid error is
+        returned in the job result. By default unknown values are not allowed.'}
+    zh: {description: 设置BigQuery是否应允许表架构中未表示的额外值。如果为true，则忽略额外值。如果为false，则具有额外列的记录将被视为不良记录，如果不良记录太多，则在作业结果中返回无效错误。默认情况下，不允许使用未知值。,
+      displayName: 忽略未知值}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  bq.load.max_badrecords:
+    en: {displayName: Max Bad Records, description: 'Sets the maximum number of bad
+        records that BigQuery can ignore when running the job. If the number of bad
+        records exceeds this value, an invalid error is returned in the job result.
+        By default no bad record is ignored.'}
+    zh: {description: 设置BigQuery在运行作业时可以忽略的最大坏记录数。如果坏记录数超过此值，则在作业结果中返回无效错误。默认情况下，不会忽略任何不良记录。,
+      displayName: 最大不良记录数}
+  bq.csv.delimiter:
+    en: {displayName: CSV Input - Field Delimiter, description: "Sets the separator\
+        \ for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,\
+        \ and then uses the first byte of the encoded string to split the data in\
+        \ its raw, binary state. BigQuery also supports the escape sequence \"\t\"\
+        \ to specify a tab separator. The default value is a comma (',')."}
+    zh: {description: 设置CSV文件中字段的分隔符。BigQuery将字符串转换为ISO-8859-1编码，然后使用编码字符串的第一个字节将数据拆分为原始二进制状态。BigQuery还支持转义序列“”来指定制表符分隔符。默认值是逗号（'，'）。,
+      displayName: CSV输入-字段分隔符}
+  bq.csv.skip.leading.rows:
+    en: {displayName: CSV Input - Skip Leading Rows, description: Sets the number
+        of rows at the top of a CSV file that BigQuery will skip when reading the
+        data. The default value is 0. This property is useful if you have header rows
+        in the file that should be skipped.}
+    zh: {description: 设置读取数据时BigQuery将跳过的CSV文件顶部的行数。默认值为0。如果文件中有应跳过的标题行，则此属性非常有用。,
+      displayName: CSV输入-跳过前导行}
+  gcp-proxy-user-password:
+    en: {displayName: HTTP Proxy Password, description: HTTP Proxy Password}
+    zh: {description: HTTP代理密码, displayName: HTTP代理密码}
+  bq.csv.allow.jagged.rows:
+    en: {displayName: CSV Input - Allow Jagged Rows, description: 'Set whether BigQuery
+        should accept rows that are missing trailing optional columns. If true, BigQuery
+        treats missing trailing columns as null values. If false, records with missing
+        trailing columns are treated as bad records, and if there are too many bad
+        records, an invalid error is returned in the job result. By default, rows
+        with missing trailing columns are considered bad records.'}
+    zh: {description: 设置BigQuery是否应接受缺少尾随可选列的行。如果为true，BigQuery会将缺少的尾随列视为空值。如果为false，则缺少尾列的记录将被视为不良记录，如果不良记录太多，则在作业结果中返回无效错误。默认情况下，缺少尾列的行被视为不良记录。,
+      displayName: CSV输入-允许锯齿行}
+  bq.dataset:
+    en: {displayName: Dataset, description: BigQuery dataset name (Note - The dataset
+        must exist in GCP)}
+    zh: {description: BigQuery数据集名称（注意-数据集必须存在于GCP中）, displayName: 数据集}
+  bq.load.write_disposition:
+    en: {displayName: Write Disposition, description: Sets the action that should
+        occur if the destination table already exists.}
+    zh: {description: 设置目标表已存在时应执行的操作。, displayName: 写入处置}
+  gcp-proxy-port:
+    en: {displayName: Proxy port, description: Proxy port number}
+    zh: {description: 代理端口号, displayName: 代理服务器端口}
+  bq.load.create_disposition:
+    en: {displayName: Create Disposition, description: Sets whether the job is allowed
+        to create new tables}
+    zh: {description: 设置是否允许作业创建新表, displayName: 创建处置}
+writeAttributes:
+  bq.error.message: {en: Load job error message, zh: 加载作业错误消息}
+  bq.error.reason: {en: Load job error reason, zh: 加载作业错误原因}
+  bq.records.count: {en: Number of records successfully inserted, zh: 成功插入的记录数}
+  bq.job.link: {en: API Link to load job, zh: 加载作业的API链接}
+  bq.job.stat.end_time: {en: Time load job ended, zh: 加载作业结束的时间}
+  bq.job.stat.creation_time: {en: Time load job creation, zh: 创建时间负载作业}
+  bq.job.stat.start_time: {en: Time load job started, zh: 加载作业开始的时间}
+  bq.job.id: {en: ID of the BigQuery job, zh: BigQuery作业的ID}
+  bq.error.location: {en: Load job error location, zh: 加载作业错误位置}
+tags:
+  en: [google, google cloud, bq, bigquery]
+  zh: [谷歌, 谷歌云, 英国石油公司, 大查询]

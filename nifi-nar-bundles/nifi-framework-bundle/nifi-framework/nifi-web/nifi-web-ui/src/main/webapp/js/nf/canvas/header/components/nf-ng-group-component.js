@@ -184,7 +184,7 @@
                     // configure the new process group dialog
                     this.getElement().modal({
                         scrollableContentStyle: 'scrollable',
-                        headerText: 'Add Process Group',
+                        headerText: '添加处理组',
                         handler: {
                             close: function () {
                                 // clear the values and data
@@ -357,8 +357,8 @@
                         // ensure the group name is specified
                         if (nfCommon.isBlank(groupName)) {
                             nfDialog.showOkDialog({
-                                headerText: 'Configuration Error',
-                                dialogContent: 'The name of the process group must be specified.'
+                                headerText: '配置错误',
+                                dialogContent: '必须指定处理组名称.'
                             });
 
                             deferred.reject();
@@ -411,7 +411,7 @@
                                                 nfBirdseye.refresh();
                                             } else {
                                                 // import failed
-                                                var statusText = 'Unable to import process group. Please check the log for errors.';
+                                                var statusText = '导入处理组失败. 请检查日志中的错误信息.';
 
                                                 // if a more specific error was given, use it
                                                 var errorMessage = response.documentElement.getAttribute('statusText');
@@ -420,7 +420,7 @@
                                                 }
 
                                                 nfDialog.showOkDialog({
-                                                    headerText: 'Unable to Upload',
+                                                    headerText: '未能上传',
                                                     dialogContent: nfCommon.escapeHtml(xhr.responseText)
                                                 });
                                             }
@@ -428,7 +428,7 @@
                                         error: function (xhr, statusText, error) {
                                             // request failed
                                             nfDialog.showOkDialog({
-                                                headerText: 'Unable to Upload',
+                                                headerText: '未能上传',
                                                 dialogContent: nfCommon.escapeHtml(xhr.responseText)
                                             });
                                         }
@@ -450,7 +450,7 @@
                     };
 
                     groupComponent.modal.update('setButtonModel', [{
-                        buttonText: 'Add',
+                        buttonText: '添加',
                         color: {
                             base: '#728E9B',
                             hover: '#004849',
@@ -468,7 +468,7 @@
                         }
                     },
                         {
-                            buttonText: 'Cancel',
+                            buttonText: '取消',
                             color: {
                                 base: '#E3E8EB',
                                 hover: '#C7D2D7',

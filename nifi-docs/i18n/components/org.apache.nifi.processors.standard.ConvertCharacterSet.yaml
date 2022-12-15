@@ -1,0 +1,16 @@
+relationships:
+  success: {en: '', zh: ''}
+capabilityDescription: {en: Converts a FlowFile's content from one character set to
+    another, zh: 将FlowFile的内容从一个字符集转换为另一个字符集中}
+properties:
+  Input Character Set:
+    en: {displayName: Input Character Set, description: The name of the CharacterSet
+        to expect for Input}
+    zh: {description: 输入所需的CharacterSet的名称, displayName: 输入字符集}
+  Output Character Set:
+    en: {displayName: Output Character Set, description: The name of the CharacterSet
+        to convert to}
+    zh: {description: 要转换为的CharacterSet的名称, displayName: 输出字符集}
+tags:
+  en: [text, convert, characterset, character set]
+  zh: [文本, 转换, 字符集, 字符集]

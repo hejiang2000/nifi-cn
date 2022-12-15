@@ -1,0 +1,114 @@
+relationships:
+  success: {en: The results of querying Solr, zh: 查询Solr的结果}
+capabilityDescription: {en: Queries Solr and outputs the results as a FlowFile in
+    the format of XML or using a Record Writer, zh: 查询Solr并以XML格式或使用记录编写器将结果作为FlowFile输出}
+statefulDescription: {en: Stores latest date of Date Field so that the same data will
+    not be fetched multiple times., zh: 存储日期字段的最新日期，以便不会多次提取相同的数据。}
+properties:
+  Initial Date Filter:
+    en: {displayName: Initial Date Filter, description: 'Date value to filter results.
+        Documents with an earlier date will not be fetched. The format has to correspond
+        to the date pattern of Solr ''YYYY-MM-DDThh:mm:ssZ'''}
+    zh: {description: '筛选结果的日期值。不会提取日期较早的文档。格式必须与Solr“YYYY MM DDThh:MM:ssZ”的日期模式相对应',
+      displayName: 初始日期筛选器}
+  Solr Query:
+    en: {displayName: Solr Query, description: A query to execute against Solr}
+    zh: {description: 要对Solr执行的查询, displayName: Solr查询}
+  kerberos-password:
+    en: {displayName: Kerberos Password, description: The password to use when specifying
+        the principal and password directly in the processor for authenticating to
+        Solr via Kerberos.}
+    zh: {description: 在处理器中直接指定主体和密码以通过Kerberos验证Solr时使用的密码。, displayName: Kerberos密码}
+  Return Fields:
+    en: {displayName: Return Fields, description: Comma-separated list of field names
+        to return}
+    zh: {description: 要返回的字段名的逗号分隔列表, displayName: 返回字段}
+  Return Type:
+    en: {displayName: Return Type, description: Write Solr documents to FlowFiles
+        as XML or using a Record Writer}
+    zh: {description: 将Solr文档作为XML或使用记录编写器写入FlowFiles, displayName: 返回类型}
+  Solr Socket Timeout:
+    en: {displayName: Solr Socket Timeout, description: The amount of time to wait
+        for data on a socket connection to Solr. A value of 0 indicates an infinite
+        timeout.}
+    zh: {description: 在到Solr的套接字连接上等待数据的时间。值0表示无限超时。, displayName: Solr套接字超时}
+  ZooKeeper Connection Timeout:
+    en: {displayName: ZooKeeper Connection Timeout, description: 'The amount of time
+        to wait when establishing a connection to ZooKeeper, only used with a Solr
+        Type of Cloud.'}
+    zh: {description: 建立到ZooKeeper的连接时等待的时间量，仅用于Solr类型的云。, displayName: ZooKeeper连接超时}
+  kerberos-principal:
+    en: {displayName: Kerberos Principal, description: The principal to use when specifying
+        the principal and password directly in the processor for authenticating to
+        Solr via Kerberos.}
+    zh: {description: 在处理器中直接指定用于通过Kerberos向Solr进行身份验证的主体和密码时要使用的主体。, displayName: Kerberos主体}
+  Solr Maximum Connections:
+    en: {displayName: Solr Maximum Connections, description: The maximum number of
+        total connections allowed from the Solr client to Solr.}
+    zh: {description: 从Solr客户端到Solr允许的最大总连接数。, displayName: Solr最大连接数}
+  ZooKeeper Client Timeout:
+    en: {displayName: ZooKeeper Client Timeout, description: 'The amount of time to
+        wait for data on a connection to ZooKeeper, only used with a Solr Type of
+        Cloud.'}
+    zh: {description: 在连接到ZooKeeper时等待数据的时间量，仅用于Solr类型的云。, displayName: ZooKeeper客户端超时}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials Controller Service that should be used for authenticating with
+        Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos凭据控制器服务, displayName: Kerberos凭据服务}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The Controller Service to
+        use in order to obtain an SSL Context. This property must be set when communicating
+        with a Solr over https.}
+    zh: {description: 用于获取SSL上下文的控制器服务。通过https与Solr通信时必须设置此属性。, displayName: SSL上下文服务}
+  Solr Maximum Connections Per Host:
+    en: {displayName: Solr Maximum Connections Per Host, description: The maximum
+        number of connections allowed from the Solr client to a single Solr host.}
+    zh: {description: 从Solr客户端到单个Solr主机允许的最大连接数。, displayName: 每个主机的Solr最大连接数}
+  Username:
+    en: {displayName: Basic Auth Username, description: The username to use when Solr
+        is configured with basic authentication.}
+    zh: {description: Solr配置基本身份验证时使用的用户名。, displayName: 基本身份验证用户名}
+  Batch Size:
+    en: {displayName: Batch Size, description: Number of rows per Solr query}
+    zh: {description: 每个Solr查询的行数, displayName: 批量大小}
+  Solr Connection Timeout:
+    en: {displayName: Solr Connection Timeout, description: The amount of time to
+        wait when establishing a connection to Solr. A value of 0 indicates an infinite
+        timeout.}
+    zh: {description: 建立与Solr的连接时等待的时间。值0表示无限超时。, displayName: Solr连接超时}
+  Collection:
+    en: {displayName: Collection, description: 'The Solr collection name, only used
+        with a Solr Type of Cloud'}
+    zh: {description: Solr集合名称，仅用于Solr类型的云, displayName: 收集}
+  Record Writer:
+    en: {displayName: Record Writer, description: The Record Writer to use in order
+        to write Solr documents to FlowFiles. Must be set if "Records" is used as
+        return type.}
+    zh: {description: 用于将Solr文档写入FlowFiles的Record Writer。如果“Records”用作返回类型，则必须设置。,
+      displayName: 记录编写器}
+  Solr Location:
+    en: {displayName: Solr Location, description: 'The Solr url for a Solr Type of
+        Standard (ex: http://localhost:8984/solr/gettingstarted), or the ZooKeeper
+        hosts for a Solr Type of Cloud (ex: localhost:9983).'}
+    zh: {description: 'Solr类型标准的Solr url（例如：http://localhost:8984/solr/gettingstarted)，或Solr
+        Type of Cloud的ZooKeeper主机（例如：localhost:9983）。', displayName: Solr位置}
+  kerberos-user-service:
+    en: {displayName: Kerberos User Service, description: Specifies the Kerberos User
+        Controller Service that should be used for authenticating with Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos用户控制器服务, displayName: Kerberos用户服务}
+  Date Field:
+    en: {displayName: Date Field, description: The name of a date field in Solr used
+        to filter results}
+    zh: {description: Solr中用于筛选结果的日期字段的名称, displayName: 日期字段}
+  Solr Type:
+    en: {displayName: Solr Type, description: 'The type of Solr instance, Cloud or
+        Standard.'}
+    zh: {description: Solr实例的类型，云或标准。, displayName: 太阳能类型}
+  Password:
+    en: {displayName: Basic Auth Password, description: The password to use when Solr
+        is configured with basic authentication.}
+    zh: {description: Solr配置为基本身份验证时使用的密码。, displayName: 基本身份验证密码}
+tags:
+  en: [Apache, Solr, Get, Pull, Records]
+  zh: [阿帕奇, Solr公司, 收到, 拉, 记录]

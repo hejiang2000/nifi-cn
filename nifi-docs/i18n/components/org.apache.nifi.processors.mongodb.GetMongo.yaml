@@ -1,0 +1,104 @@
+relationships:
+  original: {en: All input FlowFiles that are part of a successful query execution
+      go here., zh: 此处显示成功执行查询的所有输入FlowFiles。}
+  success: {en: All FlowFiles that have the results of a successful query execution
+      go here., zh: 此处显示所有具有成功执行查询结果的FlowFiles。}
+  failure: {en: All input FlowFiles that are part of a failed query execution go here.,
+    zh: 此处显示所有作为失败查询执行一部分的输入FlowFiles。}
+capabilityDescription: {en: Creates FlowFiles from documents in MongoDB loaded by
+    a user-specified query., zh: 从由用户指定的查询加载的MongoDB中的文档创建FlowFiles。}
+properties:
+  mongo-client-service:
+    en: {displayName: Client Service, description: 'If configured, this property will
+        use the assigned client service for connection pooling.'}
+    zh: {description: 如果已配置，此属性将使用分配的客户端服务进行连接池。, displayName: 客户端服务}
+  mongo-charset:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        document data.}
+    zh: {description: 指定文档数据的字符集。, displayName: 字符集}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  Query:
+    en: {displayName: Query, description: 'The selection criteria to do the lookup.
+        If the field is left blank, it will look for input from an incoming connection
+        from another processor to provide the query as a valid JSON document inside
+        of the FlowFile''s body. If this field is left blank and a timer is enabled
+        instead of an incoming connection, that will result in a full collection fetch
+        using a "{}" query.'}
+    zh: {description: 要执行查找的选择条件。如果该字段为空，它将查找来自另一个处理器的传入连接的输入，以在FlowFile的主体内作为有效的JSON文档提供查询。如果此字段为空，并且启用了计时器而不是传入连接，则将使用“｛｝”查询获取完整集合。,
+      displayName: 查询}
+  ssl-client-auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  mongo-date-format:
+    en: {displayName: Date Format, description: 'The date format string to use for
+        formatting Date fields that are returned from Mongo. It is only applied when
+        the JSON output format is set to Standard JSON. Full documentation for format
+        characters can be found here: https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html'}
+    zh: {description: '用于格式化从Mongo返回的日期字段的日期格式字符串。它仅在JSON输出格式设置为标准JSON时应用。格式字符的完整文档可在此处找到：https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html',
+      displayName: 日期格式}
+  json-type:
+    en: {displayName: JSON Type, description: 'By default, MongoDB''s Java driver
+        returns "extended JSON". Some of the features of this variant of JSON may
+        cause problems for other JSON parsers that expect only standard JSON types
+        and conventions. This configuration setting  controls whether to use extended
+        JSON or provide a clean view that conforms to standard JSON.'}
+    zh: {description: 默认情况下，MongoDB的Java驱动程序返回“扩展JSON”。这种JSON变体的一些特性可能会给其他JSON解析器带来问题，因为它们只需要标准JSON类型和约定。此配置设置控制是使用扩展JSON还是提供符合标准JSON的干净视图。,
+      displayName: JSON类型}
+  Projection:
+    en: {displayName: Projection, description: The fields to be returned from the
+        documents in the result set; must be a valid BSON document}
+    zh: {description: 要从结果集中的文档返回的字段；必须是有效的BSON文档, displayName: 预测}
+  Mongo Database Name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  mongo-query-attribute:
+    en: {displayName: Query Output Attribute, description: 'If set, the query will
+        be written to a specified attribute on the output flowfiles.'}
+    zh: {description: 如果设置，查询将写入输出流文件上的指定属性。, displayName: 查询输出属性}
+  results-per-flowfile:
+    en: {displayName: Results Per FlowFile, description: How many results to put into
+        a FlowFile at once. The whole body will be treated as a JSON array of results.}
+    zh: {description: 一次将多少结果放入FlowFile。整个正文将被视为结果的JSON数组。, displayName: 每个流文件的结果}
+  Mongo URI:
+    en: {displayName: Mongo URI, description: 'MongoURI, typically of the form: mongodb://host1[:port1][,host2[:port2],...]'}
+    zh: {description: 'MongoURI，通常形式为：mongodb://host1[：端口1][，主机2[：端口2]，…]', displayName: Mongo
+        URI}
+  Batch Size:
+    en: {displayName: Batch Size, description: The number of elements to be returned
+        from the server in one batch}
+    zh: {description: 一批中要从服务器返回的元素数, displayName: 批量大小}
+  Mongo Collection Name:
+    en: {displayName: Mongo Collection Name, description: The name of the collection
+        to use}
+    zh: {description: 要使用的集合的名称, displayName: Mongo集合名称}
+  Sort:
+    en: {displayName: Sort, description: The fields by which to sort; must be a valid
+        BSON document}
+    zh: {description: 排序依据的字段；必须是有效的BSON文档, displayName: 分类}
+  use-pretty-printing:
+    en: {displayName: Pretty Print Results JSON, description: Choose whether or not
+        to pretty print the JSON from the results of the query. Choosing 'True' can
+        greatly increase the space requirements on disk depending on the complexity
+        of the JSON document}
+    zh: {description: 选择是否根据查询结果打印JSON。根据JSON文档的复杂性，选择“True”可以大大增加磁盘空间需求, displayName: 漂亮的打印结果JSON}
+  Limit:
+    en: {displayName: Limit, description: The maximum number of elements to return}
+    zh: {description: 要返回的最大元素数, displayName: 限度}
+  get-mongo-send-empty:
+    en: {displayName: Send Empty Result, description: 'If a query executes successfully,
+        but returns no results, send an empty JSON document signifying no result.'}
+    zh: {description: 如果查询成功执行，但没有返回结果，则发送一个空JSON文档，表示没有结果。, displayName: 发送空结果}
+writeAttributes:
+  mongo.collection.name: {en: The collection where the results came from., zh: 结果来源的集合。}
+  mongo.database.name: {en: The database where the results came from., zh: 结果来自的数据库。}
+tags:
+  en: [mongodb, read, get]
+  zh: [数据库, 阅读, 收到]

@@ -1,0 +1,32 @@
+capabilityDescription: {en: 'Provides the ability to use an HBase table as a cache,
+    in place of a DistributedMapCache. Uses a HBase_1_1_2_ClientService controller
+    to communicate with HBase.', zh: 提供使用HBase表作为缓存的能力，以取代DistributedMapCache。使用HBase_1_1_2_ClientService控制器与HBase通信。}
+properties:
+  hbase-cache-visibility-expression:
+    en: {displayName: Visibility Expression, description: The default visibility expression
+        to apply to cells when visibility expression support is enabled.}
+    zh: {description: 启用可见性表达式支持时应用于单元格的默认可见性表达式。, displayName: 可见性表达式}
+  HBase Cache Table Name:
+    en: {displayName: HBase Cache Table Name, description: Name of the table on HBase
+        to use for the cache.}
+    zh: {description: HBase上用于缓存的表的名称。, displayName: HBase缓存表名称}
+  HBase Client Service:
+    en: {displayName: HBase Client Service, description: Specifies the HBase Client
+        Controller Service to use for accessing HBase.}
+    zh: {description: 指定用于访问HBase的HBase客户端控制器服务。, displayName: HBase客户端服务}
+  HBase Column Family:
+    en: {displayName: HBase Column Family, description: Name of the column family
+        on HBase to use for the cache.}
+    zh: {description: HBase上用于缓存的列族的名称。, displayName: HBase列系列}
+  HBase Column Qualifier:
+    en: {displayName: HBase Column Qualifier, description: Name of the column qualifier
+        on HBase to use for the cache}
+    zh: {description: HBase上用于缓存的列限定符的名称, displayName: HBase列限定符}
+  hb-lu-authorizations:
+    en: {displayName: Authorizations, description: The list of authorization tokens
+        to be used with cell visibility if it is enabled. These will be used to override
+        the default authorization list for the user accessing HBase.}
+    zh: {description: 如果启用了单元格可见性，则使用的授权令牌列表。这些将用于覆盖访问HBase的用户的默认授权列表。, displayName: 授权}
+tags:
+  en: [distributed, cache, state, map, cluster, hbase]
+  zh: [分布式的, 隐藏物, 状态, 地图, 簇, 数据库]

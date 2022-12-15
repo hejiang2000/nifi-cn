@@ -1,0 +1,133 @@
+relationships:
+  success: {en: All FlowFiles are routed to this Relationship., zh: 所有FlowFiles都将路由到此关系。}
+capabilityDescription: {en: '"Tails" a file, or a list of files, ingesting data from
+    the file as it is written to the file. The file is expected to be textual. Data
+    is ingested only when a new line is encountered (carriage return or new-line character
+    or combination). If the file to tail is periodically "rolled over", as is generally
+    the case with log files, an optional Rolling Filename Pattern can be used to retrieve
+    data from files that have rolled over, even if the rollover occurred while NiFi
+    was not running (provided that the data still exists upon restart of NiFi). It
+    is generally advisable to set the Run Schedule to a few seconds, rather than running
+    with the default value of 0 secs, as this Processor will consume a lot of resources
+    if scheduled very aggressively. At this time, this Processor does not support
+    ingesting files that have been compressed when ''rolled over''.', zh: “拖尾”文件或文件列表，在将数据写入文件时从文件中摄取数据。文件应为文本文件。只有在遇到新行（回车或换行字符或组合）时才会获取数据。如果要跟踪的文件周期性地“滚动”（通常是日志文件），则可以使用可选的滚动文件名模式从已滚动的文件中检索数据，即使在NiFi未运行时发生了滚动（前提是重新启动NiFi时数据仍然存在）。通常建议将“运行计划”设置为几秒，而不是使用默认值0秒运行，因为如果计划得非常积极，此处理器将消耗大量资源。此时，此处理器不支持接收“回滚”时已压缩的文件。}
+statefulDescription: {en: Stores state about where in the Tailed File it left off
+    so that on restart it does not have to duplicate data. State is stored either
+    local or clustered depend on the <File Location> property., zh: 存储它在尾文件中停止的位置的状态，以便在重新启动时不必复制数据。状态存储为本地或群集状态取决于<File
+    Location>属性。}
+properties:
+  tailfile-recursive-lookup:
+    en: {displayName: Recursive lookup, description: 'When using Multiple files mode,
+        this property defines if files must be listed recursively or not in the base
+        directory.'}
+    zh: {description: 当使用多个文件模式时，此属性定义文件是否必须递归列出或不在基目录中。, displayName: 递归查找}
+  File Location:
+    en: {displayName: State Location, description: Specifies where the state is located
+        either local or cluster so that state can be stored appropriately in order
+        to ensure that all data is consumed without duplicating data upon restart
+        of NiFi}
+    zh: {description: 指定状态位于本地或群集的位置，以便正确存储状态，以确保在重新启动NiFi时在不复制数据的情况下使用所有数据, displayName: 州位置}
+  Line Start Pattern:
+    en: {displayName: Line Start Pattern, description: 'A Regular Expression to match
+        against the start of a log line. If specified, any line that matches the expression,
+        and any following lines, will be buffered until another line matches the Expression.
+        In doing this, we can avoid splitting apart multi-line messages in the file.
+        This assumes that the data is in UTF-8 format.'}
+    zh: {description: 与日志行开头匹配的正则表达式。如果指定，则将缓冲与表达式匹配的任何行以及随后的任何行，直到另一行与表达式匹配。这样做可以避免在文件中拆分多行消息。这假设数据采用UTF-8格式。,
+      displayName: 线条起始图案}
+  Rolling Filename Pattern:
+    en: {displayName: Rolling Filename Pattern, description: 'If the file to tail
+        "rolls over" as would be the case with log files, this filename pattern will
+        be used to identify files that have rolled over so that if NiFi is restarted,
+        and the file has rolled over, it will be able to pick up where it left off.
+        This pattern supports wildcard characters * and ?, it also supports the notation
+        ${filename} to specify a pattern based on the name of the file (without extension),
+        and will assume that the files that have rolled over live in the same directory
+        as the file being tailed. The same glob pattern will be used for all files.'}
+    zh: {description: '如果文件尾部像日志文件一样“滚动”，则此文件名模式将用于标识已滚动的文件，这样，如果重新启动NiFi，并且文件已滚动，则它将能够从停止的位置恢复。此模式支持通配符*和？，它还支持基于文件名（不带扩展名）指定模式的符号${filename}，并假设已回滚的文件与被跟踪的文件位于同一目录中。所有文件都将使用相同的glob模式。',
+      displayName: 滚动文件名模式}
+  Initial Start Position:
+    en: {displayName: Initial Start Position, description: 'When the Processor first
+        begins to tail data, this property specifies where the Processor should begin
+        reading data. Once data has been ingested from a file, the Processor will
+        continue from the last point from which it has received data.'}
+    zh: {description: 当处理器第一次开始跟踪数据时，此属性指定处理器应该从何处开始读取数据。一旦从文件中获取数据，处理器将从接收数据的最后一点开始继续。,
+      displayName: 初始起始位置}
+  pre-allocated-buffer-size:
+    en: {displayName: Pre-Allocated Buffer Size, description: Sets the amount of memory
+        that is pre-allocated for each tailed file.}
+    zh: {description: 设置为每个尾部文件预先分配的内存量。, displayName: 预分配缓冲区大小}
+  Post-Rollover Tail Period:
+    en: {displayName: Post-Rollover Tail Period, description: 'When a file is rolled
+        over, the processor will continue tailing the rolled over file until it has
+        not been modified for this amount of time. This allows for another process
+        to rollover a file, and then flush out any buffered data. Note that when this
+        value is set, and the tailed file rolls over, the new file will not be tailed
+        until the old file has not been modified for the configured amount of time.
+        Additionally, when using this capability, in order to avoid data duplication,
+        this period must be set longer than the Processor''s Run Schedule, and the
+        Processor must not be stopped after the file being tailed has been rolled
+        over and before the data has been fully consumed. Otherwise, the data may
+        be duplicated, as the entire file may be written out as the contents of a
+        single FlowFile.'}
+    zh: {description: 当文件被回滚时，处理器将继续跟踪已回滚的文件，直到该文件在这段时间内未被修改。这允许另一个进程滚动文件，然后清除所有缓冲数据。请注意，如果设置了该值，并且尾部文件滚动，则在旧文件未修改配置的时间之前，新文件将不会尾部。此外，在使用此功能时，为了避免数据重复，必须将此时间段设置为比处理器的运行计划长，并且不得在卷取跟踪的文件之后和数据完全消耗之前停止处理器。否则，数据可能会被复制，因为整个文件可能会作为单个FlowFile的内容写入。,
+      displayName: 翻车后尾期}
+  tail-base-directory:
+    en: {displayName: Base directory, description: Base directory used to look for
+        files to tail. This property is required when using Multifile mode.}
+    zh: {description: 用于查找要跟踪的文件的基本目录。使用多文件模式时需要此属性。, displayName: 基本目录}
+  reread-on-nul:
+    en: {displayName: Reread when NUL encountered, description: 'If this option is
+        set to ''true'', when a NUL character is read, the processor will yield and
+        try to read the same part again later. (Note: Yielding may delay the processing
+        of other files tailed by this processor, not just the one with the NUL character.)
+        The purpose of this flag is to allow users to handle cases where reading a
+        file may return temporary NUL values. NFS for example may send file contents
+        out of order. In this case the missing parts are temporarily replaced by NUL
+        values. CAUTION! If the file contains legitimate NUL values, setting this
+        flag causes this processor to get stuck indefinitely. For this reason users
+        should refrain from using this feature if they can help it and try to avoid
+        having the target file on a file system where reads are unreliable.'}
+    zh: {description: 如果此选项设置为“true”，则当读取NUL字符时，处理器将让步，并尝试稍后再次读取相同的部分。（注意：yield可能会延迟此处理器后面的其他文件的处理，而不仅仅是带有NUL字符的文件。）此标志的目的是允许用户处理读取文件可能返回临时NUL值的情况。例如，NFS可能会无序发送文件内容。在这种情况下，丢失的零件将被NUL值临时替换。小心！如果文件包含合法的NUL值，则设置此标志会导致此处理器无限期地卡住。出于这个原因，如果用户能够提供帮助，他们应该避免使用此功能，并尽量避免在读取不可靠的文件系统上使用目标文件。,
+      displayName: 遇到NUL时重新读取}
+  tailfile-maximum-age:
+    en: {displayName: Maximum age, description: Only used in Multiple files mode.
+        It specifies the necessary minimum duration to consider that no new messages
+        will be appended in a file regarding its last modification date. This should
+        not be set too low to avoid duplication of data in case new messages are appended
+        at a lower frequency.}
+    zh: {description: 仅在多文件模式下使用。它指定了必要的最小持续时间，以确保不会在文件中添加有关其最后修改日期的新消息。这不应设置得太低，以避免在以较低的频率附加新消息时重复数据。,
+      displayName: 最大年龄}
+  Max Buffer Size:
+    en: {displayName: Max Buffer Size, description: 'When using the Line Start Pattern,
+        there may be situations in which the data in the file being tailed never matches
+        the Regular Expression. This would result in the processor buffering all data
+        from the tailed file, which can quickly exhaust the heap. To avoid this, the
+        Processor will buffer only up to this amount of data before flushing the buffer,
+        even if it means ingesting partial data from the file.'}
+    zh: {description: 当使用行式开始模式时，可能会出现文件中的尾部数据与正则表达式不匹配的情况。这将导致处理器缓冲尾部文件中的所有数据，这会快速耗尽堆。为了避免这种情况，处理器将在刷新缓冲区之前仅缓冲此数量的数据，即使这意味着从文件中摄取部分数据。,
+      displayName: 最大缓冲区大小}
+  File to Tail:
+    en: {displayName: File(s) to Tail, description: 'Path of the file to tail in case
+        of single file mode. If using multifile mode, regular expression to find files
+        to tail in the base directory. In case recursivity is set to true, the regular
+        expression will be used to match the path starting from the base directory
+        (see additional details for examples).'}
+    zh: {description: 在单文件模式下，文件尾部的路径。如果使用多文件模式，则使用正则表达式在基本目录中查找要跟踪的文件。如果递归性设置为true，则正则表达式将用于匹配从基目录开始的路径（有关示例，请参阅其他详细信息）。,
+      displayName: 文件到尾部}
+  tailfile-lookup-frequency:
+    en: {displayName: Lookup frequency, description: Only used in Multiple files mode.
+        It specifies the minimum duration the processor will wait before listing again
+        the files to tail.}
+    zh: {description: 仅在多文件模式下使用。它指定处理器在再次列出要跟踪的文件之前等待的最短时间。, displayName: 查找频率}
+  tail-mode:
+    en: {displayName: Tailing mode, description: 'Mode to use: single file will tail
+        only one file, multiple file will look for a list of file. In Multiple mode
+        the Base directory is required.'}
+    zh: {description: 使用模式：单个文件将只跟踪一个文件，多个文件将查找文件列表。在多模式下，需要Base目录。, displayName: 拖尾模式}
+writeAttributes:
+  tailfile.original.path: {en: Path of the original file the flow file comes from.,
+    zh: 流文件来源的原始文件的路径。}
+tags:
+  en: [tail, file, log, text, source]
+  zh: [尾, 文件, 日志, 文本, 来源]

@@ -1,0 +1,96 @@
+relationships:
+  original: {en: The original input FlowFile is sent to this relationship unless there
+      is a fatal error in the processing., zh: 原始输入FlowFile将发送到此关系，除非处理过程中出现致命错误。}
+  failure: {en: 'If unable to communicate with the cache, the FlowFile will be penalized
+      and routed to this relationship', zh: 如果无法与缓存通信，FlowFile将受到惩罚并路由到此关系}
+  non-duplicate: {en: 'If the record was not found in the cache, it will be routed
+      to this relationship', zh: 如果在缓存中找不到记录，它将被路由到此关系}
+  duplicate: {en: Records detected as duplicates in the FlowFile content will be routed
+      to this relationship, zh: 在FlowFile内容中检测到重复的记录将路由到此关系}
+dynamicProperties:
+  RecordPath:
+    en: {description: The name of each user-defined property must be a valid RecordPath.,
+      value: 'An expression language statement used to determine how the RecordPath
+        is resolved. The following variables are availible: ${field.name}, ${field.value},
+        ${field.type}'}
+    zh: {description: 每个用户定义属性的名称必须是有效的RecordPath。, value: '用于确定如何解析RecordPath的表达式语言语句。以下变量可用：${field.name}、${field.value}、$｛field.type｝'}
+systemResourceConsiderations:
+  en: [The HashSet filter type will grow memory space proportionate to the number
+      of unique records processed. The BloomFilter type will use constant memory regardless
+      of the number of records processed., 'If a more advanced hash algorithm is chosen,
+      the amount of time required to hash any particular record could increase substantially.']
+  zh: [HashSet筛选器类型将根据处理的唯一记录的数量增加内存空间。BloomFilter类型将使用恒定内存，而不考虑处理的记录数。, 如果选择更高级的哈希算法，则哈希任何特定记录所需的时间可能会大幅增加。]
+capabilityDescription: {en: This processor attempts to deduplicate a record set in
+    memory using either a hashset or a bloom filter. It operates on a per-file basis
+    rather than across an entire data set that spans multiple files., zh: 此处理器尝试使用哈希集或布隆过滤器对内存中的记录集进行重复数据消除。它以每个文件为基础运行，而不是跨跨多个文件的整个数据集运行。}
+properties:
+  distributed-map-cache:
+    en: {displayName: Distributed Map Cache client, description: This configuration
+        is required when the deduplication strategy is set to 'multiple files.' The
+        map cache will be used to check a data source such as HBase or Redis for entries
+        indicating that a record has been processed before. This option requires a
+        downstream process that uses PutDistributedMapCache to write an entry to the
+        cache data source once the record has been processed to indicate that it has
+        been handled before.}
+    zh: {description: 当重复数据消除策略设置为“多个文件”时，需要此配置映射缓存将用于检查数据源（如HBase或Redis）中是否存在指示之前已处理过记录的条目。此选项要求下游进程在处理记录后使用PutDistributedMapCache将条目写入缓存数据源，以表明之前已处理过该记录。,
+      displayName: 分布式地图缓存客户端}
+  filter-capacity-hint:
+    en: {displayName: Filter Capacity Hint, description: An estimation of the total
+        number of unique records to be processed. The more accurate this number is
+        will lead to fewer false negatives on a BloomFilter.}
+    zh: {description: 要处理的唯一记录总数的估计值。这个数字越精确，BloomFilter上的假阴性就越少。, displayName: 过滤器容量提示}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  deduplication-strategy:
+    en: {displayName: Deduplication Strategy, description: 'The strategy to use for
+        detecting and isolating duplicate records. The option for doing it across
+        a single data file will operate in memory, whereas the one for going across
+        the enter repository will require a distributed map cache.'}
+    zh: {description: 用于检测和隔离重复记录的策略。跨单个数据文件执行此操作的选项将在内存中运行，而跨enter存储库的选项将需要分布式映射缓存。,
+      displayName: 重复数据消除战略}
+  record-hashing-algorithm:
+    en: {displayName: Record Hashing Algorithm, description: The algorithm used to
+        hash the combined set of resolved RecordPath values for cache storage.}
+    zh: {description: 用于哈希缓存存储的已解析RecordPath值的组合集的算法。, displayName: 记录哈希算法}
+  cache-identifier:
+    en: {displayName: Cache Identifier, description: This option defines a record
+        path operation to use for defining the cache identifier. It can be used in
+        addition to the hash settings. This field will have the expression language
+        attribute "record.hash.value" available to it to use with it to generate the
+        record path operation.}
+    zh: {description: 此选项定义用于定义缓存标识符的记录路径操作。除了哈希设置之外，还可以使用它。此字段将具有表达式语言属性“record.hash.value”，可用于生成记录路径操作。,
+      displayName: 缓存标识符}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  include-zero-record-flowfiles:
+    en: {displayName: Include Zero Record FlowFiles, description: 'When converting
+        an incoming FlowFile, if the conversion results in no data, this property
+        specifies whether or not a FlowFile will be sent to the corresponding relationship'}
+    zh: {description: 当转换传入的FlowFile时，如果转换结果为无数据，则此属性指定是否将FlowFile发送到相应的关系, displayName: 包括零记录流文件}
+  filter-type:
+    en: {displayName: Filter Type, description: 'The filter used to determine whether
+        a record has been seen before based on the matching RecordPath criteria. If
+        hash set is selected, a Java HashSet object will be used to deduplicate all
+        encountered records. If the bloom filter option is selected, a bloom filter
+        will be used. The bloom filter option is less memory intensive, but has a
+        chance of having false positives.'}
+    zh: {description: 用于根据匹配的RecordPath条件确定以前是否看到过记录的筛选器。如果选择了哈希集，则将使用Java HashSet对象对所有遇到的记录进行重复数据消除。如果选择布隆过滤器选项，将使用布隆过滤器。布隆过滤器选项的内存占用较少，但有可能出现误报。,
+      displayName: 过滤器类型}
+  bloom-filter-certainty:
+    en: {displayName: Bloom Filter Certainty, description: 'The desired false positive
+        probability when using the BloomFilter type. Using a value of .05 for example,
+        guarantees a five-percent probability that the result is a false positive.
+        The closer to 1 this value is set, the more precise the result at the expense
+        of more storage space utilization.'}
+    zh: {description: 使用BloomFilter类型时所需的假阳性概率。例如，使用0.05的值，可以保证结果为假阳性的概率为5%。该值设置得越接近1，结果就越精确，但存储空间利用率越高。,
+      displayName: Bloom过滤器确定性}
+writeAttributes:
+  record.count: {en: The number of records processed., zh: 处理的记录数。}
+tags:
+  en: [text, record, update, change, replace, modify, distinct, unique, filter, hash,
+    dupe, duplicate, dedupe]
+  zh: [文本, 记录, 使现代化, 改变, 代替, 修改, 不同的, 唯一的, 滤器, 搞砸, 欺骗, 复制, 重复数据消除]

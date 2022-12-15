@@ -1,0 +1,38 @@
+relationships:
+  found: {en: Where to route flow files after successfully enriching attributes with
+      data provided by database, zh: 使用数据库提供的数据成功丰富属性后，将流文件路由到何处}
+  not found: {en: Where to route flow files after unsuccessfully enriching attributes
+      because no data was found, zh: 由于找不到数据，未能成功丰富属性后将流文件路由到何处}
+capabilityDescription: {en: 'Looks up geolocation information for an IP address and
+    adds the geo information to FlowFile attributes. The geo data is provided as a
+    MaxMind database. The attribute that contains the IP address to lookup is provided
+    by the ''IP Address Attribute'' property. If the name of the attribute provided
+    is ''X'', then the the attributes added by enrichment will take the form X.geo.<fieldName>',
+  zh: 查找IP地址的地理位置信息，并将地理信息添加到FlowFile属性中。地理数据作为MaxMind数据库提供。包含要查找的IP地址的属性由“IP地址属性”属性提供。如果提供的属性的名称为“X”，则通过扩展添加的属性将采用X.geo的形式。＜fieldName＞}
+properties:
+  Geo Database File:
+    en: {displayName: MaxMind Database File, description: Path to Maxmind IP Enrichment
+        Database File}
+    zh: {description: Maxmind IP扩展数据库文件的路径, displayName: MaxMind数据库文件}
+  IP Address Attribute:
+    en: {displayName: IP Address Attribute, description: The name of an attribute
+        whose value is a dotted decimal IP address for which enrichment should occur}
+    zh: {description: 一个属性的名称，其值是一个应该进行浓缩的十进制IP地址, displayName: IP地址属性}
+writeAttributes:
+  X.geo.subdivision.isocode.N: {en: The ISO code for the subdivision that is identified
+      by X.geo.subdivision.N, zh: 由X.geo.sub分部.N标识的分部的ISO代码}
+  X.geo.country.isocode: {en: The ISO Code for the country identified, zh: 所识别国家的ISO代码}
+  X.geo.lookup.micros: {en: The number of microseconds that the geo lookup took, zh: 地理查找所用的微秒数}
+  X.geo.latitude: {en: The latitude identified for this IP address, zh: 为此IP地址标识的纬度}
+  X.geo.city: {en: The city identified for the IP address, zh: 为IP地址标识的城市}
+  X.geo.postalcode: {en: The postal code for the country identified, zh: 所识别国家的邮政编码}
+  X.geo.longitude: {en: The longitude identified for this IP address, zh: 为此IP地址标识的经度}
+  X.geo.accuracy: {en: The accuracy radius if provided by the database (in Kilometers),
+    zh: 数据库提供的准确半径（单位：千米）}
+  X.geo.subdivision.N: {en: 'Each subdivision that is identified for this IP address
+      is added with a one-up number appended to the attribute name, starting with
+      0', zh: 为该IP地址标识的每个细分都将添加一个追加到属性名称的数字，从0开始}
+  X.geo.country: {en: The country identified for this IP address, zh: 为此IP地址标识的国家/地区}
+tags:
+  en: [geo, enrich, ip, maxmind]
+  zh: [地理, 充实, ip地址, 马克西姆]

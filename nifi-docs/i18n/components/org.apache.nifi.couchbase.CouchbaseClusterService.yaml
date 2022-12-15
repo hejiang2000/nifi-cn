@@ -1,0 +1,30 @@
+dynamicProperties:
+  Bucket Password for BUCKET_NAME:
+    en: {description: Specify bucket password if necessary. Couchbase Server 5.0 or
+        later should use 'User Name' and 'User Password' instead., value: bucket password}
+    zh: {description: 如有必要，请指定bucket密码。Couchbase Server 5.0或更高版本应改用“用户名”和“用户密码”。,
+      value: 存储桶密码}
+capabilityDescription: {en: Provides a centralized Couchbase connection and bucket
+    passwords management. Bucket passwords can be specified via dynamic properties.,
+  zh: 提供集中的Couchbase连接和bucket密码管理。可以通过动态属性指定Bucket密码。}
+properties:
+  user-password:
+    en: {displayName: User Password, description: The user password to authenticate
+        NiFi as a Couchbase client. This configuration can be used against Couchbase
+        Server 5.0 or later supporting Roll-Based Access Control.}
+    zh: {description: 将NiFi认证为Couchbase客户端的用户密码。此配置可用于Couchbase Server 5.0或更高版本支持基于滚动的访问控制。,
+      displayName: 用户密码}
+  user-name:
+    en: {displayName: User Name, description: The user name to authenticate NiFi as
+        a Couchbase client. This configuration can be used against Couchbase Server
+        5.0 or later supporting Roll-Based Access Control.}
+    zh: {description: 将NiFi认证为Couchbase客户端的用户名。此配置可用于Couchbase Server 5.0或更高版本支持基于滚动的访问控制。,
+      displayName: 用户名}
+  Connection String:
+    en: {displayName: Connection String, description: 'The hostnames or ip addresses
+        of the bootstraping nodes and optional parameters. Syntax) couchbase://node1,node2,nodeN?param1=value1&param2=value2&paramN=valueN'}
+    zh: {description: '引导节点的主机名或ip地址以及可选参数。语法）couchbase://node1，节点2，节点N？param1=值1&param2=值2&paramN=值N',
+      displayName: 连接字符串}
+tags:
+  en: [nosql, couchbase, database, connection]
+  zh: [nosql语言, 泊位底座, 数据库, 联系]

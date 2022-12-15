@@ -18,7 +18,7 @@
 <div id="view-single-node-dialog" class="hidden small-dialog">
     <div class="dialog-content">
         <input id="cluster-search-field" type="text"/>
-        <div id="cluster-search-example">(e.g.&nbsp;my.host:80)</div>
+        <div id="cluster-search-example">(例如&nbsp;my.host:80)</div>
     </div>
 </div>
 <div id="search-cluster-results"></div>

@@ -1,0 +1,156 @@
+capabilityDescription: {en: 'Parses CSV-formatted data, returning each row in the
+    CSV file as a separate record. This reader allows for inferring a schema based
+    on the first line of the CSV, if a ''header line'' is present, or providing an
+    explicit schema for interpreting the values. See Controller Service''s Usage for
+    further documentation.', zh: 分析CSV格式的数据，将CSV文件中的每一行作为单独的记录返回。如果存在“标题行”，该读取器允许基于CSV的第一行推断模式，或者提供用于解释值的显式模式。有关更多文档，请参阅控制器服务的用法。}
+properties:
+  ignore-csv-header:
+    en: {displayName: Ignore CSV Header Column Names, description: 'If the first line
+        of a CSV is a header, and the configured schema does not match the fields
+        named in the header line, this controls how the Reader will interpret the
+        fields. If this property is true, then the field names mapped to each column
+        are driven only by the configured schema and any fields not in the schema
+        will be ignored. If this property is false, then the field names found in
+        the CSV Header will be used as the names of the fields.'}
+    zh: {description: 如果CSV的第一行是标题，并且配置的模式与标题行中命名的字段不匹配，则这将控制Reader如何解释字段。如果此属性为true，则映射到每个列的字段名仅由配置的架构驱动，并且任何不在架构中的字段都将被忽略。如果此属性为false，则CSV标头中的字段名将用作字段名。,
+      displayName: 忽略CSV标题列名}
+  schema-branch:
+    en: {displayName: Schema Branch, description: 'Specifies the name of the branch
+        to use when looking up the schema in the Schema Registry property. If the
+        chosen Schema Registry does not support branching, this value will be ignored.'}
+    zh: {description: 指定在“架构注册表”属性中查找架构时要使用的分支的名称。如果所选的架构注册表不支持分支，则将忽略此值。, displayName: 架构分支}
+  Trim double quote:
+    en: {displayName: Trim double quote, description: 'Whether or not to trim starting
+        and ending double quotes. For example: with trim string ''"test"'' would be
+        parsed to ''test'', without trim would be parsed to ''"test"''.If set to ''false''
+        it means full compliance with RFC-4180. Default value is true, with trim.'}
+    zh: {description: 是否修剪开始和结束双引号。例如：带trim字符串“test”将被解析为“test”，不带trim将被解析成“test”。如果设置为“false”，则表示完全符合RFC-4180。默认值为true，带有微调。,
+      displayName: 修剪双引号}
+  CSV Format:
+    en: {displayName: CSV Format, description: 'Specifies which "format" the CSV data
+        is in, or specifies if custom formatting should be used.'}
+    zh: {description: 指定CSV数据的“格式”，或指定是否应使用自定义格式。, displayName: CSV格式}
+  Quote Character:
+    en: {displayName: Quote Character, description: 'The character that is used to
+        quote values so that escape characters do not have to be used. If the property
+        has been specified via Expression Language but the expression gets evaluated
+        to an invalid Quote Character at runtime, then it will be skipped and the
+        default Quote Character will be used.'}
+    zh: {description: 用于引用值的字符，以便不必使用转义字符。如果已通过表达式语言指定了属性，但表达式在运行时被计算为无效的引号字符，则将跳过该属性，并使用默认的引号字符。,
+      displayName: 引号字符}
+  csvutils-allow-duplicate-header-names:
+    en:
+      displayName: Allow Duplicate Header Names
+      description: |-
+        Whether duplicate header names are allowed. Header names are case-sensitive, for example "name" and "Name" are treated as separate fields. Handling of duplicate header names is CSV Parser specific (where applicable):
+        * Apache Commons CSV - duplicate headers will result in column data "shifting" right with new fields created for "unknown_field_index_X" where "X" is the CSV column index number
+        * Jackson CSV - duplicate headers will be de-duplicated with the field value being that of the right-most duplicate CSV column
+    zh: {description: 是否允许重复标头名称。标题名称区分大小写，例如“name”和“name”被视为单独的字段。重复标头名称的处理是特定于CSV解析器的（如果适用）：,
+      displayName: 允许重复标题名称}
+  Value Separator:
+    en: {displayName: Value Separator, description: 'The character that is used to
+        separate values/fields in a CSV Record. If the property has been specified
+        via Expression Language but the expression gets evaluated to an invalid Value
+        Separator at runtime, then it will be skipped and the default Value Separator
+        will be used.'}
+    zh: {description: 用于分隔CSV记录中的值/字段的字符。如果已通过表达式语言指定属性，但表达式在运行时被计算为无效的值分隔符，则将跳过该属性，并使用默认值分隔符。,
+      displayName: 值分隔符}
+  Record Separator:
+    en: {displayName: Record Separator, description: Specifies the characters to use
+        in order to separate CSV Records}
+    zh: {description: 指定用于分隔CSV记录的字符, displayName: 记录分隔符}
+  Timestamp Format:
+    en: {displayName: Timestamp Format, description: 'Specifies the format to use
+        when reading/writing Timestamp fields. If not specified, Timestamp fields
+        will be assumed to be number of milliseconds since epoch (Midnight, Jan 1,
+        1970 GMT). If specified, the value must match the Java Simple Date Format
+        (for example, MM/dd/yyyy HH:mm:ss for a two-digit month, followed by a two-digit
+        day, followed by a four-digit year, all separated by ''/'' characters; and
+        then followed by a two-digit hour in 24-hour format, followed by a two-digit
+        minute, followed by a two-digit second, all separated by '':'' characters,
+        as in 01/01/2017 18:04:15).'}
+    zh: {description: '指定读取/写入时间戳字段时使用的格式。如果未指定，则时间戳字段将假定为自纪元（1970年1月1日午夜）以来的毫秒数。如果指定，则该值必须与Java简单日期格式匹配（例如，MM/dd/yyyy
+        HH:MM:ss表示两位数的月份，后跟两位数的日期，后跟四位数的年份，均以“/”字符分隔；然后，后跟24小时格式的两位数的小时，后跟两位的分钟，然后是两位数的秒，全部以“：”字符分隔，如2017年1月1日18:04:15所示）。',
+      displayName: 时间戳格式}
+  Escape Character:
+    en: {displayName: Escape Character, description: 'The character that is used to
+        escape characters that would otherwise have a specific meaning to the CSV
+        Parser. If the property has been specified via Expression Language but the
+        expression gets evaluated to an invalid Escape Character at runtime, then
+        it will be skipped and the default Escape Character will be used. Setting
+        it to an empty string means no escape character should be used.'}
+    zh: {description: 用于转义否则对CSV解析器具有特定意义的字符的字符。如果已通过表达式语言指定了属性，但表达式在运行时被计算为无效的转义符，则将跳过该属性，并使用默认的转义符。将其设置为空字符串意味着不应使用转义符。,
+      displayName: 转义符}
+  Date Format:
+    en: {displayName: Date Format, description: 'Specifies the format to use when
+        reading/writing Date fields. If not specified, Date fields will be assumed
+        to be number of milliseconds since epoch (Midnight, Jan 1, 1970 GMT). If specified,
+        the value must match the Java Simple Date Format (for example, MM/dd/yyyy
+        for a two-digit month, followed by a two-digit day, followed by a four-digit
+        year, all separated by ''/'' characters, as in 01/01/2017).'}
+    zh: {description: 指定读取/写入日期字段时使用的格式。如果未指定，日期字段将假定为自纪元（1970年1月1日午夜）以来的毫秒数。如果指定，则该值必须与Java简单日期格式匹配（例如，MM/dd/yyyy表示两位数的月份，后跟两位数的日期，后跟四位数的年份，均由“/”字符分隔，如2017年1月1日）。,
+      displayName: 日期格式}
+  Null String:
+    en: {displayName: Null String, description: 'Specifies a String that, if present
+        as a value in the CSV, should be considered a null field instead of using
+        the literal value.'}
+    zh: {description: 指定一个字符串，如果该字符串作为CSV中的值存在，则应将其视为空字段，而不是使用文本值。, displayName: Null字符串}
+  Skip Header Line:
+    en: {displayName: Treat First Line as Header, description: 'Specifies whether
+        or not the first line of CSV should be considered a Header or should be considered
+        a record. If the Schema Access Strategy indicates that the columns must be
+        defined in the header, then this property will be ignored, since the header
+        must always be present and won''t be processed as a Record. Otherwise, if
+        ''true'', then the first line of CSV data will not be processed as a record
+        and if ''false'',then the first line will be interpreted as a record.'}
+    zh: {description: 指定CSV的第一行是否应视为页眉或记录。如果架构访问策略指示必须在标头中定义列，则将忽略此属性，因为标头必须始终存在，并且不会作为记录处理。否则，如果“true”，则CSV数据的第一行将不会作为记录处理，如果“false”，则第一行将被解释为记录。,
+      displayName: 将首行视为页眉}
+  Trim Fields:
+    en: {displayName: Trim Fields, description: Whether or not white space should
+        be removed from the beginning and end of fields}
+    zh: {description: 是否应从字段的开头和结尾删除空白, displayName: 修剪字段}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry}
+    zh: {description: 指定用于架构注册表的控制器服务, displayName: 架构注册表}
+  csv-reader-csv-parser:
+    en: {displayName: CSV Parser, description: 'Specifies which parser to use to read
+        CSV records. NOTE: Different parsers may support different subsets of functionality
+        and may also exhibit different levels of performance.'}
+    zh: {description: 指定用于读取CSV记录的解析器。注意：不同的解析器可能支持不同的功能子集，也可能表现出不同的性能级别。, displayName: CSV解析器}
+  Time Format:
+    en: {displayName: Time Format, description: 'Specifies the format to use when
+        reading/writing Time fields. If not specified, Time fields will be assumed
+        to be number of milliseconds since epoch (Midnight, Jan 1, 1970 GMT). If specified,
+        the value must match the Java Simple Date Format (for example, HH:mm:ss for
+        a two-digit hour in 24-hour format, followed by a two-digit minute, followed
+        by a two-digit second, all separated by '':'' characters, as in 18:04:15).'}
+    zh: {description: '指定读取/写入时间字段时使用的格式。如果未指定，“时间”字段将假定为自纪元（1970年1月1日午夜）以来的毫秒数。如果指定，则该值必须与Java简单日期格式匹配（例如，HH:mm:ss表示24小时格式的两位数小时，后跟两位数分钟，后跟两位秒，均以“：”字符分隔，如18:04:15所示）。',
+      displayName: 时间格式}
+  Comment Marker:
+    en: {displayName: Comment Marker, description: The character that is used to denote
+        the start of a comment. Any line that begins with this comment will be ignored.}
+    zh: {description: 用于表示注释开头的字符。任何以该注释开头的行都将被忽略。, displayName: 注释标记}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that is to be used for interpreting the data.}
+    zh: {description: 指定如何获取用于解释数据的架构。, displayName: 架构访问策略}
+  schema-version:
+    en: {displayName: Schema Version, description: Specifies the version of the schema
+        to lookup in the Schema Registry. If not specified then the latest version
+        of the schema will be retrieved.}
+    zh: {description: 指定要在架构注册表中查找的架构的版本。如果未指定，则将检索架构的最新版本。, displayName: 架构版本}
+  csvutils-character-set:
+    en: {displayName: Character Set, description: The Character Encoding that is used
+        to encode/decode the CSV file}
+    zh: {description: 用于编码/解码CSV文件的字符编码, displayName: 字符集}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+tags:
+  en: [csv, parse, record, row, reader, delimited, comma, separated, values]
+  zh: [csv格式, 作语法分析, 记录, 一行, 读者, 定界的, 逗号, 分离的，分离的, 价值观]

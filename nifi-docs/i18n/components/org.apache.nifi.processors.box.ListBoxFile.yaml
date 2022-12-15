@@ -1,0 +1,86 @@
+relationships:
+  success: {en: All FlowFiles that are received are routed to success, zh: 接收到的所有FlowFiles都将路由成功}
+capabilityDescription: {en: 'Lists files in a Box folder. Each listed file may result
+    in one FlowFile, the metadata being written as FlowFile attributes. Or - in case
+    the ''Record Writer'' property is set - the entire result is written as records
+    to a single FlowFile. This Processor is designed to run on Primary Node only in
+    a cluster. If the primary node changes, the new Primary Node will pick up where
+    the previous node left off without duplicating all of the data.', zh: 列出Box文件夹中的文件。每个列出的文件可能会生成一个FlowFile，元数据将作为FlowFile属性写入。或者，如果设置了“Record
+    Writer”属性，则整个结果将作为记录写入单个FlowFile。此处理器设计为仅在群集中的主节点上运行。如果主节点发生更改，新的主节点将在不复制所有数据的情况下恢复上一个节点停止的位置。}
+statefulDescription: {en: The processor stores necessary data to be able to keep track
+    what files have been listed already. What exactly needs to be stored depends on
+    the 'Listing Strategy'., zh: 处理器存储必要的数据，以便能够跟踪已经列出的文件。具体需要存储的内容取决于“上市策略”。}
+properties:
+  listing-strategy:
+    en: {displayName: Listing Strategy, description: Specify how to determine new/updated
+        entities. See each strategy descriptions for detail.}
+    zh: {description: 指定如何确定新的/更新的实体。有关详细信息，请参阅每个策略描述。, displayName: 上市策略}
+  box-folder-id:
+    en: {displayName: Folder ID, description: The ID of the folder from which to pull
+        list of files.}
+    zh: {description: 从中提取文件列表的文件夹的ID。, displayName: 文件夹ID}
+  et-initial-listing-target:
+    en: {displayName: Entity Tracking Initial Listing Target, description: Specify
+        how initial listing should be handled. Used by 'Tracking Entities' strategy.}
+    zh: {description: 指定如何处理初始列表。由“跟踪实体”策略使用。, displayName: 实体跟踪初始上市目标}
+  record-writer:
+    en: {displayName: Record Writer, description: 'Specifies the Record Writer to
+        use for creating the listing. If not specified, one FlowFile will be created
+        for each entity that is listed. If the Record Writer is specified, all entities
+        will be written to a single FlowFile instead of adding attributes to individual
+        FlowFiles.'}
+    zh: {description: 指定用于创建列表的记录编写器。如果未指定，将为列出的每个实体创建一个FlowFile。如果指定了记录编写器，则所有实体都将写入单个FlowFile，而不是向单个FlowFile添加属性。,
+      displayName: 记录编写器}
+  et-time-window:
+    en: {displayName: Entity Tracking Time Window, description: 'Specify how long
+        this processor should track already-listed entities. ''Tracking Entities''
+        strategy can pick any entity whose timestamp is inside the specified time
+        window. For example, if set to ''30 minutes'', any entity having timestamp
+        in recent 30 minutes will be the listing target when this processor runs.
+        A listed entity is considered ''new/updated'' and a FlowFile is emitted if
+        one of following condition meets: 1. does not exist in the already-listed
+        entities, 2. has newer timestamp than the cached entity, 3. has different
+        size than the cached entity. If a cached entity''s timestamp becomes older
+        than specified time window, that entity will be removed from the cached already-listed
+        entities. Used by ''Tracking Entities'' strategy.'}
+    zh: {description: 指定此处理器跟踪已列出实体的时间。'跟踪实体的策略可以选择时间戳在指定时间窗口内的任何实体。例如，如果设置为“30分钟”，则在该处理器运行时，具有最近30分钟时间戳的任何实体都将成为列表目标。如果满足以下条件之一，则将列出的实体视为“新的/更新的”，并发出FlowFile：1.已列出的实体中不存在，2.具有比缓存实体更新的时间戳，3.具有与缓存实体不同的大小。如果缓存实体的时间戳早于指定的时间窗口，则将从缓存的已列出实体中删除该实体。由“跟踪实体”策略使用。,
+      displayName: 实体跟踪时间窗口}
+  box-client-service:
+    en: {displayName: Box Client Service, description: Controller Service used to
+        obtain a Box API connection.}
+    zh: {description: 用于获取Box API连接的控制器服务。, displayName: Box客户端服务}
+  recursive-search:
+    en: {displayName: Search Recursively, description: 'When ''true'', will include
+        list of files from sub-folders. Otherwise, will return only files that are
+        within the folder defined by the ''Folder ID'' property.'}
+    zh: {description: 当为“true”时，将包括子文件夹中的文件列表。否则，将仅返回“文件夹ID”属性定义的文件夹中的文件。, displayName: 递归搜索}
+  et-state-cache:
+    en: {displayName: Entity Tracking State Cache, description: 'Listed entities are
+        stored in the specified cache storage so that this processor can resume listing
+        across NiFi restart or in case of primary node change. ''Tracking Entities''
+        strategy require tracking information of all listed entities within the last
+        ''Tracking Time Window''. To support large number of entities, the strategy
+        uses DistributedMapCache instead of managed state. Cache key format is ''ListedEntities::{processorId}(::{nodeId})''.
+        If it tracks per node listed entities, then the optional ''::{nodeId}'' part
+        is added to manage state separately. E.g. cluster wide cache key = ''ListedEntities::8dda2321-0164-1000-50fa-3042fe7d6a7b'',
+        per node cache key = ''ListedEntities::8dda2321-0164-1000-50fa-3042fe7d6a7b::nifi-node3''
+        The stored cache content is Gzipped JSON string. The cache key will be deleted
+        when target listing configuration is changed. Used by ''Tracking Entities''
+        strategy.'}
+    zh: {description: '列出的实体存储在指定的缓存存储中，以便此处理器可以在NiFi重新启动或主节点更改时恢复列出“跟踪实体”策略要求在上一个“跟踪时间窗口”内跟踪所有列出实体的信息。为了支持大量实体，该策略使用DistributedMapCache而不是托管状态。缓存密钥格式为“ListedEntities:：｛processorId｝（：：｛nodeId｝）”。如果它跟踪每个节点列出的实体，则会添加可选的“：：｛nodeId｝”部分以单独管理状态。E、
+        g.集群范围的缓存键=“ListedEntities:：8dda2321-0164-1000-50fa-3042fe7d6a7b”，每个节点的缓存键为“ListedEntitys::8dda23201-0164-1000-50fa-3042fe7d
+        6a7b:：nifi-node3”存储的缓存内容为Gzipped JSON字符串。更改目标列表配置时，将删除缓存密钥。由“跟踪实体”策略使用。',
+      displayName: 实体跟踪状态缓存}
+  min-age:
+    en: {displayName: Minimum File Age, description: The minimum age a file must be
+        in order to be considered; any files younger than this will be ignored.}
+    zh: {description: 考虑文件的最低年龄；任何小于此值的文件都将被忽略。, displayName: 最小文件期限}
+writeAttributes:
+  box.id: {en: The id of the file, zh: 文件的id}
+  path: {en: The path of the file on Box, zh: Box上文件的路径}
+  filename: {en: The name of the file, zh: 文件的名称}
+  box.timestamp: {en: The last modified time of the file., zh: 文件的上次修改时间。}
+  box.size: {en: The size of the file (in bytes), zh: 文件大小（字节）}
+tags:
+  en: [box, storage]
+  zh: [盒, 存储]

@@ -1,0 +1,116 @@
+relationships:
+  success: {en: All FlowFiles that are read from Elasticsearch are routed to this
+      relationship., zh: 从Elasticsearch读取的所有FlowFiles都将路由到此关系。}
+  failure: {en: All FlowFiles that cannot be read from Elasticsearch are routed to
+      this relationship. Note that only incoming flow files will be routed to failure.,
+    zh: 无法从Elasticsearch读取的所有FlowFiles都将路由到此关系。请注意，只有传入的流文件将被路由到失败。}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+dynamicProperties:
+  A URL query parameter:
+    en: {description: Adds the specified property name/value as a query parameter
+        in the Elasticsearch URL used for processing, value: The value to set it to}
+    zh: {description: 在用于处理的Elasticsearch URL中添加指定的属性名称/值作为查询参数, value: 要将其设置为的值}
+capabilityDescription: {en: 'Scrolls through an Elasticsearch query using the specified
+    connection properties. This processor is intended to be run on the primary node,
+    and is designed for scrolling through huge result sets, as in the case of a reindex.  The
+    state must be cleared before another query can be run.  Each page of results is
+    returned, wrapped in a JSON object like so: { "hits" : [ <doc1>, <doc2>, <docn>
+    ] }.  Note that the full body of each page of documents will be read into memory
+    before being written to a Flow File for transfer.', zh: '使用指定的连接属性在Elasticsearch查询中滚动。该处理器旨在在主节点上运行，并设计用于滚动巨大的结果集，如重新索引。必须先清除状态，然后才能运行另一个查询。返回每一页结果，并将其包装在JSON对象中，如：｛“hits”：[<doc1>，<doc2>，<docn>]}。请注意，在写入流文件进行传输之前，每页文档的全文将被读入内存。'}
+statefulDescription: {en: 'After each successful scroll page, the latest scroll_id
+    is persisted in scrollId as input for the next scroll call.  Once the entire query
+    is complete, finishedQuery state will be set to true, and the processor will not
+    execute unless this is cleared.', zh: 在每个成功的滚动页面之后，最新的scroll_id将作为下一个滚动调用的输入保存在scrollId中。整个查询完成后，finishedQuery状态将设置为true，除非清除此项，否则处理器将不会执行。}
+properties:
+  elasticsearch-http-response-timeout:
+    en: {displayName: Response Timeout, description: Max wait time for a response
+        from the Elasticsearch REST API.}
+    zh: {description: Elasticsearch REST API响应的最长等待时间。, displayName: 响应超时}
+  scroll-es-scroll:
+    en: {displayName: Scroll Duration, description: The scroll duration is how long
+        each search context is kept in memory.}
+    zh: {description: 滚动持续时间是每个搜索上下文在内存中保留的时间。, displayName: 滚动持续时间}
+  scroll-es-size:
+    en: {displayName: Page Size, description: Determines how many documents to return
+        per page during scrolling.}
+    zh: {description: 确定滚动期间每页返回的文档数。, displayName: 页面大小}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: SOCKS, HTTP +
+        AuthN In case of SOCKS, it is not guaranteed that the selected SOCKS Version
+        will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：SOCKS、HTTP+AuthN如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  elasticsearch-http-url:
+    en: {displayName: Elasticsearch URL, description: 'Elasticsearch URL which will
+        be connected to, including scheme (http, e.g.), host, and port. The default
+        port for the REST API is 9200.'}
+    zh: {description: 将连接到的Elasticsearch URL，包括scheme（例如http）、host和port。REST API的默认端口是9200。,
+      displayName: 弹性搜索URL}
+  scroll-es-index:
+    en: {displayName: Index, description: 'The name of the index to read from. If
+        the property is set to _all, the query will match across all indexes.'}
+    zh: {description: 要读取的索引的名称。如果属性设置为_all，则查询将在所有索引中匹配。, displayName: 指数}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections. This service
+        only applies if the Elasticsearch endpoint(s) have been secured with TLS/SSL.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。此服务仅适用于Elasticsearch端点已通过TLS/SSL进行安全保护的情况。,
+      displayName: SSL上下文服务}
+  elasticsearch-http-connect-timeout:
+    en: {displayName: Connection Timeout, description: Max wait time for the connection
+        to the Elasticsearch REST API.}
+    zh: {description: 连接到Elasticsearch REST API的最长等待时间。, displayName: 连接超时}
+  Username:
+    en: {displayName: Username, description: Username to access the Elasticsearch
+        cluster}
+    zh: {description: 访问Elasticsearch集群的用户名, displayName: 用户名}
+  elasticsearch-http-proxy-host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  proxy-username:
+    en: {displayName: Proxy Username, description: Proxy Username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  scroll-es-fields:
+    en: {displayName: Fields, description: 'A comma-separated list of fields to retrieve
+        from the document. If the Fields property is left blank, then the entire document''s
+        source will be retrieved.'}
+    zh: {description: 要从文档中检索的字段的逗号分隔列表。如果Fields属性为空，则将检索整个文档的源。, displayName: 领域}
+  proxy-password:
+    en: {displayName: Proxy Password, description: Proxy Password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  scroll-es-query:
+    en: {displayName: Query, description: 'The Lucene-style query to run against ElasticSearch
+        (e.g., genre:blues AND -artist:muddy)'}
+    zh: {description: 针对ElasticSearch运行的Lucene风格查询（例如，流派：blues AND-艺术家：mud）, displayName: 查询}
+  scroll-es-sort:
+    en: {displayName: Sort, description: 'A sort parameter (e.g., timestamp:asc).
+        If the Sort property is left blank, then the results will be retrieved in
+        document order.'}
+    zh: {description: 排序参数（例如，时间戳：asc）。如果Sort属性为空，则将按文档顺序检索结果。, displayName: 分类}
+  elasticsearch-http-proxy-port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  scroll-es-type:
+    en: {displayName: Type, description: 'The type of document (if unset, the query
+        will be against all types in the _index). This should be unset or ''_doc''
+        for Elasticsearch 7.0+.'}
+    zh: {description: 文档类型（如果未设置，查询将针对_index中的所有类型）。对于Elasticsearch 7.0+，该值应为unset或“_doc”。,
+      displayName: 类型}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        document data.}
+    zh: {description: 指定文档数据的字符集。, displayName: 字符集}
+  Password:
+    en: {displayName: Password, description: Password to access the Elasticsearch
+        cluster}
+    zh: {description: 访问Elasticsearch集群的密码, displayName: 暗语}
+writeAttributes:
+  es.type: {en: The Elasticsearch document type, zh: Elasticsearch文档类型}
+  es.index: {en: The Elasticsearch index containing the document, zh: 包含文档的Elasticsearch索引}
+tags:
+  en: [elasticsearch, query, scroll, read, get, http]
+  zh: [弹性搜索, 查询, 纸卷, 阅读, 收到, http]

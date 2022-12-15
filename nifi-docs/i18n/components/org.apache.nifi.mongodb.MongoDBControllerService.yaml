@@ -1,0 +1,28 @@
+capabilityDescription: {en: Provides a controller service that configures a connection
+    to MongoDB and provides access to that connection to other Mongo-related components.,
+  zh: 提供一个控制器服务，用于配置与MongoDB的连接，并提供对其他Mongo相关组件的连接访问。}
+properties:
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  ssl-client-auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  Database User:
+    en: {displayName: Database User, description: Database user name}
+    zh: {description: 数据库用户名, displayName: 数据库用户}
+  mongo-uri:
+    en: {displayName: Mongo URI, description: 'MongoURI, typically of the form: mongodb://host1[:port1][,host2[:port2],...]'}
+    zh: {description: 'MongoURI，通常形式为：mongodb://host1[：端口1][，主机2[：端口2]，…]', displayName: Mongo
+        URI}
+  Password:
+    en: {displayName: Password, description: The password for the database user}
+    zh: {description: 数据库用户的密码, displayName: 暗语}
+tags:
+  en: [mongo, mongodb, service]
+  zh: [蒙哥, 数据库, 服务]

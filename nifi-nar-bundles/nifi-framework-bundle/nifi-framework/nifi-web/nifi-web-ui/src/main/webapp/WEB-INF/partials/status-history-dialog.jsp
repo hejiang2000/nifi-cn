@@ -17,9 +17,9 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="status-history-dialog" class="hidden large-dialog">
     <div id="status-history-refresh-container">
-        <button id="status-history-refresh-button" class="refresh-button pointer fa fa-refresh" title="Refresh"></button>
+        <button id="status-history-refresh-button" class="refresh-button pointer fa fa-refresh" title="刷新"></button>
         <div id="status-history-last-refreshed-container" class="last-refreshed-container">
-            Last updated:&nbsp;<span id="status-history-last-refreshed"></span>
+            最后更新:&nbsp;<span id="status-history-last-refreshed"></span>
         </div>
         <div id="status-history-loading-container" class="loading-container"></div>
     </div>

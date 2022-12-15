@@ -1,0 +1,55 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+capabilityDescription: {en: Deletes a message from an Amazon Simple Queuing Service
+    Queue, zh: 从Amazon简单队列服务队列中删除消息}
+properties:
+  Receipt Handle:
+    en: {displayName: Receipt Handle, description: The identifier that specifies the
+        receipt of the message}
+    zh: {description: 指定消息接收的标识符, displayName: 收据句柄}
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  Queue URL:
+    en: {displayName: Queue URL, description: The URL of the queue to act upon}
+    zh: {description: 要操作的队列的URL, displayName: 队列URL}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+tags:
+  en: [Amazon, AWS, SQS, Queue, Delete]
+  zh: [亚马逊, 自动售货机, 平方英尺, 队列, 删去]

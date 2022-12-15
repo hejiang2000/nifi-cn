@@ -1,0 +1,75 @@
+relationships:
+  success: {en: All FlowFiles that are written to MongoDB are routed to this relationship,
+    zh: 写入MongoDB的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be written to MongoDB are routed to this
+      relationship, zh: 无法写入MongoDB的所有FlowFiles都将路由到此关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: Writes the contents of a FlowFile to MongoDB, zh: 将FlowFile的内容写入MongoDB}
+properties:
+  mongo-client-service:
+    en: {displayName: Client Service, description: 'If configured, this property will
+        use the assigned client service for connection pooling.'}
+    zh: {description: 如果已配置，此属性将使用分配的客户端服务进行连接池。, displayName: 客户端服务}
+  Upsert:
+    en: {displayName: Upsert, description: 'When true, inserts a document if no document
+        matches the update query criteria; this property is valid only when using
+        update mode, otherwise it is ignored'}
+    zh: {description: 当为true时，如果没有文档符合更新查询条件，则插入文档；此属性仅在使用更新模式时有效，否则将忽略, displayName: Upsert公司}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  ssl-client-auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  Mode:
+    en: {displayName: Mode, description: Indicates whether the processor should insert
+        or update content}
+    zh: {description: 指示处理器是否应插入或更新内容, displayName: 模式}
+  Mongo Database Name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  Mongo URI:
+    en: {displayName: Mongo URI, description: 'MongoURI, typically of the form: mongodb://host1[:port1][,host2[:port2],...]'}
+    zh: {description: 'MongoURI，通常形式为：mongodb://host1[：端口1][，主机2[：端口2]，…]', displayName: Mongo
+        URI}
+  Update Query Key:
+    en: {displayName: Update Query Key, description: 'Key name used to build the update
+        query criteria; this property is valid only when using update mode, otherwise
+        it is ignored. Example: _id'}
+    zh: {description: 用于构建更新查询条件的关键字名称；此属性仅在使用更新模式时有效，否则将被忽略。示例：_id, displayName: 更新查询密钥}
+  Mongo Collection Name:
+    en: {displayName: Mongo Collection Name, description: The name of the collection
+        to use}
+    zh: {description: 要使用的集合的名称, displayName: Mongo集合名称}
+  putmongo-update-query:
+    en: {displayName: Update Query, description: Specify a full MongoDB query to be
+        used for the lookup query to do an update/upsert.}
+    zh: {description: 指定用于查找查询的完整MongoDB查询以执行更新/升级。, displayName: 更新查询}
+  put-mongo-update-mode:
+    en: {displayName: Update Mode, description: 'Choose an update mode. You can either
+        supply a JSON document to use as a direct replacement or specify a document
+        that contains update operators like $set, $unset, and $inc. When Operators
+        mode is enabled, the flowfile content is expected to be the operator part
+        for example: {$set:{"key": "value"},$inc:{"count":1234}} and the update query
+        will come from the configured Update Query property.'}
+    zh: {description: '选择更新模式。您可以提供JSON文档作为直接替换，也可以指定包含更新运算符（如$set、$unset和$inc）的文档。启用操作员模式时，流文件内容应该是操作员部分，例如：{$set:{“key”：“value”}、$inc:{“count”：1234}}，更新查询将来自配置的更新查询属性。',
+      displayName: 更新模式}
+  Write Concern:
+    en: {displayName: Write Concern, description: The write concern to use}
+    zh: {description: 要使用的书面关注点, displayName: 写入问题}
+  Character Set:
+    en: {displayName: Character Set, description: The Character Set in which the data
+        is encoded}
+    zh: {description: 编码数据的字符集, displayName: 字符集}
+tags:
+  en: [mongodb, insert, update, write, put]
+  zh: [数据库, 插入, 使现代化, 写, 放]

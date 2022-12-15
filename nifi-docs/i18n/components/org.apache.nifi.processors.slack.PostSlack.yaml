@@ -1,0 +1,64 @@
+relationships:
+  success: {en: FlowFiles are routed to success after being successfully sent to Slack,
+    zh: FlowFiles在成功发送到Slack后路由成功}
+  failure: {en: FlowFiles are routed to failure if unable to be sent to Slack, zh: 如果无法将FlowFiles发送到Slack，则将其路由到失败}
+dynamicProperties:
+  <Arbitrary name>:
+    en: {description: The property value will be converted to JSON and will be added
+        to the array of attachments in the JSON payload being sent to Slack. The property
+        name will not be used by the processor., value: JSON snippet specifying a
+        Slack message "attachment"}
+    zh: {description: 属性值将转换为JSON，并将添加到发送到Slack的JSON负载中的附件数组中。处理器将不使用属性名称。, value: 指定Slack消息“附件”的JSON代码段}
+capabilityDescription: {en: Sends a message on Slack. The FlowFile content (e.g. an
+    image) can be uploaded and attached to the message., zh: 在Slack上发送消息。FlowFile内容（例如图像）可以上传并附加到消息中。}
+properties:
+  file-title:
+    en: {displayName: File Title, description: Title of the file displayed in the
+        Slack message. The property value will only be used if 'Upload FlowFile' has
+        been set to 'Yes'.}
+    zh: {description: Slack消息中显示的文件的标题。只有当“Upload FlowFile”设置为“Yes”时，才会使用属性值。, displayName: 文件标题}
+  file-upload-url:
+    en: {displayName: File Upload URL, description: Slack Web API URL for uploading
+        files to channels. It only needs to be changed if Slack changes its API URL.}
+    zh: {description: 用于将文件上载到频道的Slack Web API URL。仅当Slack更改其API URL时，才需要更改它。, displayName: 文件上载URL}
+  file-mime-type:
+    en: {displayName: File Mime Type, description: 'Mime type of the file to be uploaded.
+        The property value will only be used if ''Upload FlowFile'' has been set to
+        ''Yes''. If the property evaluated to null or empty string, then the mime
+        type will be set to ''application/octet-stream'' in the Slack message.'}
+    zh: {description: 要上载的文件的Mime类型。只有当“Upload FlowFile”设置为“Yes”时，才会使用属性值。如果属性的计算结果为null或空字符串，则mime类型将在Slack消息中设置为“application/octet
+        stream”。, displayName: 文件Mime类型}
+  channel:
+    en: {displayName: Channel, description: 'Slack channel, private group, or IM channel
+        to send the message to.'}
+    zh: {description: 要向其发送消息的空闲频道、专用组或IM频道。, displayName: 频道}
+  upload-flowfile:
+    en: {displayName: Upload FlowFile, description: Whether or not to upload and attach
+        the FlowFile content to the Slack message.}
+    zh: {description: 是否上载FlowFile内容并将其附加到Slack消息。, displayName: 上载流文件}
+  access-token:
+    en: {displayName: Access Token, description: OAuth Access Token used for authenticating/authorizing
+        the Slack request sent by NiFi.}
+    zh: {description: OAuth访问令牌，用于验证/授权NiFi发送的Slack请求。, displayName: 访问令牌}
+  text:
+    en: {displayName: Text, description: Text of the Slack message to send. Only required
+        if no attachment has been specified and 'Upload File' has been set to 'No'.}
+    zh: {description: 要发送的Slack消息的文本。仅当未指定附件且“上载文件”设置为“否”时才需要。, displayName: 文本}
+  file-name:
+    en: {displayName: File Name, description: 'Name of the file to be uploaded. The
+        property value will only be used if ''Upload FlowFile'' has been set to ''Yes''.
+        If the property evaluated to null or empty string, then the file name will
+        be set to ''file'' in the Slack message.'}
+    zh: {description: 要上载的文件的名称。只有当“Upload FlowFile”设置为“Yes”时，才会使用属性值。如果属性的计算结果为null或空字符串，则文件名将在Slack消息中设置为“file”。,
+      displayName: 文件名}
+  post-message-url:
+    en: {displayName: Post Message URL, description: Slack Web API URL for posting
+        text messages to channels. It only needs to be changed if Slack changes its
+        API URL.}
+    zh: {description: 用于向频道发布文本消息的Slack Web API URL。仅当Slack更改其API URL时，才需要更改它。, displayName: 发布消息URL}
+writeAttributes:
+  slack.file.url: {en: The Slack URL of the uploaded file. It will be added if 'Upload
+      FlowFile' has been set to 'Yes'., zh: 上载文件的Slack URL。如果“Upload FlowFile”设置为“Yes”，则将添加该文件。}
+tags:
+  en: [slack, post, notify, upload, message]
+  zh: [松弛的, 邮递, 通知, 上载, 消息]

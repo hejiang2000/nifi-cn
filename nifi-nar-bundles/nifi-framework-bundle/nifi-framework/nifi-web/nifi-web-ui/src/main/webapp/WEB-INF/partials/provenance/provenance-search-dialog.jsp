@@ -20,15 +20,15 @@
         <div class="setting">
             <div class="setting-field">
                 <div id="searchable-fields-container">
-                    <div id="no-searchable-fields" class="unset">No searchable fields have been configured.</div>
+                    <div id="no-searchable-fields" class="unset">未配置可搜索字段.</div>
                 </div>
             </div>
         </div>
         <div class="setting">
             <div class="start-date-setting">
                 <div class="setting-name">
-                    Start date
-                    <div class="fa fa-question-circle" title="The start date in the format 'mm/dd/yyyy'. Must also specify start time."></div>
+                    启动日期
+                    <div class="fa fa-question-circle" title="起始日期格式为 'mm/dd/yyyy'. 你必须同时指定起始时间."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" id="provenance-search-start-date" class="provenance-small-input"/>
@@ -36,8 +36,8 @@
             </div>
             <div class="start-time-setting">
                 <div class="setting-name">
-                    Start time (<span class="timezone"></span>)
-                    <div class="fa fa-question-circle" title="The start time in the format 'hh:mm:ss'. Must also specify start date."></div>
+                    启动时间 (<span class="timezone"></span>)
+                    <div class="fa fa-question-circle" title="起始时间格式为 'hh:mm:ss'. 你必须同时指定起始日期."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" id="provenance-search-start-time" class="provenance-time-input"/>
@@ -48,8 +48,8 @@
         <div class="setting">
             <div class="end-date-setting">
                 <div class="setting-name">
-                    End date
-                    <div class="fa fa-question-circle" title="The end date in the format 'mm/dd/yyyy'. Must also specify end time."></div>
+                    结束日期
+                    <div class="fa fa-question-circle" title="结束日期格式为 'mm/dd/yyyy'. 你必须同时指定结束时间."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" id="provenance-search-end-date" class="provenance-small-input"/>
@@ -57,8 +57,8 @@
             </div>
             <div class="end-time-setting">
                 <div class="setting-name">
-                    End time (<span class="timezone"></span>)
-                    <div class="fa fa-question-circle" title="The end time in the format 'hh:mm:ss'. Must also specify end date."></div>
+                    结束时间 (<span class="timezone"></span>)
+                    <div class="fa fa-question-circle" title="结束时间格式为 'hh:mm:ss'. 你必须同时指定结束日期."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" id="provenance-search-end-time" class="provenance-time-input"/>
@@ -69,8 +69,8 @@
         <div class="setting">
             <div class="end-date-setting">
                 <div class="setting-name">
-                    Minimum file size
-                    <div class="fa fa-question-circle" title="The minimum file size (e.g. 2 KB)."></div>
+                    最小文件大小
+                    <div class="fa fa-question-circle" title="最小文件大小 (例如 2 KB)."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" id="provenance-search-minimum-file-size" class="provenance-small-input"/>
@@ -78,8 +78,8 @@
             </div>
             <div class="end-time-setting">
                 <div class="setting-name">
-                    Maximum file size
-                    <div class="fa fa-question-circle" title="The maximum file size (e.g. 4 GB)."></div>
+                    最大文件大小
+                    <div class="fa fa-question-circle" title="最大文件大小 (例如 4 GB)."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" id="provenance-search-maximum-file-size" class="provenance-time-input"/>
@@ -89,7 +89,7 @@
         </div>
         <div id="provenance-search-location-container" class="setting">
             <div class="setting-name">
-                Search location
+                搜索位置
             </div>
             <div class="setting-field">
                 <div id="provenance-search-location"></div>

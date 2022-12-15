@@ -1,0 +1,16 @@
+dynamicProperties:
+  The name to register DBCPService:
+    en: {description: 'If ''database.name'' attribute contains the name of the dynamic
+        property, then the DBCPService (registered in the value) will be selected.',
+      value: The DBCPService}
+    zh: {description: 如果'数据库。name属性包含动态属性的名称，则将选择DBCPService（在值中注册）。, value: DBCP服务}
+capabilityDescription: {en: 'Provides a DBCPService that can be used to dynamically
+    select another DBCPService. This service requires an attribute named ''database.name''
+    to be passed in when asking for a connection, and will throw an exception if the
+    attribute is missing. The value of ''database.name'' will be used to select the
+    DBCPService that has been registered with that name. This will allow multiple
+    DBCPServices to be defined and registered, and then selected dynamically at runtime
+    by tagging flow files with the appropriate ''database.name'' attribute.', zh: 提供可用于动态选择另一个DBCPService的DBCPService。此服务需要名为“database”的属性。name”，如果缺少该属性，则会引发异常。“database”的值。name”将用于选择已使用该名称注册的DBCPService。这将允许定义和注册多个DBCP服务，然后在运行时通过使用适当的“数据库”标记流文件来动态选择这些服务。name”属性。}
+tags:
+  en: [dbcp, jdbc, database, connection, pooling, store]
+  zh: [数据库cp, jdbc语言, 数据库, 联系, 汇集，汇集, 百货商店]

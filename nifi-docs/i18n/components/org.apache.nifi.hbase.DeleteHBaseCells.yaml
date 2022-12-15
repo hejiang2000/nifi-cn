@@ -1,0 +1,35 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship after it has been successfully
+      stored in HBase, zh: FlowFile成功存储在HBase中后，将被路由到此关系}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be sent to
+      HBase, zh: 如果FlowFile无法发送到HBase，则将其路由到此关系}
+capabilityDescription: {en: 'This processor allows the user to delete individual HBase
+    cells by specifying one or more lines in the flowfile content that are a sequence
+    composed of row ID, column family, column qualifier and associated visibility
+    labels if visibility labels are enabled and in use. A user-defined separator is
+    used to separate each of these pieces of data on each line, with :::: being the
+    default separator.', zh: 此处理器允许用户通过在流文件内容中指定一行或多行来删除单个HBase单元格，该行是由行ID、列族、列限定符和关联的可见性标签组成的序列（如果可见性标签已启用并正在使用）。用户定义的分隔符用于分隔每行上的每一条数据，默认分隔符为：：：：。}
+properties:
+  Table Name:
+    en: {displayName: Table Name, description: The name of the HBase Table.}
+    zh: {description: HBase表的名称。, displayName: 表名称}
+  delete-hbase-cell-separator:
+    en: {displayName: Separator, description: 'Each line of the flowfile content is
+        separated into components for building a delete using thisseparator. It should
+        be something other than a single colon or a comma because these are values
+        that are associated with columns and visibility labels respectively. To delete
+        a row with ID xyz, column family abc, column qualifier def and visibility
+        label PII&PHI, one would specify xyz::::abc::::def::::PII&PHI given the default
+        value'}
+    zh: {description: '流文件内容的每一行都被分隔成组件，用于使用此分隔符构建删除。它应该不是一个冒号或逗号，因为这些值分别与列和可见性标签关联。要删除ID为xyz、列族abc、列限定符def和可见性标签PII&PHI的行，可以在给定默认值的情况下指定xyz:：：abc:：：def:：：PII&PHI',
+      displayName: 分离器}
+  HBase Client Service:
+    en: {displayName: HBase Client Service, description: Specifies the Controller
+        Service to use for accessing HBase.}
+    zh: {description: 指定用于访问HBase的控制器服务。, displayName: HBase客户端服务}
+writeAttributes:
+  error.msg: {en: The message explaining the error., zh: 解释错误的消息。}
+  error.line: {en: The line number of the error., zh: 错误的行号。}
+tags:
+  en: [hbase, delete, cell, cells, visibility]
+  zh: [数据库, 删去, 单间牢房, 细胞, 可见度]

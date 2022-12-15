@@ -18,14 +18,14 @@
 <div id="connections-dialog" class="hidden">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Selected component</div>
+            <div class="setting-name">选中的组件</div>
             <div class="setting-field">
                 <div id="connections-context"></div>
             </div>
         </div>
         <div class="setting">
-            <div id="connections-source" class="setting-name">Source</div>
-            <div id="connections-destination" class="setting-name">Destination</div>
+            <div id="connections-source" class="setting-name">源组件</div>
+            <div id="connections-destination" class="setting-name">目标组件</div>
             <div class="clear"></div>
             <div class="setting-field">
                 <div id="connections-container"></div>

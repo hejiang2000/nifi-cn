@@ -1,0 +1,84 @@
+relationships:
+  success: {en: For FlowFiles created as a result of a successful query., zh: 对于查询成功后创建的FlowFiles。}
+capabilityDescription: {en: 'Retrieves records from a Salesforce sObject. Users can
+    add arbitrary filter conditions by setting the ''Custom WHERE Condition'' property.
+    Supports incremental retrieval: users can define a field in the ''Age Field''
+    property that will be used to determine when the record was created. When this
+    property is set the processor will retrieve new records. It''s also possible to
+    define an initial cutoff value for the age, filtering out all older records even
+    for the first run. This processor is intended to be run on the Primary Node only.
+    FlowFile attribute ''record.count'' indicates how many records were retrieved
+    and written to the output.', zh: 从SalesforcesObject检索记录。用户可以通过设置“自定义WHERE条件”属性添加任意筛选条件。支持增量检索：用户可以在“年龄字段”属性中定义一个字段，用于确定何时创建记录。设置此属性后，处理器将检索新记录。也可以定义年龄的初始截止值，即使是第一次跑步，也可以过滤掉所有较旧的记录。此处理器只能在主节点上运行。FlowFile属性的记录。count”表示检索并写入输出的记录数。}
+statefulDescription: {en: 'When ''Age Field'' is set, after performing a query the
+    time of execution is stored. Subsequent queries will be augmented with an additional
+    condition so that only records that are newer than the stored execution time (adjusted
+    with the optional value of ''Age Delay'') will be retrieved. State is stored across
+    the cluster so that this Processor can be run on Primary Node only and if a new
+    Primary Node is selected, the new node can pick up where the previous node left
+    off, without duplicating the data.', zh: 设置“年龄字段”后，执行查询后将存储执行时间。后续查询将添加一个附加条件，以便仅检索比存储的执行时间新的记录（使用可选值“Age
+    Delay”进行调整）。状态存储在整个集群中，因此此处理器只能在主节点上运行，如果选择了新的主节点，则新节点可以从上一个节点停止的位置恢复，而无需复制数据。}
+properties:
+  salesforce-api-version:
+    en: {displayName: API Version, description: The version number of the Salesforce
+        REST API appended to the URL after the services/data path. See Salesforce
+        documentation for supported versions}
+    zh: {description: 附加到服务/数据路径之后的URL的Salesforce REST API的版本号。有关支持的版本，请参阅Salesforce文档,
+      displayName: API版本}
+  salesforce-url:
+    en: {displayName: URL, description: 'The URL for the Salesforce REST API including
+        the domain without additional path information, such as https://MyDomainName.my.salesforce.com'}
+    zh: {description: 'Salesforce REST API的URL，包括没有附加路径信息的域，例如https://MyDomainName.my.salesforce.com',
+      displayName: 统一资源定位地址}
+  age-delay:
+    en: {displayName: Age Delay, description: 'The ending timestamp of the time window
+        will be adjusted earlier by the amount configured in this property. For example,
+        with a property value of 10 seconds, an ending timestamp of 12:30:45 would
+        be changed to 12:30:35.'}
+    zh: {description: '时间窗口的结束时间戳将根据此属性中配置的数量提前调整。例如，如果属性值为10秒，结束时间戳12:30:45将更改为12:30:35。',
+      displayName: 年龄延迟}
+  read-timeout:
+    en: {displayName: Read Timeout, description: Maximum time allowed for reading
+        a response from the Salesforce REST API}
+    zh: {description: 从Salesforce REST API读取响应所允许的最长时间, displayName: 读取超时}
+  initial-age-filter:
+    en: {displayName: Initial Age Start Time, description: This property specifies
+        the start time that the processor applies when running the first query.}
+    zh: {description: 此属性指定处理器在运行第一个查询时应用的开始时间。, displayName: 初始年龄开始时间}
+  create-zero-record-files:
+    en: {displayName: Create Zero Record FlowFiles, description: Specifies whether
+        or not to create a FlowFile when the Salesforce REST API does not return any
+        records}
+    zh: {description: 指定Salesforce REST API未返回任何记录时是否创建FlowFile, displayName: 创建零记录流文件}
+  field-names:
+    en: {displayName: Field Names, description: Comma-separated list of field names
+        requested from the sObject to be queried}
+    zh: {description: 从要查询的sObject请求的字段名的逗号分隔列表, displayName: 字段名称}
+  oauth2-access-token-provider:
+    en: {displayName: OAuth2 Access Token Provider, description: Service providing
+        OAuth2 Access Tokens for authenticating using the HTTP Authorization Header}
+    zh: {description: 提供OAuth2访问令牌以使用HTTP授权标头进行身份验证的服务, displayName: OAuth2访问令牌提供程序}
+  record-writer:
+    en: {displayName: Record Writer, description: Service used for writing records
+        returned from the Salesforce REST API}
+    zh: {description: 用于写入从Salesforce REST API返回的记录的服务, displayName: 记录编写器}
+  custom-where-condition:
+    en: {displayName: Custom WHERE Condition, description: A custom expression to
+        be added in the WHERE clause of the query}
+    zh: {description: 要添加到查询的WHERE子句中的自定义表达式, displayName: 自定义WHERE条件}
+  age-field:
+    en: {displayName: Age Field, description: The name of a TIMESTAMP field that will
+        be used to filter records using a bounded time window.The processor will return
+        only those records with a timestamp value newer than the timestamp recorded
+        after the last processor run.}
+    zh: {description: TIMESTAMP字段的名称，该字段将用于使用有界时间窗口筛选记录。处理器将仅返回时间戳值比上次处理器运行后记录的时间戳值新的记录。,
+      displayName: 年龄字段}
+  sobject-name:
+    en: {displayName: sObject Name, description: The Salesforce sObject to be queried}
+    zh: {description: 要查询的Salesforce Sobject, displayName: sObject名称}
+writeAttributes:
+  record.count: {en: Sets the number of records in the FlowFile., zh: 设置FlowFile中的记录数。}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer., zh: 设置mime。type属性设置为记录编写器指定的MIME类型。}
+tags:
+  en: [salesforce, sobject, soql, query]
+  zh: [Salesforce公司, Soject公司, soql语言, 查询]

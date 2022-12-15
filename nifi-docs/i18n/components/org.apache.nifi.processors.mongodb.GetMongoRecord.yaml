@@ -1,0 +1,64 @@
+relationships:
+  original: {en: All input FlowFiles that are part of a successful query execution
+      go here., zh: 此处显示成功执行查询的所有输入FlowFiles。}
+  success: {en: All FlowFiles that have the results of a successful query execution
+      go here., zh: 此处显示所有具有成功执行查询结果的FlowFiles。}
+  failure: {en: All input FlowFiles that are part of a failed query execution go here.,
+    zh: 此处显示所有作为失败查询执行一部分的输入FlowFiles。}
+capabilityDescription: {en: A record-based version of GetMongo that uses the Record
+    writers to write the MongoDB result set., zh: GetMongo的一个基于记录的版本，它使用记录编写器来编写MongoDB结果集。}
+properties:
+  mongo-client-service:
+    en: {displayName: Client Service, description: 'If configured, this property will
+        use the assigned client service for connection pooling.'}
+    zh: {description: 如果已配置，此属性将使用分配的客户端服务进行连接池。, displayName: 客户端服务}
+  get-mongo-record-writer-factory:
+    en: {displayName: Record Writer, description: The record writer to use to write
+        the result sets.}
+    zh: {description: 用于写入结果集的记录写入程序。, displayName: 记录编写器}
+  mongo-query-attribute:
+    en: {displayName: Query Output Attribute, description: 'If set, the query will
+        be written to a specified attribute on the output flowfiles.'}
+    zh: {description: 如果设置，查询将写入输出流文件上的指定属性。, displayName: 查询输出属性}
+  Query:
+    en: {displayName: Query, description: 'The selection criteria to do the lookup.
+        If the field is left blank, it will look for input from an incoming connection
+        from another processor to provide the query as a valid JSON document inside
+        of the FlowFile''s body. If this field is left blank and a timer is enabled
+        instead of an incoming connection, that will result in a full collection fetch
+        using a "{}" query.'}
+    zh: {description: 要执行查找的选择条件。如果该字段为空，它将查找来自另一个处理器的传入连接的输入，以在FlowFile的主体内作为有效的JSON文档提供查询。如果此字段为空，并且启用了计时器而不是传入连接，则将使用“｛｝”查询获取完整集合。,
+      displayName: 查询}
+  Batch Size:
+    en: {displayName: Batch Size, description: The number of elements to be returned
+        from the server in one batch}
+    zh: {description: 一批中要从服务器返回的元素数, displayName: 批量大小}
+  mongodb-schema-name:
+    en: {displayName: Schema Name, description: The name of the schema in the configured
+        schema registry to use for the query results.}
+    zh: {description: 配置的架构注册表中用于查询结果的架构的名称。, displayName: 架构名称}
+  Mongo Collection Name:
+    en: {displayName: Mongo Collection Name, description: The name of the collection
+        to use}
+    zh: {description: 要使用的集合的名称, displayName: Mongo集合名称}
+  Projection:
+    en: {displayName: Projection, description: The fields to be returned from the
+        documents in the result set; must be a valid BSON document}
+    zh: {description: 要从结果集中的文档返回的字段；必须是有效的BSON文档, displayName: 预测}
+  Sort:
+    en: {displayName: Sort, description: The fields by which to sort; must be a valid
+        BSON document}
+    zh: {description: 排序依据的字段；必须是有效的BSON文档, displayName: 分类}
+  Mongo Database Name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  Limit:
+    en: {displayName: Limit, description: The maximum number of elements to return}
+    zh: {description: 要返回的最大元素数, displayName: 限度}
+writeAttributes:
+  mongo.collection.name: {en: The collection where the results came from., zh: 结果来源的集合。}
+  mongo.database.name: {en: The database where the results came from., zh: 结果来自的数据库。}
+tags:
+  en: [mongo, mongodb, get, fetch, record, json]
+  zh: [蒙哥, 数据库, 收到, 取来, 记录, json文件]

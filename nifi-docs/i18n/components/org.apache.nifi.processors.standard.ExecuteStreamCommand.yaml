@@ -1,0 +1,75 @@
+relationships:
+  output stream: {en: 'The destination path for the flow file created from the command''s
+      output, if the returned status code is zero.', zh: 如果返回的状态代码为零，则从命令输出创建的流文件的目标路径。}
+  original: {en: The original FlowFile will be routed. It will have new attributes
+      detailing the result of the script execution., zh: 将路由原始FlowFile。它将具有详细说明脚本执行结果的新属性。}
+  nonzero status: {en: 'The destination path for the flow file created from the command''s
+      output, if the returned status code is non-zero. All flow files routed to this
+      relationship will be penalized.', zh: 如果返回的状态代码为非零，则从命令输出创建的流文件的目标路径。路由到此关系的所有流文件都将受到惩罚。}
+dynamicProperties:
+  command.argument.<NUMBER>:
+    en: {description: 'These arguments are supplied to the process spawned by this
+        Processor when using the Command Arguments Strategy : Dynamic Property Arguments.
+        The NUMBER will determine the order.', value: Argument to be supplied to the
+        command}
+    zh: {description: '当使用Command arguments Strategy:Dynamic Property arguments时，这些参数将提供给此处理器生成的进程。NUMBER将决定顺序。',
+      value: 要提供给命令的参数}
+  An environment variable name:
+    en: {description: These environment variables are passed to the process spawned
+        by this Processor, value: An environment variable value}
+    zh: {description: 这些环境变量将传递给此处理器生成的进程, value: 环境变量值}
+capabilityDescription: {en: 'Executes an external command on the contents of a flow
+    file, and creates a new flow file with the results of the command.', zh: 对流文件的内容执行外部命令，并使用命令的结果创建新的流文件。}
+properties:
+  argumentsStrategy:
+    en: {displayName: Command Arguments Strategy, description: Strategy for configuring
+        arguments to be supplied to the command.}
+    zh: {description: 配置要提供给命令的参数的策略。, displayName: 命令参数策略}
+  Max Attribute Length:
+    en: {displayName: Max Attribute Length, description: 'If routing the output of
+        the stream command to an attribute, the number of characters put to the attribute
+        value will be at most this amount. This is important because attributes are
+        held in memory and large attributes will quickly cause out of memory issues.
+        If the output goes longer than this value, it will truncated to fit. Consider
+        making this smaller if able.'}
+    zh: {description: 如果将流命令的输出路由到一个属性，则放入属性值的字符数最多为这个数量。这一点很重要，因为属性保存在内存中，大型属性会很快导致内存不足问题。如果输出的长度超过此值，则会将其截断以适合。如果可能的话，考虑将其缩小。,
+      displayName: 最大属性长度}
+  Command Path:
+    en: {displayName: Command Path, description: 'Specifies the command to be executed;
+        if just the name of an executable is provided, it must be in the user''s environment
+        PATH.'}
+    zh: {description: 指定要执行的命令；如果只提供了可执行文件的名称，那么它必须在用户的环境PATH中。, displayName: 命令路径}
+  Working Directory:
+    en: {displayName: Working Directory, description: The directory to use as the
+        current working directory when executing the command}
+    zh: {description: 执行命令时用作当前工作目录的目录, displayName: 工作目录}
+  Output Destination Attribute:
+    en: {displayName: Output Destination Attribute, description: 'If set, the output
+        of the stream command will be put into an attribute of the original FlowFile
+        instead of a separate FlowFile. There will no longer be a relationship for
+        ''output stream'' or ''nonzero status''. The value of this property will be
+        the key for the output attribute.'}
+    zh: {description: 如果设置，则流命令的输出将被放入原始FlowFile的属性中，而不是单独的FlowFile。“输出流”或“非零状态”将不再存在关系。此属性的值将是输出属性的键。,
+      displayName: 输出目标属性}
+  Argument Delimiter:
+    en: {displayName: Argument Delimiter, description: 'Delimiter to use to separate
+        arguments for a command [default: ;]. Must be a single character'}
+    zh: {description: '用于分隔命令参数的分隔符[默认值：；]。必须是单个字符', displayName: 参数分隔符}
+  Ignore STDIN:
+    en: {displayName: Ignore STDIN, description: 'If true, the contents of the incoming
+        flowfile will not be passed to the executing command'}
+    zh: {description: 如果为true，传入流文件的内容将不会传递给正在执行的命令, displayName: 忽略STDIN}
+  Command Arguments:
+    en: {displayName: Command Arguments, description: The arguments to supply to the
+        executable delimited by the ';' character.}
+    zh: {description: 要提供给可执行文件的参数由“；”分隔性格, displayName: 命令参数}
+writeAttributes:
+  execution.command: {en: The name of the command executed, zh: 执行的命令的名称}
+  execution.command.args: {en: The semi-colon delimited list of arguments. Sensitive
+      properties will be masked, zh: 以分号分隔的参数列表。敏感属性将被屏蔽}
+  execution.status: {en: The exit status code returned from executing the command,
+    zh: 执行命令返回的退出状态代码}
+  execution.error: {en: Any error messages returned from executing the command, zh: 执行命令返回的任何错误消息}
+tags:
+  en: [command execution, command, stream, execute]
+  zh: [命令执行, 命令, 流动, 处决]

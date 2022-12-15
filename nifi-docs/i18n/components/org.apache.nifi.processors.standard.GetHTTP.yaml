@@ -1,0 +1,93 @@
+relationships:
+  success: {en: All files are transferred to the success relationship, zh: 所有文件都传输到成功关系}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+dynamicProperties:
+  Header Name:
+    en:
+      description: "The additional headers to be sent by the processor whenever making\
+        \ a new HTTP request. \n Setting a dynamic property name to XYZ and value\
+        \ to ${attribute} will result in the header 'XYZ: attribute_value' being sent\
+        \ to the HTTP endpoint"
+      value: The Expression Language to be used to populate the header value
+    zh: {description: 每当发出新的HTTP请求时，处理器将发送的附加标头。, value: 用于填充标头值的表达式语言}
+capabilityDescription: {en: 'Please be aware this processor is deprecated and may
+    be removed in the near future. Use InvokeHTTP instead. Fetches data from an HTTP
+    or HTTPS URL and writes the data to the content of a FlowFile. Once the content
+    has been fetched, the ETag and Last Modified dates are remembered (if the web
+    server supports these concepts). This allows the Processor to fetch new data only
+    if the remote data has changed or until the state is cleared. That is, once the
+    content has been fetched from the given URL, it will not be fetched again until
+    the content on the remote server changes. Note that due to limitations on state
+    management, stored "last modified" and etag fields never expire. If the URL in
+    GetHttp uses Expression Language that is unbounded, there is the potential for
+    Out of Memory Errors to occur.', zh: 请注意，此处理器已弃用，可能会在不久的将来被删除。请改用InvokeHTTP。从HTTP或HTTPS
+    URL获取数据，并将数据写入FlowFile的内容。获取内容后，将记住ETag和LastModified日期（如果web服务器支持这些概念）。这允许处理器仅在远程数据发生变化或状态被清除之前获取新数据。也就是说，一旦从给定的URL获取了内容，就不会再次获取，直到远程服务器上的内容发生更改。请注意，由于状态管理的限制，存储的“上次修改”和etag字段永远不会过期。如果GetHttp中的URL使用了无边界的表达式语言，则可能会发生内存不足错误。}
+statefulDescription: {en: Stores Last Modified Time and ETag headers returned by server
+    so that the same data will not be fetched multiple times., zh: 存储服务器返回的Last Modified
+    Time和ETag标头，以便不会多次提取相同的数据。}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  redirect-cookie-policy:
+    en: {displayName: Redirect Cookie Policy, description: 'When a HTTP server responds
+        to a request with a redirect, this is the cookie policy used to copy cookies
+        to the following request.'}
+    zh: {description: 当HTTP服务器通过重定向响应请求时，这是用于将cookie复制到以下请求的cookie策略。, displayName: 重定向Cookie策略}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Filename:
+    en: {displayName: Filename, description: The filename to assign to the file when
+        pulled}
+    zh: {description: 拉动时要分配给文件的文件名, displayName: 文件名}
+  User Agent:
+    en: {displayName: User Agent, description: What to report as the User Agent when
+        we connect to the remote server}
+    zh: {description: 当我们连接到远程服务器时，作为用户代理报告什么, displayName: 用户代理}
+  Proxy Port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  URL:
+    en: {displayName: URL, description: The URL to pull from}
+    zh: {description: 要从中提取的URL, displayName: 统一资源定位地址}
+  Connection Timeout:
+    en: {displayName: Connection Timeout, description: How long to wait when attempting
+        to connect to the remote server before giving up}
+    zh: {description: 尝试连接到远程服务器时要等待多长时间才能放弃, displayName: 连接超时}
+  Data Timeout:
+    en: {displayName: Data Timeout, description: How long to wait between receiving
+        segments of data from the remote server before giving up and discarding the
+        partial file}
+    zh: {description: 在放弃和丢弃部分文件之前，从远程服务器接收数据段之间要等待多长时间, displayName: 数据超时}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The Controller Service to
+        use in order to obtain an SSL Context}
+    zh: {description: 用于获取SSL上下文的控制器服务, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username required to access the URL}
+    zh: {description: 访问URL所需的用户名, displayName: 用户名}
+  Accept Content-Type:
+    en: {displayName: Accept Content-Type, description: 'If specified, requests will
+        only accept the provided Content-Type'}
+    zh: {description: 如果指定，请求将仅接受提供的内容类型, displayName: 接受内容类型}
+  Follow Redirects:
+    en: {displayName: Follow Redirects, description: 'If we receive a 3xx HTTP Status
+        Code from the server, indicates whether or not we should follow the redirect
+        that the server specifies'}
+    zh: {description: 如果我们从服务器接收到3xx HTTP状态代码，则指示我们是否应遵循服务器指定的重定向, displayName: 遵循重定向}
+  Password:
+    en: {displayName: Password, description: Password required to access the URL}
+    zh: {description: 访问URL所需的密码, displayName: 暗语}
+writeAttributes:
+  filename: {en: The filename is set to the name of the file on the remote server,
+    zh: 文件名设置为远程服务器上的文件名}
+  mime.type: {en: 'The MIME Type of the FlowFile, as reported by the HTTP Content-Type
+      header', zh: 流文件的MIME类型，由HTTP Content-Type标头报告}
+tags:
+  en: [get, fetch, poll, http, https, ingest, source, input]
+  zh: [收到, 取来, 投票, http, https, 摄入, 来源, 输入]

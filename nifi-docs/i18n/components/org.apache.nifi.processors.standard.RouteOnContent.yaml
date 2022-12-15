@@ -1,0 +1,41 @@
+relationships:
+  unmatched: {en: FlowFiles that do not match any of the user-supplied regular expressions
+      will be routed to this relationship, zh: 与用户提供的任何正则表达式都不匹配的FlowFiles将被路由到此关系}
+dynamicProperties:
+  Relationship Name:
+    en: {description: Routes FlowFiles whose content matches the regular expression
+        defined by Dynamic Property's value to the Relationship defined by the Dynamic
+        Property's key, value: A Regular Expression}
+    zh: {description: 将其内容与由Dynamic Property的值定义的正则表达式匹配的FlowFiles路由到由Dynamic Property键定义的Relationship,
+      value: 正则表达式}
+capabilityDescription: {en: 'Applies Regular Expressions to the content of a FlowFile
+    and routes a copy of the FlowFile to each destination whose Regular Expression
+    matches. Regular Expressions are added as User-Defined Properties where the name
+    of the property is the name of the relationship and the value is a Regular Expression
+    to match against the FlowFile content. User-Defined properties do support the
+    Attribute Expression Language, but the results are interpreted as literal values,
+    not Regular Expressions', zh: 将正则表达式应用于FlowFile的内容，并将FlowFile的副本路由到正则表达式匹配的每个目标。正则表达式作为用户定义的属性添加，其中属性的名称是关系的名称，值是与FlowFile内容匹配的正则表达式。用户定义的属性不支持属性表达式语言，但结果被解释为文本值，而不是正则表达式}
+dynamicRelationships:
+  Name from Dynamic Property: {en: FlowFiles that match the Dynamic Property's Regular
+      Expression, zh: 与动态属性的正则表达式匹配的FlowFiles}
+properties:
+  Content Buffer Size:
+    en: {displayName: Content Buffer Size, description: 'Specifies the maximum amount
+        of data to buffer in order to apply the regular expressions. If the size of
+        the FlowFile exceeds this value, any amount of this value will be ignored'}
+    zh: {description: 指定应用正则表达式时要缓冲的最大数据量。如果FlowFile的大小超过此值，则忽略此值的任何数量, displayName: 内容缓冲区大小}
+  Match Requirement:
+    en: {displayName: Match Requirement, description: 'Specifies whether the entire
+        content of the file must match the regular expression exactly, or if any part
+        of the file (up to Content Buffer Size) can contain the regular expression
+        in order to be considered a match'}
+    zh: {description: 指定文件的整个内容是否必须与正则表达式完全匹配，或者文件的任何部分（不超过“内容缓冲区大小”）是否可以包含正则表达式才能被视为匹配,
+      displayName: 匹配要求}
+  Character Set:
+    en: {displayName: Character Set, description: The Character Set in which the file
+        is encoded}
+    zh: {description: 文件编码的字符集, displayName: 字符集}
+tags:
+  en: [route, content, regex, regular expression, regexp, find, text, string, search,
+    filter, detect]
+  zh: [路线, 所容纳之物, 正则表达式, 正则表达式, 正则表达式, 发现, 文本, 一串, 搜索, 滤器, 发现]

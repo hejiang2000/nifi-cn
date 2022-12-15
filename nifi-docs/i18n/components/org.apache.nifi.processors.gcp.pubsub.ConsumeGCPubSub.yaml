@@ -1,0 +1,44 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      Cloud Pub/Sub operation., zh: 在成功的Google Cloud Pub/Sub操作之后，FlowFiles被路由到此关系。}
+capabilityDescription: {en: 'Consumes message from the configured Google Cloud PubSub
+    subscription. If the ''Batch Size'' is set, the configured number of messages
+    will be pulled in a single request, else only one message will be pulled.', zh: 使用来自配置的Google
+    Cloud PubSub订阅的消息。如果设置了“批量大小”，则将在单个请求中提取配置的消息数，否则将仅提取一条消息。}
+properties:
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  gcp-pubsub-publish-batch-size:
+    en: {displayName: Batch Size, description: 'Indicates the number of messages the
+        cloud service should bundle together in a batch. If not set and left empty,
+        only one message will be used in a batch'}
+    zh: {description: 指示云服务应在批处理中捆绑在一起的消息数。如果未设置且为空，则批处理中将仅使用一条消息, displayName: 批量大小}
+  gcp-pubsub-subscription:
+    en: {displayName: Subscription, description: Name of the Google Cloud Pub/Sub
+        Subscription}
+    zh: {description: 谷歌云发布/订阅的名称, displayName: 订阅}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+writeAttributes:
+  gcp.pubsub.attributesCount: {en: 'Number of attributes the consumed PubSub message
+      has, if any', zh: 使用的PubSub消息具有的属性数（如果有）}
+  gcp.pubsub.ackId: {en: Acknowledgement Id of the consumed Google Cloud PubSub message,
+    zh: 使用的Google Cloud PubSub消息的确认Id}
+  gcp.pubsub.messageSize: {en: Serialized size of the consumed Google Cloud PubSub
+      message, zh: 使用的Google Cloud PubSub消息的序列化大小}
+  gcp.pubsub.publishTime: {en: Timestamp value when the message was published, zh: 发布消息时的时间戳值}
+  Dynamic Attributes: {en: 'Other than the listed attributes, this processor may write
+      zero or more attributes, if the original Google Cloud Publisher client added
+      any attributes to the message while sending', zh: 除了列出的属性之外，如果原始的Google Cloud
+      Publisher客户端在发送消息时向消息中添加了任何属性，则该处理器可能会写入零个或多个属性}
+tags:
+  en: [google, google-cloud, gcp, message, pubsub, consume]
+  zh: [谷歌, 谷歌云, 通用计算机程序, 消息, 公共图书馆, 消费]

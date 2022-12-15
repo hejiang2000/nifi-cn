@@ -1,0 +1,22 @@
+relationships:
+  enrichment: {en: 'A clone of the incoming FlowFile will be routed to this relationship,
+      after adding appropriate attributes.', zh: 添加适当属性后，传入FlowFile的克隆将被路由到此关系。}
+  original: {en: 'The incoming FlowFile will be routed to this relationship, after
+      adding appropriate attributes.', zh: 在添加适当的属性后，传入的FlowFile将被路由到此关系。}
+capabilityDescription: {en: 'Used in conjunction with the JoinEnrichment processor,
+    this processor is responsible for adding the attributes that are necessary for
+    the JoinEnrichment processor to perform its function. Each incoming FlowFile will
+    be cloned. The original FlowFile will have appropriate attributes added and then
+    be transferred to the ''original'' relationship. The clone will have appropriate
+    attributes added and then be routed to the ''enrichment'' relationship. See the
+    documentation for the JoinEnrichment processor (and especially its Additional
+    Details) for more information on how these Processors work together and how to
+    perform enrichment tasks in NiFi by using these Processors.', zh: 与JoinRichment处理器一起使用，该处理器负责添加JoinRichment处理程序执行其功能所需的属性。将克隆每个传入的FlowFile。原始FlowFile将添加适当的属性，然后传输到“原始”关系。克隆将添加适当的属性，然后路由到“富集”关系。有关这些处理器如何协同工作以及如何使用这些处理器在NiFi中执行富集任务的更多信息，请参阅JoinRichment处理器的文档（尤其是其附加详细信息）。}
+writeAttributes:
+  enrichment.role: {en: The role to use for enrichment. This will either be ORIGINAL
+      or ENRICHMENT., zh: 用于充实的角色。这将是原始的或丰富的。}
+  enrichment.group.id: {en: The Group ID to use in order to correlate the 'original'
+      FlowFile with the 'enrichment' FlowFile., zh: 用于将“原始”FlowFile与“丰富”FlowFile关联的组ID。}
+tags:
+  en: [fork, join, enrich, record]
+  zh: [叉, 参加, 充实, 记录]

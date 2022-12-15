@@ -1,0 +1,43 @@
+relationships:
+  success: {en: Extraction was successful, zh: 提取成功}
+  failure: {en: Flowfiles that could not be parsed as a RFC-2822 compliant message,
+    zh: 无法解析为符合RFC-2822的消息的流文件}
+capabilityDescription: {en: 'Using the flowfile content as source of data, extract
+    header from an RFC compliant  email file adding the relevant attributes to the
+    flowfile. This processor does not perform extensive RFC validation but still requires
+    a bare minimum compliance with RFC 2822', zh: 使用流文件内容作为数据源，从符合RFC的电子邮件文件中提取标头，将相关属性添加到流文件中。此处理器不执行广泛的RFC验证，但仍需要符合RFC
+    2822的最低要求}
+properties:
+  STRICT_ADDRESS_PARSING:
+    en: {displayName: Email Address Parsing, description: 'If "strict", strict address
+        format parsing rules are applied to mailbox and mailbox list fields, such
+        as "to" and "from" headers, and FlowFiles with poorly formed addresses will
+        be routed to the failure relationship, similar to messages that fail RFC compliant
+        format validation. If "non-strict", the processor will extract the contents
+        of mailbox list headers as comma-separated values without attempting to parse
+        each value as well-formed Internet mailbox addresses. This is optional and
+        defaults to Strict Address Parsing'}
+    zh: {description: 如果“严格”，则对邮箱和邮箱列表字段应用严格的地址格式解析规则，例如“to”和“from”标头，并且地址格式不正确的FlowFiles将被路由到失败关系，类似于未通过符合RFC的格式验证的消息。如果“非严格”，处理器将提取邮箱列表标题的内容作为逗号分隔的值，而不尝试将每个值解析为格式良好的Internet邮箱地址。这是可选的，默认为严格地址解析,
+      displayName: 电子邮件地址解析}
+  CAPTURED_HEADERS:
+    en: {displayName: Additional Header List, description: COLON separated list of
+        additional headers to be extracted from the flowfile content.NOTE the header
+        key is case insensitive and will be matched as lower-case. Values will respect
+        email contents.}
+    zh: {description: 从流文件内容中提取的附加头的COLON分隔列表。注：标题键不区分大小写，将匹配为小写。价值观将尊重电子邮件内容。, displayName: 附加标题列表}
+writeAttributes:
+  email.headers.cc.*: {en: Each individual CC recipient (if available), zh: 每个CC收件人（如果可用）}
+  email.headers.from.*: {en: Each individual mailbox contained in the From  of the
+      Email (array as per RFC-2822), zh: 电子邮件发件人中包含的每个单独邮箱（根据RFC-2822排列）}
+  email.headers.subject: {en: Subject of the message (if available), zh: 邮件主题（如果可用）}
+  email.attachment_count: {en: Number of attachments of the message, zh: 邮件附件数}
+  email.headers.sent_date: {en: Date the message was sent, zh: 邮件发送日期}
+  email.headers.message-id: {en: The value of the Message-ID header (if available),
+    zh: 消息ID标头的值（如果可用）}
+  email.headers.bcc.*: {en: Each individual BCC recipient (if available), zh: 每个密件抄送收件人（如果可用）}
+  email.headers.received_date: {en: The Received-Date of the message (if available),
+    zh: 消息的接收日期（如果可用）}
+  email.headers.to.*: {en: Each individual TO recipient (if available), zh: 每个收件人（如有）}
+tags:
+  en: [split, email]
+  zh: [分裂, 电子邮件]

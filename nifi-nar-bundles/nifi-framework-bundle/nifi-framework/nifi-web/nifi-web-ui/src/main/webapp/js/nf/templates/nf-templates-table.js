@@ -98,8 +98,8 @@
     var promptToDeleteTemplate = function (templateEntity) {
         // prompt for deletion
         nfDialog.showYesNoDialog({
-            headerText: 'Delete Template',
-            dialogContent: 'Delete template \'' + nfCommon.escapeHtml(templateEntity.template.name) + '\'?',
+            headerText: '删除模板',
+            dialogContent: '删除模板 \'' + nfCommon.escapeHtml(templateEntity.template.name) + '\'?',
             yesHandler: function () {
                 deleteTemplate(templateEntity);
             }
@@ -221,10 +221,10 @@
             // filter type
             $('#templates-filter-type').combo({
                 options: [{
-                    text: 'by name',
+                    text: '按名称',
                     value: 'name'
                 }, {
-                    text: 'by description',
+                    text: '按描述',
                     value: 'description'
                 }],
                 select: function (option) {
@@ -269,17 +269,17 @@
                 var markup = '';
 
                 if (dataContext.permissions.canRead === true) {
-                    markup += '<div title="Download" class="pointer export-template icon icon-template-save"></div>';
+                    markup += '<div title="下载" class="pointer export-template icon icon-template-save"></div>';
                 }
 
                 if (dataContext.permissions.canWrite === true) {
-                    markup += '<div title="Remove Template" class="pointer prompt-to-delete-template fa fa-trash"></div>';
+                    markup += '<div title="移除模板" class="pointer prompt-to-delete-template fa fa-trash"></div>';
                 }
 
                 // allow policy configuration conditionally if framed
                 if (top !== window && nfCommon.canAccessTenants()) {
                     if (nfCommon.isDefinedAndNotNull(parent.nf) && nfCommon.isDefinedAndNotNull(parent.nf.CanvasUtils) && parent.nf.CanvasUtils.isManagedAuthorizer()) {
-                        markup += '<div title="Access Policies" class="pointer edit-access-policies fa fa-key"></div>';
+                        markup += '<div title="访问策略" class="pointer edit-access-policies fa fa-key"></div>';
                     }
                 }
 
@@ -290,7 +290,7 @@
             var templatesColumns = [
                 {
                     id: 'timestamp',
-                    name: 'Date/Time',
+                    name: '日期/时间',
                     sortable: true,
                     defaultSortAsc: false,
                     resizable: false,
@@ -300,21 +300,21 @@
                 },
                 {
                     id: 'name',
-                    name: 'Name',
+                    name: '名称',
                     sortable: true,
                     resizable: true,
                     formatter: nameFormatter
                 },
                 {
                     id: 'description',
-                    name: 'Description',
+                    name: '描述',
                     sortable: true,
                     resizable: true,
                     formatter: descriptionFormatter
                 },
                 {
                     id: 'groupId',
-                    name: 'Process Group Id',
+                    name: '处理组 Id',
                     sortable: true,
                     resizable: true,
                     formatter: groupIdFormatter

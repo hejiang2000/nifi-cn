@@ -1,0 +1,25 @@
+capabilityDescription: {en: 'Checks the amount of Java Heap available in the JVM for
+    a particular JVM Memory Pool. If the amount of space used exceeds some configurable
+    threshold, will warn (via a log message and System-Level Bulletin) that the memory
+    pool is exceeding this threshold.', zh: 检查特定JVM内存池的JVM中可用的Java堆数量。如果使用的空间量超过某个可配置阈值，将（通过日志消息和系统级别公告）警告内存池超过此阈值。}
+properties:
+  Memory Pool:
+    en: {displayName: Memory Pool, description: The name of the JVM Memory Pool to
+        monitor. The allowed values for Memory Pools are platform and JVM dependent
+        and may vary for different versions of Java and from published documentation.
+        This reporting task will become invalidated if configured to use a Memory
+        Pool that is not available on the currently running host platform and JVM}
+    zh: {description: 要监视的JVM内存池的名称。内存池的允许值取决于平台和JVM，可能因Java的不同版本和发布的文档而异。如果配置为使用在当前运行的主机平台和JVM上不可用的内存池，则此报告任务将无效,
+      displayName: 内存池}
+  Usage Threshold:
+    en: {displayName: Usage Threshold, description: Indicates the threshold at which
+        warnings should be generated. This can be a percentage or a Data Size}
+    zh: {description: 指示应生成警告的阈值。这可以是百分比或数据大小, displayName: 使用率阈值}
+  Reporting Interval:
+    en: {displayName: Reporting Interval, description: Indicates how often this reporting
+        task should report bulletins while the memory utilization exceeds the configured
+        threshold}
+    zh: {description: 指示当内存利用率超过配置的阈值时，此报告任务应报告公告的频率, displayName: 报告间隔时间}
+tags:
+  en: [monitor, memory, heap, jvm, gc, garbage collection, warning]
+  zh: [班长, 记忆力, 堆, jvm, 气相色谱法, 垃圾收集, 警告]

@@ -1,0 +1,54 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      BigQuery operation., zh: 在Google BigQuery操作成功后，FlowFiles将路由到此关系。}
+  failure: {en: FlowFiles are routed to this relationship if the Google BigQuery operation
+      fails., zh: 如果Google BigQuery操作失败，FlowFiles将路由到此关系。}
+capabilityDescription: {en: Unified processor for batch and stream flow files content
+    to a Google BigQuery table via the Storage Write API.The processor is record based
+    so the used schema is driven by the RecordReader. Attributes that are not matched
+    to the target schemaare skipped. Exactly once delivery semantics are achieved
+    via stream offsets. The Storage Write API is more efficient than the older insertAll
+    method because it uses gRPC streaming rather than REST over HTTP, zh: 统一处理器，用于通过Storage
+    Write API将批处理和流式文件内容传输到Google BigQuery表。处理器是基于记录的，因此使用的模式由RecordReader驱动。跳过了与目标方案不匹配的属性。通过流偏移实现一次交付语义。存储写入API比旧的insertAll方法更有效，因为它使用gRPC流而不是HTTP上的REST}
+properties:
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  bq.transfer.type:
+    en: {displayName: Transfer Type, description: Defines the preferred transfer type
+        streaming or batching}
+    zh: {description: 定义首选传输类型流或批处理, displayName: 传输类型}
+  bq.skip.invalid.rows:
+    en: {displayName: Skip Invalid Rows, description: 'Sets whether to insert all
+        valid rows of a request, even if invalid rows exist. If not set the entire
+        insert request will fail if it contains an invalid row.'}
+    zh: {description: 设置是否插入请求的所有有效行，即使存在无效行。如果未设置，则如果包含无效行，则整个插入请求将失败。, displayName: 跳过无效行}
+  bq.table.name:
+    en: {displayName: Table Name, description: BigQuery table name}
+    zh: {description: BigQuery表名称, displayName: 表名称}
+  bq.append.record.count:
+    en: {displayName: Append Record Count, description: The number of records to be
+        appended to the write stream at once. Applicable for both batch and stream
+        types}
+    zh: {description: 一次附加到写入流的记录数。适用于批次和流类型, displayName: 追加记录计数}
+  bq.dataset:
+    en: {displayName: Dataset, description: BigQuery dataset name (Note - The dataset
+        must exist in GCP)}
+    zh: {description: BigQuery数据集名称（注意-数据集必须存在于GCP中）, displayName: 数据集}
+  bq.record.reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data.}
+    zh: {description: 指定用于分析传入数据的控制器服务。, displayName: 记录读取器}
+  gcp-retry-count:
+    en: {displayName: Number of retries, description: How many retry attempts should
+        be made before routing to the failure relationship.}
+    zh: {description: 在路由到失败关系之前应进行多少次重试尝试。, displayName: 重试次数}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+writeAttributes:
+  bq.records.count: {en: Number of records successfully inserted, zh: 成功插入的记录数}
+tags:
+  en: [google, google cloud, bq, bigquery]
+  zh: [谷歌, 谷歌云, 英国石油公司, 大查询]

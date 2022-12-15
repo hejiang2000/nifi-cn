@@ -371,8 +371,8 @@
                 } else {
                     // see if those changes should be saved
                     nfDialog.showYesNoDialog({
-                        headerText: 'Parameters',
-                        dialogContent: 'Save changes before leaving parameter context configuration?',
+                        headerText: '参数',
+                        dialogContent: '离开参数上下文配置前保存修改?',
                         noHandler: function () {
                             close();
                             deferred.resolve();
@@ -595,7 +595,7 @@
             // referencing component will be undefined when a new parameter is added
             if (nfCommon.isUndefined(referencingComponents)) {
                 // set to pending
-                $('<div class="referencing-component-container"><span class="unset">Pending Apply</span></div>').appendTo(parameterReferencingComponentsContainer);
+                $('<div class="referencing-component-container"><span class="unset">暂未生效</span></div>').appendTo(parameterReferencingComponentsContainer);
             } else {
                 // bin the referencing components according to their type
                 $.each(referencingComponents, function (_, referencingComponentEntity) {
@@ -681,7 +681,7 @@
 
                 if (nfCommon.isEmpty(referencingProcessGroupsArray)) {
                     // set to none
-                    $('<div class="referencing-component-container"><span class="unset">None</span></div>').appendTo(parameterReferencingComponentsContainer);
+                    $('<div class="referencing-component-container"><span class="unset">无</span></div>').appendTo(parameterReferencingComponentsContainer);
                 } else {
                     //sort alphabetically
                     var sortedReferencingProcessGroups = referencingProcessGroupsArray.sort(function (a, b) {
@@ -726,7 +726,7 @@
                                     var unauthorizedComponentsContainer = groupTwist.find('.parameter-context-referencing-unauthorized-components').empty();
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].referencingProcessors.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(processorContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(processorContainer);
                                     } else {
                                         // sort the referencing processors
                                         referencingProcessGroups[$(this).data('processGroupId')].referencingProcessors.sort(nameComparator);
@@ -738,7 +738,7 @@
                                     }
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].referencingControllerServices.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(controllerServiceContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(controllerServiceContainer);
                                     } else {
                                         // sort the referencing controller services
                                         referencingProcessGroups[$(this).data('processGroupId')].referencingControllerServices.sort(nameComparator);
@@ -750,7 +750,7 @@
                                     }
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].unauthorizedReferencingComponents.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(unauthorizedComponentsContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(unauthorizedComponentsContainer);
                                     } else {
                                         // sort the unauthorized referencing components
                                         referencingProcessGroups[$(this).data('processGroupId')].unauthorizedReferencingComponents.sort(function (a, b) {
@@ -975,8 +975,8 @@
     var validateParameter = function (parameter, existingParameters, editMode) {
         if (parameter.name === '') {
             nfDialog.showOkDialog({
-                headerText: 'Configuration Error',
-                dialogContent: 'The name of the parameter must be specified.'
+                headerText: '配置错误',
+                dialogContent: '必须指定参数名称.'
             });
             return false;
         }
@@ -985,8 +985,8 @@
         var parameterNameRegex = /^[a-zA-Z0-9-_. ]+$/;
         if (!parameterNameRegex.test(parameter.name)) {
             nfDialog.showOkDialog({
-                headerText: 'Configuration Error',
-                dialogContent: 'The name of the parameter appears to have an invalid character or characters. Only alpha-numeric characters (a-z, A-Z, 0-9), hyphens (-), underscores (_), periods (.), and spaces ( ) are accepted.'
+                headerText: '配置错误',
+                dialogContent: '参数名称中有非法字符. 仅支持字母数字 (a-z, A-Z, 0-9), 连至符 (-), 下划线 (_), 小数点 (.), 以及空格 ( ).'
             });
             return false;
         }
@@ -1003,8 +1003,8 @@
             var matchingParamIsHidden = _.get(matchingParameter, 'hidden', false);
             if (matchingParamIsHidden && matchingParameter.sensitive !== parameter.sensitive) {
                 nfDialog.showOkDialog({
-                    headerText: 'Parameter Exists',
-                    dialogContent: 'A parameter with this name has been marked for deletion. Please apply this change to delete this parameter from the parameter context before recreating it with a different sensitivity.'
+                    headerText: '参数已存在',
+                    dialogContent: '同名参数被标记为删除. 请在该参数上下文应用并删除该参数后, 再进行不同敏感性的参数创建操作.'
                 });
             } else if (matchingParamIsHidden && matchingParameter.sensitive === parameter.sensitive) {
                 // set the id of the parameter that was found. It could be used to update it.
@@ -1012,8 +1012,8 @@
                 return true;
             } else {
                 nfDialog.showOkDialog({
-                    headerText: 'Parameter Exists',
-                    dialogContent: 'A parameter with this name already exists.'
+                    headerText: '参数已存在',
+                    dialogContent: '同名参数已存在.'
                 });
             }
             return false;
@@ -1201,7 +1201,7 @@
             // updates the button model to show the close button
             var updateToCloseButtonModel = function () {
                 $('#parameter-context-dialog').modal('setButtonModel', [{
-                    buttonText: 'Close',
+                    buttonText: '关闭',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -1218,7 +1218,7 @@
 
             var updateToApplyOrCancelButtonModel = function () {
                 $('#parameter-context-dialog').modal('setButtonModel', [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -1240,7 +1240,7 @@
                         }
                     }
                 }, {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -1264,7 +1264,7 @@
 
             // update the button model to show the cancel button
             $('#parameter-context-dialog').modal('setButtonModel', [{
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -1330,8 +1330,8 @@
                         if (updateRequest.complete === true) {
                             if (errored) {
                                 nfDialog.showOkDialog({
-                                    headerText: 'Parameter Context Update Error',
-                                    dialogContent: 'Unable to complete parameter context update request: ' + nfCommon.escapeHtml(updateRequest.failureReason)
+                                    headerText: '更新参数上下文错误',
+                                    dialogContent: '更新参数上下文失败: ' + nfCommon.escapeHtml(updateRequest.failureReason)
                                 });
                             }
 
@@ -1483,12 +1483,12 @@
      */
     var loadReferencingProcessGroups = function (referencingProcessGroupsContainer, parameterContext) {
         if (parameterContext.permissions.canRead === false) {
-            referencingProcessGroupsContainer.append('<div class="unset">Unauthorized</div>');
+            referencingProcessGroupsContainer.append('<div class="unset">未授权</div>');
             return;
         }
         var referencingProcessGroups = parameterContext.component.boundProcessGroups;
         if (nfCommon.isEmpty(referencingProcessGroups)) {
-            referencingProcessGroupsContainer.append('<div class="unset">No referencing components.</div>');
+            referencingProcessGroupsContainer.append('<div class="unset">无引用组件.</div>');
             return;
         }
 
@@ -1673,7 +1673,7 @@
 
         if (readOnly) {
             if ($('#parameter-context-selected-read-only').is(':empty')) {
-                $('#parameter-context-selected-read-only').append($('<span class="unset">No value set</span>'));
+                $('#parameter-context-selected-read-only').append($('<span class="unset">无设置值</span>'));
             }
 
             $('#parameter-context-inheritance-container-read-only').show();
@@ -1704,12 +1704,12 @@
         lastSelectedId = null;
 
         // indicate no referencing components
-        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(processorContainer);
-        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(controllerServiceContainer);
-        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(unauthorizedComponentsContainer);
+        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(processorContainer);
+        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(controllerServiceContainer);
+        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(unauthorizedComponentsContainer);
 
         // update the selection context
-        $('#parameter-referencing-components-context').addClass('unset').attr('title', 'None').text('None');
+        $('#parameter-referencing-components-context').addClass('unset').attr('title', 'None').text('无');
 
         // check if border is necessary
         updateReferencingComponentsBorder($('#parameter-referencing-components-container'));
@@ -1878,11 +1878,11 @@
         var valueFormatter = function (row, cell, value, columnDef, dataContext) {
             var valueWidthOffset = 0;
             if (dataContext.sensitive === true && !_.isNil(value)) {
-                return '<span class="table-cell sensitive">Sensitive value set</span>';
+                return '<span class="table-cell sensitive">已设置敏感值</span>';
             } else if (value === '') {
-                return '<span class="table-cell blank">Empty string set</span>';
+                return '<span class="table-cell blank">已置为空字符串</span>';
             } else if (_.isNil(value)) {
-                return '<span class="unset">No value set</span>';
+                return '<span class="unset">无设置值</span>';
             } else {
                 var valueMarkup;
                 valueWidthOffset = 15;
@@ -1913,10 +1913,10 @@
             var markup = '';
 
             if (dataContext.isInherited === true && dataContext.parameterContext.permissions.canRead) {
-                markup += '<div title="Go To" class="pointer go-to-parameter fa fa-long-arrow-right"></div>';
+                markup += '<div title="到" class="pointer go-to-parameter fa fa-long-arrow-right"></div>';
             } else if (dataContext.isEditable === true) {
-                markup += '<div title="Edit" class="edit-parameter pointer fa fa-pencil"></div>';
-                markup += '<div title="Delete" class="delete-parameter pointer fa fa-trash"></div>';
+                markup += '<div title="编辑" class="edit-parameter pointer fa fa-pencil"></div>';
+                markup += '<div title="删除" class="delete-parameter pointer fa fa-trash"></div>';
             }
 
             return markup;
@@ -1926,7 +1926,7 @@
         var parameterColumns = [
             {
                 id: 'name',
-                name: 'Name',
+                name: '名称',
                 field: 'name',
                 formatter: nameFormatter,
                 sortable: true,
@@ -1935,7 +1935,7 @@
             },
             {
                 id: 'value',
-                name: 'Value',
+                name: '值',
                 field: 'value',
                 formatter: valueFormatter,
                 sortable: false,
@@ -2091,7 +2091,7 @@
                         .modal('setOpenHandler', openHandler)
                         .modal('setCloseHandler', closeHandler)
                         .modal('setButtonModel', [{
-                            buttonText: 'Apply',
+                            buttonText: '应用',
                             color: {
                                 base: '#728E9B',
                                 hover: '#004849',
@@ -2111,7 +2111,7 @@
                                 }
                             }
                         }, {
-                            buttonText: 'Cancel',
+                            buttonText: '取消',
                             color: {
                                 base: '#E3E8EB',
                                 hover: '#C7D2D7',
@@ -2222,18 +2222,18 @@
             selectedTabStyle: 'selected-tab',
             scrollableTabContentStyle: 'scrollable',
             tabs: [{
-                name: 'Settings',
+                name: '设置',
                 tabContentId: 'parameter-context-standard-settings-tab-content'
             }, {
-                name: 'Parameters',
+                name: '参数',
                 tabContentId: 'parameter-context-parameters-tab-content'
             }, {
-                name: 'Inheritance',
+                name: '继承',
                 tabContentId: 'parameter-context-inheritance-tab-content'
             }],
             select: function () {
                 // update the parameters table size in case this is the first time its rendered
-                if ($(this).text() === 'Parameters') {
+                if ($(this).text() === '参数') {
                     var parameterGrid = $('#parameter-table').data('gridInstance');
                     if (nfCommon.isDefinedAndNotNull(parameterGrid)) {
                         parameterGrid.resizeCanvas();
@@ -2303,7 +2303,7 @@
                 .modal('setOpenHandler', openHandler)
                 .modal('setCloseHandler', closeHandler)
                 .modal('setButtonModel', [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -2322,7 +2322,7 @@
                         }
                     }
                 }, {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -2399,7 +2399,7 @@
         $('#parameter-dialog')
             .modal('setHeaderText', 'Add Parameter')
             .modal('setButtonModel', [{
-                buttonText: 'Apply',
+                buttonText: '应用',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -2418,7 +2418,7 @@
                     click: callbacks.onApply
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -2518,16 +2518,16 @@
             var canRead = dataContext.permissions.canRead;
 
             if (canRead && canWrite) {
-                markup += '<div title="Edit" class="pointer edit-parameter-context fa fa-pencil"></div>';
+                markup += '<div title="编辑" class="pointer edit-parameter-context fa fa-pencil"></div>';
             }
 
             if (canRead && canWrite && nfCommon.canModifyParameterContexts()) {
-                markup += '<div title="Remove" class="pointer delete-parameter-context fa fa-trash"></div>';
+                markup += '<div title="移除" class="pointer delete-parameter-context fa fa-trash"></div>';
             }
 
             // allow policy configuration conditionally
             if (nfCanvasUtils.isManagedAuthorizer() && nfCommon.canAccessTenants()) {
-                markup += '<div title="Access Policies" class="pointer edit-access-policies fa fa-key"></div>';
+                markup += '<div title="访问策略" class="pointer edit-access-policies fa fa-key"></div>';
             }
 
             if (canRead && dataContext.component.parameterProviderConfiguration) {
@@ -2551,7 +2551,7 @@
             var canRead = dataContext.permissions.canRead;
 
             if (canRead) {
-                markup += '<div title="View Details" class="pointer view-parameter-context fa fa-info-circle"></div>';
+                markup += '<div title="查看详细信息" class="pointer view-parameter-context fa fa-info-circle"></div>';
             }
 
             return markup;
@@ -2570,7 +2570,7 @@
             },
             {
                 id: 'name',
-                name: 'Name',
+                name: '名称',
                 sortable: true,
                 resizable: true,
                 formatter: nameFormatter
@@ -2584,7 +2584,7 @@
             },
             {
                 id: 'description',
-                name: 'Description',
+                name: '描述',
                 sortable: true,
                 resizable: true,
                 formatter: descriptionFormatter
@@ -2735,7 +2735,7 @@
                 $('#parameter-context-dialog').addClass('edit-mode');
 
                 $('#parameter-context-dialog').modal('setHeaderText', 'Add Parameter Context').modal('setButtonModel', [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -2753,7 +2753,7 @@
                         }
                     }
                 }, {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -2988,7 +2988,7 @@
 
                     var parameterContextProviderSetting = $('#parameter-context-provider-setting').empty();
                     var providerContent = parameterContextEntity.component.parameterProviderConfiguration.component.parameterGroupName +
-                        ' from ' + parameterContextEntity.component.parameterProviderConfiguration.component.parameterProviderName;
+                        ' 从 ' + parameterContextEntity.component.parameterProviderConfiguration.component.parameterProviderName;
 
                     $('<div class="setting-name">Provider</div>').appendTo(parameterContextProviderSetting);
                     var settingEl = $('<div class="setting-field"></div>');
@@ -3025,7 +3025,7 @@
                     loadParameterContextInheritance(parameterContextEntity, readOnly || !canWrite, response.parameterContexts);
 
                     var editModeButtonModel = [{
-                        buttonText: 'Apply',
+                        buttonText: '应用',
                         color: {
                             base: '#728E9B',
                             hover: '#004849',
@@ -3043,7 +3043,7 @@
                             }
                         }
                     }, {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',
@@ -3057,7 +3057,7 @@
                     }];
 
                     var readOnlyButtonModel = [{
-                        buttonText: 'Ok',
+                        buttonText: '确定',
                         color: {
                             base: '#728E9B',
                             hover: '#004849',
@@ -3115,8 +3115,8 @@
         promptToDeleteParameterContext: function (parameterContextEntity) {
             // prompt for deletion
             nfDialog.showYesNoDialog({
-                headerText: 'Delete Parameter Context',
-                dialogContent: 'Delete parameter context \'' + nfCommon.escapeHtml(parameterContextEntity.component.name) + '\'?',
+                headerText: '删除参数上下文',
+                dialogContent: '删除参数上下文 \'' + nfCommon.escapeHtml(parameterContextEntity.component.name) + '\'?',
                 yesHandler: function () {
                     nfParameterContexts.remove(parameterContextEntity);
                 }
@@ -3157,8 +3157,8 @@
 
                 if (_.isNil(parameterContextId)) {
                     nfDialog.showOkDialog({
-                        headerText: 'Unable to Convert Property',
-                        dialogContent: 'There is no parameter context set for the current process group.'
+                        headerText: '不能转换属性',
+                        dialogContent: '当前处理组没有设置参数上下文.'
                     });
 
                     deferred.reject();
@@ -3235,8 +3235,8 @@
 
                                                 if (errored) {
                                                     nfDialog.showOkDialog({
-                                                        headerText: 'Parameter Context Update Error',
-                                                        dialogContent: 'Unable to complete parameter context update request: ' + nfCommon.escapeHtml(updateRequest.failureReason)
+                                                        headerText: '更新参数上下文错误',
+                                                        dialogContent: '更新参数上下文失败: ' + nfCommon.escapeHtml(updateRequest.failureReason)
                                                     });
                                                     // update failed, therefore converting failed. reject the promise for the caller
                                                     deferred.reject();

@@ -1,0 +1,66 @@
+relationships:
+  failure: {en: FlowFiles are routed to this relationship when the XQuery cannot be
+      evaluated against the content of the FlowFile., zh: 当无法根据FlowFile的内容计算XQuery时，FlowFiles被路由到此关系。}
+  matched: {en: FlowFiles are routed to this relationship when the XQuery is successfully
+      evaluated and the FlowFile is modified as a result, zh: 当XQuery成功求值并因此修改FlowFile时，FlowFiles将路由到此关系}
+  unmatched: {en: FlowFiles are routed to this relationship when the XQuery does not
+      match the content of the FlowFile and the Destination is set to flowfile-content,
+    zh: 当XQuery与FlowFile的内容不匹配并且Destination设置为FlowFile内容时，FlowFiles将路由到此关系}
+dynamicProperties:
+  A FlowFile attribute(if <Destination> is set to 'flowfile-attribute':
+    en: {description: If <Destination>='flowfile-attribute' then the FlowFile attribute
+        is set to the result of the XQuery.  If <Destination>='flowfile-content' then
+        the FlowFile content is set to the result of the XQuery., value: An XQuery}
+    zh: {description: 如果<Destination>='flowfile-attribute'，则flowfile属性设置为XQuery的结果。如果<Destination>='flowfile-content'，则flowfile内容设置为XQuery的结果。,
+      value: XQuery}
+systemResourceConsiderations:
+  en: [Processing requires reading the entire FlowFile into memory]
+  zh: [处理需要将整个FlowFile读入内存]
+capabilityDescription: {en: 'Evaluates one or more XQueries against the content of
+    a FlowFile.  The results of those XQueries are assigned to FlowFile Attributes
+    or are written to the content of the FlowFile itself, depending on configuration
+    of the Processor.  XQueries are entered by adding user-defined properties; the
+    name of the property maps to the Attribute Name into which the result will be
+    placed (if the Destination is ''flowfile-attribute''; otherwise, the property
+    name is ignored).  The value of the property must be a valid XQuery.  If the XQuery
+    returns more than one result, new attributes or FlowFiles (for Destinations of
+    ''flowfile-attribute'' or ''flowfile-content'' respectively) will be created for
+    each result (attributes will have a ''.n'' one-up number appended to the specified
+    attribute name).  If any provided XQuery returns a result, the FlowFile(s) will
+    be routed to ''matched''. If no provided XQuery returns a result, the FlowFile
+    will be routed to ''unmatched''.  If the Destination is ''flowfile-attribute''
+    and the XQueries matche nothing, no attributes will be applied to the FlowFile.',
+  zh: 根据FlowFile的内容计算一个或多个XQueries。根据处理器的配置，这些XQueries的结果分配给FlowFile属性或写入FlowFile本身的内容。XQueries通过添加用户定义的属性来输入；属性的名称映射到结果将放入其中的属性名称（如果目标是“flowfile属性”；否则，将忽略属性名称）。属性的值必须是有效的XQuery。如果XQuery返回多个结果，将为每个结果创建新的属性或FlowFiles（分别用于“flowfile属性”或“flowfile内容”的目的地）（属性将在指定的属性名称后面附加一个“.n”一个向上的数字）。如果任何提供的XQuery返回结果，FlowFile将被路由到“匹配”。如果没有提供XQuery返回结果，FlowFile将被路由到“未匹配”。如果Destination为“flowfile属性”，而XQueries不匹配任何属性，则不会将任何属性应用于flowfile。}
+properties:
+  Destination:
+    en: {displayName: Destination, description: 'Indicates whether the results of
+        the XQuery evaluation are written to the FlowFile content or a FlowFile attribute.
+        If set to <flowfile-content>, only one XQuery may be specified and the property
+        name is ignored.  If set to <flowfile-attribute> and the XQuery returns more
+        than one result, multiple attributes will be added to theFlowFile, each named
+        with a ''.n'' one-up number appended to the specified attribute name'}
+    zh: {description: 指示XQuery计算结果是写入FlowFile内容还是写入FlowFile属性。如果设置为＜flowfile content＞，则只能指定一个XQuery，并忽略属性名。如果设置为＜flowfile属性＞并且XQuery返回多个结果，则将向flowfile添加多个属性，每个属性都以‘命名。n'一个追加到指定属性名称的数字,
+      displayName: 目的地}
+  'Output: Method':
+    en: {displayName: 'Output: Method', description: Identifies the overall method
+        that should be used for outputting a result tree.}
+    zh: {description: 标识应用于输出结果树的整体方法。, displayName: 输出：方法}
+  'Output: Omit XML Declaration':
+    en: {displayName: 'Output: Omit XML Declaration', description: Specifies whether
+        the processor should output an XML declaration when transforming a result
+        tree.}
+    zh: {description: 指定处理器在转换结果树时是否应输出XML声明。, displayName: 输出：省略XML声明}
+  'Output: Indent':
+    en: {displayName: 'Output: Indent', description: Specifies whether the processor
+        may add additional whitespace when outputting a result tree.}
+    zh: {description: 指定处理器在输出结果树时是否可以添加其他空格。, displayName: 输出：缩进}
+  Validate DTD:
+    en: {displayName: Allow DTD, description: Allow embedded Document Type Declaration
+        in XML. This feature should be disabled to avoid XML entity expansion vulnerabilities.}
+    zh: {description: 允许在XML中嵌入文档类型声明。应禁用此功能以避免XML实体扩展漏洞。, displayName: 允许DTD}
+writeAttributes:
+  user-defined: {en: This processor adds user-defined attributes if the <Destination>
+      property is set to flowfile-attribute ., zh: 如果＜Destination＞属性设置为flowfile属性，则此处理器将添加用户定义的属性。}
+tags:
+  en: [XML, evaluate, XPath, XQuery]
+  zh: [XML格式, 估计, XPath, 函数]

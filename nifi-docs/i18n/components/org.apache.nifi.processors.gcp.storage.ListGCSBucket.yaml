@@ -1,0 +1,140 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      Cloud Storage operation., zh: 在成功的Google云存储操作之后，FlowFiles被路由到此关系。}
+capabilityDescription: {en: 'Retrieves a listing of objects from an GCS bucket. For
+    each object that is listed, creates a FlowFile that represents the object so that
+    it can be fetched in conjunction with FetchGCSObject. This Processor is designed
+    to run on Primary Node only in a cluster. If the primary node changes, the new
+    Primary Node will pick up where the previous node left off without duplicating
+    all of the data.', zh: 从GCS存储桶中检索对象列表。对于列出的每个对象，创建一个表示该对象的FlowFile，以便可以与FetchGCSObject一起获取该对象。此处理器设计为仅在群集中的主节点上运行。如果主节点发生更改，新的主节点将在不复制所有数据的情况下恢复上一个节点停止的位置。}
+statefulDescription: {en: 'After performing a listing of keys, the timestamp of the
+    newest key is stored, along with the keys that share that same timestamp. This
+    allows the Processor to list only keys that have been added or modified after
+    this date the next time that the Processor is run. State is stored across the
+    cluster so that this Processor can be run on Primary Node only and if a new Primary
+    Node is selected, the new node can pick up where the previous node left off, without
+    duplicating the data.', zh: 执行密钥列表后，将存储最新密钥的时间戳以及共享该时间戳的密钥。这允许处理器在下次运行处理器时仅列出在此日期之后添加或修改的密钥。状态存储在整个集群中，因此此处理器只能在主节点上运行，如果选择了新的主节点，则新节点可以从上一个节点停止的位置恢复，而无需复制数据。}
+properties:
+  gcp-proxy-host:
+    en:
+      displayName: Proxy host
+      description: |-
+        IP or hostname of the proxy to be used.
+         You might need to set the following properties in bootstrap for https proxy usage:
+        -Djdk.http.auth.tunneling.disabledSchemes=
+        -Djdk.http.auth.proxying.disabledSchemes=
+    zh: {description: 要使用的代理的IP或主机名。, displayName: 代理主机}
+  et-initial-listing-target:
+    en: {displayName: Entity Tracking Initial Listing Target, description: Specify
+        how initial listing should be handled. Used by 'Tracking Entities' strategy.}
+    zh: {description: 指定如何处理初始列表。由“跟踪实体”策略使用。, displayName: 实体跟踪初始上市目标}
+  gcs-use-generations:
+    en: {displayName: Use Generations, description: 'Specifies whether to use GCS
+        Generations, if applicable.  If false, only the latest version of each object
+        will be returned.'}
+    zh: {description: 指定是否使用GCS Generations（如果适用）。如果为false，则只返回每个对象的最新版本。, displayName: 使用世代}
+  record-writer:
+    en: {displayName: Record Writer, description: 'Specifies the Record Writer to
+        use for creating the listing. If not specified, one FlowFile will be created
+        for each entity that is listed. If the Record Writer is specified, all entities
+        will be written to a single FlowFile instead of adding attributes to individual
+        FlowFiles.'}
+    zh: {description: 指定用于创建列表的记录编写器。如果未指定，将为列出的每个实体创建一个FlowFile。如果指定了记录编写器，则所有实体都将写入单个FlowFile，而不是向单个FlowFile添加属性。,
+      displayName: 记录编写器}
+  gcp-retry-count:
+    en: {displayName: Number of retries, description: How many retry attempts should
+        be made before routing to the failure relationship.}
+    zh: {description: 在路由到失败关系之前应进行多少次重试尝试。, displayName: 重试次数}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  et-time-window:
+    en: {displayName: Entity Tracking Time Window, description: 'Specify how long
+        this processor should track already-listed entities. ''Tracking Entities''
+        strategy can pick any entity whose timestamp is inside the specified time
+        window. For example, if set to ''30 minutes'', any entity having timestamp
+        in recent 30 minutes will be the listing target when this processor runs.
+        A listed entity is considered ''new/updated'' and a FlowFile is emitted if
+        one of following condition meets: 1. does not exist in the already-listed
+        entities, 2. has newer timestamp than the cached entity, 3. has different
+        size than the cached entity. If a cached entity''s timestamp becomes older
+        than specified time window, that entity will be removed from the cached already-listed
+        entities. Used by ''Tracking Entities'' strategy.'}
+    zh: {description: 指定此处理器跟踪已列出实体的时间。'跟踪实体的策略可以选择时间戳在指定时间窗口内的任何实体。例如，如果设置为“30分钟”，则在该处理器运行时，具有最近30分钟时间戳的任何实体都将成为列表目标。如果满足以下条件之一，则将列出的实体视为“新的/更新的”，并发出FlowFile：1.已列出的实体中不存在，2.具有比缓存实体更新的时间戳，3.具有与缓存实体不同的大小。如果缓存实体的时间戳早于指定的时间窗口，则将从缓存的已列出实体中删除该实体。由“跟踪实体”策略使用。,
+      displayName: 实体跟踪时间窗口}
+  gcp-proxy-user-name:
+    en: {displayName: HTTP Proxy Username, description: HTTP Proxy Username}
+    zh: {description: HTTP代理用户名, displayName: HTTP代理用户名}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  listing-strategy:
+    en: {displayName: Listing Strategy, description: Specify how to determine new/updated
+        entities. See each strategy descriptions for detail.}
+    zh: {description: 指定如何确定新的/更新的实体。有关详细信息，请参阅每个策略描述。, displayName: 上市策略}
+  gcp-proxy-user-password:
+    en: {displayName: HTTP Proxy Password, description: HTTP Proxy Password}
+    zh: {description: HTTP代理密码, displayName: HTTP代理密码}
+  et-state-cache:
+    en: {displayName: Entity Tracking State Cache, description: 'Listed entities are
+        stored in the specified cache storage so that this processor can resume listing
+        across NiFi restart or in case of primary node change. ''Tracking Entities''
+        strategy require tracking information of all listed entities within the last
+        ''Tracking Time Window''. To support large number of entities, the strategy
+        uses DistributedMapCache instead of managed state. Cache key format is ''ListedEntities::{processorId}(::{nodeId})''.
+        If it tracks per node listed entities, then the optional ''::{nodeId}'' part
+        is added to manage state separately. E.g. cluster wide cache key = ''ListedEntities::8dda2321-0164-1000-50fa-3042fe7d6a7b'',
+        per node cache key = ''ListedEntities::8dda2321-0164-1000-50fa-3042fe7d6a7b::nifi-node3''
+        The stored cache content is Gzipped JSON string. The cache key will be deleted
+        when target listing configuration is changed. Used by ''Tracking Entities''
+        strategy.'}
+    zh: {description: '列出的实体存储在指定的缓存存储中，以便此处理器可以在NiFi重新启动或主节点更改时恢复列出“跟踪实体”策略要求在上一个“跟踪时间窗口”内跟踪所有列出实体的信息。为了支持大量实体，该策略使用DistributedMapCache而不是托管状态。缓存密钥格式为“ListedEntities:：｛processorId｝（：：｛nodeId｝）”。如果它跟踪每个节点列出的实体，则会添加可选的“：：｛nodeId｝”部分以单独管理状态。E、
+        g.集群范围的缓存键=“ListedEntities:：8dda2321-0164-1000-50fa-3042fe7d6a7b”，每个节点的缓存键为“ListedEntitys::8dda23201-0164-1000-50fa-3042fe7d
+        6a7b:：nifi-node3”存储的缓存内容为Gzipped JSON字符串。更改目标列表配置时，将删除缓存密钥。由“跟踪实体”策略使用。',
+      displayName: 实体跟踪状态缓存}
+  gcp-proxy-port:
+    en: {displayName: Proxy port, description: Proxy port number}
+    zh: {description: 代理端口号, displayName: 代理服务器端口}
+  gcs-bucket:
+    en: {displayName: Bucket, description: Bucket of the object.}
+    zh: {description: 对象的Bucket。, displayName: 水桶}
+  gcs-prefix:
+    en: {displayName: Prefix, description: 'The prefix used to filter the object list.
+        In most cases, it should end with a forward slash (''/'').'}
+    zh: {description: 用于过滤对象列表的前缀。在大多数情况下，它应该以正斜杠（“/”）结尾。, displayName: 前缀}
+writeAttributes:
+  gcs.owner: {en: The owner (uploader) of the object., zh: 对象的所有者（上传者）。}
+  gcs.cache.control: {en: Data cache control of the object., zh: 对象的数据缓存控制。}
+  gcs.bucket: {en: Bucket of the object., zh: 对象的Bucket。}
+  gcs.metageneration: {en: The metageneration of the object., zh: 对象的元生成。}
+  gcs.content.language: {en: The content language of the object., zh: 对象的内容语言。}
+  gcs.encryption.algorithm: {en: The algorithm used to encrypt the object., zh: 用于加密对象的算法。}
+  gcs.size: {en: Size of the object., zh: 对象的大小。}
+  gcs.update.time: {en: The last modification time of the object (milliseconds), zh: 对象的上次修改时间（毫秒）}
+  gcs.uri: {en: The URI of the object as a string., zh: 字符串形式的对象的URI。}
+  mime.type: {en: The MIME/Content-Type of the object, zh: 对象的MIME/Content-Type}
+  gcs.crc32c: {en: 'The CRC32C checksum of object''s data, encoded in base64 in big-endian
+      order.', zh: 对象数据的CRC32C校验和，按大端顺序以base64编码。}
+  gcs.generation: {en: The data generation of the object., zh: 对象的数据生成。}
+  gcs.content.encoding: {en: The content encoding of the object., zh: 对象的内容编码。}
+  gcs.media.link: {en: The media download link to the object., zh: 指向对象的媒体下载链接。}
+  gcs.component.count: {en: The number of components which make up the object., zh: 构成对象的组件数。}
+  filename: {en: The name of the file, zh: 文件的名称}
+  gcs.key: {en: Name of the object., zh: 对象的名称。}
+  gcs.content.disposition: {en: The data content disposition of the object., zh: 对象的数据内容处置。}
+  gcs.generated.id: {en: The service-generated for the object, zh: 为对象生成的服务}
+  gcs.etag: {en: The HTTP 1.1 Entity tag for the object., zh: 对象的HTTP 1.1实体标记。}
+  gcs.md5: {en: The MD5 hash of the object's data encoded in base64., zh: 以base64编码的对象数据的MD5哈希。}
+  gcs.encryption.sha256: {en: The SHA256 hash of the key used to encrypt the object,
+    zh: 用于加密对象的密钥的SHA256哈希}
+  gcs.create.time: {en: The creation time of the object (milliseconds), zh: 对象的创建时间（毫秒）}
+  gcs.owner.type: {en: The ACL entity type of the uploader of the object., zh: 对象上载器的ACL实体类型。}
+tags:
+  en: [google cloud, google, storage, gcs, list]
+  zh: [谷歌云, 谷歌, 存储, 通用计算机系统, 列表]

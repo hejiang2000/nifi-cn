@@ -1,0 +1,120 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+capabilityDescription: {en: Retrieves the contents of an S3 Object and writes it to
+    the content of a FlowFile, zh: 检索S3对象的内容并将其写入FlowFile的内容}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  range-length:
+    en: {displayName: Range Length, description: 'The number of bytes to download
+        from the object, starting from the Range Start. An empty value or a value
+        that extends beyond the end of the object will read to the end of the object.'}
+    zh: {description: 要从对象下载的字节数，从Range Start开始。空值或超出对象结尾的值将读取到对象结尾。, displayName: 范围长度}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  range-start:
+    en: {displayName: Range Start, description: The byte position at which to start
+        reading from the object. An empty value or a value of zero will start reading
+        at the beginning of the object.}
+    zh: {description: 从对象开始读取的字节位置。空值或零值将从对象的开头开始读取。, displayName: 范围起始值}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  requester-pays:
+    en: {displayName: Requester Pays, description: 'If true, indicates that the requester
+        consents to pay any charges associated with retrieving objects from the S3
+        bucket.  This sets the ''x-amz-request-payer'' header to ''requester''.'}
+    zh: {description: 如果为true，则表示请求者同意支付与从S3存储桶中检索对象相关的任何费用。这将“x-amz-request-payer”标头设置为“requester”。,
+      displayName: 申请人付款}
+  Object Key:
+    en: {displayName: Object Key, description: ''}
+    zh: {description: '', displayName: 对象密钥}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  Signer Override:
+    en: {displayName: Signer Override, description: The AWS libraries use the default
+        signer but this property allows you to specify a custom signer to support
+        older S3-compatible services.}
+    zh: {description: AWS库使用默认签名者，但此属性允许您指定自定义签名者以支持较旧的S3兼容服务。, displayName: 签名者覆盖}
+  Bucket:
+    en: {displayName: Bucket, description: ''}
+    zh: {description: '', displayName: 水桶}
+  Version:
+    en: {displayName: Version, description: The Version of the Object to download}
+    zh: {description: 要下载的对象的版本, displayName: 版本}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+  encryption-service:
+    en: {displayName: Encryption Service, description: 'Specifies the Encryption Service
+        Controller used to configure requests. PutS3Object: For backward compatibility,
+        this value is ignored when ''Server Side Encryption'' is set. FetchS3Object:
+        Only needs to be configured in case of Server-side Customer Key, Client-side
+        KMS and Client-side Customer Key encryptions.'}
+    zh: {description: 指定用于配置请求的加密服务控制器。PutS3Object：为了向后兼容，当设置“服务器端加密”时，将忽略此值。FetchS3Object：仅在服务器端客户密钥、客户端KMS和客户端客户密钥加密的情况下需要配置。,
+      displayName: 加密服务}
+writeAttributes:
+  s3.version: {en: The version of the S3 object, zh: S3对象的版本}
+  s3.etag: {en: The ETag that can be used to see if the file has changed, zh: 可用于查看文件是否已更改的ETag}
+  s3.sseAlgorithm: {en: The server side encryption algorithm of the object, zh: 对象的服务器端加密算法}
+  s3.bucket: {en: The name of the S3 bucket, zh: S3存储桶的名称}
+  mime.type: {en: 'If S3 provides the content type/MIME type, this attribute will
+      hold that file', zh: 如果S3提供内容类型/MIME类型，则此属性将保存该文件}
+  s3.errorCode: {en: The S3 moniker of the failed operation, zh: 失败操作的S3名字对象}
+  s3.expirationTimeRuleId: {en: The ID of the rule that dictates this object's expiration
+      time, zh: 指定此对象过期时间的规则的ID}
+  hash.value: {en: The MD5 sum of the file, zh: 文件的MD5和}
+  s3.errorMessage: {en: The S3 exception message from the failed operation, zh: 来自失败操作的S3异常消息}
+  absolute.path: {en: The path of the file, zh: 文件的路径}
+  path: {en: The path of the file, zh: 文件的路径}
+  filename: {en: The name of the file, zh: 文件的名称}
+  s3.statusCode: {en: The HTTP error code (if available) from the failed operation,
+    zh: 失败操作的HTTP错误代码（如果可用）}
+  hash.algorithm: {en: MD5, zh: MD5型}
+  s3.encryptionStrategy: {en: The name of the encryption strategy that was used to
+      store the S3 object (if it is encrypted), zh: 用于存储S3对象的加密策略的名称（如果已加密）}
+  s3.exception: {en: The class name of the exception thrown during processor execution,
+    zh: 处理器执行期间引发的异常的类名}
+  s3.additionalDetails: {en: The S3 supplied detail from the failed operation, zh: S3提供了失败操作的详细信息}
+  s3.expirationTime: {en: 'If the file has an expiration date, this attribute will
+      be set, containing the milliseconds since epoch in UTC time', zh: 如果文件有过期日期，则将设置此属性，其中包含UTC时间中自epoch以来的毫秒数}
+tags:
+  en: [Amazon, S3, AWS, Get, Fetch]
+  zh: [亚马逊, 第3页, 自动售货机, 收到, 取来]

@@ -1,0 +1,14 @@
+dynamicProperties:
+  A key that can be looked up:
+    en: {description: Allows users to add key/value pairs as User-defined Properties.
+        Each property that is added can be looked up by Property Name. The coordinates
+        that are passed to the lookup must contain the key 'key'., value: The value
+        for the key}
+    zh: {description: 允许用户将键/值对添加为用户定义的属性。添加的每个属性都可以按“属性名称”进行查找。传递给查找的坐标必须包含键“key”。,
+      value: 密钥的值}
+capabilityDescription: {en: Allows users to add key/value pairs as User-defined Properties.
+    Each property that is added can be looked up by Property Name. The coordinates
+    that are passed to the lookup must contain the key 'key'., zh: 允许用户将键/值对添加为用户定义的属性。添加的每个属性都可以按“属性名称”进行查找。传递给查找的坐标必须包含键“key”。}
+tags:
+  en: [lookup, enrich, key, value]
+  zh: [查找, 充实, 钥匙, 价值]

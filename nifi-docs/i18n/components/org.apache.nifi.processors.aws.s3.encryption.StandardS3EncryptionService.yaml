@@ -1,0 +1,23 @@
+capabilityDescription: {en: Adds configurable encryption to S3 Put and S3 Fetch operations.,
+  zh: 为S3 Put和S3 Fetch操作添加可配置加密。}
+properties:
+  key-id-or-key-material:
+    en: {displayName: Key ID or Key Material, description: 'For None and Server-side
+        S3: not used. For Server-side KMS and Client-side KMS: the KMS Key ID must
+        be configured. For Server-side Customer Key and Client-side Customer Key:
+        the Key Material must be specified in Base64 encoded form. In case of Server-side
+        Customer Key, the key must be an AES-256 key. In case of Client-side Customer
+        Key, it can be an AES-256, AES-192 or AES-128 key.'}
+    zh: {description: 对于无和服务器端S3：未使用。对于服务器端KMS和客户端KMS：必须配置KMS密钥ID。对于服务器端客户密钥和客户端客户密钥：必须以Base64编码形式指定密钥材料。对于服务器端用户密钥，密钥必须是AES-256密钥。对于客户端客户密钥，它可以是AES-256、AES-192或AES-128密钥。,
+      displayName: 密钥ID或密钥材料}
+  encryption-strategy:
+    en: {displayName: Encryption Strategy, description: Strategy to use for S3 data
+        encryption and decryption.}
+    zh: {description: 用于S3数据加密和解密的策略。, displayName: 加密策略}
+  kms-region:
+    en: {displayName: KMS Region, description: The Region of the AWS Key Management
+        Service. Only used in case of Client-side KMS.}
+    zh: {description: AWS密钥管理服务的区域。仅在客户端KMS的情况下使用。, displayName: KMS地区}
+tags:
+  en: [service, aws, s3, encryption, encrypt, decryption, decrypt, key]
+  zh: [服务, 自动售货机, 第3页, 加密, 加密, 解密, 解密, 钥匙]

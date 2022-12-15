@@ -1,0 +1,131 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship after the database is successfully
+      updated, zh: 成功更新数据库后，FlowFile将路由到此关系}
+  failure: {en: 'A FlowFile is routed to this relationship if the database cannot
+      be updated and retrying the operation will also fail, such as an invalid query
+      or an integrity constraint violation', zh: 如果无法更新数据库，则FlowFile将路由到此关系，并且重试操作也将失败，例如查询无效或违反完整性约束}
+  retry: {en: A FlowFile is routed to this relationship if the database cannot be
+      updated but attempting the operation again may succeed, zh: 如果无法更新数据库，则将FlowFile路由到此关系，但再次尝试操作可能会成功}
+capabilityDescription: {en: 'Executes a SQL UPDATE or INSERT command. The content
+    of an incoming FlowFile is expected to be the SQL command to execute. The SQL
+    command may use the ? to escape parameters. In this case, the parameters to use
+    must exist as FlowFile attributes with the naming convention sql.args.N.type and
+    sql.args.N.value, where N is a positive integer. The sql.args.N.type is expected
+    to be a number indicating the JDBC Type. The content of the FlowFile is expected
+    to be in UTF-8 format.', zh: 执行SQL UPDATE或INSERT命令。传入FlowFile的内容应为要执行的SQL命令。SQL命令可以使用？以转义参数。在这种情况下，要使用的参数必须作为FlowFile属性存在，命名约定为sql.args.N.type和sql.args.N.value，其中N是正整数。sql.args.N.type应为指示JDBC类型的数字。FlowFile的内容应为UTF-8格式。}
+readAttributes:
+  sql.args.N.value: {en: 'Incoming FlowFiles are expected to be parametrized SQL statements.
+      The value of the Parameters are specified as sql.args.1.value, sql.args.2.value,
+      sql.args.3.value, and so on. The type of the sql.args.1.value Parameter is specified
+      by the sql.args.1.type attribute.', zh: 传入的FlowFiles应该是参数化的SQL语句。参数的值指定为sql.args.1.value、sql.args.2.value、sql.args.3.value等。sql.args.1.value参数的类型由sql.arg.s.type属性指定。}
+  fragment.identifier: {en: 'If the <Support Fragment Transactions> property is true,
+      this attribute is used to determine whether or not two FlowFiles belong to the
+      same transaction.', zh: 如果＜Support Fragment Transactions＞属性为true，则该属性用于确定两个FlowFiles是否属于同一事务。}
+  sql.args.N.type: {en: Incoming FlowFiles are expected to be parametrized SQL statements.
+      The type of each Parameter is specified as an integer that represents the JDBC
+      Type of the parameter., zh: 传入的FlowFiles应该是参数化的SQL语句。每个参数的类型指定为表示参数的JDBC类型的整数。}
+  fragment.index: {en: 'If the <Support Fragment Transactions> property is true, this
+      attribute is used to determine the order that the FlowFiles in a transaction
+      should be evaluated.', zh: 如果＜Support Fragment Transactions＞属性为true，则该属性用于确定事务中FlowFiles的求值顺序。}
+  fragment.count: {en: 'If the <Support Fragment Transactions> property is true, this
+      attribute is used to determine how many FlowFiles are needed to complete the
+      transaction.', zh: 如果＜Support Fragment Transactions＞属性为true，则此属性用于确定完成事务需要多少FlowFiles。}
+  sql.args.N.format: {en: 'This attribute is always optional, but default options
+      may not always work for your data. Incoming FlowFiles are expected to be parametrized
+      SQL statements. In some cases a format option needs to be specified, currently
+      this is only applicable for binary data types, dates, times and timestamps.
+      Binary Data Types (defaults to ''ascii'') - ascii: each string character in
+      your attribute value represents a single byte. This is the format provided by
+      Avro Processors. base64: the string is a Base64 encoded string that can be decoded
+      to bytes. hex: the string is hex encoded with all letters in upper case and
+      no ''0x'' at the beginning. Dates/Times/Timestamps - Date, Time and Timestamp
+      formats all support both custom formats or named format (''yyyy-MM-dd'',''ISO_OFFSET_DATE_TIME'')
+      as specified according to java.time.format.DateTimeFormatter. If not specified,
+      a long value input is expected to be an unix epoch (milli seconds from 1970/1/1),
+      or a string value in ''yyyy-MM-dd'' format for Date, ''HH:mm:ss.SSS'' for Time
+      (some database engines e.g. Derby or MySQL do not support milliseconds and will
+      truncate milliseconds), ''yyyy-MM-dd HH:mm:ss.SSS'' for Timestamp is used.',
+    zh: '此属性始终是可选的，但默认选项可能并不总是适用于您的数据。传入的FlowFiles应该是参数化的SQL语句。在某些情况下，需要指定格式选项，目前这仅适用于二进制数据类型、日期、时间和时间戳。二进制数据类型（默认为“ascii”）-ascii：属性值中的每个字符串字符代表一个字节。这是Avro处理器提供的格式。base64：字符串是一个base64编码的字符串，可以解码为字节。十六进制：字符串是十六进制编码的，所有字母都大写，开头没有“0x”。日期/时间/时间戳-日期、时间和时间戳格式都支持自定义格式或根据java.Time.format.DateTimeFormatter指定的命名格式（“yyyy-MM-dd”，“SO_OFFSET_Date_Time”）。如果未指定，则长值输入应为unix历元（从1970/1/1开始的毫秒），或日期格式为“yyyy-MM-dd”的字符串值，“HH:MM:ss”。SSS表示时间（某些数据库引擎，如Derby或MySQL不支持毫秒，将截断毫秒），yyyy-MM-dd
+      HH:MM:ss。使用了时间戳的SSS''。'}
+properties:
+  Support Fragmented Transactions:
+    en: {displayName: Support Fragmented Transactions, description: 'If true, when
+        a FlowFile is consumed by this Processor, the Processor will first check the
+        fragment.identifier and fragment.count attributes of that FlowFile. If the
+        fragment.count value is greater than 1, the Processor will not process any
+        FlowFile with that fragment.identifier until all are available; at that point,
+        it will process all FlowFiles with that fragment.identifier as a single transaction,
+        in the order specified by the FlowFiles'' fragment.index attributes. This
+        Provides atomicity of those SQL statements. Once any statement of this transaction
+        throws exception when executing, this transaction will be rolled back. When
+        transaction rollback happened, none of these FlowFiles would be routed to
+        ''success''. If the <Rollback On Failure> is set true, these FlowFiles will
+        stay in the input relationship. When the <Rollback On Failure> is set false,,
+        if any of these FlowFiles will be routed to ''retry'', all of these FlowFiles
+        will be routed to ''retry''.Otherwise, they will be routed to ''failure''.
+        If this value is false, these attributes will be ignored and the updates will
+        occur independent of one another.'}
+    zh: {description: 如果为true，则当此处理器使用FlowFile时，处理器将首先检查片段。标识符和片段。计数该FlowFile的属性。如果碎片。计数值大于1，处理器将不会处理具有该片段的任何FlowFile。标识符，直到所有可用；此时，它将处理具有该片段的所有FlowFiles。标识符作为单个事务，按照FlowFiles片段指定的顺序。索引属性。这提供了这些SQL语句的原子性。一旦此事务的任何语句在执行时抛出异常，此事务将回滚。当事务回滚发生时，这些FlowFiles都不会被路由到“成功”。如果<Rollback
+        On Failure>设置为true，这些FlowFiles将保留在输入关系中。当<Rollback On Failure>设置为false时，如果这些FlowFiles中的任何一个将被路由到“重试”，则所有这些FlowFiles将被路由至“重试”。否则，它们将被路由到“失败”。如果该值为false，则将忽略这些属性，并且更新将彼此独立地进行。,
+      displayName: 支持碎片化事务}
+  putsql-sql-statement:
+    en: {displayName: SQL Statement, description: 'The SQL statement to execute. The
+        statement can be empty, a constant value, or built from attributes using Expression
+        Language. If this property is specified, it will be used regardless of the
+        content of incoming flowfiles. If this property is empty, the content of the
+        incoming flow file is expected to contain a valid SQL statement, to be issued
+        by the processor to the database.'}
+    zh: {description: 要执行的SQL语句。该语句可以是空的、常量值或使用表达式语言从属性构建。如果指定了此属性，则无论传入流文件的内容如何，都将使用该属性。如果此属性为空，则传入流文件的内容应包含由处理器向数据库发出的有效SQL语句。,
+      displayName: SQL语句}
+  Transaction Timeout:
+    en: {displayName: Transaction Timeout, description: 'If the <Support Fragmented
+        Transactions> property is set to true, specifies how long to wait for all
+        FlowFiles for a particular fragment.identifier attribute to arrive before
+        just transferring all of the FlowFiles with that identifier to the ''failure''
+        relationship'}
+    zh: {description: 如果＜Support Fragmented Transactions＞属性设置为true，则指定等待特定片段的所有FlowFiles的时间。在将具有该标识符的所有FlowFiles传输到“failure”关系之前到达的标识符属性,
+      displayName: 事务超时}
+  Batch Size:
+    en: {displayName: Batch Size, description: The preferred number of FlowFiles to
+        put to the database in a single transaction}
+    zh: {description: 在单个事务中放入数据库的FlowFiles的首选数量, displayName: 批量大小}
+  Obtain Generated Keys:
+    en: {displayName: Obtain Generated Keys, description: 'If true, any key that is
+        automatically generated by the database will be added to the FlowFile that
+        generated it using the sql.generate.key attribute. This may result in slightly
+        slower performance and is not supported by all databases.'}
+    zh: {description: 如果为true，则数据库自动生成的任何密钥都将添加到使用sql.generate生成该密钥的FlowFile中。键属性。这可能会导致性能稍慢，并非所有数据库都支持。,
+      displayName: 获取生成的密钥}
+  JDBC Connection Pool:
+    en: {displayName: JDBC Connection Pool, description: Specifies the JDBC Connection
+        Pool to use in order to convert the JSON message to a SQL statement. The Connection
+        Pool is necessary in order to determine the appropriate database column types.}
+    zh: {description: 指定要用于将JSON消息转换为SQL语句的JDBC连接池。连接池是确定适当的数据库列类型所必需的。, displayName: JDBC连接池}
+  database-session-autocommit:
+    en: {displayName: Database Session AutoCommit, description: 'The autocommit mode
+        to set on the database connection being used. If set to false, the operation(s)
+        will be explicitly committed or rolled back (based on success or failure respectively),
+        if set to true the driver/database handles the commit/rollback.'}
+    zh: {description: 要在正在使用的数据库连接上设置的自动提交模式。如果设置为false，将显式提交或回滚操作（分别基于成功或失败），如果设置为true，驱动程序/数据库将处理提交/回滚。,
+      displayName: 数据库会话自动提交}
+  rollback-on-failure:
+    en: {displayName: Rollback On Failure, description: 'Specify how to handle error.
+        By default (false), if an error occurs while processing a FlowFile, the FlowFile
+        will be routed to ''failure'' or ''retry'' relationship based on error type,
+        and processor can continue with next FlowFile. Instead, you may want to rollback
+        currently processed FlowFiles and stop further processing immediately. In
+        that case, you can do so by enabling this ''Rollback On Failure'' property.  If
+        enabled, failed FlowFiles will stay in the input relationship without penalizing
+        it and being processed repeatedly until it gets processed successfully or
+        removed by other means. It is important to set adequate ''Yield Duration''
+        to avoid retrying too frequently.'}
+    zh: {description: 指定如何处理错误。默认情况下（false），如果在处理FlowFile时发生错误，FlowFile将根据错误类型路由到“失败”或“重试”关系，处理器可以继续处理下一个FlowFile。相反，您可能希望回滚当前处理的FlowFiles并立即停止进一步处理。在这种情况下，可以通过启用此“失败时回滚”属性来执行此操作。如果启用，则失败的FlowFiles将保留在输入关系中，而不会对其进行惩罚并重复处理，直到成功处理或通过其他方式删除。重要的是要设置足够的“收益持续时间”，以避免过于频繁地重试。,
+      displayName: 失败时回滚}
+writeAttributes:
+  sql.generated.key: {en: 'If the database generated a key for an INSERT statement
+      and the Obtain Generated Keys property is set to true, this attribute will be
+      added to indicate the generated key, if possible. This feature is not supported
+      by all database vendors.', zh: 如果数据库为INSERT语句生成了一个键，并且Obtain generated Keys属性设置为true，则将添加此属性以指示生成的键（如果可能）。并非所有数据库供应商都支持此功能。}
+tags:
+  en: [sql, put, rdbms, database, update, insert, relational]
+  zh: [sql语言, 放, 关系数据库系统, 数据库, 使现代化, 插入, 关系型的]

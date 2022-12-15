@@ -20,9 +20,9 @@
         <div class="setting">
             <div id="referenced-attributes-header">
                 <div id="referenced-attributes-title" class="setting-name">
-                    Enter Attribute Values
+                    输入属性值
                     <div class="fa fa-question-circle" alt="Info"
-                         title="Supply attribute values that should be considered when performing property verification."></div>
+                         title="提供需要被验证的属性值."></div>
                 </div>
                 <div id="add-referenced-attribute">
                     <button class="button fa fa-plus"></button>
@@ -38,7 +38,7 @@
 <div id="new-referenced-attribute-dialog" class="dialog cancellable small-dialog hidden">
     <div class="dialog-content">
         <div>
-            <div class="setting-name">Attribute name</div>
+            <div class="setting-name">属性名称</div>
             <div class="setting-field">
                 <input id="new-referenced-attribute-name" type="text"/>
             </div>

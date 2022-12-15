@@ -1,0 +1,92 @@
+relationships:
+  unprocessed: {en: FlowFiles are routed to unprocessed relationship when DynamoDB
+      is not able to process all the items in the request. Typical reasons are insufficient
+      table throughput capacity and exceeding the maximum bytes per request. Unprocessed
+      FlowFiles can be retried with a new request., zh: 当DynamicDB无法处理请求中的所有项时，FlowFiles将被路由到未处理的关系。典型的原因是表吞吐量不足，并且超过了每个请求的最大字节数。可以使用新请求重试未处理的FlowFiles。}
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.,
+    An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。, 此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Inserts items into DynamoDB based on record-oriented
+    data. The record fields are mapped into DynamoDB item fields, including partition
+    and sort keys if set. Depending on the number of records the processor might execute
+    the insert in multiple chunks in order to overcome DynamoDB''s limitation on batch
+    writing. This might result partially processed FlowFiles in which case the FlowFile
+    will be transferred to the "unprocessed" relationship with the necessary attribute
+    to retry later without duplicating the already executed inserts.', zh: 基于面向记录的数据将项目插入DynamoDB。记录字段映射到DynamoDB项目字段，包括分区和排序键（如果设置）。根据记录的数量，处理器可以在多个块中执行插入，以克服DynamoDB对批处理写入的限制。这可能会导致部分处理的FlowFile，在这种情况下，FlowFile将被传输到具有必要属性的“未处理”关系，以便稍后重试，而不复制已执行的插入。}
+readAttributes:
+  dynamodb.chunks.processed: {en: 'Number of chunks successfully inserted into DynamoDB.
+      If not set, it is considered as 0', zh: 成功插入DynamoDB的块数。如果未设置，则视为0}
+properties:
+  Table Name:
+    en: {displayName: Table Name, description: The DynamoDB table name}
+    zh: {description: DynamoDB表名, displayName: 表名称}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  partition-key-field:
+    en: {displayName: Partition Key Field, description: Defines the name of the partition
+        key field in the DynamoDB table. Partition key is also known as hash key.
+        Depending on the "Partition Key Strategy" the field value might come from
+        the incoming Record or a generated one.}
+    zh: {description: 定义DynamoDB表中分区键字段的名称。分区键也称为哈希键。根据“分区密钥策略”，字段值可能来自传入的记录或生成的记录。,
+      displayName: 分区密钥字段}
+  sort-key-strategy:
+    en: {displayName: Sort Key Strategy, description: Defines the strategy the processor
+        uses to assign sort key to the inserted Items.}
+    zh: {description: 定义处理器用于为插入的项目分配排序键的策略。, displayName: 排序关键字策略}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。, displayName: 代理配置服务}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema.}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务。, displayName: 记录读取器}
+  partition-key-strategy:
+    en: {displayName: Partition Key Strategy, description: Defines the strategy the
+        processor uses to assign partition key value to the inserted Items.}
+    zh: {description: 定义处理器用于将分区键值分配给插入项的策略。, displayName: 分区密钥策略}
+  partition-key-attribute:
+    en: {displayName: Partition Key Attribute, description: Specifies the FlowFile
+        attribute that will be used as the value of the partition key when using "Partition
+        by attribute" partition key strategy.}
+    zh: {description: 指定使用“按属性分区”分区键策略时将用作分区键值的FlowFile属性。, displayName: 分区密钥属性}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  sort-key-field:
+    en: {displayName: Sort Key Field, description: Defines the name of the sort key
+        field in the DynamoDB table. Sort key is also known as range key.}
+    zh: {description: 定义DynamoDB表中排序关键字字段的名称。排序键也称为范围键。, displayName: 排序关键字字段}
+writeAttributes:
+  dynamodb.item.io.error: {en: IO exception message on creating item, zh: 创建项目时出现IO异常消息}
+  dynamodb.error.status.code: {en: DynamoDB error status code, zh: DynamoDB错误状态代码}
+  dynamodb.error.service: {en: DynamoDB error service, zh: DynamoDB错误服务}
+  dynmodb.range.key.value.error: {en: DynamoDB range key error, zh: DynamoDB范围键错误}
+  dynamodb.error.request.id: {en: DynamoDB error request id, zh: DynamoDB错误请求id}
+  dynamodb.key.error.unprocessed: {en: DynamoDB unprocessed keys, zh: DynamoDB未处理的密钥}
+  dynamodb.error.message: {en: DynamoDB error message, zh: DynamoDB错误消息}
+  dynamodb.error.retryable: {en: DynamoDB error is retryable, zh: DynamoDB错误可重试}
+  dynamodb.key.error.not.found: {en: DynamoDB key not found, zh: 找不到DynamoDB密钥}
+  dynamodb.error.type: {en: DynamoDB error type, zh: DynamoDB错误类型}
+  dynamodb.error.code: {en: DynamoDB error code, zh: DynamoDB错误代码}
+  dynamodb.error.exception.message: {en: DynamoDB exception message, zh: DynamoDB异常消息}
+  dynamodb.chunks.processed: {en: 'Number of chunks successfully inserted into DynamoDB.
+      If not set, it is considered as 0', zh: 成功插入DynamoDB的块数。如果未设置，则视为0}
+tags:
+  en: [Amazon, DynamoDB, AWS, Put, Insert, Record]
+  zh: [亚马逊, 动态数据库, 自动售货机, 放, 插入, 记录]

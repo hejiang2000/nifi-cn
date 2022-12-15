@@ -1,0 +1,58 @@
+capabilityDescription:
+  en: "Provides a lookup service based around MongoDB. Each key that is specified\
+    \ \nwill be added to a query as-is. For example, if you specify the two keys,\
+    \ \nuser and email, the resulting query will be { \"user\": \"tester\", \"email\"\
+    : \"tester@test.com\" }.\nThe query is limited to the first result (findOne in\
+    \ the Mongo documentation). If no \"Lookup Value Field\" is specified then the\
+    \ entire MongoDB result document minus the _id field will be returned as a record."
+  zh: 提供基于MongoDB的查找服务。指定的每个密钥
+properties:
+  schema-branch:
+    en: {displayName: Schema Branch, description: 'Specifies the name of the branch
+        to use when looking up the schema in the Schema Registry property. If the
+        chosen Schema Registry does not support branching, this value will be ignored.'}
+    zh: {description: 指定在“架构注册表”属性中查找架构时要使用的分支的名称。如果所选的架构注册表不支持分支，则将忽略此值。, displayName: 架构分支}
+  mongo-collection-name:
+    en: {displayName: Mongo Collection Name, description: The name of the collection
+        to use}
+    zh: {description: 要使用的集合的名称, displayName: Mongo集合名称}
+  mongo-lookup-value-field:
+    en: {displayName: Lookup Value Field, description: The field whose value will
+        be returned when the lookup key(s) match a record. If not specified then the
+        entire MongoDB result document minus the _id field will be returned as a record.}
+    zh: {description: 查找关键字与记录匹配时将返回其值的字段。如果未指定，则整个MongoDB结果文档减去_id字段将作为记录返回。, displayName: 查找值字段}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry}
+    zh: {description: 指定用于架构注册表的控制器服务, displayName: 架构注册表}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that is to be used for interpreting the data.}
+    zh: {description: 指定如何获取用于解释数据的架构。, displayName: 架构访问策略}
+  mongo-db-name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  schema-version:
+    en: {displayName: Schema Version, description: Specifies the version of the schema
+        to lookup in the Schema Registry. If not specified then the latest version
+        of the schema will be retrieved.}
+    zh: {description: 指定要在架构注册表中查找的架构的版本。如果未指定，则将检索架构的最新版本。, displayName: 架构版本}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+  mongo-lookup-client-service:
+    en: {displayName: Client Service, description: A MongoDB controller service to
+        use with this lookup service.}
+    zh: {description: 用于此查找服务的MongoDB控制器服务。, displayName: 客户端服务}
+  mongo-lookup-projection:
+    en: {displayName: Projection, description: Specifies a projection for limiting
+        which fields will be returned.}
+    zh: {description: 指定用于限制将返回哪些字段的投影。, displayName: 预测}
+tags:
+  en: [mongo, mongodb, lookup, record]
+  zh: [蒙哥, 数据库, 查找, 记录]

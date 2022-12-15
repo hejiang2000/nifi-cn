@@ -1,0 +1,43 @@
+relationships:
+  set state fail: {en: 'When state fails to save when processing a FlowFile, the FlowFile
+      is routed here.', zh: 当处理FlowFile时状态无法保存时，FlowFile将在此处路由。}
+  success: {en: All FlowFiles are successfully processed are routed here, zh: 成功处理的所有FlowFiles都在此处路由}
+  failure: {en: When a FlowFile fails for a reason other than failing to set state
+      it is routed here., zh: 当FlowFile由于未设置状态以外的原因而失败时，将在此处路由。}
+capabilityDescription: {en: Track a Rolling Window based on evaluating an Expression
+    Language expression on each FlowFile and add that value to the processor's state.
+    Each FlowFile will be emitted with the count of FlowFiles and total aggregate
+    value of values processed in the current time window., zh: 基于对每个FlowFile的表达式语言表达式的求值跟踪滚动窗口，并将该值添加到处理器的状态。每个FlowFile将与FlowFiles的计数和当前时间窗口中处理的值的合计值一起发出。}
+statefulDescription: {en: Store the values backing the rolling window. This includes
+    storing the individual values and their time-stamps or the batches of values and
+    their counts., zh: 存储滚动窗口的值。这包括存储单个值及其时间戳或值的批次及其计数。}
+properties:
+  Value to track:
+    en: {displayName: Value to track, description: The expression on which to evaluate
+        each FlowFile. The result of the expression will be added to the rolling window
+        value.}
+    zh: {description: 要计算每个FlowFile的表达式。表达式的结果将添加到滚动窗口值中。, displayName: 要跟踪的值}
+  Time window:
+    en: {displayName: Time window, description: The time window on which to calculate
+        the rolling window.}
+    zh: {description: 计算滚动窗口的时间窗口。, displayName: 时间窗口}
+  Sub-window length:
+    en: {displayName: Sub-window length, description: 'When set, values will be batched
+        into sub-windows of the set length. This allows for much larger length total
+        windows to be set but sacrifices some precision. If this is not set (or is
+        0) then each value is stored in state with the timestamp of when it was received.
+        After the length of time stated in Time window elaspes the value will be removed.
+        If this is set, values will be batched together every X amount of time (where
+        X is the time period set for this property) and removed all at once.'}
+    zh: {description: 设置后，值将被批处理到设置长度的子窗口中。这允许设置更大长度的总窗口，但牺牲了一些精度。如果未设置此值（或为0），则每个值都存储在具有接收时间戳的状态中。时间窗口中规定的时间长度结束后，该值将被删除。如果设置了此选项，值将在每X个时间段（其中X是为此属性设置的时间段）进行批处理，并一次删除所有值。,
+      displayName: 子窗口长度}
+writeAttributes:
+  rolling_window_value: {en: The rolling window value (sum of all the values stored).,
+    zh: 滚动窗口值（存储的所有值的总和）。}
+  rolling_window_mean: {en: The mean of the FlowFiles seen in the rolling window.,
+    zh: 滚动窗口中看到的FlowFiles的平均值。}
+  rolling_window_count: {en: The count of the number of FlowFiles seen in the rolling
+      window., zh: 滚动窗口中显示的FlowFiles数的计数。}
+tags:
+  en: [Attribute Expression Language, state, data science, rolling, window]
+  zh: [属性表达式语言, 状态, 数据科学, 滚动的, 窗]

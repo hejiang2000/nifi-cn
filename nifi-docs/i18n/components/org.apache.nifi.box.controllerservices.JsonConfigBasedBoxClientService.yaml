@@ -1,0 +1,19 @@
+capabilityDescription: {en: Provides Box client objects through which Box API calls
+    can be used., zh: 提供Box客户端对象，通过这些对象可以使用Box API调用。}
+properties:
+  box-account-id:
+    en: {displayName: Account ID, description: The ID of the Box account who owns
+        the accessed resource. Same as 'User Id' under 'App Info' in the App 'General
+        Settings'.}
+    zh: {description: 拥有访问资源的Box帐户的ID。与应用程序“常规设置”中“应用程序信息”下的“用户Id”相同。, displayName: 帐户ID}
+  app-config-file:
+    en: {displayName: App Config File, description: Full path of an App config JSON
+        file. See Additional Details for more information.}
+    zh: {description: App config JSON文件的完整路径。有关详细信息，请参阅其他详细信息。, displayName: 应用程序配置文件}
+  app-config-json:
+    en: {displayName: App Config JSON, description: The raw JSON containing an App
+        config. See Additional Details for more information.}
+    zh: {description: 包含App配置的原始JSON。有关详细信息，请参阅其他详细信息。, displayName: 应用程序配置JSON}
+tags:
+  en: [box, client, provider]
+  zh: [盒, 客户, 供应商]

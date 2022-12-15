@@ -1,0 +1,54 @@
+relationships:
+  success: {en: FlowFiles will be transferred to the success relationship after successfully
+      being compressed or decompressed, zh: 成功压缩或解压缩后，FlowFiles将传输到成功关系}
+  failure: {en: FlowFiles will be transferred to the failure relationship if they
+      fail to compress/decompress, zh: 如果FlowFiles无法压缩/解压缩，则将其传输到故障关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.,
+    An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。, 此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: Compresses or decompresses the contents of FlowFiles using
+    a user-specified compression algorithm and updates the mime.type attribute as
+    appropriate. This processor operates in a very memory efficient way so very large
+    objects well beyond the heap size are generally fine to process, zh: 使用用户指定的压缩算法压缩或解压缩FlowFiles的内容，并更新mime。类型属性。该处理器以非常节省内存的方式运行，因此通常可以处理超出堆大小的非常大的对象}
+readAttributes:
+  mime.type: {en: 'If the Compression Format is set to use mime.type attribute, this
+      attribute is used to determine the compression type. Otherwise, this attribute
+      is ignored.', zh: 如果压缩格式设置为使用mime。type属性，该属性用于确定压缩类型。否则，将忽略此属性。}
+properties:
+  Compression Format:
+    en: {displayName: Compression Format, description: 'The compression format to
+        use. Valid values are: GZIP, Deflate, ZSTD, BZIP2, XZ-LZMA2, LZMA, Brotli,
+        Snappy, Snappy Hadoop, Snappy Framed, and LZ4-Framed'}
+    zh: {description: 要使用的压缩格式。有效值为：GZIP、Deflate、ZSTD、BZIP2、XZ-LZMA2、LZMA、Brotli、Snappy、Snappy
+        Hadoop、Snappy Framed和LZ4 Framed, displayName: 压缩格式}
+  Mode:
+    en: {displayName: Mode, description: Indicates whether the processor should compress
+        content or decompress content. Must be either 'compress' or 'decompress'}
+    zh: {description: 指示处理器应压缩内容还是解压缩内容。必须是“compress”或“decompress”, displayName: 模式}
+  Compression Level:
+    en: {displayName: Compression Level, description: 'The compression level to use;
+        this is valid only when using gzip, deflate or xz-lzma2 compression. A lower
+        value results in faster processing but less compression; a value of 0 indicates
+        no (that is, simple archiving) for gzip or minimal for xz-lzma2 compression.
+        Higher levels can mean much larger memory usage such as the case with levels
+        7-9 for xz-lzma/2 so be careful relative to heap size.'}
+    zh: {description: 要使用的压缩级别；这仅在使用gzip、deflate或xz-lzma2压缩时有效。值越低，处理速度越快，但压缩量越小；值0表示gzip没有（即简单归档），xz-lzma2压缩最小。更高的级别可能意味着更大的内存使用量，例如xz
+        lzma/2的级别7-9，因此请注意堆大小。, displayName: 压缩级别}
+  Update Filename:
+    en: {displayName: Update Filename, description: 'If true, will remove the filename
+        extension when decompressing data (only if the extension indicates the appropriate
+        compression format) and add the appropriate extension when compressing data'}
+    zh: {description: 如果为true，将在解压缩数据时删除文件扩展名（仅当扩展名指示适当的压缩格式时），并在压缩数据时添加适当的扩展名, displayName: 更新文件名}
+writeAttributes:
+  mime.type: {en: 'If the Mode property is set to compress, the appropriate MIME Type
+      is set. If the Mode property is set to decompress and the file is successfully
+      decompressed, this attribute is removed, as the MIME Type is no longer known.',
+    zh: 如果Mode属性设置为压缩，则会设置相应的MIME类型。如果Mode属性设置为解压缩，并且文件成功解压缩，则此属性将被删除，因为MIME类型不再已知。}
+tags:
+  en: [content, compress, decompress, gzip, bzip2, lzma, xz-lzma2, snappy, snappy-hadoop,
+    snappy framed, lz4-framed, deflate, zstd, brotli]
+  zh: [所容纳之物, 压紧, 解压缩, gzip语言, bzip2, 更糟的, xz-lzma2型, 精炼的, Snappy hadoop, 轻快的框架, lz4框架,
+    瘪下来, zstd公司, 犯罪]

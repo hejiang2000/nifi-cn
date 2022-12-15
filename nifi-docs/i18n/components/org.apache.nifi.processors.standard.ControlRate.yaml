@@ -1,0 +1,58 @@
+relationships:
+  success: {en: FlowFiles are transferred to this relationship under normal conditions,
+    zh: 在正常情况下，FlowFiles被传输到此关系}
+  failure: {en: FlowFiles will be routed to this relationship if they are missing
+      a necessary Rate Controlled Attribute or the attribute is not in the expected
+      format, zh: 如果FlowFiles缺少必要的速率控制属性或该属性不是预期格式，则将其路由到此关系}
+capabilityDescription: {en: 'Controls the rate at which data is transferred to follow-on
+    processors. If you configure a very small Time Duration, then the accuracy of
+    the throttle gets worse. You can improve this accuracy by decreasing the Yield
+    Duration, at the expense of more Tasks given to the processor.', zh: 控制数据传输到后续处理器的速率。如果您配置了一个非常小的“持续时间”，那么节流阀的精度会变差。您可以通过减少Yield
+    Duration来提高这种准确性，而代价是给处理器更多的Task。}
+properties:
+  Maximum FlowFile Rate:
+    en: {displayName: Maximum FlowFile Rate, description: The maximum rate at which
+        FlowFiles should pass through this processor. The format of this property
+        is expected to be a positive integer representing FlowFiles count per Time
+        Duration}
+    zh: {description: FlowFiles应通过此处理器的最大速率。此属性的格式应为表示每持续时间的FlowFiles计数的正整数, displayName: 最大流文件速率}
+  Time Duration:
+    en: {displayName: Time Duration, description: The amount of time to which the
+        Maximum Rate pertains. Changing this value resets the rate counters.}
+    zh: {description: 与“最大速率”相关的时间量。更改此值将重置速率计数器。, displayName: 持续时间}
+  Grouping Attribute:
+    en: {displayName: Grouping Attribute, description: 'By default, a single "throttle"
+        is used for all FlowFiles. If this value is specified, a separate throttle
+        is used for each value specified by the attribute with this name. Changing
+        this value resets the rate counters.'}
+    zh: {description: 默认情况下，所有FlowFiles使用单个“节流阀”。如果指定了此值，则将为具有此名称的属性指定的每个值使用单独的限制。更改此值将重置速率计数器。,
+      displayName: 分组属性}
+  Maximum Rate:
+    en: {displayName: Maximum Rate, description: 'The maximum rate at which data should
+        pass through this processor. The format of this property is expected to be
+        a positive integer, or a Data Size (such as ''1 MB'') if Rate Control Criteria
+        is set to ''data rate''.'}
+    zh: {description: 数据应通过此处理器的最大速率。如果速率控制条件设置为“数据速率”，则此属性的格式应为正整数或数据大小（如“1 MB”）。,
+      displayName: 最大速率}
+  Rate Controlled Attribute:
+    en: {displayName: Rate Controlled Attribute, description: 'The name of an attribute
+        whose values build toward the rate limit if Rate Control Criteria is set to
+        ''attribute value''. The value of the attribute referenced by this property
+        must be a positive long, or the FlowFile will be routed to failure. This value
+        is ignored if Rate Control Criteria is not set to ''attribute value''. Changing
+        this value resets the rate counters.'}
+    zh: {description: 如果“速率控制条件”设置为“属性值”，则其值朝着速率限制构建的属性的名称。此属性引用的属性的值必须为正长，否则FlowFile将路由失败。如果速率控制条件未设置为“属性值”，则忽略此值。更改此值将重置速率计数器。,
+      displayName: 速率控制属性}
+  Rate Control Criteria:
+    en: {displayName: Rate Control Criteria, description: Indicates the criteria that
+        is used to control the throughput rate. Changing this value resets the rate
+        counters.}
+    zh: {description: 指示用于控制吞吐量的标准。更改此值将重置速率计数器。, displayName: 费率控制标准}
+  Maximum Data Rate:
+    en: {displayName: Maximum Data Rate, description: The maximum rate at which data
+        should pass through this processor. The format of this property is expected
+        to be a Data Size (such as '1 MB') representing bytes per Time Duration.}
+    zh: {description: 数据应通过此处理器的最大速率。此属性的格式应为数据大小（如“1 MB”），表示每持续时间的字节数。, displayName: 最大数据速率}
+tags:
+  en: [rate control, throttle, rate, throughput]
+  zh: [速率控制, 掐死, 速度, 吞吐量]

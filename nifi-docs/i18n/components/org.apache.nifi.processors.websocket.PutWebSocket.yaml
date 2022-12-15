@@ -1,0 +1,42 @@
+relationships:
+  success: {en: FlowFiles that are sent successfully to the destination are transferred
+      to this relationship., zh: 成功发送到目标的FlowFiles将传输到此关系。}
+  failure: {en: FlowFiles that failed to send to the destination are transferred to
+      this relationship., zh: 未能发送到目标的FlowFiles将传输到此关系。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: Sends messages to a WebSocket remote endpoint using a
+    WebSocket session that is established by either ListenWebSocket or ConnectWebSocket.,
+  zh: 使用由ListenWebSocket或ConnectWebSocket建立的WebSocket会话向WebSocket远程端点发送消息。}
+properties:
+  websocket-session-id:
+    en: {displayName: WebSocket Session Id, description: 'A NiFi Expression to retrieve
+        the session id. If not specified, a message will be sent to all connected
+        WebSocket peers for the WebSocket controller service endpoint.'}
+    zh: {description: 用于检索会话id的NiFi表达式。如果未指定，将向WebSocket控制器服务端点的所有连接的WebSocket对等端发送消息。,
+      displayName: WebSocket会话Id}
+  websocket-controller-service-id:
+    en: {displayName: WebSocket ControllerService Id, description: A NiFi Expression
+        to retrieve the id of a WebSocket ControllerService.}
+    zh: {description: 用于检索WebSocket ControllerService的id的NiFi表达式。, displayName: WebSocket控制器服务Id}
+  websocket-message-type:
+    en: {displayName: WebSocket Message Type, description: 'The type of message content:
+        TEXT or BINARY'}
+    zh: {description: 消息内容的类型：TEXT或BINARY, displayName: WebSocket消息类型}
+  websocket-endpoint-id:
+    en: {displayName: WebSocket Endpoint Id, description: A NiFi Expression to retrieve
+        the endpoint id of a WebSocket ControllerService.}
+    zh: {description: 用于检索WebSocket ControllerService的端点id的NiFi表达式。, displayName: WebSocket终结点Id}
+writeAttributes:
+  websocket.message.type: {en: TEXT or BINARY., zh: 文本或二进制。}
+  websocket.local.address: {en: WebSocket server address., zh: WebSocket服务器地址。}
+  websocket.session.id: {en: Established WebSocket session id., zh: 已建立WebSocket会话id。}
+  websocket.failure.detail: {en: Detail of the failure., zh: 失败的详细信息。}
+  websocket.remote.address: {en: WebSocket client address., zh: WebSocket客户端地址。}
+  websocket.controller.service.id: {en: WebSocket Controller Service id., zh: WebSocket控制器服务id。}
+  websocket.endpoint.id: {en: WebSocket endpoint id., zh: WebSocket端点id。}
+tags:
+  en: [WebSocket, publish, send]
+  zh: [WebSocket, 出版, 邮寄]

@@ -1,0 +1,84 @@
+relationships:
+  success: {en: 'All records will be sent to this Relationship if configured to do
+      so, unless a failure occurs', zh: 除非发生故障，否则如果配置为将所有记录发送到此关系}
+  failure: {en: 'If a FlowFile cannot be enriched, the unchanged FlowFile will be
+      routed to this relationship', zh: 如果无法丰富FlowFile，则未更改的FlowFile将被路由到此关系}
+dynamicProperties:
+  Value To Lookup:
+    en: {description: A RecordPath that points to the field whose value will be looked
+        up in the configured Lookup Service, value: Valid Record Path}
+    zh: {description: 指向将在配置的查找服务中查找其值的字段的RecordPath, value: 有效记录路径}
+capabilityDescription: {en: 'Extracts one or more fields from a Record and looks up
+    a value for those fields in a LookupService. If a result is returned by the LookupService,
+    that result is optionally added to the Record. In this case, the processor functions
+    as an Enrichment processor. Regardless, the Record is then routed to either the
+    ''matched'' relationship or ''unmatched'' relationship (if the ''Routing Strategy''
+    property is configured to do so), indicating whether or not a result was returned
+    by the LookupService, allowing the processor to also function as a Routing processor.
+    The "coordinates" to use for looking up a value in the Lookup Service are defined
+    by adding a user-defined property. Each property that is added will have an entry
+    added to a Map, where the name of the property becomes the Map Key and the value
+    returned by the RecordPath becomes the value for that key. If multiple values
+    are returned by the RecordPath, then the Record will be routed to the ''unmatched''
+    relationship (or ''success'', depending on the ''Routing Strategy'' property''s
+    configuration). If one or more fields match the Result RecordPath, all fields
+    that match will be updated. If there is no match in the configured LookupService,
+    then no fields will be updated. I.e., it will not overwrite an existing value
+    in the Record with a null value. Please note, however, that if the results returned
+    by the LookupService are not accounted for in your schema (specifically, the schema
+    that is configured for your Record Writer) then the fields will not be written
+    out to the FlowFile.', zh: 从记录中提取一个或多个字段，并在LookupService中查找这些字段的值。如果LookupService返回结果，则可以选择将该结果添加到记录中。在这种情况下，处理器充当扩展处理器。无论如何，记录然后被路由到“匹配”关系或“不匹配”关系（如果“路由策略”属性被配置为这样做），指示LookupService是否返回了结果，从而允许处理器也充当路由处理器。用于在查找服务中查找值的“坐标”是通过添加用户定义的属性来定义的。添加的每个属性都将有一个条目添加到Map中，其中属性的名称将成为Map
+    Key，RecordPath返回的值将成为该键的值。如果RecordPath返回多个值，则记录将被路由到“不匹配”关系（或“成功”，取决于“路由策略”属性的配置）。如果一个或多个字段与结果记录路径匹配，则将更新所有匹配的字段。如果配置的LookupService中没有匹配项，则不会更新任何字段。一、
+    例如，它不会用空值覆盖记录中的现有值。但是，请注意，如果LookupService返回的结果未在架构（特别是为记录编写器配置的架构）中说明，则字段将不会写入FlowFile。}
+properties:
+  result-contents:
+    en: {displayName: Record Result Contents, description: 'When a result is obtained
+        that contains a Record, this property determines whether the Record itself
+        is inserted at the configured path or if the contents of the Record (i.e.,
+        the sub-fields) will be inserted at the configured path.'}
+    zh: {description: 当获得包含记录的结果时，此属性确定记录本身是否插入到配置的路径，或者记录的内容（即子字段）是否将插入到配置路径。, displayName: 记录结果内容}
+  routing-strategy:
+    en: {displayName: Routing Strategy, description: Specifies how to route records
+        after a Lookup has completed}
+    zh: {description: 指定查找完成后如何路由记录, displayName: 路由策略}
+  record-path-lookup-miss-result-cache-size:
+    en: {displayName: Cache Size, description: 'Specifies how many lookup values/records
+        should be cached.Setting this property to zero means no caching will be done
+        and the table will be queried for each lookup value in each record. If the
+        lookup table changes often or the most recent data must be retrieved, do not
+        use the cache.'}
+    zh: {description: 指定应缓存多少查找值/记录。将此属性设置为零意味着将不进行缓存，并且将针对每个记录中的每个查找值查询表。如果查找表经常更改或必须检索最新的数据，请不要使用缓存。,
+      displayName: 缓存大小}
+  result-record-path:
+    en: {displayName: Result RecordPath, description: 'A RecordPath that points to
+        the field whose value should be updated with whatever value is returned from
+        the Lookup Service. If not specified, the value that is returned from the
+        Lookup Service will be ignored, except for determining whether the FlowFile
+        should be routed to the ''matched'' or ''unmatched'' Relationship.'}
+    zh: {description: 指向字段的RecordPath，该字段的值应使用从查找服务返回的值进行更新。如果未指定，将忽略从查找服务返回的值，除非确定FlowFile是否应路由到“匹配”或“不匹配”关系。,
+      displayName: 结果记录路径}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  lookup-service:
+    en: {displayName: Lookup Service, description: The Lookup Service to use in order
+        to lookup a value in each Record}
+    zh: {description: 用于查找每个记录中的值的查找服务, displayName: 查找服务}
+  record-update-strategy:
+    en: {displayName: Record Update Strategy, description: This property defines the
+        strategy to use when updating the record with the value returned by the Lookup
+        Service.}
+    zh: {description: 此属性定义使用查找服务返回的值更新记录时要使用的策略。, displayName: 记录更新策略}
+writeAttributes:
+  record.count: {en: The number of records in the FlowFile, zh: FlowFile中的记录数}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer, zh: 设置mime。type属性设置为记录编写器指定的MIME类型}
+tags:
+  en: [lookup, enrichment, route, record, csv, json, avro, database, db, logs, convert,
+    filter]
+  zh: [查找, 丰富, 路线, 记录, csv格式, json文件, 我没有吗？, 数据库, 数据库, 日志, 转换, 滤器]

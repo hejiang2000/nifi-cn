@@ -1,0 +1,8 @@
+capabilityDescription: {en: A reloadable properties file-based lookup service, zh: 基于文件的可重载属性查找服务}
+properties:
+  configuration-file:
+    en: {displayName: Configuration File, description: A configuration file}
+    zh: {description: 配置文件, displayName: 配置文件}
+tags:
+  en: [lookup, cache, enrich, join, properties, reloadable, key, value]
+  zh: [查找, 隐藏物, 充实, 参加, 属性, 可重新加载的, 钥匙, 价值]

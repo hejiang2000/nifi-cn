@@ -1,0 +1,156 @@
+relationships:
+  success: {en: Successfully created FlowFile from SQL query result set., zh: 已成功从SQL查询结果集创建FlowFile。}
+  failure: {en: 'This relationship is only used when SQL query execution (using an
+      incoming FlowFile) failed. The incoming FlowFile will be penalized and routed
+      to this relationship. If no incoming connection(s) are specified, this relationship
+      is unused.', zh: 此关系仅在SQL查询执行（使用传入的FlowFile）失败时使用。传入的FlowFile将受到惩罚并路由到此关系。如果未指定传入连接，则此关系未使用。}
+dynamicProperties:
+  initial.maxvalue.<max_value_column>:
+    en: {description: 'Specifies an initial max value for max value columns. Properties
+        should be added in the format `initial.maxvalue.<max_value_column>`. This
+        value is only used the first time the table is accessed (when a Maximum Value
+        Column is specified). In the case of incoming connections, the value is only
+        used the first time for each table specified in the FlowFiles.', value: Initial
+        maximum value for the specified column}
+    zh: {description: 为最大值列指定初始最大值。属性应以`initial.maxvalue.<max_value_column>`格式添加。该值仅在第一次访问表时使用（当指定了“最大值列”时）。对于传入连接，该值仅在FlowFiles中指定的每个表的第一次使用。,
+      value: 指定列的初始最大值}
+capabilityDescription:
+  en: |-
+    Generates SQL select queries that fetch "pages" of rows from a table. The partition size property, along with the table's row count, determine the size and number of pages and generated FlowFiles. In addition, incremental fetching can be achieved by setting Maximum-Value Columns, which causes the processor to track the columns' maximum values, thus only fetching rows whose columns' values exceed the observed maximums. This processor is intended to be run on the Primary Node only.
+
+    This processor can accept incoming connections; the behavior of the processor is different whether incoming connections are provided:
+      - If no incoming connection(s) are specified, the processor will generate SQL queries on the specified processor schedule. Expression Language is supported for many fields, but no FlowFile attributes are available. However the properties will be evaluated using the Variable Registry.
+      - If incoming connection(s) are specified and no FlowFile is available to a processor task, no work will be performed.
+      - If incoming connection(s) are specified and a FlowFile is available to a processor task, the FlowFile's attributes may be used in Expression Language for such fields as Table Name and others. However, the Max-Value Columns and Columns to Return fields must be empty or refer to columns that are available in each specified table.
+  zh: 生成从表中提取行“页”的SQL选择查询。分区大小属性与表的行计数一起确定页面和生成的FlowFiles的大小和数量。此外，通过设置Maximum Value
+    Columns（最大值列）可以实现增量获取，这会导致处理器跟踪列的最大值，从而仅获取列值超过观察到的最大值的行。此处理器只能在主节点上运行。
+statefulDescription: {en: 'After performing a query on the specified table, the maximum
+    values for the specified column(s) will be retained for use in future executions
+    of the query. This allows the Processor to fetch only those records that have
+    max values greater than the retained values. This can be used for incremental
+    fetching, fetching of newly added rows, etc. To clear the maximum values, clear
+    the state of the processor per the State Management documentation', zh: 对指定表执行查询后，将保留指定列的最大值，以供将来执行查询时使用。这允许处理器仅获取最大值大于保留值的记录。这可用于增量获取、获取新添加的行等。要清除最大值，请根据状态管理文档清除处理器的状态}
+properties:
+  gen-table-output-flowfile-on-zero-results:
+    en: {displayName: Output Empty FlowFile on Zero Results, description: 'Depending
+        on the specified properties, an execution of this processor may not result
+        in any SQL statements generated. When this property is true, an empty FlowFile
+        will be generated (having the parent of the incoming FlowFile if present)
+        and transferred to the ''success'' relationship. When this property is false,
+        no output FlowFiles will be generated.'}
+    zh: {description: 根据指定的属性，执行此处理器可能不会生成任何SQL语句。当此属性为true时，将生成一个空的FlowFile（如果存在，则具有传入FlowFile的父级），并将其传输到“成功”关系。如果此属性为false，则不会生成输出FlowFiles。,
+      displayName: 零结果时输出空FlowFile}
+  Table Name:
+    en: {displayName: Table Name, description: The name of the database table to be
+        queried.}
+    zh: {description: 要查询的数据库表的名称。, displayName: 表名称}
+  db-fetch-db-type:
+    en: {displayName: Database Type, description: 'The type/flavor of database, used
+        for generating database-specific code. In many cases the Generic type should
+        suffice, but some databases (such as Oracle) require custom SQL clauses. '}
+    zh: {description: 数据库的类型/风格，用于生成特定于数据库的代码。在许多情况下，Generic类型应该足够了，但一些数据库（如Oracle）需要自定义SQL子句。,
+      displayName: 数据库类型}
+  gen-table-custom-orderby-column:
+    en: {displayName: Custom ORDER BY Column, description: 'The name of a column to
+        be used for ordering the results if Max-Value Columns are not provided and
+        partitioning is enabled. This property is ignored if either Max-Value Columns
+        is set or Partition Size = 0. NOTE: If neither Max-Value Columns nor Custom
+        ORDER BY Column is set, then depending on the the database/driver, the processor
+        may report an error and/or the generated SQL may result in missing and/or
+        duplicate rows. This is because without an explicit ordering, fetching each
+        partition is done using an arbitrary ordering.'}
+    zh: {description: 如果未提供“最大值列”并且启用了分区，则用于对结果排序的列的名称。如果设置了最大值列或分区大小为0，则忽略此属性。注意：如果既没有设置最大值列，也没有设置自定义ORDER
+        BY列，则根据数据库/驱动程序，处理器可能会报告错误和/或生成的SQL可能会导致丢失和/或重复行。这是因为在没有显式排序的情况下，提取每个分区是使用任意排序完成的。,
+      displayName: 自定义ORDER BY列}
+  Max Wait Time:
+    en: {displayName: Max Wait Time, description: 'The maximum amount of time allowed
+        for a running SQL select query , zero means there is no limit. Max time less
+        than 1 second will be equal to zero.'}
+    zh: {description: 运行SQL选择查询所允许的最长时间，零表示没有限制。小于1秒的最大时间将等于零。, displayName: 最长等待时间}
+  Database Connection Pooling Service:
+    en: {displayName: Database Connection Pooling Service, description: The Controller
+        Service that is used to obtain a connection to the database.}
+    zh: {description: 用于获取数据库连接的控制器服务。, displayName: 数据库连接池服务}
+  gen-table-fetch-partition-size:
+    en: {displayName: Partition Size, description: The number of result rows to be
+        fetched by each generated SQL statement. The total number of rows in the table
+        divided by the partition size gives the number of SQL statements (i.e. FlowFiles)
+        generated. A value of zero indicates that a single FlowFile is to be generated
+        whose SQL statement will fetch all rows in the table.}
+    zh: {description: 每个生成的SQL语句要获取的结果行数。表中的行总数除以分区大小得出生成的SQL语句（即FlowFiles）的数量。值为零表示将生成单个FlowFile，其SQL语句将获取表中的所有行。,
+      displayName: 分区大小}
+  Columns to Return:
+    en: {displayName: Columns to Return, description: 'A comma-separated list of column
+        names to be used in the query. If your database requires special treatment
+        of the names (quoting, e.g.), each name should include such treatment. If
+        no column names are supplied, all columns in the specified table will be returned.
+        NOTE: It is important to use consistent column names for a given table for
+        incremental fetch to work properly.'}
+    zh: {description: 要在查询中使用的列名称的逗号分隔列表。如果您的数据库需要对名称进行特殊处理（例如引用），则每个名称都应包含此类处理。如果未提供列名，则将返回指定表中的所有列。注意：对于一个给定的表，使用一致的列名是非常重要的，这样增量提取才能正常工作。,
+      displayName: 要返回的列}
+  Maximum-value Columns:
+    en: {displayName: Maximum-value Columns, description: 'A comma-separated list
+        of column names. The processor will keep track of the maximum value for each
+        column that has been returned since the processor started running. Using multiple
+        columns implies an order to the column list, and each column''s values are
+        expected to increase more slowly than the previous columns'' values. Thus,
+        using multiple columns implies a hierarchical structure of columns, which
+        is usually used for partitioning tables. This processor can be used to retrieve
+        only those rows that have been added/updated since the last retrieval. Note
+        that some JDBC types such as bit/boolean are not conducive to maintaining
+        maximum value, so columns of these types should not be listed in this property,
+        and will result in error(s) during processing. If no columns are provided,
+        all rows from the table will be considered, which could have a performance
+        impact. NOTE: It is important to use consistent max-value column names for
+        a given table for incremental fetch to work properly.'}
+    zh: {description: 以逗号分隔的列名列表。处理器将跟踪自处理器开始运行以来返回的每一列的最大值。使用多个列意味着对列列表的顺序，并且每一列的值的增加速度都比前一列的值更慢。因此，使用多列意味着列的分层结构，通常用于划分表。此处理器只能用于检索自上次检索以来添加/更新的行。请注意，某些JDBC类型（如bit/boolean）不利于保持最大值，因此这些类型的列不应在此属性中列出，并将在处理过程中导致错误。如果未提供列，则将考虑表中的所有行，这可能会影响性能。注意：对于给定的表，使用一致的最大值列名称对于增量获取正常工作很重要。,
+      displayName: 最大值列}
+  db-fetch-where-clause:
+    en: {displayName: Additional WHERE clause, description: A custom clause to be
+        added in the WHERE condition when building SQL queries.}
+    zh: {description: 生成SQL查询时要在WHERE条件中添加的自定义子句。, displayName: 附加WHERE子句}
+  gen-table-column-for-val-partitioning:
+    en: {displayName: Column for Value Partitioning, description: 'The name of a column
+        whose values will be used for partitioning. The default behavior is to use
+        row numbers on the result set for partitioning into ''pages'' to be fetched
+        from the database, using an offset/limit strategy. However for certain databases,
+        it can be more efficient under the right circumstances to use the column values
+        themselves to define the ''pages''. This property should only be used when
+        the default queries are not performing well, when there is no maximum-value
+        column or a single maximum-value column whose type can be coerced to a long
+        integer (i.e. not date or timestamp), and the column values are evenly distributed
+        and not sparse, for best performance.'}
+    zh: {description: 其值将用于分区的列的名称。默认行为是使用偏移/限制策略将结果集上的行号划分为要从数据库中提取的“页面”。然而，对于某些数据库，在适当的情况下使用列值本身来定义“页面”可能会更有效。只有当默认查询执行不好，没有最大值列或单个最大值列的类型可以强制为长整数（即，不是日期或时间戳），并且列值均匀分布而不是稀疏时，才能使用此属性，以获得最佳性能。,
+      displayName: 值分区列}
+writeAttributes:
+  generatetablefetch.offset: {en: Offset to be used to retrieve the corresponding
+      partition., zh: 用于检索相应分区的偏移量。}
+  generatetablefetch.whereClause: {en: Where clause used in the query to get the expected
+      rows., zh: 查询中用于获取预期行的Where子句。}
+  generatetablefetch.maxColumnNames: {en: The comma-separated list of column names
+      used to keep track of data that has been returned since the processor started
+      running., zh: 以逗号分隔的列名列表，用于跟踪自处理器开始运行以来返回的数据。}
+  generatetablefetch.limit: {en: The number of result rows to be fetched by the SQL
+      statement., zh: SQL语句要提取的结果行数。}
+  fragment.identifier: {en: All FlowFiles generated from the same query result set
+      will have the same value for the fragment.identifier attribute. This can then
+      be used to correlate the results., zh: 从同一查询结果集生成的所有FlowFiles将具有相同的片段值。标识符属性。然后，这可以用于关联结果。}
+  fragment.index: {en: This is the position of this FlowFile in the list of outgoing
+      FlowFiles that were all generated from the same execution. This can be used
+      in conjunction with the fragment.identifier attribute to know which FlowFiles
+      originated from the same execution and in what order  FlowFiles were produced,
+    zh: 这是此FlowFile在所有从同一执行生成的传出FlowFile列表中的位置。这可以与片段一起使用。identifier属性，以了解哪些FlowFiles源自同一执行，以及FlowFiles的生成顺序}
+  generatetablefetch.columnNames: {en: The comma-separated list of column names used
+      in the query., zh: 查询中使用的列名称的逗号分隔列表。}
+  generatetablefetch.tableName: {en: The name of the database table to be queried.,
+    zh: 要查询的数据库表的名称。}
+  fragment.count: {en: This is the total number of  FlowFiles produced by a single
+      ResultSet. This can be used in conjunction with the fragment.identifier attribute
+      in order to know how many FlowFiles belonged to the same incoming ResultSet.,
+    zh: 这是单个ResultSet生成的FlowFiles总数。这可以与片段一起使用。identifier属性，以便知道有多少FlowFiles属于同一传入ResultSet。}
+  generatetablefetch.sql.error: {en: 'If the processor has incoming connections, and
+      processing an incoming FlowFile causes a SQL Exception, the FlowFile is routed
+      to failure and this attribute is set to the exception message.', zh: 如果处理器具有传入连接，并且处理传入的FlowFile会导致SQL异常，则FlowFile将被路由到失败，并且此属性设置为异常消息。}
+tags:
+  en: [sql, select, jdbc, query, database, fetch, generate]
+  zh: [sql语言, 选择, jdbc语言, 查询, 数据库, 取来, 生成]

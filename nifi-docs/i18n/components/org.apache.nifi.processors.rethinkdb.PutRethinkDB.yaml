@@ -1,0 +1,59 @@
+relationships:
+  success: {en: Sucessful FlowFiles are routed to this relationship, zh: 成功的FlowFiles被路由到此关系}
+  failure: {en: Failed FlowFiles are routed to this relationship, zh: 失败的FlowFiles路由到此关系}
+capabilityDescription: {en: 'Processor to write the JSON content of a FlowFile to
+    RethinkDB (https://www.rethinkdb.com/). The flow file should contain either JSON
+    Object an array of JSON documents', zh: '将FlowFile的JSON内容写入RethinkDB的处理器(https://www.rethinkdb.com/).
+    流文件应包含JSON对象或JSON文档数组'}
+properties:
+  rethinkdb-password:
+    en: {displayName: Password, description: Password for user}
+    zh: {description: 用户的密码, displayName: 暗语}
+  rethinkdb-max-document-size:
+    en: {displayName: Max size of documents, description: Maximum size of documents
+        allowed to be posted in one batch}
+    zh: {description: 允许在一批中过帐的最大文档大小, displayName: 文档的最大大小}
+  rethinkdb-table:
+    en: {displayName: Table name, description: RethinkDB table to connect to}
+    zh: {description: 重新思考要连接到的DB表, displayName: 表名称}
+  rethinkdb-username:
+    en: {displayName: Username, description: Username for accessing RethinkDB}
+    zh: {description: 访问RethinkDB的用户名, displayName: 用户名}
+  rethinkdb-charset:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        document data.}
+    zh: {description: 指定文档数据的字符集。, displayName: 字符集}
+  rethinkdb-conflict-strategy:
+    en: {displayName: Conflict strategy, description: Conflict strategy to be used
+        in case of inserting existing document.}
+    zh: {description: 插入现有文档时使用的冲突策略。, displayName: 冲突战略}
+  rethinkdb-port:
+    en: {displayName: DB Port, description: RethinkDB database port to connect to}
+    zh: {description: 重新思考要连接到的数据库端口, displayName: DB端口}
+  rethinkdb-dbname:
+    en: {displayName: DB Name, description: RethinkDB database to connect to}
+    zh: {description: 重新思考要连接到的数据库, displayName: 数据库名称}
+  rethinkdb-host:
+    en: {displayName: Hostname, description: RethinkDB hostname}
+    zh: {description: 重新思考DB主机名, displayName: 主机名}
+  rethinkdb-durability:
+    en: {displayName: Durablity of documents, description: Durability of documents
+        being inserted}
+    zh: {description: 插入文件的耐久性, displayName: 文件的耐久性}
+writeAttributes:
+  rethinkdb.insert.replaced: {en: Number of documents replaced, zh: 替换的文件数量}
+  rethinkdb.insert.unchanged: {en: Number of documents unchanged since they already
+      existed, zh: 自已存在以来未更改的文档数}
+  rethinkdb.error.message: {en: RethinkDB error message, zh: RethinkDB错误消息}
+  rethinkdb.insert.deleted: {en: Number of documents deleted, zh: 删除的文档数}
+  rethinkdb.insert.errors: {en: Error count while inserting documents, zh: 插入文档时的错误计数}
+  rethinkdb.insert.first_error: {en: First error while inserting documents, zh: 插入文档时出现第一个错误}
+  rethinkdb.insert.warnings: {en: Warning message in case of large number of ids being
+      returned on insertion, zh: 插入时返回大量ID时的警告消息}
+  rethinkdb.insert.generated_keys: {en: Keys generated on inserting documents, zh: 插入文档时生成的密钥}
+  rethinkdb.insert.inserted: {en: Number of documents inserted, zh: 插入的文档数}
+  rethinkdb.insert.skipped: {en: Number of documents skipped because they already
+      existed, zh: 由于已存在而跳过的文档数}
+tags:
+  en: [rethinkdb, stream, insert, update, write, put]
+  zh: [重新链接数据库, 流动, 插入, 使现代化, 写, 放]

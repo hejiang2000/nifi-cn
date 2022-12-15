@@ -1,0 +1,155 @@
+relationships:
+  Response: {en: A Response FlowFile will be routed upon success (2xx status codes).
+      If the 'Output Response Regardless' property is true then the response will
+      be sent to this relationship regardless of the status code received., zh: 成功后将路由响应流文件（2xx状态代码）。如果“Output
+      Response Anywhere”属性为true，则无论收到的状态代码如何，都将向此关系发送响应。}
+  No Retry: {en: 'The original FlowFile will be routed on any status code that should
+      NOT be retried (1xx, 3xx, 4xx status codes).  It will have new attributes detailing
+      the request.', zh: 原始FlowFile将根据任何不应重试的状态代码（1xx、3xx、4xx状态代码）进行路由。它将具有详细说明请求的新属性。}
+  Retry: {en: The original FlowFile will be routed on any status code that can be
+      retried (5xx status codes). It will have new attributes detailing the request.,
+    zh: 原始FlowFile将根据任何可重试的状态代码（5xx状态代码）进行路由。它将具有详细说明请求的新属性。}
+  Original: {en: The original FlowFile will be routed upon success (2xx status codes).
+      It will have new  attributes detailing the success of the request., zh: 成功后将路由原始FlowFile（2xx状态代码）。它将具有详细说明请求成功的新属性。}
+  Failure: {en: 'The original FlowFile will be routed on any type of connection failure,
+      timeout or general exception. It will have new attributes detailing the request.',
+    zh: 原始FlowFile将在任何类型的连接失败、超时或一般异常时路由。它将具有详细说明请求的新属性。}
+dynamicProperties:
+  Header Name:
+    en: {description: Send request header with a key matching the Dynamic Property
+        Key and a value created by evaluating the Attribute Expression Language set
+        in the value of the Dynamic Property., value: Attribute Expression Language}
+    zh: {description: 发送具有与动态属性键匹配的键的请求头，以及通过计算在动态属性的值中设置的属性表达式语言创建的值。, value: 属性表达式语言}
+capabilityDescription: {en: Client for AWS Gateway API endpoint, zh: AWS网关API端点客户端}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  aws-gateway-api-endpoint:
+    en: {displayName: Amazon Gateway Api Endpoint, description: The Api Endpoint}
+    zh: {description: Api端点, displayName: Amazon网关Api端点}
+  aws-gateway-always-output-response:
+    en: {displayName: Always Output Response, description: Will force a response FlowFile
+        to be generated and routed to the 'Response' relationship regardless of what
+        the server status code received is or if the processor is configured to put
+        the server response body in the request attribute. In the later configuration
+        a request FlowFile with the response body in the attribute and a typical response
+        FlowFile will be emitted to their respective relationships.}
+    zh: {description: 将强制生成响应流文件并将其路由到“响应”关系，而不管接收到的服务器状态代码是什么，或者处理器是否配置为将服务器响应主体放入请求属性。在后面的配置中，属性中包含响应主体的请求FlowFile和典型响应FlowFile将被发送到它们各自的关系。,
+      displayName: 始终输出响应}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  aws-gateway-content-type:
+    en: {displayName: Content-Type, description: 'The Content-Type to specify for
+        when content is being transmitted through a PUT, POST or PATCH. In the case
+        of an empty value after evaluating an expression language expression, Content-Type
+        defaults to application/octet-stream'}
+    zh: {description: 通过PUT、POST或PATCH传输内容时要指定的内容类型。在计算表达式语言表达式后为空值的情况下，内容类型默认为应用程序/八位字节流,
+      displayName: 内容类型}
+  aws-gateway-penalize-no-retry:
+    en: {displayName: Penalize on "No Retry", description: Enabling this property
+        will penalize FlowFiles that are routed to the "No Retry" relationship.}
+    zh: {description: 启用此属性将惩罚路由到“无重试”关系的FlowFiles。, displayName: 惩罚“不重试”}
+  aws-gateway-max-attribute-length:
+    en: {displayName: Max Length To Put In Attribute, description: 'If routing the
+        response body to an attribute of the original (by setting the "Put response
+        body in attribute" property or by receiving an error status code), the number
+        of characters put to the attribute value will be at most this amount. This
+        is important because attributes are held in memory and large attributes will
+        quickly cause out of memory issues. If the output goes longer than this value,
+        it will be truncated to fit. Consider making this smaller if able.'}
+    zh: {description: 如果将响应体路由到原始属性（通过设置“将响应体放入属性”属性或通过接收错误状态代码），则放入属性值的字符数最多为此数量。这一点很重要，因为属性保存在内存中，大型属性会很快导致内存不足问题。如果输出的长度超过此值，则会将其截断以适合。如果可能的话，考虑将其缩小。,
+      displayName: 要放入属性的最大长度}
+  aws-gateway-api-key:
+    en: {displayName: Amazon Gateway Api Key, description: The API Key}
+    zh: {description: API密钥, displayName: 亚马逊网关Api密钥}
+  aws-gateway-send-message-body:
+    en: {displayName: Send Message Body, description: 'If true, sends the HTTP message
+        body on POST/PUT/PATCH requests (default).  If false, suppresses the message
+        body and content-type header for these requests.'}
+    zh: {description: 如果为true，则在POST/PUT/PATCH请求上发送HTTP消息体（默认）。如果为false，则取消显示这些请求的消息正文和内容类型标头。,
+      displayName: 发送邮件正文}
+  aws-gateway-resource:
+    en: {displayName: Amazon Gateway Api ResourceName, description: The Name of the
+        Gateway API Resource}
+    zh: {description: 网关API资源的名称, displayName: 亚马逊网关Api资源名称}
+  aws-gateway-query-parameters:
+    en: {displayName: Query Parameters, description: The query parameters for this
+        request in the form of Name=Value separated by &}
+    zh: {description: 此请求的查询参数以名称=值的形式，由分隔&, displayName: 查询参数}
+  aws-gateway-add-response-headers-request:
+    en: {displayName: Add Response Headers To Request, description: Enabling this
+        property saves all the response headers to the original request. This may
+        be when the response headers are needed but a response is not generated due
+        to the status code received.}
+    zh: {description: 启用此属性会将所有响应标头保存到原始请求。这可能是在需要响应标头但由于接收到状态代码而未生成响应时。, displayName: 向请求添加响应标头}
+  aws-gateway-http-method:
+    en: {displayName: HTTP Method, description: 'HTTP request method (GET, POST, PUT,
+        PATCH, DELETE, HEAD, OPTIONS).Methods other than POST, PUT and PATCH will
+        be sent without a message body.'}
+    zh: {description: HTTP请求方法（GET、POST、PUT、PATCH、DELETE、HEAD、OPTIONS）。POST、PUT和PATCH以外的方法将在没有消息体的情况下发送。,
+      displayName: HTTP方法}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  aws-gateway-put-response-body-in-attribute:
+    en: {displayName: Put Response Body In Attribute, description: 'If set, the response
+        body received back will be put into an attribute of the original FlowFile
+        instead of a separate FlowFile. The attribute key to put to is determined
+        by evaluating value of this property. '}
+    zh: {description: 如果设置，则返回的响应体将被放入原始FlowFile的属性中，而不是单独的FlowFile。要放入的属性键是通过计算此属性的值来确定的。,
+      displayName: 将响应正文放入属性}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  aws-gateway-region:
+    en: {displayName: Amazon Region, description: ''}
+    zh: {description: '', displayName: 亚马逊地区}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+  aws-gateway-attributes-to-send:
+    en: {displayName: Attributes to Send, description: 'Regular expression that defines
+        which attributes to send as HTTP headers in the request. If not defined, no
+        attributes are sent as headers. Also any dynamic properties set will be sent
+        as headers. The dynamic property key will be the header key and the dynamic
+        property value will be interpreted as expression language will be the header
+        value.'}
+    zh: {description: 正则表达式，用于定义要作为请求中的HTTP头发送的属性。如果未定义，则不会将任何属性作为标头发送。此外，任何动态属性集都将作为标头发送。动态属性键将是标头键，动态属性值将被解释为表达式语言将是标头值。,
+      displayName: 要发送的属性}
+writeAttributes:
+  aws.gateway.api.response.body: {en: In the instance where the status code received
+      is not a success (2xx), zh: 在收到的状态代码不成功的情况下（2xx）}
+  aws.gateway.api.java.exception.class: {en: The Java exception class raised when
+      the processor fails, zh: 处理器出现故障时引发的Java异常类}
+  aws.gateway.api.tx.id: {en: The transaction ID that is returned after reading the
+      response, zh: 读取响应后返回的事务ID}
+  aws.gateway.api.status.message: {en: The status message that is returned, zh: 返回的状态消息}
+  aws.gateway.api.resource: {en: The request resource, zh: 请求资源}
+  aws.gateway.api.java.exception.message: {en: The Java exception message raised when
+      the processor fails, zh: 处理器出现故障时引发的Java异常消息}
+  mime.type: {en: The MIME Type of the flowfiles, zh: 流文件的MIME类型}
+  aws.gateway.api.status.code: {en: The status code that is returned, zh: 返回的状态代码}
+tags:
+  en: [Amazon, AWS, Client, Gateway-API, Rest, http, https]
+  zh: [亚马逊, 自动售货机, 客户, 网关API, 休息, http, https]

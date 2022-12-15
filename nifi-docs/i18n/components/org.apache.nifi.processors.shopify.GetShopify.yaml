@@ -1,0 +1,83 @@
+relationships:
+  success: {en: For FlowFiles created as a result of a successful query., zh: 对于查询成功后创建的FlowFiles。}
+capabilityDescription: {en: Retrieves objects from a custom Shopify store. The processor
+    yield time must be set to the account's rate limit accordingly., zh: 从自定义Shopify存储中检索对象。处理器收益时间必须相应地设置为帐户的利率限制。}
+statefulDescription: {en: For a few resources the processor supports incremental loading.
+    The list of the resources with the supported parameters can be found in the additional
+    details., zh: 对于少数资源，处理器支持增量加载。具有支持参数的资源列表可以在其他详细信息中找到。}
+properties:
+  api-version:
+    en: {displayName: API Version, description: The Shopify REST API version}
+    zh: {description: Shopify REST API版本, displayName: API版本}
+  ONLINE_STORE:
+    en: {displayName: Online Store Category, description: Online Store resource to
+        query}
+    zh: {description: 要查询的在线商店资源, displayName: 在线商店类别}
+  is-incremental:
+    en: {displayName: Incremental Loading, description: 'The processor can incrementally
+        load the queried objects so that each object is queried exactly once. For
+        each query, the processor queries objects which were created or modified after
+        the previous run time but before the current time.'}
+    zh: {description: 处理器可以增量加载所查询的对象，以便每个对象只查询一次。对于每个查询，处理器都会查询在上一次运行时间之后但在当前时间之前创建或修改的对象。,
+      displayName: 增量加载}
+  access-token:
+    en: {displayName: Access Token, description: Access Token to authenticate requests}
+    zh: {description: 用于验证请求的访问令牌, displayName: 访问令牌}
+  DISCOUNTS:
+    en: {displayName: Discount Category, description: Discount resource to query}
+    zh: {description: 要查询的折扣资源, displayName: 折扣类别}
+  web-client-service-provider:
+    en: {displayName: Web Client Service Provider, description: Controller service
+        for HTTP client operations}
+    zh: {description: 用于HTTP客户端操作的控制器服务, displayName: Web客户端服务提供商}
+  SALES_CHANNELS:
+    en: {displayName: Sales Channel Category, description: Sales Channel resource
+        to query}
+    zh: {description: 要查询的销售渠道资源, displayName: 销售渠道类别}
+  object-category:
+    en: {displayName: Object Category, description: Shopify object category}
+    zh: {description: Shopify对象类别, displayName: 对象类别}
+  store-domain:
+    en: {displayName: Store Domain, description: 'The domain of the Shopify store,
+        e.g. nifistore.myshopify.com'}
+    zh: {description: Shopify商店的域，例如nifstore.myshopify.com, displayName: 存储域}
+  result-limit:
+    en: {displayName: Result Limit, description: The maximum number of results to
+        request for each invocation of the Processor}
+    zh: {description: 每次调用处理器时请求的最大结果数, displayName: 结果限制}
+  CUSTOMERS:
+    en: {displayName: Customer Category, description: Customer resource to query}
+    zh: {description: 要查询的客户资源, displayName: 客户类别}
+  INVENTORY:
+    en: {displayName: Inventory Category, description: Inventory resource to query}
+    zh: {description: 要查询的库存资源, displayName: 库存类别}
+  incremental-delay:
+    en: {displayName: Incremental Delay, description: 'The ending timestamp of the
+        time window will be adjusted earlier by the amount configured in this property.
+        For example, with a property value of 10 seconds, an ending timestamp of 12:30:45
+        would be changed to 12:30:35. Set this property to avoid missing objects when
+        the clock of your local machines and Shopify servers'' clock are not in sync.'}
+    zh: {description: '时间窗口的结束时间戳将根据此属性中配置的数量提前调整。例如，如果属性值为10秒，结束时间戳12:30:45将更改为12:30:35。设置此属性以避免在本地计算机的时钟和Shopify服务器的时钟不同步时丢失对象。',
+      displayName: 增量延迟}
+  PRODUCT:
+    en: {displayName: Product Category, description: Product resource to query}
+    zh: {description: 要查询的产品资源, displayName: 产品类别}
+  ORDERS:
+    en: {displayName: Order Category, description: Order resource to query}
+    zh: {description: 订购要查询的资源, displayName: 订单类别}
+  STORE_PROPERTIES:
+    en: {displayName: Store Property Category, description: Store Property resource
+        to query}
+    zh: {description: 要查询的存储属性资源, displayName: 商店属性类别}
+  incremental-initial-start-time:
+    en: {displayName: Incremental Initial Start Time, description: 'This property
+        specifies the start time when running the first request. Represents an ISO
+        8601-encoded date and time string. For example, 3:50 pm on September 7, 2019
+        in the time zone of UTC (Coordinated Universal Time) is represented as "2019-09-07T15:50:00Z".'}
+    zh: {description: '此属性指定运行第一个请求时的开始时间。表示ISO 8601编码的日期和时间字符串。例如，2019年9月7日下午3:50，UTC（协调世界时）时区表示为“2019-09-07T15:50:00Z”。',
+      displayName: 增量初始启动时间}
+writeAttributes:
+  mime.type: {en: Sets the MIME type to application/json, zh: 将MIME类型设置为application/json}
+tags:
+  en: [shopify]
+  zh: [商店化]

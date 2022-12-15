@@ -1,0 +1,52 @@
+relationships:
+  success: {en: 'When the operation succeeds, the flowfile is sent to this relationship.',
+    zh: 操作成功后，流程文件将发送到此关系。}
+  failure: {en: 'When there is a failure processing the flowfile, it goes to this
+      relationship.', zh: 当处理流文件失败时，将转到此关系。}
+  duplicate: {en: Flowfiles that fail the duplicate check are sent to this relationship.,
+    zh: 重复检查失败的流文件将发送到此关系。}
+capabilityDescription: {en: Writes a file to a GridFS bucket., zh: 将文件写入GridFS存储桶。}
+properties:
+  putgridfs-chunk-size:
+    en: {displayName: Chunk Size, description: Controls the maximum size of each chunk
+        of a file uploaded into GridFS.}
+    zh: {description: 控制上载到GridFS的文件的每个块的最大大小。, displayName: 组块大小}
+  putgridfs-hash-attribute:
+    en: {displayName: Hash Attribute, description: 'If uniquness enforcement is enabled
+        and the file hash is part of the constraint, this must be set to an attribute
+        that exists on all incoming flowfiles.'}
+    zh: {description: 如果启用了单向强制，并且文件哈希是约束的一部分，则必须将其设置为存在于所有传入流文件上的属性。, displayName: 哈希属性}
+  gridfs-file-name:
+    en: {displayName: File Name, description: The name of the file in the bucket that
+        is the target of this processor. GridFS file names do not include path information
+        because GridFS does not sort files into folders within a bucket.}
+    zh: {description: 存储桶中作为此处理器目标的文件的名称。GridFS文件名不包含路径信息，因为GridFS不会将文件排序到存储桶中的文件夹中。,
+      displayName: 文件名}
+  gridfs-client-service:
+    en: {displayName: Client Service, description: The MongoDB client service to use
+        for database connections.}
+    zh: {description: 用于数据库连接的MongoDB客户端服务。, displayName: 客户端服务}
+  putgridfs-enforce-uniqueness:
+    en: {displayName: Enforce Uniqueness, description: 'When enabled, this option
+        will ensure that uniqueness is enforced on the bucket. It will do so by creating
+        a MongoDB index that matches your selection. It should ideally be configured
+        once when the bucket is created for the first time because it could take a
+        long time to build on an existing bucket wit a lot of data.'}
+    zh: {description: 启用此选项后，将确保在bucket上强制执行唯一性。它将通过创建与您的选择相匹配的MongoDB索引来实现。理想情况下，应该在第一次创建存储桶时配置一次，因为在具有大量数据的现有存储桶上构建可能需要很长时间。,
+      displayName: 强制唯一性}
+  gridfs-database-name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  putgridfs-properties-prefix:
+    en: {displayName: File Properties Prefix, description: Attributes that have this
+        prefix will be added to the file stored in GridFS as metadata.}
+    zh: {description: 具有此前缀的属性将作为元数据添加到GridFS中存储的文件中。, displayName: 文件属性前缀}
+  gridfs-bucket-name:
+    en: {displayName: Bucket Name, description: 'The GridFS bucket where the files
+        will be stored. If left blank, it will use the default value ''fs'' that the
+        MongoDB client driver uses.'}
+    zh: {description: 存储文件的GridFS存储桶。如果留空，它将使用MongoDB客户端驱动程序使用的默认值“fs”。, displayName: Bucket名称}
+tags:
+  en: [mongo, gridfs, put, file, store]
+  zh: [蒙哥, 格里弗斯, 放, 文件, 百货商店]

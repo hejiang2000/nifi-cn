@@ -1,0 +1,16 @@
+dynamicProperties:
+  Name of the RecordReader:
+    en: {description: '', value: A RecordReaderFactory controller service}
+    zh: {description: '', value: RecordReaderFactory控制器服务}
+capabilityDescription: {en: 'Provides a RecordReaderFactory that can be used to dynamically
+    select another RecordReaderFactory. This will allow multiple RecordReaderFactories
+    to be defined and registered, and then selected dynamically at runtime by referencing
+    a FlowFile attribute in the Service to Use property.', zh: 提供可用于动态选择另一个RecordReaderFactory的RecordReaderFactory。这将允许定义和注册多个RecordReaderFactories，然后在运行时通过引用要使用的服务属性中的FlowFile属性动态选择。}
+properties:
+  Service to Use:
+    en: {displayName: Service to Use, description: Specifies the name of the user-defined
+        property whose associated Controller Service should be used.}
+    zh: {description: 指定应使用其关联控制器服务的用户定义属性的名称。, displayName: 要使用的服务}
+tags:
+  en: [lookup, parse, record, row, reader]
+  zh: [查找, 作语法分析, 记录, 一行, 读者]

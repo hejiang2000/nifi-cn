@@ -1,0 +1,50 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      Cloud Pub/Sub operation., zh: 在成功的Google Cloud Pub/Sub操作之后，FlowFiles被路由到此关系。}
+  failure: {en: FlowFiles are routed to this relationship if the Google Cloud Pub/Sub
+      operation fails., zh: 如果Google Cloud Pub/Sub操作失败，FlowFiles将路由到此关系。}
+  retry: {en: FlowFiles are routed to this relationship if the Google Cloud Pub/Sub
+      operation fails but attempting the operation again may succeed., zh: 如果Google
+      Cloud Pub/Sub操作失败，则FlowFiles将路由到此关系，但再次尝试该操作可能会成功。}
+dynamicProperties:
+  Attribute name:
+    en: {description: Attributes to be set for the outgoing Google Cloud PubSub message,
+      value: Value to be set to the attribute}
+    zh: {description: 要为传出的Google Cloud PubSub消息设置的属性, value: 要设置到属性的值}
+systemResourceConsiderations:
+  en: [The entirety of the FlowFile's content will be read into memory to be sent
+      as a PubSub message.]
+  zh: [FlowFile的全部内容将被读入内存，作为PubSub消息发送。]
+capabilityDescription: {en: 'Publishes the content of the incoming flowfile to the
+    configured Google Cloud PubSub topic. The processor supports dynamic properties.
+    If any dynamic properties are present, they will be sent along with the message
+    in the form of ''attributes''.', zh: 将传入流文件的内容发布到配置的Google Cloud PublishSub主题。处理器支持动态属性。如果存在任何动态属性，它们将以“属性”的形式与消息一起发送。}
+properties:
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  gcp-pubsub-publish-batch-size:
+    en: {displayName: Batch Size, description: 'Indicates the number of messages the
+        cloud service should bundle together in a batch. If not set and left empty,
+        only one message will be used in a batch'}
+    zh: {description: 指示云服务应在批处理中捆绑在一起的消息数。如果未设置且为空，则批处理中将仅使用一条消息, displayName: 批量大小}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  gcp-pubsub-topic:
+    en: {displayName: Topic Name, description: Name of the Google Cloud PubSub Topic}
+    zh: {description: Google Cloud PubSub主题的名称, displayName: 主题名称}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+writeAttributes:
+  gcp.pubsub.messageId: {en: ID of the pubsub message published to the configured
+      Google Cloud PubSub topic, zh: 发布到配置的Google Cloud pubsub主题的pubsub消息的ID}
+  gcp.pubsub.topic: {en: Name of the Google Cloud PubSub topic the message was published
+      to, zh: 消息发布到的Google Cloud PubSub主题的名称}
+tags:
+  en: [google, google-cloud, gcp, message, pubsub, publish]
+  zh: [谷歌, 谷歌云, 通用计算机程序, 消息, 公共图书馆, 出版]

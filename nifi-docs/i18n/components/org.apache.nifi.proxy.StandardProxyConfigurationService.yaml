@@ -1,0 +1,26 @@
+capabilityDescription: {en: Provides a set of configurations for different NiFi components
+    to use a proxy server., zh: 为使用代理服务器的不同NiFi组件提供一组配置。}
+properties:
+  proxy-server-port:
+    en: {displayName: Proxy Server Port, description: Proxy server port number.}
+    zh: {description: 代理服务器端口号。, displayName: 代理服务器端口}
+  socks-version:
+    en: {displayName: SOCKS Version, description: SOCKS Protocol Version}
+    zh: {description: SOCKS协议版本, displayName: SOCKS版本}
+  proxy-user-password:
+    en: {displayName: Proxy User Password, description: The password of the proxy
+        client for user authentication.}
+    zh: {description: 用于用户身份验证的代理客户端的密码。, displayName: 代理用户密码}
+  proxy-server-host:
+    en: {displayName: Proxy Server Host, description: Proxy server hostname or ip-address.}
+    zh: {description: 代理服务器主机名或ip地址。, displayName: 代理服务器主机}
+  proxy-user-name:
+    en: {displayName: Proxy User Name, description: The name of the proxy client for
+        user authentication.}
+    zh: {description: 用于用户身份验证的代理客户端的名称。, displayName: 代理用户名}
+  proxy-type:
+    en: {displayName: Proxy Type, description: Proxy type.}
+    zh: {description: 代理类型。, displayName: 代理类型}
+tags:
+  en: [Proxy]
+  zh: [代理]

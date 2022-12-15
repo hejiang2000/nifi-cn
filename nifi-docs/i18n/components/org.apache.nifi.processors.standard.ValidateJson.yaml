@@ -1,0 +1,26 @@
+relationships:
+  valid: {en: FlowFiles that are successfully validated against the schema are routed
+      to this relationship, zh: 根据架构成功验证的FlowFiles将路由到此关系}
+  failure: {en: FlowFiles that cannot be read as JSON are routed to this relationship,
+    zh: 无法读取为JSON的FlowFiles将路由到此关系}
+  invalid: {en: FlowFiles that are not valid according to the specified schema are
+      routed to this relationship, zh: 根据指定架构无效的FlowFiles将路由到此关系}
+systemResourceConsiderations:
+  en: [Validating JSON requires reading FlowFile content into memory]
+  zh: [验证JSON需要将FlowFile内容读入内存]
+capabilityDescription: {en: Validates the contents of FlowFiles against a configurable
+    JSON Schema. See json-schema.org for specification standards., zh: 根据可配置的JSON架构验证FlowFiles的内容。请参阅json模式。org获取规范标准。}
+properties:
+  Schema Version:
+    en: {displayName: Schema Version, description: The JSON schema specification}
+    zh: {description: JSON模式规范, displayName: 架构版本}
+  JSON Schema:
+    en: {displayName: JSON Schema, description: The content of a JSON Schema}
+    zh: {description: JSON模式的内容, displayName: JSON架构}
+writeAttributes:
+  json.validation.errors: {en: 'If the flow file is routed to the invalid relationship
+      , this attribute will contain the error message resulting from the validation
+      failure.', zh: 如果流文件被路由到无效关系，则此属性将包含验证失败导致的错误消息。}
+tags:
+  en: [JSON, schema, validation]
+  zh: [JSON文件, 模式, 验证]

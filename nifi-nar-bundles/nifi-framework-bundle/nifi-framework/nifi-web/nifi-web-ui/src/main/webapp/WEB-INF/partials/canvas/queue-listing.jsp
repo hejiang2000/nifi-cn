@@ -21,16 +21,16 @@
     </div>
     <div id="queue-listing-stats-container">
         <div id="queue-listing-stats" class="filter-status">
-            Displaying&nbsp;<span id="displayed-flowfiles"></span>&nbsp;of&nbsp;<span id="total-flowfiles-count"></span>&nbsp;(<span id="total-flowfiles-size"></span>)
+            显示&nbsp;<span id="displayed-flowfiles"></span>,&nbsp;共&nbsp;<span id="total-flowfiles-count"></span>&nbsp;(<span id="total-flowfiles-size"></span>)
         </div>
         <div class="clear"></div>
     </div>
     <div id="queue-listing-table"></div>
     <div id="queue-listing-message" class="hidden"></div>
     <div id="queue-listing-refresh-container">
-        <button id="queue-listing-refresh-button" class="refresh-button pointer fa fa-refresh" title="Refresh"></button>
+        <button id="queue-listing-refresh-button" class="refresh-button pointer fa fa-refresh" title="刷新"></button>
         <div id="queue-listing-last-refreshed-container" class="last-refreshed-container">
-            Last updated:&nbsp;<span id="queue-listing-last-refreshed"></span>
+            最后更新:&nbsp;<span id="queue-listing-last-refreshed"></span>
         </div>
         <div id="queue-listing-loading-container" class="loading-container"></div>
     </div>

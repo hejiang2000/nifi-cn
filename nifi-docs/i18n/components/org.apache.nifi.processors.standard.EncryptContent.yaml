@@ -1,0 +1,91 @@
+relationships:
+  success: {en: Any FlowFile that is successfully encrypted or decrypted will be routed
+      to success, zh: 任何成功加密或解密的FlowFile都将被路由成功}
+  failure: {en: Any FlowFile that cannot be encrypted or decrypted will be routed
+      to failure, zh: 任何无法加密或解密的FlowFile都将路由失败}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Encrypts or Decrypts a FlowFile using either symmetric
+    encryption with a raw key or password and randomly generated salt, or asymmetric
+    encryption using a public and secret key.', zh: 使用使用原始密钥或密码和随机生成的盐的对称加密或使用公钥和密钥的非对称加密对FlowFile进行加密或解密。}
+properties:
+  pgp-symmetric-cipher:
+    en:
+      displayName: PGP Symmetric Cipher
+      description: |-
+        When using PGP encryption, this is the symmetric cipher to be used. This property is ignored if Encryption Algorithm is not PGP or PGP-ASCII-ARMOR
+        Note that the provided cipher is only used duringthe encryption phase, while it is inferred from the ciphertext in the decryption phase
+    zh: {description: 使用PGP加密时，这是要使用的对称密码。如果加密算法不是PGP或PGP-ASCII-ARMOR，则忽略此属性, displayName: PGP对称密码}
+  private-keyring-passphrase:
+    en: {displayName: Private Keyring Passphrase, description: 'In a PGP decrypt mode,
+        this is the private keyring passphrase'}
+    zh: {description: 在PGP解密模式下，这是私钥环密码, displayName: 专用密钥环密码短语}
+  Mode:
+    en: {displayName: Mode, description: Specifies whether the content should be encrypted
+        or decrypted}
+    zh: {description: 指定应加密还是解密内容, displayName: 模式}
+  key-derivation-function:
+    en: {displayName: Key Derivation Function, description: Specifies the key derivation
+        function to generate the key from the password (and salt)}
+    zh: {description: 指定密钥派生函数以从密码（和salt）生成密钥, displayName: 金钥推衍函数}
+  public-key-user-id:
+    en: {displayName: Public Key User Id, description: 'In a PGP encrypt mode, this
+        user id of the recipient'}
+    zh: {description: 在PGP加密模式下，收件人的此用户id, displayName: 公钥用户Id}
+  public-keyring-file:
+    en: {displayName: Public Keyring File, description: 'In a PGP encrypt mode, this
+        keyring contains the public key of the recipient'}
+    zh: {description: 在PGP加密模式中，此密钥环包含接收方的公钥, displayName: 公共密钥环文件}
+  raw-key-hex:
+    en: {displayName: Raw Key (hexadecimal), description: 'In keyed encryption, this
+        is the raw key, encoded in hexadecimal'}
+    zh: {description: 在密钥加密中，这是原始密钥，以十六进制编码, displayName: 原始密钥（十六进制）}
+  allow-weak-crypto:
+    en: {displayName: Allow insecure cryptographic modes, description: Overrides the
+        default behavior to prevent unsafe combinations of encryption algorithms and
+        short passwords on JVMs with limited strength cryptographic jurisdiction policies}
+    zh: {description: 重写默认行为，以防止在具有有限强度加密管辖策略的JVM上加密算法和短密码的不安全组合, displayName: 允许不安全的加密模式}
+  private-keyring-file:
+    en: {displayName: Private Keyring File, description: 'In a PGP decrypt mode, this
+        keyring contains the private key of the recipient'}
+    zh: {description: 在PGP解密模式下，此密钥环包含接收方的私钥, displayName: 专用密钥环文件}
+  Encryption Algorithm:
+    en: {displayName: Encryption Algorithm, description: The Encryption Algorithm
+        to use}
+    zh: {description: 要使用的加密算法, displayName: 加密算法}
+  Password:
+    en: {displayName: Password, description: The Password to use for encrypting or
+        decrypting the data}
+    zh: {description: 用于加密或解密数据的密码, displayName: 暗语}
+writeAttributes:
+  encryptcontent.timestamp: {en: 'The timestamp at which the cryptographic operation
+      occurred in ''yyyy-MM-dd HH:mm:ss.SSS Z'' format', zh: '“yyyy-MM-dd HH:MM:ss中发生加密操作的时间戳。”。SSS
+      Z''格式'}
+  encryptcontent.kdf_salt: {en: The KDF-specific salt including algorithm and cost
+      parameters (if present). See Admin Guide - Key Derivation Functions, zh: KDF特定的盐，包括算法和成本参数（如果存在）。请参阅《管理指南-密钥派生函数》}
+  encryptcontent.plaintext_length: {en: The plaintext length in bytes. Determined
+      from incoming content in encrypt mode; outgoing content in decrypt mode, zh: 明文长度（字节）。根据加密模式下的传入内容确定；解密模式下的传出内容}
+  encryptcontent.salt_length: {en: The raw salt length in bytes, zh: 原始盐长度（字节）}
+  encryptcontent.kdf_salt_length: {en: The KDF salt length in bytes, zh: KDF盐长度（字节）}
+  encryptcontent.iv_length: {en: The IV length in bytes, zh: IV长度（字节）}
+  encryptcontent.pbkdf2_iterations: {en: The number of iterations used in PBKDF2 KDF
+      (if present). PBKDF2 does not encode the cost parameter in a custom salt, zh: PBKDF2
+      KDF中使用的迭代次数（如果存在）。PBKDF2不在自定义盐中编码成本参数}
+  encryptcontent.algorithm: {en: The algorithm used for the cryptographic operation,
+    zh: 用于加密操作的算法}
+  encryptcontent.cipher_text_length: {en: 'The cipher text length in bytes (including
+      IV, salt, and delimiters if present). Determined from incoming content in decrypt
+      mode; outgoing content in encrypt mode', zh: 以字节为单位的密文长度（包括IV、salt和分隔符（如果存在））。根据解密模式下的传入内容确定；加密模式下的传出内容}
+  encryptcontent.action: {en: '"encrypted" or "decrypted" depending on the processor
+      action', zh: “加密”或“解密”取决于处理器操作}
+  encryptcontent.salt: {en: The raw salt in hex encoding (if present), zh: 十六进制编码的原始盐（如果存在）}
+  encryptcontent.iv: {en: The Initialization Vector in hex encoding (if present),
+    zh: 十六进制编码的初始化矢量（如果存在）}
+  encryptcontent.kdf: {en: The Key Derivation Function used if Password-Based Encryption
+      was enabled. See Admin Guide - Key Derivation Functions, zh: 如果启用了基于密码的加密，则使用密钥派生函数。请参阅《管理指南-密钥派生函数》}
+tags:
+  en: [encryption, decryption, password, JCE, KDF, Argon2, Bcrypt, Scrypt, PBKDF2,
+    salt, iv]
+  zh: [加密, 解密, 暗语, JCE公司, 千立方英尺, 阿尔贡2, 加密, 加密, PBKDF2, 盐, 四]

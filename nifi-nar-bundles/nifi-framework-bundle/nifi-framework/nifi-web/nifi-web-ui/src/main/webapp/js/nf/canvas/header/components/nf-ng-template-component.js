@@ -121,7 +121,7 @@
                     // configure the instantiate template dialog
                     this.getElement().modal({
                         scrollableContentStyle: 'scrollable',
-                        headerText: 'Add Template'
+                        headerText: '添加模板'
                     });
                 },
 
@@ -238,7 +238,7 @@
 
                         // update the button model
                         templateComponent.modal.update('setButtonModel', [{
-                            buttonText: 'Add',
+                            buttonText: '添加',
                             color: {
                                 base: '#728E9B',
                                 hover: '#004849',
@@ -259,7 +259,7 @@
                             }
                         },
                             {
-                                buttonText: 'Cancel',
+                                buttonText: '取消',
                                 color: {
                                     base: '#E3E8EB',
                                     hover: '#C7D2D7',
@@ -276,8 +276,8 @@
                         templateComponent.modal.show();
                     } else {
                         nfDialog.showOkDialog({
-                            headerText: 'Instantiate Template',
-                            dialogContent: 'No templates have been loaded into this NiFi.'
+                            headerText: '实例化模板',
+                            dialogContent: '未加载模板进该 NiFi.'
                         });
                     }
 

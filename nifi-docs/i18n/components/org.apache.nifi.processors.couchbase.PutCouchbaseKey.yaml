@@ -1,0 +1,47 @@
+relationships:
+  success: {en: All FlowFiles that are written to Couchbase Server are routed to this
+      relationship., zh: 写入Couchbase服务器的所有FlowFiles都将路由到此关系。}
+  failure: {en: All FlowFiles failed to be written to Couchbase Server and not retry-able
+      are routed to this relationship., zh: 未能将所有FlowFiles写入Couchbase服务器且无法重试的文件都路由到此关系。}
+  retry: {en: All FlowFiles failed to be written to Couchbase Server but can be retried
+      are routed to this relationship., zh: 未能将所有FlowFiles写入Couchbase服务器，但可以重试。所有FlowFiles都路由到此关系。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: Put a document to Couchbase Server via Key/Value access.,
+  zh: 通过Key/Value访问将文档放入Couchbase Server。}
+readAttributes:
+  uuid: {en: Used as a document id if 'Document Id' is not specified, zh: 如果未指定“文档id”，则用作文档id}
+properties:
+  cluster-controller-service:
+    en: {displayName: Couchbase Cluster Controller Service, description: A Couchbase
+        Cluster Controller Service which manages connections to a Couchbase cluster.}
+    zh: {description: Couchbase群集控制器服务，用于管理与Couchbase集群的连接。, displayName: Couchbase群集控制器服务}
+  bucket-name:
+    en: {displayName: Bucket Name, description: The name of bucket to access.}
+    zh: {description: 要访问的存储桶的名称。, displayName: Bucket名称}
+  document-type:
+    en: {displayName: Document Type, description: The type of contents.}
+    zh: {description: 内容的类型。, displayName: 文档类型}
+  replicate-to:
+    en: {displayName: Replicate To, description: Durability constraint about replication.}
+    zh: {description: 关于复制的耐久性约束。, displayName: 复制到}
+  persist-to:
+    en: {displayName: Persist To, description: Durability constraint about disk persistence.}
+    zh: {description: 关于磁盘持久性的耐久性约束。, displayName: 坚持到}
+  document-id:
+    en: {displayName: Document Id, description: 'A static, fixed Couchbase document
+        id, or an expression to construct the Couchbase document id.'}
+    zh: {description: 一个静态的、固定的Couchbase文档id，或一个用于构造Couchbase文件id的表达式。, displayName: 文档Id}
+writeAttributes:
+  couchbase.doc.id: {en: Id of the document., zh: 文档的Id。}
+  couchbase.cluster: {en: Cluster where the document was stored., zh: 存储文档的群集。}
+  couchbase.bucket: {en: Bucket where the document was stored., zh: 存储文档的存储桶。}
+  couchbase.doc.cas: {en: CAS of the document., zh: 文件的CAS。}
+  couchbase.doc.expiry: {en: Expiration of the document., zh: 文档过期。}
+  couchbase.exception: {en: If Couchbase related error occurs the CouchbaseException
+      class name will be captured here., zh: 如果发生与Couchbase相关的错误，将在此处捕获CouchbaseException类名。}
+tags:
+  en: [nosql, couchbase, database, put]
+  zh: [nosql语言, 泊位底座, 数据库, 放]

@@ -1,0 +1,60 @@
+relationships:
+  original: {en: The original FlowFile is sent to this relationship after it has been
+      successfully unpacked, zh: 原始FlowFile在成功解包后发送到此关系}
+  success: {en: Unpacked FlowFiles are sent to this relationship, zh: 未打包的FlowFiles将发送到此关系}
+  failure: {en: The original FlowFile is sent to this relationship when it cannot
+      be unpacked for some reason, zh: 由于某些原因无法解包时，原始FlowFile将发送到此关系}
+capabilityDescription: {en: 'Unpacks the content of FlowFiles that have been packaged
+    with one of several different Packaging Formats, emitting one to many FlowFiles
+    for each input FlowFile', zh: 解压缩已使用多种不同打包格式之一打包的FlowFiles的内容，为每个输入FlowFile发送一到多个FlowFiles}
+readAttributes:
+  mime.type: {en: 'If the <Packaging Format> property is set to use mime.type attribute,
+      this attribute is used to determine the FlowFile''s MIME Type. In this case,
+      if the attribute is set to application/tar, the TAR Packaging Format will be
+      used. If the attribute is set to application/zip, the ZIP Packaging Format will
+      be used. If the attribute is set to application/flowfile-v3 or application/flowfile-v2
+      or application/flowfile-v1, the appropriate FlowFile Packaging Format will be
+      used. If this attribute is missing, the FlowFile will be routed to ''failure''.
+      Otherwise, if the attribute''s value is not one of those mentioned above, the
+      FlowFile will be routed to ''success'' without being unpacked. Use the File
+      Filter property only extract files matching a specific regular expression.',
+    zh: 如果＜包装格式＞属性设置为使用mime。type属性，此属性用于确定FlowFile的MIME类型。在这种情况下，如果属性设置为application/tar，则将使用tar打包格式。如果属性设置为application.zip，则将使用zip打包格式。如果属性设置为application/flowfile-v3或application/flowfile-v2或application/fflowfile-v1，则将使用适当的flowfile打包格式。如果缺少此属性，FlowFile将被路由到“failure”。否则，如果属性的值不是上述值之一，则FlowFile将被路由到“success”，而不会被解包。使用“文件过滤器”属性仅提取与特定正则表达式匹配的文件。}
+properties:
+  Packaging Format:
+    en: {displayName: Packaging Format, description: The Packaging Format used to
+        create the file}
+    zh: {description: 用于创建文件的打包格式, displayName: 包装格式}
+  File Filter:
+    en: {displayName: File Filter, description: Only files contained in the archive
+        whose names match the given regular expression will be extracted (tar/zip
+        only)}
+    zh: {description: 只有存档中包含的名称与给定正则表达式匹配的文件才会被提取（仅限于tar/zip）, displayName: 文件筛选器}
+  Password:
+    en: {displayName: Password, description: Password used for decrypting Zip archives
+        encrypted with ZipCrypto or AES. Configuring a password disables support for
+        alternative Zip compression algorithms.}
+    zh: {description: 用于解密用ZipCrypto或AES加密的Zip存档的密码。配置密码将禁用对其他Zip压缩算法的支持。, displayName: 暗语}
+writeAttributes:
+  'segment.original.filename ': {en: 'The filename of the parent FlowFile. Extensions
+      of .tar, .zip or .pkg are removed because the MergeContent processor automatically
+      adds those extensions if it is used to rebuild the original FlowFile', zh: 父FlowFile的文件名。将删除.tar、.zip或.pkg的扩展名，因为MergeContent处理器在用于重建原始FlowFile时会自动添加这些扩展名}
+  file.encryptionMethod: {en: The encryption method for entries in Zip archives, zh: Zip存档中条目的加密方法}
+  file.group: {en: The group owner of the unpacked file (tar only), zh: 解压缩文件的组所有者（仅限tar）}
+  file.lastModifiedTime: {en: The date and time that the unpacked file was last modified
+      (tar only)., zh: 上次修改解压缩文件的日期和时间（仅限tar）。}
+  fragment.identifier: {en: All unpacked FlowFiles produced from the same parent FlowFile
+      will have the same randomly generated UUID added for this attribute, zh: 从同一父FlowFile生成的所有解包FlowFiles都将为此属性添加相同的随机生成UUID}
+  fragment.index: {en: A one-up number that indicates the ordering of the unpacked
+      FlowFiles that were created from a single parent FlowFile, zh: 一个向上的数字，表示从单个父FlowFile创建的未打包FlowFile的顺序}
+  file.creationTime: {en: The date and time that the file was created. This attribute
+      holds always the same value as file.lastModifiedTime (tar only)., zh: 创建文件的日期和时间。此属性始终保持与文件相同的值。lastModifiedTime（仅限tar）。}
+  mime.type: {en: 'If the FlowFile is successfully unpacked, its MIME Type is no longer
+      known, so the mime.type attribute is set to application/octet-stream.', zh: 如果FlowFile成功解包，其MIME类型将不再为人所知，因此MIME也是如此。type属性设置为application/octet流。}
+  file.owner: {en: The owner of the unpacked file (tar only), zh: 解压缩文件的所有者（仅限tar）}
+  fragment.count: {en: The number of unpacked FlowFiles generated from the parent
+      FlowFile, zh: 从父FlowFile生成的解压缩FlowFiles的数量}
+  file.permissions: {en: The read/write/execute permissions of the unpacked file (tar
+      only), zh: 解压缩文件的读/写/执行权限（仅限tar）}
+tags:
+  en: [Unpack, un-merge, tar, zip, archive, flowfile-stream, flowfile-stream-v3]
+  zh: [打开, 取消合并, 焦油, 拉链, 档案文件, 流文件流, 流文件-流-v3]

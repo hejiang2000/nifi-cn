@@ -1,0 +1,116 @@
+relationships:
+  success: {en: Relationship for successfully received FlowFiles, zh: 成功接收FlowFiles的关系}
+capabilityDescription: {en: 'Starts an HTTP Server and listens on a given base path
+    to transform incoming requests into FlowFiles. The default URI of the Service
+    will be http://{hostname}:{port}/contentListener. Only HEAD and POST requests
+    are supported. GET, PUT, and DELETE will result in an error and the HTTP response
+    status code 405. GET is supported on <service_URI>/healthcheck. If the service
+    is available, it returns "200 OK" with the content "OK". The health check functionality
+    can be configured to be accessible via a different port. For details see the documentation
+    of the "Listening Port for health check requests" property.A Record Reader and
+    Record Writer property can be enabled on the processor to process incoming requests
+    as records. Record processing is not allowed for multipart requests and request
+    in FlowFileV3 format (minifi).', zh: '启动HTTP服务器并侦听给定的基本路径，以将传入请求转换为FlowFiles。服务的默认URI将为http://｛hostname｝：｛port｝/contentListener。仅支持HEAD和POST请求。GET、PUT和DELETE将导致错误，HTTP响应状态代码405。＜service_URI＞/healthcheck支持GET。如果服务可用，则返回“200
+    OK”，内容为“OK”。可以将健康检查功能配置为可通过其他端口访问。有关详细信息，请参阅“侦听健康检查请求的端口”属性的文档。可以在处理器上启用“记录读取器”和“记录写入器”属性，以将传入的请求作为记录进行处理。不允许对多部分请求和FlowFileV3格式（minimi）的请求进行记录处理。'}
+properties:
+  authorized-issuer-dn-pattern:
+    en: {displayName: Authorized Issuer DN Pattern, description: 'A Regular Expression
+        to apply against the Issuer''s Distinguished Name of incoming connections.
+        If the Pattern does not match the Issuer DN, the processor will respond with
+        a status of HTTP 403 Forbidden.'}
+    zh: {description: 针对传入连接的颁发者可分辨名称应用的正则表达式。如果模式与颁发者DN不匹配，处理器将以HTTP 403禁止的状态进行响应。,
+      displayName: 授权发行人DN模式}
+  multipart-request-max-size:
+    en: {displayName: Multipart Request Max Size, description: 'The max size of the
+        request. Only applies for requests with Content-Type: multipart/form-data,
+        and is used to prevent denial of service type of attacks, to prevent filling
+        up the heap or disk space'}
+    zh: {description: 请求的最大大小。仅适用于具有内容类型：多部分/表单数据的请求，用于防止拒绝服务类型的攻击，防止填充堆或磁盘空间, displayName: 多部分请求最大大小}
+  record-writer:
+    en: {displayName: Record Writer, description: The Record Writer to use for serializing
+        Records after they have been transformed}
+    zh: {description: 转换后用于序列化记录的记录编写器, displayName: 记录编写器}
+  HTTP Protocols:
+    en: {displayName: HTTP Protocols, description: HTTP Protocols supported for Application
+        Layer Protocol Negotiation with TLS}
+    zh: {description: 支持TLS应用层协议协商的HTTP协议, displayName: HTTP协议}
+  HTTP Headers to receive as Attributes (Regex):
+    en: {displayName: HTTP Headers to receive as Attributes (Regex), description: Specifies
+        the Regular Expression that determines the names of HTTP Headers that should
+        be passed along as FlowFile attributes}
+    zh: {description: 指定用于确定应作为FlowFile属性传递的HTTP头的名称的正则表达式, displayName: 要作为属性接收的HTTP标头（Regex）}
+  health-check-port:
+    en: {displayName: Listening Port for Health Check Requests, description: 'The
+        port to listen on for incoming health check requests. If set, it must be different
+        from the Listening Port. Configure this port if the processor is set to use
+        two-way SSL and a load balancer that does not support client authentication
+        for health check requests is used. Only /<base_path>/healthcheck service is
+        available via this port and only GET and HEAD requests are supported. If the
+        processor is set not to use SSL, SSL will not be used on this port, either.
+        If the processor is set to use one-way SSL, one-way SSL will be used on this
+        port. If the processor is set to use two-way SSL, one-way SSL will be used
+        on this port (client authentication not required).'}
+    zh: {description: 侦听传入健康检查请求的端口。如果已设置，则它必须与侦听端口不同。如果处理器设置为使用双向SSL，并且使用了不支持健康检查请求客户端身份验证的负载平衡器，则配置此端口。此端口仅提供/<base_path>/healthcheck服务，并且仅支持GET和HEAD请求。如果处理器设置为不使用SSL，则此端口上也不会使用SSL。如果处理器设置为使用单向SSL，则将在此端口上使用单向SSL。如果处理器设置成使用双向SSL，则此端口上将使用单向SSL（不需要客户端身份验证）。,
+      displayName: 侦听健康检查请求的端口}
+  Authorized DN Pattern:
+    en: {displayName: Authorized Subject DN Pattern, description: 'A Regular Expression
+        to apply against the Subject''s Distinguished Name of incoming connections.
+        If the Pattern does not match the Subject DN, the the processor will respond
+        with a status of HTTP 403 Forbidden.'}
+    zh: {description: 针对传入连接的主题的可分辨名称应用的正则表达式。如果Pattern与Subject DN不匹配，处理器将以HTTP 403
+        Forbidden状态响应。, displayName: 授权主题DN模式}
+  max-thread-pool-size:
+    en: {displayName: Maximum Thread Pool Size, description: 'The maximum number of
+        threads to be used by the embedded Jetty server. The value can be set between
+        8 and 1000. The value of this property affects the performance of the flows
+        and the operating system, therefore the default value should only be changed
+        in justified cases. A value that is less than the default value may be suitable
+        if only a small number of HTTP clients connect to the server. A greater value
+        may be suitable if a large number of HTTP clients are expected to make requests
+        to the server simultaneously.'}
+    zh: {description: 嵌入式Jetty服务器使用的最大线程数。该值可以设置在8和1000之间。此属性的值会影响流和操作系统的性能，因此只有在合理的情况下才应更改默认值。如果只有少量HTTP客户端连接到服务器，则小于默认值的值可能是合适的。如果期望大量HTTP客户端同时向服务器发出请求，则可以使用更大的值。,
+      displayName: 最大线程池大小}
+  Base Path:
+    en: {displayName: Base Path, description: Base path for incoming connections}
+    zh: {description: 传入连接的基本路径, displayName: 基本路径}
+  multipart-read-buffer-size:
+    en: {displayName: Multipart Read Buffer Size, description: 'The threshold size,
+        at which the contents of an incoming file would be written to disk. Only applies
+        for requests with Content-Type: multipart/form-data. It is used to prevent
+        denial of service type of attacks, to prevent filling up the heap or disk
+        space.'}
+    zh: {description: 将传入文件的内容写入磁盘的阈值大小。仅适用于内容类型为multipart/form数据的请求。它用于防止拒绝服务类型的攻击，防止填充堆或磁盘空间。,
+      displayName: 多部分读取缓冲区大小}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: SSL Context Service enables
+        support for HTTPS}
+    zh: {description: SSL上下文服务支持HTTPS, displayName: SSL上下文服务}
+  Max Unconfirmed Flowfile Time:
+    en: {displayName: Max Unconfirmed Flowfile Time, description: The maximum amount
+        of time to wait for a FlowFile to be confirmed before it is removed from the
+        cache}
+    zh: {description: 从缓存中删除FlowFile之前等待确认的最长时间, displayName: 最大未确认流文件时间}
+  Max Data to Receive per Second:
+    en: {displayName: Max Data to Receive per Second, description: 'The maximum amount
+        of data to receive per second; this allows the bandwidth to be throttled to
+        a specified data rate; if not specified, the data rate is not throttled'}
+    zh: {description: 每秒接收的最大数据量；这允许带宽被限制到指定的数据速率；如果未指定，则不限制数据速率, displayName: 每秒接收的最大数据}
+  client-authentication:
+    en: {displayName: Client Authentication, description: Client Authentication policy
+        for TLS connections. Required when SSL Context Service configured.}
+    zh: {description: TLS连接的客户端身份验证策略。配置SSL上下文服务时需要。, displayName: 客户端身份验证}
+  Return Code:
+    en: {displayName: Return Code, description: The HTTP return code returned after
+        every HTTP call}
+    zh: {description: 每次HTTP调用后返回的HTTP返回代码, displayName: 返回代码}
+  record-reader:
+    en: {displayName: Record Reader, description: The Record Reader to use parsing
+        the incoming FlowFile into Records}
+    zh: {description: 用于将传入的FlowFile解析为记录的记录读取器, displayName: 记录读取器}
+  Listening Port:
+    en: {displayName: Listening Port, description: The Port to listen on for incoming
+        connections}
+    zh: {description: 侦听传入连接的端口, displayName: 侦听端口}
+tags:
+  en: [ingest, http, https, rest, listen]
+  zh: [摄入, http, https, 休息, 听]

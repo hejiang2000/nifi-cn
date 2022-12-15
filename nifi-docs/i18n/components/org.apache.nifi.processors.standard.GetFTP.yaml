@@ -1,0 +1,141 @@
+relationships:
+  success: {en: All FlowFiles that are received are routed to success, zh: 接收到的所有FlowFiles都将路由成功}
+capabilityDescription: {en: Fetches files from an FTP Server and creates FlowFiles
+    from them, zh: 从FTP服务器获取文件并从中创建FlowFiles}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  Http Proxy Password:
+    en: {displayName: Http Proxy Password, description: Http Proxy Password}
+    zh: {description: Http代理密码, displayName: Http代理密码}
+  Ignore Dotted Files:
+    en: {displayName: Ignore Dotted Files, description: 'If true, files whose names
+        begin with a dot (".") will be ignored'}
+    zh: {description: 如果为true，则将忽略名称以点（“.”）开头的文件, displayName: 忽略点式文件}
+  Port:
+    en: {displayName: Port, description: The port that the remote system is listening
+        on for file transfers}
+    zh: {description: 远程系统正在侦听文件传输的端口, displayName: 港口城市}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: SOCKS + AuthN,
+        HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：SOCKS+AuthN、HTTP+AuthN,
+      displayName: 代理配置服务}
+  Max Selects:
+    en: {displayName: Max Selects, description: The maximum number of files to pull
+        in a single connection}
+    zh: {description: 单个连接中可拉入的最大文件数, displayName: 最大选择数}
+  Proxy Type:
+    en: {displayName: Proxy Type, description: Proxy type used for file transfers}
+    zh: {description: 用于文件传输的代理类型, displayName: 代理类型}
+  Connection Mode:
+    en: {displayName: Connection Mode, description: The FTP Connection Mode}
+    zh: {description: FTP连接模式, displayName: 连接模式}
+  Connection Timeout:
+    en: {displayName: Connection Timeout, description: Amount of time to wait before
+        timing out while creating a connection}
+    zh: {description: 创建连接时超时前等待的时间量, displayName: 连接超时}
+  Path Filter Regex:
+    en: {displayName: Path Filter Regex, description: 'When Search Recursively is
+        true, then only subdirectories whose path matches the given Regular Expression
+        will be scanned'}
+    zh: {description: 当“递归搜索”为true时，将仅扫描路径与给定正则表达式匹配的子目录, displayName: 路径筛选器Regex}
+  follow-symlink:
+    en: {displayName: Follow symlink, description: 'If true, will pull even symbolic
+        files and also nested symbolic subdirectories; otherwise, will not read symbolic
+        files and will not traverse symbolic link subdirectories'}
+    zh: {description: 如果为true，则将拉取符号文件和嵌套的符号子目录；否则，将不会读取符号文件，也不会遍历符号链接子目录, displayName: 遵循符号链接}
+  Internal Buffer Size:
+    en: {displayName: Internal Buffer Size, description: Set the internal buffer size
+        for buffered data streams}
+    zh: {description: 设置缓冲数据流的内部缓冲区大小, displayName: 内部缓冲区大小}
+  Search Recursively:
+    en: {displayName: Search Recursively, description: 'If true, will pull files from
+        arbitrarily nested subdirectories; otherwise, will not traverse subdirectories'}
+    zh: {description: 如果为true，将从任意嵌套的子目录中提取文件；否则，将不遍历子目录, displayName: 递归搜索}
+  Password:
+    en: {displayName: Password, description: Password for the user account}
+    zh: {description: 用户帐户的密码, displayName: 暗语}
+  File Filter Regex:
+    en: {displayName: File Filter Regex, description: 'Provides a Java Regular Expression
+        for filtering Filenames; if a filter is supplied, only files whose names match
+        that Regular Expression will be fetched'}
+    zh: {description: 提供用于过滤文件名的Java正则表达式；如果提供了筛选器，则只提取名称与该正则表达式匹配的文件, displayName: 文件筛选器Regex}
+  Remote Poll Batch Size:
+    en: {displayName: Remote Poll Batch Size, description: The value specifies how
+        many file paths to find in a given directory on the remote system when doing
+        a file listing. This value in general should not need to be modified but when
+        polling against a remote system with a tremendous number of files this value
+        can be critical.  Setting this value too high can result very poor performance
+        and setting it too low can cause the flow to be slower than normal.}
+    zh: {description: 该值指定在执行文件列表时在远程系统上的给定目录中查找多少文件路径。通常不需要修改此值，但当对具有大量文件的远程系统进行轮询时，此值可能非常关键。将该值设置得太高会导致性能非常差，而设置得太低会导致流量低于正常值。,
+      displayName: 远程轮询批量大小}
+  Polling Interval:
+    en: {displayName: Polling Interval, description: Determines how long to wait between
+        fetching the listing for new files}
+    zh: {description: 确定获取新文件列表之间的等待时间, displayName: 轮询间隔}
+  Http Proxy Username:
+    en: {displayName: Http Proxy Username, description: Http Proxy Username}
+    zh: {description: Http代理用户名, displayName: Http代理用户名}
+  Hostname:
+    en: {displayName: Hostname, description: The fully qualified hostname or IP address
+        of the remote system}
+    zh: {description: 远程系统的完全限定主机名或IP地址, displayName: 主机名}
+  Remote Path:
+    en: {displayName: Remote Path, description: The path on the remote system from
+        which to pull or push files}
+    zh: {description: 远程系统上用于提取或推送文件的路径, displayName: 远程路径}
+  Proxy Port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  ftp-use-utf8:
+    en: {displayName: Use UTF-8 Encoding, description: 'Tells the client to use UTF-8
+        encoding when processing files and filenames. If set to true, the server must
+        also support UTF-8 encoding.'}
+    zh: {description: 告诉客户端在处理文件和文件名时使用UTF-8编码。如果设置为true，则服务器还必须支持UTF-8编码。, displayName: 使用UTF-8编码}
+  Data Timeout:
+    en: {displayName: Data Timeout, description: 'When transferring a file between
+        the local and remote system, this value specifies how long is allowed to elapse
+        without any data being transferred between systems'}
+    zh: {description: 在本地和远程系统之间传输文件时，此值指定允许在系统之间传输任何数据的时间, displayName: 数据超时}
+  Transfer Mode:
+    en: {displayName: Transfer Mode, description: The FTP Transfer Mode}
+    zh: {description: FTP传输模式, displayName: 传输模式}
+  Username:
+    en: {displayName: Username, description: Username}
+    zh: {description: 用户名, displayName: 用户名}
+  Use Natural Ordering:
+    en: {displayName: Use Natural Ordering, description: 'If true, will pull files
+        in the order in which they are naturally listed; otherwise, the order in which
+        the files will be pulled is not defined'}
+    zh: {description: 如果为true，将按文件自然列出的顺序拉取文件；否则，将不定义文件的提取顺序, displayName: 使用自然排序}
+  Delete Original:
+    en: {displayName: Delete Original, description: Determines whether or not the
+        file is deleted from the remote system after it has been successfully transferred}
+    zh: {description: 确定文件成功传输后是否从远程系统中删除, displayName: 删除原件}
+writeAttributes:
+  absolute.path: {en: 'The full/absolute path from where a file was picked up. The
+      current ''path'' attribute is still populated, but may be a relative path',
+    zh: 从中拾取文件的完整/绝对路径。当前的“path”属性仍被填充，但可能是相对路径}
+  path: {en: 'The path is set to the path of the file''s directory on the remote server.
+      For example, if the <Remote Path> property is set to /tmp, files picked up from
+      /tmp will have the path attribute set to /tmp. If the <Search Recursively> property
+      is set to true and a file is picked up from /tmp/abc/1/2/3, then the path attribute
+      will be set to /tmp/abc/1/2/3', zh: 路径设置为远程服务器上文件目录的路径。例如，如果＜远程路径＞属性设置为/tmp，则从/tmp拾取的文件的路径属性将设置为/tmp。如果＜Search
+      Recursively＞属性设置为true，并且从/tmp/abc/1/2/3获取文件，则路径属性将设置为/tmp/abs/1/2/3}
+  filename: {en: The filename is set to the name of the file on the remote server,
+    zh: 文件名设置为远程服务器上的文件名}
+  file.group: {en: The numeric group id of the source file, zh: 源文件的数字组id}
+  file.lastModifiedTime: {en: The date and time that the source file was last modified,
+    zh: 上次修改源文件的日期和时间}
+  file.lastAccessTime: {en: The date and time that the file was last accessed. May
+      not work on all file systems, zh: 上次访问文件的日期和时间。可能不适用于所有文件系统}
+  file.owner: {en: The numeric owner id of the source file, zh: 源文件的数字所有者id}
+  file.permissions: {en: The read/write/execute permissions of the source file, zh: 源文件的读/写/执行权限}
+tags:
+  en: [FTP, get, retrieve, files, fetch, remote, ingest, source, input]
+  zh: [文件传输协议, 收到, 检索, 文件夹, 取来, 遥远的, 摄入, 来源, 输入]

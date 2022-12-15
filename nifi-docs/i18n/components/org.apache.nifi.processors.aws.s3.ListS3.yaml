@@ -1,0 +1,195 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+capabilityDescription: {en: 'Retrieves a listing of objects from an S3 bucket. For
+    each object that is listed, creates a FlowFile that represents the object so that
+    it can be fetched in conjunction with FetchS3Object. This Processor is designed
+    to run on Primary Node only in a cluster. If the primary node changes, the new
+    Primary Node will pick up where the previous node left off without duplicating
+    all of the data.', zh: 从S3存储桶中检索对象列表。对于列出的每个对象，创建一个表示该对象的FlowFile，以便可以与FetchS3Object一起获取该对象。此处理器设计为仅在群集中的主节点上运行。如果主节点发生更改，新的主节点将在不复制所有数据的情况下恢复上一个节点停止的位置。}
+statefulDescription: {en: 'After performing a listing of keys, the timestamp of the
+    newest key is stored, along with the keys that share that same timestamp. This
+    allows the Processor to list only keys that have been added or modified after
+    this date the next time that the Processor is run. State is stored across the
+    cluster so that this Processor can be run on Primary Node only and if a new Primary
+    Node is selected, the new node can pick up where the previous node left off, without
+    duplicating the data.', zh: 执行密钥列表后，将存储最新密钥的时间戳以及共享该时间戳的密钥。这允许处理器在下次运行处理器时仅列出在此日期之后添加或修改的密钥。状态存储在整个集群中，因此此处理器只能在主节点上运行，如果选择了新的主节点，则新节点可以从上一个节点停止的位置恢复，而无需复制数据。}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  list-type:
+    en: {displayName: List Type, description: Specifies whether to use the original
+        List Objects or the newer List Objects Version 2 endpoint.}
+    zh: {description: 指定是使用原始列表对象还是更新的列表对象版本2端点。, displayName: 列表类型}
+  et-initial-listing-target:
+    en: {displayName: Entity Tracking Initial Listing Target, description: Specify
+        how initial listing should be handled. Used by 'Tracking Entities' strategy.}
+    zh: {description: 指定如何处理初始列表。由“跟踪实体”策略使用。, displayName: 实体跟踪初始上市目标}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  prefix:
+    en: {displayName: Prefix, description: 'The prefix used to filter the object list.
+        Do not begin with a forward slash ''/''. In most cases, it should end with
+        a forward slash ''/''.'}
+    zh: {description: 用于过滤对象列表的前缀。不要以正斜杠“/”开头。在大多数情况下，它应该以正斜杠“/”结尾。, displayName: 前缀}
+  record-writer:
+    en: {displayName: Record Writer, description: 'Specifies the Record Writer to
+        use for creating the listing. If not specified, one FlowFile will be created
+        for each entity that is listed. If the Record Writer is specified, all entities
+        will be written to a single FlowFile instead of adding attributes to individual
+        FlowFiles.'}
+    zh: {description: 指定用于创建列表的记录编写器。如果未指定，将为列出的每个实体创建一个FlowFile。如果指定了记录编写器，则所有实体都将写入单个FlowFile，而不是向单个FlowFile添加属性。,
+      displayName: 记录编写器}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  et-time-window:
+    en: {displayName: Entity Tracking Time Window, description: 'Specify how long
+        this processor should track already-listed entities. ''Tracking Entities''
+        strategy can pick any entity whose timestamp is inside the specified time
+        window. For example, if set to ''30 minutes'', any entity having timestamp
+        in recent 30 minutes will be the listing target when this processor runs.
+        A listed entity is considered ''new/updated'' and a FlowFile is emitted if
+        one of following condition meets: 1. does not exist in the already-listed
+        entities, 2. has newer timestamp than the cached entity, 3. has different
+        size than the cached entity. If a cached entity''s timestamp becomes older
+        than specified time window, that entity will be removed from the cached already-listed
+        entities. Used by ''Tracking Entities'' strategy.'}
+    zh: {description: 指定此处理器跟踪已列出实体的时间。'跟踪实体的策略可以选择时间戳在指定时间窗口内的任何实体。例如，如果设置为“30分钟”，则在该处理器运行时，具有最近30分钟时间戳的任何实体都将成为列表目标。如果满足以下条件之一，则将列出的实体视为“新的/更新的”，并发出FlowFile：1.已列出的实体中不存在，2.具有比缓存实体更新的时间戳，3.具有与缓存实体不同的大小。如果缓存实体的时间戳早于指定的时间窗口，则将从缓存的已列出实体中删除该实体。由“跟踪实体”策略使用。,
+      displayName: 实体跟踪时间窗口}
+  requester-pays:
+    en: {displayName: Requester Pays, description: 'If true, indicates that the requester
+        consents to pay any charges associated with listing the S3 bucket.  This sets
+        the ''x-amz-request-payer'' header to ''requester''.  Note that this setting
+        is not applicable when ''Use Versions'' is ''true''.'}
+    zh: {description: 如果为true，则表示请求者同意支付与列出S3存储桶相关的任何费用。这将“x-amz-request-payer”标头设置为“requester”。请注意，当“使用版本”为“true”时，此设置不适用。,
+      displayName: 申请人付款}
+  listing-strategy:
+    en: {displayName: Listing Strategy, description: Specify how to determine new/updated
+        entities. See each strategy descriptions for detail.}
+    zh: {description: 指定如何确定新的/更新的实体。有关详细信息，请参阅每个策略描述。, displayName: 上市策略}
+  Signer Override:
+    en: {displayName: Signer Override, description: The AWS libraries use the default
+        signer but this property allows you to specify a custom signer to support
+        older S3-compatible services.}
+    zh: {description: AWS库使用默认签名者，但此属性允许您指定自定义签名者以支持较旧的S3兼容服务。, displayName: 签名者覆盖}
+  delimiter:
+    en: {displayName: Delimiter, description: The string used to delimit directories
+        within the bucket. Please consult the AWS documentation for the correct use
+        of this field.}
+    zh: {description: 用于分隔存储桶内目录的字符串。有关此字段的正确使用，请参阅AWS文档。, displayName: 分隔符}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  min-age:
+    en: {displayName: Minimum Object Age, description: The minimum age that an S3
+        object must be in order to be considered; any object younger than this amount
+        of time (according to last modification date) will be ignored}
+    zh: {description: S3对象必须达到的最小年龄才能被考虑；任何小于此时间量（根据上次修改日期）的对象都将被忽略, displayName: 最小对象年龄}
+  write-s3-user-metadata:
+    en: {displayName: Write User Metadata, description: 'If set to ''True'', the user
+        defined metadata associated with the S3 object will be added to FlowFile attributes/records'}
+    zh: {description: 如果设置为“True”，则与S3对象关联的用户定义元数据将添加到FlowFile属性/记录中, displayName: 写入用户元数据}
+  max-age:
+    en: {displayName: Maximum Object Age, description: The maximum age that an S3
+        object can be in order to be considered; any object older than this amount
+        of time (according to last modification date) will be ignored}
+    zh: {description: S3对象可以考虑的最大年龄；任何早于此时间（根据上次修改日期）的对象都将被忽略, displayName: 最大对象年龄}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  Listing Batch Size:
+    en: {displayName: Listing Batch Size, description: 'If not using a Record Writer,
+        this property dictates how many S3 objects should be listed in a single batch.
+        Once this number is reached, the FlowFiles that have been created will be
+        transferred out of the Processor. Setting this value lower may result in lower
+        latency by sending out the FlowFiles before the complete listing has finished.
+        However, it can significantly reduce performance. Larger values may take more
+        memory to store all of the information before sending the FlowFiles out. This
+        property is ignored if using a Record Writer, as one of the main benefits
+        of the Record Writer is being able to emit the entire listing as a single
+        FlowFile.'}
+    zh: {description: 如果不使用Record Writer，则此属性指定在单个批处理中应列出多少S3对象。一旦达到此数字，已创建的FlowFiles将从处理器中传输出去。通过在完成完整列表之前发送FlowFiles，将此值设置得较低可能会导致较低的延迟。然而，它会显著降低性能。在发送FlowFiles之前，较大的值可能需要更多的内存来存储所有信息。如果使用记录编写器，则忽略此属性，因为记录编写器的主要优点之一是能够将整个列表作为单个FlowFile发出。,
+      displayName: 列出批量大小}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  write-s3-object-tags:
+    en: {displayName: Write Object Tags, description: 'If set to ''True'', the tags
+        associated with the S3 object will be written as FlowFile attributes'}
+    zh: {description: 如果设置为“True”，与S3对象关联的标记将作为FlowFile属性写入, displayName: 写入对象标记}
+  Bucket:
+    en: {displayName: Bucket, description: ''}
+    zh: {description: '', displayName: 水桶}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  et-state-cache:
+    en: {displayName: Entity Tracking State Cache, description: 'Listed entities are
+        stored in the specified cache storage so that this processor can resume listing
+        across NiFi restart or in case of primary node change. ''Tracking Entities''
+        strategy require tracking information of all listed entities within the last
+        ''Tracking Time Window''. To support large number of entities, the strategy
+        uses DistributedMapCache instead of managed state. Cache key format is ''ListedEntities::{processorId}(::{nodeId})''.
+        If it tracks per node listed entities, then the optional ''::{nodeId}'' part
+        is added to manage state separately. E.g. cluster wide cache key = ''ListedEntities::8dda2321-0164-1000-50fa-3042fe7d6a7b'',
+        per node cache key = ''ListedEntities::8dda2321-0164-1000-50fa-3042fe7d6a7b::nifi-node3''
+        The stored cache content is Gzipped JSON string. The cache key will be deleted
+        when target listing configuration is changed. Used by ''Tracking Entities''
+        strategy.'}
+    zh: {description: '列出的实体存储在指定的缓存存储中，以便此处理器可以在NiFi重新启动或主节点更改时恢复列出“跟踪实体”策略要求在上一个“跟踪时间窗口”内跟踪所有列出实体的信息。为了支持大量实体，该策略使用DistributedMapCache而不是托管状态。缓存密钥格式为“ListedEntities:：｛processorId｝（：：｛nodeId｝）”。如果它跟踪每个节点列出的实体，则会添加可选的“：：｛nodeId｝”部分以单独管理状态。E、
+        g.集群范围的缓存键=“ListedEntities:：8dda2321-0164-1000-50fa-3042fe7d6a7b”，每个节点的缓存键为“ListedEntitys::8dda23201-0164-1000-50fa-3042fe7d
+        6a7b:：nifi-node3”存储的缓存内容为Gzipped JSON字符串。更改目标列表配置时，将删除缓存密钥。由“跟踪实体”策略使用。',
+      displayName: 实体跟踪状态缓存}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+  use-versions:
+    en: {displayName: Use Versions, description: 'Specifies whether to use S3 versions,
+        if applicable.  If false, only the latest version of each object will be returned.'}
+    zh: {description: 指定是否使用S3版本（如果适用）。如果为false，则只返回每个对象的最新版本。, displayName: 使用版本}
+writeAttributes:
+  s3.isLatest: {en: A boolean indicating if this is the latest version of the object,
+    zh: 一个布尔值，指示这是否是对象的最新版本}
+  s3.version: {en: 'The version of the object, if applicable', zh: 对象的版本（如果适用）}
+  s3.lastModified: {en: The last modified time in milliseconds since epoch in UTC
+      time, zh: 自UTC时间的epoch以来的最后修改时间（毫秒）}
+  s3.length: {en: The size of the object in bytes, zh: 对象的大小（字节）}
+  filename: {en: The name of the file, zh: 文件的名称}
+  s3.etag: {en: The ETag that can be used to see if the file has changed, zh: 可用于查看文件是否已更改的ETag}
+  s3.storeClass: {en: The storage class of the object, zh: 对象的存储类}
+  s3.bucket: {en: The name of the S3 bucket, zh: S3存储桶的名称}
+  s3.user.metadata.___: {en: 'If ''Write User Metadata'' is set to ''True'', the user
+      defined metadata associated to the S3 object that is being listed will be written
+      as part of the flowfile attributes', zh: 如果“写入用户元数据”设置为“True”，则与正在列出的S3对象关联的用户定义元数据将作为流文件属性的一部分写入}
+  s3.tag.___: {en: 'If ''Write Object Tags'' is set to ''True'', the tags associated
+      to the S3 object that is being listed will be written as part of the flowfile
+      attributes', zh: 如果“写入对象标记”设置为“True”，则与正在列出的S3对象相关的标记将作为流文件属性的一部分写入}
+tags:
+  en: [Amazon, S3, AWS, list]
+  zh: [亚马逊, 第3页, 自动售货机, 列表]

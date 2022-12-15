@@ -1,0 +1,157 @@
+relationships:
+  success: {en: All FlowFiles that are sent to the JMS destination are routed to this
+      relationship, zh: 发送到JMS目标的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be sent to JMS destination are routed to
+      this relationship, zh: 无法发送到JMS目标的所有FlowFiles都将路由到此关系}
+dynamicProperties:
+  The name of a Connection Factory configuration property.:
+    en: {description: 'Additional configuration property for the Connection Factory.
+        It can be used when the Connection Factory is being configured via the ''JNDI
+        *'' or the ''JMS *''properties of the processor. For more information, see
+        the Additional Details page.', value: The value of a given Connection Factory
+        configuration property.}
+    zh: {description: 连接工厂的其他配置属性。当通过处理器的“JNDI*”或“JMS*”属性配置连接工厂时，可以使用它。有关详细信息，请参阅“其他详细信息”页面。,
+      value: 给定连接工厂配置属性的值。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: Creates a JMS Message from the contents of a FlowFile
+    and sends it to a JMS Destination (queue or topic) as JMS BytesMessage or TextMessage.
+    FlowFile attributes will be added as JMS headers and/or properties to the outgoing
+    JMS message., zh: 从FlowFile的内容创建JMS消息，并将其作为JMS BytesMessage或TextMessage发送到JMS目标（队列或主题）。FlowFile属性将作为JMS头和/或属性添加到传出JMS消息中。}
+readAttributes:
+  other attributes: {en: All other attributes that do not start with jms_ are added
+      as message properties., zh: 所有其他不以jms_开头的属性都作为消息属性添加。}
+  jms_redelivered: {en: This attribute becomes the JMSRedelivered message header.,
+    zh: 此属性成为JMSRedelivered消息头。}
+  jms_deliveryMode: {en: This attribute becomes the JMSDeliveryMode message header.
+      Must be an integer., zh: 此属性成为JMSDeliveryMode消息头。必须是整数。}
+  jms_replyTo: {en: This attribute becomes the JMSReplyTo message header. Must be
+      an integer., zh: 此属性成为JMSReplyTo消息头。必须是整数。}
+  other attributes .type: {en: 'When an attribute will be added as a message property,
+      a second attribute of the same name but with an extra `.type` at the end will
+      cause the message property to be sent using that strong type. For example, attribute
+      `delay` with value `12000` and another attribute `delay.type` with value `integer`
+      will cause a JMS message property `delay` to be sent as an Integer rather than
+      a String. Supported types are boolean, byte, short, integer, long, float, double,
+      and string (which is the default).', zh: 当一个属性将被添加为消息属性时，第二个属性的名称相同，但带有一个额外的“”。类型”将导致使用该强类型发送消息属性。例如，值为“12000”的属性“delay”和另一个属性“delaye”。值为“integer”的类型“”将导致JMS消息属性“delay”以整数而不是字符串的形式发送。支持的类型有boolean、byte、short、integer、long、float、double和string（这是默认值）。}
+  jms_destination: {en: This attribute becomes the JMSDestination message header.
+      Must be an integer., zh: 此属性成为JMSDestination消息头。必须是整数。}
+  jms_priority: {en: This attribute becomes the JMSPriority message header. Must be
+      an integer., zh: 此属性成为JMSPriority消息头。必须是整数。}
+  jms_correlationId: {en: This attribute becomes the JMSCorrelationID message header.,
+    zh: 此属性成为JMSCorrelationID消息头。}
+  jms_type: {en: This attribute becomes the JMSType message header. Must be an integer.,
+    zh: 此属性成为JMSType消息头。必须是整数。}
+  jms_timestamp: {en: This attribute becomes the JMSTimestamp message header. Must
+      be a long., zh: 此属性成为JMSTimestamp消息头。一定很长。}
+  jms_expiration: {en: This attribute becomes the JMSExpiration message header. Must
+      be an integer., zh: 此属性成为JMSExpiration消息头。必须是整数。}
+properties:
+  character-set:
+    en: {displayName: Character Set, description: The name of the character set to
+        use to construct or interpret TextMessages}
+    zh: {description: 用于构造或解释TextMessage的字符集的名称, displayName: 字符集}
+  cflib:
+    en: {displayName: JMS Client Libraries, description: 'Path to the directory with
+        additional resources (eg. JARs, configuration files etc.) to be added to the
+        classpath (defined as a comma separated list of values). Such resources typically
+        represent target JMS client libraries for the ConnectionFactory implementation.'}
+    zh: {description: 包含要添加到类路径的其他资源（例如JAR、配置文件等）的目录路径（定义为逗号分隔的值列表）。这些资源通常表示ConnectionFactory实现的目标JMS客户端库。,
+      displayName: JMS客户端库}
+  allow-illegal-chars-in-jms-header-names:
+    en: {displayName: Allow Illegal Characters in Header Names, description: Specifies
+        whether illegal characters in header names should be sent to the JMS broker.
+        Usually hyphens and full-stops.}
+    zh: {description: 指定是否应将标头名称中的非法字符发送到JMS代理。通常是连字符和句号。, displayName: 允许在标题名称中使用非法字符}
+  cf:
+    en: {displayName: JMS Connection Factory Implementation Class, description: The
+        fully qualified name of the JMS ConnectionFactory implementation class (eg.
+        org.apache.activemq.ActiveMQConnectionFactory).}
+    zh: {description: JMS ConnectionFactory实现类的完全限定名称（例如org.apache.activemq.ActiveMQConnectionFactory）。,
+      displayName: JMS连接工厂实现类}
+  User Name:
+    en: {displayName: User Name, description: User Name used for authentication and
+        authorization.}
+    zh: {description: 用于身份验证和授权的用户名。, displayName: 用户名}
+  java.naming.factory.initial:
+    en: {displayName: JNDI Initial Context Factory Class, description: The fully qualified
+        class name of the JNDI Initial Context Factory Class (java.naming.factory.initial).}
+    zh: {description: JNDI初始上下文工厂类的完全限定类名（java.nameing.Factory.Initial）。, displayName: JNDI初始上下文工厂类}
+  Destination Name:
+    en: {displayName: Destination Name, description: 'The name of the JMS Destination.
+        Usually provided by the administrator (e.g., ''topic://myTopic'' or ''myTopic'').'}
+    zh: {description: 'JMS目标的名称。通常由管理员提供（例如topic://myTopic''或''myTopic''）。', displayName: 目标名称}
+  java.naming.provider.url:
+    en: {displayName: JNDI Provider URL, description: The URL of the JNDI Provider
+        to use (java.naming.provider.url).}
+    zh: {description: 要使用的JNDI Provider的URL（java.nameing.Provider.URL）。, displayName: JNDI提供程序URL}
+  naming.factory.libraries:
+    en: {displayName: JNDI / JMS Client Libraries, description: 'Specifies jar files
+        and/or directories to add to the ClassPath in order to load the JNDI / JMS
+        client libraries. This should be a comma-separated list of files, directories,
+        and/or URLs. If a directory is given, any files in that directory will be
+        included, but subdirectories will not be included (i.e., it is not recursive).'}
+    zh: {description: 指定要添加到ClassPath的jar文件和/或目录，以便加载JNDI/JMS客户端库。这应该是一个逗号分隔的文件、目录和/或URL列表。如果给定了一个目录，则该目录中的任何文件都将被包含，但子目录不会被包含（即，它不是递归的）。,
+      displayName: JNDI/JMS客户端库}
+  broker:
+    en: {displayName: JMS Broker URI, description: 'URI pointing to the network location
+        of the JMS Message broker. Example for ActiveMQ: ''tcp://myhost:61616''. Examples
+        for IBM MQ: ''myhost(1414)'' and ''myhost01(1414),myhost02(1414)''.'}
+    zh: {description: '指向JMS消息代理的网络位置的URI。ActiveMQ示例：''tcp://myhost:61616''. IBM MQ的示例：“myhost（1414）”和“myhost01（1414。',
+      displayName: JMS代理URI}
+  Connection Factory Service:
+    en: {displayName: Connection Factory Service, description: 'The Controller Service
+        that is used to obtain Connection Factory. Alternatively, the ''JNDI *'' or
+        the ''JMS *'' properties can also be be used to configure the Connection Factory.'}
+    zh: {description: 用于获取连接工厂的控制器服务。或者，也可以使用“JNDI*”或“JMS*”属性来配置连接工厂。, displayName: 连接工厂服务}
+  connection.factory.name:
+    en: {displayName: JNDI Name of the Connection Factory, description: The name of
+        the JNDI Object to lookup for the Connection Factory.}
+    zh: {description: 要查找连接工厂的JNDI对象的名称。, displayName: 连接工厂的JNDI名称}
+  SSL Context Service:
+    en: {displayName: JMS SSL Context Service, description: The SSL Context Service
+        used to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: JMS SSL上下文服务}
+  attributes-to-send-as-jms-headers-regex:
+    en: {displayName: Attributes to Send as JMS Headers (Regex), description: Specifies
+        the Regular Expression that determines the names of FlowFile attributes that
+        should be sent as JMS Headers}
+    zh: {description: 指定用于确定应作为JMS头发送的FlowFile属性的名称的正则表达式, displayName: 要作为JMS头发送的属性（Regex）}
+  Connection Client ID:
+    en: {displayName: Connection Client ID, description: 'The client id to be set
+        on the connection, if set. For durable non shared consumer this is mandatory,
+        for all others it is optional, typically with shared consumers it is undesirable
+        to be set. Please see JMS spec for further details'}
+    zh: {description: 要在连接上设置的客户端id（如果已设置）。对于耐用的非共享消费者，这是强制性的，对于所有其他消费者，这都是可选的，通常对于共享消费者，不希望设置。有关详细信息，请参阅JMS规范,
+      displayName: 连接客户端ID}
+  java.naming.security.principal:
+    en: {displayName: JNDI Principal, description: The Principal to use when authenticating
+        with JNDI (java.naming.security.principal).}
+    zh: {description: 使用JNDI进行身份验证时要使用的主体（java.nameing.security.prprincipal）。, displayName: JNDI主体}
+  Session Cache size:
+    en: {displayName: Session Cache Size, description: This property is deprecated
+        and no longer has any effect on the Processor. It will be removed in a later
+        version.}
+    zh: {description: 此属性已弃用，不再对处理器产生任何影响。它将在更高版本中删除。, displayName: 会话缓存大小}
+  Destination Type:
+    en: {displayName: Destination Type, description: The type of the JMS Destination.
+        Could be one of 'QUEUE' or 'TOPIC'. Usually provided by the administrator.
+        Defaults to 'QUEUE'}
+    zh: {description: JMS目标的类型。可能是“QUEUE”或“TOPIC”之一。通常由管理员提供。默认为“QUEUE”, displayName: 目的地类型}
+  message-body-type:
+    en: {displayName: Message Body Type, description: The type of JMS message body
+        to construct.}
+    zh: {description: 要构造的JMS消息体的类型。, displayName: 消息正文类型}
+  java.naming.security.credentials:
+    en: {displayName: JNDI Credentials, description: The Credentials to use when authenticating
+        with JNDI (java.naming.security.credentials).}
+    zh: {description: 使用JNDI进行身份验证时要使用的凭据（java.nameing.security.Credentials）。, displayName: JNDI凭据}
+  Password:
+    en: {displayName: Password, description: Password used for authentication and
+        authorization.}
+    zh: {description: 用于身份验证和授权的密码。, displayName: 暗语}
+tags:
+  en: [jms, put, message, send, publish]
+  zh: [jms公司, 放, 消息, 邮寄, 出版]

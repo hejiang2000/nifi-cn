@@ -22,12 +22,12 @@
             <div id="reporting-task-standard-settings-tab-content" class="configuration-tab">
                 <div class="settings-left">
                     <div class="setting">
-                        <div class="setting-name">Name</div>
+                        <div class="setting-name">名称</div>
                         <div class="reporting-task-editable setting-field">
                             <input type="text" id="reporting-task-name" name="reporting-task-name"/>
                             <div class="reporting-task-enabled-container">
                                 <div id="reporting-task-enabled" class="nf-checkbox checkbox-unchecked"></div>
-                                <span class="nf-checkbox-label"> Enabled</span>
+                                <span class="nf-checkbox-label"> 启用</span>
                             </div>
                         </div>
                         <div class="reporting-task-read-only setting-field hidden">
@@ -41,13 +41,13 @@
                         </div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Type</div>
+                        <div class="setting-name">类型</div>
                         <div class="setting-field">
                             <span id="reporting-task-type"></span>
                         </div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Bundle</div>
+                        <div class="setting-name">扩展包</div>
                         <div id="reporting-task-bundle" class="setting-field"></div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                 <div class="settings-right">
                     <div class="setting">
                         <div class="setting-name">
-                            Scheduling strategy
-                            <div class="fa fa-question-circle" alt="Info" title="The strategy used to schedule this reporting task."></div>
+                            调度策略
+                            <div class="fa fa-question-circle" alt="Info" title="调度该报告任务的策略."></div>
                         </div>
                         <div class="reporting-task-editable setting-field">
                             <div id="reporting-task-scheduling-strategy-combo"></div>
@@ -67,8 +67,8 @@
                     </div>
                     <div class="setting">
                         <div class="setting-name">
-                            Run schedule
-                            <div class="fa fa-question-circle" alt="Info" title="The amount of time that should elapse between task executions."></div>
+                            调度间隔
+                            <div class="fa fa-question-circle" alt="Info" title="任务两次执行之间的间隔时间长度."></div>
                         </div>
                         <div class="reporting-task-editable setting-field">
                             <input type="text" id="reporting-task-timer-driven-scheduling-period" class="reporting-task-scheduling-period"/>
@@ -84,14 +84,14 @@
             <div id="reporting-task-properties-tab-content" class="configuration-tab">
                 <div id="reporting-task-properties"></div>
                 <div id="reporting-task-properties-verification-results" class="verification-results">
-                    <div class="verification-results-header">Verification Results</div>
+                    <div class="verification-results-header">校验结果</div>
                     <div id="reporting-task-properties-verification-results-listing" class="verification-results-listing"></div>
                 </div>
             </div>
             <div id="reporting-task-comments-tab-content" class="configuration-tab">
                 <textarea cols="30" rows="4" id="reporting-task-comments" name="reporting-task-comments" class="reporting-task-editable setting-input"></textarea>
                 <div class="setting reporting-task-read-only hidden">
-                    <div class="setting-name">Comments</div>
+                    <div class="setting-name">说明</div>
                     <div class="setting-field">
                         <span id="read-only-reporting-task-comments"></span>
                     </div>

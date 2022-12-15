@@ -1,0 +1,29 @@
+capabilityDescription: {en: A service that provides cache instances backed by Hazelcast
+    running outside of NiFi., zh: 提供由运行在NiFi之外的Hazelcast支持的缓存实例的服务。}
+properties:
+  hazelcast-server-address:
+    en: {displayName: Hazelcast Server Address, description: 'Addresses of one or
+        more the Hazelcast instances, using {host:port} format, separated by comma.'}
+    zh: {description: '一个或多个Hazelcast实例的地址，使用｛host:port｝格式，用逗号分隔。', displayName: Hazelcast服务器地址}
+  hazelcast-retry-backoff-maximum:
+    en: {displayName: Hazelcast Maximum Backoff, description: The maximum amount of
+        time the client waits before it tries to reestablish connection.}
+    zh: {description: 客户端在尝试重新建立连接之前等待的最长时间。, displayName: Hazelcast最大后退}
+  hazelcast-retry-backoff-initial:
+    en: {displayName: Hazelcast Initial Backoff, description: The amount of time the
+        client waits before it tries to reestablish connection for the first time.}
+    zh: {description: 客户端在首次尝试重新建立连接之前等待的时间。, displayName: Hazelcast初始后退}
+  hazelcast-connection-timeout:
+    en: {displayName: Hazelcast Connection Timeout, description: The maximum amount
+        of time the client tries to connect or reconnect before giving up.}
+    zh: {description: 客户端在放弃之前尝试连接或重新连接的最长时间。, displayName: Hazelcast连接超时}
+  hazelcast-cluster-name:
+    en: {displayName: Hazelcast Cluster Name, description: Name of the Hazelcast cluster.}
+    zh: {description: Hazelcast群集的名称。, displayName: Hazelcast群集名称}
+  hazelcast-retry-backoff-multiplier:
+    en: {displayName: Hazelcast Backoff Multiplier, description: A multiplier by which
+        the wait time is increased before each attempt to reestablish connection.}
+    zh: {description: 在每次尝试重新建立连接之前，等待时间增加的乘数。, displayName: Hazelcast回退乘数}
+tags:
+  en: [hazelcast, cache]
+  zh: [榛属植物, 隐藏物]

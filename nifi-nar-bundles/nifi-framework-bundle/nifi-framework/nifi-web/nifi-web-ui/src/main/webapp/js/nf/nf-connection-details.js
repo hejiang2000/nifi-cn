@@ -75,7 +75,7 @@
                 var processorType = $('<div></div>').text(nfCommon.substringAfterLast(processor.type, '.')).addClass('ellipsis').attr('title', nfCommon.substringAfterLast(processor.type, '.'));
 
                 // populate source processor details
-                $('#read-only-connection-source-label').text('From processor');
+                $('#read-only-connection-source-label').text('从处理器');
                 $('#read-only-connection-source').append(processorName).append(processorType);
                 $('#read-only-connection-source-group-name').text(groupName);
 
@@ -83,10 +83,10 @@
             }).fail(function (xhr, status, error) {
                 if (xhr.status === 403) {
                     var processorName = $('<div class="label"></div>').text(source.name).addClass('ellipsis').attr('title', source.name);
-                    var processorType = $('<div></div>').text('Processor').addClass('ellipsis').attr('title', 'Processor');
+                    var processorType = $('<div></div>').text('处理器').addClass('ellipsis').attr('title', 'Processor');
 
                     // populate source processor details
-                    $('#read-only-connection-source-label').text('From processor');
+                    $('#read-only-connection-source-label').text('从处理器');
                     $('#read-only-connection-source').append(processorName).append(processorType);
                     $('#read-only-connection-source-group-name').text(groupName);
 
@@ -107,7 +107,7 @@
      */
     var initializeSourceFunnel = function (groupId, groupName, source) {
         return $.Deferred(function (deferred) {
-            $('#read-only-connection-source-label').text('From funnel');
+            $('#read-only-connection-source-label').text('从漏斗');
             $('#read-only-connection-source').text('funnel').attr('title', 'funnel');
             $('#read-only-connection-source-group-name').text(groupName);
             deferred.resolve();
@@ -131,20 +131,20 @@
                 var remoteProcessGroup = response.component;
 
                 // populate source port details
-                $('#read-only-connection-source-label').text('From output');
+                $('#read-only-connection-source-label').text('从输出端口');
                 $('#read-only-connection-source').text(source.name).attr('title', source.name);
                 $('#read-only-connection-source-group-name').text(remoteProcessGroup.name);
-                $('#read-only-connection-source-group div.setting-name').text('Within Remote Group');
+                $('#read-only-connection-source-group div.setting-name').text('所属远程处理组');
                 $('#read-only-connection-remote-source-url').text(remoteProcessGroup.targetUri).show();
 
                 deferred.resolve();
             }).fail(function (xhr, status, error) {
                 if (xhr.status === 403) {
                     // populate source processor details
-                    $('#read-only-connection-source-label').text('From output');
+                    $('#read-only-connection-source-label').text('从输出端口');
                     $('#read-only-connection-source').text(source.name).attr('title', source.name);
                     $('#read-only-connection-source-group-name').text(source.groupId);
-                    $('#read-only-connection-source-group div.setting-name').text('Within Remote Group');
+                    $('#read-only-connection-source-group div.setting-name').text('所属远程处理组');
 
                     deferred.resolve();
                 } else {
@@ -165,7 +165,7 @@
         return $.Deferred(function (deferred) {
             if (groupId === source.groupId) {
                 // populate source port details
-                $('#read-only-connection-source-label').text('From input');
+                $('#read-only-connection-source-label').text('从输入端口');
                 $('#read-only-connection-source').text(source.name).attr('title', source.name);
                 $('#read-only-connection-source-group-name').text(groupName);
 
@@ -179,7 +179,7 @@
                     var processGroup = response.component;
 
                     // populate source port details
-                    $('#read-only-connection-source-label').text('From output');
+                    $('#read-only-connection-source-label').text('从输出端口');
                     $('#read-only-connection-source').text(source.name).attr('title', source.name);
                     $('#read-only-connection-source-group-name').text(processGroup.name);
 
@@ -187,7 +187,7 @@
                 }).fail(function (xhr, status, error) {
                     if (xhr.status === 403) {
                         // populate source processor details
-                        $('#read-only-connection-source-label').text('From output');
+                        $('#read-only-connection-source-label').text('从输出端口');
                         $('#read-only-connection-source').text(source.name).attr('title', source.name);
                         $('#read-only-connection-source-group-name').text(source.groupId);
 
@@ -238,7 +238,7 @@
                 var processorType = $('<div></div>').text(nfCommon.substringAfterLast(processor.type, '.')).addClass('ellipsis').attr('title', nfCommon.substringAfterLast(processor.type, '.'));
 
                 // populate destination processor details
-                $('#read-only-connection-target-label').text('To processor');
+                $('#read-only-connection-target-label').text('到处理器');
                 $('#read-only-connection-target').append(processorName).append(processorType);
                 $('#read-only-connection-target-group-name').text(groupName);
 
@@ -246,10 +246,10 @@
             }).fail(function (xhr, status, error) {
                 if (xhr.status === 403) {
                     var processorName = $('<div class="label"></div>').text(destination.name).addClass('ellipsis').attr('title', destination.name);
-                    var processorType = $('<div></div>').text('Processor').addClass('ellipsis').attr('title', 'Processor');
+                    var processorType = $('<div></div>').text('处理器').addClass('ellipsis').attr('title', 'Processor');
 
                     // populate destination processor details
-                    $('#read-only-connection-target-label').text('To processor');
+                    $('#read-only-connection-target-label').text('到处理器');
                     $('#read-only-connection-target').append(processorName).append(processorType);
                     $('#read-only-connection-target-group-name').text(groupName);
 
@@ -270,7 +270,7 @@
      */
     var initializeDestinationFunnel = function (groupId, groupName, destination) {
         return $.Deferred(function (deferred) {
-            $('#read-only-connection-target-label').text('To funnel');
+            $('#read-only-connection-target-label').text('到漏斗');
             $('#read-only-connection-target').text('funnel').attr('title', 'funnel');
             $('#read-only-connection-target-group-name').text(groupName);
             deferred.resolve();
@@ -294,20 +294,20 @@
                 var remoteProcessGroup = response.component;
 
                 // populate source port details
-                $('#read-only-connection-target-label').text('To input');
+                $('#read-only-connection-target-label').text('到输入端口');
                 $('#read-only-connection-target').text(destination.name).attr('title', destination.name);
                 $('#read-only-connection-target-group-name').text(remoteProcessGroup.name);
-                $('#read-only-connection-target-group div.setting-name').text('Within Remote Group');
+                $('#read-only-connection-target-group div.setting-name').text('所属远程处理组');
                 $('#read-only-connection-remote-target-url').text(remoteProcessGroup.targetUri).show();
 
                 deferred.resolve();
             }).fail(function (xhr, status, error) {
                 if (xhr.status === 403) {
                     // populate source port details
-                    $('#read-only-connection-target-label').text('To input');
+                    $('#read-only-connection-target-label').text('到输入端口');
                     $('#read-only-connection-target').text(destination.name).attr('title', destination.name);
                     $('#read-only-connection-target-group-name').text(destination.groupId);
-                    $('#read-only-connection-target-group div.setting-name').text('Within Remote Group');
+                    $('#read-only-connection-target-group div.setting-name').text('所属远程处理组');
 
                     deferred.resolve();
                 } else {
@@ -328,7 +328,7 @@
         return $.Deferred(function (deferred) {
             if (groupId === destination.groupId) {
                 // populate destination port details
-                $('#read-only-connection-target-label').text('To output');
+                $('#read-only-connection-target-label').text('到输出端口');
                 $('#read-only-connection-target').text(destination.name).attr('title', destination.name);
                 $('#read-only-connection-target-group-name').text(groupName);
 
@@ -342,7 +342,7 @@
                     var processGroup = response.component;
 
                     // populate destination port details
-                    $('#read-only-connection-target-label').text('To input');
+                    $('#read-only-connection-target-label').text('到输入端口');
                     $('#read-only-connection-target').text(destination.name).attr('title', destination.name);
                     $('#read-only-connection-target-group-name').text(processGroup.name);
 
@@ -350,7 +350,7 @@
                 }).fail(function (xhr, status, error) {
                     if (xhr.status === 403) {
                         // populate source port details
-                        $('#read-only-connection-target-label').text('To input');
+                        $('#read-only-connection-target-label').text('到输入端口');
                         $('#read-only-connection-target').text(destination.name).attr('title', destination.name);
                         $('#read-only-connection-target-group-name').text(destination.groupId);
 
@@ -385,20 +385,20 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Details',
+                    name: '详细信息',
                     tabContentId: 'read-only-connection-details-tab-content'
                 }, {
-                    name: 'Settings',
+                    name: '设置',
                     tabContentId: 'read-only-connection-settings-tab-content'
                 }]
             });
 
             // configure the connection details dialog
             $('#connection-details').modal({
-                headerText: 'Connection Details',
+                headerText: '连接详细信息',
                 scrollableContentStyle: 'scrollable',
                 buttons: [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -422,14 +422,14 @@
                         // clear the connection source details
                         $('#read-only-connection-source-label').text('');
                         $('#read-only-connection-source').empty();
-                        $('#read-only-connection-source-group div.setting-name').text('Within Group')
+                        $('#read-only-connection-source-group div.setting-name').text('所属处理组')
                         $('#read-only-connection-source-group-name').text('');
                         $('#read-only-connection-remote-source-url').text('').hide();
 
                         // clear the connection target details
                         $('#read-only-connection-target-label').text('');
                         $('#read-only-connection-target').empty();
-                        $('#read-only-connection-target-group div.setting-name').text('Within Group')
+                        $('#read-only-connection-target-group div.setting-name').text('所属处理组')
                         $('#read-only-connection-target-group-name').text('');
                         $('#read-only-connection-remote-target-url').text('').hide();
 
@@ -560,7 +560,7 @@
                             });
                             $('#read-only-prioritizers').append(prioritizerList);
                         } else {
-                            var noValueSet = $('<span class="unset">No value set</span>');
+                            var noValueSet = $('<span class="unset">无设置值</span>');
                             $('#read-only-prioritizers').append(noValueSet);
                         }
 

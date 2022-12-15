@@ -17,13 +17,13 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="summary">
     <div id="summary-header-and-filter">
-        <div id="summary-header-text">NiFi Summary</div>
+        <div id="summary-header-text">NiFi 系统信息</div>
     </div>
     <div id="summary-tabs" class="tab-container"></div>
     <div id="summary-tabs-content">
         <div id="summary-filter-controls" class="filter-controls">
             <div id="summary-filter-status" class="filter-status">
-                Displaying&nbsp;<span id="displayed-items"></span>&nbsp;of&nbsp;<span id="total-items"></span>
+                显示&nbsp;<span id="displayed-items"></span>,&nbsp;共&nbsp;<span id="total-items"></span>
             </div>
             <div id="summary-filter-container" class="filter-container">
                 <input type="text" placeholder="Filter" id="summary-filter" class="filter"/>
@@ -36,8 +36,8 @@
             </div>
         </div>
         <div id="view-options-container">
-            View:&nbsp;
-            <span id="view-single-node-link" class="link">Single node</span>&nbsp;&nbsp;<span id="view-cluster-link" class="link">Cluster</span>
+            查看:&nbsp;
+            <span id="view-single-node-link" class="link">单节点</span>&nbsp;&nbsp;<span id="view-cluster-link" class="link">集群信息</span>
         </div>
         <div id="processor-summary-tab-content" class="configuration-tab">
             <div id="processor-summary-table" class="summary-table"></div>
@@ -60,12 +60,12 @@
     </div>
 </div>
 <div id="flow-summary-refresh-container">
-    <button id="refresh-button" class="refresh-button pointer fa fa-refresh" title="Refresh"></button>
+    <button id="refresh-button" class="refresh-button pointer fa fa-refresh" title="刷新"></button>
     <div id="summary-last-refreshed-container" class="last-refreshed-container">
-        Last updated:&nbsp;<span id="summary-last-refreshed" class="value-color"></span>
+        最后更新:&nbsp;<span id="summary-last-refreshed" class="value-color"></span>
     </div>
     <div id="summary-loading-container" class="loading-container"></div>
     <div id="system-diagnostics-link-container">
-        <span id="system-diagnostics-link" class="link">system diagnostics</span>
+        <span id="system-diagnostics-link" class="link">系统诊断</span>
     </div>
 </div>

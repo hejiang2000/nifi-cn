@@ -134,7 +134,7 @@
                     // configure the new port dialog
                     this.getElement().modal({
                         scrollableContentStyle: 'scrollable',
-                        headerText: 'Add Input Port',
+                        headerText: '添加输入端口',
                         handler: {
                             close: function () {
                                 $('#new-port-name').val('');
@@ -157,22 +157,22 @@
                  * Show the modal.
                  */
                 show: function () {
-                    $('#new-port-dialog > .dialog-header > .dialog-header-text').text('Add Input Port')
+                    $('#new-port-dialog > .dialog-header > .dialog-header-text').text('添加输入端口')
 
                     var optionLocal = {
-                                text: 'Local connections',
+                                text: '本地连接',
                                 value: 'false',
-                                description: 'Receive FlowFiles from components in parent process groups'
+                                description: '从父处理组内的组件中接收 FlowFile'
                             };
 
                     var optionRemote = {
-                                text: 'Remote connections (site-to-site)',
+                                text: '远程连接 (site-to-site)',
                                 value: 'true',
-                                description: 'Receive FlowFiles from remote process group (site-to-site)'
+                                description: '从远程处理组接收 FlowFile (site-to-site)'
                             };
 
                     // initialize the remote access combo
-                    $('#port-allow-remote-access-label').text('Receive from');
+                    $('#port-allow-remote-access-label').text('接收至');
                     $('#port-allow-remote-access-info').attr('title', 'Specify where FlowFiles are received from.');
                     if (nfCanvasUtils.getParentGroupId() === null) {
                         $('#port-allow-remote-access-setting').hide();
@@ -257,7 +257,7 @@
                 };
 
                 this.modal.update('setButtonModel', [{
-                    buttonText: 'Add',
+                    buttonText: '添加',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -268,7 +268,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',
@@ -282,7 +282,7 @@
                     }]);
 
                 // update the port type
-                $('#new-port-type').text('Input');
+                $('#new-port-type').text('输入');
 
                 // show the dialog
                 this.modal.show();

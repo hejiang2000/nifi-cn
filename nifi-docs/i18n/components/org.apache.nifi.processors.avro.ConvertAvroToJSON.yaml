@@ -1,0 +1,36 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship after it has been converted
+      to JSON, zh: FlowFile在转换为JSON后被路由到此关系}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be parsed as
+      Avro or cannot be converted to JSON for any reason, zh: 如果FlowFile无法解析为Avro或由于任何原因无法转换为JSON，则将其路由到此关系}
+capabilityDescription: {en: 'Converts a Binary Avro record into a JSON object. This
+    processor provides a direct mapping of an Avro field to a JSON field, such that
+    the resulting JSON will have the same hierarchical structure as the Avro document.
+    Note that the Avro schema information will be lost, as this is not a translation
+    from binary Avro to JSON formatted Avro. The output JSON is encoded the UTF-8
+    encoding. If an incoming FlowFile contains a stream of multiple Avro records,
+    the resultant FlowFile will contain a JSON Array containing all of the Avro records
+    or a sequence of JSON Objects.  If an incoming FlowFile does not contain any records,
+    an empty JSON object is the output. Empty/Single Avro record FlowFile inputs are
+    optionally wrapped in a container as dictated by ''Wrap Single Record''', zh: 将Binary
+    Avro记录转换为JSON对象。该处理器提供了Avro字段到JSON字段的直接映射，从而生成的JSON将具有与Avro文档相同的层次结构。注意，Avro模式信息将丢失，因为这不是从二进制Avro到JSON格式Avro的转换。输出JSON采用UTF-8编码。如果传入的FlowFile包含多个Avro记录流，则生成的FlowFile将包含包含所有Avro记录或一系列JSON对象的JSON数组。如果传入的FlowFile不包含任何记录，则输出为空的JSON对象。空/单个Avro记录FlowFile输入可选地按照“包装单个记录”的要求包装在容器中}
+properties:
+  JSON container options:
+    en: {displayName: JSON container options, description: 'Determines how stream
+        of records is exposed: either as a sequence of single Objects (none) (i.e.
+        writing every Object to a new line), or as an array of Objects (array).'}
+    zh: {description: 确定记录流的公开方式：要么作为单个对象的序列（无）（即将每个对象写入新行），要么作为对象的数组（数组）。, displayName: JSON容器选项}
+  Wrap Single Record:
+    en: {displayName: Wrap Single Record, description: Determines if the resulting
+        output for empty records or a single record should be wrapped in a container
+        array as specified by 'JSON container options'}
+    zh: {description: 确定是否应将空记录或单个记录的结果输出包装在“JSON容器选项”指定的容器数组中, displayName: 换行单个记录}
+  Avro schema:
+    en: {displayName: Avro schema, description: 'If the Avro records do not contain
+        the schema (datum only), it must be specified here.'}
+    zh: {description: 如果Avro记录不包含模式（仅限数据），则必须在此处指定。, displayName: 我有一个模式}
+writeAttributes:
+  mime.type: {en: Sets the mime type to application/json, zh: 将mime类型设置为application/json}
+tags:
+  en: [avro, convert, json]
+  zh: [我没有吗？, 转换, json文件]

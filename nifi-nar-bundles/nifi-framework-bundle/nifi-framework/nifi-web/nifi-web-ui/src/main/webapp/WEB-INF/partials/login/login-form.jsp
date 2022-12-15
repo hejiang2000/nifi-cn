@@ -16,15 +16,15 @@
 --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="login-container" class="hidden">
-    <div class="login-title">Log In</div>
+    <div class="login-title">登录</div>
     <div class="setting">
-        <div class="setting-name">User</div>
+        <div class="setting-name">用户</div>
         <div class="setting-field">
             <input type="text" placeholder="user" id="username"/>
         </div>
     </div>
     <div class="setting">
-        <div class="setting-name">Password</div>
+        <div class="setting-name">密码</div>
         <div class="setting-field">
             <input type="password" placeholder="password" id="password" autocomplete="off"/>
         </div>

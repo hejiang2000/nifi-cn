@@ -1,0 +1,25 @@
+relationships:
+  failure: {en: FlowFiles with failing lookups are routed to this relationship, zh: 查找失败的FlowFiles路由到此关系}
+  matched: {en: FlowFiles with matching lookups are routed to this relationship, zh: 具有匹配查找的FlowFiles路由到此关系}
+  unmatched: {en: FlowFiles with missing lookups are routed to this relationship,
+    zh: 缺少查找的FlowFiles被路由到此关系}
+dynamicProperties:
+  The name of the attribute to add to the FlowFile:
+    en: {description: Adds a FlowFile attribute specified by the dynamic property's
+        key with the value found in the lookup service using the the dynamic property's
+        value, value: The name of the key or property to retrieve from the lookup
+        service}
+    zh: {description: 使用在查找服务中使用动态属性的值添加由动态属性的键指定的FlowFile属性, value: 要从查找服务检索的键或属性的名称}
+capabilityDescription: {en: Lookup attributes from a lookup service, zh: 查找服务的查找属性}
+properties:
+  lookup-service:
+    en: {displayName: Lookup Service, description: The lookup service to use for attribute
+        lookups}
+    zh: {description: 用于属性查找的查找服务, displayName: 查找服务}
+  include-empty-values:
+    en: {displayName: Include Empty Values, description: Include null or blank values
+        for keys that are null or blank}
+    zh: {description: 为null或空白的键包含null或空白值, displayName: 包含空值}
+tags:
+  en: [lookup, cache, enrich, join, attributes, Attribute Expression Language]
+  zh: [查找, 隐藏物, 充实, 参加, 属性, 属性表达式语言]
