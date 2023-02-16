@@ -472,6 +472,7 @@
                                     <goal>compress</goal>
                                 </goals>
                                 <configuration>
+                                    <encoding>UTF-8</encoding>
                                     <sourceDirectory>src/main/webapp</sourceDirectory>
                                     <outputDirectory>${staging.dir}</outputDirectory>
                                     <nomunge>false</nomunge>

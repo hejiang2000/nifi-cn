@@ -28,6 +28,7 @@ import org.apache.nifi.nar.ExtensionMapping;
 import org.apache.nifi.parameter.ParameterProvider;
 import org.apache.nifi.processor.Processor;
 import org.apache.nifi.reporting.ReportingTask;
+import org.apache.nifi.translate.ComponentTranslationUtils;
 import org.apache.nifi.util.NiFiProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,6 +87,11 @@ public class DocGenerator {
             final String path = coordinate.getGroup() + "/" + coordinate.getId() + "/" + coordinate.getVersion() + "/" + extensionClassName;
             final File componentDirectory = new File(explodedNiFiDocsDir, path);
             final File indexHtml = new File(componentDirectory, "index.html");
+
+            // translation
+            ComponentTranslationUtils.translateConfigurableComponent(extensionManager,
+                extensionDefinition, coordinate);
+
             if (indexHtml.exists()) {
                 // index.html already exists, no need to unpack the docs again.
                 logger.debug("Existing documentation found [{}] skipped component class [{}]", indexHtml.getAbsolutePath(), extensionClassName);
