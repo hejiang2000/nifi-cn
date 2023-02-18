@@ -1,0 +1,41 @@
+relationships:
+  matched: {en: FlowFiles whose attributes are found in the dictionary will be routed
+      to this relationship, zh: 在字典中找到其属性的FlowFiles将路由到此关系}
+  unmatched: {en: FlowFiles whose attributes are not found in the dictionary will
+      be routed to this relationship, zh: 字典中找不到其属性的FlowFiles将被路由到此关系}
+capabilityDescription: {en: 'Scans the specified attributes of FlowFiles, checking
+    to see if any of their values are present within the specified dictionary of terms',
+  zh: 扫描FlowFiles的指定属性，检查其值是否存在于指定的术语字典中}
+properties:
+  Attribute Pattern:
+    en: {displayName: Attribute Pattern, description: Regular Expression that specifies
+        the names of attributes whose values will be matched against the terms in
+        the dictionary}
+    zh: {description: 正则表达式，指定其值将与字典中的术语匹配的属性的名称, displayName: 属性模式}
+  Dictionary Filter Pattern:
+    en: {displayName: Dictionary Filter Pattern, description: 'A Regular Expression
+        that will be applied to each line in the dictionary file. If the regular expression
+        does not match the line, the line will not be included in the list of terms
+        to search for. If a Matching Group is specified, only the portion of the term
+        that matches that Matching Group will be used instead of the entire term.
+        If not specified, all terms in the dictionary will be used and each term will
+        consist of the text of the entire line in the file'}
+    zh: {description: 将应用于字典文件中每一行的正则表达式。如果正则表达式与该行不匹配，则该行将不包含在要搜索的术语列表中。如果指定了匹配组，则将仅使用与该匹配组匹配的术语部分，而不是整个术语。如果未指定，则将使用词典中的所有术语，并且每个术语将由文件中整行的文本组成,
+      displayName: 字典筛选器模式}
+  Dictionary File:
+    en: {displayName: Dictionary File, description: A new-line-delimited text file
+        that includes the terms that should trigger a match. Empty lines are ignored.  The
+        contents of the text file are loaded into memory when the processor is scheduled
+        and reloaded when the contents are modified.}
+    zh: {description: 一个新的以行分隔的文本文件，其中包含应触发匹配的术语。空行被忽略。当处理器被调度时，文本文件的内容被加载到内存中，并且当内容被修改时被重新加载。,
+      displayName: 字典文件}
+  Match Criteria:
+    en: {displayName: Match Criteria, description: 'If set to All Must Match, then
+        FlowFiles will be routed to ''matched'' only if all specified attributes''
+        values are found in the dictionary. If set to At Least 1 Must Match, FlowFiles
+        will be routed to ''matched'' if any attribute specified is found in the dictionary'}
+    zh: {description: 如果设置为“所有必须匹配”，则只有在字典中找到所有指定的属性值时，FlowFiles才会被路由到“匹配”。如果设置为“至少1个必须匹配”，如果在字典中找到任何指定的属性，FlowFiles将被路由到“匹配”,
+      displayName: 匹配条件}
+tags:
+  en: [scan, attributes, search, lookup, find, text]
+  zh: [扫描, 属性, 搜索, 查找, 发现, 文本]

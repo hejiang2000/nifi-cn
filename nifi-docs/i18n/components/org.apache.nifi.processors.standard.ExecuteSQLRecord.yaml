@@ -1,0 +1,201 @@
+relationships:
+  success: {en: Successfully created FlowFile from SQL query result set., zh: 已成功从SQL查询结果集创建FlowFile。}
+  failure: {en: SQL query execution failed. Incoming FlowFile will be penalized and
+      routed to this relationship, zh: SQL查询执行失败。传入的FlowFile将受到惩罚，并发送到此关系}
+capabilityDescription: {en: 'Executes provided SQL select query. Query result will
+    be converted to the format specified by a Record Writer. Streaming is used so
+    arbitrarily large result sets are supported. This processor can be scheduled to
+    run on a timer, or cron expression, using the standard scheduling methods, or
+    it can be triggered by an incoming FlowFile. If it is triggered by an incoming
+    FlowFile, then attributes of that FlowFile will be available when evaluating the
+    select query, and the query may use the ? to escape parameters. In this case,
+    the parameters to use must exist as FlowFile attributes with the naming convention
+    sql.args.N.type and sql.args.N.value, where N is a positive integer. The sql.args.N.type
+    is expected to be a number indicating the JDBC Type. The content of the FlowFile
+    is expected to be in UTF-8 format. FlowFile attribute ''executesql.row.count''
+    indicates how many rows were selected.', zh: 执行提供的SQL选择查询。查询结果将转换为记录编写器指定的格式。使用流式处理，因此支持任意大的结果集。可以使用标准调度方法将此处理器调度为在计时器或cron表达式上运行，也可以由传入的FlowFile触发。如果由传入的FlowFile触发，则在评估选择查询时，该FlowFile的属性将可用，并且查询可以使用？以转义参数。在这种情况下，要使用的参数必须作为FlowFile属性存在，命名约定为sql.args.N.type和sql.args.N.value，其中N是正整数。sql.args.N.type应为指示JDBC类型的数字。FlowFile的内容应为UTF-8格式。FlowFile属性'executesql.row。count”表示选择了多少行。}
+readAttributes:
+  sql.args.N.value: {en: 'Incoming FlowFiles are expected to be parametrized SQL statements.
+      The value of the Parameters are specified as sql.args.1.value, sql.args.2.value,
+      sql.args.3.value, and so on. The type of the sql.args.1.value Parameter is specified
+      by the sql.args.1.type attribute.', zh: 传入的FlowFiles应该是参数化的SQL语句。参数的值指定为sql.args.1.value、sql.args.2.value、sql.args.3.value等。sql.args.1.value参数的类型由sql.arg.s.type属性指定。}
+  sql.args.N.type: {en: Incoming FlowFiles are expected to be parametrized SQL statements.
+      The type of each Parameter is specified as an integer that represents the JDBC
+      Type of the parameter., zh: 传入的FlowFiles应该是参数化的SQL语句。每个参数的类型指定为表示参数的JDBC类型的整数。}
+  sql.args.N.format: {en: 'This attribute is always optional, but default options
+      may not always work for your data. Incoming FlowFiles are expected to be parametrized
+      SQL statements. In some cases a format option needs to be specified, currently
+      this is only applicable for binary data types, dates, times and timestamps.
+      Binary Data Types (defaults to ''ascii'') - ascii: each string character in
+      your attribute value represents a single byte. This is the format provided by
+      Avro Processors. base64: the string is a Base64 encoded string that can be decoded
+      to bytes. hex: the string is hex encoded with all letters in upper case and
+      no ''0x'' at the beginning. Dates/Times/Timestamps - Date, Time and Timestamp
+      formats all support both custom formats or named format (''yyyy-MM-dd'',''ISO_OFFSET_DATE_TIME'')
+      as specified according to java.time.format.DateTimeFormatter. If not specified,
+      a long value input is expected to be an unix epoch (milli seconds from 1970/1/1),
+      or a string value in ''yyyy-MM-dd'' format for Date, ''HH:mm:ss.SSS'' for Time
+      (some database engines e.g. Derby or MySQL do not support milliseconds and will
+      truncate milliseconds), ''yyyy-MM-dd HH:mm:ss.SSS'' for Timestamp is used.',
+    zh: '此属性始终是可选的，但默认选项可能并不总是适用于您的数据。传入的FlowFiles应该是参数化的SQL语句。在某些情况下，需要指定格式选项，目前这仅适用于二进制数据类型、日期、时间和时间戳。二进制数据类型（默认为“ascii”）-ascii：属性值中的每个字符串字符代表一个字节。这是Avro处理器提供的格式。base64：字符串是一个base64编码的字符串，可以解码为字节。十六进制：字符串是十六进制编码的，所有字母都大写，开头没有“0x”。日期/时间/时间戳-日期、时间和时间戳格式都支持自定义格式或根据java.Time.format.DateTimeFormatter指定的命名格式（“yyyy-MM-dd”，“SO_OFFSET_Date_Time”）。如果未指定，则长值输入应为unix历元（从1970/1/1开始的毫秒），或日期格式为“yyyy-MM-dd”的字符串值，“HH:MM:ss”。SSS表示时间（某些数据库引擎，如Derby或MySQL不支持毫秒，将截断毫秒），yyyy-MM-dd
+      HH:MM:ss。使用了时间戳的SSS''。'}
+properties:
+  esql-max-rows:
+    en: {displayName: Max Rows Per Flow File, description: 'The maximum number of
+        result rows that will be included in a single FlowFile. This will allow you
+        to break up very large result sets into multiple FlowFiles. If the value specified
+        is zero, then all rows are returned in a single FlowFile.'}
+    zh: {description: 单个FlowFile中包含的最大结果行数。这将允许您将非常大的结果集分解为多个FlowFiles。如果指定的值为零，则在单个FlowFile中返回所有行。,
+      displayName: 每个流文件的最大行数}
+  esqlrecord-record-writer:
+    en: {displayName: Record Writer, description: 'Specifies the Controller Service
+        to use for writing results to a FlowFile. The Record Writer may use Inherit
+        Schema to emulate the inferred schema behavior, i.e. an explicit schema need
+        not be defined in the writer, and will be supplied by the same logic used
+        to infer the schema from the column types.'}
+    zh: {description: 指定用于将结果写入FlowFile的控制器服务。记录编写器可以使用继承模式来模拟推断的模式行为，即，不需要在编写器中定义显式模式，而是由用于从列类型推断模式的相同逻辑提供。,
+      displayName: 记录编写器}
+  dbf-default-precision:
+    en: {displayName: Default Decimal Precision, description: 'When a DECIMAL/NUMBER
+        value is written as a ''decimal'' Avro logical type, a specific ''precision''
+        denoting number of available digits is required. Generally, precision is defined
+        by column data type definition or database engines default. However undefined
+        precision (0) can be returned from some database engines. ''Default Decimal
+        Precision'' is used when writing those undefined precision numbers.'}
+    zh: {description: 当DECIMAL/NUMBER值写为“十进制”Avro逻辑类型时，需要一个表示可用位数的特定“精度”。通常，精度由列数据类型定义或数据库引擎默认值定义。但是，某些数据库引擎可以返回未定义的精度（0）写入那些未定义的精度数字时使用“默认十进制精度”。,
+      displayName: 默认小数精度}
+  Max Wait Time:
+    en: {displayName: Max Wait Time, description: 'The maximum amount of time allowed
+        for a running SQL select query  , zero means there is no limit. Max time less
+        than 1 second will be equal to zero.'}
+    zh: {description: 运行SQL选择查询所允许的最长时间，零表示没有限制。小于1秒的最大时间将等于零。, displayName: 最长等待时间}
+  Database Connection Pooling Service:
+    en: {displayName: Database Connection Pooling Service, description: The Controller
+        Service that is used to obtain connection to database}
+    zh: {description: 用于获取数据库连接的控制器服务, displayName: 数据库连接池服务}
+  sql-post-query:
+    en: {displayName: SQL Post-Query, description: A semicolon-delimited list of queries
+        executed after the main SQL query is executed. Example like setting session
+        properties after main query. It's possible to include semicolons in the statements
+        themselves by escaping them with a backslash ('\;'). Results/outputs from
+        these queries will be suppressed if there are no errors.}
+    zh: {description: 在执行主SQL查询后执行的查询的分号分隔列表。例如，在主查询后设置会话属性。可以在语句本身中包含分号，方法是用反斜杠（“\；”）转义分号。如果没有错误，这些查询的结果/输出将被抑制。,
+      displayName: SQL后期查询}
+  esql-auto-commit:
+    en: {displayName: Set Auto Commit, description: 'Enables or disables the auto
+        commit functionality of the DB connection. Default value is ''true''. The
+        default value can be used with most of the JDBC drivers and this functionality
+        doesn''t have any impact in most of the cases since this processor is used
+        to read data. However, for some JDBC drivers such as PostgreSQL driver, it
+        is required to disable the auto committing functionality to limit the number
+        of result rows fetching at a time. When auto commit is enabled, postgreSQL
+        driver loads whole result set to memory at once. This could lead for a large
+        amount of memory usage when executing queries which fetch large data sets.
+        More Details of this behaviour in PostgreSQL driver can be found in https://jdbc.postgresql.org//documentation/head/query.html. '}
+    zh: {description: '启用或禁用数据库连接的自动提交功能。默认值为“true”。默认值可以与大多数JDBC驱动程序一起使用，由于该处理器用于读取数据，因此该功能在大多数情况下不会产生任何影响。然而，对于一些JDBC驱动程序（如PostgreSQL驱动程序），需要禁用自动提交功能以限制一次获取的结果行数。当启用自动提交时，postgreSQL驱动程序会立即将整个结果集加载到内存中。这可能导致在执行获取大型数据集的查询时使用大量内存。PostgreSQL驱动程序中此行为的更多详细信息可以在https://jdbc.postgresql.org//documentation/head/query.html.',
+      displayName: 设置自动提交}
+  dbf-user-logical-types:
+    en: {displayName: Use Avro Logical Types, description: 'Whether to use Avro Logical
+        Types for DECIMAL/NUMBER, DATE, TIME and TIMESTAMP columns. If disabled, written
+        as string. If enabled, Logical types are used and written as its underlying
+        type, specifically, DECIMAL/NUMBER as logical ''decimal'': written as bytes
+        with additional precision and scale meta data, DATE as logical ''date-millis'':
+        written as int denoting days since Unix epoch (1970-01-01), TIME as logical
+        ''time-millis'': written as int denoting milliseconds since Unix epoch, and
+        TIMESTAMP as logical ''timestamp-millis'': written as long denoting milliseconds
+        since Unix epoch. If a reader of written Avro records also knows these logical
+        types, then these values can be deserialized with more context depending on
+        reader implementation.'}
+    zh: {description: 是否对DECIMAL/NUMBER、DATE、TIME和TIMESTAMP列使用Avro逻辑类型。如果禁用，则写入字符串。如果启用，则使用逻辑类型并将其写入基础类型，具体而言，DECIMAL/NUMBER作为逻辑“十进制”：作为具有额外精度和比例元数据的字节写入，DATE作为逻辑的“DATE
+        millis”：写入int表示自Unix纪元（1970-01-01）以来的天数，TIME作为逻辑时间millis：写入int指示自Unix纪元以来的毫秒，和TIMESTAMP作为逻辑“TIMESTAMP
+        millis”：写为long，表示自Unix时代以来的毫秒。如果写入的Avro记录的读取器也知道这些逻辑类型，那么这些值可以根据读取器的实现用更多的上下文反序列化。,
+      displayName: 使用Avro逻辑类型}
+  dbf-default-scale:
+    en: {displayName: Default Decimal Scale, description: 'When a DECIMAL/NUMBER value
+        is written as a ''decimal'' Avro logical type, a specific ''scale'' denoting
+        number of available decimal digits is required. Generally, scale is defined
+        by column data type definition or database engines default. However when undefined
+        precision (0) is returned, scale can also be uncertain with some database
+        engines. ''Default Decimal Scale'' is used when writing those undefined numbers.
+        If a value has more decimals than specified scale, then the value will be
+        rounded-up, e.g. 1.53 becomes 2 with scale 0, and 1.5 with scale 1.'}
+    zh: {description: 当DECIMAL/NUMBER值写为“十进制”Avro逻辑类型时，需要一个表示可用十进制位数的特定“刻度”。通常，比例由列数据类型定义或数据库引擎默认值定义。然而，当返回未定义的精度（0）时，某些数据库引擎的规模也可能不确定写入未定义的数字时使用“默认小数位数”。如果某个值的小数位数比指定的小数位数多，则该值将向上舍入，例如，1.53在小数位数为0时变为2，在小数位数1时变为1.5。,
+      displayName: 默认小数位数}
+  sql-pre-query:
+    en: {displayName: SQL Pre-Query, description: 'A semicolon-delimited list of queries
+        executed before the main SQL query is executed. For example, set session properties
+        before main query. It''s possible to include semicolons in the statements
+        themselves by escaping them with a backslash (''\;''). Results/outputs from
+        these queries will be suppressed if there are no errors.'}
+    zh: {description: 在执行主SQL查询之前执行的查询的分号分隔列表。例如，在主查询之前设置会话属性。可以在语句本身中包含分号，方法是用反斜杠（“\；”）转义分号。如果没有错误，这些查询的结果/输出将被抑制。,
+      displayName: SQL预查询}
+  esql-output-batch-size:
+    en: {displayName: Output Batch Size, description: 'The number of output FlowFiles
+        to queue before committing the process session. When set to zero, the session
+        will be committed when all result set rows have been processed and the output
+        FlowFiles are ready for transfer to the downstream relationship. For large
+        result sets, this can cause a large burst of FlowFiles to be transferred at
+        the end of processor execution. If this property is set, then when the specified
+        number of FlowFiles are ready for transfer, then the session will be committed,
+        thus releasing the FlowFiles to the downstream relationship. NOTE: The fragment.count
+        attribute will not be set on FlowFiles when this property is set.'}
+    zh: {description: 提交进程会话之前要排队的输出FlowFiles数。当设置为零时，当所有结果集行都已处理完毕并且输出FlowFiles已准备好传输到下游关系时，将提交会话。对于大型结果集，这可能会导致在处理器执行结束时传输大量FlowFiles。如果设置了此属性，则当指定数量的FlowFiles准备好传输时，将提交会话，从而将FlowFiles释放到下游关系。注意：碎片。设置此属性时，不会在FlowFiles上设置count属性。,
+      displayName: 输出批次大小}
+  esql-fetch-size:
+    en: {displayName: Fetch Size, description: 'The number of result rows to be fetched
+        from the result set at a time. This is a hint to the database driver and may
+        not be honored and/or exact. If the value specified is zero, then the hint
+        is ignored.'}
+    zh: {description: 一次从结果集中提取的结果行数。这是对数据库驱动程序的提示，可能不受尊重和/或准确。如果指定的值为零，则忽略提示。, displayName: 提取大小}
+  SQL select query:
+    en: {displayName: SQL select query, description: 'The SQL select query to execute.
+        The query can be empty, a constant value, or built from attributes using Expression
+        Language. If this property is specified, it will be used regardless of the
+        content of incoming flowfiles. If this property is empty, the content of the
+        incoming flow file is expected to contain a valid SQL select query, to be
+        issued by the processor to the database. Note that Expression Language is
+        not evaluated for flow file contents.'}
+    zh: {description: 要执行的SQL选择查询。查询可以是空的、常量值或使用表达式语言从属性构建。如果指定了此属性，则无论传入流文件的内容如何，都将使用该属性。如果此属性为空，则传入流文件的内容应包含有效的SQL选择查询，该查询将由处理器向数据库发出。请注意，不会对流文件内容计算表达式语言。,
+      displayName: SQL选择查询}
+  esqlrecord-normalize:
+    en: {displayName: Normalize Table/Column Names, description: 'Whether to change
+        characters in column names. For example, colons and periods will be changed
+        to underscores.'}
+    zh: {description: 是否更改列名中的字符。例如，冒号和句点将更改为下划线。, displayName: 规范化表/列名}
+writeAttributes:
+  executesql.query.duration: {en: Combined duration of the query execution time and
+      fetch time in milliseconds, zh: 查询执行时间和提取时间的组合持续时间（毫秒）}
+  executesql.query.fetchtime: {en: Duration of the result set fetch time in milliseconds,
+    zh: 结果集获取时间的持续时间（毫秒）}
+  input.flowfile.uuid: {en: 'If the processor has an incoming connection, outgoing
+      FlowFiles will have this attribute set to the value of the input FlowFile''s
+      UUID. If there is no incoming connection, the attribute will not be added.',
+    zh: 如果处理器具有传入连接，则传出FlowFiles将此属性设置为输入FlowFile的UUID值。如果没有传入连接，则不会添加该属性。}
+  record.count: {en: The number of records output by the Record Writer., zh: 记录编写器输出的记录数。}
+  fragment.identifier: {en: If 'Max Rows Per Flow File' is set then all FlowFiles
+      from the same query result set will have the same value for the fragment.identifier
+      attribute. This can then be used to correlate the results., zh: 如果设置了“每个流文件的最大行数”，则来自同一查询结果集的所有流文件将具有相同的片段值。标识符属性。然后，这可以用于关联结果。}
+  executesql.error.message: {en: 'If processing an incoming flow file causes an Exception,
+      the Flow File is routed to failure and this attribute is set to the exception
+      message.', zh: 如果处理传入的流文件导致异常，则将流文件路由到失败，并将此属性设置为异常消息。}
+  fragment.index: {en: If 'Max Rows Per Flow File' is set then the position of this
+      FlowFile in the list of outgoing FlowFiles that were all derived from the same
+      result set FlowFile. This can be used in conjunction with the fragment.identifier
+      attribute to know which FlowFiles originated from the same query result set
+      and in what order  FlowFiles were produced, zh: 如果设置了“每个流文件的最大行数”，则该流文件在所有来自同一结果集FlowFile的传出流文件列表中的位置。这可以与片段一起使用。identifier属性，以了解哪些FlowFiles源自同一查询结果集以及FlowFiles的生成顺序}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer., zh: 设置mime。type属性设置为记录编写器指定的MIME类型。}
+  executesql.query.executiontime: {en: Duration of the query execution time in milliseconds,
+    zh: 查询执行时间的持续时间（毫秒）}
+  fragment.count: {en: 'If ''Max Rows Per Flow File'' is set then this is the total
+      number of  FlowFiles produced by a single ResultSet. This can be used in conjunction
+      with the fragment.identifier attribute in order to know how many FlowFiles belonged
+      to the same incoming ResultSet. If Output Batch Size is set, then this attribute
+      will not be populated.', zh: 如果设置了“每个流文件的最大行数”，则这是单个ResultSet生成的FlowFiles的总数。这可以与片段一起使用。identifier属性，以便知道有多少FlowFiles属于同一传入ResultSet。如果设置了“输出批次大小”，则不会填充此属性。}
+  executesql.resultset.index: {en: 'Assuming multiple result sets are returned, the
+      zero based index of this result set.', zh: 假设返回了多个结果集，则此结果集的索引从零开始。}
+  executesql.row.count: {en: Contains the number of rows returned in the select query,
+    zh: 包含选择查询中返回的行数}
+tags:
+  en: [sql, select, jdbc, query, database, record]
+  zh: [sql语言, 选择, jdbc语言, 查询, 数据库, 记录]

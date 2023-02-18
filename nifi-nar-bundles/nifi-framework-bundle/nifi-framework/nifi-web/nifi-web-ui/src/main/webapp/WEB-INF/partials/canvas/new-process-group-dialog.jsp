@@ -18,10 +18,10 @@
 <div id="new-process-group-dialog" class="hidden medium-short-dialog">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Process group name</div>
+            <div class="setting-name">处理组名称</div>
             <div class="setting-field">
                 <div id="select-file-button">
-                    <button class="icon icon-template-import" id="upload-file-field-button" title="Browse"></button>
+                    <button class="icon icon-template-import" id="upload-file-field-button" title="浏览"></button>
                     <form id="file-upload-form" enctype="multipart/form-data" method="post">
                         <input type="file" name="file" id="upload-file-field"/>
                     </form>
@@ -30,15 +30,15 @@
             </div>
         </div>
         <div id="file-cancel-button-container">
-            <button class="icon" id="file-cancel-button" aria-hidden="true" title="Cancel the selected file">
+            <button class="icon" id="file-cancel-button" aria-hidden="true" title="取消选中 file">
                 <i class="fa fa-times"></i>
             </button>
         </div>
         <div class="setting">
             <div id="submit-file-container">
                 <div class="setting-name">
-                    <span id="file-to-upload" title="File to upload">
-                        File to Upload:
+                    <span id="file-to-upload" title="上传文件">
+                        上传文件:
                     </span>
                 </div>
                 <div id="selected-file-name"></div>
@@ -46,9 +46,9 @@
         </div>
     </div>
     <div class="setting">
-        <span id="import-process-group-link" class="link" title="Import a flow from a registry">
+        <span id="import-process-group-link" class="link" title="从数据库导入流程">
             <i class="fa fa-cloud-download" aria-hidden="true" style="margin-left: 5px; margin-right: 5px;"></i>
-            Import from Registry...
+            从数据流程版本注册库导入...
         </span>
     </div>
 </div>

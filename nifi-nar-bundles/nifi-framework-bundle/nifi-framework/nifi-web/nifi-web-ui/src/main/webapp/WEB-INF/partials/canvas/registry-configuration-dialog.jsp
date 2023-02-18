@@ -31,19 +31,19 @@
                         </div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Name</div>
+                        <div class="setting-name">名称</div>
                         <div class="setting-field">
                             <input type="text" id="registry-name-config" class="setting-input"/>
                         </div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Type</div>
+                        <div class="setting-name">类型</div>
                         <div class="setting-field">
                             <span id="registry-type-config"></span>
                         </div>
                     </div>
                     <div class="setting">
-                        <div class="setting-name">Description</div>
+                        <div class="setting-name">描述</div>
                         <div class="setting-field">
                             <textarea id="registry-description-config" class="setting-input"></textarea>
                         </div>

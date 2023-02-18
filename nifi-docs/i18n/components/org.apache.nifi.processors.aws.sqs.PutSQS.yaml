@@ -1,0 +1,70 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+dynamicProperties:
+  The name of a Message Attribute to add to the message:
+    en: {description: Allows the user to add key/value pairs as Message Attributes
+        by adding a property whose name will become the name of the Message Attribute
+        and value will become the value of the Message Attribute, value: The value
+        of the Message Attribute}
+    zh: {description: 允许用户通过添加一个属性将键/值对添加为消息属性，该属性的名称将成为消息属性的名称，值将成为消息特性的值, value: Message属性的值}
+capabilityDescription: {en: Publishes a message to an Amazon Simple Queuing Service
+    Queue, zh: 将消息发布到Amazon简单队列服务队列}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  message-group-id:
+    en: {displayName: Message Group ID, description: 'If using FIFO, the message group
+        to which the FlowFile belongs'}
+    zh: {description: 如果使用FIFO，FlowFile所属的消息组, displayName: 消息组ID}
+  deduplication-message-id:
+    en: {displayName: Deduplication Message ID, description: The token used for deduplication
+        of sent messages}
+    zh: {description: 用于对已发送邮件进行重复数据消除的令牌, displayName: 重复数据消除消息ID}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  Queue URL:
+    en: {displayName: Queue URL, description: The URL of the queue to act upon}
+    zh: {description: 要操作的队列的URL, displayName: 队列URL}
+  Delay:
+    en: {displayName: Delay, description: The amount of time to delay the message
+        before it becomes available to consumers}
+    zh: {description: 在消息对消费者可用之前延迟消息的时间量, displayName: 延迟}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+tags:
+  en: [Amazon, AWS, SQS, Queue, Put, Publish]
+  zh: [亚马逊, 自动售货机, 平方英尺, 队列, 放, 出版]

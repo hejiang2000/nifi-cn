@@ -1,0 +1,149 @@
+relationships:
+  original: {en: Original flowfile, zh: 原始流程文件}
+  stats: {en: Stats about Solr index, zh: Solr指数统计}
+  failure: {en: Failure relationship, zh: 故障关系}
+  results: {en: Results of Solr queries, zh: Solr查询结果}
+  facets: {en: Results of faceted search, zh: 分面搜索的结果}
+dynamicProperties:
+  A Solr request parameter name:
+    en: {description: These parameters will be passed to Solr on the request, value: A
+        Solr request parameter value}
+    zh: {description: 这些参数将在请求时传递给Solr, value: Solr请求参数值}
+capabilityDescription: {en: Queries Solr and outputs the results as a FlowFile in
+    the format of XML or using a Record Writer, zh: 查询Solr并以XML格式或使用记录编写器将结果作为FlowFile输出}
+properties:
+  return_type:
+    en: {displayName: Return Type, description: Output format of Solr results. Write
+        Solr documents to FlowFiles as XML or using a Record Writer}
+    zh: {description: Solr结果的输出格式。将Solr文档作为XML或使用记录编写器写入FlowFiles, displayName: 返回类型}
+  Solr Socket Timeout:
+    en: {displayName: Solr Socket Timeout, description: The amount of time to wait
+        for data on a socket connection to Solr. A value of 0 indicates an infinite
+        timeout.}
+    zh: {description: 在到Solr的套接字连接上等待数据的时间。值0表示无限超时。, displayName: Solr套接字超时}
+  solr_param_start:
+    en: {displayName: Start of results, description: Offset of result set}
+    zh: {description: 结果集的偏移, displayName: 结果的开始}
+  ZooKeeper Connection Timeout:
+    en: {displayName: ZooKeeper Connection Timeout, description: 'The amount of time
+        to wait when establishing a connection to ZooKeeper, only used with a Solr
+        Type of Cloud.'}
+    zh: {description: 建立到ZooKeeper的连接时等待的时间量，仅用于Solr类型的云。, displayName: ZooKeeper连接超时}
+  kerberos-principal:
+    en: {displayName: Kerberos Principal, description: The principal to use when specifying
+        the principal and password directly in the processor for authenticating to
+        Solr via Kerberos.}
+    zh: {description: 在处理器中直接指定用于通过Kerberos向Solr进行身份验证的主体和密码时要使用的主体。, displayName: Kerberos主体}
+  Solr Maximum Connections:
+    en: {displayName: Solr Maximum Connections, description: The maximum number of
+        total connections allowed from the Solr client to Solr.}
+    zh: {description: 从Solr客户端到Solr允许的最大总连接数。, displayName: Solr最大连接数}
+  ZooKeeper Client Timeout:
+    en: {displayName: ZooKeeper Client Timeout, description: 'The amount of time to
+        wait for data on a connection to ZooKeeper, only used with a Solr Type of
+        Cloud.'}
+    zh: {description: 在连接到ZooKeeper时等待数据的时间量，仅用于Solr类型的云。, displayName: ZooKeeper客户端超时}
+  solr_param_request_handler:
+    en: {displayName: Request Handler, description: 'Define a request handler here,
+        e. g. /query'}
+    zh: {description: 在此处定义请求处理程序，例如/query, displayName: 请求处理器}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials Controller Service that should be used for authenticating with
+        Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos凭据控制器服务, displayName: Kerberos凭据服务}
+  Record Writer:
+    en: {displayName: Record Writer, description: The Record Writer to use in order
+        to write Solr documents to FlowFiles. Must be set if "Records" is used as
+        return type.}
+    zh: {description: 用于将Solr文档写入FlowFiles的Record Writer。如果“Records”用作返回类型，则必须设置。,
+      displayName: 记录编写器}
+  Solr Location:
+    en: {displayName: Solr Location, description: 'The Solr url for a Solr Type of
+        Standard (ex: http://localhost:8984/solr/gettingstarted), or the ZooKeeper
+        hosts for a Solr Type of Cloud (ex: localhost:9983).'}
+    zh: {description: 'Solr类型标准的Solr url（例如：http://localhost:8984/solr/gettingstarted)，或Solr
+        Type of Cloud的ZooKeeper主机（例如：localhost:9983）。', displayName: Solr位置}
+  kerberos-user-service:
+    en: {displayName: Kerberos User Service, description: Specifies the Kerberos User
+        Controller Service that should be used for authenticating with Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos用户控制器服务, displayName: Kerberos用户服务}
+  Solr Type:
+    en: {displayName: Solr Type, description: 'The type of Solr instance, Cloud or
+        Standard.'}
+    zh: {description: Solr实例的类型，云或标准。, displayName: 太阳能类型}
+  amount_documents_to_return:
+    en: {displayName: Total amount of returned results, description: 'Total amount
+        of Solr documents to be returned. If this property is set to "Only top results",
+        only single requests will be sent to Solr and the results will be written
+        into single FlowFiles. If it is set to "Entire results", all results matching
+        to the query are retrieved via multiple Solr requests and returned in multiple
+        FlowFiles. For both options, the number of Solr documents to be returned in
+        a FlowFile depends on the configuration of the "Rows" property'}
+    zh: {description: 要返回的Solr文档总数。如果将此属性设置为“仅顶级结果”，则仅向Solr发送单个请求，结果将写入单个FlowFiles。如果设置为“整个结果”，则通过多个Solr请求检索与查询匹配的所有结果，并在多个FlowFiles中返回。对于这两个选项，要在FlowFile中返回的Solr文档的数量取决于“Rows”属性的配置,
+      displayName: 返回结果总数}
+  Password:
+    en: {displayName: Basic Auth Password, description: The password to use when Solr
+        is configured with basic authentication.}
+    zh: {description: Solr配置为基本身份验证时使用的密码。, displayName: 基本身份验证密码}
+  kerberos-password:
+    en: {displayName: Kerberos Password, description: The password to use when specifying
+        the principal and password directly in the processor for authenticating to
+        Solr via Kerberos.}
+    zh: {description: 在处理器中直接指定主体和密码以通过Kerberos验证Solr时使用的密码。, displayName: Kerberos密码}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The Controller Service to
+        use in order to obtain an SSL Context. This property must be set when communicating
+        with a Solr over https.}
+    zh: {description: 用于获取SSL上下文的控制器服务。通过https与Solr通信时必须设置此属性。, displayName: SSL上下文服务}
+  solr_param_field_list:
+    en: {displayName: Field List, description: 'Comma separated list of fields to
+        be included into results, e. g. field1,field2'}
+    zh: {description: 要包含在结果中的字段的逗号分隔列表，例如字段1、字段2, displayName: 字段列表}
+  solr_param_sort:
+    en: {displayName: Sorting of result list, description: 'Comma separated sort clauses
+        to define the sorting of results, e. g. field1 asc, field2 desc'}
+    zh: {description: 逗号分隔的排序子句，用于定义结果的排序，例如field1 asc、field2 desc, displayName: 结果列表排序}
+  Solr Maximum Connections Per Host:
+    en: {displayName: Solr Maximum Connections Per Host, description: The maximum
+        number of connections allowed from the Solr client to a single Solr host.}
+    zh: {description: 从Solr客户端到单个Solr主机允许的最大连接数。, displayName: 每个主机的Solr最大连接数}
+  Username:
+    en: {displayName: Basic Auth Username, description: The username to use when Solr
+        is configured with basic authentication.}
+    zh: {description: Solr配置基本身份验证时使用的用户名。, displayName: 基本身份验证用户名}
+  solr_param_rows:
+    en: {displayName: Rows, description: Number of results to be returned for a single
+        request}
+    zh: {description: 单个请求要返回的结果数, displayName: 排}
+  Solr Connection Timeout:
+    en: {displayName: Solr Connection Timeout, description: The amount of time to
+        wait when establishing a connection to Solr. A value of 0 indicates an infinite
+        timeout.}
+    zh: {description: 建立与Solr的连接时等待的时间。值0表示无限超时。, displayName: Solr连接超时}
+  Collection:
+    en: {displayName: Collection, description: 'The Solr collection name, only used
+        with a Solr Type of Cloud'}
+    zh: {description: Solr集合名称，仅用于Solr类型的云, displayName: 收集}
+  solr_param_query:
+    en: {displayName: Solr Query, description: 'Solr Query, e. g. field:value'}
+    zh: {description: Solr查询，例如字段：value, displayName: Solr查询}
+writeAttributes:
+  solr.cursor.mark: {en: Cursor mark can be used for scrolling Solr, zh: 光标标记可用于滚动Solr}
+  solr.collection: {en: Solr collection, zh: Solr集合}
+  solr.query: {en: Query string sent to Solr, zh: 发送到Solr的查询字符串}
+  solr.query.time: {en: The elapsed time to process the query (in ms), zh: 处理查询所用的时间（毫秒）}
+  solr.rows: {en: Number of Solr documents to be returned for the query, zh: 要为查询返回的Solr文档数}
+  solr.number.results: {en: Number of Solr documents that match the query, zh: 与查询匹配的Solr文档数}
+  solr.connect: {en: Solr connect string, zh: Solr连接字符串}
+  mime.type: {en: The mime type of the data format, zh: 数据格式的mime类型}
+  solr.status.code: {en: Status code of Solr request. A status code of 0 indicates
+      that the request was successfully processed, zh: Solr请求的状态代码。状态代码0表示请求已成功处理}
+  querysolr.exeption.class: {en: The Java exception class raised when the processor
+      fails, zh: 处理器出现故障时引发的Java异常类}
+  solr.start: {en: Solr start parameter (result offset) for the query, zh: 查询的Solr开始参数（结果偏移量）}
+  querysolr.exeption.message: {en: The Java exception message raised when the processor
+      fails, zh: 处理器出现故障时引发的Java异常消息}
+tags:
+  en: [Apache, Solr, Get, Query, Records]
+  zh: [阿帕奇, Solr公司, 收到, 查询, 记录]

@@ -1,0 +1,68 @@
+capabilityDescription: {en: 'Parses CEF (Common Event Format) events, returning each
+    row as a record. This reader allows for inferring a schema based on the first
+    event in the FlowFile or providing an explicit schema for interpreting the values.',
+  zh: 分析CEF（公共事件格式）事件，将每一行作为记录返回。此读取器允许根据FlowFile中的第一个事件推断模式，或提供用于解释值的显式模式。}
+properties:
+  schema-inference-cache:
+    en: {displayName: Schema Inference Cache, description: 'Specifies a Schema Cache
+        to use when inferring the schema. If not populated, the schema will be inferred
+        each time. However, if a cache is specified, the cache will first be consulted
+        and if the applicable schema can be found, it will be used instead of inferring
+        the schema.'}
+    zh: {description: 指定推断架构时要使用的架构缓存。如果未填充，则每次都将推断出架构。但是，如果指定了缓存，将首先查询缓存，如果可以找到适用的模式，则将使用该模式而不是推断模式。,
+      displayName: 架构推理缓存}
+  schema-branch:
+    en: {displayName: Schema Branch, description: 'Specifies the name of the branch
+        to use when looking up the schema in the Schema Registry property. If the
+        chosen Schema Registry does not support branching, this value will be ignored.'}
+    zh: {description: 指定在“架构注册表”属性中查找架构时要使用的分支的名称。如果所选的架构注册表不支持分支，则将忽略此值。, displayName: 架构分支}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry}
+    zh: {description: 指定用于架构注册表的控制器服务, displayName: 架构注册表}
+  inference-strategy:
+    en: {displayName: Inference Strategy, description: Defines the set of fields should
+        be included in the schema and the way the fields are being interpreted.}
+    zh: {description: 定义架构中应包含的字段集以及字段的解释方式。, displayName: 推理策略}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that is to be used for interpreting the data.}
+    zh: {description: 指定如何获取用于解释数据的架构。, displayName: 架构访问策略}
+  raw-message-field:
+    en: {displayName: Raw Message Field, description: If set the raw message will
+        be added to the record using the property value as field name. This is not
+        the same as the "rawEvent" extension field!}
+    zh: {description: 如果设置，原始消息将使用属性值作为字段名添加到记录中。这与“rawEvent”扩展字段不同！, displayName: 原始消息字段}
+  invalid-message-field:
+    en: {displayName: Invalid Field, description: 'Used when a line in the FlowFile
+        cannot be parsed by the CEF parser. If set, instead of failing to process
+        the FlowFile, a record is being added with one field. This record contains
+        one field with the name specified by the property and the raw message as value.'}
+    zh: {description: 当CEF解析器无法解析FlowFile中的行时使用。如果已设置，则将添加一个字段作为记录，而不是无法处理FlowFile。此记录包含一个字段，该字段的名称由属性指定，原始消息作为值。,
+      displayName: 无效字段}
+  schema-version:
+    en: {displayName: Schema Version, description: Specifies the version of the schema
+        to lookup in the Schema Registry. If not specified then the latest version
+        of the schema will be retrieved.}
+    zh: {description: 指定要在架构注册表中查找的架构的版本。如果未指定，则将检索架构的最新版本。, displayName: 架构版本}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+  accept-empty-extensions:
+    en: {displayName: Accept empty extensions, description: 'If set to true, empty
+        extensions will be accepted and will be associated to a null value.'}
+    zh: {description: 如果设置为true，将接受空扩展，并将其与空值相关联。, displayName: 接受空扩展名}
+  datetime-representation:
+    en: {displayName: DateTime Locale, description: The IETF BCP 47 representation
+        of the Locale to be used when parsing date fields with long or short month
+        names (e.g. may <en-US> vs. mai. <fr-FR>. The defaultvalue is generally safe.
+        Only change if having issues parsing CEF messages}
+    zh: {description: IETF BCP 47表示在解析具有长月或短月名称的日期字段时使用的区域设置（例如，可以＜en-US＞vs.mai.＜fr-fr＞）。默认值通常是安全的。只有在解析CEF消息时出现问题时才会更改,
+      displayName: 本地日期时间}
+tags:
+  en: [cef, record, reader, parser]
+  zh: [头孢, 记录, 读者, 解析器]

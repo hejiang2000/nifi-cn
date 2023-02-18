@@ -1,0 +1,93 @@
+relationships:
+  success: {en: Messages received successfully will be sent out this relationship.,
+    zh: 成功接收的消息将发送到此关系。}
+capabilityDescription: {en: 'Listens for incoming TCP connections and reads data from
+    each connection using a configured record reader, and writes the records to a
+    flow file using a configured record writer. The type of record reader selected
+    will determine how clients are expected to send data. For example, when using
+    a Grok reader to read logs, a client can keep an open connection and continuously
+    stream data, but when using an JSON reader, the client cannot send an array of
+    JSON documents and then send another array on the same connection, as the reader
+    would be in a bad state at that point. Records will be read from the connection
+    in blocking mode, and will timeout according to the Read Timeout specified in
+    the processor. If the read times out, or if any other error is encountered when
+    reading, the connection will be closed, and any records read up to that point
+    will be handled according to the configured Read Error Strategy (Discard or Transfer).
+    In cases where clients are keeping a connection open, the concurrent tasks for
+    the processor should be adjusted to match the Max Number of TCP Connections allowed,
+    so that there is a task processing each connection. The processor can be configured
+    to use an SSL Context Service to only allow secure connections. When connected
+    clients present certificates for mutual TLS authentication, the Distinguished
+    Names of the client certificate''s issuer and subject are added to the outgoing
+    FlowFiles as attributes. The processor does not perform authorization based on
+    Distinguished Name values, but since these values are attached to the outgoing
+    FlowFiles, authorization can be implemented based on these attributes.', zh: 侦听传入的TCP连接，并使用配置的记录读取器从每个连接读取数据，并使用已配置的记录写入器将记录写入流文件。所选的记录读取器类型将决定客户端如何发送数据。例如，当使用Grok读取器读取日志时，客户端可以保持开放的连接并连续传输数据，但当使用JSON读取器时，客户端不能发送一个JSON文档数组，然后在同一连接上发送另一个数组，因为此时读取器的状态会很糟糕。记录将以阻塞模式从连接中读取，并将根据处理器中指定的读取超时超时。如果读取超时，或者在读取时遇到任何其他错误，则将关闭连接，并且将根据配置的读取错误策略（放弃或传输）处理在此之前读取的任何记录。在客户端保持连接打开的情况下，应调整处理器的并发任务以匹配允许的最大TCP连接数，以便有一个任务处理每个连接。处理器可以配置为使用SSL上下文服务，以仅允许安全连接。当连接的客户端提供用于双向TLS身份验证的证书时，客户端证书的颁发者和使用者的可分辨名称将作为属性添加到传出的FlowFiles中。处理器不会基于可分辨名称值执行授权，但由于这些值附加到传出的FlowFiles，因此可以基于这些属性执行授权。}
+properties:
+  read-timeout:
+    en: {displayName: Read Timeout, description: The amount of time to wait before
+        timing out when reading from a connection.}
+    zh: {description: 读取连接时超时前等待的时间量。, displayName: 读取超时}
+  Local Network Interface:
+    en: {displayName: Local Network Interface, description: The name of a local network
+        interface to be used to restrict listening to a specific LAN.}
+    zh: {description: 用于限制监听特定LAN的本地网络接口的名称。, displayName: 本地网络接口}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: 'The Controller Service to
+        use in order to obtain an SSL Context. If this property is set, messages will
+        be received over a secure connection.'}
+    zh: {description: 用于获取SSL上下文的控制器服务。如果设置了此属性，将通过安全连接接收消息。, displayName: SSL上下文服务}
+  port:
+    en: {displayName: Port, description: The port to listen on for communication.}
+    zh: {description: 用于侦听通信的端口。, displayName: 港口城市}
+  client-auth:
+    en: {displayName: Client Auth, description: The client authentication policy to
+        use for the SSL Context. Only used if an SSL Context Service is provided.}
+    zh: {description: 用于SSL上下文的客户端身份验证策略。仅在提供SSL上下文服务时使用。, displayName: 客户端身份验证}
+  max-number-tcp-connections:
+    en: {displayName: Max Number of TCP Connections, description: 'The maximum number
+        of concurrent TCP connections to accept. In cases where clients are keeping
+        a connection open, the concurrent tasks for the processor should be adjusted
+        to match the Max Number of TCP Connections allowed, so that there is a task
+        processing each connection.'}
+    zh: {description: 要接受的最大并发TCP连接数。在客户端保持连接打开的情况下，应调整处理器的并发任务以匹配允许的最大TCP连接数，以便有一个任务处理每个连接。,
+      displayName: 最大TCP连接数}
+  record-writer:
+    en: {displayName: Record Writer, description: The Record Writer to use in order
+        to serialize the data before writing to a FlowFile}
+    zh: {description: 在写入FlowFile之前用于序列化数据的记录编写器, displayName: 记录编写器}
+  max-size-socket-buffer:
+    en: {displayName: Max Size of Socket Buffer, description: 'The maximum size of
+        the socket buffer that should be used. This is a suggestion to the Operating
+        System to indicate how big the socket buffer should be. If this value is set
+        too low, the buffer may fill up before the data can be read, and incoming
+        data will be dropped.'}
+    zh: {description: 应使用的套接字缓冲区的最大大小。这是给操作系统的一个建议，说明套接字缓冲区应该有多大。如果该值设置得太低，缓冲区可能会在读取数据之前填满，并且传入的数据将被丢弃。,
+      displayName: 套接字缓冲区的最大大小}
+  record-reader:
+    en: {displayName: Record Reader, description: The Record Reader to use for incoming
+        FlowFiles}
+    zh: {description: 用于传入FlowFiles的记录读取器, displayName: 记录读取器}
+  reader-error-handling-strategy:
+    en: {displayName: Read Error Strategy, description: 'Indicates how to deal with
+        an error while reading the next record from a connection, when previous records
+        have already been read from the connection.'}
+    zh: {description: 指示在从连接读取下一条记录时，如果以前的记录已经从连接读取，则如何处理错误。, displayName: 读取错误策略}
+  record-batch-size:
+    en: {displayName: Record Batch Size, description: The maximum number of records
+        to write to a single FlowFile.}
+    zh: {description: 写入单个FlowFile的最大记录数。, displayName: 记录批量大小}
+writeAttributes:
+  tcp.sender: {en: The host that sent the data., zh: 发送数据的主机。}
+  tcp.port: {en: The port that the processor accepted the connection on., zh: 处理器接受连接的端口。}
+  client.certificate.issuer.dn: {en: 'For connections using mutual TLS, the Distinguished
+      Name of the Certificate Authority that issued the client''s certificate is attached
+      to the FlowFile.', zh: 对于使用双向TLS的连接，颁发客户端证书的证书颁发机构的可分辨名称将附加到FlowFile。}
+  record.count: {en: The number of records written to the flow file., zh: 写入流文件的记录数。}
+  client.certificate.subject.dn: {en: 'For connections using mutual TLS, the Distinguished
+      Name of the client certificate''s owner (subject) is attached to the FlowFile.',
+    zh: 对于使用双向TLS的连接，将客户端证书所有者（主题）的可分辨名称附加到FlowFile。}
+  mime.type: {en: The mime-type of the writer used to write the records to the flow
+      file., zh: 用于将记录写入流文件的写入程序的mime类型。}
+tags:
+  en: [listen, tcp, record, tls, ssl]
+  zh: [听, tcp协议, 记录, tls公司, 安全套接字层]

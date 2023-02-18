@@ -1,0 +1,19 @@
+capabilityDescription: {en: 'Logs the 5-minute stats that are shown in the NiFi Summary
+    Page for Processors and Connections, as well optionally logging the deltas between
+    the previous iteration and the current iteration. Processors'' stats are logged
+    using the org.apache.nifi.controller.ControllerStatusReportingTask.Processors
+    logger, while Connections'' stats are logged using the org.apache.nifi.controller.ControllerStatusReportingTask.Connections
+    logger. These can be configured in the NiFi logging configuration to log to different
+    files, if desired.', zh: 记录处理器和连接的NiFi摘要页面中显示的5分钟统计数据，以及可选地记录上一次迭代和当前迭代之间的增量。使用org.apache.nifi.controller.ControllerStatusReportingTask记录处理器的状态。处理器记录器，而使用org.apache.nifi.controller.ControllerStatusReportingTask记录连接状态。连接记录器。如果需要，可以在NiFi日志记录配置中配置这些文件以记录到不同的文件。}
+properties:
+  Show Deltas:
+    en: {displayName: Show Deltas, description: Specifies whether or not to show the
+        difference in values between the current status and the previous status}
+    zh: {description: 指定是否显示当前状态和上一状态之间的值差异, displayName: 显示Deltas}
+  reporting-granularity:
+    en: {displayName: Reporting Granularity, description: 'When reporting information,
+        specifies the granularity of the metrics to report'}
+    zh: {description: 报告信息时，指定要报告的度量的粒度, displayName: 报告粒度}
+tags:
+  en: [stats, log]
+  zh: [统计数据, 日志]

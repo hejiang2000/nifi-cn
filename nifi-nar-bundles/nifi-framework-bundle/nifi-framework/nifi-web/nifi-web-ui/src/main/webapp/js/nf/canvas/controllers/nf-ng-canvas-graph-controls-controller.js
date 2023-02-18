@@ -261,7 +261,7 @@
                             return d.id;
                         }
                     } else {
-                        return 'Multiple components selected';
+                        return '选中多个组件';
                     }
                 }
             },
@@ -273,28 +273,28 @@
                 var selection = nfCanvasUtils.getSelection();
 
                 if (selection.empty()) {
-                    return 'Process Group';
+                    return '处理组';
                 } else {
                     if (selection.size() === 1) {
                         if (nfCanvasUtils.isProcessor(selection)) {
-                            return 'Processor';
+                            return '处理器';
                         } else if (nfCanvasUtils.isProcessGroup(selection)) {
-                            return 'Process Group';
+                            return '处理组';
                         } else if (nfCanvasUtils.isInputPort(selection)) {
-                            return 'Input Port';
+                            return '输入端口';
                         } else if (nfCanvasUtils.isOutputPort(selection)) {
-                            return 'Output Port';
+                            return '输出端口';
                         } else if (nfCanvasUtils.isRemoteProcessGroup(selection)) {
-                            return 'Remote Process Group';
+                            return '远程处理组';
                         } else if (nfCanvasUtils.isFunnel(selection)) {
-                            return 'Funnel';
+                            return '漏斗';
                         } else if (nfCanvasUtils.isLabel(selection)) {
-                            return 'Label';
+                            return '标签';
                         } else if (nfCanvasUtils.isConnection(selection)) {
-                            return 'Connection';
+                            return '连接';
                         }
                     } else {
-                        return 'Multiple selected';
+                        return '选中多个组件';
                     }
                 }
             },
@@ -312,7 +312,7 @@
                         var d = selection.datum();
                         return d.id;
                     } else {
-                        return 'Multiple selected';
+                        return '选中多个组件';
                     }
                 }
             },

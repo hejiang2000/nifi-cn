@@ -1,0 +1,27 @@
+capabilityDescription: {en: 'Publishes metrics from NiFi to Ambari Metrics Service
+    (AMS). Due to how the Ambari Metrics Service works, this reporting task should
+    be scheduled to run every 60 seconds. Each iteration it will send the metrics
+    from the previous iteration, and calculate the current metrics to be sent on next
+    iteration. Scheduling this reporting task at a frequency other than 60 seconds
+    may produce unexpected results.', zh: 从NiFi向Ambari度量服务（AMS）发布度量。由于Ambari度量服务的工作方式，此报告任务应安排为每60秒运行一次。每次迭代它都会发送上一次迭代的度量，并计算下一次迭代要发送的当前度量。以60秒以外的频率调度此报告任务可能会产生意外结果。}
+properties:
+  Application ID:
+    en: {displayName: Application ID, description: The Application ID to be included
+        in the metrics sent to Ambari}
+    zh: {description: 发送给Ambari的指标中包含的应用程序ID, displayName: 应用程序ID}
+  Hostname:
+    en: {displayName: Hostname, description: The Hostname of this NiFi instance to
+        be included in the metrics sent to Ambari}
+    zh: {description: 发送给Ambari的度量中包含的此NiFi实例的主机名, displayName: 主机名}
+  Metrics Collector URL:
+    en: {displayName: Metrics Collector URL, description: The URL of the Ambari Metrics
+        Collector Service}
+    zh: {description: Ambari度量收集器服务的URL, displayName: 指标收集器URL}
+  Process Group ID:
+    en: {displayName: Process Group ID, description: 'If specified, the reporting
+        task will send metrics about this process group only. If not, the root process
+        group is used and global metrics are sent.'}
+    zh: {description: 如果指定，报告任务将仅发送有关此流程组的度量。如果没有，则使用根流程组并发送全局度量。, displayName: 进程组ID}
+tags:
+  en: [reporting, ambari, metrics]
+  zh: [报告, 琥珀色, 韵律学]

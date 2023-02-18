@@ -1,0 +1,45 @@
+relationships:
+  success: {en: Used for flowfiles that have a hash value added, zh: 用于添加了哈希值的流文件}
+  failure: {en: Used for flowfiles that are missing required attributes, zh: 用于缺少必需属性的流文件}
+dynamicProperties:
+  A flowfile attribute key for attribute inspection:
+    en: {description: The property name defines the attribute to look for and hash
+        in the incoming flowfile. The property value defines the name to give the
+        generated attribute. Attribute names must be unique., value: Attribute Name}
+    zh: {description: 属性名称定义了要在传入流文件中查找和哈希的属性。属性值定义为生成的属性提供的名称。属性名称必须唯一。, value: 属性名称}
+capabilityDescription: {en: 'Calculates a hash value for each of the specified attributes
+    using the given algorithm and writes it to an output attribute. Please refer to
+    https://csrc.nist.gov/Projects/Hash-Functions/NIST-Policy-on-Hash-Functions for
+    help to decide which algorithm to use. ', zh: '使用给定算法计算每个指定属性的哈希值，并将其写入输出属性。请参阅https://csrc.nist.gov/Projects/Hash-Functions/NIST-Policy-on-Hash-Functions以帮助决定使用哪种算法。'}
+properties:
+  character_set:
+    en: {displayName: Character Set, description: 'The Character Set used to decode
+        the attribute being hashed -- this applies to the incoming data encoding,
+        not the resulting hash encoding. '}
+    zh: {description: 用于解码哈希属性的字符集——这适用于传入数据编码，而不是生成的哈希编码。, displayName: 字符集}
+  hash_algorithm:
+    en: {displayName: Hash Algorithm, description: The cryptographic hash algorithm
+        to use. Note that not all of the algorithms available are recommended for
+        use (some are provided for legacy use). There are many things to consider
+        when picking an algorithm; it is recommended to use the most secure algorithm
+        possible.}
+    zh: {description: 要使用的加密哈希算法。请注意，并非所有可用的算法都建议使用（有些算法是为传统用途提供的）。选择算法时需要考虑很多事情；建议使用尽可能安全的算法。,
+      displayName: 哈希算法}
+  missing_attr_policy:
+    en: {displayName: Missing attribute policy, description: Policy for how the processor
+        handles attributes that are configured for hashing but are not found in the
+        flowfile.}
+    zh: {description: 处理器如何处理为哈希配置但在流文件中找不到的属性的策略。, displayName: 缺少属性策略}
+  fail_when_empty:
+    en: {displayName: Fail when no attributes present, description: 'Route to failure
+        when none of the attributes that are configured for hashing are found. If
+        set to false, then flow files that do not contain any of the attributes that
+        are configured for hashing will just pass through to success.'}
+    zh: {description: 当未找到为哈希配置的属性时，路由失败。如果设置为false，则不包含为哈希配置的任何属性的流文件将直接传递到成功。, displayName: 不存在属性时失败}
+writeAttributes:
+  <Specified Attribute Name per Dynamic Property>: {en: This Processor adds an attribute
+      whose value is the result of hashing the specified attribute. The name of this
+      attribute is specified by the value of the dynamic property., zh: 此处理器添加一个属性，其值是哈希指定属性的结果。此属性的名称由动态属性的值指定。}
+tags:
+  en: [attributes, hash, md5, sha, keccak, blake2, cryptography]
+  zh: [属性, 搞砸, md5型, 沙, 凯克, 爆炸2, 密码学]

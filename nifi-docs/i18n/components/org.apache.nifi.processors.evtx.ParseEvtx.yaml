@@ -1,0 +1,24 @@
+relationships:
+  bad chunk: {en: Any bad chunks of records will be transferred to this relationship
+      in their original binary form, zh: 任何坏的记录块都将以其原始二进制形式传输到此关系}
+  original: {en: The unmodified input FlowFile will be transferred to this relationship,
+    zh: 未修改的输入FlowFile将传输到此关系}
+  success: {en: Any FlowFile that was successfully converted from evtx to XML, zh: 成功从evtx转换为XML的任何FlowFile}
+  failure: {en: Any FlowFile that encountered an exception during conversion will
+      be transferred to this relationship with as much parsing as possible done, zh: 在转换过程中遇到异常的任何FlowFile都将通过尽可能多的解析传输到此关系}
+capabilityDescription: {en: Parses the contents of a Windows Event Log file (evtx)
+    and writes the resulting XML to the FlowFile, zh: 分析Windows事件日志文件（evtx）的内容，并将生成的XML写入FlowFile}
+readAttributes:
+  filename: {en: The filename of the evtx file, zh: evtx文件的文件名}
+properties:
+  granularity:
+    en: {displayName: Granularity, description: 'Output flow file for each Record,
+        Chunk, or File encountered in the event log'}
+    zh: {description: 事件日志中遇到的每个记录、区块或文件的输出流文件, displayName: 粒度}
+writeAttributes:
+  filename: {en: The output filename, zh: 输出文件名}
+  mime.type: {en: 'The output filetype (application/xml for success and failure relationships,
+      original value for bad chunk and original relationships)', zh: 输出文件类型（成功和失败关系的application/xml，坏块和原始关系的原始值）}
+tags:
+  en: [logs, windows, event, evtx, message, file]
+  zh: [日志, 窗户, 事件, 电子电压互感器, 消息, 文件]

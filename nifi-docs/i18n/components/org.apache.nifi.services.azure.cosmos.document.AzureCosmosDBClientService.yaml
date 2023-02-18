@@ -1,0 +1,25 @@
+capabilityDescription: {en: Provides a controller service that configures a connection
+    to Cosmos DB (Core SQL API)  and provides access to that connection to other Cosmos
+    DB-related components., zh: 提供一个控制器服务，该服务配置到Cosmos DB（Core SQL API）的连接，并提供到其他Cosmos
+    DB相关组件的连接访问。}
+properties:
+  azure-cosmos-db-uri:
+    en: {displayName: Cosmos DB URI, description: 'Cosmos DB URI, typically in the
+        form of https://{databaseaccount}.documents.azure.com:443/ Note this host
+        URL is for Cosmos DB with Core SQL API from Azure Portal (Overview->URI)'}
+    zh: {description: 'Cosmos DB URI，通常采用https://｛databaseaccount｝.documents.azure的形式。com:443/请注意，此主机URL适用于具有Azure门户中核心SQL
+        API的Cosmos DB（概述->URI）', displayName: Cosmos数据库URI}
+  azure-cosmos-db-consistency-level:
+    en: {displayName: Cosmos DB Consistency Level, description: Choose from five consistency
+        levels on the consistency spectrum. Refer to Cosmos DB documentation for their
+        differences}
+    zh: {description: 从一致性范围的五个一致性级别中进行选择。请参阅Cosmos DB文档了解其差异, displayName: Cosmos数据库一致性级别}
+  azure-cosmos-db-key:
+    en: {displayName: Cosmos DB Access Key, description: Cosmos DB Access Key from
+        Azure Portal (Settings->Keys). Choose a read-write key to enable database
+        or container creation at run time}
+    zh: {description: 来自Azure门户的Cosmos DB访问密钥（设置->密钥）。选择读写密钥以在运行时启用数据库或容器创建, displayName: Cosmos
+        DB访问密钥}
+tags:
+  en: [azure, cosmos, document, service]
+  zh: [蔚蓝色的, 宇宙, 文件, 服务]

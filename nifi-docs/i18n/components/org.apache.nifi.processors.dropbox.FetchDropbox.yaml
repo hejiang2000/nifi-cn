@@ -1,0 +1,38 @@
+relationships:
+  success: {en: A FlowFile will be routed here for each successfully fetched File.,
+    zh: 对于每个成功获取的文件，将在此处路由FlowFile。}
+  failure: {en: A FlowFile will be routed here for each File for which fetch was attempted
+      but failed., zh: 对于尝试获取但失败的每个文件，将在此处路由FlowFile。}
+capabilityDescription: {en: Fetches files from Dropbox. Designed to be used in tandem
+    with ListDropbox., zh: 从Dropbox获取文件。设计用于与ListDropbox一起使用。}
+properties:
+  dropbox-credential-service:
+    en: {displayName: Dropbox Credential Service, description: 'Controller Service
+        used to obtain Dropbox credentials (App Key, App Secret, Access Token, Refresh
+        Token). See controller service''s Additional Details for more information.'}
+    zh: {description: 用于获取Dropbox凭据（应用密钥、应用密钥、访问令牌、刷新令牌）的控制器服务。有关更多信息，请参阅控制器服务的附加详细信息。,
+      displayName: Dropbox凭据服务}
+  file:
+    en: {displayName: File, description: 'The Dropbox identifier or path of the Dropbox
+        file to fetch. The ''File'' should match the following regular expression
+        pattern: /.*|id:.* . When ListDropbox is used for input, either ''${dropbox.id}''
+        (identifying files by Dropbox id) or ''${path}/${filename}'' (identifying
+        files by path) can be used as ''File'' value.'}
+    zh: {description: '要获取的Dropbox文件的Dropbox标识符或路径。“File”应与以下正则表达式模式匹配：/.*| id:.*。当ListDropbox用于输入时，“$｛dropbox.id｝”（通过dropbox
+        id标识文件）或“$｛路径｝/$｛文件名｝””（通过路径标识文件）可以用作“文件”值。', displayName: 文件}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+writeAttributes:
+  path: {en: The folder path where the file is located, zh: 文件所在的文件夹路径}
+  filename: {en: The name of the file, zh: 文件的名称}
+  error.message: {en: The error message returned by Dropbox, zh: Dropbox返回的错误消息}
+  dropbox.revision: {en: Revision of the file, zh: 文件的修订}
+  dropbox.id: {en: The Dropbox identifier of the file, zh: 文件的Dropbox标识符}
+  dropbox.size: {en: The size of the file, zh: 文件的大小}
+  dropbox.timestamp: {en: The server modified time of the file, zh: 文件的服务器修改时间}
+tags:
+  en: [dropbox, storage, fetch]
+  zh: [升降箱, 存储, 取来]

@@ -1,0 +1,38 @@
+relationships:
+  splits: {en: The individual 'segments' of the original FlowFile will be routed to
+      this relationship., zh: 原始FlowFile的各个“段”将路由到此关系。}
+  original: {en: 'Upon successfully splitting an input FlowFile, the original FlowFile
+      will be sent to this relationship.', zh: 成功拆分输入FlowFile后，原始FlowFile将发送到此关系。}
+  failure: {en: 'If a FlowFile cannot be transformed from the configured input format
+      to the configured output format, the unchanged FlowFile will be routed to this
+      relationship.', zh: 如果FlowFile无法从配置的输入格式转换为配置的输出格式，则未更改的FlowFile将被路由到此关系。}
+capabilityDescription: {en: Splits up an input FlowFile that is in a record-oriented
+    data format into multiple smaller FlowFiles, zh: 将面向记录的数据格式的输入FlowFile拆分为多个较小的FlowFile}
+properties:
+  Record Writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  Record Reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  Records Per Split:
+    en: {displayName: Records Per Split, description: Specifies how many records should
+        be written to each 'split' or 'segment' FlowFile}
+    zh: {description: 指定应向每个“拆分”或“分段”FlowFile写入多少记录, displayName: 每拆分记录数}
+writeAttributes:
+  'segment.original.filename ': {en: The filename of the parent FlowFile, zh: 父FlowFile的文件名}
+  record.count: {en: The number of records in the FlowFile. This is added to FlowFiles
+      that are routed to the 'splits' Relationship., zh: FlowFile中的记录数。这将添加到路由到“拆分”关系的FlowFiles中。}
+  fragment.identifier: {en: All split FlowFiles produced from the same parent FlowFile
+      will have the same randomly generated UUID added for this attribute, zh: 从同一父FlowFile生成的所有拆分FlowFile都将为此属性添加相同的随机生成UUID}
+  fragment.index: {en: A one-up number that indicates the ordering of the split FlowFiles
+      that were created from a single parent FlowFile, zh: 一个向上的数字，表示从单个父FlowFile创建的拆分FlowFile的顺序}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer for the FlowFiles routed to the 'splits' Relationship., zh: 设置mime。type属性设置为记录编写器为路由到“拆分”关系的FlowFiles指定的MIME类型。}
+  fragment.count: {en: The number of split FlowFiles generated from the parent FlowFile,
+    zh: 从父FlowFile生成的拆分FlowFile的数量}
+tags:
+  en: [split, generic, schema, json, csv, avro, log, logs, freeform, text]
+  zh: [分裂, 通用的, 模式, json文件, csv格式, 我没有吗？, 日志, 日志, 自由形式的, 文本]

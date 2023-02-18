@@ -1,0 +1,54 @@
+deprecationNotice: {en: This controller service is deprecated and will be removed
+    in NiFi 2.x., zh: 此控制器服务已弃用，将在NiFi 2.x中删除。}
+capabilityDescription: {en: 'Provides a Schema Registry Service that interacts with
+    a Hortonworks Schema Registry, available at https://github.com/hortonworks/registry',
+  zh: '提供与Hortonworks架构注册表交互的架构注册表服务，可在https://github.com/hortonworks/registry'}
+properties:
+  cache-expiration:
+    en: {displayName: Cache Expiration, description: 'Specifies how long a Schema
+        that is cached should remain in the cache. Once this time period elapses,
+        a cached version of a schema will no longer be used, and the service will
+        have to communicate with the Hortonworks Schema Registry again in order to
+        obtain the schema.'}
+    zh: {description: 指定缓存的架构应在缓存中保留多长时间。一旦过了这个时间段，模式的缓存版本将不再被使用，服务将不得不再次与Hortonworks模式注册表通信以获取模式。,
+      displayName: 缓存过期}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials Controller Service that should be used for authenticating with
+        Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos凭据控制器服务, displayName: Kerberos凭据服务}
+  kerberos-password:
+    en: {displayName: Kerberos Password, description: The password for the kerberos
+        principal when not using the kerberos credentials service}
+    zh: {description: 不使用kerberos凭据服务时kerberos主体的密码, displayName: Kerberos密码}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: Specifies the SSL Context
+        Service to use for communicating with Schema Registry.}
+    zh: {description: 指定用于与架构注册表通信的SSL上下文服务。, displayName: SSL上下文服务}
+  cache-size:
+    en: {displayName: Cache Size, description: Specifies how many Schemas should be
+        cached from the Hortonworks Schema Registry}
+    zh: {description: 指定应从Hortonworks架构注册表缓存多少架构, displayName: 缓存大小}
+  basic-auth-password:
+    en: {displayName: Basic Authentication Password, description: The password to
+        use for basic authentication when the Schema Registry is behind a proxy such
+        as Apache Knox.}
+    zh: {description: 当Schema Registry位于代理（如Apache Knox）后面时，用于基本身份验证的密码。, displayName: 基本身份验证密码}
+  kerberos-principal:
+    en: {displayName: Kerberos Principal, description: The kerberos principal to authenticate
+        with when not using the kerberos credentials service}
+    zh: {description: 不使用kerberos凭据服务时要进行身份验证的kerberos主体, displayName: Kerberos主体}
+  basic-auth-username:
+    en: {displayName: Basic Authentication Username, description: The username to
+        use for basic authentication when the Schema Registry is behind a proxy such
+        as Apache Knox.}
+    zh: {description: 当Schema Registry位于代理（如Apache Knox）后面时，用于基本身份验证的用户名。, displayName: 基本身份验证用户名}
+  url:
+    en: {displayName: Schema Registry URL, description: 'URL of the schema registry
+        that this Controller Service should connect to, including version. For example,
+        http://localhost:9090/api/v1'}
+    zh: {description: '此控制器服务应连接到的架构注册表的URL，包括版本。例如http://localhost:9090/api/v1',
+      displayName: 架构注册表URL}
+tags:
+  en: [schema, registry, avro, hortonworks, hwx]
+  zh: [模式, 注册表, 我没有吗？, 短工, 硬件x]

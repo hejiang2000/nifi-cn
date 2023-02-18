@@ -1,0 +1,137 @@
+relationships:
+  success: {en: All FlowFiles that are read from Elasticsearch are routed to this
+      relationship., zh: 从Elasticsearch读取的所有FlowFiles都将路由到此关系。}
+  failure: {en: All FlowFiles that cannot be read from Elasticsearch are routed to
+      this relationship. Note that only incoming flow files will be routed to failure.,
+    zh: 无法从Elasticsearch读取的所有FlowFiles都将路由到此关系。请注意，只有传入的流文件将被路由到失败。}
+  retry: {en: 'A FlowFile is routed to this relationship if the document cannot be
+      fetched but attempting the operation again may succeed. Note that if the processor
+      has no incoming connections, flow files may still be sent to this relationship
+      based on the processor properties and the results of the fetch operation.',
+    zh: 如果无法获取文档，则FlowFile将路由到此关系，但再次尝试操作可能会成功。请注意，如果处理器没有传入连接，则流文件仍可能根据处理器属性和提取操作的结果发送到此关系。}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+dynamicProperties:
+  A URL query parameter:
+    en: {description: Adds the specified property name/value as a query parameter
+        in the Elasticsearch URL used for processing, value: The value to set it to}
+    zh: {description: 在用于处理的Elasticsearch URL中添加指定的属性名称/值作为查询参数, value: 要将其设置为的值}
+capabilityDescription: {en: 'Queries Elasticsearch using the specified connection
+    properties. Note that the full body of each page of documents will be read into
+    memory before being written to Flow Files for transfer.  Also note that the Elasticsearch
+    max_result_window index setting is the upper bound on the number of records that
+    can be retrieved using this query.  To retrieve more records, use the ScrollElasticsearchHttp
+    processor.', zh: 使用指定的连接属性查询Elasticsearch。请注意，在将每页文档的全文写入流文件进行传输之前，会将其读入内存。还要注意，Elasticsearch
+    max_result_window索引设置是可以使用此查询检索的记录数的上限。要检索更多记录，请使用ScrollElasticsearchHttp处理器。}
+properties:
+  elasticsearch-http-response-timeout:
+    en: {displayName: Response Timeout, description: Max wait time for a response
+        from the Elasticsearch REST API.}
+    zh: {description: Elasticsearch REST API响应的最长等待时间。, displayName: 响应超时}
+  query-es-index:
+    en: {displayName: Index, description: 'The name of the index to read from. If
+        the property is unset or set to _all, the query will match across all indexes.'}
+    zh: {description: 要读取的索引的名称。如果属性未设置或设置为_all，则查询将在所有索引中匹配。, displayName: 指数}
+  query-es-limit:
+    en: {displayName: Limit, description: 'If set, limits the number of results that
+        will be returned.'}
+    zh: {description: 如果设置，则限制将返回的结果数。, displayName: 限度}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN,
+        SOCKS In case of SOCKS, it is not guaranteed that the selected SOCKS Version
+        will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN，SOCKS如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  query-es-target:
+    en: {displayName: Target, description: 'Indicates where the results should be
+        placed.  In the case of ''Flow file content'', the JSON response will be written
+        as the content of the flow file.  In the case of ''Flow file attributes'',
+        the original flow file (if applicable) will be cloned for each result, and
+        all return fields will be placed in a flow file attribute of the same name,
+        but prefixed by ''es.result.'''}
+    zh: {description: 指示结果应放置的位置。在“流文件内容”的情况下，JSON响应将被写入流文件的内容。在“流文件属性”的情况下，将为每个结果克隆原始流文件（如果适用），并且所有返回字段将放置在同名的流文件属性中，但前缀为“es.result”,
+      displayName: 目标}
+  elasticsearch-http-url:
+    en: {displayName: Elasticsearch URL, description: 'Elasticsearch URL which will
+        be connected to, including scheme (http, e.g.), host, and port. The default
+        port for the REST API is 9200.'}
+    zh: {description: 将连接到的Elasticsearch URL，包括scheme（例如http）、host和port。REST API的默认端口是9200。,
+      displayName: 弹性搜索URL}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections. This service
+        only applies if the Elasticsearch endpoint(s) have been secured with TLS/SSL.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。此服务仅适用于Elasticsearch端点已通过TLS/SSL进行安全保护的情况。,
+      displayName: SSL上下文服务}
+  elasticsearch-http-connect-timeout:
+    en: {displayName: Connection Timeout, description: Max wait time for the connection
+        to the Elasticsearch REST API.}
+    zh: {description: 连接到Elasticsearch REST API的最长等待时间。, displayName: 连接超时}
+  query-es-type:
+    en: {displayName: Type, description: 'The type of document (if unset, the query
+        will be against all types in the _index). This should be unset or ''_doc''
+        for Elasticsearch 7.0+.'}
+    zh: {description: 文档类型（如果未设置，查询将针对_index中的所有类型）。对于Elasticsearch 7.0+，该值应为unset或“_doc”。,
+      displayName: 类型}
+  routing-query-info-strategy:
+    en: {displayName: Routing Strategy for Query Info, description: Specifies when
+        to generate and route Query Info after a successful query}
+    zh: {description: 指定成功查询后生成和路由查询信息的时间, displayName: 查询信息的路由策略}
+  Username:
+    en: {displayName: Username, description: Username to access the Elasticsearch
+        cluster}
+    zh: {description: 访问Elasticsearch集群的用户名, displayName: 用户名}
+  elasticsearch-http-proxy-host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  proxy-username:
+    en: {displayName: Proxy Username, description: Proxy Username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  proxy-password:
+    en: {displayName: Proxy Password, description: Proxy Password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  query-es-fields:
+    en: {displayName: Fields, description: 'A comma-separated list of fields to retrieve
+        from the document. If the Fields property is left blank, then the entire document''s
+        source will be retrieved.'}
+    zh: {description: 要从文档中检索的字段的逗号分隔列表。如果Fields属性为空，则将检索整个文档的源。, displayName: 领域}
+  elasticsearch-http-proxy-port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        document data.}
+    zh: {description: 指定文档数据的字符集。, displayName: 字符集}
+  query-es-sort:
+    en: {displayName: Sort, description: 'A sort parameter (e.g., timestamp:asc).
+        If the Sort property is left blank, then the results will be retrieved in
+        document order.'}
+    zh: {description: 排序参数（例如，时间戳：asc）。如果Sort属性为空，则将按文档顺序检索结果。, displayName: 分类}
+  query-es-query:
+    en: {displayName: Query, description: 'The Lucene-style query to run against ElasticSearch
+        (e.g., genre:blues AND -artist:muddy)'}
+    zh: {description: 针对ElasticSearch运行的Lucene风格查询（例如，流派：blues AND-艺术家：mud）, displayName: 查询}
+  query-es-size:
+    en: {displayName: Page Size, description: Determines how many documents to return
+        per page during scrolling.}
+    zh: {description: 确定滚动期间每页返回的文档数。, displayName: 页面大小}
+  Password:
+    en: {displayName: Password, description: Password to access the Elasticsearch
+        cluster}
+    zh: {description: 访问Elasticsearch集群的密码, displayName: 暗语}
+writeAttributes:
+  es.query.hitcount: {en: The number of hits for a query, zh: 查询的命中数}
+  filename: {en: The filename attribute is set to the document identifier, zh: 文件名属性设置为文档标识符}
+  es.query.url: {en: The Elasticsearch query that was built, zh: 构建的Elasticsearch查询}
+  es.result.*: {en: 'If Target is ''Flow file attributes'', the JSON attributes of
+      each result will be placed into corresponding attributes with this prefix.',
+    zh: 如果Target为“Flow file attributes”，则每个结果的JSON属性将被放置到具有此前缀的相应属性中。}
+  es.type: {en: The Elasticsearch document type, zh: Elasticsearch文档类型}
+  es.id: {en: The Elasticsearch document identifier, zh: Elasticsearch文档标识符}
+  es.index: {en: The Elasticsearch index containing the document, zh: 包含文档的Elasticsearch索引}
+tags:
+  en: [elasticsearch, query, read, get, http]
+  zh: [弹性搜索, 查询, 阅读, 收到, http]

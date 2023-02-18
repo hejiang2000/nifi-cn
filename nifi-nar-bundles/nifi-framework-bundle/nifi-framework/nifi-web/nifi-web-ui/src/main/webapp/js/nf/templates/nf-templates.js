@@ -209,7 +209,7 @@
                             dataType: 'json'
                         }).done(function (response) {
                             var aboutDetails = response.about;
-                            var templatesTitle = aboutDetails.title + ' Templates';
+                            var templatesTitle = aboutDetails.title + ' 模板';
 
                             // set the document title and the about title
                             document.title = templatesTitle;

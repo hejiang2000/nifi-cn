@@ -1,0 +1,18 @@
+capabilityDescription: {en: Lookup a string value from Couchbase Server associated
+    with the specified key. The coordinates that are passed to the lookup must contain
+    the key 'key'., zh: 从Couchbase Server查找与指定键关联的字符串值。传递给查找的坐标必须包含键“key”。}
+properties:
+  cluster-controller-service:
+    en: {displayName: Couchbase Cluster Controller Service, description: A Couchbase
+        Cluster Controller Service which manages connections to a Couchbase cluster.}
+    zh: {description: Couchbase群集控制器服务，用于管理与Couchbase集群的连接。, displayName: Couchbase群集控制器服务}
+  lookup-sub-doc-path:
+    en: {displayName: Lookup Sub-Document Path, description: The Sub-Document lookup
+        path within the target JSON document.}
+    zh: {description: 目标JSON文档中的子文档查找路径。, displayName: 查找子文档路径}
+  bucket-name:
+    en: {displayName: Bucket Name, description: The name of bucket to access.}
+    zh: {description: 要访问的存储桶的名称。, displayName: Bucket名称}
+tags:
+  en: [lookup, enrich, key, value, couchbase]
+  zh: [查找, 充实, 钥匙, 价值, 泊位底座]

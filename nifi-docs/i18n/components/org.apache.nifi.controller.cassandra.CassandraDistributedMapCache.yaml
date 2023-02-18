@@ -1,0 +1,27 @@
+capabilityDescription: {en: Provides a DistributedMapCache client that is based on
+    Apache Cassandra., zh: 提供基于Apache Cassandra的DistributedMapCache客户端。}
+properties:
+  cassandra-dmc-table-name:
+    en: {displayName: Table Name, description: The name of the table where the cache
+        will be stored.}
+    zh: {description: 将存储缓存的表的名称。, displayName: 表名称}
+  cassandra-dmc-session-provider:
+    en: {displayName: Session Provider, description: The client service that will
+        configure the cassandra client connection.}
+    zh: {description: 将配置cassandra客户端连接的客户端服务。, displayName: 会话提供程序}
+  cassandra-dmc-value-field-name:
+    en: {displayName: Value Field Name, description: The name of the field that will
+        store the value. (The CQL type should be "blob")}
+    zh: {description: 将存储值的字段的名称。（CQL类型应为“blob”）, displayName: 值字段名称}
+  cassandra-dmc-key-field-name:
+    en: {displayName: Key Field Name, description: The name of the field that acts
+        as the unique key. (The CQL type should be "blob")}
+    zh: {description: 充当唯一键的字段的名称。（CQL类型应为“blob”）, displayName: 关键字段名称}
+  cassandra-dmc-ttl:
+    en: {displayName: TTL, description: 'If configured, this will set a TTL (Time
+        to Live) for each row inserted into the table so that old cache items expire
+        after a certain period of time.'}
+    zh: {description: 如果已配置，这将为插入到表中的每一行设置TTL（生存时间），以便旧缓存项在一定时间段后过期。, displayName: TTL公司}
+tags:
+  en: [map, cache, distributed, cassandra]
+  zh: [地图, 隐藏物, 分布式的, 卡桑德拉]

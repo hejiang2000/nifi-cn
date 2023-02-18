@@ -1,0 +1,17 @@
+capabilityDescription: {en: 'An implementation of DistributedMapCacheClient that uses
+    Redis as the backing cache. This service relies on the WATCH, MULTI, and EXEC
+    commands in Redis, which are not fully supported when Redis is clustered. As a
+    result, this service can only be used with a Redis Connection Pool that is configured
+    for standalone or sentinel mode. Sentinel mode can be used to provide high-availability
+    configurations.', zh: 使用Redis作为后备缓存的DistributedMapCacheClient的实现。此服务依赖于Redis中的WATCH、MULTI和EXEC命令，当Redis集群时，这些命令不完全受支持。因此，此服务只能与为独立或哨兵模式配置的Redis连接池一起使用。哨兵模式可用于提供高可用性配置。}
+properties:
+  redis-connection-pool:
+    en: {displayName: Redis Connection Pool, description: ''}
+    zh: {description: '', displayName: Redis连接池}
+  redis-cache-ttl:
+    en: {displayName: TTL, description: Indicates how long the data should exist in
+        Redis. Setting '0 secs' would mean the data would exist forever}
+    zh: {description: 指示数据应在Redis中存在多长时间。设置“0秒”意味着数据将永远存在, displayName: TTL公司}
+tags:
+  en: [redis, distributed, cache, map]
+  zh: [Redis公司, 分布式的, 隐藏物, 地图]

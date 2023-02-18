@@ -1,0 +1,161 @@
+relationships:
+  success: {en: All content that is received is routed to the 'success' relationship,
+    zh: 接收到的所有内容都将路由到“成功”关系}
+capabilityDescription: {en: 'Starts an HTTP Server and listens for HTTP Requests.
+    For each request, creates a FlowFile and transfers to ''success''. This Processor
+    is designed to be used in conjunction with the HandleHttpResponse Processor in
+    order to create a Web Service. In case  of a multipart request, one FlowFile is
+    generated for each part.', zh: 启动HTTP服务器并侦听HTTP请求。对于每个请求，创建一个FlowFile并传输到“success”。此处理器旨在与HandleHttpResponse处理器一起使用，以创建Web服务。如果是多部分请求，则为每个部分生成一个FlowFile。}
+properties:
+  multipart-request-max-size:
+    en: {displayName: Multipart Request Max Size, description: 'The max size of the
+        request. Only applies for requests with Content-Type: multipart/form-data,
+        and is used to prevent denial of service type of attacks, to prevent filling
+        up the heap or disk space'}
+    zh: {description: 请求的最大大小。仅适用于具有内容类型：多部分/表单数据的请求，用于防止拒绝服务类型的攻击，防止填充堆或磁盘空间, displayName: 多部分请求最大大小}
+  parameters-to-attributes:
+    en: {displayName: Parameters to Attributes List, description: A comma-separated
+        list of HTTP parameters or form data to output as attributes}
+    zh: {description: 要作为属性输出的HTTP参数或表单数据的逗号分隔列表, displayName: 属性列表的参数}
+  Allow POST:
+    en: {displayName: Allow POST, description: Allow HTTP POST Method}
+    zh: {description: 允许HTTP POST方法, displayName: 允许POST}
+  Hostname:
+    en: {displayName: Hostname, description: 'The Hostname to bind to. If not specified,
+        will bind to all hosts'}
+    zh: {description: 要绑定到的主机名。如果未指定，将绑定到所有主机, displayName: 主机名}
+  Default URL Character Set:
+    en: {displayName: Default URL Character Set, description: The character set to
+        use for decoding URL parameters if the HTTP Request does not supply one}
+    zh: {description: 如果HTTP请求未提供URL参数，则用于解码URL参数的字符集, displayName: 默认URL字符集}
+  Allow DELETE:
+    en: {displayName: Allow DELETE, description: Allow HTTP DELETE Method}
+    zh: {description: 允许HTTP DELETE方法, displayName: 允许删除}
+  Maximum Threads:
+    en: {displayName: Maximum Threads, description: The maximum number of threads
+        that the embedded HTTP server will use for handling requests.}
+    zh: {description: 嵌入式HTTP服务器将用于处理请求的最大线程数。, displayName: 最大线程数}
+  HTTP Protocols:
+    en: {displayName: HTTP Protocols, description: HTTP Protocols supported for Application
+        Layer Protocol Negotiation with TLS}
+    zh: {description: 支持TLS应用层协议协商的HTTP协议, displayName: HTTP协议}
+  Additional HTTP Methods:
+    en: {displayName: Additional HTTP Methods, description: A comma-separated list
+        of non-standard HTTP Methods that should be allowed}
+    zh: {description: 应允许的非标准HTTP方法的逗号分隔列表, displayName: 其他HTTP方法}
+  container-queue-size:
+    en: {displayName: Container Queue Size, description: The size of the queue for
+        Http Request Containers}
+    zh: {description: Http请求容器的队列大小, displayName: 容器队列大小}
+  HTTP Context Map:
+    en: {displayName: HTTP Context Map, description: The HTTP Context Map Controller
+        Service to use for caching the HTTP Request Information}
+    zh: {description: 用于缓存HTTP请求信息的HTTP上下文映射控制器服务, displayName: HTTP上下文映射}
+  multipart-read-buffer-size:
+    en: {displayName: Multipart Read Buffer Size, description: 'The threshold size,
+        at which the contents of an incoming file would be written to disk. Only applies
+        for requests with Content-Type: multipart/form-data. It is used to prevent
+        denial of service type of attacks, to prevent filling up the heap or disk
+        space.'}
+    zh: {description: 将传入文件的内容写入磁盘的阈值大小。仅适用于内容类型为multipart/form数据的请求。它用于防止拒绝服务类型的攻击，防止填充堆或磁盘空间。,
+      displayName: 多部分读取缓冲区大小}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'The SSL Context Service to
+        use in order to secure the server. If specified, the server will accept only
+        HTTPS requests; otherwise, the server will accept only HTTP requests'}
+    zh: {description: 用于保护服务器的SSL上下文服务。如果指定，服务器将只接受HTTPS请求；否则，服务器将只接受HTTP请求, displayName: SSL上下文服务}
+  Allow OPTIONS:
+    en: {displayName: Allow OPTIONS, description: Allow HTTP OPTIONS Method}
+    zh: {description: 允许HTTP OPTIONS方法, displayName: 允许选项}
+  Allowed Paths:
+    en: {displayName: Allowed Paths, description: 'A Regular Expression that specifies
+        the valid HTTP Paths that are allowed in the incoming URL Requests. If this
+        value is specified and the path of the HTTP Requests does not match this Regular
+        Expression, the Processor will respond with a 404: NotFound'}
+    zh: {description: '指定传入URL请求中允许的有效HTTP路径的正则表达式。如果指定了此值，并且HTTP请求的路径与此正则表达式不匹配，则处理器将以404:NotFound响应',
+      displayName: 允许的路径}
+  Allow GET:
+    en: {displayName: Allow GET, description: Allow HTTP GET Method}
+    zh: {description: 允许HTTP GET方法, displayName: 允许GET}
+  Allow HEAD:
+    en: {displayName: Allow HEAD, description: Allow HTTP HEAD Method}
+    zh: {description: 允许HTTP HEAD方法, displayName: 允许HEAD}
+  Listening Port:
+    en: {displayName: Listening Port, description: The Port to listen on for incoming
+        HTTP requests}
+    zh: {description: 侦听传入HTTP请求的端口, displayName: 侦听端口}
+  Client Authentication:
+    en: {displayName: Client Authentication, description: Specifies whether or not
+        the Processor should authenticate clients. This value is ignored if the <SSL
+        Context Service> Property is not specified or the SSL Context provided uses
+        only a KeyStore and not a TrustStore.}
+    zh: {description: 指定处理器是否应验证客户端。如果未指定＜SSL上下文服务＞属性，或者提供的SSL上下文仅使用KeyStore而不使用TrustStore，则忽略此值。,
+      displayName: 客户端身份验证}
+  Allow PUT:
+    en: {displayName: Allow PUT, description: Allow HTTP PUT Method}
+    zh: {description: 允许HTTP PUT方法, displayName: 允许PUT}
+writeAttributes:
+  http.request.uri: {en: The full Request URL, zh: 完整的请求URL}
+  http.context.identifier: {en: An identifier that allows the HandleHttpRequest and
+      HandleHttpResponse to coordinate which FlowFile belongs to which HTTP Request/Response.,
+    zh: 允许HandleHttpRequest和HandleHttpResponse协调哪个FlowFile属于哪个HTTP请求/响应的标识符。}
+  http.query.string: {en: The query string portion of the Request URL, zh: 请求URL的查询字符串部分}
+  http.remote.host: {en: The hostname of the requestor, zh: 请求者的主机名}
+  http.auth.type: {en: The type of HTTP Authorization used, zh: 使用的HTTP授权类型}
+  http.multipart.fragments.sequence.number: {en: 'For requests with Content-Type "multipart/form-data",
+      the part''s index is recorded into this attribute. The index starts with 1.',
+    zh: 对于内容类型为“multipart/form-data”的请求，该部分的索引记录到此属性中。索引以1开头。}
+  http.local.name: {en: IP address/hostname of the server, zh: 服务器的IP地址/主机名}
+  http.multipart.filename: {en: 'For requests with Content-Type "multipart/form-data",
+      when the part contains an uploaded file, the name of the file is recorded into
+      this attribute. Files are stored temporarily at the default temporary-file directory
+      specified in "java.io.File" Java Docs)', zh: 对于内容类型为“multipart/form-data”的请求，当部分包含上载的文件时，文件的名称将记录到此属性中。文件临时存储在“java.io.file”java
+      Docs中指定的默认临时文件目录中）}
+  http.param.XXX: {en: 'Form parameters in the request that are configured by "Parameters
+      to Attributes List" will be added as an attribute, prefixed with "http.param.".
+      Putting form parameters of large size is not recommended.', zh: 请求中由“parameters
+      to Attributes List”配置的表单参数将作为一个属性添加，前缀为“http.param”。不建议放置大尺寸的形状参数。}
+  http.headers.multipart.XXX: {en: 'Each of the HTTP Headers that is received in the
+      multipart request will be added as an attribute, prefixed with "http.headers.multipart."
+      For example, if the multipart request contains an HTTP Header named "content-disposition",
+      then the value will be added to an attribute named "http.headers.multipart.content-disposition"',
+    zh: 多部分请求中接收到的每个HTTP Header都将作为一个属性添加，前缀为“HTTP.Headers.multart”。例如，如果多部分请求包含一个名为“content-disposition”的HTTP
+      Header，则该值将添加到名为“HTTP.Headers.maultart.content-dispositon”的属性中}
+  http.context.path: {en: The part of the request URL that is considered to be the
+      Context Path, zh: 请求URL中被认为是上下文路径的部分}
+  http.subject.dn: {en: The Distinguished Name of the requestor. This value will not
+      be populated unless the Processor is configured to use an SSLContext Service,
+    zh: 请求者的可分辨名称。除非处理器配置为使用SSLContext服务，否则不会填充此值}
+  http.remote.addr: {en: 'The hostname:port combination of the requestor', zh: 请求者的主机名：端口组合}
+  http.multipart.fragments.total.number: {en: 'For requests with Content-Type "multipart/form-data",
+      the count of all parts is recorded into this attribute.', zh: 对于内容类型为“multipart/form-data”的请求，所有部分的计数都记录到此属性中。}
+  http.method: {en: 'The HTTP Method that was used for the request, such as GET or
+      POST', zh: 用于请求的HTTP方法，例如GET或POST}
+  http.query.param.XXX: {en: 'Each of query parameters in the request will be added
+      as an attribute, prefixed with "http.query.param."', zh: 请求中的每个查询参数都将作为一个属性添加，前缀为“http.query.param”}
+  http.remote.user: {en: The username of the requestor, zh: 请求者的用户名}
+  http.server.port: {en: Listening port of the server, zh: 服务器的侦听端口}
+  mime.type: {en: 'The MIME Type of the data, according to the HTTP Header "Content-Type"',
+    zh: 根据HTTP标头“内容类型”，数据的MIME类型}
+  http.protocol: {en: The protocol used to communicate, zh: 用于通信的协议}
+  http.multipart.size: {en: 'For requests with Content-Type "multipart/form-data",
+      the part''s content size is recorded into this attribute', zh: 对于内容类型为“multipart/form-data”的请求，该部分的内容大小将记录到此属性中}
+  http.servlet.path: {en: The part of the request URL that is considered the Servlet
+      Path, zh: 请求URL中被视为Servlet路径的部分}
+  http.headers.XXX: {en: 'Each of the HTTP Headers that is received in the request
+      will be added as an attribute, prefixed with "http.headers." For example, if
+      the request contains an HTTP Header named "x-my-header", then the value will
+      be added to an attribute named "http.headers.x-my-header"', zh: 请求中接收的每个HTTP
+      Header都将作为一个属性添加，前缀为“HTTP.Headers”。例如，如果请求包含名为“x-my-Header”的HTTP Header，则该值将添加到名为“HTTP_Headers.x-my-Header”的属性中}
+  http.issuer.dn: {en: The Distinguished Name of the entity that issued the Subject's
+      certificate. This value will not be populated unless the Processor is configured
+      to use an SSLContext Service, zh: 颁发使用者证书的实体的可分辨名称。除非处理器配置为使用SSLContext服务，否则不会填充此值}
+  http.multipart.name: {en: 'For requests with Content-Type "multipart/form-data",
+      the part''s name is recorded into this attribute', zh: 对于内容类型为“multipart/form-data”的请求，该部分的名称将记录到此属性中}
+  http.multipart.content.type: {en: 'For requests with Content-Type "multipart/form-data",
+      the part''s content type is recorded into this attribute', zh: 对于内容类型为“multipart/form-data”的请求，该部分的内容类型记录到此属性中}
+  http.principal.name: {en: The name of the authenticated user making the request,
+    zh: 发出请求的已验证用户的名称}
+tags:
+  en: [http, https, request, listen, ingress, web service]
+  zh: [http, https, 要求, 听, 进入, web服务]

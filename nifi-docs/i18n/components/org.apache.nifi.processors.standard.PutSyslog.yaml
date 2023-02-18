@@ -1,0 +1,84 @@
+relationships:
+  success: {en: FlowFiles that are sent successfully to Syslog are sent out this relationship.,
+    zh: 成功发送到Syslog的FlowFiles将发送到此关系。}
+  failure: {en: FlowFiles that failed to send to Syslog are sent out this relationship.,
+    zh: 未能发送到Syslog的FlowFiles将发送到此关系。}
+  invalid: {en: FlowFiles that do not form a valid Syslog message are sent out this
+      relationship., zh: 未形成有效Syslog消息的FlowFiles将发送到此关系。}
+capabilityDescription: {en: 'Sends Syslog messages to a given host and port over TCP
+    or UDP. Messages are constructed from the "Message ___" properties of the processor
+    which can use expression language to generate messages from incoming FlowFiles.
+    The properties are used to construct messages of the form: (<PRIORITY>)(VERSION
+    )(TIMESTAMP) (HOSTNAME) (BODY) where version is optional.  The constructed messages
+    are checked against regular expressions for RFC5424 and RFC3164 formatted messages.
+    The timestamp can be an RFC5424 timestamp with a format of "yyyy-MM-dd''T''HH:mm:ss.SZ"
+    or "yyyy-MM-dd''T''HH:mm:ss.S+hh:mm", or it can be an RFC3164 timestamp with a
+    format of "MMM d HH:mm:ss". If a message is constructed that does not form a valid
+    Syslog message according to the above description, then it is routed to the invalid
+    relationship. Valid messages are sent to the Syslog server and successes are routed
+    to the success relationship, failures routed to the failure relationship.', zh: '通过TCP或UDP向给定主机和端口发送Syslog消息。消息由处理器的“消息___”属性构成，处理器可以使用表达式语言从传入的FlowFiles生成消息。属性用于构造以下形式的消息：（<PRIORITY>）（VERSION）（TIMESTAMP）（HOSTNAME）（BODY），其中版本是可选的。根据RFC5424和RFC3164格式消息的正则表达式检查构造的消息。时间戳可以是RFC5424时间戳，格式为“yyyy-MM-dd''T''HH:MM:ss.SZ”或“yyyy-MM-dd''''HH:MM:ss.S+HH:MM”，也可以是RFC3164时间戳格式为“MMM-dHH:MM:ss”。如果根据上述描述构造的消息不构成有效的Syslog消息，则将其路由到无效的关系。有效消息被发送到Syslog服务器，成功被路由到成功关系，失败被路由到失败关系。'}
+properties:
+  Message Timestamp:
+    en: {displayName: Message Timestamp, description: 'The timestamp for the Syslog
+        messages. The timestamp can be an RFC5424 timestamp with a format of "yyyy-MM-dd''T''HH:mm:ss.SZ"
+        or "yyyy-MM-dd''T''HH:mm:ss.S+hh:mm", " or it can be an RFC3164 timestamp
+        with a format of "MMM d HH:mm:ss".'}
+    zh: {description: 'Syslog消息的时间戳。时间戳可以是RFC5424时间戳，格式为“yyyy-MM-dd''T''HH:MM:ss.SZ”或“yyyy-MM-dd''''HH:MM:ss.S+HH:MM”，也可以是RFC3164时间戳格式为“MMM-dHH:MM:ss”。',
+      displayName: 消息时间戳}
+  Timeout:
+    en: {displayName: Timeout, description: The timeout for connecting to and communicating
+        with the syslog server. Does not apply to UDP. Note that Expression language
+        is not evaluated per FlowFile.}
+    zh: {description: 连接到syslog服务器并与之通信的超时。不适用于UDP。请注意，表达式语言不是按FlowFile计算的。, displayName: 超时}
+  Port:
+    en: {displayName: Port, description: The port for Syslog communication. Note that
+        Expression language is not evaluated per FlowFile.}
+    zh: {description: Syslog通信的端口。请注意，表达式语言不是按FlowFile计算的。, displayName: 港口城市}
+  Hostname:
+    en: {displayName: Hostname, description: The IP address or hostname of the Syslog
+        server.}
+    zh: {description: Syslog服务器的IP地址或主机名。, displayName: 主机名}
+  Message Hostname:
+    en: {displayName: Message Hostname, description: The hostname for the Syslog messages.}
+    zh: {description: Syslog消息的主机名。, displayName: 消息主机名}
+  Message Version:
+    en: {displayName: Message Version, description: The version for the Syslog messages.}
+    zh: {description: Syslog消息的版本。, displayName: 消息版本}
+  Message Body:
+    en: {displayName: Message Body, description: The body for the Syslog messages.}
+    zh: {description: Syslog消息的正文。, displayName: 消息正文}
+  Idle Connection Expiration:
+    en: {displayName: Idle Connection Expiration, description: The amount of time
+        a connection should be held open without being used before closing the connection.}
+    zh: {description: 在关闭连接之前，连接应保持打开而不使用的时间。, displayName: 空闲连接到期}
+  Message Priority:
+    en: {displayName: Message Priority, description: 'The priority for the Syslog
+        messages, excluding < >.'}
+    zh: {description: Syslog消息的优先级，不包括<>。, displayName: 消息优先级}
+  Max Size of Socket Send Buffer:
+    en: {displayName: Max Size of Socket Send Buffer, description: 'The maximum size
+        of the socket send buffer that should be used. This is a suggestion to the
+        Operating System to indicate how big the socket buffer should be. If this
+        value is set too low, the buffer may fill up before the data can be read,
+        and incoming data will be dropped.'}
+    zh: {description: 应使用的套接字发送缓冲区的最大大小。这是给操作系统的一个建议，说明套接字缓冲区应该有多大。如果该值设置得太低，缓冲区可能会在读取数据之前填满，并且传入的数据将被丢弃。,
+      displayName: 套接字发送缓冲区的最大大小}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'The Controller Service to
+        use in order to obtain an SSL Context. If this property is set, syslog messages
+        will be sent over a secure connection.'}
+    zh: {description: 用于获取SSL上下文的控制器服务。如果设置了此属性，将通过安全连接发送syslog消息。, displayName: SSL上下文服务}
+  Batch Size:
+    en: {displayName: Batch Size, description: The number of incoming FlowFiles to
+        process in a single execution of this processor.}
+    zh: {description: 在此处理器的一次执行中要处理的传入FlowFiles的数量。, displayName: 批量大小}
+  Protocol:
+    en: {displayName: Protocol, description: The protocol for Syslog communication.}
+    zh: {description: Syslog通信协议。, displayName: 协议}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        Syslog messages. Note that Expression language is not evaluated per FlowFile.}
+    zh: {description: 指定Syslog消息的字符集。请注意，表达式语言不是按FlowFile计算的。, displayName: 字符集}
+tags:
+  en: [syslog, put, udp, tcp, logs]
+  zh: [系统日志, 放, 通用数据包, tcp协议, 日志]

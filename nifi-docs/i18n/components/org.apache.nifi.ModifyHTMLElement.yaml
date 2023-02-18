@@ -1,0 +1,47 @@
+relationships:
+  original: {en: The original HTML input, zh: 原始HTML输入}
+  success: {en: Successfully parsed HTML element, zh: 已成功分析HTML元素}
+  invalid html: {en: The input HTML syntax is invalid, zh: 输入的HTML语法无效}
+  element not found: {en: Element could not be found in the HTML document. The original
+      HTML input will remain in the FlowFile content unchanged. Relationship 'original'
+      will not be invoked in this scenario., zh: 在HTML文档中找不到元素。原始HTML输入将保持FlowFile内容不变。在此方案中不会调用关系“original”。}
+capabilityDescription: {en: 'Modifies the value of an existing HTML element. The desired
+    element to be modified is located by using CSS selector syntax. The incoming HTML
+    is first converted into a HTML Document Object Model so that HTML elements may
+    be selected in the similar manner that CSS selectors are used to apply styles
+    to HTML. The resulting HTML DOM is then "queried" using the user defined CSS selector
+    string to find the element the user desires to modify. If the HTML element is
+    found the element''s value is updated in the DOM using the value specified "Modified
+    Value" property. All DOM elements that match the CSS selector will be updated.
+    Once all of the DOM elements have been updated the DOM is rendered to HTML and
+    the result replaces the flowfile content with the updated HTML. A more thorough
+    reference for the CSS selector syntax can be found at "http://jsoup.org/apidocs/org/jsoup/select/Selector.html"',
+  zh: '修改现有HTML元素的值。要修改的所需元素通过使用CSS选择器语法来定位。传入的HTML首先被转换为HTML文档对象模型，这样HTML元素可以以类似于CSS选择器用于将样式应用于HTML的方式被选择。然后使用用户定义的CSS选择器字符串“查询”生成的HTML
+    DOM，以查找用户希望修改的元素。如果找到HTML元素，则使用指定的值“Modified value”属性在DOM中更新元素的值。将更新与CSS选择器匹配的所有DOM元素。一旦更新了所有的DOM元素，DOM就被呈现为HTML，结果用更新的HTML替换流文件内容。有关CSS选择器语法的更详细参考，请参阅“http://jsoup.org/apidocs/org/jsoup/select/Selector.html"'}
+properties:
+  Output Type:
+    en: {displayName: Output Type, description: 'Controls whether the HTML element
+        is output as HTML,Text or Data'}
+    zh: {description: 控制HTML元素是作为HTML、文本还是数据输出, displayName: 输出类型}
+  Attribute Name:
+    en: {displayName: Attribute Name, description: When modifying the value of an
+        element attribute this value is used as the key to determine which attribute
+        on the selected element will be modified with the new value.}
+    zh: {description: 当修改元素属性的值时，该值用作键，以确定将使用新值修改所选元素上的哪个属性。, displayName: 属性名称}
+  Modified Value:
+    en: {displayName: Modified Value, description: Value to update the found HTML
+        elements with}
+    zh: {description: 值更新找到的HTML元素, displayName: 修改的值}
+  HTML Character Encoding:
+    en: {displayName: HTML Character Encoding, description: Character encoding of
+        the input HTML}
+    zh: {description: 输入HTML的字符编码, displayName: HTML字符编码}
+  CSS Selector:
+    en: {displayName: CSS Selector, description: CSS selector syntax string used to
+        extract the desired HTML element(s).}
+    zh: {description: 用于提取所需HTML元素的CSS选择器语法字符串。, displayName: CSS选择器}
+writeAttributes:
+  NumElementsModified: {en: Total number of HTML element modifications made, zh: 进行的HTML元素修改总数}
+tags:
+  en: [modify, html, dom, css, element]
+  zh: [修改, html格式, 多姆, css格式, 要素]

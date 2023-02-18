@@ -1,0 +1,31 @@
+capabilityDescription: {en: Web Client Service Provider with support for configuring
+    standard HTTP connection properties, zh: 支持配置标准HTTP连接属性的Web客户端服务提供程序}
+properties:
+  connect-timeout:
+    en: {displayName: Connect Timeout, description: Maximum amount of time to wait
+        before failing during initial socket connection}
+    zh: {description: 初始套接字连接期间失败前等待的最长时间, displayName: 连接超时}
+  redirect-handling-strategy:
+    en: {displayName: Redirect Handling Strategy, description: Handling strategy for
+        responding to HTTP 301 or 302 redirects received with a Location header}
+    zh: {description: 响应带有位置标头的HTTP 301或302重定向的处理策略, displayName: 重定向处理策略}
+  read-timeout:
+    en: {displayName: Read Timeout, description: Maximum amount of time to wait before
+        failing while reading socket responses}
+    zh: {description: 读取套接字响应时失败前等待的最长时间, displayName: 读取超时}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: SSL Context Service overrides
+        system default TLS settings for HTTPS communication}
+    zh: {description: SSL上下文服务覆盖HTTPS通信的系统默认TLS设置, displayName: SSL上下文服务}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。, displayName: 代理配置服务}
+  write-timeout:
+    en: {displayName: Write Timeout, description: Maximum amount of time to wait before
+        failing while writing socket requests}
+    zh: {description: 写入套接字请求时失败前等待的最长时间, displayName: 写入超时}
+tags:
+  en: [HTTP, Web, Client]
+  zh: [超文本传输协议, 网状物, 客户]

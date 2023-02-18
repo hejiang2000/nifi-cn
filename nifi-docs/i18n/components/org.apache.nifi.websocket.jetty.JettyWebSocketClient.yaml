@@ -1,0 +1,71 @@
+capabilityDescription: {en: Implementation of WebSocketClientService. This service
+    uses Jetty WebSocket client module to provide WebSocket session management throughout
+    the application., zh: WebSocketClientService的实现。该服务使用Jetty WebSocket客户端模块在整个应用程序中提供WebSocket会话管理。}
+properties:
+  max-binary-message-size:
+    en: {displayName: Max Binary Message Size, description: The maximum size of a
+        binary message during parsing/generating.}
+    zh: {description: 分析/生成期间二进制消息的最大大小。, displayName: 最大二进制消息大小}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: 'The SSL Context Service to
+        use in order to secure the server. If specified, the server will accept only
+        WSS requests; otherwise, the server will accept only WS requests'}
+    zh: {description: 用于保护服务器的SSL上下文服务。如果指定，服务器将只接受WSS请求；否则，服务器将只接受WS请求, displayName: SSL上下文服务}
+  connection-attempt-timeout:
+    en: {displayName: Connection Attempt Count, description: The number of times to
+        try and establish a connection.}
+    zh: {description: 尝试建立连接的次数。, displayName: 连接尝试计数}
+  proxy-host:
+    en: {displayName: HTTP Proxy Host, description: The host name of the HTTP Proxy.}
+    zh: {description: HTTP代理的主机名。, displayName: HTTP代理主机}
+  authentication-charset:
+    en: {displayName: Authentication Header Charset, description: The charset for
+        Basic Authentication header base64 string.}
+    zh: {description: 基本身份验证标头base64字符串的字符集。, displayName: 身份验证标头字符集}
+  max-text-message-size:
+    en: {displayName: Max Text Message Size, description: The maximum size of a text
+        message during parsing/generating.}
+    zh: {description: 分析/生成期间文本消息的最大大小。, displayName: 最大文本消息大小}
+  websocket-uri:
+    en: {displayName: WebSocket URI, description: The WebSocket URI this client connects
+        to.}
+    zh: {description: 此客户端连接到的WebSocket URI。, displayName: WebSocket URI}
+  connection-timeout:
+    en: {displayName: Connection Timeout, description: The timeout to connect the
+        WebSocket URI.}
+    zh: {description: 连接WebSocket URI的超时。, displayName: 连接超时}
+  user-password:
+    en: {displayName: User Password, description: The user password for Basic Authentication.}
+    zh: {description: 基本身份验证的用户密码。, displayName: 用户密码}
+  proxy-port:
+    en: {displayName: HTTP Proxy Port, description: The port number of the HTTP Proxy.}
+    zh: {description: HTTP代理的端口号。, displayName: HTTP代理端口}
+  user-name:
+    en: {displayName: User Name, description: The user name for Basic Authentication.}
+    zh: {description: 基本身份验证的用户名。, displayName: 用户名}
+  session-maintenance-interval:
+    en: {displayName: Session Maintenance Interval, description: 'The interval between
+        session maintenance activities. A WebSocket session established with a WebSocket
+        server can be terminated due to different reasons including restarting the
+        WebSocket server or timing out inactive sessions. This session maintenance
+        activity is periodically executed in order to reconnect those lost sessions,
+        so that a WebSocket client can reuse the same session id transparently after
+        it reconnects successfully.  The maintenance activity is executed until corresponding
+        processors or this controller service is stopped.'}
+    zh: {description: 会话维护活动之间的间隔。与WebSocket服务器建立的WebSocket会话可能会因不同原因而终止，包括重新启动WebSocket
+        server或超时非活动会话。此会话维护活动会定期执行，以便重新连接丢失的会话，这样WebSocket客户端可以在成功重新连接后透明地重用相同的会话id。执行维护活动，直到相应的处理器或此控制器服务停止。,
+      displayName: 会话维护间隔}
+  custom-authorization:
+    en: {displayName: Custom Authorization, description: Configures a custom HTTP
+        Authorization Header as described in RFC 7235 Section 4.2. Setting a custom
+        Authorization Header excludes configuring the User Name and User Password
+        properties for Basic Authentication.}
+    zh: {description: 如RFC 7235第4.2节所述配置自定义HTTP授权头。设置自定义授权头不包括为基本身份验证配置用户名和用户密码属性。,
+      displayName: 自定义授权}
+  input-buffer-size:
+    en: {displayName: Input Buffer Size, description: The size of the input (read
+        from network layer) buffer size.}
+    zh: {description: 输入（从网络层读取）缓冲区大小。, displayName: 输入缓冲区大小}
+tags:
+  en: [WebSocket, Jetty, client]
+  zh: [WebSocket, 码头, 客户]

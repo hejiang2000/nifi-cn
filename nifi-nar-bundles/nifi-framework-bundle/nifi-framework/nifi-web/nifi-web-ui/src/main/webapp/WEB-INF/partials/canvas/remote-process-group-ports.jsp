@@ -20,13 +20,13 @@
         <span id="remote-process-group-ports-id" class="hidden"></span>
         <div class="settings-left">
             <div class="setting">
-                <div class="setting-name">Name</div>
+                <div class="setting-name">名称</div>
                 <div class="setting-field">
                     <span id="remote-process-group-ports-name"></span>
                 </div>
             </div>
             <div class="remote-port-header">
-                <div>Input ports</div>
+                <div>输入端口</div>
             </div>
             <div id="remote-process-group-input-ports-container" class="remote-ports-container"></div>
         </div>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="remote-port-header">
-                <div>Output ports</div>
+                <div>输出端口</div>
             </div>
             <div id="remote-process-group-output-ports-container" class="remote-ports-container"></div>
         </div>

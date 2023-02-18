@@ -1,0 +1,45 @@
+relationships:
+  comms.failure: {en: 'This relationship is used when the translation fails due to
+      a problem such as a network failure, and for which the translation should be
+      attempted again', zh: 当由于网络故障等问题导致翻译失败，并且应再次尝试翻译时，使用此关系}
+  success: {en: This relationship is used when the translation is successful, zh: 翻译成功时使用此关系}
+  translation.failure: {en: This relationship is used if the translation cannot be
+      performed for some reason other than communications failure, zh: 如果由于通信故障以外的原因无法执行翻译，则使用此关系}
+dynamicProperties:
+  The name of an attribute to set that will contain the translated text of the value:
+    en: {description: User-defined properties are used to translate arbitrary text
+        based on attributes., value: The value to translate}
+    zh: {description: 用户定义的属性用于基于属性翻译任意文本。, value: 要转换的值}
+capabilityDescription: {en: Translates content and attributes from one language to
+    another, zh: 将内容和属性从一种语言转换为另一种语言}
+properties:
+  Target Language:
+    en: {displayName: Target Language, description: The language to translate the
+        text into}
+    zh: {description: 添加新语言, displayName: 目标语言}
+  Yandex API Key:
+    en: {displayName: Yandex API Key, description: The API Key that is registered
+        with Yandex}
+    zh: {description: 向Yandex注册的API密钥, displayName: Yandex API密钥}
+  Translate Content:
+    en: {displayName: Translate Content, description: 'Specifies whether or not the
+        content should be translated. If false, only the text specified by user-defined
+        properties will be translated.'}
+    zh: {description: 指定是否应翻译内容。如果为false，则仅翻译用户定义属性指定的文本。, displayName: 翻译内容}
+  Input Language:
+    en: {displayName: Input Language, description: 'The language of incoming data.
+        If no language is set, Yandex will attempt to detect the incoming language
+        automatically.'}
+    zh: {description: 传入数据的语言。如果未设置语言，Yandex将尝试自动检测传入语言。, displayName: 输入语言}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        data to be translated}
+    zh: {description: 指定要翻译的数据的字符集, displayName: 字符集}
+writeAttributes:
+  yandex.translate.failure.reason: {en: 'If the text cannot be translated, this attribute
+      will be set indicating the reason for the failure', zh: 如果无法翻译文本，则将设置此属性，指明失败的原因}
+  language: {en: 'When the translation succeeds, if the content was translated, this
+      attribute will be set indicating the new language of the content', zh: 翻译成功后，如果内容已翻译，则将设置此属性，指示内容的新语言}
+tags:
+  en: [yandex, translate, translation, language]
+  zh: [yandex公司, 翻译, 翻译, 语言]

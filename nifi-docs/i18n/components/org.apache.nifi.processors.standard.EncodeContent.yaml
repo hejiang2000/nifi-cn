@@ -1,0 +1,18 @@
+relationships:
+  success: {en: Any FlowFile that is successfully encoded or decoded will be routed
+      to success, zh: 成功编码或解码的任何FlowFile都将被路由为成功}
+  failure: {en: Any FlowFile that cannot be encoded or decoded will be routed to failure,
+    zh: 任何无法编码或解码的FlowFile将被路由到故障}
+capabilityDescription: {en: Encode or decode contents using configurable encoding
+    schemes, zh: 使用可配置的编码方案对内容进行编码或解码}
+properties:
+  Mode:
+    en: {displayName: Mode, description: Specifies whether the content should be encoded
+        or decoded}
+    zh: {description: 指定是对内容进行编码还是解码, displayName: 模式}
+  Encoding:
+    en: {displayName: Encoding, description: Specifies the type of encoding used}
+    zh: {description: 指定使用的编码类型, displayName: 编码}
+tags:
+  en: [encode, decode, base64, hex]
+  zh: [编码, 解码, 基础64, 十六进制]

@@ -1,0 +1,56 @@
+relationships:
+  success: {en: Files that have been successfully written to Box are transferred to
+      this relationship., zh: 已成功写入Box的文件将传输到此关系。}
+  failure: {en: Files that could not be written to Box for some reason are transferred
+      to this relationship., zh: 由于某些原因无法写入Box的文件将传输到此关系。}
+capabilityDescription: {en: Puts content to a Box folder., zh: 将内容放入Box文件夹。}
+readAttributes:
+  filename: {en: Uses the FlowFile's filename as the filename for the Box object.,
+    zh: 使用FlowFile的文件名作为Box对象的文件名。}
+properties:
+  subfolder-name:
+    en: {displayName: Subfolder Name, description: 'The name (path) of the subfolder
+        where files are uploaded. The subfolder name is relative to the folder specified
+        by ''Folder ID''. Example: subFolder, subFolder1/subfolder2'}
+    zh: {description: 上载文件的子文件夹的名称（路径）。子文件夹名称与“文件夹ID”指定的文件夹相关。示例：subFolder，subFolder1/subfolder2,
+      displayName: 子文件夹名称}
+  box-folder-id:
+    en: {displayName: Folder ID, description: The ID of the folder where the file
+        is uploaded. Please see Additional Details to obtain Folder ID.}
+    zh: {description: 上载文件的文件夹的ID。请参阅其他详细信息以获取文件夹ID。, displayName: 文件夹ID}
+  conflict-resolution-strategy:
+    en: {displayName: Conflict Resolution Strategy, description: Indicates what should
+        happen when a file with the same name already exists in the specified Box
+        folder.}
+    zh: {description: 指示当指定的Box文件夹中已存在同名文件时应执行的操作。, displayName: 冲突解决策略}
+  chunked-upload-threshold:
+    en: {displayName: Chunked Upload Threshold, description: The maximum size of the
+        content which is uploaded at once. FlowFiles larger than this threshold are
+        uploaded in chunks. Chunked upload is allowed for files larger than 20 MB.
+        It is recommended to use chunked upload for files exceeding 50 MB.}
+    zh: {description: 一次上载的内容的最大大小。大于此阈值的流文件以块的形式上载。大于20 MB的文件允许分块上传。建议对超过50 MB的文件使用分块上传。,
+      displayName: 分块上载阈值}
+  box-client-service:
+    en: {displayName: Box Client Service, description: Controller Service used to
+        obtain a Box API connection.}
+    zh: {description: 用于获取Box API连接的控制器服务。, displayName: Box客户端服务}
+  create-folder:
+    en: {displayName: Create Subfolder, description: 'Specifies whether to check if
+        the subfolder exists and to automatically create it if it does not. Permission
+        to list folders is required. '}
+    zh: {description: 指定是否检查子文件夹是否存在，如果不存在则自动创建。需要列出文件夹的权限。, displayName: 创建子文件夹}
+  file-name:
+    en: {displayName: Filename, description: The name of the file to upload to the
+        specified Box folder.}
+    zh: {description: 要上载到指定Box文件夹的文件的名称。, displayName: 文件名}
+writeAttributes:
+  box.id: {en: The id of the file, zh: 文件的id}
+  path: {en: The folder path where the file is located, zh: 文件所在的文件夹路径}
+  filename: {en: The name of the file, zh: 文件的名称}
+  error.message: {en: The error message returned by Box, zh: Box返回的错误消息}
+  box.timestamp: {en: The last modified time of the file, zh: 文件的上次修改时间}
+  box.size: {en: The size of the file, zh: 文件的大小}
+  error.code: {en: The error code returned by Box, zh: Box返回的错误代码}
+tags:
+  en: [box, storage, put]
+  zh: [盒, 存储, 放]

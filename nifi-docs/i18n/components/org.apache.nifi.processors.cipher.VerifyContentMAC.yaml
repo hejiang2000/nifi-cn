@@ -1,0 +1,32 @@
+relationships:
+  success: {en: Signature Verification Succeeded, zh: 签名验证成功}
+  failure: {en: Signature Verification Failed, zh: 签名验证失败}
+capabilityDescription: {en: Calculates a Message Authentication Code using the provided
+    Secret Key and compares it with the provided MAC property, zh: 使用提供的密钥计算消息身份验证代码，并将其与提供的MAC属性进行比较}
+properties:
+  secret-key-encoding:
+    en: {displayName: Secret Key Encoding, description: Encoding of the Secret Key}
+    zh: {description: 密钥的编码, displayName: 密钥编码}
+  mac-algorithm:
+    en: {displayName: Message Authentication Code Algorithm, description: Hashed Message
+        Authentication Code Function}
+    zh: {description: 哈希消息身份验证代码函数, displayName: 消息验证代码算法}
+  secret-key:
+    en: {displayName: Secret Key, description: Secret key to calculate the hash}
+    zh: {description: 用于计算哈希的密钥, displayName: 密钥}
+  message-authentication-code:
+    en: {displayName: Message Authentication Code, description: The MAC to compare
+        with the calculated value}
+    zh: {description: 要与计算值进行比较的MAC, displayName: 消息验证代码}
+  message-authentication-code-encoding:
+    en: {displayName: Message Authentication Code Encoding, description: Encoding
+        of the Message Authentication Code}
+    zh: {description: 消息验证代码的编码, displayName: 消息验证代码编码}
+writeAttributes:
+  mac.algorithm: {en: Hashed Message Authentication Code Algorithm, zh: 哈希消息认证码算法}
+  mac.calculated: {en: Calculated Message Authentication Code encoded by the selected
+      encoding, zh: 所选编码编码的计算消息验证代码}
+  mac.encoding: {en: The Encoding of the Hashed Message Authentication Code, zh: 散列消息认证码的编码}
+tags:
+  en: [Authentication, Signing, MAC, HMAC]
+  zh: [身份验证, 签字, 雨衣, HMAC]

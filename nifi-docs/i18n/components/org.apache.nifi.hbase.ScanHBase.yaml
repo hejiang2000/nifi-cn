@@ -1,0 +1,89 @@
+relationships:
+  original: {en: 'The original input file will be routed to this destination, even
+      if no rows are retrieved based on provided conditions.', zh: 原始输入文件将被路由到此目的地，即使根据提供的条件没有检索到任何行。}
+  success: {en: All successful fetches are routed to this relationship., zh: 所有成功的回迁都将路由到此关系。}
+  failure: {en: All failed fetches are routed to this relationship., zh: 所有失败的回迁都将路由到此关系。}
+capabilityDescription: {en: 'Scans and fetches rows from an HBase table. This processor
+    may be used to fetch rows from hbase table by specifying a range of rowkey values
+    (start and/or end ),by time range, by filter expression, or any combination of
+    them. Order of records can be controlled by a property ReversedNumber of rows
+    retrieved by the processor can be limited.', zh: 扫描并从HBase表中提取行。此处理器可用于通过指定行关键字值的范围（开始和/或结束）、时间范围、筛选器表达式或它们的任意组合，从hbase表中提取行。记录的顺序可以由属性Reversed控制。处理器检索的行数可以受到限制。}
+properties:
+  scanhbase-table-name:
+    en: {displayName: Table Name, description: The name of the HBase Table to fetch
+        from.}
+    zh: {description: 要从中提取的HBase表的名称。, displayName: 表名称}
+  scanhbase-json-format:
+    en: {displayName: JSON Format, description: Specifies how to represent the HBase
+        row as a JSON document.}
+    zh: {description: 指定如何将HBase行表示为JSON文档。, displayName: JSON格式}
+  scanhbase-limit:
+    en: {displayName: Limit rows, description: Limit number of rows retrieved by scan.}
+    zh: {description: 限制扫描检索的行数。, displayName: 限制行数}
+  scanhbase-start-rowkey:
+    en: {displayName: Start rowkey, description: The rowkey to start scan from.}
+    zh: {description: 开始扫描的行键。, displayName: 开始行键}
+  scanhbase-filter-expression:
+    en: {displayName: Filter expression, description: 'An HBase filter expression
+        that will be applied to the scan. This property can not be used when also
+        using the Columns property. Example: "ValueFilter( =, ''binaryprefix:commit''
+        )"'}
+    zh: {description: '将应用于扫描的HBase筛选器表达式。同时使用Columns属性时不能使用此属性。示例：“ValueFilter（=，''binaryprefix:commit''）”',
+      displayName: 筛选器表达式}
+  scanhbase-encode-charset:
+    en: {displayName: Encode Character Set, description: The character set used to
+        encode the JSON representation of the row.}
+    zh: {description: 用于编码行的JSON表示的字符集。, displayName: 编码字符集}
+  scanhbase-bulk-size:
+    en: {displayName: Max rows per flow file, description: Limits number of rows in
+        single flow file content. Set to 0 to avoid multiple flow files.}
+    zh: {description: 限制单流文件内容中的行数。设置为0以避免多个流文件。, displayName: 每个流文件的最大行数}
+  scanhbase-time-range-min:
+    en: {displayName: Time range min, description: Time range min value. Both min
+        and max values for time range should be either blank or provided.}
+    zh: {description: 时间范围最小值。时间范围的最小值和最大值都应为空或提供。, displayName: 最小时间范围}
+  scanhbase-decode-charset:
+    en: {displayName: Decode Character Set, description: The character set used to
+        decode data from HBase.}
+    zh: {description: 用于解码HBase数据的字符集。, displayName: 解码字符集}
+  scanhbase-reversed-order:
+    en: {displayName: Reversed order, description: Set whether this scan is a reversed
+        one. This is false by default which means forward(normal) scan.}
+    zh: {description: 设置此扫描是否为反向扫描。默认情况下为false，表示正向（正常）扫描。, displayName: 颠倒的顺序}
+  block-cache:
+    en: {displayName: Block Cache, description: The Block Cache to enable/disable
+        block cache on HBase scan.}
+    zh: {description: 用于在HBase扫描时启用/禁用块缓存的块缓存。, displayName: 块缓存}
+  hbase-fetch-row-authorizations:
+    en: {displayName: Authorizations, description: The list of authorizations to pass
+        to the scanner. This will be ignored if cell visibility labels are not in
+        use.}
+    zh: {description: 要传递给扫描仪的授权列表。如果未使用单元格可见性标签，则将忽略此项。, displayName: 授权}
+  scanhbase-columns:
+    en: {displayName: Columns, description: 'An optional comma-separated list of "<colFamily>:<colQualifier>"
+        pairs to fetch. To return all columns for a given family, leave off the qualifier
+        such as "<colFamily1>,<colFamily2>".'}
+    zh: {description: 要获取的“<colFamily>：<colQualifier>”对的可选逗号分隔列表。要返回给定族的所有列，请省略限定符，例如“<colFamily1>，<colFamily2>”。,
+      displayName: 柱}
+  scanhbase-client-service:
+    en: {displayName: HBase Client Service, description: Specifies the Controller
+        Service to use for accessing HBase.}
+    zh: {description: 指定用于访问HBase的控制器服务。, displayName: HBase客户端服务}
+  scanhbase-time-range-max:
+    en: {displayName: Time range max, description: Time range max value. Both min
+        and max values for time range should be either blank or provided.}
+    zh: {description: 时间范围最大值。时间范围的最小值和最大值都应为空或提供。, displayName: 最大时间范围}
+  scanhbase-end-rowkey:
+    en: {displayName: End rowkey, description: The row key to end scan by.}
+    zh: {description: 结束扫描的行键。, displayName: 结束行键}
+writeAttributes:
+  scanhbase.results.found: {en: Indicates whether at least one row has been found
+      in given hbase table with provided conditions. Could be null (not present) if
+      transfered to FAILURE, zh: 指示在给定的hbase表中是否至少找到了一行，并提供了条件。如果传输到FAILURE，则可能为空（不存在）}
+  hbase.table: {en: The name of the HBase table that the row was fetched from, zh: 从中提取行的HBase表的名称}
+  mime.type: {en: 'Set to application/json when using a Destination of flowfile-content,
+      not set or modified otherwise', zh: 使用流文件内容的Destination时设置为application/json，否则不设置或修改}
+  hbase.rows.count: {en: Number of rows in the content of given flow file, zh: 给定流文件内容中的行数}
+tags:
+  en: [hbase, scan, fetch, get]
+  zh: [数据库, 扫描, 取来, 收到]

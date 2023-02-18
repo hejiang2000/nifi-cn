@@ -1,0 +1,67 @@
+relationships:
+  inactive: {en: This relationship is used to transfer an Inactivity indicator when
+      no FlowFiles are routed to 'success' for Threshold Duration amount of time,
+    zh: 当没有FlowFiles路由到阈值持续时间的“成功”时，此关系用于传输不活动指示符}
+  success: {en: All incoming FlowFiles are routed to success, zh: 所有传入的FlowFiles都将路由成功}
+  activity.restored: {en: This relationship is used to transfer an Activity Restored
+      indicator when FlowFiles are routing to 'success' following a period of inactivity,
+    zh: 当FlowFiles在一段非活动时间后路由到“成功”时，此关系用于传输“活动恢复”指示符}
+capabilityDescription: {en: Monitors the flow for activity and sends out an indicator
+    when the flow has not had any data for some specified amount of time and again
+    when the flow's activity is restored, zh: 监视流的活动，并在流在指定的时间内没有任何数据时发送一个指示符，然后在恢复流的活动时再次发送}
+statefulDescription: {en: 'MonitorActivity stores the last timestamp at each node
+    as state, so that it can examine activity at cluster wide.If ''Copy Attribute''
+    is set to true, then flow file attributes are also persisted.', zh: MonitorActivity将每个节点上的最后一个时间戳存储为状态，以便它可以在集群范围内检查活动。如果“复制属性”设置为true，则流文件属性也将持久化。}
+properties:
+  Continually Send Messages:
+    en: {displayName: Continually Send Messages, description: 'If true, will send
+        inactivity indicator continually every Threshold Duration amount of time until
+        activity is restored; if false, will send an indicator only when the flow
+        first becomes inactive'}
+    zh: {description: 如果为真，将在每个阈值持续时间持续发送不活动指示符，直到活动恢复；如果为false，则仅当流首次变为非活动时才会发送指示符,
+      displayName: 持续发送消息}
+  Inactivity Message:
+    en: {displayName: Inactivity Message, description: The message that will be the
+        content of FlowFiles that are sent to the 'inactive' relationship}
+    zh: {description: 将作为发送到“非活动”关系的FlowFiles内容的消息, displayName: 不活动消息}
+  Activity Restored Message:
+    en: {displayName: Activity Restored Message, description: The message that will
+        be the content of FlowFiles that are sent to 'activity.restored' relationship}
+    zh: {description: 将作为发送到“”活动的FlowFiles内容的消息。恢复的关系, displayName: 活动已恢复消息}
+  Copy Attributes:
+    en: {displayName: Copy Attributes, description: 'If true, will copy all flow file
+        attributes from the flow file that resumed activity to the newly created indicator
+        flow file'}
+    zh: {description: 如果为true，则将所有流文件属性从恢复活动的流文件复制到新创建的指示器流文件, displayName: 复制属性（Copy
+        Attributes）}
+  Monitoring Scope:
+    en: {displayName: Monitoring Scope, description: 'Specify how to determine activeness
+        of the flow. ''node'' means that activeness is examined at individual node
+        separately. It can be useful if DFM expects each node should receive flow
+        files in a distributed manner. With ''cluster'', it defines the flow is active
+        while at least one node receives flow files actively. If NiFi is running as
+        standalone mode, this should be set as ''node'', if it''s ''cluster'', NiFi
+        logs a warning message and act as ''node'' scope.'}
+    zh: {description: 指定如何确定流的活动性。'“节点”意味着在单个节点上单独检查活动性。如果DFM期望每个节点都以分布式方式接收流文件，那么这可能很有用。使用“cluster”，它定义流处于活动状态，而至少一个节点处于活动状态接收流文件。如果NiFi以独立模式运行，则应将其设置为“node”，如果它是“cluster”，则NiFi将记录一条警告消息并充当“节点”作用域。,
+      displayName: 监测范围}
+  Threshold Duration:
+    en: {displayName: Threshold Duration, description: Determines how much time must
+        elapse before considering the flow to be inactive}
+    zh: {description: 确定在将流视为非活动之前必须经过多长时间, displayName: 阈值持续时间}
+  Reporting Node:
+    en: {displayName: Reporting Node, description: 'Specify which node should send
+        notification flow-files to inactive and activity.restored relationships. With
+        ''all'', every node in this cluster send notification flow-files. ''primary''
+        means flow-files will be sent only from a primary node. If NiFi is running
+        as standalone mode, this should be set as ''all'', even if it''s ''primary'',
+        NiFi act as ''all''.'}
+    zh: {description: 指定哪个节点应向非活动节点和活动节点发送通知流文件。恢复的关系。使用“all”，此群集中的每个节点都会发送通知流文件primary”表示流文件将仅从主节点发送。如果NiFi以独立模式运行，则应将其设置为“all”，即使它是“primary”，NiFi也将充当“all”。,
+      displayName: 报告节点}
+writeAttributes:
+  inactivityDurationMillis: {en: The number of milliseconds that the inactivity has
+      spanned, zh: 非活动已跨越的毫秒数}
+  inactivityStartMillis: {en: 'The time at which Inactivity began, in the form of
+      milliseconds since Epoch', zh: 从大纪元开始不活动的时间，以毫秒为单位}
+tags:
+  en: [monitor, flow, active, inactive, activity, detection]
+  zh: [班长, 流, 忙碌的, 不活跃的, 活动, 侦查]

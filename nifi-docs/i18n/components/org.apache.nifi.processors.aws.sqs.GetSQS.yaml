@@ -1,0 +1,80 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+capabilityDescription: {en: Fetches messages from an Amazon Simple Queuing Service
+    Queue, zh: 从Amazon简单队列服务队列获取消息}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  Auto Delete Messages:
+    en: {displayName: Auto Delete Messages, description: Specifies whether the messages
+        should be automatically deleted by the processors once they have been received.}
+    zh: {description: 指定在收到消息后，处理器是否应自动删除消息。, displayName: 自动删除邮件}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  Queue URL:
+    en: {displayName: Queue URL, description: The URL of the queue to act upon}
+    zh: {description: 要操作的队列的URL, displayName: 队列URL}
+  Receive Message Wait Time:
+    en: {displayName: Receive Message Wait Time, description: The maximum amount of
+        time to wait on a long polling receive call. Setting this to a value of 1
+        second or greater will reduce the number of SQS requests and decrease fetch
+        latency at the cost of a constantly active thread.}
+    zh: {description: 等待长轮询接收呼叫的最长时间。将其设置为1秒或更大的值将减少SQS请求的数量，并以持续活动的线程为代价减少获取延迟。,
+      displayName: 接收消息等待时间}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  Batch Size:
+    en: {displayName: Batch Size, description: The maximum number of messages to send
+        in a single network request}
+    zh: {description: 单个网络请求中要发送的最大消息数, displayName: 批量大小}
+  Visibility Timeout:
+    en: {displayName: Visibility Timeout, description: The amount of time after a
+        message is received but not deleted that the message is hidden from other
+        consumers}
+    zh: {description: 收到消息但未删除消息后，该消息对其他消费者隐藏的时间, displayName: 可见性超时}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Character Set:
+    en: {displayName: Character Set, description: The Character Set that should be
+        used to encode the textual content of the SQS message}
+    zh: {description: 应用于编码SQS消息文本内容的字符集, displayName: 字符集}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+writeAttributes:
+  sqs.receipt.handle: {en: The SQS Receipt Handle that is to be used to delete the
+      message from the queue, zh: 用于从队列中删除消息的SQS接收句柄}
+  hash.algorithm: {en: MD5, zh: MD5型}
+  sqs.message.id: {en: The unique identifier of the SQS message, zh: SQS消息的唯一标识符}
+  hash.value: {en: The MD5 sum of the message, zh: 消息的MD5和}
+tags:
+  en: [Amazon, AWS, SQS, Queue, Get, Fetch, Poll]
+  zh: [亚马逊, 自动售货机, 平方英尺, 队列, 收到, 取来, 投票]

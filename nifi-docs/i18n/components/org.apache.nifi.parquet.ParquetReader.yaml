@@ -1,0 +1,11 @@
+capabilityDescription: {en: Parses Parquet data and returns each Parquet record as
+    a separate Record object. The schema will come from the Parquet data itself.,
+  zh: 分析Parquet数据并将每个Parquet记录作为单独的record对象返回。模式将来自Parquet数据本身。}
+properties:
+  avro-read-compatibility:
+    en: {displayName: Avro Read Compatibility, description: Specifies the value for
+        'parquet.avro.compatible' in the underlying Parquet library}
+    zh: {description: 指定'parquet.avro的值。兼容”, displayName: Avro读取兼容性}
+tags:
+  en: [parquet, parse, record, row, reader]
+  zh: [拼花地板, 作语法分析, 记录, 一行, 读者]

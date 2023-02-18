@@ -1,0 +1,33 @@
+relationships:
+  success: {en: Used for flowfiles that have a hash value added, zh: 用于添加了哈希值的流文件}
+  failure: {en: Used for flowfiles that are missing required attributes, zh: 用于缺少必需属性的流文件}
+dynamicProperties:
+  A flowfile attribute key for attribute inspection:
+    en: {description: 'This regular expression is evaluated against the flowfile attribute
+        values. If the regular expression contains a capturing group, the value of
+        that group will be used when comparing flow file attributes. Otherwise, the
+        original flow file attribute''s value will be used if and only if the value
+        matches the given regular expression.', value: A Regular Expression}
+    zh: {description: 根据flowfile属性值计算此正则表达式。如果正则表达式包含捕获组，则在比较流文件属性时将使用该组的值。否则，当且仅当值与给定正则表达式匹配时，将使用原始流文件属性的值。,
+      value: 正则表达式}
+capabilityDescription: {en: 'Hashes together the key/value pairs of several flowfile
+    attributes and adds the hash as a new attribute. Optional properties are to be
+    added such that the name of the property is the name of a flowfile attribute to
+    consider and the value of the property is a regular expression that, if matched
+    by the attribute value, will cause that attribute to be used as part of the hash.
+    If the regular expression contains a capturing group, only the value of the capturing
+    group will be used. For a processor which accepts various attributes and generates
+    a cryptographic hash of each, see "CryptographicHashAttribute". ', zh: 将多个流文件属性的键/值对散列在一起，并将散列作为新属性添加。要添加可选属性，以便属性的名称是要考虑的流文件属性的名称，属性的值是正则表达式，如果与属性值匹配，则将导致该属性用作哈希的一部分。如果正则表达式包含捕获组，则只使用捕获组的值。对于接受各种属性并生成每个属性的加密哈希的处理器，请参阅“CryptographicHashAttribute”。}
+properties:
+  Hash Value Attribute Key:
+    en: {displayName: Hash Value Attribute Key, description: The name of the flowfile
+        attribute where the hash value should be stored}
+    zh: {description: 应该存储哈希值的flowfile属性的名称, displayName: 哈希值属性键}
+writeAttributes:
+  <Hash Value Attribute Key>: {en: This Processor adds an attribute whose value is
+      the result of Hashing the existing flowfile attributes. The name of this attribute
+      is specified by the <Hash Value Attribute Key> property., zh: 此处理器添加一个属性，其值是哈希现有流文件属性的结果。此属性的名称由<Hash
+      Value attribute Key>属性指定。}
+tags:
+  en: [attributes, hash]
+  zh: [属性, 搞砸]

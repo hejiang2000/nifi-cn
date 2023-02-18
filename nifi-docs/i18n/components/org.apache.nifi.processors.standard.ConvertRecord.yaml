@@ -1,0 +1,40 @@
+relationships:
+  success: {en: FlowFiles that are successfully transformed will be routed to this
+      relationship, zh: 成功转换的FlowFiles将路由到此关系}
+  failure: {en: 'If a FlowFile cannot be transformed from the configured input format
+      to the configured output format, the unchanged FlowFile will be routed to this
+      relationship', zh: 如果FlowFile无法从配置的输入格式转换为配置的输出格式，则未更改的FlowFile将被路由到此关系}
+capabilityDescription: {en: 'Converts records from one data format to another using
+    configured Record Reader and Record Write Controller Services. The Reader and
+    Writer must be configured with "matching" schemas. By this, we mean the schemas
+    must have the same field names. The types of the fields do not have to be the
+    same if a field value can be coerced from one type to another. For instance, if
+    the input schema has a field named "balance" of type double, the output schema
+    can have a field named "balance" with a type of string, double, or float. If any
+    field is present in the input that is not present in the output, the field will
+    be left out of the output. If any field is specified in the output schema but
+    is not present in the input data/schema, then the field will not be present in
+    the output or will have a null value, depending on the writer.', zh: 使用配置的记录读取器和记录写入控制器服务将记录从一种数据格式转换为另一种数据。读取器和写入器必须使用“匹配”架构进行配置。这意味着模式必须具有相同的字段名。如果字段值可以从一种类型强制到另一种类型，则字段的类型不必相同。例如，如果输入模式有一个名为“balance”的double类型的字段，则输出模式可以有一个名称为“balanced”的字段，其类型为string、double或float。如果输入中存在输出中不存在的任何字段，则该字段将被排除在输出之外。如果在输出模式中指定了任何字段，但输入数据/模式中不存在该字段，则该字段将不存在于输出中，或者将具有空值，具体取决于编写器。}
+properties:
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  include-zero-record-flowfiles:
+    en: {displayName: Include Zero Record FlowFiles, description: 'When converting
+        an incoming FlowFile, if the conversion results in no data, this property
+        specifies whether or not a FlowFile will be sent to the corresponding relationship'}
+    zh: {description: 当转换传入的FlowFile时，如果转换结果为无数据，则此属性指定是否将FlowFile发送到相应的关系, displayName: 包括零记录流文件}
+writeAttributes:
+  record.error.message: {en: This attribute provides on failure the error message
+      encountered by the Reader or Writer., zh: 此属性在失败时提供读取器或写入器遇到的错误消息。}
+  record.count: {en: The number of records in the FlowFile, zh: FlowFile中的记录数}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer, zh: 设置mime。type属性设置为记录编写器指定的MIME类型}
+tags:
+  en: [convert, record, generic, schema, json, csv, avro, log, logs, freeform, text]
+  zh: [转换, 记录, 通用的, 模式, json文件, csv格式, 我没有吗？, 日志, 日志, 自由形式的, 文本]

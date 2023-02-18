@@ -1,0 +1,75 @@
+relationships:
+  original: {en: The original input flowfile will be sent to this relationship, zh: 原始输入流文件将发送到此关系}
+  success: {en: Flowfiles that are successfully encoded or decoded will be routed
+      to success, zh: 成功编码或解码的流文件将被路由到成功}
+  failure: {en: Flowfiles that cannot be encoded or decoded will be routed to failure,
+    zh: 无法编码或解码的流文件将路由失败}
+capabilityDescription: {en: A record-based processor that encodes and decodes Geohashes
+    from and to latitude/longitude coordinates., zh: 一种基于记录的处理器，对来自纬度/经度坐标的地理散列进行编码和解码。}
+properties:
+  mode:
+    en: {displayName: Mode, description: Specifies whether to encode latitude/longitude
+        to geohash or decode geohash to latitude/longitude}
+    zh: {description: 指定是将纬度/经度编码为geohash还是将geohash解码为纬度/经度, displayName: 模式}
+  geohash-level:
+    en: {displayName: Geohash Level, description: The integer precision level(1-12)
+        desired for encoding geohash}
+    zh: {description: 编码geohash所需的整数精度级别（1-12）, displayName: Geohash级别}
+  geohash-record-path:
+    en: {displayName: Geohash Record Path, description: 'In the ENCODE mode, this
+        property specifies the record path to put the geohash value; in the DECODE
+        mode, this property specifies the record path to retrieve the geohash value'}
+    zh: {description: 在ENCODE模式下，此属性指定放置geohash值的记录路径；在DECODE模式下，此属性指定用于检索geohash值的记录路径,
+      displayName: Geohash记录路径}
+  routing-strategy:
+    en: {displayName: Routing Strategy, description: 'Specifies how to route flowfiles
+        after encoding or decoding being performed. SKIP will enrich those records
+        that can be enriched and skip the rest. The SKIP strategy will route a flowfile
+        to failure only if unable to parse the data. Otherwise, it will route the
+        enriched flowfile to success, and the original input to original. SPLIT will
+        separate the records that have been enriched from those that have not and
+        send them to matched, while unenriched records will be sent to unmatched;
+        the original input flowfile will be sent to original. The SPLIT strategy will
+        route a flowfile to failure only if unable to parse the data. REQUIRE will
+        route a flowfile to success only if all of its records are enriched, and the
+        original input will be sent to original. The REQUIRE strategy will route the
+        original input flowfile to failure if any of its records cannot be enriched
+        or unable to be parsed'}
+    zh: {description: 指定在执行编码或解码后如何路由流文件。SKIP将丰富那些可以丰富的记录，并跳过其余的记录。只有在无法解析数据时，SKIP策略才会将流文件路由到失败。否则，它会将丰富的流文件路由到成功，将原始输入路由到原始。SPLIT将把已充实的记录与未充实的记录分开，并将其发送给匹配的记录，而未充实的将发送给未匹配的记录；原始输入流文件将被发送到原始。只有在无法解析数据时，SPLIT策略才会将流文件路由到失败。只有当流程文件的所有记录都被丰富，并且原始输入将被发送到原始输入时，REQUIRE才会将流程文件路由到成功。如果无法丰富或分析原始输入流文件的任何记录，REQUIRE策略会将其路由到失败,
+      displayName: 路由策略}
+  geohash-format:
+    en: {displayName: Geohash Format, description: 'In the ENCODE mode, this property
+        specifies the desired format for encoding geohash; in the DECODE mode, this
+        property specifies the format of geohash provided'}
+    zh: {description: 在ENCODE模式下，此属性指定编码geohash所需的格式；在DECODE模式下，此属性指定提供的geohash格式,
+      displayName: Geohash格式}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the record writer service
+        to use for writing data}
+    zh: {description: 指定用于写入数据的记录写入程序服务, displayName: 记录编写器}
+  longitude-record-path:
+    en: {displayName: Longitude Record Path, description: 'In the ENCODE mode, this
+        property specifies the record path to retrieve the longitude values; Longitude
+        values should be in the range of [-180, 180]; invalid values will be logged
+        at warn level. In the DECODE mode, this property specifies the record path
+        to put the longitude value'}
+    zh: {description: '在ENCODE模式下，此属性指定用于检索经度值的记录路径；经度值应在[-180，180]范围内；将在警告级别记录无效值。在DECODE模式下，此属性指定放置经度值的记录路径',
+      displayName: 经度记录路径}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the record reader service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的记录读取器服务, displayName: 记录读取器}
+  latitude-record-path:
+    en: {displayName: Latitude Record Path, description: 'In the ENCODE mode, this
+        property specifies the record path to retrieve the latitude values. Latitude
+        values should be in the range of [-90, 90]; invalid values will be logged
+        at warn level. In the DECODE mode, this property specifies the record path
+        to put the latitude value'}
+    zh: {description: '在ENCODE模式下，此属性指定用于检索纬度值的记录路径。纬度值应在[-90，90]范围内；将在警告级别记录无效值。在DECODE模式下，此属性指定放置纬度值的记录路径',
+      displayName: 纬度记录路径}
+writeAttributes:
+  record.count: {en: The number of records in the resulting flow file, zh: 结果流文件中的记录数}
+  mime.type: {en: The MIME type indicated by the record writer, zh: 记录编写器指示的MIME类型}
+tags:
+  en: [geo, geohash, record]
+  zh: [地理, 地理散列, 记录]

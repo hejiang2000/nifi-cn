@@ -1,0 +1,30 @@
+capabilityDescription: {en: A lookup service that retrieves one or more columns from
+    HBase and returns them as a record. The lookup coordinates must contain 'rowKey'
+    which will be the HBase row id., zh: 从HBase中检索一个或多个列并将其作为记录返回的查找服务。查找坐标必须包含“rowKey”，它将是HBase行id。}
+properties:
+  hb-lu-table-name:
+    en: {displayName: Table Name, description: The name of the table where look ups
+        will be run.}
+    zh: {description: 将运行查找的表的名称。, displayName: 表名称}
+  hb-lu-return-cols:
+    en: {displayName: Columns, description: 'A comma-separated list of \"<colFamily>:<colQualifier>\"
+        pairs to return when scanning. To return all columns for a given family, leave
+        off the qualifier such as \"<colFamily1>,<colFamily2>\".'}
+    zh: {description: 扫描时要返回的\“＜colFamily＞：＜colQualifier＞\”对的逗号分隔列表。要返回给定族的所有列，请省略诸如“<colFamily1>，<colFamily2>\”之类的限定符。,
+      displayName: 柱}
+  hb-lu-authorizations:
+    en: {displayName: Authorizations, description: The list of authorization tokens
+        to be used with cell visibility if it is enabled. These will be used to override
+        the default authorization list for the user accessing HBase.}
+    zh: {description: 如果启用了单元格可见性，则使用的授权令牌列表。这些将用于覆盖访问HBase的用户的默认授权列表。, displayName: 授权}
+  hbase-client-service:
+    en: {displayName: HBase Client Service, description: Specifies the HBase Client
+        Controller Service to use for accessing HBase.}
+    zh: {description: 指定用于访问HBase的HBase客户端控制器服务。, displayName: HBase客户端服务}
+  hb-lu-charset:
+    en: {displayName: Character Set, description: Specifies the character set used
+        to decode bytes retrieved from HBase.}
+    zh: {description: 指定用于解码从HBase检索的字节的字符集。, displayName: 字符集}
+tags:
+  en: [hbase, record, lookup, service]
+  zh: [数据库, 记录, 查找, 服务]

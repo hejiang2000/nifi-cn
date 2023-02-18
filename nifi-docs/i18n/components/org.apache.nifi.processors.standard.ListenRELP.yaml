@@ -1,0 +1,76 @@
+relationships:
+  success: {en: Messages received successfully will be sent out this relationship.,
+    zh: 成功接收的消息将发送到此关系。}
+capabilityDescription: {en: 'Listens for RELP messages being sent to a given port
+    over TCP. Each message will be acknowledged after successfully writing the message
+    to a FlowFile. Each FlowFile will contain data portion of one or more RELP frames.
+    In the case where the RELP frames contain syslog messages, the output of this
+    processor can be sent to a ParseSyslog processor for further processing.', zh: 侦听通过TCP发送到给定端口的RELP消息。成功将消息写入FlowFile后，将确认每条消息。每个FlowFile将包含一个或多个RELP帧的数据部分。在RELP帧包含syslog消息的情况下，该处理器的输出可以发送到ParseSyslog处理器进行进一步处理。}
+properties:
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'The Controller Service to
+        use in order to obtain an SSL Context. If this property is set, messages will
+        be received over a secure connection.'}
+    zh: {description: 用于获取SSL上下文的控制器服务。如果设置了此属性，将通过安全连接接收消息。, displayName: SSL上下文服务}
+  Max Size of Socket Buffer:
+    en: {displayName: Max Size of Socket Buffer, description: 'The maximum size of
+        the socket buffer that should be used. This is a suggestion to the Operating
+        System to indicate how big the socket buffer should be. If this value is set
+        too low, the buffer may fill up before the data can be read, and incoming
+        data will be dropped.'}
+    zh: {description: 应使用的套接字缓冲区的最大大小。这是给操作系统的一个建议，说明套接字缓冲区应该有多大。如果该值设置得太低，缓冲区可能会在读取数据之前填满，并且传入的数据将被丢弃。,
+      displayName: 套接字缓冲区的最大大小}
+  Max Number of TCP Connections:
+    en: {displayName: Max Number of Worker Threads, description: The maximum number
+        of worker threads available for servicing TCP connections.}
+    zh: {description: 可用于服务TCP连接的最大工作线程数。, displayName: 最大工作线程数}
+  Local Network Interface:
+    en: {displayName: Local Network Interface, description: The name of a local network
+        interface to be used to restrict listening to a specific LAN.}
+    zh: {description: 用于限制监听特定LAN的本地网络接口的名称。, displayName: 本地网络接口}
+  Max Batch Size:
+    en: {displayName: Max Batch Size, description: 'The maximum number of messages
+        to add to a single FlowFile. If multiple messages are available, they will
+        be concatenated along with the <Message Delimiter> up to this configured maximum
+        number of messages'}
+    zh: {description: 要添加到单个FlowFile的最大消息数。如果有多条消息可用，它们将与＜消息分隔符＞一起连接，直到达到配置的最大消息数,
+      displayName: 最大批量大小}
+  Port:
+    en: {displayName: Port, description: The port to listen on for communication.}
+    zh: {description: 用于侦听通信的端口。, displayName: 港口城市}
+  Receive Buffer Size:
+    en: {displayName: Receive Buffer Size, description: The size of each buffer used
+        to receive messages. Adjust this value appropriately based on the expected
+        size of the incoming messages.}
+    zh: {description: 用于接收消息的每个缓冲区的大小。根据传入消息的预期大小适当调整此值。, displayName: 接收缓冲区大小}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        received data.}
+    zh: {description: 指定接收数据的字符集。, displayName: 字符集}
+  Client Auth:
+    en: {displayName: Client Auth, description: The client authentication policy to
+        use for the SSL Context. Only used if an SSL Context Service is provided.}
+    zh: {description: 用于SSL上下文的客户端身份验证策略。仅在提供SSL上下文服务时使用。, displayName: 客户端身份验证}
+  Max Size of Message Queue:
+    en: {displayName: Max Size of Message Queue, description: 'The maximum size of
+        the internal queue used to buffer messages being transferred from the underlying
+        channel to the processor. Setting this value higher allows more messages to
+        be buffered in memory during surges of incoming messages, but increases the
+        total memory used by the processor during these surges.'}
+    zh: {description: 用于缓冲从基础通道传输到处理器的消息的内部队列的最大大小。将此值设置得更高，可以在传入消息激增期间在内存中缓冲更多消息，但会增加处理器在这些激增期间使用的总内存。,
+      displayName: 消息队列的最大大小}
+  Message Delimiter:
+    en: {displayName: Batching Message Delimiter, description: Specifies the delimiter
+        to place between messages when multiple messages are bundled together (see
+        <Max Batch Size> property).}
+    zh: {description: 指定当多条消息捆绑在一起时，要在消息之间放置的分隔符（请参见<Max Batch Size>属性）。, displayName: 批处理消息分隔符}
+writeAttributes:
+  relp.txnr: {en: The transaction number of the message. Only included if <Batch Size>
+      is 1., zh: 消息的事务编号。仅当<批量大小>为1时才包含。}
+  relp.port: {en: The sending port the messages were received over., zh: 通过发送端口接收消息。}
+  relp.command: {en: The command of the RELP frames., zh: RELP帧的命令。}
+  mime.type: {en: The mime.type of the content which is text/plain, zh: 默剧。文本/纯文本内容的类型}
+  relp.sender: {en: The sending host of the messages., zh: 消息的发送主机。}
+tags:
+  en: [listen, relp, tcp, logs]
+  zh: [听, 重新定位, tcp协议, 日志]

@@ -1,0 +1,80 @@
+relationships:
+  success: {en: FlowFiles that have been successfully processed are routed to this
+      relationship. This includes both FlowFiles that had text replaced and those
+      that did not., zh: 已成功处理的FlowFiles将路由到此关系。这包括替换了文本的FlowFiles和未替换的FlowFiles。}
+  failure: {en: FlowFiles that could not be updated are routed to this relationship,
+    zh: 无法更新的FlowFiles被路由到此关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Updates the content of a FlowFile by searching for some
+    textual value in the FlowFile content (via Regular Expression/regex, or literal
+    value) and replacing the section of the content that matches with some alternate
+    value. It can also be used to append or prepend text to the contents of a FlowFile.',
+  zh: 通过在FlowFile内容中搜索某个文本值（通过正则表达式/正则表达式或文字值）并替换与某个替换值匹配的内容部分，更新FlowFile的内容。它还可以用于将文本附加到FlowFile的内容中。}
+properties:
+  Regular Expression:
+    en: {displayName: Search Value, description: The Search Value to search for in
+        the FlowFile content. Only used for 'Literal Replace' and 'Regex Replace'
+        matching strategies}
+    zh: {description: 要在FlowFile内容中搜索的搜索值。仅用于“Literal Replace”和“Regex Replace”匹配策略,
+      displayName: 搜索值}
+  Replacement Value:
+    en: {displayName: Replacement Value, description: 'The value to insert using the
+        ''Replacement Strategy''. Using "Regex Replace" back-references to Regular
+        Expression capturing groups are supported, but back-references that reference
+        capturing groups that do not exist in the regular expression will be treated
+        as literal value. Back References may also be referenced using the Expression
+        Language, as ''$1'', ''$2'', etc. The single-tick marks MUST be included,
+        as these variables are not "Standard" attribute names (attribute names must
+        be quoted unless they contain only numbers, letters, and _).'}
+    zh: {description: 使用“替换策略”插入的值。支持对正则表达式捕获组使用“Regex Replace”反向引用，但引用正则表达式中不存在的捕获组的反向引用将被视为文字值。反向引用也可以使用表达式语言引用，如“$1”、“$2”等。必须包含单引号，因为这些变量不是“标准”属性名称（除非属性名称仅包含数字、字母和_）。,
+      displayName: 重置值}
+  Evaluation Mode:
+    en: {displayName: Evaluation Mode, description: Run the 'Replacement Strategy'
+        against each line separately (Line-by-Line) or buffer the entire file into
+        memory (Entire Text) and run against that.}
+    zh: {description: 对每一行单独运行“替换策略”（逐行），或将整个文件缓冲到内存中（整个文本）并运行。, displayName: 评估模式}
+  Text to Prepend:
+    en: {displayName: Text to Prepend, description: 'The text to prepend to the start
+        of the FlowFile, or each line, depending on teh configured value of the Evaluation
+        Mode property'}
+    zh: {description: 根据Evaluation Mode属性的配置值，在FlowFile开头或每行前面加上的文本, displayName: 要前置的文本}
+  Line-by-Line Evaluation Mode:
+    en: {displayName: Line-by-Line Evaluation Mode, description: 'Run the ''Replacement
+        Strategy'' against each line separately (Line-by-Line) for all lines in the
+        FlowFile, First Line (Header) alone, Last Line (Footer) alone, Except the
+        First Line (Header) or Except the Last Line (Footer).'}
+    zh: {description: 对FlowFile中的所有行单独（逐行）运行“替换策略”，仅第一行（页眉），仅最后一行（页脚），除第一行（表头）或除最后一行外（页脚）。,
+      displayName: 逐行评估模式}
+  Character Set:
+    en: {displayName: Character Set, description: The Character Set in which the file
+        is encoded}
+    zh: {description: 文件编码的字符集, displayName: 字符集}
+  Maximum Buffer Size:
+    en: {displayName: Maximum Buffer Size, description: 'Specifies the maximum amount
+        of data to buffer (per file or per line, depending on the Evaluation Mode)
+        in order to apply the replacement. If ''Entire Text'' (in Evaluation Mode)
+        is selected and the FlowFile is larger than this value, the FlowFile will
+        be routed to ''failure''. In ''Line-by-Line'' Mode, if a single line is larger
+        than this value, the FlowFile will be routed to ''failure''. A default value
+        of 1 MB is provided, primarily for ''Entire Text'' mode. In ''Line-by-Line''
+        Mode, a value such as 8 KB or 16 KB is suggested. This value is ignored if
+        the <Replacement Strategy> property is set to one of: Append, Prepend, Always
+        Replace'}
+    zh: {description: 指定要缓冲的最大数据量（每文件或每行，具体取决于评估模式），以便应用替换。如果选择了“整个文本”（在评估模式下），并且FlowFile大于此值，则FlowFile将被路由到“失败”。在“逐行”模式下，如果单行大于此值，FlowFile将被路由到“failure”。默认值为1
+        MB，主要用于“整个文本”模式。在“逐行”模式下，建议值为8 KB或16 KB。如果<Replacement Strategy>属性设置为以下值之一，则忽略此值：Append、Prepend、Always
+        Replace, displayName: 最大缓冲区大小}
+  Replacement Strategy:
+    en: {displayName: Replacement Strategy, description: The strategy for how and
+        what to replace within the FlowFile's text content.}
+    zh: {description: 如何以及在FlowFile的文本内容中替换什么的策略。, displayName: 替换策略}
+  Text to Append:
+    en: {displayName: Text to Append, description: 'The text to append to the end
+        of the FlowFile, or each line, depending on teh configured value of the Evaluation
+        Mode property'}
+    zh: {description: 要附加到FlowFile结尾或每行的文本，具体取决于Evaluation Mode属性的配置值, displayName: 要附加的文本}
+tags:
+  en: [Text, Regular Expression, Update, Change, Replace, Modify, Regex]
+  zh: [文本, 正则表达式, 使现代化, 改变, 代替, 修改, Regex公司]

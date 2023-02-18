@@ -1,0 +1,30 @@
+relationships:
+  success: {en: 'If a flowfile is successfully processed, it goes here.', zh: 如果成功处理了流文件，则会显示在此处。}
+  failure: {en: 'If a flowfile fails to be processed, it goes here.', zh: 如果无法处理流文件，则会转到此处。}
+dynamicProperties:
+  Record Path property:
+    en: {description: 'A Record Path value, pointing to a field to be counted', value: The
+        Record Path value}
+    zh: {description: 记录路径值，指向要计数的字段, value: 记录路径值}
+capabilityDescription: {en: 'A processor that can count the number of items in a record
+    set, as well as provide counts based on user-defined criteria on subsets of the
+    record set.', zh: 一种处理器，可以对记录集中的项目数进行计数，并根据用户定义的标准对记录集的子集进行计数。}
+properties:
+  record-stats-limit:
+    en: {displayName: record-stats-limit, description: Limit the number of individual
+        stats that are returned for each record path to the top N results.}
+    zh: {description: 将每个记录路径返回的单个统计数据的数量限制为前N个结果。, displayName: 记录统计限制}
+  record-stats-reader:
+    en: {displayName: Record Reader, description: A record reader to use for reading
+        the records.}
+    zh: {description: 用于读取记录的记录读取器。, displayName: 记录读取器}
+writeAttributes:
+  record.count: {en: A count of the records in the record set in the FlowFile., zh: FlowFile中记录集中的记录计数。}
+  recordStats.<User Defined Property Name>.<value>.count: {en: Each value discovered
+      for the user defined property will have its own count attribute. Total number
+      of top N value counts to be added is defined by the limit configuration., zh: 为用户定义的属性发现的每个值都有自己的计数属性。要添加的前N个值计数的总数由限制配置定义。}
+  recordStats.<User Defined Property Name>.count: {en: A count of the records that
+      contain a value for the user defined property., zh: 包含用户定义属性值的记录计数。}
+tags:
+  en: [record, stats, metrics]
+  zh: [记录, 统计数据, 韵律学]

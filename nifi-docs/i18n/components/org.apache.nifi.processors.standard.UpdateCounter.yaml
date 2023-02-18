@@ -1,0 +1,19 @@
+relationships:
+  success: {en: Counter was updated/retrieved, zh: 计数器已更新/检索}
+capabilityDescription: {en: This processor allows users to set specific counters and
+    key points in their flow. It is useful for debugging and basic counting functions.,
+  zh: 此处理器允许用户在其流程中设置特定计数器和关键点。它对调试和基本计数功能很有用。}
+readAttributes:
+  counterName: {en: The name of the counter to update/get., zh: 要更新/获取的计数器的名称。}
+properties:
+  counter-name:
+    en: {displayName: Counter Name, description: 'The name of the counter you want
+        to set the value of - supports expression language like ${counterName}'}
+    zh: {description: 要设置值的计数器的名称-支持表达式语言，如$｛counterName｝, displayName: 计数器名称}
+  delta:
+    en: {displayName: Delta, description: Adjusts the counter by the specified delta
+        for each flow file received. May be a positive or negative integer.}
+    zh: {description: 按接收的每个流文件的指定增量调整计数器。可以是正整数或负整数。, displayName: 希腊字母表的第4个字母}
+tags:
+  en: [counter, debug, instrumentation]
+  zh: [柜台, 调试，调试, 仪表，仪表]

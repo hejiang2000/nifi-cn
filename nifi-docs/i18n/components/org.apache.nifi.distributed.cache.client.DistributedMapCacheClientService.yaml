@@ -1,0 +1,24 @@
+capabilityDescription: {en: Provides the ability to communicate with a DistributedMapCacheServer.
+    This can be used in order to share a Map between nodes in a NiFi cluster, zh: 提供与DistributedMapCacheServer通信的能力。这可以用于在NiFi集群中的节点之间共享映射}
+properties:
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'If specified, indicates the
+        SSL Context Service that is used to communicate with the remote server. If
+        not specified, communications will not be encrypted'}
+    zh: {description: 如果指定，则表示用于与远程服务器通信的SSL上下文服务。如果未指定，通信将不会加密, displayName: SSL上下文服务}
+  Server Port:
+    en: {displayName: Server Port, description: The port on the remote server that
+        is to be used when communicating with the DistributedMapCacheServer service}
+    zh: {description: 与DistributedMapCacheServer服务通信时要使用的远程服务器上的端口, displayName: 服务器端口}
+  Server Hostname:
+    en: {displayName: Server Hostname, description: The name of the server that is
+        running the DistributedMapCacheServer service}
+    zh: {description: 运行DistributedMapCacheServer服务的服务器的名称, displayName: 服务器主机名}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: Specifies how long to wait
+        when communicating with the remote server before determining that there is
+        a communications failure if data cannot be sent or received}
+    zh: {description: 指定如果无法发送或接收数据，在确定存在通信故障之前，与远程服务器通信时要等待多长时间, displayName: 通信超时}
+tags:
+  en: [distributed, cache, state, map, cluster]
+  zh: [分布式的, 隐藏物, 状态, 地图, 簇]

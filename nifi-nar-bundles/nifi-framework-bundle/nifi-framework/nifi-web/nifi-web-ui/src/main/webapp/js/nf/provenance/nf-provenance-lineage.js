@@ -65,7 +65,7 @@
             // initialize the dialog
             $('#lineage-query-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Computing FlowFile lineage...'
+                headerText: '正在计算 FlowFile 血缘...'
             });
         };
 
@@ -774,7 +774,7 @@
 
                         // show the 'searching...' dialog
                         $('#lineage-query-dialog').modal('setButtonModel', [{
-                            buttonText: 'Cancel',
+                            buttonText: '取消',
                             color: {
                                 base: '#E3E8EB',
                                 hover: '#C7D2D7',
@@ -830,7 +830,7 @@
                             if (!nfCommon.isEmpty(lineage.results.errors)) {
                                 var errors = lineage.results.errors;
                                 nfDialog.showOkDialog({
-                                    headerText: 'Process Lineage',
+                                    headerText: '处理血缘',
                                     dialogContent: nfCommon.formatUnorderedList(errors)
                                 });
 
@@ -852,8 +852,8 @@
                                 } else {
                                     // inform the user that no results were found
                                     nfDialog.showOkDialog({
-                                        headerText: 'Lineage Results',
-                                        dialogContent: 'The lineage search has completed successfully but there no results were found. The events may have aged off.'
+                                        headerText: '血缘结果',
+                                        dialogContent: '血缘搜索已成功完成, 但没有任何结果. 溯源事件可能已经过期被丢弃.'
                                     });
                                 }
 
@@ -1343,7 +1343,7 @@
 
                 // show the 'searching...' dialog
                 $('#lineage-query-dialog').modal('setButtonModel', [{
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -1397,7 +1397,7 @@
                     if (!nfCommon.isEmpty(lineage.results.errors)) {
                         var errors = lineage.results.errors;
                         nfDialog.showOkDialog({
-                            headerText: 'Process Lineage',
+                            headerText: '处理血缘',
                             dialogContent: nfCommon.formatUnorderedList(errors)
                         });
 

@@ -1,0 +1,15 @@
+relationships:
+  original: {en: The original file, zh: 原始文件}
+  attachments: {en: Each individual attachment will be routed to the attachments relationship,
+    zh: 每个单独的附件都将路由到附件关系}
+  failure: {en: Flowfiles that could not be parsed, zh: 无法分析的流文件}
+capabilityDescription: {en: 'Extract attachments from a mime formatted email file,
+    splitting them into individual flowfiles.', zh: 从mime格式的电子邮件文件中提取附件，将其拆分为单独的流文件。}
+writeAttributes:
+  email.attachment.parent.uuid: {en: The UUID of the original FlowFile., zh: 原始FlowFile的UUID。}
+  'email.attachment.parent.filename ': {en: The filename of the parent FlowFile, zh: 父FlowFile的文件名}
+  mime.type: {en: The mime type of the attachment., zh: 附件的mime类型。}
+  'filename ': {en: The filename of the attachment, zh: 附件的文件名}
+tags:
+  en: [split, email]
+  zh: [分裂, 电子邮件]

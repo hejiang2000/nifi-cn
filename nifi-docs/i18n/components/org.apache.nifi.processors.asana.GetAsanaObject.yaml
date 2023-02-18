@@ -1,0 +1,55 @@
+relationships:
+  new: {en: Newly collected objects are routed to this relationship., zh: 新收集的对象将路由到此关系。}
+  removed: {en: Notification about deleted objects are routed to this relationship.
+      Flow files will not have any payload. IDs of the resources no longer exist are
+      carried by the asana.gid attribute of the generated FlowFiles., zh: 有关已删除对象的通知将路由到此关系。流文件将没有任何负载。不再存在的资源的ID由生成的FlowFiles的asana.gid属性携带。}
+  updated: {en: 'Objects that have already been collected earlier, but were updated
+      since, are routed to this relationship.', zh: 先前已收集但此后更新的对象将路由到此关系。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: This processor collects data from Asana, zh: 该处理器从Asana收集数据}
+properties:
+  asana-team-name:
+    en: {displayName: Team, description: Team name. Case sensitive.}
+    zh: {description: 团队名称。区分大小写。, displayName: 团队}
+  asana-tag-name:
+    en: {displayName: Tag, description: Fetch only objects having this tag. Case sensitive.}
+    zh: {description: 仅获取具有此标记的对象。区分大小写。, displayName: 标签}
+  distributed-cache-service:
+    en: {displayName: Distributed Cache Service, description: 'Cache service to store
+        fetched item fingerprints. These, from the last successful query are stored,
+        in order to enable incremental loading and change detection.'}
+    zh: {description: 缓存服务以存储提取的项目指纹。存储上一次成功查询的数据，以便实现增量加载和更改检测。, displayName: 分布式缓存服务}
+  asana-section-name:
+    en: {displayName: Section Name, description: Fetch only objects in this section.
+        Case sensitive.}
+    zh: {description: 仅获取此部分中的对象。区分大小写。, displayName: 章节名称}
+  asana-output-batch-size:
+    en: {displayName: Output Batch Size, description: 'The number of items batched
+        together in a single Flow File. If set to 1 (default), then each item is transferred
+        in a separate Flow File and each will have an asana.gid attribute, to help
+        identifying the fetched item on the server side, if needed. If the batch size
+        is greater than 1, then the specified amount of items are batched together
+        in a single Flow File as a Json array, and the Flow Files won''t have the
+        asana.gid attribute.'}
+    zh: {description: 单个流文件中一起批处理的项目数。如果设置为1（默认值），则每个项都在一个单独的流文件中传输，并且每个项都有一个asana.gid属性，以帮助识别服务器端获取的项（如果需要）。如果批处理大小大于1，则将指定数量的项作为Json数组一起批处理在单个流文件中，并且流文件不具有asana.gid属性。,
+      displayName: 输出批次大小}
+  asana-project-name:
+    en: {displayName: Project Name, description: Fetch only objects in this project.
+        Case sensitive.}
+    zh: {description: 仅获取此项目中的对象。区分大小写。, displayName: 项目名称}
+  asana-controller-service:
+    en: {displayName: Asana Client Service, description: Specify which controller
+        service to use for accessing Asana.}
+    zh: {description: 指定用于访问Asana的控制器服务。, displayName: Asana客户服务}
+  asana-object-type:
+    en: {displayName: Object Type, description: Specify what kind of objects to be
+        collected from Asana}
+    zh: {description: 指定要从Asana收集的对象类型, displayName: 对象类型}
+writeAttributes:
+  asana.gid: {en: Global ID of the object in Asana., zh: Asana中对象的全局ID。}
+tags:
+  en: [asana, source, ingest]
+  zh: [体式, 来源, 摄入]

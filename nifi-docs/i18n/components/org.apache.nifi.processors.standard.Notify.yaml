@@ -1,0 +1,65 @@
+relationships:
+  success: {en: All FlowFiles where the release signal has been successfully entered
+      in the cache will be routed to this relationship, zh: 在缓存中成功输入释放信号的所有FlowFiles都将路由到此关系}
+  failure: {en: 'When the cache cannot be reached, or if the Release Signal Identifier
+      evaluates to null or empty, FlowFiles will be routed to this relationship',
+    zh: 当无法访问缓存时，或者如果释放信号标识符的计算结果为null或空，FlowFiles将被路由到此关系}
+capabilityDescription: {en: 'Caches a release signal identifier in the distributed
+    cache, optionally along with the FlowFile''s attributes.  Any flow files held
+    at a corresponding Wait processor will be released once this signal in the cache
+    is discovered.', zh: 在分布式缓存中缓存释放信号标识符，也可以选择与FlowFile的属性一起缓存。一旦发现缓存中的此信号，将释放相应等待处理器中保存的任何流文件。}
+properties:
+  signal-counter-delta:
+    en: {displayName: Signal Counter Delta, description: 'A value, or the results
+        of an Attribute Expression Language statement, which will be evaluated against
+        a FlowFile in order to determine the signal counter delta. Specify how much
+        the counter should increase. For example, if multiple signal events are processed
+        at upstream flow in batch oriented way, the number of events processed can
+        be notified with this property at once. Zero (0) has a special meaning, it
+        clears target count back to 0, which is especially useful when used with Wait
+        Releasable FlowFile Count = Zero (0) mode, to provide ''open-close-gate''
+        type of flow control. One (1) can open a corresponding Wait processor, and
+        Zero (0) can negate it as if closing a gate.'}
+    zh: {description: 一个值或属性表达式语言语句的结果，将根据FlowFile进行计算，以确定信号计数器增量。指定计数器应增加多少。例如，如果在上游流以面向批处理的方式处理多个信号事件，则可以立即使用此属性通知处理的事件数。零（0）有一个特殊的含义，它将目标计数清零，这在与等待可释放流文件计数=0（0）模式一起使用时特别有用，以提供“开-关-门”类型的流量控制。一（1）可以打开相应的等待处理器，零（0）可以将其取反，就像关闭一个门一样。,
+      displayName: 信号计数器增量}
+  distributed-cache-service:
+    en: {displayName: Distributed Cache Service, description: The Controller Service
+        that is used to cache release signals in order to release files queued at
+        a corresponding Wait processor}
+    zh: {description: 控制器服务，用于缓存释放信号，以释放在相应等待处理器排队的文件, displayName: 分布式缓存服务}
+  signal-buffer-count:
+    en: {displayName: Signal Buffer Count, description: 'Specify the maximum number
+        of incoming flow files that can be buffered until signals are notified to
+        cache service. The more buffer can provide the better performance, as it reduces
+        the number of interactions with cache service by grouping signals by signal
+        identifier when multiple incoming flow files share the same signal identifier.'}
+    zh: {description: 指定在向缓存服务通知信号之前可以缓冲的传入流文件的最大数量。越多的缓冲区可以提供更好的性能，因为当多个传入流文件共享相同的信号标识符时，它通过按信号标识符分组信号来减少与缓存服务的交互次数。,
+      displayName: 信号缓冲区计数}
+  release-signal-id:
+    en: {displayName: Release Signal Identifier, description: 'A value, or the results
+        of an Attribute Expression Language statement, which will be evaluated against
+        a FlowFile in order to determine the release signal cache key'}
+    zh: {description: 一个值或属性表达式语言语句的结果，将根据FlowFile进行评估，以确定释放信号缓存密钥, displayName: 释放信号标识符}
+  signal-counter-name:
+    en: {displayName: Signal Counter Name, description: 'A value, or the results of
+        an Attribute Expression Language statement, which will be evaluated against
+        a FlowFile in order to determine the signal counter name. Signal counter name
+        is useful when a corresponding Wait processor needs to know the number of
+        occurrences of different types of events, such as success or failure, or destination
+        data source names, etc.'}
+    zh: {description: 一个值或属性表达式语言语句的结果，将根据FlowFile进行计算，以确定信号计数器名称。当相应的等待处理器需要知道不同类型事件（如成功或失败或目标数据源名称等）的发生次数时，信号计数器名称非常有用。,
+      displayName: 信号计数器名称}
+  attribute-cache-regex:
+    en: {displayName: Attribute Cache Regex, description: 'Any attributes whose names
+        match this regex will be stored in the distributed cache to be copied to any
+        FlowFiles released from a corresponding Wait processor.  Note that the uuid
+        attribute will not be cached regardless of this value.  If blank, no attributes
+        will be cached.'}
+    zh: {description: 名称与此正则表达式匹配的任何属性都将存储在分布式缓存中，以复制到从相应的等待处理器发布的任何FlowFiles中。请注意，无论该值如何，都不会缓存uuid属性。如果为空，则不会缓存任何属性。,
+      displayName: 属性缓存Regex}
+writeAttributes:
+  notified: {en: 'All FlowFiles will have an attribute ''notified''. The value of
+      this attribute is true, is the FlowFile is notified, otherwise false.', zh: 所有FlowFiles都将具有属性“notified”。此属性的值为true，则通知FlowFile，否则为false。}
+tags:
+  en: [map, cache, notify, distributed, signal, release]
+  zh: [地图, 隐藏物, 通知, 分布式的, 信号, 释放]

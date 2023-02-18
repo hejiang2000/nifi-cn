@@ -1,0 +1,102 @@
+relationships:
+  success: {en: A FlowFile is transferred to this relationship if the operation completed
+      successfully., zh: 如果操作成功完成，FlowFile将传输到此关系。}
+  failure: {en: A FlowFile is transferred to this relationship if the operation failed.,
+    zh: 如果操作失败，FlowFile将传输到此关系。}
+capabilityDescription: {en: This is a record aware processor that reads the content
+    of the incoming FlowFile as individual records using the configured 'Record Reader'
+    and writes them to Apache Cassandra using native protocol version 3 or higher.,
+  zh: 这是一个记录感知处理器，它使用配置的“记录读取器”将传入FlowFile的内容作为单个记录读取，并使用本机协议版本3或更高版本将其写入Apache Cassandra。}
+readAttributes:
+  cql.statement.type: {en: 'If ''Use cql.statement.type Attribute'' is selected for
+      the Statement Type property, the value of the cql.statement.type Attribute will
+      be used to determine which type of statement (UPDATE, INSERT) will be generated
+      and executed', zh: 如果使用cql.statement。type Attribute”为Statement type属性（cql.Statement的值）选择。type属性将用于确定将生成和执行哪种类型的语句（UPDATE、INSERT）}
+  cql.update.method: {en: 'If ''Use cql.update.method Attribute'' is selected for
+      the Update Method property, the value of the cql.update.method Attribute will
+      be used to determine which operation (Set, Increment, Decrement) will be used
+      to generate and execute the Update statement. Ignored if the Statement Type
+      property is not set to UPDATE', zh: 如果使用cql.update。method Attribute”是为更新方法属性（cql.Update的值）选择的。methodAttribute将用于确定将使用哪个操作（Set、Increment、Decrement）来生成和执行Update语句。如果Statement
+      Type属性未设置为UPDATE，则忽略}
+  cql.batch.statement.type: {en: 'If ''Use cql.batch.statement.type Attribute'' is
+      selected for the Batch Statement Type property, the value of the cql.batch.statement.type
+      Attribute will be used to determine which type of batch statement (LOGGED, UNLOGGED,
+      COUNTER) will be generated and executed', zh: 如果使用cql.batch.statement。type Attribute”为“批处理语句类型”属性（cql.Batch.Statement的值）选择。type属性将用于确定将生成和执行哪种类型的批处理语句（LOGGED、UNLOGGED和COUNTER）}
+properties:
+  put-cassandra-record-batch-statement-type:
+    en: {displayName: Batch Statement Type, description: Specifies the type of 'Batch
+        Statement' to be used.}
+    zh: {description: 指定要使用的“批处理语句”的类型。, displayName: 批次报表类型}
+  cassandra-connection-provider:
+    en: {displayName: Cassandra Connection Provider, description: Specifies the Cassandra
+        connection providing controller service to be used to connect to Cassandra
+        cluster.}
+    zh: {description: 指定用于连接到Cassandra群集的Cassandra连接提供控制器服务。, displayName: Cassandra连接提供程序}
+  Cassandra Contact Points:
+    en: {displayName: Cassandra Contact Points, description: 'Contact points are addresses
+        of Cassandra nodes. The list of contact points should be comma-separated and
+        in hostname:port format. Example node1:port,node2:port,.... The default client
+        port for Cassandra is 9042, but the port(s) must be explicitly specified.'}
+    zh: {description: '联系点是Cassandra节点的地址。联系人列表应以逗号分隔，并采用主机名：端口格式。示例node1:port，node2:port，….Cassandra的默认客户端端口是9042，但必须显式指定端口。',
+      displayName: Cassandra联络点}
+  put-cassandra-record-table:
+    en: {displayName: Table name, description: The name of the Cassandra table to
+        which the records have to be written.}
+    zh: {description: 记录必须写入的Cassandra表的名称。, displayName: 表名称}
+  put-cassandra-record-update-keys:
+    en: {displayName: Update Keys, description: 'A comma-separated list of column
+        names that uniquely identifies a row in the database for UPDATE statements.
+        If the Statement Type is UPDATE and this property is not set, the conversion
+        to CQL will fail. This property is ignored if the Statement Type is not UPDATE.'}
+    zh: {description: 以逗号分隔的列名列表，用于唯一标识数据库中UPDATE语句的行。如果Statement Type为UPDATE且未设置此属性，则转换为CQL将失败。如果语句类型不是UPDATE，则忽略此属性。,
+      displayName: 更新密钥}
+  put-cassandra-record-batch-size:
+    en: {displayName: Batch size, description: Specifies the number of 'Insert statements'
+        to be grouped together to execute as a batch (BatchStatement)}
+    zh: {description: 指定要组合在一起作为批处理执行的“插入语句”的数量（BatchStatement）, displayName: 批量大小}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username to access the Cassandra cluster}
+    zh: {description: 访问Cassandra群集的用户名, displayName: 用户名}
+  put-cassandra-record-reader:
+    en: {displayName: Record Reader, description: Specifies the type of Record Reader
+        controller service to use for parsing the incoming data and determining the
+        schema}
+    zh: {description: 指定用于分析传入数据和确定架构的记录读取器控制器服务的类型, displayName: 记录读取器}
+  Consistency Level:
+    en: {displayName: Consistency Level, description: The strategy for how many replicas
+        must respond before results are returned.}
+    zh: {description: 返回结果之前必须响应多少副本的策略。, displayName: 一致性级别}
+  Keyspace:
+    en: {displayName: Keyspace, description: 'The Cassandra Keyspace to connect to.
+        If no keyspace is specified, the query will need to include the keyspace name
+        before any table reference, in case of ''query'' native processors or if the
+        processor exposes the ''Table'' property, the keyspace name has to be provided
+        with the table name in the form of <KEYSPACE>.<TABLE>'}
+    zh: {description: 要连接到的Cassandra密钥空间。如果未指定密钥空间，则查询需要在任何表引用之前包含密钥空间名称，如果是“query”本机处理器，或者如果处理器公开了“table”属性，则必须以＜Keyspace＞的形式将密钥空间名称与表名称一起提供。＜table＞,
+      displayName: 密钥空间}
+  put-cassandra-record-update-method:
+    en: {displayName: Update Method, description: Specifies the method to use to SET
+        the values. This property is used if the Statement Type is UPDATE and ignored
+        otherwise.}
+    zh: {description: 指定用于设置值的方法。如果语句类型为UPDATE，则使用此属性，否则将忽略此属性。, displayName: 更新方法}
+  put-cassandra-record-statement-type:
+    en: {displayName: Statement Type, description: Specifies the type of CQL Statement
+        to generate.}
+    zh: {description: 指定要生成的CQL语句的类型。, displayName: 报表类型}
+  Client Auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  Password:
+    en: {displayName: Password, description: Password to access the Cassandra cluster}
+    zh: {description: 访问Cassandra群集的密码, displayName: 暗语}
+tags:
+  en: [cassandra, cql, put, insert, update, set, record]
+  zh: [卡桑德拉, cql公司, 放, 插入, 使现代化, 设置, 记录]

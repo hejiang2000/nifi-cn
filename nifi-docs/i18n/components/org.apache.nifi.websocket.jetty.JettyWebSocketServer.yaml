@@ -1,0 +1,60 @@
+capabilityDescription: {en: Implementation of WebSocketServerService. This service
+    uses Jetty WebSocket server module to provide WebSocket session management throughout
+    the application., zh: WebSocketServerService的实现。该服务使用Jetty WebSocket服务器模块在整个应用程序中提供WebSocket会话管理。}
+properties:
+  max-binary-message-size:
+    en: {displayName: Max Binary Message Size, description: The maximum size of a
+        binary message during parsing/generating.}
+    zh: {description: 分析/生成期间二进制消息的最大大小。, displayName: 最大二进制消息大小}
+  login-service:
+    en: {displayName: Login Service, description: Specify which Login Service to use
+        for Basic Authentication.}
+    zh: {description: 指定用于基本身份验证的登录服务。, displayName: 登录服务}
+  users-properties-file:
+    en: {displayName: Users Properties File, description: 'Specify a property file
+        containing users for Basic Authentication using HashLoginService. See http://www.eclipse.org/jetty/documentation/current/configuring-security.html
+        for detail.'}
+    zh: {description: '指定包含使用HashLoginService进行基本身份验证的用户的属性文件。看见http://www.eclipse.org/jetty/documentation/current/configuring-security.html详细信息。',
+      displayName: 用户属性文件}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: 'The SSL Context Service to
+        use in order to secure the server. If specified, the server will accept only
+        WSS requests; otherwise, the server will accept only WS requests'}
+    zh: {description: 用于保护服务器的SSL上下文服务。如果指定，服务器将只接受WSS请求；否则，服务器将只接受WS请求, displayName: SSL上下文服务}
+  client-authentication:
+    en: {displayName: SSL Client Authentication, description: Specifies whether or
+        not the Processor should authenticate client by its certificate. This value
+        is ignored if the <SSL Context Service> Property is not specified or the SSL
+        Context provided uses only a KeyStore and not a TrustStore.}
+    zh: {description: 指定处理器是否应通过其证书对客户端进行身份验证。如果未指定＜SSL上下文服务＞属性，或者提供的SSL上下文仅使用KeyStore而不使用TrustStore，则忽略此值。,
+      displayName: SSL客户端身份验证}
+  auth-path-spec:
+    en: {displayName: Basic Authentication Path Spec, description: Specify a Path
+        Spec to apply Basic Authentication.}
+    zh: {description: 指定要应用基本身份验证的路径规范。, displayName: 基本身份验证路径规范}
+  auth-roles:
+    en: {displayName: Basic Authentication Roles, description: The authenticated user
+        must have one of specified role. Multiple roles can be set as comma separated
+        string. '*' represents any role and so does '**' any role including no role.}
+    zh: {description: 经过身份验证的用户必须具有指定的角色之一。可以将多个角色设置为逗号分隔的字符串。“*”表示任何角色，“**”表示任何角色（不包括任何角色）。,
+      displayName: 基本身份验证角色}
+  max-text-message-size:
+    en: {displayName: Max Text Message Size, description: The maximum size of a text
+        message during parsing/generating.}
+    zh: {description: 分析/生成期间文本消息的最大大小。, displayName: 最大文本消息大小}
+  listen-port:
+    en: {displayName: Listen Port, description: The port number on which this WebSocketServer
+        listens to.}
+    zh: {description: 此WebSocketServer侦听的端口号。, displayName: 侦听端口}
+  input-buffer-size:
+    en: {displayName: Input Buffer Size, description: The size of the input (read
+        from network layer) buffer size.}
+    zh: {description: 输入（从网络层读取）缓冲区大小。, displayName: 输入缓冲区大小}
+  basic-auth:
+    en: {displayName: Enable Basic Authentication, description: 'If enabled, client
+        connection requests are authenticated with Basic authentication using the
+        specified Login Provider.'}
+    zh: {description: 如果启用，则使用指定的登录提供程序使用基本身份验证对客户端连接请求进行身份验证。, displayName: 启用基本身份验证}
+tags:
+  en: [WebSocket, Jetty, server]
+  zh: [WebSocket, 码头, 服务器]

@@ -188,7 +188,7 @@
             contentType: 'application/json'
         }).fail(function (xhr, status, error) {
             nfDialog.showOkDialog({
-                headerText: 'Update Resource',
+                headerText: '更新资源',
                 dialogContent: nfCommon.escapeHtml(xhr.responseText)
             });
         });
@@ -354,8 +354,8 @@
                     window.open(encodeURI(uri));
                 } else {
                     nfDialog.showOkDialog({
-                        headerText: 'Remote Process Group',
-                        dialogContent: 'No target URI defined.'
+                        headerText: '远程处理组',
+                        dialogContent: '未定义目标 URI.'
                     });
                 }
             }
@@ -694,19 +694,19 @@
                     contentType: 'application/json'
                 }).fail(function (xhr, status, error) {
                     nfDialog.showOkDialog({
-                        headerText: 'Failed to Replay Event',
+                        headerText: '事件回放失败',
                         dialogContent: nfCommon.escapeHtml(xhr.responseText)
                     });
                 }).done(function (response) {
                     if (nfCommon.isDefinedAndNotNull(response.aggregateSnapshot.failureExplanation)) {
                         nfDialog.showOkDialog({
-                            headerText: 'Replay Event Failure',
+                            headerText: '回放事件失败',
                             dialogContent: response.aggregateSnapshot.failureExplanation
                         });
                     } else if (response.aggregateSnapshot.eventAvailable !== true) {
                         nfDialog.showOkDialog({
-                            headerText: 'No Event Available',
-                            dialogContent: 'There was no recent event available to be replayed.'
+                            headerText: '没有可用事件',
+                            dialogContent: '最近没有事件可用于回放.'
                         });
                     } else if (nfCommon.isDefinedAndNotNull(response.nodeSnapshots)) {
                         var replayedCount = 0;
@@ -723,19 +723,19 @@
 
                         var messageText;
                         if (unavailableCount === 0) {
-                            messageText = 'All nodes successfully replayed the latest event.';
+                            messageText = '所有节点已成功回放最新事件.';
                         } else {
-                            messageText = replayedCount + ' nodes successfully replayed the latest event but ' + unavailableCount + ' had no recent event avaialble to be replayed.';
+                            messageText = replayedCount + ' 个节点已成功回放最新事件; ' + unavailableCount + ' 个没有最新事件可回放.';
                         }
 
                         nfDialog.showOkDialog({
-                            headerText: 'Events Replayed',
+                            headerText: '事件已回放',
                             dialogContent: messageText
                         });
                     } else {
                         nfDialog.showOkDialog({
-                            headerText: 'Event Replayed',
-                            dialogContent: 'Successfully replayed the latest event.'
+                            headerText: '事件已回放',
+                            dialogContent: '已成功回放最新事件.'
                         });
                     }
 
@@ -1236,8 +1236,8 @@
         'delete': function (selection) {
             if (nfCommon.isUndefined(selection) || selection.empty()) {
                 nfDialog.showOkDialog({
-                    headerText: 'Delete Components',
-                    dialogContent: 'No eligible components are selected. Please select the components to be deleted.'
+                    headerText: '删除组件',
+                    dialogContent: '未选中合适的组件. 请选择待删除组件.'
                 });
             } else {
                 if (selection.size() === 1) {
@@ -1350,10 +1350,10 @@
 
             // prompt the user before emptying the queue
             nfDialog.showYesNoDialog({
-                headerText: 'Empty Queue',
-                dialogContent: 'Are you sure you want to empty this queue? All FlowFiles waiting at the time of the request will be removed.',
-                noText: 'Cancel',
-                yesText: 'Empty',
+                headerText: '清空队列',
+                dialogContent: '你确定要清空该队列? 请求时停留在队列中的全部 FlowFile 都将被删除.',
+                noText: '取消',
+                yesText: '清空',
                 yesHandler: function () {
                     // get the connection data
                     var connection = selection.datum();
@@ -1378,7 +1378,7 @@
 
                     // update the button model of the drop request status dialog
                     $('#drop-request-status-dialog').modal('setButtonModel', [{
-                        buttonText: 'Stop',
+                        buttonText: '停止',
                         color: {
                             base: '#728E9B',
                             hover: '#004849',
@@ -1427,7 +1427,7 @@
                                     $('<span class="label"></span>').text(' out of ' + originalTokens[0]).appendTo(results);
                                     $('<span></span>').text(' (' + originalTokens[1] + ')').appendTo(results);
                                 }
-                                $('<span></span>').text(' were removed from the queue.').appendTo(results);
+                                $('<span></span>').text(' 已被移出队列.').appendTo(results);
 
                                 // if this request failed so the error
                                 if (nfCommon.isDefinedAndNotNull(dropRequest.failureReason)) {
@@ -1436,7 +1436,7 @@
 
                                 // display the results
                                 nfDialog.showOkDialog({
-                                    headerText: 'Empty Queue',
+                                    headerText: '清空队列',
                                     dialogContent: results
                                 });
                             }).always(function () {
@@ -1445,8 +1445,8 @@
                         } else {
                             // nothing was removed
                             nfDialog.showOkDialog({
-                                headerText: 'Empty Queue',
-                                dialogContent: 'No FlowFiles were removed.'
+                                headerText: '清空队列',
+                                dialogContent: '未删除任何 FlowFile.'
                             });
 
                             // close the dialog
@@ -1525,10 +1525,10 @@
         emptyAllQueues: function (selection) {
             // prompt the user before emptying the queue
             nfDialog.showYesNoDialog({
-                headerText: 'Empty All Queues',
-                dialogContent: 'Are you sure you want to empty all queues in this Process Group? All FlowFiles from all connections waiting at the time of the request will be removed.',
-                noText: 'Cancel',
-                yesText: 'Empty All',
+                headerText: '清空所有队列',
+                dialogContent: '你确定要清空该处理组中的所有队列吗? 请求时停留在所有队列中的全部 FlowFile 都将被删除.',
+                noText: '取消',
+                yesText: '清空所有',
                 yesHandler: function () {
                     var processGroupId;
                     if (selection.empty()) {
@@ -1557,7 +1557,7 @@
 
                     // update the button model of the drop request status dialog
                     $('#drop-request-status-dialog').modal('setButtonModel', [{
-                        buttonText: 'Stop',
+                        buttonText: '停止',
                         color: {
                             base: '#728E9B',
                             hover: '#004849',
@@ -1605,7 +1605,7 @@
                                     $('<span class="label"></span>').text(' out of ' + originalTokens[0]).appendTo(results);
                                     $('<span></span>').text(' (' + originalTokens[1] + ')').appendTo(results);
                                 }
-                                $('<span></span>').text(' were removed from the queues.').appendTo(results);
+                                $('<span></span>').text(' 已被移出队列.').appendTo(results);
 
                                 // if this request failed so the error
                                 if (nfCommon.isDefinedAndNotNull(dropRequest.failureReason)) {
@@ -1614,7 +1614,7 @@
 
                                 // display the results
                                 nfDialog.showOkDialog({
-                                    headerText: 'Empty All Queues',
+                                    headerText: '清空所有队列',
                                     dialogContent: results
                                 });
                             }).always(function () {
@@ -1623,8 +1623,8 @@
                         } else {
                             // nothing was removed
                             nfDialog.showOkDialog({
-                                headerText: 'Empty All Queues',
-                                dialogContent: 'No FlowFiles were removed.'
+                                headerText: '清空所有队列',
+                                dialogContent: '未删除任何 FlowFile.'
                             });
 
                             // close the dialog
@@ -1753,10 +1753,10 @@
          */
         forceSaveFlowVersion: function (selection) {
             nfDialog.showYesNoDialog({
-                headerText: 'Commit',
-                dialogContent: 'Committing will ignore available upgrades and commit local changes as the next version. Are you sure you want to proceed?',
-                noText: 'Cancel',
-                yesText: 'Yes',
+                headerText: '提交',
+                dialogContent: '将会忽略数据流程的新版本, 并提交本地修改为下一个版本. 你确定要继续吗?',
+                noText: '取消',
+                yesText: '是',
                 yesHandler: function () {
                     if (selection.empty()) {
                         nfFlowVersion.showFlowVersionDialog(nfCanvasUtils.getGroupId(),'FORCE_COMMIT');
@@ -1923,8 +1923,8 @@
             // ensure every component is writable
             if (nfCanvasUtils.canModify(selection) === false) {
                 nfDialog.showOkDialog({
-                    headerText: 'Component Position',
-                    dialogContent: 'Must be authorized to modify every component selected.'
+                    headerText: '组件位置',
+                    dialogContent: '没有修改每个组件的权限.'
                 });
                 return;
             }
@@ -1991,8 +1991,8 @@
             // ensure every component is writable
             if (nfCanvasUtils.canModify(selection) === false) {
                 nfDialog.showOkDialog({
-                    headerText: 'Component Position',
-                    dialogContent: 'Must be authorized to modify every component selected.'
+                    headerText: '组件位置',
+                    dialogContent: '没有修改每个组件的权限.'
                 });
                 return;
             }
@@ -2155,8 +2155,8 @@
             // ensure that components have been specified
             if (selection.empty()) {
                 nfDialog.showOkDialog({
-                    headerText: 'Create Template',
-                    dialogContent: "The current selection is not valid to create a template."
+                    headerText: '创建模板',
+                    dialogContent: "当前选择对创建模板无效."
                 });
                 return;
             }
@@ -2167,15 +2167,15 @@
             // ensure that components specified are valid
             if (selection.empty()) {
                 nfDialog.showOkDialog({
-                    headerText: 'Create Template',
-                    dialogContent: "The current selection is not valid to create a template."
+                    headerText: '创建模板',
+                    dialogContent: "当前选择对创建模板无效."
                 });
                 return;
             }
 
             // prompt for the template name
             $('#new-template-dialog').modal('setButtonModel', [{
-                buttonText: 'Create',
+                buttonText: '创建',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -2189,8 +2189,8 @@
                         // ensure the template name is not blank
                         if (nfCommon.isBlank(templateName)) {
                             nfDialog.showOkDialog({
-                                headerText: 'Configuration Error',
-                                dialogContent: "The name of the template must be specified."
+                                headerText: '配置错误',
+                                dialogContent: "必须指定模板名称."
                             });
                             return;
                         }
@@ -2224,8 +2224,8 @@
                             }).done(function () {
                                 // show the confirmation dialog
                                 nfDialog.showOkDialog({
-                                    headerText: 'Create Template',
-                                    dialogContent: "Template '" + nfCommon.escapeHtml(templateName) + "' was successfully created."
+                                    headerText: '创建模板',
+                                    dialogContent: "模板 '" + nfCommon.escapeHtml(templateName) + "' 已成功创建."
                                 });
                             }).always(function () {
                                 // clear the template dialog fields
@@ -2236,7 +2236,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -2381,7 +2381,7 @@
                     }
 
                     nfDialog.showOkDialog({
-                        headerText: 'Paste Error',
+                        headerText: '粘贴错误',
                         dialogContent: nfCommon.escapeHtml(message)
                     });
                 });

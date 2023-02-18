@@ -1,0 +1,48 @@
+relationships:
+  running: {en: The job is currently still being processed, zh: 作业当前仍在处理中}
+  original: {en: 'Upon successful completion, the original FlowFile will be routed
+      to this relationship.', zh: 成功完成后，原始FlowFile将路由到此关系。}
+  success: {en: Job successfully finished. FlowFile will be routed to this relation.,
+    zh: 作业已成功完成。FlowFile将路由到此关系。}
+  failure: {en: 'The job failed, the original FlowFile will be routed to this relationship.',
+    zh: 作业失败，原始FlowFile将路由到此关系。}
+  throttled: {en: 'Retrieving results failed for some reason, but the issue is likely
+      to resolve on its own, such as Provisioned Throughput Exceeded or a Throttling
+      failure. It is generally expected to retry this relationship.', zh: 由于某些原因，检索结果失败，但该问题可能会自行解决，例如超过了已配置的吞吐量或限制失败。通常需要重试此关系。}
+capabilityDescription: {en: Retrieves the current status of an AWS Transcribe job.,
+  zh: 检索AWS转录作业的当前状态。}
+properties:
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  awsTaskId:
+    en: {displayName: AWS Task ID, description: ''}
+    zh: {description: '', displayName: AWS任务ID}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  aws-region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+writeAttributes:
+  outputLocation: {en: S3 path-style output location of the result., zh: S3路径样式输出结果的位置。}
+tags:
+  en: [Amazon, AWS, ML, Machine Learning, Transcribe]
+  zh: [亚马逊, 自动售货机, 毫升, 机器学习, 抄写]

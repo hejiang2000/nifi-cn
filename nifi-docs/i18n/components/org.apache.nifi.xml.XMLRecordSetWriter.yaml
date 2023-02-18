@@ -1,0 +1,111 @@
+capabilityDescription: {en: Writes a RecordSet to XML. The records are wrapped by
+    a root tag., zh: 将记录集写入XML。记录由根标记包装。}
+properties:
+  array_tag_name:
+    en: {displayName: Array Tag Name, description: Name of the tag used by property
+        "Wrap Elements of Arrays" to write arrays}
+    zh: {description: 属性“Wrap Elements of Arrays”用于写入数组的标记的名称, displayName: 阵列标记名称}
+  schema-branch:
+    en: {displayName: Schema Branch, description: 'Specifies the name of the branch
+        to use when looking up the schema in the Schema Registry property. If the
+        chosen Schema Registry does not support branching, this value will be ignored.'}
+    zh: {description: 指定在“架构注册表”属性中查找架构时要使用的分支的名称。如果所选的架构注册表不支持分支，则将忽略此值。, displayName: 架构分支}
+  omit_xml_declaration:
+    en: {displayName: Omit XML Declaration, description: Specifies whether or not
+        to include XML declaration}
+    zh: {description: 指定是否包含XML声明, displayName: 省略XML声明}
+  root_tag_name:
+    en: {displayName: Name of Root Tag, description: Specifies the name of the XML
+        root tag wrapping the record set. This property has to be defined if the writer
+        is supposed to write multiple records in a single FlowFile.}
+    zh: {description: 指定包装记录集的XML根标记的名称。如果写入程序要在单个FlowFile中写入多条记录，则必须定义此属性。, displayName: 根标记的名称}
+  schema-cache:
+    en: {displayName: Schema Cache, description: Specifies a Schema Cache to add the
+        Record Schema to so that Record Readers can quickly lookup the schema.}
+    zh: {description: 指定要向其中添加记录架构的架构缓存，以便记录读取器可以快速查找架构。, displayName: 架构缓存}
+  Timestamp Format:
+    en: {displayName: Timestamp Format, description: 'Specifies the format to use
+        when reading/writing Timestamp fields. If not specified, Timestamp fields
+        will be assumed to be number of milliseconds since epoch (Midnight, Jan 1,
+        1970 GMT). If specified, the value must match the Java Simple Date Format
+        (for example, MM/dd/yyyy HH:mm:ss for a two-digit month, followed by a two-digit
+        day, followed by a four-digit year, all separated by ''/'' characters; and
+        then followed by a two-digit hour in 24-hour format, followed by a two-digit
+        minute, followed by a two-digit second, all separated by '':'' characters,
+        as in 01/01/2017 18:04:15).'}
+    zh: {description: '指定读取/写入时间戳字段时使用的格式。如果未指定，则时间戳字段将假定为自纪元（1970年1月1日午夜）以来的毫秒数。如果指定，则该值必须与Java简单日期格式匹配（例如，MM/dd/yyyy
+        HH:MM:ss表示两位数的月份，后跟两位数的日期，后跟四位数的年份，均以“/”字符分隔；然后，后跟24小时格式的两位数的小时，后跟两位的分钟，然后是两位数的秒，全部以“：”字符分隔，如2017年1月1日18:04:15所示）。',
+      displayName: 时间戳格式}
+  Date Format:
+    en: {displayName: Date Format, description: 'Specifies the format to use when
+        reading/writing Date fields. If not specified, Date fields will be assumed
+        to be number of milliseconds since epoch (Midnight, Jan 1, 1970 GMT). If specified,
+        the value must match the Java Simple Date Format (for example, MM/dd/yyyy
+        for a two-digit month, followed by a two-digit day, followed by a four-digit
+        year, all separated by ''/'' characters, as in 01/01/2017).'}
+    zh: {description: 指定读取/写入日期字段时使用的格式。如果未指定，日期字段将假定为自纪元（1970年1月1日午夜）以来的毫秒数。如果指定，则该值必须与Java简单日期格式匹配（例如，MM/dd/yyyy表示两位数的月份，后跟两位数的日期，后跟四位数的年份，均由“/”字符分隔，如2017年1月1日）。,
+      displayName: 日期格式}
+  suppress_nulls:
+    en: {displayName: Suppress Null Values, description: Specifies how the writer
+        should handle a null field}
+    zh: {description: 指定编写器应如何处理空字段, displayName: 抑制空值}
+  Schema Write Strategy:
+    en: {displayName: Schema Write Strategy, description: Specifies how the schema
+        for a Record should be added to the data.}
+    zh: {description: 指定应如何将记录的架构添加到数据中。, displayName: 架构写入策略}
+  record_tag_name:
+    en: {displayName: Name of Record Tag, description: 'Specifies the name of the
+        XML record tag wrapping the record fields. If this is not set, the writer
+        will use the record name in the schema.'}
+    zh: {description: 指定包装记录字段的XML记录标记的名称。如果未设置此项，则编写器将使用架构中的记录名。, displayName: 记录标签名称}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry}
+    zh: {description: 指定用于架构注册表的控制器服务, displayName: 架构注册表}
+  Time Format:
+    en: {displayName: Time Format, description: 'Specifies the format to use when
+        reading/writing Time fields. If not specified, Time fields will be assumed
+        to be number of milliseconds since epoch (Midnight, Jan 1, 1970 GMT). If specified,
+        the value must match the Java Simple Date Format (for example, HH:mm:ss for
+        a two-digit hour in 24-hour format, followed by a two-digit minute, followed
+        by a two-digit second, all separated by '':'' characters, as in 18:04:15).'}
+    zh: {description: '指定读取/写入时间字段时使用的格式。如果未指定，“时间”字段将假定为自纪元（1970年1月1日午夜）以来的毫秒数。如果指定，则该值必须与Java简单日期格式匹配（例如，HH:mm:ss表示24小时格式的两位数小时，后跟两位数分钟，后跟两位秒，均以“：”字符分隔，如18:04:15所示）。',
+      displayName: 时间格式}
+  array_wrapping:
+    en: {displayName: Wrap Elements of Arrays, description: Specifies how the writer
+        wraps elements of fields of type array}
+    zh: {description: 指定编写器如何包装数组类型字段的元素, displayName: 包裹数组元素}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that is to be used for interpreting the data.}
+    zh: {description: 指定如何获取用于解释数据的架构。, displayName: 架构访问策略}
+  pretty_print_xml:
+    en: {displayName: Pretty Print XML, description: Specifies whether or not the
+        XML should be pretty printed}
+    zh: {description: 指定XML是否应精确打印, displayName: 漂亮的打印XML}
+  schema-protocol-version:
+    en: {displayName: Schema Protocol Version, description: 'The protocol version
+        to be used for Schema Write Strategies that require a protocol version, such
+        as Hortonworks Schema Registry strategies. Valid protocol versions for Hortonworks
+        Schema Registry are integer values 1, 2, or 3.'}
+    zh: {description: 用于需要协议版本的架构写入策略的协议版本，例如Hortonworks架构注册表策略。Hortonworks Schema
+        Registry的有效协议版本为整数值1、2或3。, displayName: 架构协议版本}
+  schema-version:
+    en: {displayName: Schema Version, description: Specifies the version of the schema
+        to lookup in the Schema Registry. If not specified then the latest version
+        of the schema will be retrieved.}
+    zh: {description: 指定要在架构注册表中查找的架构的版本。如果未指定，则将检索架构的最新版本。, displayName: 架构版本}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+  Character Set:
+    en: {displayName: Character Set, description: The Character set to use when writing
+        the data to the FlowFile}
+    zh: {description: 将数据写入FlowFile时使用的字符集, displayName: 字符集}
+tags:
+  en: [xml, resultset, writer, serialize, record, recordset, row]
+  zh: [xml格式, 结果集, 作家, 序列化, 记录, 记录集, 一行]

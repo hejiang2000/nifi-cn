@@ -1,0 +1,198 @@
+relationships:
+  success: {en: Successfully created FlowFile from SQL query result set., zh: 已成功从SQL查询结果集创建FlowFile。}
+dynamicProperties:
+  initial.maxvalue.<max_value_column>:
+    en: {description: Specifies an initial max value for max value column(s). Properties
+        should be added in the format `initial.maxvalue.<max_value_column>`. This
+        value is only used the first time the table is accessed (when a Maximum Value
+        Column is specified)., value: Initial maximum value for the specified column}
+    zh: {description: 指定最大值列的初始最大值。属性应以`initial.maxvalue.<max_value_column>`格式添加。该值仅在第一次访问表时使用（当指定了“最大值列”时）。,
+      value: 指定列的初始最大值}
+capabilityDescription: {en: 'Generates a SQL select query, or uses a provided statement,
+    and executes it to fetch all rows whose values in the specified Maximum Value
+    column(s) are larger than the previously-seen maxima. Query result will be converted
+    to Avro format. Expression Language is supported for several properties, but no
+    incoming connections are permitted. The Variable Registry may be used to provide
+    values for any property containing Expression Language. If it is desired to leverage
+    flow file attributes to perform these queries, the GenerateTableFetch and/or ExecuteSQL
+    processors can be used for this purpose. Streaming is used so arbitrarily large
+    result sets are supported. This processor can be scheduled to run on a timer or
+    cron expression, using the standard scheduling methods. This processor is intended
+    to be run on the Primary Node only. FlowFile attribute ''querydbtable.row.count''
+    indicates how many rows were selected.', zh: 生成SQL选择查询，或使用提供的语句，并执行该查询以获取指定的“最大值”列中的值大于之前看到的最大值的所有行。查询结果将转换为Avro格式。表达式语言支持多个属性，但不允许传入连接。变量注册表可用于为包含表达式语言的任何属性提供值。如果希望利用流文件属性执行这些查询，则可以使用GenerateTableFetch和/或ExecuteSQL处理器。使用流式处理，因此支持任意大的结果集。可以使用标准调度方法，将此处理器调度为在计时器或cron表达式上运行。此处理器只能在主节点上运行。FlowFile属性'querydbtable.row。count”表示选择了多少行。}
+statefulDescription: {en: 'After performing a query on the specified table, the maximum
+    values for the specified column(s) will be retained for use in future executions
+    of the query. This allows the Processor to fetch only those records that have
+    max values greater than the retained values. This can be used for incremental
+    fetching, fetching of newly added rows, etc. To clear the maximum values, clear
+    the state of the processor per the State Management documentation', zh: 对指定表执行查询后，将保留指定列的最大值，以供将来执行查询时使用。这允许处理器仅获取最大值大于保留值的记录。这可用于增量获取、获取新添加的行等。要清除最大值，请根据状态管理文档清除处理器的状态}
+properties:
+  Table Name:
+    en: {displayName: Table Name, description: 'The name of the database table to
+        be queried. When a custom query is used, this property is used to alias the
+        query and appears as an attribute on the FlowFile.'}
+    zh: {description: 要查询的数据库表的名称。使用自定义查询时，此属性用于别名查询，并显示为FlowFile上的属性。, displayName: 表名称}
+  db-fetch-db-type:
+    en: {displayName: Database Type, description: 'The type/flavor of database, used
+        for generating database-specific code. In many cases the Generic type should
+        suffice, but some databases (such as Oracle) require custom SQL clauses. '}
+    zh: {description: 数据库的类型/风格，用于生成特定于数据库的代码。在许多情况下，Generic类型应该足够了，但一些数据库（如Oracle）需要自定义SQL子句。,
+      displayName: 数据库类型}
+  dbf-default-precision:
+    en: {displayName: Default Decimal Precision, description: 'When a DECIMAL/NUMBER
+        value is written as a ''decimal'' Avro logical type, a specific ''precision''
+        denoting number of available digits is required. Generally, precision is defined
+        by column data type definition or database engines default. However undefined
+        precision (0) can be returned from some database engines. ''Default Decimal
+        Precision'' is used when writing those undefined precision numbers.'}
+    zh: {description: 当DECIMAL/NUMBER值写为“十进制”Avro逻辑类型时，需要一个表示可用位数的特定“精度”。通常，精度由列数据类型定义或数据库引擎默认值定义。但是，某些数据库引擎可以返回未定义的精度（0）写入那些未定义的精度数字时使用“默认十进制精度”。,
+      displayName: 默认小数精度}
+  Max Wait Time:
+    en: {displayName: Max Wait Time, description: 'The maximum amount of time allowed
+        for a running SQL select query , zero means there is no limit. Max time less
+        than 1 second will be equal to zero.'}
+    zh: {description: 运行SQL选择查询所允许的最长时间，零表示没有限制。小于1秒的最大时间将等于零。, displayName: 最长等待时间}
+  Database Connection Pooling Service:
+    en: {displayName: Database Connection Pooling Service, description: The Controller
+        Service that is used to obtain a connection to the database.}
+    zh: {description: 用于获取数据库连接的控制器服务。, displayName: 数据库连接池服务}
+  Maximum-value Columns:
+    en: {displayName: Maximum-value Columns, description: 'A comma-separated list
+        of column names. The processor will keep track of the maximum value for each
+        column that has been returned since the processor started running. Using multiple
+        columns implies an order to the column list, and each column''s values are
+        expected to increase more slowly than the previous columns'' values. Thus,
+        using multiple columns implies a hierarchical structure of columns, which
+        is usually used for partitioning tables. This processor can be used to retrieve
+        only those rows that have been added/updated since the last retrieval. Note
+        that some JDBC types such as bit/boolean are not conducive to maintaining
+        maximum value, so columns of these types should not be listed in this property,
+        and will result in error(s) during processing. If no columns are provided,
+        all rows from the table will be considered, which could have a performance
+        impact. NOTE: It is important to use consistent max-value column names for
+        a given table for incremental fetch to work properly.'}
+    zh: {description: 以逗号分隔的列名列表。处理器将跟踪自处理器开始运行以来返回的每一列的最大值。使用多个列意味着对列列表的顺序，并且每一列的值的增加速度都比前一列的值更慢。因此，使用多列意味着列的分层结构，通常用于划分表。此处理器只能用于检索自上次检索以来添加/更新的行。请注意，某些JDBC类型（如bit/boolean）不利于保持最大值，因此这些类型的列不应在此属性中列出，并将在处理过程中导致错误。如果未提供列，则将考虑表中的所有行，这可能会影响性能。注意：对于给定的表，使用一致的最大值列名称对于增量获取正常工作很重要。,
+      displayName: 最大值列}
+  dbf-user-logical-types:
+    en: {displayName: Use Avro Logical Types, description: 'Whether to use Avro Logical
+        Types for DECIMAL/NUMBER, DATE, TIME and TIMESTAMP columns. If disabled, written
+        as string. If enabled, Logical types are used and written as its underlying
+        type, specifically, DECIMAL/NUMBER as logical ''decimal'': written as bytes
+        with additional precision and scale meta data, DATE as logical ''date-millis'':
+        written as int denoting days since Unix epoch (1970-01-01), TIME as logical
+        ''time-millis'': written as int denoting milliseconds since Unix epoch, and
+        TIMESTAMP as logical ''timestamp-millis'': written as long denoting milliseconds
+        since Unix epoch. If a reader of written Avro records also knows these logical
+        types, then these values can be deserialized with more context depending on
+        reader implementation.'}
+    zh: {description: 是否对DECIMAL/NUMBER、DATE、TIME和TIMESTAMP列使用Avro逻辑类型。如果禁用，则写入字符串。如果启用，则使用逻辑类型并将其写入基础类型，具体而言，DECIMAL/NUMBER作为逻辑“十进制”：作为具有额外精度和比例元数据的字节写入，DATE作为逻辑的“DATE
+        millis”：写入int表示自Unix纪元（1970-01-01）以来的天数，TIME作为逻辑时间millis：写入int指示自Unix纪元以来的毫秒，和TIMESTAMP作为逻辑“TIMESTAMP
+        millis”：写为long，表示自Unix时代以来的毫秒。如果写入的Avro记录的读取器也知道这些逻辑类型，那么这些值可以根据读取器的实现用更多的上下文反序列化。,
+      displayName: 使用Avro逻辑类型}
+  qdbt-output-batch-size:
+    en: {displayName: Output Batch Size, description: 'The number of output FlowFiles
+        to queue before committing the process session. When set to zero, the session
+        will be committed when all result set rows have been processed and the output
+        FlowFiles are ready for transfer to the downstream relationship. For large
+        result sets, this can cause a large burst of FlowFiles to be transferred at
+        the end of processor execution. If this property is set, then when the specified
+        number of FlowFiles are ready for transfer, then the session will be committed,
+        thus releasing the FlowFiles to the downstream relationship. NOTE: The maxvalue.*
+        and fragment.count attributes will not be set on FlowFiles when this property
+        is set.'}
+    zh: {description: 提交进程会话之前要排队的输出FlowFiles数。当设置为零时，当所有结果集行都已处理完毕并且输出FlowFiles已准备好传输到下游关系时，将提交会话。对于大型结果集，这可能会导致在处理器执行结束时传输大量FlowFiles。如果设置了此属性，则当指定数量的FlowFiles准备好传输时，将提交会话，从而将FlowFiles释放到下游关系。注：最大值。*和碎片。设置此属性时，不会在FlowFiles上设置count属性。,
+      displayName: 输出批次大小}
+  qdbt-max-rows:
+    en: {displayName: Max Rows Per Flow File, description: 'The maximum number of
+        result rows that will be included in a single FlowFile. This will allow you
+        to break up very large result sets into multiple FlowFiles. If the value specified
+        is zero, then all rows are returned in a single FlowFile.'}
+    zh: {description: 单个FlowFile中包含的最大结果行数。这将允许您将非常大的结果集分解为多个FlowFiles。如果指定的值为零，则在单个FlowFile中返回所有行。,
+      displayName: 每个流文件的最大行数}
+  qdbt-max-frags:
+    en: {displayName: Maximum Number of Fragments, description: 'The maximum number
+        of fragments. If the value specified is zero, then all fragments are returned.
+        This prevents OutOfMemoryError when this processor ingests huge table. NOTE:
+        Setting this property can result in data loss, as the incoming results are
+        not ordered, and fragments may end at arbitrary boundaries where rows are
+        not included in the result set.'}
+    zh: {description: 碎片的最大数量。如果指定的值为零，则返回所有片段。这可以防止当此处理器摄取巨大的表时发生OutOfMemoryError。注意：设置此属性可能会导致数据丢失，因为传入的结果没有排序，并且片段可能在结果集中不包含行的任意边界处结束。,
+      displayName: 最大碎片数}
+  dbf-default-scale:
+    en: {displayName: Default Decimal Scale, description: 'When a DECIMAL/NUMBER value
+        is written as a ''decimal'' Avro logical type, a specific ''scale'' denoting
+        number of available decimal digits is required. Generally, scale is defined
+        by column data type definition or database engines default. However when undefined
+        precision (0) is returned, scale can also be uncertain with some database
+        engines. ''Default Decimal Scale'' is used when writing those undefined numbers.
+        If a value has more decimals than specified scale, then the value will be
+        rounded-up, e.g. 1.53 becomes 2 with scale 0, and 1.5 with scale 1.'}
+    zh: {description: 当DECIMAL/NUMBER值写为“十进制”Avro逻辑类型时，需要一个表示可用十进制位数的特定“刻度”。通常，比例由列数据类型定义或数据库引擎默认值定义。然而，当返回未定义的精度（0）时，某些数据库引擎的规模也可能不确定写入未定义的数字时使用“默认小数位数”。如果某个值的小数位数比指定的小数位数多，则该值将向上舍入，例如，1.53在小数位数为0时变为2，在小数位数1时变为1.5。,
+      displayName: 默认小数位数}
+  initial-load-strategy:
+    en: {displayName: Initial Load Strategy, description: 'How to handle existing
+        rows in the database table when the processor is started for the first time
+        (or its state has been cleared). The property will be ignored, if any ''initial.maxvalue.*''
+        dynamic property has also been configured.'}
+    zh: {description: 当处理器首次启动（或其状态已清除）时，如何处理数据库表中的现有行。如果有“initial.maxvalue.*”，则将忽略该属性动态属性也已配置。,
+      displayName: 初始负载策略}
+  Fetch Size:
+    en: {displayName: Fetch Size, description: 'The number of result rows to be fetched
+        from the result set at a time. This is a hint to the database driver and may
+        not be honored and/or exact. If the value specified is zero, then the hint
+        is ignored.'}
+    zh: {description: 一次从结果集中提取的结果行数。这是对数据库驱动程序的提示，可能不受尊重和/或准确。如果指定的值为零，则忽略提示。, displayName: 提取大小}
+  db-fetch-sql-query:
+    en: {displayName: Custom Query, description: 'A custom SQL query used to retrieve
+        data. Instead of building a SQL query from other properties, this query will
+        be wrapped as a sub-query. Query must have no ORDER BY statement.'}
+    zh: {description: 用于检索数据的自定义SQL查询。此查询将被包装为子查询，而不是从其他属性构建SQL查询。查询不能有ORDER BY语句。,
+      displayName: 自定义查询}
+  Columns to Return:
+    en: {displayName: Columns to Return, description: 'A comma-separated list of column
+        names to be used in the query. If your database requires special treatment
+        of the names (quoting, e.g.), each name should include such treatment. If
+        no column names are supplied, all columns in the specified table will be returned.
+        NOTE: It is important to use consistent column names for a given table for
+        incremental fetch to work properly.'}
+    zh: {description: 要在查询中使用的列名称的逗号分隔列表。如果您的数据库需要对名称进行特殊处理（例如引用），则每个名称都应包含此类处理。如果未提供列名，则将返回指定表中的所有列。注意：对于一个给定的表，使用一致的列名是非常重要的，这样增量提取才能正常工作。,
+      displayName: 要返回的列}
+  db-fetch-where-clause:
+    en: {displayName: Additional WHERE clause, description: A custom clause to be
+        added in the WHERE condition when building SQL queries.}
+    zh: {description: 生成SQL查询时要在WHERE条件中添加的自定义子句。, displayName: 附加WHERE子句}
+  dbf-normalize:
+    en: {displayName: Normalize Table/Column Names, description: 'Whether to change
+        non-Avro-compatible characters in column names to Avro-compatible characters.
+        For example, colons and periods will be changed to underscores in order to
+        build a valid Avro record.'}
+    zh: {description: 是否将列名中的非Avro兼容字符更改为Avro兼容的字符。例如，为了构建有效的Avro记录，冒号和句点将更改为下划线。,
+      displayName: 规范化表/列名}
+  transaction-isolation-level:
+    en: {displayName: Transaction Isolation Level, description: This setting will
+        set the transaction isolation level for the database connection for drivers
+        that support this setting}
+    zh: {description: 此设置将为支持此设置的驱动程序设置数据库连接的事务隔离级别, displayName: 事务隔离级别}
+writeAttributes:
+  querydbtable.row.count: {en: The number of rows selected by the query, zh: 查询选择的行数}
+  fragment.identifier: {en: If 'Max Rows Per Flow File' is set then all FlowFiles
+      from the same query result set will have the same value for the fragment.identifier
+      attribute. This can then be used to correlate the results., zh: 如果设置了“每个流文件的最大行数”，则来自同一查询结果集的所有流文件将具有相同的片段值。标识符属性。然后，这可以用于关联结果。}
+  maxvalue.*: {en: 'Each attribute contains the observed maximum value of a specified
+      ''Maximum-value Column''. The suffix of the attribute is the name of the column.
+      If Output Batch Size is set, then this attribute will not be populated.', zh: 每个属性都包含指定“maximum
+      value Column”的观察到的最大值。属性的后缀是列的名称。如果设置了“输出批次大小”，则不会填充此属性。}
+  fragment.index: {en: If 'Max Rows Per Flow File' is set then the position of this
+      FlowFile in the list of outgoing FlowFiles that were all derived from the same
+      result set FlowFile. This can be used in conjunction with the fragment.identifier
+      attribute to know which FlowFiles originated from the same query result set
+      and in what order  FlowFiles were produced, zh: 如果设置了“每个流文件的最大行数”，则该流文件在所有来自同一结果集FlowFile的传出流文件列表中的位置。这可以与片段一起使用。identifier属性，以了解哪些FlowFiles源自同一查询结果集以及FlowFiles的生成顺序}
+  fragment.count: {en: 'If ''Max Rows Per Flow File'' is set then this is the total
+      number of  FlowFiles produced by a single ResultSet. This can be used in conjunction
+      with the fragment.identifier attribute in order to know how many FlowFiles belonged
+      to the same incoming ResultSet. If Output Batch Size is set, then this attribute
+      will not be populated.', zh: 如果设置了“每个流文件的最大行数”，则这是单个ResultSet生成的FlowFiles的总数。这可以与片段一起使用。identifier属性，以便知道有多少FlowFiles属于同一传入ResultSet。如果设置了“输出批次大小”，则不会填充此属性。}
+  tablename: {en: Name of the table being queried, zh: 正在查询的表的名称}
+tags:
+  en: [sql, select, jdbc, query, database]
+  zh: [sql语言, 选择, jdbc语言, 查询, 数据库]

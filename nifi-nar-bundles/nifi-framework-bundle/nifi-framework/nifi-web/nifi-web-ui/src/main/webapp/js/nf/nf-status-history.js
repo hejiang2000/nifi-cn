@@ -45,16 +45,16 @@
         nifiInstanceId: 'nifi-instance-id',
         nifiInstanceLabel: 'NiFi',
         type: {
-            processor: 'Processor',
-            inputPort: 'Input Port',
-            outputPort: 'Output Port',
-            processGroup: 'Process Group',
-            remoteProcessGroup: 'Remote Process Group',
-            connection: 'Connection',
-            funnel: 'Funnel',
-            template: 'Template',
-            label: 'Label',
-            node: 'Node'
+            processor: '处理器',
+            inputPort: '输入端口',
+            outputPort: '输出端口',
+            processGroup: '处理组',
+            remoteProcessGroup: '远程处理组',
+            connection: '连接',
+            funnel: '漏斗',
+            template: '模板',
+            label: '标签',
+            node: '节点'
         },
         urls: {
             api: '../nifi-api'
@@ -229,8 +229,8 @@
     var insufficientHistory = function () {
         // notify the user
         nfDialog.showOkDialog({
-            headerText: 'Status History',
-            dialogContent: 'Insufficient history, please try again later.'
+            headerText: '状态历史',
+            dialogContent: '历史信息不足, 请稍后再试.'
         });
     };
 
@@ -1095,9 +1095,9 @@
             // configure the dialog and make it draggable
             $('#status-history-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: "Status History",
+                headerText: "状态历史",
                 buttons: [{
-                    buttonText: 'Close',
+                    buttonText: '关闭',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',

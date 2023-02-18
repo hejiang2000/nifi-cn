@@ -1,0 +1,18 @@
+relationships:
+  success: {en: All FlowFiles are routed to this relationship, zh: 所有FlowFiles都路由到此关系}
+capabilityDescription: {en: Emits a log message at the specified log level, zh: 以指定的日志级别发出日志消息}
+properties:
+  log-message:
+    en: {displayName: Log message, description: The log message to emit}
+    zh: {description: 要发出的日志消息, displayName: 日志消息}
+  log-level:
+    en: {displayName: Log Level, description: 'The Log Level to use when logging the
+        message: [trace, debug, info, warn, error]'}
+    zh: {description: '记录消息时要使用的日志级别：[跟踪、调试、信息、警告、错误]', displayName: 日志级别}
+  log-prefix:
+    en: {displayName: Log prefix, description: Log prefix appended to the log lines.
+        It helps to distinguish the output of multiple LogMessage processors.}
+    zh: {description: 附加到日志行的日志前缀。它有助于区分多个LogMessage处理器的输出。, displayName: 日志前缀}
+tags:
+  en: [attributes, logging]
+  zh: [属性, 登录中]

@@ -1,0 +1,111 @@
+relationships:
+  success: {en: FlowFiles processed successfully., zh: FlowFiles处理成功。}
+  failure: {en: FlowFiles that failed to process., zh: 未能处理的FlowFiles。}
+capabilityDescription: {en: The DebugFlow processor aids testing and debugging the
+    FlowFile framework by allowing various responses to be explicitly triggered in
+    response to the receipt of a FlowFile or a timer event without a FlowFile if using
+    timer or cron based scheduling.  It can force responses needed to exercise or
+    test various failure modes that can occur when a processor runs., zh: 如果使用基于计时器或cron的调度，DebugFlow处理器允许响应于接收到FlowFile或没有FlowFile的计时器事件而显式触发各种响应，从而帮助测试和调试FlowFile框架。它可以强制执行执行或测试处理器运行时可能出现的各种故障模式所需的响应。}
+properties:
+  Write Iterations:
+    en: {displayName: Write Iterations, description: Number of times to write to the
+        FlowFile}
+    zh: {description: 写入FlowFile的次数, displayName: 写入迭代次数}
+  No FlowFile Skip Iterations:
+    en: {displayName: No FlowFile Skip Iterations, description: Number of times to
+        skip onTrigger if no FlowFile.}
+    zh: {description: 如果没有FlowFile，则跳过onTrigger的次数。, displayName: 没有FlowFile跳过迭代}
+  No FlowFile Exception Iterations:
+    en: {displayName: No FlowFile Exception Iterations, description: Number of times
+        to throw NPE exception if no FlowFile.}
+    zh: {description: 如果没有FlowFile，则引发NPE异常的次数。, displayName: 无FlowFile异常迭代}
+  Fail When @OnUnscheduled called:
+    en: {displayName: Fail When @OnUnscheduled called, description: Specifies whether
+        or not the Processor should throw an Exception when the methods annotated
+        with @OnUnscheduled are called}
+    zh: {description: 指定当调用用@OnUnscheduled注释的方法时，处理器是否应引发异常, displayName: 调用@OnUnscheduled时失败}
+  No FlowFile Yield Iterations:
+    en: {displayName: No FlowFile Yield Iterations, description: Number of times to
+        yield if no FlowFile.}
+    zh: {description: 如果没有FlowFile，则生成的次数。, displayName: 无FlowFile产量迭代}
+  FlowFile Failure Iterations:
+    en: {displayName: FlowFile Failure Iterations, description: Number of FlowFiles
+        to forward to failure relationship.}
+    zh: {description: 要转发到故障关系的FlowFiles数。, displayName: FlowFile失败迭代次数}
+  CustomValidate Pause Time:
+    en: {displayName: CustomValidate Pause Time, description: Specifies how long the
+        processor should sleep in the customValidate() method}
+    zh: {description: 指定处理器应在customValidate（）方法中休眠多长时间, displayName: 自定义验证暂停时间}
+  '@OnScheduled Pause Time':
+    en: {displayName: '@OnScheduled Pause Time', description: 'Specifies how long
+        the processor should sleep in the @OnScheduled method, so that the processor
+        can be forced to take a long time to start up'}
+    zh: {description: 指定处理器应在@OnScheduled方法中休眠多长时间，以便强制处理器花费很长时间启动, displayName: '%1分钟@按计划暂停时间'}
+  Fail When @OnStopped called:
+    en: {displayName: Fail When @OnStopped called, description: Specifies whether
+        or not the Processor should throw an Exception when the methods annotated
+        with @OnStopped are called}
+    zh: {description: 指定当调用用@OnStopped注释的方法时，处理器是否应引发异常, displayName: 调用@OnStopped时失败}
+  FlowFile Rollback Penalty Iterations:
+    en: {displayName: FlowFile Rollback Penalty Iterations, description: Number of
+        FlowFiles to roll back with penalty.}
+    zh: {description: 要回滚并带有惩罚的FlowFiles数。, displayName: FlowFile回滚惩罚迭代}
+  Content Size:
+    en: {displayName: Content Size, description: The number of bytes to write each
+        time that the FlowFile is written to}
+    zh: {description: 每次写入FlowFile时要写入的字节数, displayName: 内容大小}
+  FlowFile Rollback Yield Iterations:
+    en: {displayName: FlowFile Rollback Yield Iterations, description: Number of FlowFiles
+        to roll back and yield.}
+    zh: {description: 要回滚和生成的FlowFiles数。, displayName: FlowFile回滚产量迭代}
+  FlowFile Rollback Iterations:
+    en: {displayName: FlowFile Rollback Iterations, description: Number of FlowFiles
+        to roll back (without penalty).}
+    zh: {description: 要回滚的FlowFiles数量（无惩罚）。, displayName: FlowFile回滚迭代次数}
+  No FlowFile Exception Class:
+    en: {displayName: No FlowFile Exception Class, description: Exception class to
+        be thrown if no FlowFile (must extend java.lang.RuntimeException).}
+    zh: {description: 如果没有FlowFile（必须扩展java.lang.RuntimeException），将引发异常类。, displayName: 无FlowFile异常类}
+  Ignore Interrupts When Paused:
+    en: {displayName: Ignore Interrupts When Paused, description: 'If the Processor''s
+        thread(s) are sleeping (due to one of the "Pause Time" properties above),
+        and the thread is interrupted, this indicates whether the Processor should
+        ignore the interrupt and continue sleeping or if it should allow itself to
+        be interrupted.'}
+    zh: {description: 如果处理器的线程正在休眠（由于上面的“暂停时间”属性之一），并且线程被中断，这表明处理器是应该忽略中断并继续休眠，还是应该允许自己被中断。,
+      displayName: 暂停时忽略中断}
+  Fail When @OnScheduled called:
+    en: {displayName: Fail When @OnScheduled called, description: Specifies whether
+        or not the Processor should throw an Exception when the methods annotated
+        with @OnScheduled are called}
+    zh: {description: 指定当调用用@OnScheduled注释的方法时，处理器是否应引发异常, displayName: 调用@OnScheduled时失败}
+  '@OnUnscheduled Pause Time':
+    en: {displayName: '@OnUnscheduled Pause Time', description: 'Specifies how long
+        the processor should sleep in the @OnUnscheduled method, so that the processor
+        can be forced to take a long time to respond when user clicks stop'}
+    zh: {description: 指定处理器应在@OnUnscheduled方法中休眠多长时间，以便在用户单击停止时强制处理器花费很长时间进行响应, displayName: '@非计划暂停时间'}
+  FlowFile Exception Iterations:
+    en: {displayName: FlowFile Exception Iterations, description: Number of FlowFiles
+        to throw exception.}
+    zh: {description: 要引发异常的FlowFiles数。, displayName: FlowFile异常迭代次数}
+  FlowFile Success Iterations:
+    en: {displayName: FlowFile Success Iterations, description: Number of FlowFiles
+        to forward to success relationship.}
+    zh: {description: 要转发到成功关系的FlowFiles数。, displayName: FlowFile成功迭代}
+  '@OnStopped Pause Time':
+    en: {displayName: '@OnStopped Pause Time', description: 'Specifies how long the
+        processor should sleep in the @OnStopped method, so that the processor can
+        be forced to take a long time to shutdown'}
+    zh: {description: 指定处理器应在@OnStopped方法中休眠多长时间，以便强制处理器关闭很长时间, displayName: '@OnStopped暂停时间'}
+  FlowFile Exception Class:
+    en: {displayName: FlowFile Exception Class, description: Exception class to be
+        thrown (must extend java.lang.RuntimeException).}
+    zh: {description: 要引发的异常类（必须扩展java.lang.RuntimeException）。, displayName: FlowFile异常类}
+  OnTrigger Pause Time:
+    en: {displayName: OnTrigger Pause Time, description: 'Specifies how long the processor
+        should sleep in the onTrigger() method, so that the processor can be forced
+        to take a long time to perform its task'}
+    zh: {description: 指定处理器应在onTrigger（）方法中休眠多长时间，以便强制处理器执行其任务, displayName: OnTrigger暂停时间}
+tags:
+  en: [test, debug, processor, utility, flow, FlowFile]
+  zh: [测验, 调试，调试, 加工机, 公用事业, 流, 流文件]

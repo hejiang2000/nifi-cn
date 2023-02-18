@@ -1,0 +1,25 @@
+relationships:
+  unmatched: {en: FlowFiles that do not match any user-define expression will be routed
+      here, zh: 将在此处路由与任何用户定义表达式不匹配的FlowFiles}
+dynamicProperties:
+  Relationship Name:
+    en: {description: Routes FlowFiles whose attributes match the Attribute Expression
+        Language specified in the Dynamic Property Value to the Relationship specified
+        in the Dynamic Property Key, value: Attribute Expression Language}
+    zh: {description: 将属性与动态属性值中指定的属性表达式语言匹配的FlowFiles路由到动态属性键中指定的关系, value: 属性表达式语言}
+capabilityDescription: {en: Routes FlowFiles based on their Attributes using the Attribute
+    Expression Language, zh: 使用属性表达式语言基于流文件的属性路由流文件}
+dynamicRelationships:
+  Name from Dynamic Property: {en: FlowFiles that match the Dynamic Property's Attribute
+      Expression Language, zh: 与动态属性的属性表达式语言匹配的FlowFiles}
+properties:
+  Routing Strategy:
+    en: {displayName: Routing Strategy, description: Specifies how to determine which
+        relationship to use when evaluating the Expression Language}
+    zh: {description: 指定在计算表达式语言时如何确定要使用的关系, displayName: 路由策略}
+writeAttributes:
+  RouteOnAttribute.Route: {en: The relation to which the FlowFile was routed, zh: FlowFile路由到的关系}
+tags:
+  en: [attributes, routing, Attribute Expression Language, regexp, regex, Regular
+      Expression, Expression Language, find, text, string, search, filter, detect]
+  zh: [属性, 路由, 属性表达式语言, 正则表达式, 正则表达式, 正则表达式, 表达式语言, 发现, 文本, 一串, 搜索, 滤器, 发现]

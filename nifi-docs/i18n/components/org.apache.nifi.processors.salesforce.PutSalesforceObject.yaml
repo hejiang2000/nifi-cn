@@ -1,0 +1,36 @@
+relationships:
+  success: {en: For FlowFiles created as a result of a successful execution., zh: 对于成功执行后创建的FlowFiles。}
+  failure: {en: For FlowFiles created as a result of an execution error., zh: 对于因执行错误而创建的FlowFiles。}
+capabilityDescription: {en: Creates new records for the specified Salesforce sObject.
+    The type of the Salesforce object must be set in the input flowfile's 'objectType'
+    attribute. This processor cannot update existing records., zh: 为指定的SalesforcesObject创建新记录。Salesforce对象的类型必须在输入流文件的“objectType”属性中设置。此处理器无法更新现有记录。}
+readAttributes:
+  objectType: {en: 'The Salesforce object type to upload records to. E.g. Account,
+      Contact, Campaign.', zh: 要将记录上载到的Salesforce对象类型。例如，Account、Contact、Campaign。}
+properties:
+  salesforce-api-version:
+    en: {displayName: API Version, description: The version number of the Salesforce
+        REST API appended to the URL after the services/data path. See Salesforce
+        documentation for supported versions}
+    zh: {description: 附加到服务/数据路径之后的URL的Salesforce REST API的版本号。有关支持的版本，请参阅Salesforce文档,
+      displayName: API版本}
+  salesforce-url:
+    en: {displayName: URL, description: 'The URL for the Salesforce REST API including
+        the domain without additional path information, such as https://MyDomainName.my.salesforce.com'}
+    zh: {description: 'Salesforce REST API的URL，包括没有附加路径信息的域，例如https://MyDomainName.my.salesforce.com',
+      displayName: 统一资源定位地址}
+  read-timeout:
+    en: {displayName: Read Timeout, description: Maximum time allowed for reading
+        a response from the Salesforce REST API}
+    zh: {description: 从Salesforce REST API读取响应所允许的最长时间, displayName: 读取超时}
+  oauth2-access-token-provider:
+    en: {displayName: OAuth2 Access Token Provider, description: Service providing
+        OAuth2 Access Tokens for authenticating using the HTTP Authorization Header}
+    zh: {description: 提供OAuth2访问令牌以使用HTTP授权标头进行身份验证的服务, displayName: OAuth2访问令牌提供程序}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务, displayName: 记录读取器}
+tags:
+  en: [salesforce, sobject, put]
+  zh: [Salesforce公司, Soject公司, 放]

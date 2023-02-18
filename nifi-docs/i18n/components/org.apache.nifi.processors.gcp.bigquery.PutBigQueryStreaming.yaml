@@ -1,0 +1,80 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      BigQuery operation., zh: 在Google BigQuery操作成功后，FlowFiles将路由到此关系。}
+  failure: {en: FlowFiles are routed to this relationship if the Google BigQuery operation
+      fails., zh: 如果Google BigQuery操作失败，FlowFiles将路由到此关系。}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Please be aware this processor is deprecated and may
+    be removed in the near future. Use PutBigQuery instead. Load data into Google
+    BigQuery table using the streaming API. This processor is not intended to load
+    large flow files as it will load the full content into memory. If you need to
+    insert large flow files, consider using PutBigQueryBatch instead.', zh: 请注意，此处理器已弃用，可能会在不久的将来被删除。请改用PutBigQuery。使用流API将数据加载到GoogleBigQuery表中。此处理器不打算加载大型流文件，因为它将将全部内容加载到内存中。如果需要插入大型流文件，请考虑改用PutBigQueryBatch。}
+properties:
+  gcp-proxy-host:
+    en:
+      displayName: Proxy host
+      description: |-
+        IP or hostname of the proxy to be used.
+         You might need to set the following properties in bootstrap for https proxy usage:
+        -Djdk.http.auth.tunneling.disabledSchemes=
+        -Djdk.http.auth.proxying.disabledSchemes=
+    zh: {description: 要使用的代理的IP或主机名。, displayName: 代理主机}
+  bq.table.name:
+    en: {displayName: Table Name, description: BigQuery table name}
+    zh: {description: BigQuery表名称, displayName: 表名称}
+  gcp-retry-count:
+    en: {displayName: Number of retries, description: How many retry attempts should
+        be made before routing to the failure relationship.}
+    zh: {description: 在路由到失败关系之前应进行多少次重试尝试。, displayName: 重试次数}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  gcp-proxy-user-name:
+    en: {displayName: HTTP Proxy Username, description: HTTP Proxy Username}
+    zh: {description: HTTP代理用户名, displayName: HTTP代理用户名}
+  bq.load.ignore_unknown:
+    en: {displayName: Ignore Unknown Values, description: 'Sets whether BigQuery should
+        allow extra values that are not represented in the table schema. If true,
+        the extra values are ignored. If false, records with extra columns are treated
+        as bad records, and if there are too many bad records, an invalid error is
+        returned in the job result. By default unknown values are not allowed.'}
+    zh: {description: 设置BigQuery是否应允许表架构中未表示的额外值。如果为true，则忽略额外值。如果为false，则具有额外列的记录将被视为不良记录，如果不良记录太多，则在作业结果中返回无效错误。默认情况下，不允许使用未知值。,
+      displayName: 忽略未知值}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  bq.skip.invalid.rows:
+    en: {displayName: Skip Invalid Rows, description: 'Sets whether to insert all
+        valid rows of a request, even if invalid rows exist. If not set the entire
+        insert request will fail if it contains an invalid row.'}
+    zh: {description: 设置是否插入请求的所有有效行，即使存在无效行。如果未设置，则如果包含无效行，则整个插入请求将失败。, displayName: 跳过无效行}
+  gcp-proxy-user-password:
+    en: {displayName: HTTP Proxy Password, description: HTTP Proxy Password}
+    zh: {description: HTTP代理密码, displayName: HTTP代理密码}
+  bq.dataset:
+    en: {displayName: Dataset, description: BigQuery dataset name (Note - The dataset
+        must exist in GCP)}
+    zh: {description: BigQuery数据集名称（注意-数据集必须存在于GCP中）, displayName: 数据集}
+  bq.record.reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data.}
+    zh: {description: 指定用于分析传入数据的控制器服务。, displayName: 记录读取器}
+  gcp-proxy-port:
+    en: {displayName: Proxy port, description: Proxy port number}
+    zh: {description: 代理端口号, displayName: 代理服务器端口}
+writeAttributes:
+  bq.records.count: {en: Number of records successfully inserted, zh: 成功插入的记录数}
+tags:
+  en: [google, google cloud, bq, gcp, bigquery, record]
+  zh: [谷歌, 谷歌云, 英国石油公司, 通用计算机程序, 大查询, 记录]

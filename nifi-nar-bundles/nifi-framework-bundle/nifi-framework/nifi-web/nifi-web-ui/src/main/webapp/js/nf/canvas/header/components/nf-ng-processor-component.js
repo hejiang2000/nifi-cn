@@ -319,7 +319,7 @@
                         var processorTypesColumns = [
                             {
                                 id: 'type',
-                                name: 'Type',
+                                name: '类型',
                                 field: 'label',
                                 formatter: nfCommon.typeFormatter,
                                 sortable: true,
@@ -327,7 +327,7 @@
                             },
                             {
                                 id: 'version',
-                                name: 'Version',
+                                name: '版本',
                                 field: 'version',
                                 formatter: nfCommon.typeVersionFormatter,
                                 sortable: true,
@@ -335,7 +335,7 @@
                             },
                             {
                                 id: 'tags',
-                                name: 'Tags',
+                                name: '标签',
                                 field: 'tags',
                                 sortable: true,
                                 resizable: true,
@@ -390,7 +390,7 @@
                                     if (nfCommon.isBlank(processorType.description)) {
                                         $('#processor-type-description')
                                             .attr('title', '')
-                                            .html('<span class="unset">No description specified</span>');
+                                            .html('<span class="unset">无说明</span>');
                                     } else {
                                         $('#processor-type-description')
                                             .width($('#processor-description-container').innerWidth() - 1)
@@ -444,7 +444,7 @@
                                     var restrictionTip = $('<div></div>');
 
                                     if (nfCommon.isBlank(item.usageRestriction)) {
-                                        restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text('Requires the following permissions:'));
+                                        restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text('需要以下权限:'));
                                     } else {
                                         restrictionTip.append($('<p style="margin-bottom: 3px;"></p>').text(item.usageRestriction + ' Requires the following permissions:'));
                                     }
@@ -581,7 +581,7 @@
 
                             // build the combo options
                             var options = [{
-                                text: 'all groups',
+                                text: '全部 maven 工程组',
                                 value: ''
                             }];
                             groups.each(function (group) {
@@ -618,7 +618,7 @@
                     // configure the new processor dialog
                     this.getElement().modal({
                         scrollableContentStyle: 'scrollable',
-                        headerText: 'Add Processor',
+                        headerText: '添加处理器',
                         handler: {
                             resize: function () {
                                 $('#processor-type-description')
@@ -719,8 +719,8 @@
                     // ensure something was selected
                     if (name === '' || processorType === '') {
                         nfDialog.showOkDialog({
-                            headerText: 'Add Processor',
-                            dialogContent: 'The type of processor to create must be selected.'
+                            headerText: '添加处理器',
+                            dialogContent: '必须选定要创建的处理器类型.'
                         });
                     } else {
                         // create the new processor
@@ -752,7 +752,7 @@
 
                 // update the button model
                 this.modal.update('setButtonModel', [{
-                    buttonText: 'Add',
+                    buttonText: '添加',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -774,7 +774,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',

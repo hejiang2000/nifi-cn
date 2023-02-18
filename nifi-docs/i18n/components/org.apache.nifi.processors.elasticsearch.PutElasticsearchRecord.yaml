@@ -1,0 +1,158 @@
+relationships:
+  successful_records: {en: 'If a "Result Record Writer" is set, any Record(s) corresponding
+      to Elasticsearch document(s) that did not result in an "error" (within Elasticsearch)
+      will be routed here.', zh: 如果设置了“结果记录写入器”，则与Elasticsearch文档相对应且未导致“错误”（在Elasticsearch中）的任何记录都将在此处路由。}
+  success: {en: All flowfiles that succeed in being transferred into Elasticsearch
+      go here. Documents received by the Elasticsearch _bulk API may still result
+      in errors on the Elasticsearch side. The Elasticsearch response will need to
+      be examined to determine whether any Document(s)/Record(s) resulted in errors.,
+    zh: 所有成功传输到Elasticsearch的流文件都在这里。Elasticsearch_bulk API接收的文档仍可能导致Elasticsearch端出错。需要检查Elasticsearch响应，以确定任何文档/记录是否导致错误。}
+  failure: {en: All flowfiles that fail for reasons unrelated to server availability
+      go to this relationship., zh: 由于与服务器可用性无关的原因而失败的所有流文件都属于此关系。}
+  retry: {en: All flowfiles that fail due to server/cluster availability go to this
+      relationship., zh: 由于服务器/群集可用性而失败的所有流文件都属于此关系。}
+  errors: {en: 'If a "Result Record Writer" is set, any Record(s) corresponding to
+      Elasticsearch document(s) that resulted in an "error" (within Elasticsearch)
+      will be routed here.', zh: 如果设置了“结果记录写入器”，则与Elasticsearch文档对应的导致“错误”（在Elasticsearch中）的任何记录都将在此处路由。}
+dynamicProperties:
+  The name of a URL query parameter to add:
+    en: {description: Adds the specified property name/value as a query parameter
+        in the Elasticsearch URL used for processing. These parameters will override
+        any matching parameters in the _bulk request body, value: The value of the
+        URL query parameter}
+    zh: {description: 在用于处理的Elasticsearch URL中添加指定的属性名称/值作为查询参数。这些参数将覆盖_bulk请求正文中的任何匹配参数,
+      value: URL查询参数的值}
+systemResourceConsiderations:
+  en: [The Batch of Records will be stored in memory until the bulk operation is performed.]
+  zh: [批量记录将存储在内存中，直到执行批量操作。]
+capabilityDescription: {en: A record-aware Elasticsearch put processor that uses the
+    official Elastic REST client libraries., zh: 使用官方ElasticREST客户端库的记录感知Elasticsearch
+    put处理器。}
+properties:
+  put-es-record-error-writer:
+    en: {displayName: Result Record Writer, description: 'If this configuration property
+        is set, the response from Elasticsearch will be examined for failed records
+        and the failed records will be written to a record set with this record writer
+        service and sent to the "errors" relationship. Successful records will be
+        written to a record setwith this record writer service and sent to the "successful_records"
+        relationship.'}
+    zh: {description: 如果设置了此配置属性，将检查Elasticsearch的响应是否有失败的记录，并将失败的记录写入此记录写入器服务的记录集，然后发送到“错误”关系。成功的记录将通过此记录写入器服务写入记录集，并发送到“Successful_records”关系。,
+      displayName: 结果记录编写器}
+  put-es-record-at-timestamp-time-format:
+    en: {displayName: Time Format, description: 'Specifies the format to use when
+        writing Time fields. If not specified, the default format ''HH:mm:ss'' is
+        used. If specified, the value must match the Java Simple Date Format (for
+        example, HH:mm:ss for a two-digit hour in 24-hour format, followed by a two-digit
+        minute, followed by a two-digit second, all separated by '':'' characters,
+        as in 18:04:15).'}
+    zh: {description: '指定写入时间字段时使用的格式。如果未指定，则使用默认格式“HH:mm:ss”。如果指定，则该值必须与Java简单日期格式匹配（例如，HH:mm:ss表示24小时格式的两位数小时，后跟两位数分钟，后跟两位秒，均以“：”字符分隔，如18:04:15所示）。',
+      displayName: 时间格式}
+  put-es-record-at-timestamp-timestamp-format:
+    en: {displayName: Timestamp Format, description: 'Specifies the format to use
+        when writing Timestamp fields. If not specified, the default format ''yyyy-MM-dd
+        HH:mm:ss'' is used. If specified, the value must match the Java Simple Date
+        Format (for example, MM/dd/yyyy HH:mm:ss for a two-digit month, followed by
+        a two-digit day, followed by a four-digit year, all separated by ''/'' characters;
+        and then followed by a two-digit hour in 24-hour format, followed by a two-digit
+        minute, followed by a two-digit second, all separated by '':'' characters,
+        as in 01/25/2017 18:04:15).'}
+    zh: {description: '指定写入时间戳字段时使用的格式。如果未指定，则使用默认格式“yyyy-MM-dd HH:MM:ss”。如果指定，则该值必须与Java简单日期格式匹配（例如，MM/dd/yyyy
+        HH:MM:ss表示两位数的月份，后跟两位数的日期，后跟四位数的年份，均以“/”字符分隔；然后，后跟24小时格式的两位数的小时，后跟两位的分钟，然后是两位数的秒，全部以“：”字符分隔，如2017年1月25日18:04:15所示）。',
+      displayName: 时间戳格式}
+  put-es-record-batch-size:
+    en: {displayName: Batch Size, description: The number of records to send over
+        in a single batch.}
+    zh: {description: 要在单个批处理中发送的记录数。, displayName: 批量大小}
+  put-es-record-index-op:
+    en: {displayName: Index Operation, description: 'The type of the operation used
+        to index (create, delete, index, update, upsert)'}
+    zh: {description: 用于索引的操作类型（创建、删除、索引、更新、追加启动）, displayName: 索引操作}
+  put-es-record-not_found-is-error:
+    en: {displayName: Treat "Not Found" as Error, description: 'If true, "not_found"
+        Elasticsearch Document associated Records will be routed to the "successful_records"
+        relationship, otherwise to the "errors" relationship.'}
+    zh: {description: 如果为true，“not_found”Elasticsearch文档关联记录将被路由到“successful_Records”关系，否则将被路由至“errors”关系。,
+      displayName: 将“未找到”视为错误}
+  put-es-record-id-path:
+    en: {displayName: ID Record Path, description: A record path expression to retrieve
+        the ID field for use with Elasticsearch. If left blank the ID will be automatically
+        generated by Elasticsearch.}
+    zh: {description: 用于检索用于Elasticsearch的ID字段的记录路径表达式。如果留空，Elasticsearch将自动生成ID。,
+      displayName: ID记录路径}
+  put-es-record-type-record-path:
+    en: {displayName: Type Record Path, description: A record path expression to retrieve
+        the type field for use with Elasticsearch. If left blank the type will be
+        determined using the main type property.}
+    zh: {description: 用于检索用于Elasticsearch的类型字段的记录路径表达式。如果留空，则将使用主类型属性确定类型。, displayName: 键入记录路径}
+  put-es-record-at-timestamp-date-format:
+    en: {displayName: Date Format, description: 'Specifies the format to use when
+        writing Date fields. If not specified, the default format ''yyyy-MM-dd'' is
+        used. If specified, the value must match the Java Simple Date Format (for
+        example, MM/dd/yyyy for a two-digit month, followed by a two-digit day, followed
+        by a four-digit year, all separated by ''/'' characters, as in 01/25/2017).'}
+    zh: {description: 指定写入日期字段时使用的格式。如果未指定，则使用默认格式“yyyy-MM-dd”。如果指定，则该值必须与Java简单日期格式匹配（例如，MM/dd/yyyy表示两位数的月份，后跟两位数的日期，后跟四位数的年份，均由“/”字符分隔，如2017年1月25日）。,
+      displayName: 日期格式}
+  put-es-record-retain-at-timestamp-field:
+    en: {displayName: Retain @timestamp (Record Path), description: Whether to retain
+        the existing field used as the @timestamp Record Path.}
+    zh: {description: 是否保留用作@timestamp记录路径的现有字段。, displayName: 保留@timestamp（记录路径）}
+  el-rest-fetch-index:
+    en: {displayName: Index, description: The name of the index to use.}
+    zh: {description: 要使用的索引的名称。, displayName: 指数}
+  put-es-record-index-op-path:
+    en: {displayName: Index Operation Record Path, description: A record path expression
+        to retrieve the Index Operation field for use with Elasticsearch. If left
+        blank the Index Operation will be determined using the main Index Operation
+        property.}
+    zh: {description: 用于检索索引操作字段以用于Elasticsearch的记录路径表达式。如果留空，将使用主索引操作属性确定索引操作。, displayName: 索引操作记录路径}
+  put-es-record-retain-id-field:
+    en: {displayName: Retain ID (Record Path), description: Whether to retain the
+        existing field used as the ID Record Path.}
+    zh: {description: 是否保留用作ID记录路径的现有字段。, displayName: 保留ID（记录路径）}
+  el-rest-client-service:
+    en: {displayName: Client Service, description: An Elasticsearch client service
+        to use for running queries.}
+    zh: {description: 用于运行查询的Elasticsearch客户端服务。, displayName: 客户端服务}
+  put-es-record-log-error-responses:
+    en: {displayName: Log Error Responses, description: 'If this is enabled, errors
+        will be logged to the NiFi logs at the error log level. Otherwise, they will
+        only be logged if debug logging is enabled on NiFi as a whole. The purpose
+        of this option is to give the user the ability to debug failed operations
+        without having to turn on debug logging.'}
+    zh: {description: 如果启用此选项，则将在错误日志级别将错误记录到NiFi日志中。否则，只有在整个NiFi上启用调试日志记录时，才会记录它们。此选项的目的是让用户能够调试失败的操作，而不必打开调试日志。,
+      displayName: 记录错误响应}
+  el-rest-type:
+    en: {displayName: Type, description: The type of this document (used by Elasticsearch
+        for indexing and searching).}
+    zh: {description: 此文档的类型（Elasticsearch用于索引和搜索）。, displayName: 类型}
+  put-es-record-at-timestamp:
+    en: {displayName: '@timestamp Value', description: The value to use as the @timestamp
+        field (required for Elasticsearch Data Streams)}
+    zh: {description: 用作@timestamp字段的值（Elasticsearch数据流需要）, displayName: '@时间戳值'}
+  put-es-record-index-record-path:
+    en: {displayName: Index Record Path, description: A record path expression to
+        retrieve the index field for use with Elasticsearch. If left blank the index
+        will be determined using the main index property.}
+    zh: {description: 用于检索索引字段以用于Elasticsearch的记录路径表达式。如果留空，将使用主索引属性确定索引。, displayName: 索引记录路径}
+  put-es-record-at-timestamp-path:
+    en: {displayName: '@timestamp Record Path', description: A RecordPath pointing
+        to a field in the record(s) that contains the @timestamp for the document.
+        If left blank the @timestamp will be determined using the main @timestamp
+        property}
+    zh: {description: 指向记录中包含文档的@时间戳的字段的RecordPath。如果留空，将使用主@timestamp属性确定@timestaff,
+      displayName: '@时间戳记录路径'}
+  put-es-record-reader:
+    en: {displayName: Record Reader, description: The record reader to use for reading
+        incoming records from flowfiles.}
+    zh: {description: 用于从流文件读取传入记录的记录读取器。, displayName: 记录读取器}
+writeAttributes:
+  elasticsearch.put.error.count: {en: The number of records that generated errors
+      in the Elasticsearch _bulk API., zh: Elasticsearch_bulk API中生成错误的记录数。}
+  elasticsearch.put.success.count: {en: The number of records that were successfully
+      processed by the Elasticsearch _bulk API., zh: Elasticsearch_bulk API成功处理的记录数。}
+  elasticsearch.put.error: {en: The error message provided by Elasticsearch if there
+      is an error indexing the documents., zh: Elasticsearch在为文档编制索引时出错时提供的错误消息。}
+tags:
+  en: [json, elasticsearch, elasticsearch5, elasticsearch6, elasticsearch7, elasticsearch8,
+    put, index, record]
+  zh: [json文件, 弹性搜索, 弹性搜索5, 弹性搜索6, 弹性搜索7, 弹性搜索8, 放, 指数, 记录]

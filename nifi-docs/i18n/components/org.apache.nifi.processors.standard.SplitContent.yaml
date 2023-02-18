@@ -1,0 +1,42 @@
+relationships:
+  splits: {en: All Splits will be routed to the splits relationship, zh: 所有拆分都将路由到拆分关系}
+  original: {en: The original file, zh: 原始文件}
+systemResourceConsiderations:
+  en: ['The FlowFile with its attributes is stored in memory, not the content of the
+      FlowFile. If many splits are generated due to the size of the content, or how
+      the content is configured to be split, a two-phase approach may be necessary
+      to avoid excessive use of memory.']
+  zh: [FlowFile及其属性存储在内存中，而不是FlowFile的内容。如果由于内容的大小或如何配置内容以进行拆分而生成了许多拆分，则可能需要两阶段方法来避免过度使用内存。]
+capabilityDescription: {en: Splits incoming FlowFiles by a specified byte sequence,
+  zh: 按指定的字节序列拆分传入的FlowFiles}
+properties:
+  Byte Sequence Location:
+    en: {displayName: Byte Sequence Location, description: 'If <Keep Byte Sequence>
+        is set to true, specifies whether the byte sequence should be added to the
+        end of the first split or the beginning of the second; if <Keep Byte Sequence>
+        is false, this property is ignored.'}
+    zh: {description: 如果<Keep Byte Sequence>设置为true，则指定是否应将字节序列添加到第一次拆分的结尾或第二次拆分的开头；如果<Keep
+        Byte Sequence>为false，则忽略此属性。, displayName: 字节序列位置}
+  Keep Byte Sequence:
+    en: {displayName: Keep Byte Sequence, description: Determines whether or not the
+        Byte Sequence should be included with each Split}
+    zh: {description: 确定每个拆分是否应包含字节序列, displayName: 保留字节序列}
+  Byte Sequence Format:
+    en: {displayName: Byte Sequence Format, description: Specifies how the <Byte Sequence>
+        property should be interpreted}
+    zh: {description: 指定如何解释<Byte Sequence>属性, displayName: 字节序列格式}
+  Byte Sequence:
+    en: {displayName: Byte Sequence, description: A representation of bytes to look
+        for and upon which to split the source file into separate files}
+    zh: {description: 要查找的字节的表示形式，并根据该表示形式将源文件拆分为单独的文件, displayName: 字节序列}
+writeAttributes:
+  'segment.original.filename ': {en: The filename of the parent FlowFile, zh: 父FlowFile的文件名}
+  fragment.identifier: {en: All split FlowFiles produced from the same parent FlowFile
+      will have the same randomly generated UUID added for this attribute, zh: 从同一父FlowFile生成的所有拆分FlowFile都将为此属性添加相同的随机生成UUID}
+  fragment.index: {en: A one-up number that indicates the ordering of the split FlowFiles
+      that were created from a single parent FlowFile, zh: 一个向上的数字，表示从单个父FlowFile创建的拆分FlowFile的顺序}
+  fragment.count: {en: The number of split FlowFiles generated from the parent FlowFile,
+    zh: 从父FlowFile生成的拆分FlowFile的数量}
+tags:
+  en: [content, split, binary]
+  zh: [所容纳之物, 分裂, 二进制的]

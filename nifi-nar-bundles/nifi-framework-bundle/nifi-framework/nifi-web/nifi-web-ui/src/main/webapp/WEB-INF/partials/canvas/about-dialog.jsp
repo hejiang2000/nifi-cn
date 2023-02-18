@@ -27,17 +27,17 @@
                     <span id="nf-about-build-timestamp"></span>
                 </p>
                 <p id="nf-version-detail-tag">
-                    Tagged <span id="nf-about-build-tag"></span>
+                    标签 <span id="nf-about-build-tag"></span>
                 </p>
                 <p id="nf-version-detail-commit">
-                    From <span id="nf-about-build-revision"></span> on branch <span id="nf-about-build-branch"></span>
+                    从 <span id="nf-about-build-revision"></span> 分支 <span id="nf-about-build-branch"></span>
                 </p>
             </div>
             <p>
-                Apache NiFi is a framework to support highly scalable and flexible dataflows.
-                It can be run on laptops up through clusters of enterprise class servers.
-                Instead of dictating a particular dataflow or behavior it empowers you to design your own
-                optimal dataflow tailored to your specific environment.
+                Apache NiFi 是一个支持水平扩展的弹性数据流程处理框架.
+                从个人笔记本到企业级服务器集群之上皆可运行.
+                它允许你设计你自己的数据流程, 而不是内置流程或行为.
+                并支持你根据你的运行环境优化数据流程执行.
             </p>
         </div>
     </div>

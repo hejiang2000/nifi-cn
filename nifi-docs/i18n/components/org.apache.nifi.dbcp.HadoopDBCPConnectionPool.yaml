@@ -1,0 +1,125 @@
+dynamicProperties:
+  The name of a Hadoop configuration property.:
+    en: {description: These properties will be set on the Hadoop configuration after
+        loading any provided configuration files., value: The value of the given Hadoop
+        configuration property.}
+    zh: {description: 加载任何提供的配置文件后，将在Hadoop配置上设置这些属性。, value: 给定Hadoop配置属性的值。}
+capabilityDescription: {en: 'Provides a Database Connection Pooling Service for Hadoop
+    related JDBC services. This service requires that the Database Driver Location(s)
+    contains some version of a hadoop-common JAR, or a shaded JAR that shades hadoop-common.',
+  zh: 为Hadoop相关的JDBC服务提供数据库连接池服务。该服务要求数据库驱动程序位置包含hadoop公共JAR的某个版本，或着色hadoop公用的着色JAR。}
+properties:
+  dbcp-min-idle-conns:
+    en: {displayName: Minimum Idle Connections, description: 'The minimum number of
+        connections that can remain idle in the pool, without extra ones being created,
+        or zero to create none.'}
+    zh: {description: 池中可以保持空闲的最小连接数，而不创建额外的连接，或者为零表示不创建任何连接。, displayName: 最小空闲连接数}
+  Max Wait Time:
+    en: {displayName: Max Wait Time, description: 'The maximum amount of time that
+        the pool will wait (when there are no available connections)  for a connection
+        to be returned before failing, or -1 to wait indefinitely. '}
+    zh: {description: 池在失败之前等待（当没有可用连接时）返回连接的最长时间，或-1无限期等待。, displayName: 最长等待时间}
+  Database Driver Class Name:
+    en: {displayName: Database Driver Class Name, description: Database driver class
+        name}
+    zh: {description: 数据库驱动程序类名, displayName: 数据库驱动程序类名}
+  dbcp-min-evictable-idle-time:
+    en: {displayName: Minimum Evictable Idle Time, description: The minimum amount
+        of time a connection may sit idle in the pool before it is eligible for eviction.}
+    zh: {description: 连接在池中处于空闲状态的最短时间，然后才有资格逐出。, displayName: 最短可收回空闲时间}
+  Max Total Connections:
+    en: {displayName: Max Total Connections, description: 'The maximum number of active
+        connections that can be allocated from this pool at the same time,  or negative
+        for no limit.'}
+    zh: {description: 同时可以从该池分配的最大活动连接数，或为负数，无限制。, displayName: 最大总连接数}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials Controller Service that should be used for authenticating with
+        Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos凭据控制器服务, displayName: Kerberos凭据服务}
+  hadoop-config-resources:
+    en: {displayName: Hadoop Configuration Resources, description: 'A file, or comma
+        separated list of files, which contain the Hadoop configuration (core-site.xml,
+        etc.). Without this, Hadoop will search the classpath, or will revert to a
+        default configuration. Note that to enable authentication with Kerberos, the
+        appropriate properties must be set in the configuration files.'}
+    zh: {description: 包含Hadoop配置（core-site.xml等）的文件或逗号分隔的文件列表。否则，Hadoop将搜索类路径，或恢复为默认配置。请注意，要启用Kerberos身份验证，必须在配置文件中设置适当的属性。,
+      displayName: Hadoop配置资源}
+  dbcp-max-conn-lifetime:
+    en: {displayName: Max Connection Lifetime, description: 'The maximum lifetime
+        in milliseconds of a connection. After this time is exceeded the connection
+        will fail the next activation, passivation or validation test. A value of
+        zero or less means the connection has an infinite lifetime.'}
+    zh: {description: 连接的最长生存时间（毫秒）。超过此时间后，连接将无法通过下一次激活、钝化或验证测试。值为零或更小表示连接具有无限的寿命。,
+      displayName: 最大连接寿命}
+  Kerberos Password:
+    en: {displayName: Kerberos Password, description: Kerberos password associated
+        with the principal.}
+    zh: {description: 与主体关联的Kerberos密码。, displayName: Kerberos密码}
+  Kerberos Keytab:
+    en: {displayName: Kerberos Keytab, description: Kerberos keytab associated with
+        the principal. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 与主体关联的Kerberos密钥表。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos密钥选项卡}
+  Validation-query:
+    en: {displayName: Validation query, description: 'Validation query used to validate
+        connections before returning them. When connection is invalid, it get''s dropped
+        and new valid connection will be returned. Note!! Using validation might have
+        some performance penalty.'}
+    zh: {description: 用于在返回连接之前验证连接的验证查询。当连接无效时，它将被删除，并将返回新的有效连接。笔记使用验证可能会带来一些性能损失。,
+      displayName: 验证查询}
+  Database Connection URL:
+    en: {displayName: Database Connection URL, description: 'A database connection
+        URL used to connect to a database. May contain database system name, host,
+        port, database name and some parameters. The exact syntax of a database connection
+        URL is specified by your DBMS.'}
+    zh: {description: 用于连接到数据库的数据库连接URL。可能包含数据库系统名称、主机、端口、数据库名称和一些参数。数据库连接URL的确切语法由DBMS指定。,
+      displayName: 数据库连接URL}
+  dbcp-time-between-eviction-runs:
+    en: {displayName: Time Between Eviction Runs, description: 'The number of milliseconds
+        to sleep between runs of the idle connection evictor thread. When non-positive,
+        no idle connection evictor thread will be run.'}
+    zh: {description: 空闲连接驱逐线程运行之间休眠的毫秒数。如果为非正值，则不会运行空闲连接驱逐线程。, displayName: 驱逐运行之间的时间}
+  Database User:
+    en: {displayName: Database User, description: The user for the database}
+    zh: {description: 数据库的用户, displayName: 数据库用户}
+  Kerberos Principal:
+    en: {displayName: Kerberos Principal, description: Kerberos principal to authenticate
+        as. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 要作为身份验证的Kerberos主体。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos主体}
+  kerberos-user-service:
+    en: {displayName: Kerberos User Service, description: Specifies the Kerberos User
+        Controller Service that should be used for authenticating with Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos用户控制器服务, displayName: Kerberos用户服务}
+  dbcp-soft-min-evictable-idle-time:
+    en: {displayName: Soft Minimum Evictable Idle Time, description: 'The minimum
+        amount of time a connection may sit idle in the pool before it is eligible
+        for eviction by the idle connection evictor, with the extra condition that
+        at least a minimum number of idle connections remain in the pool. When the
+        not-soft version of this option is set to a positive value, it is examined
+        first by the idle connection evictor: when idle connections are visited by
+        the evictor, idle time is first compared against it (without considering the
+        number of idle connections in the pool) and then against this soft option,
+        including the minimum idle connections constraint.'}
+    zh: {description: 在空闲连接驱逐者有资格驱逐连接之前，连接在池中处于空闲状态的最短时间，附加条件是池中至少保留最少数量的空闲连接。当此选项的非软版本设置为正值时，首先由空闲连接驱逐器检查：当驱逐器访问空闲连接时，首先将空闲时间与其进行比较（不考虑池中的空闲连接数），然后再与此软选项进行比较，包括最小空闲连接限制。,
+      displayName: 软最小可收回空闲时间}
+  database-driver-locations:
+    en: {displayName: Database Driver Location(s), description: 'Comma-separated list
+        of files/folders and/or URLs containing the driver JAR and its dependencies
+        (if any). For example ''/var/tmp/phoenix-client.jar''. NOTE: It is required
+        that the resources specified by this property provide the classes from hadoop-common,
+        such as Configuration and UserGroupInformation.'}
+    zh: {description: 包含驱动程序JAR及其依赖项（如果有）的文件/文件夹和/或URL的逗号分隔列表。例如“/var/tmp/penix client.jar”。注意：此属性指定的资源必须提供hadoop公共类，如Configuration和UserGroupInformation。,
+      displayName: 数据库驱动程序位置}
+  dbcp-max-idle-conns:
+    en: {displayName: Max Idle Connections, description: 'The maximum number of connections
+        that can remain idle in the pool, without extra ones being released, or negative
+        for no limit.'}
+    zh: {description: 池中可以保持空闲状态的最大连接数，而不释放额外的连接，或为负数，无限制。, displayName: 最大空闲连接数}
+  Password:
+    en: {displayName: Password, description: The password for the database user}
+    zh: {description: 数据库用户的密码, displayName: 暗语}
+tags:
+  en: [dbcp, jdbc, database, connection, pooling, store, hadoop]
+  zh: [数据库cp, jdbc语言, 数据库, 联系, 汇集，汇集, 百货商店, hadoop公司]

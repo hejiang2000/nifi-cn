@@ -1,0 +1,148 @@
+capabilityDescription: {en: Publishes Provenance events using the Site To Site protocol.,
+  zh: 使用“站点到站点”协议发布普罗旺斯事件。}
+statefulDescription: {en: Stores the Reporting Task's last event Id so that on restart
+    the task knows where it left off., zh: 存储报告任务的最后一个事件Id，以便在重新启动任务时知道它在哪里停止。}
+properties:
+  s2s-prov-task-event-filter:
+    en: {displayName: Event Type to Include, description: 'Comma-separated list of
+        event types that will be used to filter the provenance events sent by the
+        reporting task. Available event types are [CREATE, RECEIVE, FETCH, SEND, REMOTE_INVOCATION,
+        DOWNLOAD, DROP, EXPIRE, FORK, JOIN, CLONE, CONTENT_MODIFIED, ATTRIBUTES_MODIFIED,
+        ROUTE, ADDINFO, REPLAY, UNKNOWN]. If no filter is set, all the events are
+        sent. If multiple filters are set, the filters are cumulative.'}
+    zh: {description: '用逗号分隔的事件类型列表，将用于筛选报告任务发送的起源事件。可用的事件类型为[CREATE、RECEIVE、FETCH、SEND、REMOTE_INVOCATION、DOWNLOAD、DROP、EXPIRE、FORK、JOIN、CLONE、CONTENT_MODFIED、ATTRIBUTES_MODIFIED、ROUTE、ADDINFO、REPLAY、UNKNOWN]。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。',
+      displayName: 要包含的事件类型}
+  Input Port Name:
+    en: {displayName: Input Port Name, description: The name of the Input Port to
+        deliver data to.}
+    zh: {description: 要向其传递数据的输入端口的名称。, displayName: 输入端口名称}
+  s2s-prov-task-id-filter-exclude:
+    en: {displayName: Component ID to Exclude, description: 'Comma-separated list
+        of component UUID that will be used to exclude the provenance events sent
+        by the reporting task. If no filter is set, all the events are sent. If multiple
+        filters are set, the filters are cumulative. If a component UUID is included
+        in Component ID to Include and excluded here, then the exclusion takes precedence
+        and the event will not be sent.'}
+    zh: {description: 组件UUID的逗号分隔列表，用于排除报告任务发送的源事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。如果组件UUID包含在要包含的组件ID中并在此处排除，则排除优先，不会发送事件。,
+      displayName: 要排除的组件ID}
+  s2s-transport-protocol:
+    en: {displayName: Transport Protocol, description: Specifies which transport protocol
+        to use for Site-to-Site communication.}
+    zh: {description: 指定用于站点到站点通信的传输协议。, displayName: 传输协议}
+  Platform:
+    en: {displayName: Platform, description: The value to use for the platform field
+        in each event.}
+    zh: {description: 用于每个事件中平台字段的值。, displayName: 站台}
+  s2s-prov-task-type-filter-exclude:
+    en: {displayName: Component Type to Exclude, description: 'Regular expression
+        to exclude the provenance events based on the component type. The events matching
+        the regular expression will not be sent. If no filter is set, all the events
+        are sent. If multiple filters are set, the filters are cumulative. If a component
+        type is included in Component Type to Include and excluded here, then the
+        exclusion takes precedence and the event will not be sent.'}
+    zh: {description: 基于组件类型排除起源事件的正则表达式。将不会发送与正则表达式匹配的事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。如果组件类型包含在“要包含的组件类型”中，并在此处排除，则排除优先，不会发送事件。,
+      displayName: 要排除的组件类型}
+  s2s-http-proxy-password:
+    en: {displayName: HTTP Proxy password, description: 'Specify an user password
+        to connect to the proxy server, optional.'}
+    zh: {description: 指定连接到代理服务器的用户密码（可选）。, displayName: HTTP代理密码}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records.}
+    zh: {description: 指定用于写入记录的控制器服务。, displayName: 记录编写器}
+  s2s-http-proxy-hostname:
+    en: {displayName: HTTP Proxy hostname, description: 'Specify the proxy server''s
+        hostname to use. If not specified, HTTP traffics are sent directly to the
+        target NiFi instance.'}
+    zh: {description: 指定要使用的代理服务器的主机名。如果未指定，HTTP流量将直接发送到目标NiFi实例。, displayName: HTTP代理主机名}
+  s2s-prov-task-name-filter:
+    en: {displayName: Component Name to Include, description: 'Regular expression
+        to filter the provenance events based on the component name. Only the events
+        matching the regular expression will be sent. If no filter is set, all the
+        events are sent. If multiple filters are set, the filters are cumulative.'}
+    zh: {description: 正则表达式，用于根据组件名称筛选源事件。只会发送与正则表达式匹配的事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。,
+      displayName: 要包含的组件名称}
+  Destination URL:
+    en: {displayName: Destination URL, description: 'The URL of the destination NiFi
+        instance or, if clustered, a comma-separated list of address in the format
+        of http(s)://host:port/nifi. This destination URL will only be used to initiate
+        the Site-to-Site connection. The data sent by this reporting task will be
+        load-balanced on all the nodes of the destination (if clustered).'}
+    zh: {description: '目标NiFi实例的URL，如果是群集的，则为以逗号分隔的地址列表，格式为http://host:port/NiFi。此目标URL将仅用于启动站点到站点的连接。此报告任务发送的数据将在目标的所有节点（如果已群集）上进行负载平衡。',
+      displayName: 目标网址}
+  include-null-values:
+    en: {displayName: Include Null Values, description: Indicate if null values should
+        be included in records. Default will be false}
+    zh: {description: 指示记录中是否应包含空值。默认值将为false, displayName: 包含Null值}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'The SSL Context Service to
+        use when communicating with the destination. If not specified, communications
+        will not be secure.'}
+    zh: {description: 与目标通信时要使用的SSL上下文服务。如果未指定，通信将不安全。, displayName: SSL上下文服务}
+  s2s-prov-task-type-filter:
+    en: {displayName: Component Type to Include, description: 'Regular expression
+        to filter the provenance events based on the component type. Only the events
+        matching the regular expression will be sent. If no filter is set, all the
+        events are sent. If multiple filters are set, the filters are cumulative.'}
+    zh: {description: 用于根据组件类型筛选源事件的正则表达式。只会发送与正则表达式匹配的事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。,
+      displayName: 要包含的组件类型}
+  s2s-prov-task-id-filter:
+    en: {displayName: Component ID to Include, description: 'Comma-separated list
+        of component UUID that will be used to filter the provenance events sent by
+        the reporting task. If no filter is set, all the events are sent. If multiple
+        filters are set, the filters are cumulative.'}
+    zh: {description: 组件UUID的逗号分隔列表，用于过滤报告任务发送的源事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。,
+      displayName: 要包含的组件ID}
+  Compress Events:
+    en: {displayName: Compress Events, description: Indicates whether or not to compress
+        the data being sent.}
+    zh: {description: 指示是否压缩正在发送的数据。, displayName: 压缩事件}
+  s2s-http-proxy-port:
+    en: {displayName: HTTP Proxy port, description: 'Specify the proxy server''s port
+        number, optional. If not specified, default port 80 will be used.'}
+    zh: {description: 指定代理服务器的端口号（可选）。如果未指定，将使用默认端口80。, displayName: HTTP代理端口}
+  Batch Size:
+    en: {displayName: Batch Size, description: 'Specifies how many records to send
+        in a single batch, at most.'}
+    zh: {description: 指定在单个批处理中最多发送多少条记录。, displayName: 批量大小}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: Specifies how long to wait
+        to a response from the destination before deciding that an error has occurred
+        and canceling the transaction}
+    zh: {description: 指定在确定发生错误并取消事务之前等待目标响应的时间, displayName: 通信超时}
+  s2s-prov-task-event-filter-exclude:
+    en: {displayName: Event Type to Exclude, description: 'Comma-separated list of
+        event types that will be used to exclude the provenance events sent by the
+        reporting task. Available event types are [CREATE, RECEIVE, FETCH, SEND, REMOTE_INVOCATION,
+        DOWNLOAD, DROP, EXPIRE, FORK, JOIN, CLONE, CONTENT_MODIFIED, ATTRIBUTES_MODIFIED,
+        ROUTE, ADDINFO, REPLAY, UNKNOWN]. If no filter is set, all the events are
+        sent. If multiple filters are set, the filters are cumulative. If an event
+        type is included in Event Type to Include and excluded here, then the exclusion
+        takes precedence and the event will not be sent.'}
+    zh: {description: '将用于排除报告任务发送的起源事件的事件类型的逗号分隔列表。可用的事件类型为[CREATE、RECEIVE、FETCH、SEND、REMOTE_INVOCATION、DOWNLOAD、DROP、EXPIRE、FORK、JOIN、CLONE、CONTENT_MODFIED、ATTRIBUTES_MODIFIED、ROUTE、ADDINFO、REPLAY、UNKNOWN]。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。如果事件类型包含在“要包含的事件类型”中并在此处排除，则排除优先，不会发送事件。',
+      displayName: 要排除的事件类型}
+  start-position:
+    en: {displayName: Start Position, description: 'If the Reporting Task has never
+        been run, or if its state has been reset by a user, specifies where in the
+        stream of Provenance Events the Reporting Task should start'}
+    zh: {description: 如果报告任务从未运行过，或其状态已由用户重置，则指定报告任务应在源事件流中的何处启动, displayName: 起始位置}
+  s2s-http-proxy-username:
+    en: {displayName: HTTP Proxy username, description: 'Specify an user name to connect
+        to the proxy server, optional.'}
+    zh: {description: 指定要连接到代理服务器的用户名（可选）。, displayName: HTTP代理用户名}
+  Instance URL:
+    en: {displayName: Instance URL, description: The URL of this instance to use in
+        the Content URI of each event.}
+    zh: {description: 要在每个事件的内容URI中使用的此实例的URL。, displayName: 实例URL}
+  s2s-prov-task-name-filter-exclude:
+    en: {displayName: Component Name to Exclude, description: 'Regular expression
+        to exclude the provenance events based on the component name. The events matching
+        the regular expression will not be sent. If no filter is set, all the events
+        are sent. If multiple filters are set, the filters are cumulative. If a component
+        name is included in Component Name to Include and excluded here, then the
+        exclusion takes precedence and the event will not be sent.'}
+    zh: {description: 基于组件名称排除起源事件的正则表达式。将不会发送与正则表达式匹配的事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。如果组件名称包含在要包含的组件名称中并在此处排除，则排除优先，并且不会发送事件。,
+      displayName: 要排除的组件名称}
+tags:
+  en: [provenance, lineage, tracking, site, site to site]
+  zh: [发源地, 世系, 跟踪，跟踪, 地点, 站点到站点]

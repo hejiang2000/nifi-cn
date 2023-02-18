@@ -1,0 +1,71 @@
+dynamicProperties:
+  The name of an HBase configuration property.:
+    en: {description: These properties will be set on the HBase configuration after
+        loading any provided configuration files., value: The value of the given HBase
+        configuration property.}
+    zh: {description: 加载任何提供的配置文件后，将在HBase配置上设置这些属性。, value: 给定HBase配置属性的值。}
+capabilityDescription: {en: 'Implementation of HBaseClientService using the HBase
+    1.1.x client. Although this service was originally built with the 1.1.2 client
+    and has 1_1_2 in it''s name, the client library has since been upgraded to 1.1.13
+    to leverage bug fixes. This service can be configured by providing a comma-separated
+    list of configuration files, or by specifying values for the other properties.
+    If configuration files are provided, they will be loaded first, and the values
+    of the additional properties will override the values from the configuration files.
+    In addition, any user defined properties on the processor will also be passed
+    to the HBase configuration.', zh: 使用HBase 1.1.x客户端实现HBaseClientService。尽管该服务最初是用1.1.2客户端构建的，并且其名称中有1_1_2，但客户端库已升级到1.1.13以利用错误修复。可以通过提供逗号分隔的配置文件列表或指定其他属性的值来配置此服务。如果提供了配置文件，将首先加载它们，并且附加属性的值将覆盖配置文件中的值。此外，处理器上的任何用户定义属性也将传递给HBase配置。}
+properties:
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials Controller Service that should be used for authenticating with
+        Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos凭据控制器服务, displayName: Kerberos凭据服务}
+  Kerberos Password:
+    en: {displayName: Kerberos Password, description: Kerberos password associated
+        with the principal.}
+    zh: {description: 与主体关联的Kerberos密码。, displayName: Kerberos密码}
+  Kerberos Keytab:
+    en: {displayName: Kerberos Keytab, description: Kerberos keytab associated with
+        the principal. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 与主体关联的Kerberos密钥表。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos密钥选项卡}
+  ZooKeeper Quorum:
+    en: {displayName: ZooKeeper Quorum, description: Comma-separated list of ZooKeeper
+        hosts for HBase. Required if Hadoop Configuration Files are not provided.}
+    zh: {description: HBase的ZooKeeper主机的逗号分隔列表。如果未提供Hadoop配置文件，则为必填项。, displayName: ZooKeeper法定人数}
+  ZooKeeper Client Port:
+    en: {displayName: ZooKeeper Client Port, description: The port on which ZooKeeper
+        is accepting client connections. Required if Hadoop Configuration Files are
+        not provided.}
+    zh: {description: ZooKeeper接受客户端连接的端口。如果未提供Hadoop配置文件，则为必填项。, displayName: ZooKeeper客户端端口}
+  ZooKeeper ZNode Parent:
+    en: {displayName: ZooKeeper ZNode Parent, description: 'The ZooKeeper ZNode Parent
+        value for HBase (example: /hbase). Required if Hadoop Configuration Files
+        are not provided.'}
+    zh: {description: HBase的ZooKeeper ZNode Parent值（例如：/HBase）。如果未提供Hadoop配置文件，则为必填项。,
+      displayName: ZooKeeper ZNode父级}
+  Kerberos Principal:
+    en: {displayName: Kerberos Principal, description: Kerberos principal to authenticate
+        as. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 要作为身份验证的Kerberos主体。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos主体}
+  HBase Client Retries:
+    en: {displayName: HBase Client Retries, description: The number of times the HBase
+        client will retry connecting. Required if Hadoop Configuration Files are not
+        provided.}
+    zh: {description: HBase客户端将重试连接的次数。如果未提供Hadoop配置文件，则为必填项。, displayName: HBase客户端重试}
+  kerberos-user-service:
+    en: {displayName: Kerberos User Service, description: Specifies the Kerberos User
+        Controller Service that should be used for authenticating with Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos用户控制器服务, displayName: Kerberos用户服务}
+  Hadoop Configuration Files:
+    en: {displayName: Hadoop Configuration Files, description: 'Comma-separated list
+        of Hadoop Configuration files, such as hbase-site.xml and core-site.xml for
+        kerberos, including full paths to the files.'}
+    zh: {description: Hadoop配置文件的逗号分隔列表，如hbase站点。xml和核心站点。xml，包括文件的完整路径。, displayName: Hadoop配置文件}
+  Phoenix Client JAR Location:
+    en: {displayName: Phoenix Client JAR Location, description: The full path to the
+        Phoenix client JAR. Required if Phoenix is installed on top of HBase.}
+    zh: {description: Phoenix客户端JAR的完整路径。如果Phoenix安装在HBase顶部，则为必填项。, displayName: Phoenix客户端JAR位置}
+tags:
+  en: [hbase, client]
+  zh: [数据库, 客户]

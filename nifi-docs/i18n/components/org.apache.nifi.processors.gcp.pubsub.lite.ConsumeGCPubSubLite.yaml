@@ -1,0 +1,45 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      Cloud Pub/Sub operation., zh: 在成功的Google Cloud Pub/Sub操作之后，FlowFiles被路由到此关系。}
+capabilityDescription: {en: 'Consumes message from the configured Google Cloud PubSub
+    Lite subscription. In its current state, this processor will only work if running
+    on a Google Cloud Compute Engine instance and if using the GCP Credentials Controller
+    Service with ''Use Application Default Credentials'' or ''Use Compute Engine Credentials''.',
+  zh: 使用来自配置的Google Cloud PubSub-Lite订阅的消息。在其当前状态下，此处理器仅在运行在Google云计算引擎实例上并且使用带有“使用应用程序默认凭据”或“使用计算引擎凭据”的GCP凭据控制器服务时才能工作。}
+properties:
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  gcp-pubsub-subscription:
+    en: {displayName: Subscription, description: 'Name of the Google Cloud Pub/Sub
+        Subscription. Example: projects/8476107443/locations/europe-west1-d/subscriptions/my-lite-subscription'}
+    zh: {description: 谷歌云发布/订阅的名称。示例：projects/8476107434/locations/europe-west1-d/subscriptions/my
+        lite subscription, displayName: 订阅}
+  gcp-bytes-outstanding:
+    en: {displayName: Bytes Outstanding, description: The number of quota bytes that
+        may be outstanding to the client.}
+    zh: {description: 客户端可能未完成的配额字节数。, displayName: 未完成字节数}
+  gcp-messages-outstanding:
+    en: {displayName: Messages Outstanding, description: The number of messages that
+        may be outstanding to the client.}
+    zh: {description: 客户端可能未完成的消息数。, displayName: 未完成的邮件}
+writeAttributes:
+  gcp.pubsub.messageId: {en: ID of the pubsub message published to the configured
+      Google Cloud PubSub topic, zh: 发布到配置的Google Cloud pubsub主题的pubsub消息的ID}
+  gcp.pubsub.ordering.key: {en: 'If non-empty, identifies related messages for which
+      publish order should be respected. If a ''Subscription'' has ''enable_message_ordering''
+      set to ''true'', messages published with the same non-empty ''ordering_key''
+      value will be delivered to subscribers in the order in which they are received
+      by the Pub/Sub system. All ''PubsubMessage''s published in a given ''PublishRequest''
+      must specify the same ''ordering_key'' value.', zh: 如果非空，则标识应遵守发布顺序的相关消息。如果“订阅”的“enable_message_ordering”设置为“true”，则使用相同的非空“ordering_key”值发布的消息将按照发布/子系统接收它们的顺序发送给订阅者。在给定的“PublishRequest”中发布的所有“PublishsubMessage”必须指定相同的“ordering_key”值。}
+  gcp.pubsub.attributesCount: {en: 'Number of attributes the consumed PubSub message
+      has, if any', zh: 使用的PubSub消息具有的属性数（如果有）}
+  gcp.pubsub.publishTime: {en: Timestamp value when the message was published, zh: 发布消息时的时间戳值}
+  Dynamic Attributes: {en: 'Other than the listed attributes, this processor may write
+      zero or more attributes, if the original Google Cloud Publisher client added
+      any attributes to the message while sending', zh: 除了列出的属性之外，如果原始的Google Cloud
+      Publisher客户端在发送消息时向消息中添加了任何属性，则该处理器可能会写入零个或多个属性}
+tags:
+  en: [google, google-cloud, gcp, message, pubsub, consume, lite]
+  zh: [谷歌, 谷歌云, 通用计算机程序, 消息, 公共图书馆, 消费, 清淡的]

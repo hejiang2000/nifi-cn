@@ -1,0 +1,40 @@
+relationships:
+  success: {en: Files that have been successfully written to Azure storage are transferred
+      to this relationship, zh: 已成功写入Azure存储的文件将传输到此关系}
+  failure: {en: Files that could not be written to Azure storage for some reason are
+      transferred to this relationship, zh: 由于某种原因无法写入Azure存储的文件已传输到此关系}
+capabilityDescription: {en: Deletes the provided file from Azure Data Lake Storage,
+  zh: 从Azure Data Lake存储中删除提供的文件}
+properties:
+  filesystem-name:
+    en: {displayName: Filesystem Name, description: Name of the Azure Storage File
+        System (also called Container). It is assumed to be already existing.}
+    zh: {description: Azure存储文件系统（也称为容器）的名称。假设它已经存在。, displayName: 文件系统名称}
+  adls-credentials-service:
+    en: {displayName: ADLS Credentials, description: Controller Service used to obtain
+        Azure Credentials.}
+    zh: {description: 用于获取Azure凭据的控制器服务。, displayName: ADLS证书}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        HTTP, SOCKS In case of SOCKS, it is not guaranteed that the selected SOCKS
+        Version will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：HTTP、SOCKS如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  filesystem-object-type:
+    en: {displayName: Filesystem Object Type, description: They type of the file system
+        object to be deleted. It can be either folder or file.}
+    zh: {description: 它们键入要删除的文件系统对象。它可以是文件夹或文件。, displayName: 文件系统对象类型}
+  directory-name:
+    en: {displayName: Directory Name, description: 'Name of the Azure Storage Directory.
+        The Directory Name cannot contain a leading ''/''. The root directory can
+        be designated by the empty string value. In case of the PutAzureDataLakeStorage
+        processor, the directory will be created if not already existing.'}
+    zh: {description: Azure存储目录的名称。目录名不能包含前导“/”。根目录可以由空字符串值指定。对于PutAzureDataLakeStorage处理器，如果尚未存在，则将创建目录。,
+      displayName: 目录名称}
+  file-name:
+    en: {displayName: File Name, description: The filename}
+    zh: {description: 文件名, displayName: 文件名}
+tags:
+  en: [azure, microsoft, cloud, storage, adlsgen2, datalake]
+  zh: [蔚蓝色的, 微软, 云, 存储, 广告广告2, 数据库]

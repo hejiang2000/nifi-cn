@@ -1,0 +1,83 @@
+relationships:
+  original: {en: The original input file will be routed to this destination when it
+      has been successfully split into 1 or more files, zh: 原始输入文件成功拆分为一个或多个文件后，将被路由到此目标}
+  splits: {en: The split files will be routed to this destination when an input file
+      is successfully split into 1 or more split files, zh: 当输入文件成功拆分为一个或多个拆分文件时，拆分文件将被路由到此目标}
+  failure: {en: 'If a file cannot be split for some reason, the original file will
+      be routed to this destination and nothing will be routed elsewhere', zh: 如果由于某种原因无法拆分文件，则原始文件将被路由到此目标，而不会被路由到其他位置}
+systemResourceConsiderations:
+  en: ['The FlowFile with its attributes is stored in memory, not the content of the
+      FlowFile. If many splits are generated due to the size of the content, or how
+      the content is configured to be split, a two-phase approach may be necessary
+      to avoid excessive use of memory.']
+  zh: [FlowFile及其属性存储在内存中，而不是FlowFile的内容。如果由于内容的大小或如何配置内容以进行拆分而生成了许多拆分，则可能需要两阶段方法来避免过度使用内存。]
+capabilityDescription: {en: 'Splits a text file into multiple smaller text files on
+    line boundaries limited by maximum number of lines or total size of fragment.
+    Each output split file will contain no more than the configured number of lines
+    or bytes. If both Line Split Count and Maximum Fragment Size are specified, the
+    split occurs at whichever limit is reached first. If the first line of a fragment
+    exceeds the Maximum Fragment Size, that line will be output in a single split
+    file which exceeds the configured maximum size limit. This component also allows
+    one to specify that each split should include a header lines. Header lines can
+    be computed by either specifying the amount of lines that should constitute a
+    header or by using header marker to match against the read lines. If such match
+    happens then the corresponding line will be treated as header. Keep in mind that
+    upon the first failure of header marker match, no more matches will be performed
+    and the rest of the data will be parsed as regular lines for a given split. If
+    after computation of the header there are no more data, the resulting split will
+    consists of only header lines.', zh: 在受最大行数或片段总大小限制的行边界上将文本文件拆分为多个较小的文本文件。每个输出分割文件包含的行数或字节数不得超过配置的行数。如果同时指定了Line
+    Split Count（行分割计数）和Maximum Fragment Size（最大片段大小），则在最先达到的限制处进行分割。如果片段的第一行超过最大片段大小，则该行将在单个分割文件中输出，该分割文件超过配置的最大大小限制。该组件还允许您指定每个拆分都应包含标题行。标题行可以通过指定构成标题的行数或使用标题标记与读取行匹配来计算。如果发生这种匹配，则相应的行将被视为标头。请记住，在头标记匹配第一次失败时，将不再执行匹配，其余数据将被解析为给定拆分的常规行。如果在计算标题后没有更多数据，则生成的拆分将仅包含标题行。}
+properties:
+  Remove Trailing Newlines:
+    en:
+      displayName: Remove Trailing Newlines
+      description: "Whether to remove newlines at the end of each split file. This\
+        \ should be false if you intend to merge the split files later. If this is\
+        \ set to 'true' and a FlowFile is generated that contains only 'empty lines'\
+        \ (i.e., consists only of \r and \n characters), the FlowFile will not be\
+        \ emitted. Note, however, that if header lines are specified, the resultant\
+        \ FlowFile will never be empty as it will consist of the header lines, so\
+        \ a FlowFile may be emitted that contains only the header lines."
+    zh: {description: 是否删除每个拆分文件末尾的换行符。如果以后要合并拆分的文件，则该值应为false。如果设置为“true”，并且生成的FlowFile仅包含“空行”（即，仅包含,
+      displayName: 删除尾部换行符}
+  Maximum Fragment Size:
+    en: {displayName: Maximum Fragment Size, description: 'The maximum size of each
+        split file, including header lines. NOTE: in the case where a single line
+        exceeds this property (including headers, if applicable), that line will be
+        output in a split of its own which exceeds this Maximum Fragment Size setting.'}
+    zh: {description: 每个拆分文件的最大大小，包括标题行。注意：如果单行超过此属性（包括标题，如果适用），则该行将以超出此“最大片段大小”设置的拆分形式输出。,
+      displayName: 最大片段大小}
+  Header Line Marker Characters:
+    en: {displayName: Header Line Marker Characters, description: The first character(s)
+        on the line of the datafile which signifies a header line. This value is ignored
+        when Header Line Count is non-zero. The first line not containing the Header
+        Line Marker Characters and all subsequent lines are considered non-header}
+    zh: {description: 数据文件行上表示标题行的第一个字符。当标题行计数为非零时，将忽略此值。不包含标题行标记字符的第一行和所有后续行均视为非标题行,
+      displayName: 标题行标记字符}
+  Header Line Count:
+    en: {displayName: Header Line Count, description: The number of lines that should
+        be considered part of the header; the header lines will be duplicated to all
+        split files}
+    zh: {description: 应视为标题一部分的行数；标题行将复制到所有拆分文件, displayName: 标题行计数}
+  Line Split Count:
+    en: {displayName: Line Split Count, description: 'The number of lines that will
+        be added to each split file, excluding header lines. A value of zero requires
+        Maximum Fragment Size to be set, and line count will not be considered in
+        determining splits.'}
+    zh: {description: 将添加到每个拆分文件的行数，不包括标题行。值为零需要设置“最大片段大小”，在确定拆分时不考虑行数。, displayName: 行拆分计数}
+writeAttributes:
+  'segment.original.filename ': {en: The filename of the parent FlowFile, zh: 父FlowFile的文件名}
+  fragment.size: {en: 'The number of bytes from the original FlowFile that were copied
+      to this FlowFile, including header, if applicable, which is duplicated in each
+      split FlowFile', zh: 从原始FlowFile复制到此FlowFile的字节数，包括在每个拆分FlowFile中复制的标头（如果适用）}
+  fragment.identifier: {en: All split FlowFiles produced from the same parent FlowFile
+      will have the same randomly generated UUID added for this attribute, zh: 从同一父FlowFile生成的所有拆分FlowFile都将为此属性添加相同的随机生成UUID}
+  fragment.index: {en: A one-up number that indicates the ordering of the split FlowFiles
+      that were created from a single parent FlowFile, zh: 一个向上的数字，表示从单个父FlowFile创建的拆分FlowFile的顺序}
+  fragment.count: {en: The number of split FlowFiles generated from the parent FlowFile,
+    zh: 从父FlowFile生成的拆分FlowFile的数量}
+  text.line.count: {en: The number of lines of text from the original FlowFile that
+      were copied to this FlowFile, zh: 从原始FlowFile复制到此FlowFile的文本行数}
+tags:
+  en: [split, text]
+  zh: [分裂, 文本]

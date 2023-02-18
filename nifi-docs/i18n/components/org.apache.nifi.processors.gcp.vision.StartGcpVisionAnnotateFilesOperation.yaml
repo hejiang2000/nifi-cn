@@ -1,0 +1,36 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+capabilityDescription: {en: Trigger a Vision operation on file input. It should be
+    followed by GetGcpVisionAnnotateFilesOperationStatus processor in order to monitor
+    operation status., zh: 对文件输入触发Vision操作。它后面应该是GetGcpVisionAnnotateFilesOperationStatus处理器，以便监视操作状态。}
+properties:
+  json-payload:
+    en: {displayName: JSON Payload, description: JSON request for AWS Machine Learning
+        services. The Processor will use FlowFile content for the request when this
+        property is not specified.}
+    zh: {description: AWS机器学习服务的JSON请求。当未指定此属性时，处理器将对请求使用FlowFile内容。, displayName: JSON负载}
+  output-bucket:
+    en: {displayName: Output Bucket, description: 'Name of the GCS bucket where the
+        output of the Vision job will be persisted. The value of this property applies
+        when the JSON Payload property is configured. The JSON Payload property value
+        can use Expression Language to reference the value of ${output-bucket}'}
+    zh: {description: '将保存Vision作业输出的GCS存储桶的名称。此属性的值在配置JSON Payload属性时适用。JSON Payload属性值可以使用Expression
+        Language引用${output bucket}的值', displayName: 输出铲斗}
+  vision-feature-type:
+    en: {displayName: Vision Feature Type, description: 'Type of GCP Vision Feature.
+        The value of this property applies when the JSON Payload property is configured.
+        The JSON Payload property value can use Expression Language to reference the
+        value of ${vision-feature-type}'}
+    zh: {description: 'GCP视觉特征的类型。此属性的值在配置JSON Payload属性时适用。JSON Payload属性值可以使用Expression
+        Language引用${vision feature-type}的值', displayName: 视觉特征类型}
+  gcp-credentials-provider-service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+writeAttributes:
+  operationKey: {en: A unique identifier of the operation returned by the Vision server.,
+    zh: Vision服务器返回的操作的唯一标识符。}
+tags:
+  en: [Google, Cloud, Machine Learning, Vision]
+  zh: [谷歌, 云, 机器学习, 视力]

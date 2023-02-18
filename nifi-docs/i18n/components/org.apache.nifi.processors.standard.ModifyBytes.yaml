@@ -1,0 +1,20 @@
+relationships:
+  success: {en: Processed flowfiles., zh: 已处理流文件。}
+capabilityDescription: {en: Discard byte range at the start and end or all content
+    of a binary file., zh: 放弃二进制文件开头和结尾的字节范围或所有内容。}
+properties:
+  Start Offset:
+    en: {displayName: Start Offset, description: Number of bytes removed at the beginning
+        of the file.}
+    zh: {description: 文件开头删除的字节数。, displayName: 起始偏移量}
+  End Offset:
+    en: {displayName: End Offset, description: Number of bytes removed at the end
+        of the file.}
+    zh: {description: 文件末尾删除的字节数。, displayName: 结束偏移量}
+  Remove All Content:
+    en: {displayName: Remove All Content, description: Remove all content from the
+        FlowFile superseding Start Offset and End Offset properties.}
+    zh: {description: 从FlowFile中删除替代“开始偏移”和“结束偏移”属性的所有内容。, displayName: 删除所有内容}
+tags:
+  en: [binary, discard, keep]
+  zh: [二进制的, 丢弃, 保持]

@@ -1,0 +1,43 @@
+relationships:
+  success: {en: FlowFiles that are successfully transformed will be routed to this
+      relationship, zh: 成功转换的FlowFiles将路由到此关系}
+  failure: {en: 'If a FlowFile cannot be transformed from the configured input format
+      to the configured output format, the unchanged FlowFile will be routed to this
+      relationship', zh: 如果FlowFile无法从配置的输入格式转换为配置的输出格式，则未更改的FlowFile将被路由到此关系}
+dynamicProperties:
+  A RecordPath.:
+    en: {description: Allows users to specify values to use to replace fields in the
+        record that match the RecordPath., value: The value to use to replace fields
+        in the record that match the RecordPath}
+    zh: {description: 允许用户指定用于替换记录中与RecordPath匹配的字段的值。, value: 用于替换记录中与RecordPath匹配的字段的值}
+capabilityDescription: {en: 'Updates the contents of a FlowFile that contains Record-oriented
+    data (i.e., data that can be read via a RecordReader and written by a RecordWriter).
+    This Processor requires that at least one user-defined Property be added. The
+    name of the Property should indicate a RecordPath that determines the field that
+    should be updated. The value of the Property is either a replacement value (optionally
+    making use of the Expression Language) or is itself a RecordPath that extracts
+    a value from the Record. Whether the Property value is determined to be a RecordPath
+    or a literal value depends on the configuration of the <Replacement Value Strategy>
+    Property.', zh: 更新包含面向记录的数据（即可通过RecordReader读取并由RecordWriter写入的数据）的FlowFile的内容。此处理器要求至少添加一个用户定义的属性。属性的名称应指示一个RecordPath，该RecordPath确定应更新的字段。属性的值可以是替换值（可以选择使用表达式语言），也可以是从记录中提取值的RecordPath。属性值是确定为RecordPath还是文字值取决于<Replacement
+    value Strategy>属性的配置。}
+properties:
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  replacement-value-strategy:
+    en: {displayName: Replacement Value Strategy, description: Specifies how to interpret
+        the configured replacement values}
+    zh: {description: 指定如何解释配置的替换值, displayName: 重置价值策略}
+writeAttributes:
+  record.error.message: {en: This attribute provides on failure the error message
+      encountered by the Reader or Writer., zh: 此属性在失败时提供读取器或写入器遇到的错误消息。}
+  record.index: {en: This attribute provides the current row index and is only available
+      inside the literal value expression., zh: 此属性提供当前行索引，仅在文字值表达式中可用。}
+tags:
+  en: [update, record, generic, schema, json, csv, avro, log, logs, freeform, text]
+  zh: [使现代化, 记录, 通用的, 模式, json文件, csv格式, 我没有吗？, 日志, 日志, 自由形式的, 文本]

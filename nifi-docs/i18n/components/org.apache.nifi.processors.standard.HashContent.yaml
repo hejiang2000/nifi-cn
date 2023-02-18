@@ -1,0 +1,31 @@
+relationships:
+  success: {en: FlowFiles that are process successfully will be sent to this relationship,
+    zh: 成功处理的FlowFiles将发送到此关系}
+  failure: {en: Any FlowFile that cannot be processed successfully will be sent to
+      this relationship without any attribute being added, zh: 无法成功处理的任何FlowFile都将发送到此关系，而不添加任何属性}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+capabilityDescription: {en: 'Calculates a hash value for the Content of a FlowFile
+    and puts that hash value on the FlowFile as an attribute whose name is determined
+    by the <Hash Attribute Name> property. This processor did not provide a consistent
+    offering of hash algorithms, and is now deprecated. For modern cryptographic hashing
+    capabilities, see "CryptographicHashContent". ', zh: 计算FlowFile内容的哈希值，并将该哈希值作为一个属性放在FlowFile上，该属性的名称由＜hash
+    attribute name＞属性确定。此处理器未提供一致的哈希算法，现在已弃用。有关现代加密哈希功能，请参阅“CryptographicHashContent”。}
+properties:
+  Hash Algorithm:
+    en: {displayName: Hash Algorithm, description: Determines what hashing algorithm
+        should be used to perform the hashing function}
+    zh: {description: 确定应该使用什么哈希算法来执行哈希函数, displayName: 哈希算法}
+  Hash Attribute Name:
+    en: {displayName: Hash Attribute Name, description: 'The name of the FlowFile
+        Attribute into which the Hash Value should be written. If the value already
+        exists, it will be overwritten'}
+    zh: {description: 应将哈希值写入其中的FlowFile属性的名称。如果该值已存在，则将覆盖该值, displayName: 哈希属性名称}
+writeAttributes:
+  <Hash Attribute Name>: {en: This Processor adds an attribute whose value is the
+      result of Hashing the existing FlowFile content. The name of this attribute
+      is specified by the <Hash Attribute Name> property, zh: 此处理器添加一个属性，其值是哈希现有FlowFile内容的结果。此属性的名称由＜Hash
+      attribute name＞属性指定}
+tags:
+  en: [hash, content, MD5, SHA-1, SHA-256]
+  zh: [搞砸, 所容纳之物, MD5型, 沙-1, 沙-256]

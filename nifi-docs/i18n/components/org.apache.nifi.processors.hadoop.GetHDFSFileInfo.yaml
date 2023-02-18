@@ -1,0 +1,140 @@
+relationships:
+  original: {en: Original FlowFiles are transferred to this relationship, zh: 原始FlowFiles传输到此关系}
+  success: {en: All successfully generated FlowFiles are transferred to this relationship,
+    zh: 所有成功生成的FlowFiles都将传输到此关系}
+  failure: {en: All failed attempts to access HDFS will be routed to this relationship,
+    zh: 所有访问HDFS失败的尝试都将路由到此关系}
+  not found: {en: 'If no objects are found, original FlowFile are transferred to this
+      relationship', zh: 如果找不到对象，原始FlowFile将传输到此关系}
+capabilityDescription: {en: 'Retrieves a listing of files and directories from HDFS.
+    This processor creates a FlowFile(s) that represents the HDFS file/dir with relevant
+    information. Main purpose of this processor to provide functionality similar to
+    HDFS Client, i.e. count, du, ls, test, etc. Unlike ListHDFS, this processor is
+    stateless, supports incoming connections and provides information on a dir level. ',
+  zh: 从HDFS中检索文件和目录的列表。此处理器创建一个流文件，该流文件表示HDFS文件/dir和相关信息。此处理器的主要目的是提供类似于HDFS客户端的功能，即计数、du、ls、测试等。与ListHDFS不同，此处理器是无状态的，支持传入连接并提供目录级别的信息。}
+properties:
+  gethdfsfileinfo-file-filter:
+    en: {displayName: File Filter, description: 'Regex. Only files whose names match
+        the given regular expression will be picked up. If not provided, any filter
+        would be apply (performance considerations).'}
+    zh: {description: Regex公司。只有名称与给定正则表达式匹配的文件才会被拾取。如果未提供，将应用任何过滤器（性能考虑）。, displayName: 文件筛选器}
+  Hadoop Configuration Resources:
+    en: {displayName: Hadoop Configuration Resources, description: 'A file or comma
+        separated list of files which contains the Hadoop file system configuration.
+        Without this, Hadoop will search the classpath for a ''core-site.xml'' and
+        ''hdfs-site.xml'' file or will revert to a default configuration. To use swebhdfs,
+        see ''Additional Details'' section of PutHDFS''s documentation.'}
+    zh: {description: 包含Hadoop文件系统配置的文件或逗号分隔的文件列表。否则，Hadoop将在类路径中搜索“核心站点”。xml'和'hdfs站点。xml文件，或将恢复为默认配置。要使用swebhdfs，请参阅PutHDFS文档的“其他详细信息”部分。,
+      displayName: Hadoop配置资源}
+  gethdfsfileinfo-file-exclude-filter:
+    en: {displayName: Exclude Files, description: 'Regex. Files whose names match
+        the given regular expression will not be picked up. If not provided, any filter
+        won''t be apply (performance considerations).'}
+    zh: {description: Regex公司。不会拾取名称与给定正则表达式匹配的文件。如果未提供，则不会应用任何过滤器（性能考虑）。, displayName: 排除文件}
+  gethdfsfileinfo-ignore-dotted-dirs:
+    en: {displayName: Ignore Dotted Directories, description: 'If true, directories
+        whose names begin with a dot (".") will be ignored'}
+    zh: {description: 如果为true，则将忽略名称以点（“.”）开头的目录, displayName: 忽略点式目录}
+  Additional Classpath Resources:
+    en: {displayName: Additional Classpath Resources, description: 'A comma-separated
+        list of paths to files and/or directories that will be added to the classpath
+        and used for loading native libraries. When specifying a directory, all files
+        with in the directory will be added to the classpath, but further sub-directories
+        will not be included.'}
+    zh: {description: 以逗号分隔的文件和/或目录路径列表，这些路径将添加到类路径中并用于加载本机库。指定目录时，目录中的所有文件都将添加到类路径中，但不包括其他子目录。,
+      displayName: 其他Classpath资源}
+  gethdfsfileinfo-ignore-dotted-files:
+    en: {displayName: Ignore Dotted Files, description: 'If true, files whose names
+        begin with a dot (".") will be ignored'}
+    zh: {description: 如果为true，则将忽略名称以点（“.”）开头的文件, displayName: 忽略点式文件}
+  gethdfsfileinfo-recurse-subdirs:
+    en: {displayName: Recurse Subdirectories, description: Indicates whether to list
+        files from subdirectories of the HDFS directory}
+    zh: {description: 指示是否从HDFS目录的子目录中列出文件, displayName: 定期子目录}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials Controller Service that should be used for authenticating with
+        Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos凭据控制器服务, displayName: Kerberos凭据服务}
+  gethdfsfileinfo-dir-filter:
+    en: {displayName: Directory Filter, description: 'Regex. Only directories whose
+        names match the given regular expression will be picked up. If not provided,
+        any filter would be apply (performance considerations).'}
+    zh: {description: Regex公司。只有名称与给定正则表达式匹配的目录才会被选中。如果未提供，将应用任何过滤器（性能考虑）。, displayName: 目录筛选器}
+  gethdfsfileinfo-batch-size:
+    en: {displayName: Batch Size, description: Number of records to put into an output
+        flowfile when 'Destination' is set to 'Content' and 'Group Results' is set
+        to 'None'}
+    zh: {description: 当“Destination”设置为“Content”且“Group Results”设置为为“None”时，要放入输出流文件的记录数,
+      displayName: 批量大小}
+  Kerberos Password:
+    en: {displayName: Kerberos Password, description: Kerberos password associated
+        with the principal.}
+    zh: {description: 与主体关联的Kerberos密码。, displayName: Kerberos密码}
+  gethdfsfileinfo-full-path:
+    en: {displayName: Full path, description: 'A directory to start listing from,
+        or a file''s full path.'}
+    zh: {description: 开始列出的目录或文件的完整路径。, displayName: 完整路径}
+  Kerberos Keytab:
+    en: {displayName: Kerberos Keytab, description: Kerberos keytab associated with
+        the principal. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 与主体关联的Kerberos密钥表。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos密钥选项卡}
+  gethdfsfileinfo-group:
+    en: {displayName: Group Results, description: Groups HDFS objects}
+    zh: {description: 组HDFS对象, displayName: 分组结果}
+  Kerberos Principal:
+    en: {displayName: Kerberos Principal, description: Kerberos principal to authenticate
+        as. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 要作为身份验证的Kerberos主体。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos主体}
+  kerberos-user-service:
+    en: {displayName: Kerberos User Service, description: Specifies the Kerberos User
+        Controller Service that should be used for authenticating with Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos用户控制器服务, displayName: Kerberos用户服务}
+  Kerberos Relogin Period:
+    en:
+      displayName: Kerberos Relogin Period
+      description: |-
+        Period of time which should pass before attempting a kerberos relogin.
+
+        This property has been deprecated, and has no effect on processing. Relogins now occur automatically.
+    zh: {description: 在尝试kerberos重新登录之前应该经过的时间段。, displayName: Kerberos时钟周期}
+  gethdfsfileinfo-destination:
+    en: {displayName: Destination, description: 'Sets the destination for the resutls.
+        When set to ''Content'', attributes of flowfile won''t be used for storing
+        results. '}
+    zh: {description: 设置结果的目标。当设置为“内容”时，流文件的属性将不会用于存储结果。, displayName: 目的地}
+writeAttributes:
+  hdfs.type: {en: 'The type of an object. Possible values: directory, file, link',
+    zh: 对象的类型。可能的值：目录、文件、链接}
+  hdfs.owner: {en: The user that owns the object in HDFS, zh: HDFS中拥有对象的用户}
+  hdfs.status: {en: 'The status contains comma separated list of file/dir paths, which
+      couldn''t be listed/accessed. Status won''t be set if no errors occured.', zh: 状态包含无法列出/访问的文件/dir路径的逗号分隔列表。如果没有发生错误，则不会设置状态。}
+  hdfs.replication: {en: The number of HDFS replicas for the file, zh: 文件的HDFS副本数}
+  hdfs.group: {en: The group that owns the object in HDFS, zh: HDFS中拥有对象的组}
+  hdfs.permissions: {en: 'The permissions for the object in HDFS. This is formatted
+      as 3 characters for the owner, 3 for the group, and 3 for other users. For example
+      rw-rw-r--', zh: HDFS中对象的权限。所有者的格式为3个字符，组为3个，其他用户为3个。例如rw-rw-r--}
+  hdfs.full.tree: {en: 'When destination is ''attribute'', will be populated with
+      full tree of HDFS directory in JSON format.WARNING: In case when scan finds
+      thousands or millions of objects, having huge values in attribute could impact
+      flow file repo and GC/heap usage. Use content destination for such cases', zh: 当destination为“attribute”时，将以JSON格式填充HDFS目录的完整树。警告：当扫描发现数千或数百万个对象时，在属性中具有巨大值可能会影响流文件回购和GC/堆使用。对此类情况使用内容目标}
+  hdfs.path: {en: 'The path is set to the absolute path of the object''s parent directory
+      on HDFS. For example, if an object is a directory ''foo'', under directory ''/bar''
+      then ''hdfs.objectName'' will have value ''foo'', and ''hdfs.path'' will be
+      ''/bar''', zh: 路径设置为HDFS上对象父目录的绝对路径。例如，如果一个对象是目录“foo”，在目录“/bar”下，则是“hdfs”。objectName”将具有值“foo”和“hdfs”。路径'将为'/bar'}
+  hdfs.count.dirs: {en: 'In case of type=''directory'' will represent total count
+      of directories under this dir (including itself). Won''t be populated to other
+      types of HDFS objects. ', zh: 如果类型为“directory”，则表示该目录下的目录总数（包括目录本身）。不会填充到其他类型的HDFS对象。}
+  hdfs.length: {en: 'In case of files: The number of bytes in the file in HDFS.  In
+      case of dirs: Retuns storage space consumed by directory. ', zh: 对于文件：HDFS中文件中的字节数。如果是dirs：则返回目录占用的存储空间。}
+  hdfs.objectName: {en: The name of the file/dir found on HDFS., zh: HDFS上找到的文件/dir的名称。}
+  hdfs.count.files: {en: 'In case of type=''directory'' will represent total count
+      of files under this dir. Won''t be populated to other types of HDFS objects. ',
+    zh: 在type='directory'的情况下，将表示此目录下的文件总数。不会填充到其他类型的HDFS对象。}
+  hdfs.lastModified: {en: 'The timestamp of when the object in HDFS was last modified,
+      as milliseconds since midnight Jan 1, 1970 UTC', zh: HDFS中对象上次修改的时间戳，以UTC 1970年1月1日午夜后的毫秒为单位}
+tags:
+  en: [hadoop, HCFS, HDFS, get, list, ingest, source, filesystem]
+  zh: [hadoop公司, 人类基因组学, 高密度光纤, 收到, 列表, 摄入, 来源, 文件系统]

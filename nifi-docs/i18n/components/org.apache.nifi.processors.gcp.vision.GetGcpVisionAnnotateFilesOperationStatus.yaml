@@ -1,0 +1,23 @@
+relationships:
+  running: {en: The job is currently still being processed, zh: 作业当前仍在处理中}
+  original: {en: 'Upon successful completion, the original FlowFile will be routed
+      to this relationship.', zh: 成功完成后，原始FlowFile将路由到此关系。}
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+capabilityDescription: {en: Retrieves the current status of an Google Vision operation.,
+  zh: 检索Google Vision操作的当前状态。}
+readAttributes:
+  operationKey: {en: A unique identifier of the operation designated by the Vision
+      server., zh: Vision服务器指定的操作的唯一标识符。}
+properties:
+  operationKey:
+    en: {displayName: GCP Operation Key, description: The unique identifier of the
+        Vision operation.}
+    zh: {description: Vision操作的唯一标识符。, displayName: GCP操作键}
+  gcp-credentials-provider-service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+tags:
+  en: [Google, Cloud, Vision, Machine Learning]
+  zh: [谷歌, 云, 视力, 机器学习]

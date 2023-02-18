@@ -212,7 +212,7 @@
                 });
             } else {
                 registries.push({
-                    text: 'No available registries',
+                    text: '无可用数据流程版本注册库',
                     value: null,
                     optionClass: 'unset',
                     disabled: true
@@ -277,7 +277,7 @@
 
             if (buckets.length === 0) {
                 buckets.push({
-                    text: 'No available buckets',
+                    text: '无可用桶',
                     value: null,
                     optionClass: 'unset',
                     disabled: true
@@ -286,7 +286,7 @@
                 if (nfCommon.isDefinedAndNotNull(flowCombo)) {
                     flowCombo.combo('destroy').combo({
                         options: [{
-                            text: 'No available flows',
+                            text: '无可用数据流程',
                             value: null,
                             optionClass: 'unset',
                             disabled: true
@@ -317,7 +317,7 @@
         var showNoBucketsAvailable = function () {
             bucketCombo.combo('destroy').combo({
                 options: [{
-                    text: 'No available buckets',
+                    text: '无可用桶',
                     value: null,
                     optionClass: 'unset',
                     disabled: true
@@ -327,7 +327,7 @@
             if (nfCommon.isDefinedAndNotNull(flowCombo)) {
                 flowCombo.combo('destroy').combo({
                     options: [{
-                        text: 'No available flows',
+                        text: '无可用数据流程',
                         value: null,
                         optionClass: 'unset',
                         disabled: true
@@ -343,7 +343,7 @@
         } else {
             bucketCombo.combo('destroy').combo({
                 options: [{
-                    text: 'Loading buckets...',
+                    text: '正在加载桶...',
                     value: null,
                     optionClass: 'unset',
                     disabled: true
@@ -353,7 +353,7 @@
             if (nfCommon.isDefinedAndNotNull(flowCombo)) {
                 flowCombo.combo('destroy').combo({
                     options: [{
-                        text: 'Loading flows...',
+                        text: '正在加载数据流程...',
                         value: null,
                         optionClass: 'unset',
                         disabled: true
@@ -428,7 +428,7 @@
         }).done(function (response) {
             if ('SYNC_FAILURE' === response.versionControlInformation.state) {
                 nfDialog.showOkDialog({
-                    headerText: 'Error',
+                    headerText: '错误',
                     dialogContent: response.versionControlInformation.stateExplanation
                 });
             }
@@ -485,7 +485,7 @@
         var importFlowVersionColumns = [
             {
                 id: 'version',
-                name: 'Version',
+                name: '版本',
                 field: 'version',
                 formatter: valueFormatter,
                 sortable: true,
@@ -495,7 +495,7 @@
             },
             {
                 id: 'timestamp',
-                name: 'Created',
+                name: '已创建',
                 field: 'timestamp',
                 formatter: timestampFormatter,
                 sortable: true,
@@ -505,7 +505,7 @@
             },
             {
                 id: 'changeComments',
-                name: 'Comments',
+                name: '说明',
                 field: 'comments',
                 sortable: true,
                 resizable: true,
@@ -633,7 +633,7 @@
             var markup = '';
 
             if (dataContext.differenceType !== 'Component Removed' && nfCommon.isDefinedAndNotNull(dataContext.processGroupId)) {
-                markup += '<div class="pointer go-to-component fa fa-long-arrow-right" title="Go To"></div>';
+                markup += '<div class="pointer go-to-component fa fa-long-arrow-right" title="到"></div>';
             }
 
             return markup;
@@ -643,7 +643,7 @@
         var localChangesColumns = [
             {
                 id: 'componentName',
-                name: 'Component Name',
+                name: '组件名称',
                 field: 'componentName',
                 formatter: valueFormatter,
                 sortable: true,
@@ -651,7 +651,7 @@
             },
             {
                 id: 'differenceType',
-                name: 'Change Type',
+                name: '改变类型',
                 field: 'differenceType',
                 formatter: valueFormatter,
                 sortable: true,
@@ -659,7 +659,7 @@
             },
             {
                 id: 'difference',
-                name: 'Difference',
+                name: '差异',
                 field: 'difference',
                 formatter: valueFormatter,
                 sortable: true,
@@ -759,7 +759,7 @@
         // update the registry and bucket visibility
         var registryCombo = $('#import-flow-version-registry-combo').combo('destroy').combo({
             options: [{
-                text: 'Loading registries...',
+                text: '正在加载数据流程版本注册库...',
                 value: null,
                 optionClass: 'unset',
                 disabled: true
@@ -767,7 +767,7 @@
         }).show();
         var bucketCombo = $('#import-flow-version-bucket-combo').combo('destroy').combo({
             options: [{
-                text: 'Loading buckets...',
+                text: '正在加载桶...',
                 value: null,
                 optionClass: 'unset',
                 disabled: true
@@ -775,7 +775,7 @@
         }).show();
         var flowCombo = $('#import-flow-version-name-combo').combo('destroy').combo({
             options: [{
-                text: 'Loading flows...',
+                text: '正在加载数据流程...',
                 value: null,
                 optionClass: 'unset',
                 disabled: true
@@ -787,7 +787,7 @@
         }).done(function () {
             // show the import dialog
             $('#import-flow-version-dialog').modal('setHeaderText', 'Import Version').modal('setButtonModel', [{
-                buttonText: 'Import',
+                buttonText: '导入',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -802,7 +802,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -845,7 +845,7 @@
                     flowDescriptionContainerEl.css('border-width', '0');
                 }
             } else {
-                flowVersionDetailsEl.text('No description provided.');
+                flowVersionDetailsEl.text('未提供详细描述.');
                 flowDescriptionContainerEl.css('border-width', '0');
             }
         }).fail(nfErrorHandler.handleAjaxError);
@@ -884,8 +884,8 @@
                 });
             } else {
                 nfDialog.showOkDialog({
-                    headerText: 'Flow Versions',
-                    dialogContent: 'This flow does not have any versions available.'
+                    headerText: '数据流程版本',
+                    dialogContent: '该流没有任何可用版本.'
                 });
             }
         }).fail(nfErrorHandler.handleAjaxError).always(function () {
@@ -929,7 +929,7 @@
                 });
             } else {
                 versionedFlows.push({
-                    text: 'No available flows',
+                    text: '无可用数据流程',
                     value: null,
                     optionClass: 'unset',
                     disabled: true
@@ -983,7 +983,7 @@
             // mark the flows as loading
             $('#import-flow-version-name-combo').combo('destroy').combo({
                 options: [{
-                    text: 'Loading flows...',
+                    text: '正在加载数据流程...',
                     value: null,
                     optionClass: 'unset',
                     disabled: true
@@ -998,7 +998,7 @@
             // mark no flows available
             $('#import-flow-version-name-combo').combo('destroy').combo({
                 options: [{
-                    text: 'No available flows',
+                    text: '无可用数据流程',
                     value: null,
                     optionClass: 'unset',
                     disabled: true
@@ -1114,7 +1114,7 @@
 
         // update the button model of the change version status dialog
         $('#change-version-status-dialog').modal('setButtonModel', [{
-            buttonText: 'Stop',
+            buttonText: '停止',
             color: {
                 base: '#728E9B',
                 hover: '#004849',
@@ -1188,11 +1188,11 @@
         var completeChangeRequest = function () {
             if (cancelled === true) {
                 // update the message to indicate successful completion
-                $('#change-version-status-message').text('The change version request has been cancelled.');
+                $('#change-version-status-message').text('修改版本请求已取消.');
 
                 // update the button model
                 $('#change-version-status-dialog').modal('setButtonModel', [{
-                    buttonText: 'Close',
+                    buttonText: '关闭',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -1224,7 +1224,7 @@
                         $('#change-version-status-dialog').modal('hide');
 
                         nfDialog.showOkDialog({
-                            headerText: 'Change Version',
+                            headerText: '修改版本',
                             dialogContent: nfCommon.escapeHtml(changeRequest.failureReason)
                         });
                     } else {
@@ -1232,11 +1232,11 @@
                         updateProgress(changeRequest.percentCompleted);
 
                         // update the message to indicate successful completion
-                        $('#change-version-status-message').text('This Process Group version has changed.');
+                        $('#change-version-status-message').text('该处理组版本已改变.');
 
                         // update the button model
                         $('#change-version-status-dialog').modal('setButtonModel', [{
-                            buttonText: 'Close',
+                            buttonText: '关闭',
                             color: {
                                 base: '#728E9B',
                                 hover: '#004849',
@@ -1404,8 +1404,8 @@
                 localChangesMessage.text('The following changes have been made to ' + vci.flowName + ' (Version ' + vci.version + ').');
             } else {
                 nfDialog.showOkDialog({
-                    headerText: 'Change Version',
-                    dialogContent: 'This Process Group is not currently under version control.'
+                    headerText: '修改版本',
+                    dialogContent: '该处理组当前并未处于版本管控.'
                 });
             }
         });
@@ -1441,8 +1441,8 @@
                 totalLabel.text(nfCommon.formatInteger(totalDifferences));
             } else {
                 nfDialog.showOkDialog({
-                    headerText: 'Local Changes',
-                    dialogContent: 'This Process Group does not have any local changes.'
+                    headerText: '本地修改',
+                    dialogContent: '该处理组没有任何本地修改.'
                 });
             }
         }).fail(nfErrorHandler.handleAjaxError);
@@ -1464,7 +1464,7 @@
 
                 // update the button model of the revert status dialog
                 $('#change-version-status-dialog').modal('setButtonModel', [{
-                    buttonText: 'Stop',
+                    buttonText: '停止',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -1532,11 +1532,11 @@
                 var completeRevertRequest = function () {
                     if (cancelled === true) {
                         // update the message to indicate successful completion
-                        $('#change-version-status-message').text('The revert request has been cancelled.');
+                        $('#change-version-status-message').text('回退请求已被取消.');
 
                         // update the button model
                         $('#change-version-status-dialog').modal('setButtonModel', [{
-                            buttonText: 'Close',
+                            buttonText: '关闭',
                             color: {
                                 base: '#728E9B',
                                 hover: '#004849',
@@ -1568,7 +1568,7 @@
                                 $('#change-version-status-dialog').modal('hide');
 
                                 nfDialog.showOkDialog({
-                                    headerText: 'Revert Local Changes',
+                                    headerText: '回退本地修改',
                                     dialogContent: nfCommon.escapeHtml(revertRequest.failureReason)
                                 });
                             } else {
@@ -1576,11 +1576,11 @@
                                 updateProgress(revertRequest.percentCompleted);
 
                                 // update the message to indicate successful completion
-                                $('#change-version-status-message').text('This Process Group version has changed.');
+                                $('#change-version-status-message').text('该处理组版本已改变.');
 
                                 // update the button model
                                 $('#change-version-status-dialog').modal('setButtonModel', [{
-                                    buttonText: 'Close',
+                                    buttonText: '关闭',
                                     color: {
                                         base: '#728E9B',
                                         hover: '#004849',
@@ -1622,8 +1622,8 @@
                 submitRevertRequest().done(processRevertResponse);
             } else {
                 nfDialog.showOkDialog({
-                    headerText: 'Revert Changes',
-                    dialogContent: 'This Process Group is not currently under version control.'
+                    headerText: '回退修改',
+                    dialogContent: '该处理组当前并未处于版本管控.'
                 });
             }
         }).fail(nfErrorHandler.handleAjaxError);
@@ -1636,9 +1636,9 @@
             // initialize the flow version dialog
             $('#save-flow-version-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Save Flow Version',
+                headerText: '保存数据流程版本',
                 buttons: [{
-                    buttonText: 'Save',
+                    buttonText: '保存',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -1669,7 +1669,7 @@
                         }
                     }
                 }, {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -1701,7 +1701,7 @@
             // configure the drop request status dialog
             $('#change-version-status-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Change Flow Version',
+                headerText: '修改数据流程版本',
                 handler: {
                     close: function () {
                         // clear the current button model
@@ -1713,9 +1713,9 @@
             // init the revert local changes dialog
             $('#revert-local-changes-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Revert Local Changes',
+                headerText: '回退本地修改',
                 buttons: [{
-                    buttonText: 'Revert',
+                    buttonText: '回退',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -1730,7 +1730,7 @@
                         }
                     }
                 }, {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -1752,9 +1752,9 @@
             // init the show local changes dialog
             $('#show-local-changes-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Show Local Changes',
+                headerText: '显示本地修改',
                 buttons: [{
-                    buttonText: 'Close',
+                    buttonText: '关闭',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -1826,7 +1826,7 @@
                         // update the registry and bucket visibility
                         var registryCombo = $('#save-flow-version-registry-combo').combo('destroy').combo({
                             options: [{
-                                text: 'Loading registries...',
+                                text: '正在加载数据流程版本注册库...',
                                 value: null,
                                 optionClass: 'unset',
                                 disabled: true
@@ -1834,7 +1834,7 @@
                         }).show();
                         var bucketCombo = $('#save-flow-version-bucket-combo').combo('destroy').combo({
                             options: [{
-                                text: 'Loading buckets...',
+                                text: '正在加载桶...',
                                 value: null,
                                 optionClass: 'unset',
                                 disabled: true
@@ -1927,16 +1927,16 @@
                             deferred.resolve();
                         }).fail(function () {
                             nfDialog.showOkDialog({
-                                headerText: 'Change Version',
-                                dialogContent: 'Unable to load available versions for this Process Group.'
+                                headerText: '修改版本',
+                                dialogContent: '加载该处理组的可用版本失败.'
                             });
 
                             deferred.reject();
                         });
                     } else {
                         nfDialog.showOkDialog({
-                            headerText: 'Change Version',
-                            dialogContent: 'This Process Group is not currently under version control.'
+                            headerText: '修改版本',
+                            dialogContent: '该处理组当前并未处于版本管控.'
                         });
 
                         deferred.reject();
@@ -1945,7 +1945,7 @@
             }).done(function () {
                 // show the dialog
                 $('#import-flow-version-dialog').modal('setHeaderText', 'Change Version').modal('setButtonModel', [{
-                    buttonText: 'Change',
+                    buttonText: '修改',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -1958,7 +1958,7 @@
                         }
                     }
                 }, {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -1981,10 +1981,10 @@
         stopVersionControl: function (processGroupId) {
             // prompt the user before disconnecting
             nfDialog.showYesNoDialog({
-                headerText: 'Stop Version Control',
-                dialogContent: 'Are you sure you want to stop version control?',
-                noText: 'Cancel',
-                yesText: 'Disconnect',
+                headerText: '停用版本管控',
+                dialogContent: '你确定要停止版本管控?',
+                noText: '取消',
+                yesText: '断开',
                 yesHandler: function () {
                     $.ajax({
                         type: 'GET',
@@ -2009,14 +2009,14 @@
                                 updateVersionControlInformation(processGroupId, undefined);
 
                                 nfDialog.showOkDialog({
-                                    headerText: 'Disconnect',
-                                    dialogContent: 'This Process Group is no longer under version control.'
+                                    headerText: '断开',
+                                    dialogContent: '该处理组不再处于版本管控.'
                                 });
                             }).fail(nfErrorHandler.handleAjaxError);
                         } else {
                             nfDialog.showOkDialog({
-                                headerText: 'Disconnect',
-                                dialogContent: 'This Process Group is not currently under version control.'
+                                headerText: '断开',
+                                dialogContent: '该处理组当前并未处于版本管控.'
                             })
                         }
                     }).fail(nfErrorHandler.handleAjaxError);

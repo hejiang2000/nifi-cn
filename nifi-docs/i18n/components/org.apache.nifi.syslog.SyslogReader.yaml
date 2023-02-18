@@ -1,0 +1,17 @@
+capabilityDescription: {en: 'Attempts to parses the contents of a Syslog message in
+    accordance to RFC5424 and RFC3164. In the case of RFC5424 formatted messages,
+    structured data is not supported, and will be returned as part of the message.Note:
+    Be mindfull that RFC3164 is informational and a wide range of different implementations
+    are present in the wild.', zh: 尝试根据RFC5424和RFC3164解析Syslog消息的内容。如果是RFC5424格式的消息，则不支持结构化数据，并将作为消息的一部分返回。注意：请注意，RFC3164是信息性的，并且有大量不同的实现。}
+properties:
+  Character Set:
+    en: {displayName: Character Set, description: Specifies which character set of
+        the Syslog messages}
+    zh: {description: 指定Syslog消息的字符集, displayName: 字符集}
+  syslog-5424-reader-raw-message:
+    en: {displayName: Raw message, description: 'If true, the record will have a _raw
+        field containing the raw message'}
+    zh: {description: 如果为true，则记录将具有包含原始消息的_raw字段, displayName: 原始消息}
+tags:
+  en: [syslog, logs, logfiles, parse, text, record, reader]
+  zh: [系统日志, 日志, 日志文件, 作语法分析, 文本, 记录, 读者]

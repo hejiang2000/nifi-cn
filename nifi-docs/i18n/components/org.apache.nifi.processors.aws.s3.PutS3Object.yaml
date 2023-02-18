@@ -1,0 +1,255 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+dynamicProperties:
+  The name of a User-Defined Metadata field to add to the S3 Object:
+    en: {description: Allows user-defined metadata to be added to the S3 object as
+        key/value pairs, value: The value of a User-Defined Metadata field to add
+        to the S3 Object}
+    zh: {description: 允许将用户定义的元数据作为键/值对添加到S3对象, value: 要添加到S3对象的用户定义元数据字段的值}
+capabilityDescription:
+  en: |-
+    Puts FlowFiles to an Amazon S3 Bucket.
+    The upload uses either the PutS3Object method or the PutS3MultipartUpload method.  The PutS3Object method sends the file in a single synchronous call, but it has a 5GB size limit.  Larger files are sent using the PutS3MultipartUpload method.  This multipart process saves state after each step so that a large upload can be resumed with minimal loss if the processor or cluster is stopped and restarted.
+    A multipart upload consists of three steps:
+      1) initiate upload,
+      2) upload the parts, and
+      3) complete the upload.
+    For multipart uploads, the processor saves state locally tracking the upload ID and parts uploaded, which must both be provided to complete the upload.
+    The AWS libraries select an endpoint URL based on the AWS region, but this can be overridden with the 'Endpoint Override URL' property for use with other S3-compatible endpoints.
+    The S3 API specifies that the maximum file size for a PutS3Object upload is 5GB. It also requires that parts in a multipart upload must be at least 5MB in size, except for the last part.  These limits establish the bounds for the Multipart Upload Threshold and Part Size properties.
+  zh: 将FlowFiles放入Amazon S3 Bucket。
+readAttributes:
+  filename: {en: Uses the FlowFile's filename as the filename for the S3 object, zh: 使用FlowFile的文件名作为S3对象的文件名}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  FullControl User List:
+    en: {displayName: FullControl User List, description: A comma-separated list of
+        Amazon User ID's or E-mail addresses that specifies who should have Full Control
+        for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，指定谁应该对对象拥有完全控制权, displayName: 完全控制用户列表}
+  Owner:
+    en: {displayName: Owner, description: The Amazon ID to use for the object's owner}
+    zh: {description: 用于对象所有者的Amazon ID, displayName: 物主}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Cache Control:
+    en: {displayName: Cache Control, description: Sets the Cache-Control HTTP header
+        indicating the caching directives of the associated object. Multiple directives
+        are comma-separated.}
+    zh: {description: 设置缓存控制HTTP标头，指示关联对象的缓存指令。多个指令以逗号分隔。, displayName: 缓存控制}
+  s3-object-remove-tags-prefix:
+    en: {displayName: Remove Tag Prefix, description: 'If set to ''True'', the value
+        provided for ''Object Tags Prefix'' will be removed from the attribute(s)
+        and then considered as the Tag name. For ex: If the incoming FlowFile carries
+        the attributes tagS3country, tagS3PII and the prefix is set to ''tagS3'' then
+        the corresponding tag values would be ''country'' and ''PII'''}
+    zh: {description: 如果设置为“True”，将从属性中删除为“对象标记前缀”提供的值，然后将其视为标记名称。例如：如果传入的FlowFile包含属性tagS3country、tagS3PII，并且前缀设置为“tagS3”，则相应的标记值将为“country”和“PII”,
+      displayName: 删除标记前缀}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  Multipart Upload Max Age Threshold:
+    en: {displayName: Multipart Upload Max Age Threshold, description: 'Specifies
+        the maximum age for existing multipart uploads in AWS S3.  When the ageoff
+        process occurs, any upload older than this threshold will be aborted.'}
+    zh: {description: 指定AWS S3中现有多部分上载的最长期限。当发生老化过程时，任何早于此阈值的上载都将被中止。, displayName: 多部分上载最大期限阈值}
+  custom-signer-class-name:
+    en: {displayName: Custom Signer Class Name, description: Fully qualified class
+        name of the custom signer class. The signer must implement com.amazonaws.auth.Signer
+        interface.}
+    zh: {description: 自定义签名者类的完全限定类名。签名者必须实现com.amazonaws.auth.signer接口。, displayName: 自定义签名者类名}
+  canned-acl:
+    en: {displayName: Canned ACL, description: 'Amazon Canned ACL for an object, one
+        of: BucketOwnerFullControl, BucketOwnerRead, LogDeliveryWrite, AuthenticatedRead,
+        PublicReadWrite, PublicRead, Private; will be ignored if any other ACL/permission/owner
+        property is specified'}
+    zh: {description: Amazon屏蔽对象的ACL，其中之一：BucketOwnerFullControl、BucketOwnerRead、LogDeliveryWrite、AuthenticatedRead、PublicReadWrite、PublicRead、Private；如果指定了任何其他ACL/permission/owner属性，将被忽略,
+      displayName: 罐装ACL}
+  custom-signer-module-location:
+    en: {displayName: Custom Signer Module Location, description: Comma-separated
+        list of paths to files and/or directories which contain the custom signer's
+        JAR file and its dependencies (if any).}
+    zh: {description: 包含自定义签名者的JAR文件及其依赖项（如果有）的文件和/或目录的路径的逗号分隔列表。, displayName: 自定义签名器模块位置}
+  Signer Override:
+    en: {displayName: Signer Override, description: The AWS S3 library uses Signature
+        Version 4 by default but this property allows you to specify the Version 2
+        signer to support older S3-compatible services or even to plug in your own
+        custom signer implementation.}
+    zh: {description: AWS S3库默认使用签名版本4，但此属性允许您指定版本2签名者以支持较旧的S3兼容服务，甚至插入您自己的自定义签名者实现。,
+      displayName: 签名者覆盖}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Content Type:
+    en:
+      displayName: Content Type
+      description: |-
+        Sets the Content-Type HTTP header indicating the type of content stored in the associated object. The value of this header is a standard MIME type.
+        AWS S3 Java client will attempt to determine the correct content type if one hasn't been set yet. Users are responsible for ensuring a suitable content type is set when uploading streams. If no content type is provided and cannot be determined by the filename, the default content type "application/octet-stream" will be used.
+    zh: {description: 设置Content-Type HTTP标头，指示存储在关联对象中的内容类型。此标头的值是标准MIME类型。, displayName: 内容类型}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Write ACL User List:
+    en: {displayName: Write ACL User List, description: A comma-separated list of
+        Amazon User ID's or E-mail addresses that specifies who should have permissions
+        to change the Access Control List for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，用于指定谁有权更改对象的访问控制列表, displayName: 写入ACL用户列表}
+  server-side-encryption:
+    en: {displayName: Server Side Encryption, description: Specifies the algorithm
+        used for server side encryption.}
+    zh: {description: 指定用于服务器端加密的算法。, displayName: 服务器端加密}
+  Read ACL User List:
+    en: {displayName: Read ACL User List, description: A comma-separated list of Amazon
+        User ID's or E-mail addresses that specifies who should have permissions to
+        read the Access Control List for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，用于指定谁应该有权读取对象的访问控制列表, displayName: 读取ACL用户列表}
+  encryption-service:
+    en: {displayName: Encryption Service, description: 'Specifies the Encryption Service
+        Controller used to configure requests. PutS3Object: For backward compatibility,
+        this value is ignored when ''Server Side Encryption'' is set. FetchS3Object:
+        Only needs to be configured in case of Server-side Customer Key, Client-side
+        KMS and Client-side Customer Key encryptions.'}
+    zh: {description: 指定用于配置请求的加密服务控制器。PutS3Object：为了向后兼容，当设置“服务器端加密”时，将忽略此值。FetchS3Object：仅在服务器端客户密钥、客户端KMS和客户端客户密钥加密的情况下需要配置。,
+      displayName: 加密服务}
+  Content Disposition:
+    en:
+      displayName: Content Disposition
+      description: |-
+        Sets the Content-Disposition HTTP header indicating if the content is intended to be displayed inline or should be downloaded.
+         Possible values are 'inline' or 'attachment'. If this property is not specified, object's content-disposition will be set to filename. When 'attachment' is selected, '; filename=' plus object key are automatically appended to form final value 'attachment; filename="filename.jpg"'.
+    zh: {description: 设置Content Disposition HTTP标头，指示内容是要内联显示还是应该下载。, displayName: 内容处置}
+  Storage Class:
+    en: {displayName: Storage Class, description: ''}
+    zh: {description: '', displayName: 存储类别}
+  Multipart Part Size:
+    en:
+      displayName: Multipart Part Size
+      description: |-
+        Specifies the part size for use when the PutS3Multipart Upload API is used.
+        Flow files will be broken into chunks of this size for the upload process, but the last part sent can be smaller since it is not padded.
+        The valid range is 50MB to 5GB.
+    zh: {description: 指定使用PutS3Multipart Upload API时使用的部件大小。, displayName: 多部分零件尺寸}
+  use-chunked-encoding:
+    en: {displayName: Use Chunked Encoding, description: Enables / disables chunked
+        encoding for upload requests. Set it to false only if your endpoint does not
+        support chunked uploading.}
+    zh: {description: 启用/禁用上载请求的分块编码。仅当端点不支持分块上传时，才将其设置为false。, displayName: 使用分块编码}
+  Object Key:
+    en: {displayName: Object Key, description: ''}
+    zh: {description: '', displayName: 对象密钥}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  Multipart Threshold:
+    en:
+      displayName: Multipart Threshold
+      description: |-
+        Specifies the file size threshold for switch from the PutS3Object API to the PutS3MultipartUpload API.  Flow files bigger than this limit will be sent using the stateful multipart process.
+        The valid range is 50MB to 5GB.
+    zh: {description: 指定从PutS3Object API切换到PutS3MultipartUpload API的文件大小阈值。大于此限制的流文件将使用有状态的多部分进程发送。,
+      displayName: 多部分阈值}
+  s3-object-tags-prefix:
+    en: {displayName: Object Tags Prefix, description: 'Specifies the prefix which
+        would be scanned against the incoming FlowFile''s attributes and the matching
+        attribute''s name and value would be considered as the outgoing S3 object''s
+        Tag name and Tag value respectively. For Ex: If the incoming FlowFile carries
+        the attributes tagS3country, tagS3PII, the tag prefix to be specified would
+        be ''tagS3'''}
+    zh: {description: 指定将根据传入FlowFile的属性扫描的前缀，匹配属性的名称和值将分别被视为传出S3对象的标记名称和标记值。例如：如果传入的FlowFile包含属性tagS3country、tagS3PII，则要指定的标记前缀将为“tagS3”,
+      displayName: 对象标记前缀}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  Bucket:
+    en: {displayName: Bucket, description: ''}
+    zh: {description: '', displayName: 水桶}
+  Multipart Upload AgeOff Interval:
+    en: {displayName: Multipart Upload AgeOff Interval, description: Specifies the
+        interval at which existing multipart uploads in AWS S3 will be evaluated for
+        ageoff.  When processor is triggered it will initiate the ageoff evaluation
+        if this interval has been exceeded.}
+    zh: {description: 指定AWS S3中现有的多部分上载的评估时间间隔。当处理器被触发时，如果超过此间隔，它将启动老化评估。, displayName: 多部分上载时限间隔}
+  use-path-style-access:
+    en: {displayName: Use Path Style Access, description: 'Path-style access can be
+        enforced by setting this property to true. Set it to true if your endpoint
+        does not support virtual-hosted-style requests, only path-style requests.'}
+    zh: {description: 通过将此属性设置为true，可以强制执行路径样式访问。如果端点不支持虚拟托管样式请求，仅支持路径样式请求，请将其设置为true。,
+      displayName: 使用路径样式访问}
+  Write Permission User List:
+    en: {displayName: Write Permission User List, description: A comma-separated list
+        of Amazon User ID's or E-mail addresses that specifies who should have Write
+        Access for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，用于指定谁应具有对象的写入权限, displayName: 写入权限用户列表}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  Read Permission User List:
+    en: {displayName: Read Permission User List, description: A comma-separated list
+        of Amazon User ID's or E-mail addresses that specifies who should have Read
+        Access for an object}
+    zh: {description: 以逗号分隔的Amazon用户ID或电子邮件地址列表，用于指定对象的读取权限, displayName: 读取权限用户列表}
+  Expiration Time Rule:
+    en: {displayName: Expiration Time Rule, description: ''}
+    zh: {description: '', displayName: 过期时间规则}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+  s3-temporary-directory-multipart:
+    en: {displayName: Temporary Directory Multipart State, description: 'Directory
+        in which, for multipart uploads, the processor will locally save the state
+        tracking the upload ID and parts uploaded which must both be provided to complete
+        the upload.'}
+    zh: {description: 对于多部分上载，处理器将在其中本地保存状态跟踪上载ID和上载部分的目录，这两个部分必须同时提供才能完成上载。, displayName: 临时目录多部分状态}
+writeAttributes:
+  s3.contenttype: {en: The S3 content type of the S3 Object that put in S3, zh: 放入S3的S3对象的S3内容类型}
+  s3.version: {en: The version of the S3 Object that was put to S3, zh: 放入S3的S3对象的版本}
+  s3.contentdisposition: {en: The content disposition of the S3 Object that put in
+      S3, zh: 放入S3的S3对象的内容配置}
+  s3.etag: {en: The ETag of the S3 Object, zh: S3对象的ETag}
+  s3.uploadId: {en: The uploadId used to upload the Object to S3, zh: 用于将对象上载到S3的uploadId}
+  s3.sseAlgorithm: {en: The server side encryption algorithm of the object, zh: 对象的服务器端加密算法}
+  s3.bucket: {en: The S3 bucket where the Object was put in S3, zh: S3中对象所在的S3存储桶}
+  s3.errorCode: {en: The S3 moniker of the failed operation, zh: 失败操作的S3名字对象}
+  s3.cachecontrol: {en: The cache-control header of the S3 Object, zh: S3对象的缓存控制头}
+  s3.errorMessage: {en: The S3 exception message from the failed operation, zh: 来自失败操作的S3异常消息}
+  s3.expiration: {en: 'A human-readable form of the expiration date of the S3 object,
+      if one is set', zh: S3对象到期日期的可读形式（如果设置了到期日期）}
+  s3.usermetadata: {en: 'A human-readable form of the User Metadata of the S3 object,
+      if any was set', zh: S3对象的用户元数据的可读形式（如果有）}
+  s3.key: {en: The S3 key within where the Object was put in S3, zh: S3中对象所在的S3键}
+  s3.statusCode: {en: The HTTP error code (if available) from the failed operation,
+    zh: 失败操作的HTTP错误代码（如果可用）}
+  s3.encryptionStrategy: {en: 'The name of the encryption strategy, if any was set',
+    zh: 加密策略的名称（如果有）已设置}
+  s3.exception: {en: The class name of the exception thrown during processor execution,
+    zh: 处理器执行期间引发的异常的类名}
+  s3.additionalDetails: {en: The S3 supplied detail from the failed operation, zh: S3提供了失败操作的详细信息}
+tags:
+  en: [Amazon, S3, AWS, Archive, Put]
+  zh: [亚马逊, 第3页, 自动售货机, 档案文件, 放]

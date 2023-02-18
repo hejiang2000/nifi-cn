@@ -1,0 +1,52 @@
+relationships:
+  original: {en: 'The original FlowFile that was transformed. If the FlowFile fails
+      processing, nothing will be sent to this relationship', zh: 转换的原始FlowFile。如果FlowFile处理失败，则不会向此关系发送任何内容}
+  success: {en: The FlowFile with transformed content will be routed to this relationship,
+    zh: 具有转换内容的FlowFile将路由到此关系}
+  failure: {en: 'If a FlowFile fails processing for any reason (for example, the FlowFile
+      records cannot be parsed), it will be routed to this relationship', zh: 如果FlowFile由于任何原因（例如，无法解析FlowFile记录）处理失败，它将被路由到此关系}
+capabilityDescription: {en: 'Applies a list of Jolt specifications to the FlowFile
+    payload. A new FlowFile is created with transformed content and is routed to the
+    ''success'' relationship. If the transform fails, the original FlowFile is routed
+    to the ''failure'' relationship.', zh: 将Jolt规范列表应用于FlowFile负载。使用转换后的内容创建新的FlowFile，并将其路由到“成功”关系。如果转换失败，则将原始FlowFile路由到“失败”关系。}
+properties:
+  jolt-record-record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  jolt-record-transform-cache-size:
+    en: {displayName: Transform Cache Size, description: 'Compiling a Jolt Transform
+        can be fairly expensive. Ideally, this will be done only once. However, if
+        the Expression Language is used in the transform, we may need a new Transform
+        for each FlowFile. This value controls how many of those Transforms we cache
+        in memory in order to avoid having to compile the Transform each time.'}
+    zh: {description: 编译Jolt变换可能相当昂贵。理想情况下，这将只进行一次。但是，如果在转换中使用表达式语言，我们可能需要为每个FlowFile创建一个新的转换。该值控制我们缓存在内存中的这些变换的数量，以避免每次都编译变换。,
+      displayName: 变换缓存大小}
+  jolt-record-custom-class:
+    en: {displayName: Custom Transformation Class Name, description: Fully Qualified
+        Class Name for Custom Transformation}
+    zh: {description: 自定义转换的完全限定类名, displayName: 自定义转换类名}
+  jolt-record-custom-modules:
+    en: {displayName: Custom Module Directory, description: Comma-separated list of
+        paths to files and/or directories which contain modules containing custom
+        transformations (that are not included on NiFi's classpath).}
+    zh: {description: 以逗号分隔的文件和/或目录路径列表，其中包含包含自定义转换的模块（不包含在NiFi的类路径中）。, displayName: 自定义模块目录}
+  jolt-record-transform:
+    en: {displayName: Jolt Transformation DSL, description: Specifies the Jolt Transformation
+        that should be used with the provided specification.}
+    zh: {description: 指定应与提供的规范一起使用的Jolt转换。, displayName: Jolt变换DSL}
+  jolt-record-record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema.}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务。, displayName: 记录读取器}
+  jolt-record-spec:
+    en: {displayName: Jolt Specification, description: Jolt Specification for transform
+        of record data. This value is ignored if the Jolt Sort Transformation is selected.}
+    zh: {description: 记录数据转换的Jolt规范。如果选择了Jolt排序转换，则忽略此值。, displayName: Jolt规范}
+writeAttributes:
+  record.count: {en: The number of records in an outgoing FlowFile, zh: 传出FlowFile中的记录数}
+  mime.type: {en: The MIME Type that the configured Record Writer indicates is appropriate,
+    zh: 配置的记录编写器指示的MIME类型是适当的}
+tags:
+  en: [record, jolt, transform, shiftr, chainr, defaultr, removr, cardinality, sort]
+  zh: [记录, 颠簸, 使改变, 换档器, 链条, 违约, 远程, 基数, 分类]

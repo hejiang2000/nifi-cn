@@ -1,0 +1,19 @@
+capabilityDescription: {en: Provides a mechanism for creating a KerberosUser from
+    a principal and ticket cache that other components are able to use in order to
+    perform authentication using Kerberos. By encapsulating this information into
+    a Controller Service and allowing other components to make use of it an administrator
+    is able to choose which users are allowed to use which ticket caches and principals.
+    This provides a more robust security model for multi-tenant use cases., zh: 提供一种从主体和票证缓存创建KerberosUser的机制，其他组件可以使用该机制来使用Kerberos执行身份验证。通过将此信息封装到控制器服务中并允许其他组件使用它，管理员可以选择允许哪些用户使用哪些票据缓存和主体。这为多租户用例提供了更健壮的安全模型。}
+properties:
+  Kerberos Principal:
+    en: {displayName: Kerberos Principal, description: Kerberos principal to authenticate
+        as. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 要作为身份验证的Kerberos主体。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos主体}
+  Kerberos Ticket Cache File:
+    en: {displayName: Kerberos Ticket Cache File, description: Kerberos ticket cache
+        associated with the principal.}
+    zh: {description: 与主体关联的Kerberos票证缓存。, displayName: Kerberos票证缓存文件}
+tags:
+  en: [Kerberos, Ticket, Cache, Principal, Credentials, Authentication, Security]
+  zh: [Kerberos, 票, 隐藏物, 最重要的, 资格证书, 身份验证, 安全]

@@ -1,0 +1,16 @@
+relationships:
+  success: {en: Any FlowFile that is successfully encoded or decoded will be routed
+      to success, zh: 成功编码或解码的任何FlowFile都将被路由为成功}
+  failure: {en: Any FlowFile that cannot be encoded or decoded will be routed to failure,
+    zh: 任何无法编码或解码的FlowFile将被路由到故障}
+deprecationNotice: {en: EncodeContent supports Base64 and additional encoding schemes,
+  zh: EncodeContent支持Base64和其他编码方案}
+capabilityDescription: {en: Encodes or decodes content to and from base64, zh: 对base64中的内容进行编码或解码}
+properties:
+  Mode:
+    en: {displayName: Mode, description: Specifies whether the content should be encoded
+        or decoded}
+    zh: {description: 指定是对内容进行编码还是解码, displayName: 模式}
+tags:
+  en: [encode, base64]
+  zh: [编码, 基础64]

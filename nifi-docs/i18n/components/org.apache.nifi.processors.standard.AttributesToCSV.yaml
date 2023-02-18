@@ -1,0 +1,59 @@
+relationships:
+  success: {en: Successfully converted attributes to CSV, zh: 已成功将属性转换为CSV}
+  failure: {en: Failed to convert attributes to CSV, zh: 无法将属性转换为CSV}
+capabilityDescription: {en: 'Generates a CSV representation of the input FlowFile
+    Attributes. The resulting CSV can be written to either a newly generated attribute
+    named ''CSVAttributes'' or written to the FlowFile as content.  If the attribute
+    value contains a comma, newline or double quote, then the attribute value will
+    be escaped with double quotes.  Any double quote characters in the attribute value
+    are escaped with another double quote.', zh: 生成输入流文件属性的CSV表示。生成的CSV可以写入新生成的名为“CSVAttributes”的属性，也可以作为内容写入FlowFile。如果属性值包含逗号、换行符或双引号，则属性值将用双引号转义。属性值中的任何双引号字符都用另一个双引号转义。}
+properties:
+  null-value:
+    en: {displayName: Null Value, description: If true a non existing or empty attribute
+        will be 'null' in the resulting CSV. If false an empty string will be placed
+        in the CSV}
+    zh: {description: 如果为true，则生成的CSV中的不存在或空属性将为“null”。如果为false，则将在CSV中放置一个空字符串, displayName: Null值}
+  include-core-attributes:
+    en: {displayName: Include Core Attributes, description: 'Determines if the FlowFile
+        org.apache.nifi.flowfile.attributes.CoreAttributes, which are contained in
+        every FlowFile, should be included in the final CSV value generated.  Core
+        attributes will be added to the end of the CSVData and CSVSchema strings.  The
+        Attribute List property overrides this setting.'}
+    zh: {description: 确定FlowFile org.apache.nifi.FlowFile.attributes。每个FlowFile中包含的CoreAttributes应包含在生成的最终CSV值中。核心属性将添加到CSVData和CSVSchema字符串的末尾。属性列表属性覆盖此设置。,
+      displayName: 包括核心属性}
+  attributes-regex:
+    en: {displayName: Attributes Regular Expression, description: Regular expression
+        that will be evaluated against the flow file attributes to select the matching
+        attributes. This property can be used in combination with the attributes list
+        property.  The final output will contain a combination of matches found in
+        the ATTRIBUTE_LIST and ATTRIBUTE_REGEX.}
+    zh: {description: 将根据流文件属性进行计算以选择匹配属性的正则表达式。此属性可以与属性列表属性结合使用。最终输出将包含ATTRIBUTE_LIST和ATTRIBUTE
+        _REGEX中找到的匹配组合。, displayName: 属性正则表达式}
+  destination:
+    en: {displayName: Destination, description: Control if CSV value is written as
+        a new flowfile attribute 'CSVData' or written in the flowfile content.}
+    zh: {description: 控制CSV值是否作为新的流文件属性“CSVData”写入或写入流文件内容。, displayName: 目的地}
+  include-schema:
+    en: {displayName: Include Schema, description: If true the schema (attribute names)
+        will also be converted to a CSV string which will either be applied to a new
+        attribute named 'CSVSchema' or applied at the first row in the content depending
+        on the DESTINATION property setting.}
+    zh: {description: 如果为true，则模式（属性名称）也将转换为CSV字符串，该字符串将应用于名为“CSVSchema”的新属性，或应用于内容的第一行，具体取决于DESTINATION属性设置。,
+      displayName: 包括架构}
+  attribute-list:
+    en: {displayName: Attribute List, description: 'Comma separated list of attributes
+        to be included in the resulting CSV. If this value is left empty then all
+        existing Attributes will be included. This list of attributes is case sensitive
+        and supports attribute names that contain commas. If an attribute specified
+        in the list is not found it will be emitted to the resulting CSV with an empty
+        string or null depending on the ''Null Value'' property. If a core attribute
+        is specified in this list and the ''Include Core Attributes'' property is
+        false, the core attribute will be included. The attribute list ALWAYS wins.'}
+    zh: {description: 要包含在生成的CSV中的属性的逗号分隔列表。如果该值为空，则将包括所有现有属性。此属性列表区分大小写，支持包含逗号的属性名称。如果找不到列表中指定的属性，则它将以空字符串或空值（取决于“null值”属性）发送到生成的CSV。如果在此列表中指定了核心属性，并且“包含核心属性”属性为false，则将包含核心属性。属性列表始终获胜。,
+      displayName: 属性列表}
+writeAttributes:
+  CSVData: {en: CSV representation of Attributes, zh: 属性的CSV表示}
+  CSVSchema: {en: CSV representation of the Schema, zh: 模式的CSV表示}
+tags:
+  en: [csv, attributes, flowfile]
+  zh: [csv格式, 属性, 流程文件]

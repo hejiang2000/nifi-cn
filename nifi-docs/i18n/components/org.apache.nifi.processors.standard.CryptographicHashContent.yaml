@@ -1,0 +1,28 @@
+relationships:
+  success: {en: Used for flowfiles that have a hash value added, zh: 用于添加了哈希值的流文件}
+  failure: {en: Used for flowfiles that have no content if the 'fail on empty' setting
+      is enabled, zh: 如果启用了“空时失败”设置，则用于没有内容的流文件}
+capabilityDescription: {en: 'Calculates a cryptographic hash value for the flowfile
+    content using the given algorithm and writes it to an output attribute. Please
+    refer to https://csrc.nist.gov/Projects/Hash-Functions/NIST-Policy-on-Hash-Functions
+    for help to decide which algorithm to use.', zh: '使用给定算法计算流文件内容的加密哈希值，并将其写入输出属性。请参阅https://csrc.nist.gov/Projects/Hash-Functions/NIST-Policy-on-Hash-Functions以帮助决定使用哪种算法。'}
+properties:
+  hash_algorithm:
+    en: {displayName: Hash Algorithm, description: The hash algorithm to use. Note
+        that not all of the algorithms available are recommended for use (some are
+        provided for legacy compatibility). There are many things to consider when
+        picking an algorithm; it is recommended to use the most secure algorithm possible.}
+    zh: {description: 要使用的哈希算法。请注意，并非所有可用的算法都建议使用（有些算法是为传统兼容性而提供的）。选择算法时需要考虑很多事情；建议使用尽可能安全的算法。,
+      displayName: 哈希算法}
+  fail_when_empty:
+    en: {displayName: Fail if the content is empty, description: 'Route to failure
+        if the content is empty. While hashing an empty value is valid, some flows
+        may want to detect empty input.'}
+    zh: {description: 如果内容为空，则路由失败。当散列空值有效时，某些流可能希望检测空输入。, displayName: 如果内容为空，则失败}
+writeAttributes:
+  content_<algorithm>: {en: 'This processor adds an attribute whose value is the result
+      of hashing the flowfile content. The name of this attribute is specified by
+      the value of the algorithm, e.g. ''content_SHA-256''.', zh: 此处理器添加一个属性，该属性的值是哈希流文件内容的结果。此属性的名称由算法的值指定，例如“content_SHA-256”。}
+tags:
+  en: [content, hash, sha, blake2, md5, cryptography]
+  zh: [所容纳之物, 搞砸, 沙, 爆炸2, md5型, 密码学]

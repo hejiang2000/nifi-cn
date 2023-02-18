@@ -1,0 +1,18 @@
+capabilityDescription: {en: Lookup a string value from Elasticsearch Server associated
+    with the specified document ID. The coordinates that are passed to the lookup
+    must contain the key 'id'., zh: 从Elasticsearch Server查找与指定文档ID关联的字符串值。传递给查找的坐标必须包含关键字“ID”。}
+properties:
+  el-lookup-type:
+    en: {displayName: Type, description: The type of this document (used by Elasticsearch
+        for indexing and searching)}
+    zh: {description: 此文档的类型（由Elasticsearch用于索引和搜索）, displayName: 类型}
+  el-lookup-index:
+    en: {displayName: Index, description: The name of the index to read from}
+    zh: {description: 要从中读取的索引的名称, displayName: 指数}
+  el-rest-client-service:
+    en: {displayName: Client Service, description: An ElasticSearch client service
+        to use for running queries.}
+    zh: {description: 用于运行查询的ElasticSearch客户端服务。, displayName: 客户端服务}
+tags:
+  en: [lookup, enrich, value, key, elasticsearch]
+  zh: [查找, 充实, 价值, 钥匙, 弹性搜索]

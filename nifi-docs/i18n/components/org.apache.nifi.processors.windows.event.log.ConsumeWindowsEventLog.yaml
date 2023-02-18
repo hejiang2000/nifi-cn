@@ -1,0 +1,43 @@
+relationships:
+  success: {en: Relationship for successfully consumed events., zh: 成功消费事件的关系。}
+capabilityDescription: {en: Registers a Windows Event Log Subscribe Callback to receive
+    FlowFiles from Events on Windows.  These can be filtered via channel and XPath.,
+  zh: 注册Windows事件日志订阅回调以从Windows上的事件接收FlowFiles。这些可以通过通道和XPath进行过滤。}
+properties:
+  maxQueue:
+    en: {displayName: Maximum queue size, description: Events are received asynchronously
+        and must be output as FlowFiles when the processor is triggered.  This specifies
+        the maximum number of events to queue for transformation into FlowFiles.}
+    zh: {description: 事件是异步接收的，并且在处理器被触发时必须作为FlowFiles输出。这指定要排队以转换为FlowFiles的最大事件数。,
+      displayName: 最大队列大小}
+  maxBuffer:
+    en: {displayName: Maximum Buffer Size, description: The individual Event Log XMLs
+        are rendered to a buffer.  This specifies the maximum size in bytes that the
+        buffer will be allowed to grow to. (Limiting the maximum size of an individual
+        Event XML.)}
+    zh: {description: 单个事件日志XML被呈现到缓冲区。这指定允许缓冲区增长到的最大大小（以字节为单位）。（限制单个事件XML的最大大小。）,
+      displayName: 最大缓冲区大小}
+  query:
+    en: {displayName: XPath Query, description: 'XPath Query to filter events. (See
+        https://msdn.microsoft.com/en-us/library/windows/desktop/dd996910(v=vs.85).aspx
+        for examples.)'}
+    zh: {description: '用于筛选事件的XPath查询。（参见https://msdn.microsoft.com/en-us/library/windows/desktop/dd996910（v=vs.85）。aspx作为示例。）',
+      displayName: XPath查询}
+  channel:
+    en: {displayName: Channel, description: The Windows Event Log Channel to listen
+        to.}
+    zh: {description: 要侦听的Windows事件日志频道。, displayName: 频道}
+  inactiveDurationToReconnect:
+    en: {displayName: Inactive duration to reconnect, description: 'If no new event
+        logs are processed for the specified time period, this processor will try
+        reconnecting to recover from a state where any further messages cannot be
+        consumed. Such situation can happen if Windows Event Log service is restarted,
+        or ERROR_EVT_QUERY_RESULT_STALE (15011) is returned. Setting no duration,
+        e.g. ''0 ms'' disables auto-reconnection.'}
+    zh: {description: 如果在指定的时间段内没有处理新的事件日志，则此处理器将尝试重新连接以从无法使用任何其他消息的状态恢复。如果重新启动Windows事件日志服务，或返回ERROR_EVT_QUERY_RESULT_STALE（15011），则可能发生这种情况。不设置持续时间，例如“0毫秒”将禁用自动重新连接。,
+      displayName: 重新连接的非活动持续时间}
+writeAttributes:
+  mime.type: {en: Will set a MIME type value of application/xml., zh: 将设置application/xml的MIME类型值。}
+tags:
+  en: [ingest, event, windows]
+  zh: [摄入, 事件, 窗户]

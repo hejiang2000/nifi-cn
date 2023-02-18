@@ -744,7 +744,7 @@
      *
      * {
      *      click: refresh (function),
-     *      text: 'Start' (string),
+     *      text: '开始' (string),
      *      clazz: 'fa fa-refresh'
      * }
      *
@@ -808,93 +808,93 @@
 
     // defines the available actions and the conditions which they apply
     var menuItems = [
-        {id: 'reload-menu-item', condition: emptySelection, menuItem: {clazz: 'fa fa-refresh', text: 'Refresh', action: 'reload'}},
-        {id: 'leave-group-menu-item', condition: isNotRootGroup, menuItem: {clazz: 'fa fa-level-up', text: 'Leave group', action: 'leaveGroup'}},
+        {id: 'reload-menu-item', condition: emptySelection, menuItem: {clazz: 'fa fa-refresh', text: '刷新', action: 'reload'}},
+        {id: 'leave-group-menu-item', condition: isNotRootGroup, menuItem: {clazz: 'fa fa-level-up', text: '离开处理组', action: 'leaveGroup'}},
         {separator: true},
-        {id: 'show-configuration-menu-item', condition: isConfigurable, menuItem: {clazz: 'fa fa-gear', text: 'Configure', action: 'showConfiguration'}},
-        {id: 'show-details-menu-item', condition: hasDetails, menuItem: {clazz: 'fa fa-gear', text: 'View configuration', action: 'showDetails'}},
-        {id: 'parameters-menu-item', condition: hasParameterContext, menuItem: {clazz: 'fa', text: 'Parameters', action: 'openParameterContext'}},
-        {id: 'variable-registry-menu-item', condition: hasVariables, menuItem: {clazz: 'fa', text: 'Variables', action: 'openVariableRegistry'}},
+        {id: 'show-configuration-menu-item', condition: isConfigurable, menuItem: {clazz: 'fa fa-gear', text: '配置', action: 'showConfiguration'}},
+        {id: 'show-details-menu-item', condition: hasDetails, menuItem: {clazz: 'fa fa-gear', text: '查看配置', action: 'showDetails'}},
+        {id: 'parameters-menu-item', condition: hasParameterContext, menuItem: {clazz: 'fa', text: '参数', action: 'openParameterContext'}},
+        {id: 'variable-registry-menu-item', condition: hasVariables, menuItem: {clazz: 'fa', text: '变量', action: 'openVariableRegistry'}},
         {separator: true},
-        {id: 'version-menu-item', groupMenuItem: {clazz: 'fa', text: 'Version'}, menuItems: [
-            {id: 'start-version-control-menu-item', condition: supportsStartFlowVersioning, menuItem: {clazz: 'fa fa-upload', text: 'Start version control', action: 'saveFlowVersion'}},
+        {id: 'version-menu-item', groupMenuItem: {clazz: 'fa', text: '版本'}, menuItems: [
+            {id: 'start-version-control-menu-item', condition: supportsStartFlowVersioning, menuItem: {clazz: 'fa fa-upload', text: '启用版本管控', action: 'saveFlowVersion'}},
             {separator: true},
-            {id: 'commit-menu-item', condition: supportsCommitFlowVersion, menuItem: {clazz: 'fa fa-upload', text: 'Commit local changes', action: 'saveFlowVersion'}},
-            {id: 'force-commit-menu-item', condition: supportsForceCommitFlowVersion, menuItem: {clazz: 'fa fa-upload', text: 'Commit local changes', action: 'forceSaveFlowVersion'}},
-            {id: 'local-changes-menu-item', condition: hasLocalChanges, menuItem: {clazz: 'fa', text: 'Show local changes', action: 'showLocalChanges'}},
-            {id: 'revert-menu-item', condition: hasLocalChanges, menuItem: {clazz: 'fa fa-undo', text: 'Revert local changes', action: 'revertLocalChanges'}},
-            {id: 'change-version-menu-item', condition: supportsChangeFlowVersion, menuItem: {clazz: 'fa', text: 'Change version', action: 'changeFlowVersion'}},
+            {id: 'commit-menu-item', condition: supportsCommitFlowVersion, menuItem: {clazz: 'fa fa-upload', text: '提交本地修改', action: 'saveFlowVersion'}},
+            {id: 'force-commit-menu-item', condition: supportsForceCommitFlowVersion, menuItem: {clazz: 'fa fa-upload', text: '提交本地修改', action: 'forceSaveFlowVersion'}},
+            {id: 'local-changes-menu-item', condition: hasLocalChanges, menuItem: {clazz: 'fa', text: '显示本地修改', action: 'showLocalChanges'}},
+            {id: 'revert-menu-item', condition: hasLocalChanges, menuItem: {clazz: 'fa fa-undo', text: '回退本地修改', action: 'revertLocalChanges'}},
+            {id: 'change-version-menu-item', condition: supportsChangeFlowVersion, menuItem: {clazz: 'fa', text: '修改版本', action: 'changeFlowVersion'}},
             {separator: true},
-            {id: 'stop-version-control-menu-item', condition: supportsStopFlowVersioning, menuItem: {clazz: 'fa', text: 'Stop version control', action: 'stopVersionControl'}}
+            {id: 'stop-version-control-menu-item', condition: supportsStopFlowVersioning, menuItem: {clazz: 'fa', text: '停用版本管控', action: 'stopVersionControl'}}
         ]},
         {separator: true},
-        {id: 'enter-group-menu-item', condition: isProcessGroup, menuItem: {clazz: 'fa fa-sign-in', text: 'Enter group', action: 'enterGroup'}},
+        {id: 'enter-group-menu-item', condition: isProcessGroup, menuItem: {clazz: 'fa fa-sign-in', text: '进入处理组', action: 'enterGroup'}},
         {separator: true},
-        {id: 'start-menu-item', condition: isRunnable, menuItem: {clazz: 'fa fa-play', text: 'Start', action: 'start'}},
-        {id: 'stop-menu-item', condition: isStoppable, menuItem: {clazz: 'fa fa-stop', text: 'Stop', action: 'stop'}},
-        {id: 'run-once-menu-item', condition: isRunnableProcessor, menuItem: {clazz: 'fa fa-caret-right', text: 'Run Once', action: 'runOnce'}},
-        {id: 'terminate-menu-item', condition: canTerminate, menuItem: {clazz: 'fa fa-hourglass-end', text: 'Terminate', action: 'terminate'}},
-        {id: 'enable-menu-item', condition: canEnable, menuItem: {clazz: 'fa fa-flash', text: 'Enable', action: 'enable'}},
-        {id: 'disable-menu-item', condition: canDisable, menuItem: {clazz: 'icon icon-enable-false', text: 'Disable', action: 'disable'}},
-        {id: 'enable-transmission-menu-item', condition: canStartTransmission, menuItem: {clazz: 'fa fa-bullseye', text: 'Enable transmission', action: 'enableTransmission'}},
-        {id: 'disable-transmission-menu-item', condition: canStopTransmission, menuItem: { clazz: 'icon icon-transmit-false', text: 'Disable transmission', action: 'disableTransmission'}},
+        {id: 'start-menu-item', condition: isRunnable, menuItem: {clazz: 'fa fa-play', text: '开始', action: 'start'}},
+        {id: 'stop-menu-item', condition: isStoppable, menuItem: {clazz: 'fa fa-stop', text: '停止', action: 'stop'}},
+        {id: 'run-once-menu-item', condition: isRunnableProcessor, menuItem: {clazz: 'fa fa-caret-right', text: '运行一次', action: 'runOnce'}},
+        {id: 'terminate-menu-item', condition: canTerminate, menuItem: {clazz: 'fa fa-hourglass-end', text: '终止', action: 'terminate'}},
+        {id: 'enable-menu-item', condition: canEnable, menuItem: {clazz: 'fa fa-flash', text: '启用', action: 'enable'}},
+        {id: 'disable-menu-item', condition: canDisable, menuItem: {clazz: 'icon icon-enable-false', text: '禁用', action: 'disable'}},
+        {id: 'enable-transmission-menu-item', condition: canStartTransmission, menuItem: {clazz: 'fa fa-bullseye', text: '启用数据传输', action: 'enableTransmission'}},
+        {id: 'disable-transmission-menu-item', condition: canStopTransmission, menuItem: { clazz: 'icon icon-transmit-false', text: '禁用数据传输', action: 'disableTransmission'}},
         {separator: true},
-        {id: 'enable-all-controller-services-menu-item', condition: isProcessGroup, menuItem: {clazz: 'fa fa-flash', text: 'Enable all controller services', action: 'enableAllControllerServices'}},
-        {id: 'enable-all-controller-services-menu-item-noselection', condition: emptySelection, menuItem: {clazz: 'fa fa-flash', text: 'Enable all controller services', action: 'enableAllControllerServices'}},
-        {id: 'disable-all-controller-services-menu-item', condition: isProcessGroup, menuItem: {clazz: 'icon icon-enable-false', text: 'Disable all controller services', action: 'disableAllControllerServices'}},
-        {id: 'disable-all-controller-services-menu-item-noselection', condition: emptySelection, menuItem: {clazz: 'icon icon-enable-false', text: 'Disable all controller services', action: 'disableAllControllerServices'}},
+        {id: 'enable-all-controller-services-menu-item', condition: isProcessGroup, menuItem: {clazz: 'fa fa-flash', text: '启用所有控制器服务', action: 'enableAllControllerServices'}},
+        {id: 'enable-all-controller-services-menu-item-noselection', condition: emptySelection, menuItem: {clazz: 'fa fa-flash', text: '启用所有控制器服务', action: 'enableAllControllerServices'}},
+        {id: 'disable-all-controller-services-menu-item', condition: isProcessGroup, menuItem: {clazz: 'icon icon-enable-false', text: '禁用所有控制器服务', action: 'disableAllControllerServices'}},
+        {id: 'disable-all-controller-services-menu-item-noselection', condition: emptySelection, menuItem: {clazz: 'icon icon-enable-false', text: '禁用所有控制器服务', action: 'disableAllControllerServices'}},
         {separator: true},
-        {id: 'data-provenance-menu-item', condition: canAccessProvenance, menuItem: {clazz: 'icon icon-provenance', imgStyle: 'context-menu-provenance', text: 'View data provenance', action: 'openProvenance'}},
+        {id: 'data-provenance-menu-item', condition: canAccessProvenance, menuItem: {clazz: 'icon icon-provenance', imgStyle: 'context-menu-provenance', text: '查看数据朔源', action: 'openProvenance'}},
         {id: 'data-provenance-replay-last-menu-item', condition: canReplayProvenance, groupMenuItem: {clazz: 'fa fa-repeat', text: 'Replay last event'}, menuItems: [
-            {id: 'replay-last-all-nodes-menu-item', condition: canReplayProvenance, menuItem: {text: 'All nodes', action: 'replayLastAllNodes'}},
-            {id: 'replay-last-primary-node-menu-item', condition: canReplayProvenance, menuItem: {text: 'Primary node', action: 'replayLastPrimaryNode'}}
+            {id: 'replay-last-all-nodes-menu-item', condition: canReplayProvenance, menuItem: {text: '全部节点', action: 'replayLastAllNodes'}},
+            {id: 'replay-last-primary-node-menu-item', condition: canReplayProvenance, menuItem: {text: '主节点', action: 'replayLastPrimaryNode'}}
         ]},
         {separator: true},
-        {id: 'show-stats-menu-item', condition: supportsStats, menuItem: {clazz: 'fa fa-area-chart', text: 'View status history', action: 'showStats'}},
-        {id: 'view-state-menu-item', condition: isStatefulProcessor, menuItem: {clazz: 'fa fa-tasks', text: 'View state', action: 'viewState'}},
-        {id: 'list-queue-menu-item', condition: canListQueue, menuItem: {clazz: 'fa fa-list', text: 'List queue', action: 'listQueue'}},
-        {id: 'show-usage-menu-item', condition: hasUsage, menuItem: {clazz: 'fa fa-book', text: 'View usage', action: 'showUsage'}},
-        {id: 'view-menu-item', groupMenuItem: {clazz: 'icon icon-connect', text: 'View connections'}, menuItems: [
-            {id: 'show-upstream-menu-item', condition: hasUpstream, menuItem: {clazz: 'icon', text: 'Upstream', action: 'showUpstream'}},
-            {id: 'show-downstream-menu-item', condition: hasDownstream, menuItem: {clazz: 'icon', text: 'Downstream', action: 'showDownstream'}}
+        {id: 'show-stats-menu-item', condition: supportsStats, menuItem: {clazz: 'fa fa-area-chart', text: '查看状态历史', action: 'showStats'}},
+        {id: 'view-state-menu-item', condition: isStatefulProcessor, menuItem: {clazz: 'fa fa-tasks', text: '查看状态', action: 'viewState'}},
+        {id: 'list-queue-menu-item', condition: canListQueue, menuItem: {clazz: 'fa fa-list', text: '查看队列数据', action: 'listQueue'}},
+        {id: 'show-usage-menu-item', condition: hasUsage, menuItem: {clazz: 'fa fa-book', text: '查看使用说明', action: 'showUsage'}},
+        {id: 'view-menu-item', groupMenuItem: {clazz: 'icon icon-connect', text: '查看连接'}, menuItems: [
+            {id: 'show-upstream-menu-item', condition: hasUpstream, menuItem: {clazz: 'icon', text: '上游连接', action: 'showUpstream'}},
+            {id: 'show-downstream-menu-item', condition: hasDownstream, menuItem: {clazz: 'icon', text: '下游连接', action: 'showDownstream'}}
         ]},
         {separator: true},
-        {id: 'refresh-remote-flow-menu-item', condition: isRemoteProcessGroup, menuItem: {clazz: 'fa fa-refresh', text: 'Refresh remote', action: 'refreshRemoteFlow'}},
+        {id: 'refresh-remote-flow-menu-item', condition: isRemoteProcessGroup, menuItem: {clazz: 'fa fa-refresh', text: '刷新远端', action: 'refreshRemoteFlow'}},
         {separator: true},
-        {id: 'remote-ports-menu-item', condition: isRemoteProcessGroup, menuItem: {clazz: 'fa fa-cloud', text: 'Manage remote ports', action: 'remotePorts'}},
-        {id: 'manage-policies-menu-item', condition: canManagePolicies, menuItem: {clazz: 'fa fa-key', text: 'Manage access policies', action: 'managePolicies'}},
-        {id: 'change-version-menu-item', condition: canChangeProcessorVersion, menuItem: {clazz: 'fa fa-exchange', text: 'Change version', action: 'changeVersion'}},
+        {id: 'remote-ports-menu-item', condition: isRemoteProcessGroup, menuItem: {clazz: 'fa fa-cloud', text: '管理远程端口', action: 'remotePorts'}},
+        {id: 'manage-policies-menu-item', condition: canManagePolicies, menuItem: {clazz: 'fa fa-key', text: '管理访问策略', action: 'managePolicies'}},
+        {id: 'change-version-menu-item', condition: canChangeProcessorVersion, menuItem: {clazz: 'fa fa-exchange', text: '修改版本', action: 'changeVersion'}},
         {separator: true},
-        {id: 'show-source-menu-item', condition: isConnection, menuItem: {clazz: 'fa fa-long-arrow-left', text: 'Go to source', action: 'showSource'}},
-        {id: 'show-destination-menu-item', condition: isConnection, menuItem: {clazz: 'fa fa-long-arrow-right', text: 'Go to destination', action: 'showDestination'}},
+        {id: 'show-source-menu-item', condition: isConnection, menuItem: {clazz: 'fa fa-long-arrow-left', text: '查看源组件', action: 'showSource'}},
+        {id: 'show-destination-menu-item', condition: isConnection, menuItem: {clazz: 'fa fa-long-arrow-right', text: '查看目标组件', action: 'showDestination'}},
         {separator: true},
-        {id: 'align-menu-item', groupMenuItem: {clazz: 'fa', text: 'Align'}, menuItems: [
-            {id: 'align-horizontal-menu-item', condition: canAlign, menuItem: { clazz: 'fa fa-align-center fa-rotate-90', text: 'Horizontally', action: 'alignHorizontal'}},
-            {id: 'align-vertical-menu-item', condition: canAlign, menuItem: {clazz: 'fa fa-align-center', text: 'Vertically', action: 'alignVertical'}}
+        {id: 'align-menu-item', groupMenuItem: {clazz: 'fa', text: '对齐'}, menuItems: [
+            {id: 'align-horizontal-menu-item', condition: canAlign, menuItem: { clazz: 'fa fa-align-center fa-rotate-90', text: '水平对齐', action: 'alignHorizontal'}},
+            {id: 'align-vertical-menu-item', condition: canAlign, menuItem: {clazz: 'fa fa-align-center', text: '垂直对齐', action: 'alignVertical'}}
         ]},
-        {id: 'to-front-menu-item', condition: canMoveToFront, menuItem: {clazz: 'fa fa-clone', text: 'Bring to front', action: 'toFront'}},
-        {id: 'center-menu-item', condition: isNotConnection, menuItem: {clazz: 'fa fa-crosshairs', text: 'Center in view', action: 'center'}},
-        {id: 'fill-color-menu-item', condition: isColorable, menuItem: {clazz: 'fa fa-paint-brush', text: 'Change color', action: 'fillColor'}},
-        {id: 'open-uri-menu-item', condition: isRemoteProcessGroup, menuItem: {clazz: 'fa fa-external-link', text: 'Go to', action: 'openUri'}},
+        {id: 'to-front-menu-item', condition: canMoveToFront, menuItem: {clazz: 'fa fa-clone', text: '前端显示', action: 'toFront'}},
+        {id: 'center-menu-item', condition: isNotConnection, menuItem: {clazz: 'fa fa-crosshairs', text: '在窗口内居中', action: 'center'}},
+        {id: 'fill-color-menu-item', condition: isColorable, menuItem: {clazz: 'fa fa-paint-brush', text: '修改颜色', action: 'fillColor'}},
+        {id: 'open-uri-menu-item', condition: isRemoteProcessGroup, menuItem: {clazz: 'fa fa-external-link', text: '查看', action: 'openUri'}},
         {separator: true},
-        {id: 'move-into-parent-menu-item', condition: canMoveToParent, menuItem: {clazz: 'fa fa-arrows', text: 'Move to parent group', action: 'moveIntoParent'}},
-        {id: 'group-menu-item', condition: canGroup, menuItem: {clazz: 'icon icon-group', text: 'Group', action: 'group'}},
+        {id: 'move-into-parent-menu-item', condition: canMoveToParent, menuItem: {clazz: 'fa fa-arrows', text: '移到父处理组', action: 'moveIntoParent'}},
+        {id: 'group-menu-item', condition: canGroup, menuItem: {clazz: 'icon icon-group', text: '组合...', action: 'group'}},
         {separator: true},
-        {id: 'download-menu-item', groupMenuItem: {clazz: 'fa', text: 'Download flow definition'}, menuItems: [
-            {id: 'download-menu-item-without', condition: supportsDownloadFlow, menuItem: {clazz: 'fa', text: 'Without external services', action: 'downloadFlowWithoutExternalServices'}},
-            {id: 'download-menu-item-with', condition: supportsDownloadFlow, menuItem: {clazz: 'fa', text: 'With external services', action: 'downloadFlowWithExternalServices'}}
+        {id: 'download-menu-item', groupMenuItem: {clazz: 'fa', text: '下载数据流程定义'}, menuItems: [
+            {id: 'download-menu-item-without', condition: supportsDownloadFlow, menuItem: {clazz: 'fa', text: '不包含外部服务', action: 'downloadFlowWithoutExternalServices'}},
+            {id: 'download-menu-item-with', condition: supportsDownloadFlow, menuItem: {clazz: 'fa', text: '包含外部服务', action: 'downloadFlowWithExternalServices'}}
         ]},
         {separator: true},
-        {id: 'upload-template-menu-item', condition: canUploadTemplate, menuItem: {clazz: 'icon icon-template-import', text: 'Upload template', action: 'uploadTemplate'}},
-        {id: 'template-menu-item', condition: canCreateTemplate, menuItem: {clazz: 'icon icon-template-save', text: 'Create template', action: 'template'}},
+        {id: 'upload-template-menu-item', condition: canUploadTemplate, menuItem: {clazz: 'icon icon-template-import', text: '上传模板', action: 'uploadTemplate'}},
+        {id: 'template-menu-item', condition: canCreateTemplate, menuItem: {clazz: 'icon icon-template-save', text: '创建模板', action: 'template'}},
         {separator: true},
-        {id: 'copy-menu-item', condition: isCopyable, menuItem: {clazz: 'fa fa-copy', text: 'Copy', action: 'copy'}},
-        {id: 'paste-menu-item', condition: isPastable, menuItem: {clazz: 'fa fa-paste', text: 'Paste', action: 'paste'}},
+        {id: 'copy-menu-item', condition: isCopyable, menuItem: {clazz: 'fa fa-copy', text: '拷贝', action: 'copy'}},
+        {id: 'paste-menu-item', condition: isPastable, menuItem: {clazz: 'fa fa-paste', text: '粘贴', action: 'paste'}},
         {separator: true},
-        {id: 'empty-queue-menu-item', condition: canEmptyQueue, menuItem: {clazz: 'fa fa-minus-circle', text: 'Empty queue', action: 'emptyQueue'}},
-        {id: 'empty-all-queues-menu-item', condition: isProcessGroup, menuItem: {clazz: 'fa fa-minus-circle', text: 'Empty all queues', action: 'emptyAllQueues'}},
-        {id: 'empty-all-queues-menu-item-noselection', condition: emptySelection, menuItem: {clazz: 'fa fa-minus-circle', text: 'Empty all queues', action: 'emptyAllQueues'}},
-        {id: 'delete-menu-item', condition: isDeletable, menuItem: {clazz: 'fa fa-trash', text: 'Delete', action: 'delete'}}
+        {id: 'empty-queue-menu-item', condition: canEmptyQueue, menuItem: {clazz: 'fa fa-minus-circle', text: '清空队列', action: 'emptyQueue'}},
+        {id: 'empty-all-queues-menu-item', condition: isProcessGroup, menuItem: {clazz: 'fa fa-minus-circle', text: '清空所有队列', action: 'emptyAllQueues'}},
+        {id: 'empty-all-queues-menu-item-noselection', condition: emptySelection, menuItem: {clazz: 'fa fa-minus-circle', text: '清空所有队列', action: 'emptyAllQueues'}},
+        {id: 'delete-menu-item', condition: isDeletable, menuItem: {clazz: 'fa fa-trash', text: '删除', action: 'delete'}}
     ];
 
     var nfContextMenu = {

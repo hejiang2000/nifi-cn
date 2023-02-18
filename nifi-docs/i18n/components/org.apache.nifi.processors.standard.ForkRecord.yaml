@@ -1,0 +1,52 @@
+relationships:
+  fork: {en: The FlowFiles containing the forked records will be routed to this relationship,
+    zh: 包含分叉记录的FlowFiles将路由到此关系}
+  original: {en: The original FlowFiles will be routed to this relationship, zh: 原始FlowFiles将路由到此关系}
+  failure: {en: 'In case a FlowFile generates an error during the fork operation,
+      it will be routed to this relationship', zh: 如果FlowFile在fork操作期间生成错误，它将被路由到此关系}
+dynamicProperties:
+  Record Path property:
+    en: {description: 'A Record Path value, pointing to a field of type ARRAY containing
+        RECORD objects', value: The Record Path value}
+    zh: {description: 记录路径值，指向包含Record对象的ARRAY类型字段, value: 记录路径值}
+capabilityDescription: {en: 'This processor allows the user to fork a record into
+    multiple records. The user must specify at least one Record Path, as a dynamic
+    property, pointing to a field of type ARRAY containing RECORD objects. The processor
+    accepts two modes: ''split'' and ''extract''. In both modes, there is one record
+    generated per element contained in the designated array. In the ''split'' mode,
+    each generated record will preserve the same schema as given in the input but
+    the array will contain only one element. In the ''extract'' mode, the element
+    of the array must be of record type and will be the generated record. Additionally,
+    in the ''extract'' mode, it is possible to specify if each generated record should
+    contain all the fields of the parent records from the root level to the extracted
+    record. This assumes that the fields to add in the record are defined in the schema
+    of the Record Writer controller service. See examples in the additional details
+    documentation of this processor.', zh: 该处理器允许用户将一条记录分叉为多条记录。用户必须至少指定一个记录路径作为动态属性，指向包含Record对象的ARRAY类型字段。处理器接受两种模式：“拆分”和“提取”。在这两种模式中，指定数组中包含的每个元素都会生成一条记录。在“拆分”模式下，每个生成的记录将保留与输入中给定的模式相同的模式，但数组将仅包含一个元素。在“提取”模式下，数组的元素必须是记录类型，并且将是生成的记录。此外，在“提取”模式下，可以指定每个生成的记录是否应包含从根级别到提取记录的父记录的所有字段。这假设要添加到记录中的字段是在RecordWriter控制器服务的架构中定义的。请参阅此处理器的其他详细文档中的示例。}
+properties:
+  include-parent-fields:
+    en: {displayName: Include Parent Fields, description: 'This parameter is only
+        valid with the ''extract'' mode. If set to true, all the fields from the root
+        level to the given array will be added as fields of each element of the array
+        to fork.'}
+    zh: {description: 此参数仅在“提取”模式下有效。如果设置为true，则从根级别到给定数组的所有字段都将作为要分叉的数组的每个元素的字段添加。,
+      displayName: 包含父字段}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  fork-mode:
+    en: {displayName: Mode, description: Specifies the forking mode of the processor}
+    zh: {description: 指定处理器的分叉模式, displayName: 模式}
+writeAttributes:
+  record.count: {en: The generated FlowFile will have a 'record.count' attribute indicating
+      the number of records that were written to the FlowFile., zh: 生成的FlowFile将具有“”记录。count”属性，指示写入FlowFile的记录数。}
+  mime.type: {en: The MIME Type indicated by the Record Writer, zh: 记录编写器指示的MIME类型}
+  <Attributes from Record Writer>: {en: Any Attribute that the configured Record Writer
+      returns will be added to the FlowFile., zh: 配置的记录编写器返回的任何属性都将添加到FlowFile中。}
+tags:
+  en: [fork, record, content, array, stream, event]
+  zh: [叉, 记录, 所容纳之物, 大堆, 流动, 事件]

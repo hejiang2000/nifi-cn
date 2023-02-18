@@ -1,0 +1,122 @@
+capabilityDescription: {en: Publishes Provenance events to to a Azure Log Analytics
+    workspace., zh: 将普罗旺斯事件发布到Azure日志分析工作区。}
+properties:
+  s2s-prov-task-event-filter:
+    en: {displayName: Event Type to Include, description: 'Comma-separated list of
+        event types that will be used to filter the provenance events sent by the
+        reporting task. Available event types are [CREATE, RECEIVE, FETCH, SEND, REMOTE_INVOCATION,
+        DOWNLOAD, DROP, EXPIRE, FORK, JOIN, CLONE, CONTENT_MODIFIED, ATTRIBUTES_MODIFIED,
+        ROUTE, ADDINFO, REPLAY, UNKNOWN]. If no filter is set, all the events are
+        sent. If multiple filters are set, the filters are cumulative.'}
+    zh: {description: '用逗号分隔的事件类型列表，将用于筛选报告任务发送的起源事件。可用的事件类型为[CREATE、RECEIVE、FETCH、SEND、REMOTE_INVOCATION、DOWNLOAD、DROP、EXPIRE、FORK、JOIN、CLONE、CONTENT_MODFIED、ATTRIBUTES_MODIFIED、ROUTE、ADDINFO、REPLAY、UNKNOWN]。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。',
+      displayName: 要包含的事件类型}
+  Log Analytics Workspace Key:
+    en: {displayName: Log Analytics Workspace Key, description: Azure Log Analytic
+        Worskspace Key}
+    zh: {description: Azure日志分析Worskspace密钥, displayName: 日志分析工作区密钥}
+  Job Name:
+    en: {displayName: Job Name, description: The name of the exporting job}
+    zh: {description: 导出作业的名称, displayName: 作业名称}
+  s2s-prov-task-id-filter-exclude:
+    en: {displayName: Component ID to Exclude, description: 'Comma-separated list
+        of component UUID that will be used to exclude the provenance events sent
+        by the reporting task. If no filter is set, all the events are sent. If multiple
+        filters are set, the filters are cumulative. If a component UUID is included
+        in Component ID to Include and excluded here, then the exclusion takes precedence
+        and the event will not be sent.'}
+    zh: {description: 组件UUID的逗号分隔列表，用于排除报告任务发送的源事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。如果组件UUID包含在要包含的组件ID中并在此处排除，则排除优先，不会发送事件。,
+      displayName: 要排除的组件ID}
+  Platform:
+    en: {displayName: Platform, description: The value to use for the platform field
+        in each event.}
+    zh: {description: 用于每个事件中平台字段的值。, displayName: 站台}
+  s2s-prov-task-type-filter-exclude:
+    en: {displayName: Component Type to Exclude, description: 'Regular expression
+        to exclude the provenance events based on the component type. The events matching
+        the regular expression will not be sent. If no filter is set, all the events
+        are sent. If multiple filters are set, the filters are cumulative. If a component
+        type is included in Component Type to Include and excluded here, then the
+        exclusion takes precedence and the event will not be sent.'}
+    zh: {description: 基于组件类型排除起源事件的正则表达式。将不会发送与正则表达式匹配的事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。如果组件类型包含在“要包含的组件类型”中，并在此处排除，则排除优先，不会发送事件。,
+      displayName: 要排除的组件类型}
+  Application ID:
+    en: {displayName: Application ID, description: The Application ID to be included
+        in the metrics sent to Azure Log Analytics WS}
+    zh: {description: 要包含在发送到Azure日志分析WS的度量中的应用程序ID, displayName: 应用程序ID}
+  Log Analytics URL Endpoint Format:
+    en: {displayName: Log Analytics URL Endpoint Format, description: Log Analytics
+        URL Endpoint Format}
+    zh: {description: 日志分析URL终结点格式, displayName: 日志分析URL终结点格式}
+  s2s-prov-task-name-filter:
+    en: {displayName: Component Name to Include, description: 'Regular expression
+        to filter the provenance events based on the component name. Only the events
+        matching the regular expression will be sent. If no filter is set, all the
+        events are sent. If multiple filters are set, the filters are cumulative.'}
+    zh: {description: 正则表达式，用于根据组件名称筛选源事件。只会发送与正则表达式匹配的事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。,
+      displayName: 要包含的组件名称}
+  include-null-values:
+    en: {displayName: Include Null Values, description: Indicate if null values should
+        be included in records. Default will be false}
+    zh: {description: 指示记录中是否应包含空值。默认值将为false, displayName: 包含Null值}
+  s2s-prov-task-type-filter:
+    en: {displayName: Component Type to Include, description: 'Regular expression
+        to filter the provenance events based on the component type. Only the events
+        matching the regular expression will be sent. If no filter is set, all the
+        events are sent. If multiple filters are set, the filters are cumulative.'}
+    zh: {description: 用于根据组件类型筛选源事件的正则表达式。只会发送与正则表达式匹配的事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。,
+      displayName: 要包含的组件类型}
+  s2s-prov-task-id-filter:
+    en: {displayName: Component ID to Include, description: 'Comma-separated list
+        of component UUID that will be used to filter the provenance events sent by
+        the reporting task. If no filter is set, all the events are sent. If multiple
+        filters are set, the filters are cumulative.'}
+    zh: {description: 组件UUID的逗号分隔列表，用于过滤报告任务发送的源事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。,
+      displayName: 要包含的组件ID}
+  Log Analytics Workspace Id:
+    en: {displayName: Log Analytics Workspace Id, description: Log Analytics Workspace
+        Id}
+    zh: {description: 日志分析工作区Id, displayName: 日志分析工作区Id}
+  Batch Size:
+    en: {displayName: Batch Size, description: 'Specifies how many records to send
+        in a single batch, at most.'}
+    zh: {description: 指定在单个批处理中最多发送多少条记录。, displayName: 批量大小}
+  Log Analytics Custom Log Name:
+    en: {displayName: Log Analytics Custom Log Name, description: Log Analytics Custom
+        Log Name}
+    zh: {description: 日志分析自定义日志名称, displayName: 日志分析自定义日志名称}
+  Instance ID:
+    en: {displayName: Instance ID, description: Id of this NiFi instance to be included
+        in the metrics sent to Azure Log Analytics WS}
+    zh: {description: 要包含在发送到Azure Log Analytics WS的度量中的此NiFi实例的Id, displayName: 实例ID}
+  s2s-prov-task-event-filter-exclude:
+    en: {displayName: Event Type to Exclude, description: 'Comma-separated list of
+        event types that will be used to exclude the provenance events sent by the
+        reporting task. Available event types are [CREATE, RECEIVE, FETCH, SEND, REMOTE_INVOCATION,
+        DOWNLOAD, DROP, EXPIRE, FORK, JOIN, CLONE, CONTENT_MODIFIED, ATTRIBUTES_MODIFIED,
+        ROUTE, ADDINFO, REPLAY, UNKNOWN]. If no filter is set, all the events are
+        sent. If multiple filters are set, the filters are cumulative. If an event
+        type is included in Event Type to Include and excluded here, then the exclusion
+        takes precedence and the event will not be sent.'}
+    zh: {description: '将用于排除报告任务发送的起源事件的事件类型的逗号分隔列表。可用的事件类型为[CREATE、RECEIVE、FETCH、SEND、REMOTE_INVOCATION、DOWNLOAD、DROP、EXPIRE、FORK、JOIN、CLONE、CONTENT_MODFIED、ATTRIBUTES_MODIFIED、ROUTE、ADDINFO、REPLAY、UNKNOWN]。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。如果事件类型包含在“要包含的事件类型”中并在此处排除，则排除优先，不会发送事件。',
+      displayName: 要排除的事件类型}
+  start-position:
+    en: {displayName: Start Position, description: 'If the Reporting Task has never
+        been run, or if its state has been reset by a user, specifies where in the
+        stream of Provenance Events the Reporting Task should start'}
+    zh: {description: 如果报告任务从未运行过，或其状态已由用户重置，则指定报告任务应在源事件流中的何处启动, displayName: 起始位置}
+  s2s-prov-task-name-filter-exclude:
+    en: {displayName: Component Name to Exclude, description: 'Regular expression
+        to exclude the provenance events based on the component name. The events matching
+        the regular expression will not be sent. If no filter is set, all the events
+        are sent. If multiple filters are set, the filters are cumulative. If a component
+        name is included in Component Name to Include and excluded here, then the
+        exclusion takes precedence and the event will not be sent.'}
+    zh: {description: 基于组件名称排除起源事件的正则表达式。将不会发送与正则表达式匹配的事件。如果未设置筛选器，则发送所有事件。如果设置了多个过滤器，则过滤器是累积的。如果组件名称包含在要包含的组件名称中并在此处排除，则排除优先，并且不会发送事件。,
+      displayName: 要排除的组件名称}
+  Instance URL:
+    en: {displayName: Instance URL, description: The URL of this instance to use in
+        the Content URI of each event.}
+    zh: {description: 要在每个事件的内容URI中使用的此实例的URL。, displayName: 实例URL}
+tags:
+  en: [azure, provenace, reporting, log analytics]
+  zh: [蔚蓝色的, 发源地, 报告, 日志分析]

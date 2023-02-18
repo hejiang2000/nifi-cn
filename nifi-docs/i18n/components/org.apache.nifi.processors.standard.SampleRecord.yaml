@@ -1,0 +1,73 @@
+relationships:
+  original: {en: The original FlowFile is routed to this relationship if sampling
+      is successful, zh: 如果采样成功，原始FlowFile将路由到此关系}
+  success: {en: The FlowFile is routed to this relationship if the sampling completed
+      successfully, zh: 如果采样成功完成，FlowFile将路由到此关系}
+  failure: {en: 'If a FlowFile fails processing for any reason (for example, any record
+      is not valid), the original FlowFile will be routed to this relationship', zh: 如果FlowFile由于任何原因（例如，任何记录都无效）处理失败，原始FlowFile将被路由到此关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Samples the records of a FlowFile based on a specified
+    sampling strategy (such as Reservoir Sampling). The resulting FlowFile may be
+    of a fixed number of records (in the case of reservoir-based algorithms) or some
+    subset of the total number of records (in the case of probabilistic sampling),
+    or a deterministic number of records (in the case of interval sampling).', zh: 根据指定的采样策略（如水库采样）对FlowFile的记录进行采样。生成的FlowFile可以是固定数量的记录（在基于储层的算法的情况下）或总记录数量的某个子集（在概率采样的情况下，或确定性数量的记录）（在间隔采样的情况中）。}
+properties:
+  sample-record-reservoir:
+    en: {displayName: Reservoir Size, description: Specifies the number of records
+        to write to the outgoing FlowFile. This property is only used if Sampling
+        Strategy is set to reservoir-based strategies such as Reservoir Sampling.}
+    zh: {description: 指定要写入传出FlowFile的记录数。仅当“采样策略”设置为基于储层的策略（如“储层采样”）时，才使用此属性。, displayName: 水库大小}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing results to a FlowFile}
+    zh: {description: 指定用于将结果写入FlowFile的控制器服务, displayName: 记录编写器}
+  sample-record-interval:
+    en: {displayName: Sampling Interval, description: 'Specifies the number of records
+        to skip before writing a record to the outgoing FlowFile. This property is
+        only used if Sampling Strategy is set to Interval Sampling. A value of zero
+        (0) will cause no records to be included in theoutgoing FlowFile, a value
+        of one (1) will cause all records to be included, and a value of two (2) will
+        cause half the records to be included, and so on.'}
+    zh: {description: 指定在将记录写入传出FlowFile之前要跳过的记录数。仅当“采样策略”设置为“间隔采样”时，才使用此属性。值为零（0）将导致输出流文件中不包含任何记录，值为一（1）将导致所有记录都包含在内，值为二（2）将导致一半记录包含在内，依此类推。,
+      displayName: 采样间隔}
+  sample-record-probability:
+    en: {displayName: Sampling Probability, description: 'Specifies the probability
+        (as a percent from 0-100) of a record being included in the outgoing FlowFile.
+        This property is only used if Sampling Strategy is set to Probabilistic Sampling.
+        A value of zero (0) will cause no records to be included in theoutgoing FlowFile,
+        and a value of 100 will cause all records to be included in the outgoing FlowFile..'}
+    zh: {description: 指定传出FlowFile中包含记录的概率（以0-100的百分比表示）。此属性仅在“采样策略”设置为“概率采样”时使用。值为零（0）将导致输出FlowFile中不包含任何记录，值为100将导致输出流文件中包含所有记录。。,
+      displayName: 抽样概率}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务, displayName: 记录读取器}
+  sample-record-sampling-strategy:
+    en: {displayName: Sampling Strategy, description: Specifies which method to use
+        for sampling records from the incoming FlowFile}
+    zh: {description: 指定用于从传入FlowFile中采样记录的方法, displayName: 抽样策略}
+  sample-record-random-seed:
+    en: {displayName: Random Seed, description: Specifies a particular number to use
+        as the seed for the random number generator (used by probabilistic strategies).
+        Setting this property will ensure the same records are selected even when
+        using probabilistic strategies.}
+    zh: {description: 指定要用作随机数生成器（由概率策略使用）种子的特定数字。设置此属性将确保即使在使用概率策略时也选择相同的记录。, displayName: 随机种子}
+  sample-record-range:
+    en: {displayName: Sampling Range, description: 'Specifies the range of records
+        to include in the sample, from 1 to the total number of records. An example
+        is ''3,6-8,20-'' which includes the third record, the sixth, seventh and eighth
+        records, and all records from the twentieth record on. Commas separate intervals
+        that don''t overlap, and an interval can be between two numbers (i.e. 6-8)
+        or up to a given number (i.e. -5), or from a number to the number of the last
+        record (i.e. 20-). If this property is unset, all records will be included.'}
+    zh: {description: '指定要包含在示例中的记录范围，从1到记录总数。例如“3,6-8,20-”，它包括第三条记录、第六条、第七条和第八条记录，以及从第二十条记录开始的所有记录。逗号分隔不重叠的间隔，间隔可以在两个数字之间（即6-8），也可以达到给定的数（即-5），或者从一个数字到最后一条记录的数字（即20-）。如果未设置此属性，则将包括所有记录。',
+      displayName: 采样范围}
+writeAttributes:
+  record.count: {en: The number of records in the resulting flow file, zh: 结果流文件中的记录数}
+  mime.type: {en: The MIME type indicated by the record writer, zh: 记录编写器指示的MIME类型}
+tags:
+  en: [record, sample, reservoir, range, interval]
+  zh: [记录, 样品, 水库, 范围, 间隔]

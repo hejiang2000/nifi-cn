@@ -1,0 +1,42 @@
+relationships:
+  success: {en: Each FlowFile that were successfully transformed will be routed to
+      this Relationship, zh: 成功转换的每个FlowFile都将路由到此关系}
+  failure: {en: Any FlowFile that cannot be transformed will be routed to this Relationship,
+    zh: 任何无法转换的FlowFile都将路由到此关系}
+capabilityDescription: {en: 'Provides the ability to evaluate a simple script against
+    each record in an incoming FlowFile. The script may transform the record in some
+    way, filter the record, or fork additional records. See Processor''s Additional
+    Details for more information.', zh: 提供针对传入FlowFile中的每个记录评估简单脚本的能力。脚本可以以某种方式转换记录、过滤记录或派生其他记录。有关更多信息，请参阅处理器的其他详细信息。}
+properties:
+  Script File:
+    en: {displayName: Script File, description: Path to script file to execute. Only
+        one of Script File or Script Body may be used}
+    zh: {description: 要执行的脚本文件的路径。只能使用脚本文件或脚本正文之一, displayName: 脚本文件}
+  Script Engine:
+    en: {displayName: Script Language, description: The Language to use for the script}
+    zh: {description: 脚本使用的语言, displayName: 脚本语言}
+  Script Body:
+    en: {displayName: Script Body, description: Body of script to execute. Only one
+        of Script File or Script Body may be used}
+    zh: {description: 要执行的脚本体。只能使用脚本文件或脚本正文之一, displayName: 脚本正文}
+  Record Writer:
+    en: {displayName: Record Writer, description: The Record Writer to use for serializing
+        Records after they have been transformed}
+    zh: {description: 转换后用于序列化记录的记录编写器, displayName: 记录编写器}
+  Record Reader:
+    en: {displayName: Record Reader, description: The Record Reader to use parsing
+        the incoming FlowFile into Records}
+    zh: {description: 用于将传入的FlowFile解析为记录的记录读取器, displayName: 记录读取器}
+  Module Directory:
+    en: {displayName: Module Directory, description: Comma-separated list of paths
+        to files and/or directories which contain modules required by the script.}
+    zh: {description: 包含脚本所需模块的文件和/或目录路径的逗号分隔列表。, displayName: 模块目录}
+writeAttributes:
+  record.error.message: {en: This attribute provides on failure the error message
+      encountered by the Reader or Writer., zh: 此属性在失败时提供读取器或写入器遇到的错误消息。}
+  record.count: {en: The number of records in the FlowFile, zh: FlowFile中的记录数}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer, zh: 设置mime。type属性设置为记录编写器指定的MIME类型}
+tags:
+  en: [record, transform, script, groovy, jython, python, update, modify, filter]
+  zh: [记录, 使改变, 剧本, 常规的, jython公司, 蟒蛇, 使现代化, 修改, 滤器]

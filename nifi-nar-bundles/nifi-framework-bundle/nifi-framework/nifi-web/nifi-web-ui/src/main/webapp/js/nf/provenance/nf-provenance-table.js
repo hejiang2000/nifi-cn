@@ -161,22 +161,22 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Details',
+                    name: '详细信息',
                     tabContentId: 'event-details-tab-content'
                 }, {
-                    name: 'Attributes',
+                    name: '属性',
                     tabContentId: 'attributes-tab-content'
                 }, {
-                    name: 'Content',
+                    name: '正文',
                     tabContentId: 'content-tab-content'
                 }]
             });
 
             $('#event-details-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Provenance Event',
+                headerText: '朔源事件',
                 buttons: [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -257,8 +257,8 @@
                     contentType: 'application/json'
                 }).done(function (response) {
                     nfDialog.showOkDialog({
-                        headerText: 'Provenance',
-                        dialogContent: 'Successfully submitted replay request.'
+                        headerText: '朔源',
+                        dialogContent: '已成功提交回放请求.'
                     });
                 }).fail(nfErrorHandler.handleAjaxError);
 
@@ -307,7 +307,7 @@
 
                     // create the searchable options
                     var searchableOptions = [{
-                        text: 'cluster',
+                        text: '机器',
                         value: null
                     }];
 
@@ -339,9 +339,9 @@
             // configure the search dialog
             $('#provenance-search-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Search Events',
+                headerText: '搜索事件',
                 buttons: [{
-                    buttonText: 'Search',
+                    buttonText: '搜索',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -403,7 +403,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',
@@ -438,7 +438,7 @@
             // initialize the dialog
             $('#provenance-query-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Searching provenance events...'
+                headerText: '搜索朔源事件...'
             });
         };
 
@@ -453,8 +453,8 @@
             $('<div class="searchable-field-name setting-name"></div>').text(field.label).appendTo(searchableField);
             $('<div class="searchable-field-value"><input type="text" class="searchable-field-input"/></div>').appendTo(searchableField);
             $('<div class="searchable-checkbox-value nf-checkbox checkbox-unchecked"></div>').appendTo(searchableField);
-            $('<div class="searchable-checkbox-label nf-checkbox-label">Exclude from search results</div>').appendTo(searchableField);
-            $('<div class="searchable-checkbox-tooltip fa fa-question-circle" title="Query for all values except what is entered."></div>').appendTo(searchableField);
+            $('<div class="searchable-checkbox-label nf-checkbox-label">从搜索结果中排除</div>').appendTo(searchableField);
+            $('<div class="searchable-checkbox-tooltip fa fa-question-circle" title="查询除该值外的全部."></div>').appendTo(searchableField);
             $('<div class="clear"></div>').appendTo(searchableField);
 
             // make the searchable accessible for populating
@@ -509,20 +509,20 @@
 
             // filter options
             var filterOptions = [{
-                text: 'by component name',
+                text: '按组件名称',
                 value: 'componentName'
             }, {
-                text: 'by component type',
+                text: '按组件类型',
                 value: 'componentType'
             }, {
-                text: 'by type',
+                text: '按类型',
                 value: 'eventType'
             }];
 
             // if clustered, allowing filtering by node id
             if (isClustered) {
                 filterOptions.push({
-                    text: 'by node',
+                    text: '按节点',
                     value: 'clusterNodeAddress'
                 });
             }
@@ -555,7 +555,7 @@
                 // if we are clustered reset the selected option
                 if (isClustered) {
                     $('#provenance-search-location').combo('setSelectedOption', {
-                        text: 'cluster'
+                        text: '机器'
                     });
                 }
 
@@ -573,7 +573,7 @@
 
             // define a custom formatter for the more details column
             var moreDetailsFormatter = function (row, cell, value, columnDef, dataContext) {
-                return '<div title="View Details" class="pointer show-event-details fa fa-info-circle"></div>';
+                return '<div title="查看详细信息" class="pointer show-event-details fa fa-info-circle"></div>';
             };
 
             // define how general values are formatted
@@ -590,13 +590,13 @@
 
                 // conditionally include the cluster node id
                 if (nfCommon.SUPPORTS_SVG) {
-                    markup += '<div title="Show Lineage" class="pointer show-lineage icon icon-lineage"></div>';
+                    markup += '<div title="显示血缘" class="pointer show-lineage icon icon-lineage"></div>';
                 }
 
                 // conditionally support going to the component
                 var isRemotePort = dataContext.componentType === 'Remote Input Port' || dataContext.componentType === 'Remote Output Port';
                 if (isInShell && nfCommon.isDefinedAndNotNull(dataContext.groupId) && isRemotePort === false) {
-                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="Go To"></div>';
+                    markup += '<div class="pointer go-to fa fa-long-arrow-right" title="到"></div>';
                 }
 
                 return markup;
@@ -615,7 +615,7 @@
                 },
                 {
                     id: 'eventTime',
-                    name: 'Date/Time',
+                    name: '日期/时间',
                     field: 'eventTime',
                     sortable: true,
                     defaultSortAsc: false,
@@ -624,7 +624,7 @@
                 },
                 {
                     id: 'eventType',
-                    name: 'Type',
+                    name: '类型',
                     field: 'eventType',
                     sortable: true,
                     resizable: true,
@@ -640,7 +640,7 @@
                 },
                 {
                     id: 'fileSize',
-                    name: 'Size',
+                    name: '大小',
                     field: 'fileSize',
                     sortable: true,
                     defaultSortAsc: false,
@@ -649,7 +649,7 @@
                 },
                 {
                     id: 'componentName',
-                    name: 'Component Name',
+                    name: '组件名称',
                     field: 'componentName',
                     sortable: true,
                     resizable: true,
@@ -657,7 +657,7 @@
                 },
                 {
                     id: 'componentType',
-                    name: 'Component Type',
+                    name: '组件类型',
                     field: 'componentType',
                     sortable: true,
                     resizable: true,
@@ -669,7 +669,7 @@
             if (isClustered) {
                 provenanceColumns.push({
                     id: 'clusterNodeAddress',
-                    name: 'Node',
+                    name: '节点',
                     field: 'clusterNodeAddress',
                     sortable: true,
                     resizable: true,
@@ -1114,7 +1114,7 @@
 
                 // show the 'searching...' dialog
                 $('#provenance-query-dialog').modal('setButtonModel', [{
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -1191,7 +1191,7 @@
                         if (!nfCommon.isEmpty(provenance.results.errors)) {
                             var errors = provenance.results.errors;
                             nfDialog.showOkDialog({
-                                headerText: 'Provenance',
+                                headerText: '朔源',
                                 dialogContent: nfCommon.formatUnorderedList(errors),
                             });
                         }
@@ -1293,7 +1293,7 @@
                                 field.text(nfCommon.formatDuration(value));
                             }
                         } else {
-                            field.html('<span class="unset">No value set</span>');
+                            field.html('<span class="unset">无设置值</span>');
                         }
                     };
 
@@ -1356,7 +1356,7 @@
                     // handle parent flowfiles
                     if (nfCommon.isEmpty(event.parentUuids)) {
                         $('#parent-flowfile-count').text(0);
-                        parentUuids.append('<span class="unset">No parents</span>');
+                        parentUuids.append('<span class="unset">无父组件</span>');
                     } else {
                         $('#parent-flowfile-count').text(event.parentUuids.length);
                         $.each(event.parentUuids, function (_, uuid) {
@@ -1367,7 +1367,7 @@
                     // handle child flowfiles
                     if (nfCommon.isEmpty(event.childUuids)) {
                         $('#child-flowfile-count').text(0);
-                        childUuids.append('<span class="unset">No children</span>');
+                        childUuids.append('<span class="unset">无子组件</span>');
                     } else {
                         $('#child-flowfile-count').text(event.childUuids.length);
                         $.each(event.childUuids, function (_, uuid) {
@@ -1411,12 +1411,12 @@
                         if (nfCommon.isDefinedAndNotNull(value)) {
                             element.removeClass('unset').text(value);
                         } else {
-                            element.addClass('unset').text('No value previously set');
+                            element.addClass('unset').text('之前未设置值');
                         }
                     };
 
                     // content
-                    $('#input-content-header').text('Input Claim');
+                    $('#input-content-header').text('输入申索');
                     formatContentValue($('#input-content-container'), event.inputContentClaimContainer);
                     formatContentValue($('#input-content-section'), event.inputContentClaimSection);
                     formatContentValue($('#input-content-identifier'), event.inputContentClaimIdentifier);

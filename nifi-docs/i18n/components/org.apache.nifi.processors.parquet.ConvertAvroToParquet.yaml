@@ -1,0 +1,59 @@
+relationships:
+  success: {en: Parquet file that was converted successfully from Avro, zh: 从Avro成功转换的Parquet文件}
+  failure: {en: Avro content that could not be processed, zh: 无法处理的Avro内容}
+capabilityDescription: {en: 'Converts Avro records into Parquet file format. The incoming
+    FlowFile should be a valid avro file. If an incoming FlowFile does not contain
+    any records, an empty parquet file is the output. NOTE: Many Avro datatypes (collections,
+    primitives, and unions of primitives, e.g.) can be converted to parquet, but unions
+    of collections and other complex datatypes may not be able to be converted to
+    Parquet.', zh: 将Avro记录转换为Parquet文件格式。传入的FlowFile应该是有效的avro文件。如果传入的FlowFile不包含任何记录，则输出为空的拼花文件。注意：许多Avro数据类型（例如集合、基元和基元的并集）可以转换为拼花，但集合和其他复杂数据类型的并集可能无法转换成拼花。}
+properties:
+  enable-dictionary-encoding:
+    en: {displayName: Enable Dictionary Encoding, description: Specifies whether dictionary
+        encoding should be enabled for the Parquet writer}
+    zh: {description: 指定是否应为Parquet编写器启用字典编码, displayName: 启用字典编码}
+  page-size:
+    en: {displayName: Page Size, description: 'The page size used by the Parquet writer.
+        The value is specified in the format of <Data Size> <Data Unit> where Data
+        Unit is one of B, KB, MB, GB, TB.'}
+    zh: {description: Parquet编写器使用的页面大小。该值以＜数据大小＞＜数据单元＞的格式指定，其中数据单元是B、KB、MB、GB、TB之一。,
+      displayName: 页面大小}
+  writer-version:
+    en: {displayName: Writer Version, description: Specifies the version used by Parquet
+        writer}
+    zh: {description: 指定Parquet编写器使用的版本, displayName: Writer版本}
+  max-padding-size:
+    en: {displayName: Max Padding Size, description: 'The maximum amount of padding
+        that will be used to align row groups with blocks in the underlying filesystem.
+        If the underlying filesystem is not a block filesystem like HDFS, this has
+        no effect. The value is specified in the format of <Data Size> <Data Unit>
+        where Data Unit is one of B, KB, MB, GB, TB.'}
+    zh: {description: 用于将行组与底层文件系统中的块对齐的最大填充量。如果底层文件系统不是像HDFS那样的块文件系统，那么这不会产生任何影响。该值以＜数据大小＞＜数据单元＞的格式指定，其中数据单元是B、KB、MB、GB、TB之一。,
+      displayName: 最大衬垫尺寸}
+  compression-type:
+    en: {displayName: Compression Type, description: The type of compression for the
+        file being written.}
+    zh: {description: 正在写入的文件的压缩类型。, displayName: 压缩类型}
+  enable-validation:
+    en: {displayName: Enable Validation, description: Specifies whether validation
+        should be enabled for the Parquet writer}
+    zh: {description: 指定是否应为Parquet编写器启用验证, displayName: 启用验证}
+  dictionary-page-size:
+    en: {displayName: Dictionary Page Size, description: 'The dictionary page size
+        used by the Parquet writer. The value is specified in the format of <Data
+        Size> <Data Unit> where Data Unit is one of B, KB, MB, GB, TB.'}
+    zh: {description: Parquet作者使用的字典页面大小。该值以＜数据大小＞＜数据单元＞的格式指定，其中数据单元是B、KB、MB、GB、TB之一。,
+      displayName: 字典页面大小}
+  row-group-size:
+    en: {displayName: Row Group Size, description: 'The row group size used by the
+        Parquet writer. The value is specified in the format of <Data Size> <Data
+        Unit> where Data Unit is one of B, KB, MB, GB, TB.'}
+    zh: {description: Parquet编写器使用的行组大小。该值以＜数据大小＞＜数据单元＞的格式指定，其中数据单元是B、KB、MB、GB、TB之一。,
+      displayName: 行组大小}
+writeAttributes:
+  filename: {en: Sets the filename to the existing filename with the extension replaced
+      by / added to by .parquet, zh: 将文件名设置为现有文件名，扩展名替换为/parket}
+  record.count: {en: Sets the number of records in the parquet file., zh: 设置镶木地板文件中的记录数。}
+tags:
+  en: [avro, parquet, convert]
+  zh: [我没有吗？, 拼花地板, 转换]

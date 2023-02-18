@@ -1,0 +1,19 @@
+dynamicProperties:
+  The name to register the specified RecordSinkService:
+    en: {description: 'If ''record.sink.name'' attribute contains the name of the
+        dynamic property, then the RecordSinkService (registered in the value) will
+        be selected.', value: The RecordSinkService}
+    zh: {description: 如果'record.sink。name属性包含动态属性的名称，则将选择RecordSinkService（在值中注册）。,
+      value: RecordSink服务}
+capabilityDescription: {en: 'Provides a RecordSinkService that can be used to dynamically
+    select another RecordSinkService. This service requires an attribute named ''record.sink.name''
+    to be passed in when asking for a connection, and will throw an exception if the
+    attribute is missing. The value of ''record.sink.name'' will be used to select
+    the RecordSinkService that has been registered with that name. This will allow
+    multiple RecordSinkServices to be defined and registered, and then selected dynamically
+    at runtime by tagging flow files with the appropriate ''record.sink.name'' attribute.
+    Note that this controller service is not intended for use in reporting tasks that
+    employ RecordSinkService instances, such as QueryNiFiReportingTask.', zh: 提供可用于动态选择另一个RecordSinkService的RecordSinkServices。此服务需要名为“record.sink”的属性。name”，如果缺少该属性，则会引发异常。“record.sink”的值。name”将用于选择已使用该名称注册的RecordSinkService。这将允许定义和注册多个RecordSinkServices，然后在运行时通过使用适当的“record.sink”标记流文件来动态选择。name”属性。请注意，此控制器服务不适用于使用RecordSinkService实例的报告任务，例如QueryNiFiReportingTask。}
+tags:
+  en: [record, sink, lookup]
+  zh: [记录, 下沉, 查找]

@@ -1,0 +1,58 @@
+dynamicProperties:
+  '*':
+    en: {description: All dynamic properties are added as HTTP headers with the name
+        as the header name and the value as the header value., value: '*'}
+    zh: {description: 所有动态属性都作为HTTP头添加，名称作为头名称，值作为头值。, value: '*'}
+capabilityDescription: {en: Use a REST service to look up values., zh: 使用REST服务查找值。}
+properties:
+  rest-lookup-record-reader:
+    en: {displayName: Record Reader, description: The record reader to use for loading
+        the payload and handling it as a record set.}
+    zh: {description: 用于加载有效负载并将其作为记录集处理的记录读取器。, displayName: 记录读取器}
+  rest-lookup-basic-auth-username:
+    en: {displayName: Basic Authentication Username, description: 'The username to
+        be used by the client to authenticate against the Remote URL.  Cannot include
+        control characters (0-31), '':'', or DEL (127).'}
+    zh: {description: 客户端用于根据远程URL进行身份验证的用户名。不能包含控制字符（0-31）、“：”或DEL（127）。, displayName: 基本身份验证用户名}
+  rest-lookup-digest-auth:
+    en: {displayName: Use Digest Authentication, description: Whether to communicate
+        with the website using Digest Authentication. 'Basic Authentication Username'
+        and 'Basic Authentication Password' are used for authentication.}
+    zh: {description: 是否使用摘要式身份验证与网站通信。'基本身份验证用户名”和“基本身份验证密码”用于身份验证。, displayName: 使用摘要式身份验证}
+  rest-lookup-connection-timeout:
+    en: {displayName: Connection Timeout, description: Max wait time for connection
+        to remote service.}
+    zh: {description: 连接到远程服务的最长等待时间。, displayName: 连接超时}
+  rest-lookup-url:
+    en: {displayName: URL, description: 'The URL for the REST endpoint. Expression
+        language is evaluated against the lookup key/value pairs, not flowfile attributes.'}
+    zh: {description: REST端点的URL。表达式语言是根据查找键/值对而不是流文件属性进行计算的。, displayName: 统一资源定位地址}
+  rest-lookup-ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN,
+        SOCKS In case of SOCKS, it is not guaranteed that the selected SOCKS Version
+        will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN，SOCKS如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  rest-lookup-basic-auth-password:
+    en: {displayName: Basic Authentication Password, description: The password to
+        be used by the client to authenticate against the Remote URL.}
+    zh: {description: 客户端用于根据远程URL进行身份验证的密码。, displayName: 基本身份验证密码}
+  rest-lookup-record-path:
+    en: {displayName: Record Path, description: An optional record path that can be
+        used to define where in a record to get the real data to merge into the record
+        set to be enriched. See documentation for examples of when this might be useful.}
+    zh: {description: 一个可选的记录路径，可用于定义在记录中的何处获取要合并到要丰富的记录集中的真实数据。请参阅文档以了解这可能有用的示例。,
+      displayName: 记录路径}
+  rest-lookup-read-timeout:
+    en: {displayName: Read Timeout, description: Max wait time for response from remote
+        service.}
+    zh: {description: 远程服务响应的最长等待时间。, displayName: 读取超时}
+tags:
+  en: [rest, lookup, json, xml, http]
+  zh: [休息, 查找, json文件, xml格式, http]

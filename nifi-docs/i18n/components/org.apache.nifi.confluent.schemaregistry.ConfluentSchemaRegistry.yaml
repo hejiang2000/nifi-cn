@@ -1,0 +1,55 @@
+dynamicProperties:
+  request.header.*:
+    en: {description: Properties that begin with 'request.header.' are populated into
+        a map and passed as http headers in REST requests to the Confluent Schema
+        Registry, value: 'String literal, may not be empty'}
+    zh: {description: 以“request.header”开头的属性填充到映射中，并作为REST请求中的http头传递到Confluent Schema
+        Registry, value: 字符串文本，不能为空}
+capabilityDescription: {en: 'Provides a Schema Registry that interacts with the Confluent
+    Schema Registry so that those Schemas that are stored in the Confluent Schema
+    Registry can be used in NiFi. The Confluent Schema Registry has a notion of a
+    "subject" for schemas, which is their terminology for a schema name. When a Schema
+    is looked up by name by this registry, it will find a Schema in the Confluent
+    Schema Registry with that subject.', zh: 提供与汇流架构注册表交互的架构注册表，以便汇流架构注册表中存储的那些架构可以在NiFi中使用。Confluent
+    Schema Registry对模式有一个“主题”的概念，这是模式名称的术语。当此注册表按名称查找Schema时，它将在Confluent Schema registry中找到具有该主题的Schema。}
+properties:
+  cache-expiration:
+    en: {displayName: Cache Expiration, description: 'Specifies how long a Schema
+        that is cached should remain in the cache. Once this time period elapses,
+        a cached version of a schema will no longer be used, and the service will
+        have to communicate with the Schema Registry again in order to obtain the
+        schema.'}
+    zh: {description: 指定缓存的架构应在缓存中保留多长时间。一旦过了这个时间段，将不再使用架构的缓存版本，并且服务必须再次与架构注册表通信以获取架构。,
+      displayName: 缓存过期}
+  password:
+    en: {displayName: Password, description: Password for authentication to Confluent
+        Schema Registry}
+    zh: {description: 用于对汇流架构注册表进行身份验证的密码, displayName: 暗语}
+  authentication-type:
+    en: {displayName: Authentication Type, description: HTTP Client Authentication
+        Type for Confluent Schema Registry}
+    zh: {description: 融合架构注册表的HTTP客户端身份验证类型, displayName: 身份验证类型}
+  cache-size:
+    en: {displayName: Cache Size, description: Specifies how many Schemas should be
+        cached from the Schema Registry}
+    zh: {description: 指定应从架构注册表缓存多少架构, displayName: 缓存大小}
+  ssl-context:
+    en: {displayName: SSL Context Service, description: Specifies the SSL Context
+        Service to use for interacting with the Confluent Schema Registry}
+    zh: {description: 指定用于与汇流架构注册表交互的SSL上下文服务, displayName: SSL上下文服务}
+  url:
+    en: {displayName: Schema Registry URLs, description: A comma-separated list of
+        URLs of the Schema Registry to interact with}
+    zh: {description: 要与之交互的架构注册表的URL的逗号分隔列表, displayName: 架构注册表URL}
+  timeout:
+    en: {displayName: Communications Timeout, description: Specifies how long to wait
+        to receive data from the Schema Registry before considering the communications
+        a failure}
+    zh: {description: 指定在认为通信失败之前等待从架构注册表接收数据的时间, displayName: 通信超时}
+  username:
+    en: {displayName: Username, description: Username for authentication to Confluent
+        Schema Registry}
+    zh: {description: 用于对汇流架构注册表进行身份验证的用户名, displayName: 用户名}
+tags:
+  en: [schema, registry, confluent, avro, kafka]
+  zh: [模式, 注册表, 汇合的, 我没有吗？, 卡夫卡]

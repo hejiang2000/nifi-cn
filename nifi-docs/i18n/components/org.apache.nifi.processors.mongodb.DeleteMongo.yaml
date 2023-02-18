@@ -1,0 +1,55 @@
+relationships:
+  success: {en: All FlowFiles that are written to MongoDB are routed to this relationship,
+    zh: 写入MongoDB的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be written to MongoDB are routed to this
+      relationship, zh: 无法写入MongoDB的所有FlowFiles都将路由到此关系}
+capabilityDescription: {en: Executes a delete query against a MongoDB collection.
+    The query is provided in the body of the flowfile and the user can select whether
+    it will delete one or many documents that match it., zh: 对MongoDB集合执行删除查询。查询在流文件的正文中提供，用户可以选择是否删除一个或多个与之匹配的文档。}
+readAttributes:
+  mongodb.delete.mode: {en: Configurable parameter for controlling delete mode on
+      a per-flowfile basis. The process must be configured to use this option. Acceptable
+      values are 'one' and 'many.', zh: 可配置参数，用于基于每个流文件控制删除模式。必须将进程配置为使用此选项。可接受的值为“一”和“多”}
+properties:
+  mongo-client-service:
+    en: {displayName: Client Service, description: 'If configured, this property will
+        use the assigned client service for connection pooling.'}
+    zh: {description: 如果已配置，此属性将使用分配的客户端服务进行连接池。, displayName: 客户端服务}
+  delete-mongo-fail-on-no-delete:
+    en: {displayName: Fail When Nothing Is Deleted, description: Determines whether
+        to send the flowfile to the success or failure relationship if nothing is
+        successfully deleted.}
+    zh: {description: 确定如果未成功删除任何内容，是否将流文件发送到成功或失败关系。, displayName: 未删除任何内容时失败}
+  Mongo URI:
+    en: {displayName: Mongo URI, description: 'MongoURI, typically of the form: mongodb://host1[:port1][,host2[:port2],...]'}
+    zh: {description: 'MongoURI，通常形式为：mongodb://host1[：端口1][，主机2[：端口2]，…]', displayName: Mongo
+        URI}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  ssl-client-auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  delete-mongo-delete-mode:
+    en: {displayName: Delete Mode, description: Choose between deleting one document
+        by query or many documents by query.}
+    zh: {description: 选择通过查询删除一个文档还是通过查询删除多个文档。, displayName: 删除模式}
+  Mongo Collection Name:
+    en: {displayName: Mongo Collection Name, description: The name of the collection
+        to use}
+    zh: {description: 要使用的集合的名称, displayName: Mongo集合名称}
+  Mongo Database Name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  Write Concern:
+    en: {displayName: Write Concern, description: The write concern to use}
+    zh: {description: 要使用的书面关注点, displayName: 写入问题}
+tags:
+  en: [delete, mongo, mongodb]
+  zh: [删去, 蒙哥, 数据库]

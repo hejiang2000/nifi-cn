@@ -1,0 +1,66 @@
+relationships:
+  success: {en: Metrics successfully written to Riemann, zh: 指标已成功写入Riemann}
+  failure: {en: Metrics which failed to write to Riemann, zh: 未能写入Riemann的指标}
+dynamicProperties:
+  Custom Event Attribute:
+    en: {description: These values will be attached to the Riemann event as a custom
+        attribute, value: Any value or expression}
+    zh: {description: 这些值将作为自定义属性附加到Riemann事件, value: 任何值或表达式}
+capabilityDescription: {en: 'Send events to Riemann (http://riemann.io) when FlowFiles
+    pass through this processor. You can use events to notify Riemann that a FlowFile
+    passed through, or you can attach a more meaningful metric, such as, the time
+    a FlowFile took to get to this processor. All attributes attached to events support
+    the NiFi Expression Language.', zh: '向Riemann发送事件(http://riemann.io)当FlowFiles通过此处理器时。您可以使用事件通知Riemann
+    FlowFile已通过，也可以附加一个更有意义的度量，例如FlowFile到达此处理器所花费的时间。附加到事件的所有属性都支持NiFi表达式语言。'}
+properties:
+  Description:
+    en: {displayName: Description, description: Description associated to the event}
+    zh: {description: 与事件相关的描述, displayName: 描述}
+  Timeout:
+    en: {displayName: Timeout, description: Timeout in milliseconds when writing events
+        to Riemann}
+    zh: {description: 向Riemann写入事件时超时（毫秒）, displayName: 超时}
+  Service:
+    en: {displayName: Service, description: Name of service associated to this event
+        (e.g. FTP File Fetched)}
+    zh: {description: 与此事件关联的服务的名称（例如FTP文件已获取）, displayName: 服务}
+  Host:
+    en: {displayName: Host, description: A hostname associated to this event (e.g.
+        nifi-app1)}
+    zh: {description: 与此事件关联的主机名（例如nifi-app1）, displayName: 主办}
+  Time:
+    en: {displayName: Time, description: 'Time of event in unix epoch seconds (long),
+        default: (current time)'}
+    zh: {description: 事件的时间（以unix纪元秒为单位）（长），默认值：（当前时间）, displayName: 时间}
+  TTL:
+    en: {displayName: TTL, description: Floating point value in seconds until Riemann
+        considers this event as "expired"}
+    zh: {description: Riemann认为此事件“过期”之前的浮点值（秒）, displayName: TTL公司}
+  Riemann Port:
+    en: {displayName: Riemann Port, description: Port that Riemann is listening on}
+    zh: {description: Riemann监听的端口, displayName: 黎曼港}
+  Transport Protocol:
+    en: {displayName: Transport Protocol, description: Transport protocol to speak
+        to Riemann in}
+    zh: {description: 与Riemann通话的传输协议, displayName: 传输协议}
+  State:
+    en: {displayName: State, description: 'State of service associated to this event
+        in string form (e.g. ok, warning, foo)'}
+    zh: {description: 以字符串形式与此事件关联的服务状态（例如ok、warning、foo）, displayName: 状态}
+  Batch Size:
+    en: {displayName: Batch Size, description: Batch size for incoming FlowFiles}
+    zh: {description: 传入FlowFiles的批处理大小, displayName: 批量大小}
+  Metric:
+    en: {displayName: Metric, description: Floating point number associated to this
+        event}
+    zh: {description: 与此事件关联的浮点数, displayName: 米制的}
+  Riemann Address:
+    en: {displayName: Riemann Address, description: Hostname of Riemann server}
+    zh: {description: Riemann服务器的主机名, displayName: Riemann地址}
+  Tags:
+    en: {displayName: Tags, description: Comma separated list of tags associated to
+        the event}
+    zh: {description: 与事件关联的标记的逗号分隔列表, displayName: 标签}
+tags:
+  en: [riemann, monitoring, metrics]
+  zh: [里曼, 监测, 韵律学]

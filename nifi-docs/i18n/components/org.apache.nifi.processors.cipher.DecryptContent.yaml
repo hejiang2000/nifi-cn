@@ -1,0 +1,34 @@
+relationships:
+  success: {en: Decryption succeeded, zh: 解密成功}
+  failure: {en: Decryption failed, zh: 解密失败}
+capabilityDescription: {en: Decrypt content encrypted with AES and encoded according
+    conventions added in NiFi 0.5.0 for the EncryptContent Processor. The Processor
+    reads the first 256 bytes to determine the presence of a cryptographic salt based
+    on finding the 'NiFiSALT' delimiter. The salt is not present for content encrypted
+    with a raw hexadecimal key. The Processor determines the presence of the initialization
+    vector based on finding the 'NiFiIV' delimiter.The salt format indicates the Key
+    Derivation Function that the Processor uses to generate a secret key based on
+    a configured password. The Processor derives keys with a size of 128 bits according
+    to the conventions implemented in NiFi 0.5.0., zh: 解密使用AES加密的内容，并根据加密内容处理器NiFi
+    0.5.0中添加的约定进行编码。处理器读取前256个字节，根据找到“NiFiSALT”分隔符来确定是否存在加密盐。对于使用原始十六进制密钥加密的内容，盐不存在。处理器根据找到“NiFiIV”分隔符来确定是否存在初始化向量。salt格式表示处理器用于根据配置的密码生成密钥的密钥派生函数。处理器根据NiFi
+    0.5.0中实现的约定导出大小为128位的密钥。}
+properties:
+  cipher-algorithm-padding:
+    en: {displayName: Cipher Algorithm Padding, description: Padding specification
+        used in cipher operation for decryption using the Advanced Encryption Standard}
+    zh: {description: 使用高级加密标准进行解密的密码操作中使用的填充规范, displayName: 密码算法填充}
+  key-specification-format:
+    en: {displayName: Key Specification Format, description: Format describing the
+        configured Key Specification}
+    zh: {description: 描述配置密钥规范的格式, displayName: 密钥规范格式}
+  cipher-algorithm-mode:
+    en: {displayName: Cipher Algorithm Mode, description: Block cipher mode of operation
+        for decryption using the Advanced Encryption Standard}
+    zh: {description: 使用高级加密标准进行解密的分组密码操作模式, displayName: 密码算法模式}
+  key-specification:
+    en: {displayName: Key Specification, description: Specification providing the
+        raw secret key or a password from which to derive a secret key}
+    zh: {description: 提供原始密钥或从中导出密钥的密码的规范, displayName: 关键技术规格}
+tags:
+  en: [cryptography, decipher, decrypt, AES, Argon2, bcrypt, scrypt, PBKDF2]
+  zh: [密码学, 破译, 解密, 原子发射光谱, 阿尔贡2, 加密, 埃及的, PBKDF2]

@@ -1,0 +1,71 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+capabilityDescription: {en: 'Sends the contents to a specified Amazon Kinesis Firehose.
+    In order to send data to firehose, the firehose delivery stream name has to be
+    specified.', zh: 将内容发送到指定的Amazon Kinesis Firehose。为了向消防水带发送数据，必须指定消防水带输送流名称。}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  Max message buffer size:
+    en: {displayName: Max message buffer size, description: Max message buffer}
+    zh: {description: 最大消息缓冲区, displayName: 最大消息缓冲区大小}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  Amazon Kinesis Firehose Delivery Stream Name:
+    en: {displayName: Amazon Kinesis Firehose Delivery Stream Name, description: The
+        name of kinesis firehose delivery stream}
+    zh: {description: kinsis消防水带输送流的名称, displayName: 亚马逊Kinesis消防水带交付流名称}
+  Batch Size:
+    en: {displayName: Batch Size, description: Batch size for messages (1-500).}
+    zh: {description: 消息的批量大小（1-500）。, displayName: 批量大小}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+writeAttributes:
+  aws.kinesis.firehose.error.code: {en: Error code for the message when posting to
+      AWS Kinesis Firehose, zh: 向AWS Kinesis Firehose发布消息时的错误代码}
+  aws.kinesis.firehose.error.message: {en: Error message on posting message to AWS
+      Kinesis Firehose, zh: 向AWS Kinesis Firehose发布消息时出现错误消息}
+  aws.kinesis.firehose.record.id: {en: Record id of the message posted to Kinesis
+      Firehose, zh: 发布到Kinesis Firehose的消息的记录id}
+tags:
+  en: [amazon, aws, firehose, kinesis, put, stream]
+  zh: [亚马逊, 自动售货机, 消防水带, 驱动剂, 放, 流动]

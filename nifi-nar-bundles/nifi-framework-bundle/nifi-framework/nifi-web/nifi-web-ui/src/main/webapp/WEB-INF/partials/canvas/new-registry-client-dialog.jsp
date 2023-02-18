@@ -18,20 +18,20 @@
 <div id="new-registry-client-dialog" layout="column" class="hidden medium-dialog">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Name</div>
+            <div class="setting-name">名称</div>
             <div class="setting-field">
                 <span id="new-registry-id" class="hidden"></span>
                 <input type="text" id="new-registry-name" class="setting-input"/>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Type</div>
+            <div class="setting-name">类型</div>
             <div class="setting-field">
                 <div id="new-registry-type-combo"></div>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Description</div>
+            <div class="setting-name">描述</div>
             <div class="setting-field">
                 <textarea id="new-registry-description" class="setting-input"></textarea>
             </div>

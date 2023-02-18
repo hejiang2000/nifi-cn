@@ -1,0 +1,56 @@
+relationships:
+  success: {en: All new messages will be routed as FlowFiles to this relationship,
+    zh: 所有新消息都将作为FlowFiles路由到此关系}
+capabilityDescription: {en: 'This processor implements a lightweight SMTP server to
+    an arbitrary port, allowing nifi to listen for incoming email. Note this server
+    does not perform any email validation. If direct exposure to the internet is sought,
+    it may be a better idea to use the combination of NiFi and an industrial scale
+    MTA (e.g. Postfix). Threading for this processor is managed by the underlying
+    smtp server used so the processor need not support more than one thread.', zh: 这个处理器实现了一个轻量级的SMTP服务器到任意端口，允许nifi监听传入的电子邮件。请注意，此服务器不执行任何电子邮件验证。如果寻求直接接触互联网，最好结合使用NiFi和工业规模MTA（例如Postfix）。此处理器的线程由使用的底层smtp服务器管理，因此处理器不需要支持多个线程。}
+properties:
+  SMTP_TIMEOUT:
+    en: {displayName: SMTP connection timeout, description: The maximum time to wait
+        for an action of SMTP client.}
+    zh: {description: 等待SMTP客户端操作的最长时间。, displayName: SMTP连接超时}
+  SSL_CONTEXT_SERVICE:
+    en: {displayName: SSL Context Service, description: 'The Controller Service to
+        use in order to obtain an SSL Context. If this property is set, messages will
+        be received over a secure connection.'}
+    zh: {description: 用于获取SSL上下文的控制器服务。如果设置了此属性，将通过安全连接接收消息。, displayName: SSL上下文服务}
+  SMTP_PORT:
+    en: {displayName: Listening Port, description: The TCP port the ListenSMTP processor
+        will bind to.NOTE that on Unix derivative operating  systems this port must
+        be higher than 1024 unless NiFi is running as with root user permissions.}
+    zh: {description: ListenSMTP处理器将绑定到的TCP端口。请注意，在Unix衍生操作系统上，此端口必须高于1024，除非NiFi以root用户权限运行。,
+      displayName: 侦听端口}
+  SMTP_MAXIMUM_MSG_SIZE:
+    en: {displayName: SMTP Maximum Message Size, description: The maximum number of
+        bytes the server will accept.}
+    zh: {description: 服务器将接受的最大字节数。, displayName: SMTP最大邮件大小}
+  SMTP_HOSTNAME:
+    en: {displayName: SMTP hostname, description: The hostname to be embedded into
+        the banner displayed when an SMTP client connects to the processor TCP port
+        .}
+    zh: {description: 当SMTP客户端连接到处理器TCP端口时，要嵌入到显示的横幅中的主机名。, displayName: SMTP主机名}
+  SMTP_MAXIMUM_CONNECTIONS:
+    en: {displayName: Maximum number of SMTP connection, description: The maximum
+        number of simultaneous SMTP connections.}
+    zh: {description: 同时SMTP连接的最大数目。, displayName: SMTP连接的最大数量}
+  CLIENT_AUTH:
+    en: {displayName: Client Auth, description: The client authentication policy to
+        use for the SSL Context. Only used if an SSL Context Service is provided.}
+    zh: {description: 用于SSL上下文的客户端身份验证策略。仅在提供SSL上下文服务时使用。, displayName: 客户端身份验证}
+writeAttributes:
+  smtp.helo: {en: The value used during HELO, zh: HELO期间使用的值}
+  smtp.certificates.*.serial: {en: The serial numbers for each of the certificates
+      used by an TLS peer, zh: TLS对等方使用的每个证书的序列号}
+  smtp.certificates.*.principal: {en: The principal for each of the certificates used
+      by an TLS peer, zh: TLS对等方使用的每个证书的主体}
+  smtp.recipient.*: {en: The values used during RCPT TO (i.e. envelope), zh: RCPT
+      TO期间使用的值（即包络线）}
+  smtp.from: {en: The value used during MAIL FROM (i.e. envelope), zh: 邮件发件人（即信封）期间使用的值}
+  mime.type: {en: Mime type of the message, zh: 消息的Mime类型}
+  smtp.src: {en: The source IP and port of the SMTP connection, zh: SMTP连接的源IP和端口}
+tags:
+  en: [listen, email, smtp]
+  zh: [听, 电子邮件, smtp公司]

@@ -1,0 +1,19 @@
+capabilityDescription: {en: A controller service that provides metric reporters for
+    graphite. Used by MetricsReportingTask., zh: 为石墨提供度量报告器的控制器服务。由MetricsReportingTask使用。}
+properties:
+  charset:
+    en: {displayName: Charset, description: The charset used by the graphite server}
+    zh: {description: 石墨服务器使用的字符集, displayName: 字符集}
+  metric name prefix:
+    en: {displayName: Metric Name Prefix, description: A prefix that will be used
+        for all metric names sent by reporters provided by this service.}
+    zh: {description: 将用于此服务提供的报告器发送的所有度量名称的前缀。, displayName: 度量名称前缀}
+  port:
+    en: {displayName: Port, description: The port on which carbon listens}
+    zh: {description: 碳侦听的端口, displayName: 港口城市}
+  host:
+    en: {displayName: Host, description: The hostname of the carbon listener}
+    zh: {description: 碳侦听器的主机名, displayName: 主办}
+tags:
+  en: [metrics, reporting, graphite]
+  zh: [韵律学, 报告, 石墨]

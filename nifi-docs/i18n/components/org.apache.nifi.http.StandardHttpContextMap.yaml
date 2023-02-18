@@ -1,0 +1,17 @@
+capabilityDescription: {en: 'Provides the ability to store and retrieve HTTP requests
+    and responses external to a Processor, so that multiple Processors can interact
+    with the same HTTP request.', zh: 提供存储和检索处理器外部的HTTP请求和响应的能力，以便多个处理器可以与同一HTTP请求交互。}
+properties:
+  Request Expiration:
+    en: {displayName: Request Expiration, description: Specifies how long an HTTP
+        Request should be left unanswered before being evicted from the cache and
+        being responded to with a Service Unavailable status code}
+    zh: {description: 指定HTTP请求在从缓存中逐出并使用“服务不可用”状态代码进行响应之前应保持多长时间未应答, displayName: 请求过期时间}
+  Maximum Outstanding Requests:
+    en: {displayName: Maximum Outstanding Requests, description: The maximum number
+        of HTTP requests that can be outstanding at any one time. Any attempt to register
+        an additional HTTP Request will cause an error}
+    zh: {description: 任何一次可处理的HTTP请求的最大数量。任何注册额外HTTP请求的尝试都将导致错误, displayName: 最大未完成请求数}
+tags:
+  en: [http, request, response]
+  zh: [http, 要求, 回答]

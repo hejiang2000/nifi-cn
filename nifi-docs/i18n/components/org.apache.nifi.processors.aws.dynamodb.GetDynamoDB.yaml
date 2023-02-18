@@ -1,0 +1,106 @@
+relationships:
+  unprocessed: {en: FlowFiles are routed to unprocessed relationship when DynamoDB
+      is not able to process all the items in the request. Typical reasons are insufficient
+      table throughput capacity and exceeding the maximum bytes per request. Unprocessed
+      FlowFiles can be retried with a new request., zh: 当DynamicDB无法处理请求中的所有项时，FlowFiles将被路由到未处理的关系。典型的原因是表吞吐量不足，并且超过了每个请求的最大字节数。可以使用新请求重试未处理的FlowFiles。}
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+  not found: {en: FlowFiles are routed to not found relationship if key not found
+      in the table, zh: 如果在表中找不到键，FlowFiles将路由到找不到的关系}
+capabilityDescription: {en: Retrieves a document from DynamoDB based on hash and range
+    key.  The key can be string or number.For any get request all the primary keys
+    are required (hash or hash and range based on the table keys).A Json Document
+    ('Map') attribute of the DynamoDB item is read into the content of the FlowFile.,
+  zh: 基于哈希和范围键从DynamoDB检索文档。密钥可以是字符串或数字。对于任何get请求，都需要所有主键（哈希或基于表键的哈希和范围）。DynamoDB项的Json
+    Document（'Map'）属性被读入FlowFile的内容中。}
+readAttributes:
+  '  dynamodb.item.hash.key.value': {en: Items hash key value, zh: 项哈希键值}
+  '  dynamodb.item.range.key.value': {en: Items range key value, zh: 项目范围键值}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  Table Name:
+    en: {displayName: Table Name, description: The DynamoDB table name}
+    zh: {description: DynamoDB表名, displayName: 表名称}
+  Hash Key Value Type:
+    en: {displayName: Hash Key Value Type, description: The hash key value type of
+        the item}
+    zh: {description: 找不到文件。项的哈希键值类型, displayName: 哈希键值类型}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  Hash Key Name:
+    en: {displayName: Hash Key Name, description: The hash key name of the item}
+    zh: {description: 项的哈希键名称, displayName: 哈希密钥名称}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  Batch items for each request (between 1 and 50):
+    en: {displayName: Batch items for each request (between 1 and 50), description: The
+        items to be retrieved in one batch}
+    zh: {description: 要在一个批次中检索的项目, displayName: 每个请求的批处理项目（介于1和50之间）}
+  Range Key Name:
+    en: {displayName: Range Key Name, description: The range key name of the item}
+    zh: {description: 项目的范围键名称, displayName: 范围密钥名称}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  Range Key Value:
+    en: {displayName: Range Key Value, description: ''}
+    zh: {description: '', displayName: 范围关键字值}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  Hash Key Value:
+    en: {displayName: Hash Key Value, description: The hash key value of the item}
+    zh: {description: 项的哈希键值, displayName: 哈希键值}
+  Json Document attribute:
+    en: {displayName: Json Document attribute, description: The Json document to be
+        retrieved from the dynamodb item}
+    zh: {description: 要从dynedb项中检索的Json文档, displayName: Json文档属性}
+  Range Key Value Type:
+    en: {displayName: Range Key Value Type, description: The range key value type
+        of the item}
+    zh: {description: 项目的范围键值类型, displayName: 范围键值类型}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+writeAttributes:
+  dynamodb.error.type: {en: DynamoDB error type, zh: DynamoDB错误类型}
+  dynamodb.error.status.code: {en: DynamoDB status code, zh: DynamoDB状态代码}
+  dynamodb.error.service: {en: DynamoDB error service, zh: DynamoDB错误服务}
+  dynmodb.range.key.value.error: {en: DynamoDB range key error, zh: DynamoDB范围键错误}
+  dynamodb.error.code: {en: DynamoDB error code, zh: DynamoDB错误代码}
+  dynamodb.error.exception.message: {en: DynamoDB exception message, zh: DynamoDB异常消息}
+  dynamodb.error.request.id: {en: DynamoDB error request id, zh: DynamoDB错误请求id}
+  dynamodb.key.error.unprocessed: {en: DynamoDB unprocessed keys, zh: DynamoDB未处理的密钥}
+  dynamodb.error.message: {en: DynamoDB error message, zh: DynamoDB错误消息}
+  dynamodb.error.retryable: {en: DynamoDB error is retryable, zh: DynamoDB错误可重试}
+  dynamodb.key.error.not.found: {en: DynamoDB key not found, zh: 找不到DynamoDB密钥}
+tags:
+  en: [Amazon, DynamoDB, AWS, Get, Fetch]
+  zh: [亚马逊, 动态数据库, 自动售货机, 收到, 取来]

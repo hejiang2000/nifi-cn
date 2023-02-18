@@ -1,0 +1,17 @@
+relationships:
+  original: {en: Each original flowfile (i.e. before extraction) will be routed to
+      the original relationship, zh: 每个原始流文件（即提取之前）将被路由到原始关系}
+  attachments: {en: Each individual attachment will be routed to the attachments relationship,
+    zh: 每个单独的附件都将路由到附件关系}
+  failure: {en: Each individual flowfile that could not be parsed will be routed to
+      the failure relationship, zh: 无法解析的每个单独的流文件将被路由到故障关系}
+capabilityDescription: {en: 'Extract attachments from a mime formatted email file,
+    splitting them into individual flowfiles.', zh: 从mime格式的电子邮件文件中提取附件，将其拆分为单独的流文件。}
+writeAttributes:
+  'email.tnef.attachment.parent.filename ': {en: The filename of the parent FlowFile,
+    zh: 父FlowFile的文件名}
+  email.tnef.attachment.parent.uuid: {en: The UUID of the original FlowFile., zh: 原始FlowFile的UUID。}
+  'filename ': {en: The filename of the attachment, zh: 附件的文件名}
+tags:
+  en: [split, email]
+  zh: [分裂, 电子邮件]

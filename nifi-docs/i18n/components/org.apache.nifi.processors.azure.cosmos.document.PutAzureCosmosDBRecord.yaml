@@ -1,0 +1,63 @@
+relationships:
+  success: {en: All FlowFiles that are written to Cosmos DB are routed to this relationship,
+    zh: 写入Cosmos DB的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be written to Cosmos DB are routed to this
+      relationship, zh: 无法写入Cosmos DB的所有FlowFiles都将路由到此关系}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: This processor is a record-aware processor for inserting
+    data into Cosmos DB with Core SQL API. It uses a configured record reader and
+    schema to read an incoming record set from the body of a Flowfile and then inserts
+    those records into a configured Cosmos DB Container., zh: 该处理器是一个记录感知处理器，用于使用Core
+    SQL API将数据插入Cosmos DB。它使用配置的记录读取器和模式从流文件的主体读取传入的记录集，然后将这些记录插入到配置的Cosmos DB容器中。}
+properties:
+  insert-batch-size:
+    en: {displayName: Insert Batch Size, description: The number of records to group
+        together for one single insert operation against Cosmos DB}
+    zh: {description: 针对Cosmos DB的一次插入操作要组合在一起的记录数, displayName: 插入批次大小}
+  azure-cosmos-db-partition-key:
+    en: {displayName: Cosmos DB Partition Key, description: The partition key used
+        to distribute data among servers}
+    zh: {description: 用于在服务器之间分发数据的分区密钥, displayName: Cosmos DB分区密钥}
+  azure-cosmos-db-container-id:
+    en: {displayName: Cosmos DB Container ID, description: The unique identifier for
+        the container}
+    zh: {description: 容器的唯一标识符, displayName: Cosmos DB容器ID}
+  azure-cosmos-db-uri:
+    en: {displayName: Cosmos DB URI, description: 'Cosmos DB URI, typically in the
+        form of https://{databaseaccount}.documents.azure.com:443/ Note this host
+        URL is for Cosmos DB with Core SQL API from Azure Portal (Overview->URI)'}
+    zh: {description: 'Cosmos DB URI，通常采用https://｛databaseaccount｝.documents.azure的形式。com:443/请注意，此主机URL适用于具有Azure门户中核心SQL
+        API的Cosmos DB（概述->URI）', displayName: Cosmos数据库URI}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务, displayName: 记录读取器}
+  azure-cosmos-db-consistency-level:
+    en: {displayName: Cosmos DB Consistency Level, description: Choose from five consistency
+        levels on the consistency spectrum. Refer to Cosmos DB documentation for their
+        differences}
+    zh: {description: 从一致性范围的五个一致性级别中进行选择。请参阅Cosmos DB文档了解其差异, displayName: Cosmos数据库一致性级别}
+  azure-cosmos-db-conflict-handling-strategy:
+    en: {displayName: Cosmos DB Conflict Handling Strategy, description: Choose whether
+        to ignore or upsert when conflict error occurs during insertion}
+    zh: {description: 选择在插入过程中发生冲突错误时是忽略还是取消启动, displayName: Cosmos DB冲突处理策略}
+  azure-cosmos-db-connection-service:
+    en: {displayName: Cosmos DB Connection Service, description: 'If configured, the
+        controller service used to obtain the connection string and access key'}
+    zh: {description: 如果已配置，则用于获取连接字符串和访问密钥的控制器服务, displayName: Cosmos数据库连接服务}
+  azure-cosmos-db-key:
+    en: {displayName: Cosmos DB Access Key, description: Cosmos DB Access Key from
+        Azure Portal (Settings->Keys). Choose a read-write key to enable database
+        or container creation at run time}
+    zh: {description: 来自Azure门户的Cosmos DB访问密钥（设置->密钥）。选择读写密钥以在运行时启用数据库或容器创建, displayName: Cosmos
+        DB访问密钥}
+  azure-cosmos-db-name:
+    en: {displayName: Cosmos DB Name, description: The database name or id. This is
+        used as the namespace for document collections or containers}
+    zh: {description: 数据库名称或id。它用作文档集合或容器的命名空间, displayName: Cosmos数据库名称}
+tags:
+  en: [azure, cosmos, insert, record, put]
+  zh: [蔚蓝色的, 宇宙, 插入, 记录, 放]

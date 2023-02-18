@@ -1,0 +1,71 @@
+relationships:
+  original: {en: The original input file will be routed to this destination when the
+      lines have been successfully routed to 1 or more relationships, zh: 当已将行成功路由到一个或多个关系时，原始输入文件将被路由到此目标}
+  unmatched: {en: Data that does not satisfy the required user-defined rules will
+      be routed to this Relationship, zh: 不满足所需用户定义规则的数据将路由到此关系}
+dynamicProperties:
+  Relationship Name:
+    en: {description: Routes data that matches the value specified in the Dynamic
+        Property Value to the Relationship specified in the Dynamic Property Key.,
+      value: value to match against}
+    zh: {description: 将与动态属性值中指定的值匹配的数据路由到动态属性键中指定的关系。, value: 要匹配的值}
+capabilityDescription: {en: 'Routes textual data based on a set of user-defined rules.
+    Each line in an incoming FlowFile is compared against the values specified by
+    user-defined Properties. The mechanism by which the text is compared to these
+    user-defined properties is defined by the ''Matching Strategy''. The data is then
+    routed according to these rules, routing each line of the text individually.',
+  zh: 基于一组用户定义的规则路由文本数据。将传入FlowFile中的每一行与用户定义的属性指定的值进行比较。文本与这些用户定义属性进行比较的机制由“匹配策略”定义。然后根据这些规则路由数据，分别路由文本的每一行。}
+dynamicRelationships:
+  Name from Dynamic Property: {en: FlowFiles that match the Dynamic Property's value,
+    zh: 与动态属性值匹配的FlowFiles}
+properties:
+  Routing Strategy:
+    en: {displayName: Routing Strategy, description: Specifies how to determine which
+        Relationship(s) to use when evaluating the lines of incoming text against
+        the 'Matching Strategy' and user-defined properties.}
+    zh: {description: 指定在根据“匹配策略”和用户定义的属性评估传入文本行时，如何确定要使用的关系。, displayName: 路由策略}
+  Ignore Leading/Trailing Whitespace:
+    en: {displayName: Ignore Leading/Trailing Whitespace, description: Indicates whether
+        or not the whitespace at the beginning and end of the lines should be ignored
+        when evaluating the line.}
+    zh: {description: 指示在计算行时是否应忽略行开头和结尾的空白。, displayName: 忽略前导/尾随空格}
+  Matching Strategy:
+    en: {displayName: Matching Strategy, description: Specifies how to evaluate each
+        line of incoming text against the user-defined properties.}
+    zh: {description: 指定如何根据用户定义的特性计算每行传入文本。, displayName: 匹配策略}
+  Character Set:
+    en: {displayName: Character Set, description: The Character Set in which the incoming
+        text is encoded}
+    zh: {description: 对传入文本进行编码的字符集, displayName: 字符集}
+  Ignore Case:
+    en: {displayName: Ignore Case, description: 'If true, capitalization will not
+        be taken into account when comparing values. E.g., matching against ''HELLO''
+        or ''hello'' will have the same result. This property is ignored if the ''Matching
+        Strategy'' is set to ''Satisfies Expression''.'}
+    zh: {description: 如果为真，则在比较值时不考虑资本化。E、 例如，匹配“HELLO”或“HELLO”将获得相同的结果。如果“匹配策略”设置为“满足表达式”，则忽略此属性。,
+      displayName: 忽略大小写}
+  Grouping Regular Expression:
+    en: {displayName: Grouping Regular Expression, description: 'Specifies a Regular
+        Expression to evaluate against each line to determine which Group the line
+        should be placed in. The Regular Expression must have at least one Capturing
+        Group that defines the line''s Group. If multiple Capturing Groups exist in
+        the Regular Expression, the values from all Capturing Groups will be concatenated
+        together. Two lines will not be placed into the same FlowFile unless they
+        both have the same value for the Group (or neither line matches the Regular
+        Expression). For example, to group together all lines in a CSV File by the
+        first column, we can set this value to "(.*?),.*". Two lines that have the
+        same Group but different Relationships will never be placed into the same
+        FlowFile.'}
+    zh: {description: 指定要针对每一行计算的正则表达式，以确定该行应放置在哪个组中。正则表达式必须至少有一个用于定义行的组的捕获组。如果正则表达式中存在多个捕获组，则所有捕获组的值将连接在一起。除非两行都具有相同的组值（或者两行都不匹配正则表达式），否则不会将两行放在同一FlowFile中。例如，要按第一列将CSV文件中的所有行分组，可以将此值设置为“（.*？），.*”。具有相同组但不同关系的两行永远不会放在同一FlowFile中。,
+      displayName: 分组正则表达式}
+writeAttributes:
+  RouteText.Group: {en: 'The value captured by all capturing groups in the ''Grouping
+      Regular Expression'' property. If this property is not set or contains no capturing
+      groups, this attribute will not be added.', zh: “Grouping Regular Expression”属性中所有捕获组捕获的值。如果未设置此属性或不包含捕获组，则不会添加此属性。}
+  RouteText.Route: {en: The name of the relationship to which the FlowFile was routed.,
+    zh: FlowFile路由到的关系的名称。}
+tags:
+  en: [attributes, routing, text, regexp, regex, Regular Expression, Expression Language,
+    csv, filter, logs, delimited, find, string, search, filter, detect]
+  zh: [属性, 路由, 文本, 正则表达式, 正则表达式, 正则表达式, 表达式语言, csv格式, 滤器, 日志, 定界的, 发现, 一串, 搜索, 滤器,
+    发现]

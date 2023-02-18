@@ -1,0 +1,108 @@
+relationships:
+  success: {en: All FlowFiles that are received from the AMQP queue are routed to
+      this relationship, zh: 从AMQP队列接收的所有FlowFiles都将路由到此关系}
+capabilityDescription: {en: Consumes AMQP Messages from an AMQP Broker using the AMQP
+    0.9.1 protocol. Each message that is received from the AMQP Broker will be emitted
+    as its own FlowFile to the 'success' relationship., zh: 使用AMQP 0.9.1协议从AMQP代理使用AMQP消息。从AMQP
+    Broker接收的每个消息都将作为其自己的FlowFile发送到“成功”关系。}
+properties:
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  User Name:
+    en: {displayName: User Name, description: User Name used for authentication and
+        authorization.}
+    zh: {description: 用于身份验证和授权的用户名。, displayName: 用户名}
+  ssl-client-auth:
+    en: {displayName: Client Auth, description: The property has no effect and therefore
+        deprecated.}
+    zh: {description: 该属性无效，因此已弃用。, displayName: 客户端身份验证}
+  batch.size:
+    en: {displayName: Batch Size, description: 'The maximum number of messages that
+        should be processed in a single session. Once this many messages have been
+        received (or once no more messages are readily available), the messages received
+        will be transferred to the ''success'' relationship and the messages will
+        be acknowledged to the AMQP Broker. Setting this value to a larger number
+        could result in better performance, particularly for very small messages,
+        but can also result in more messages being duplicated upon sudden restart
+        of NiFi.'}
+    zh: {description: 单个会话中应处理的最大消息数。一旦收到了这么多消息（或一旦没有更多消息可用），收到的消息将被转移到“成功”关系，消息将被AMQP代理确认。将此值设置为更大的值可能会导致更好的性能，特别是对于非常小的消息，但也可能导致在突然重新启动NiFi时复制更多的消息。,
+      displayName: 批量大小}
+  Port:
+    en: {displayName: Port, description: 'Numeric value identifying Port of AMQP broker
+        (e.g., 5671). If Brokers is set, then this property is ignored.'}
+    zh: {description: 标识AMQP代理端口的数值（例如5671）。如果设置了Broker，则忽略此属性。, displayName: 港口城市}
+  Brokers:
+    en: {displayName: Brokers, description: 'A comma-separated list of known AMQP
+        Brokers in the format <host>:<port> (e.g., localhost:5672). If this is set,
+        Host Name and Port are ignored. Only include hosts from the same AMQP cluster.'}
+    zh: {description: '已知AMQP代理的逗号分隔列表，格式为＜host＞：＜port＞（例如，localhost:5678）。如果设置了此选项，将忽略主机名和端口。仅包括来自同一AMQP集群的主机。',
+      displayName: 经纪人}
+  cert-authentication:
+    en: {displayName: Use Client Certificate Authentication, description: Authenticate
+        using the SSL certificate rather than user name/password.}
+    zh: {description: 使用SSL证书而不是用户名/密码进行身份验证。, displayName: 使用客户端证书身份验证}
+  auto.acknowledge:
+    en: {displayName: Auto-Acknowledge Messages, description: ' If false (Non-Auto-Acknowledge),
+        the messages will be acknowledged by the processor after transferring the
+        FlowFiles to success and committing the NiFi session. Non-Auto-Acknowledge
+        mode provides ''at-least-once'' delivery semantics. If true (Auto-Acknowledge),
+        messages that are delivered to the AMQP Client will be auto-acknowledged by
+        the AMQP Broker just after sending them out. This generally will provide better
+        throughput but will also result in messages being lost upon restart/crash
+        of the AMQP Broker, NiFi or the processor. Auto-Acknowledge mode provides
+        ''at-most-once'' delivery semantics and it is recommended only if loosing
+        messages is acceptable.'}
+    zh: {description: 如果为false（非自动确认），则在将FlowFiles传输成功并提交NiFi会话后，处理器将确认消息。非自动确认模式提供“至少一次”传递语义。如果为true（自动确认），则发送到AMQP客户端的消息将在发送后立即由AMQP代理自动确认。这通常会提供更好的吞吐量，但也会导致AMQP
+        Broker、NiFi或处理器重启/崩溃时消息丢失。自动确认模式提供“最多一次”传递语义，只有在可以接受丢失消息的情况下才建议使用。, displayName: 自动确认消息}
+  Host Name:
+    en: {displayName: Host Name, description: 'Network address of AMQP broker (e.g.,
+        localhost). If Brokers is set, then this property is ignored.'}
+    zh: {description: AMQP代理的网络地址（例如，localhost）。如果设置了Broker，则忽略此属性。, displayName: 主机名}
+  header.separator:
+    en: {displayName: Header Separator, description: The character that is used to
+        separate key-value for header in String. The value must only one character.Otherwise
+        you will get an error message}
+    zh: {description: 用于分隔字符串中标头的键值的字符。该值只能包含一个字符。否则，您将收到错误消息, displayName: 收割台分离器}
+  AMQP Version:
+    en: {displayName: AMQP Version, description: AMQP Version. Currently only supports
+        AMQP v0.9.1.}
+    zh: {description: AMQP版本。目前仅支持AMQP v0.9.1。, displayName: AMQP版本}
+  Virtual Host:
+    en: {displayName: Virtual Host, description: Virtual Host name which segregates
+        AMQP system for enhanced security.}
+    zh: {description: 隔离AMQP系统以增强安全性的虚拟主机名。, displayName: 虚拟主机}
+  Queue:
+    en: {displayName: Queue, description: 'The name of the existing AMQP Queue from
+        which messages will be consumed. Usually pre-defined by AMQP administrator. '}
+    zh: {description: 将从中使用消息的现有AMQP队列的名称。通常由AMQP管理员预定义。, displayName: 队列}
+  remove.curly.braces:
+    en: {displayName: Remove Curly Braces, description: 'If true Remove Curly Braces,
+        Curly Braces in the header will be automatically remove.'}
+    zh: {description: 如果为“移除卷曲支撑”，则标题中的卷曲支撑将自动移除。, displayName: 移除卷曲支撑}
+  Password:
+    en: {displayName: Password, description: Password used for authentication and
+        authorization.}
+    zh: {description: 用于身份验证和授权的密码。, displayName: 暗语}
+writeAttributes:
+  amqp$clusterId: {en: The ID of the AMQP Cluster, zh: AMQP群集的ID}
+  amqp$messageId: {en: The unique ID of the Message, zh: 消息的唯一ID}
+  amqp$routingKey: {en: The routingKey of the AMQP Message, zh: AMQP消息的routingKey}
+  amqp$contentType: {en: The Content Type reported by the AMQP Message, zh: AMQP消息报告的内容类型}
+  amqp$exchange: {en: The exchange from which AMQP Message was received, zh: 从中接收AMQP消息的交换机}
+  amqp$appId: {en: The App ID field from the AMQP Message, zh: AMQP消息中的应用程序ID字段}
+  amqp$type: {en: The type of message, zh: 消息的类型}
+  amqp$userId: {en: The ID of the user, zh: 用户的ID}
+  amqp$headers: {en: The headers present on the AMQP Message, zh: AMQP消息上的标头}
+  amqp$timestamp: {en: 'The timestamp of the Message, as the number of milliseconds
+      since epoch', zh: 消息的时间戳，作为自epoch以来的毫秒数}
+  amqp$expiration: {en: The Message Expiration, zh: 邮件过期时间}
+  amqp$correlationId: {en: The Message's Correlation ID, zh: 消息的相关ID}
+  amqp$priority: {en: The Message priority, zh: 消息优先级}
+  amqp$deliveryMode: {en: The numeric indicator for the Message's Delivery Mode, zh: 消息传递模式的数字指示器}
+  amqp$replyTo: {en: The value of the Message's Reply-To field, zh: 邮件回复字段的值}
+  amqp$contentEncoding: {en: The Content Encoding reported by the AMQP Message, zh: AMQP消息报告的内容编码}
+tags:
+  en: [amqp, rabbit, get, message, receive, consume]
+  zh: [amqp公司, 兔子, 收到, 消息, 接收, 消费]

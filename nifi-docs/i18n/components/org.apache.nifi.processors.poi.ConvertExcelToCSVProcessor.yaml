@@ -1,0 +1,117 @@
+relationships:
+  original: {en: Original Excel document received by this processor, zh: 此处理程序收到的原始Excel文档}
+  success: {en: Excel data converted to csv, zh: Excel数据转换为csv}
+  failure: {en: Failed to parse the Excel document, zh: 无法分析Excel文档}
+capabilityDescription: {en: Consumes a Microsoft Excel document and converts each
+    worksheet to csv. Each sheet from the incoming Excel document will generate a
+    new Flowfile that will be output from this processor. Each output Flowfile's contents
+    will be formatted as a csv file where the each row from the excel sheet is output
+    as a newline in the csv file. This processor is currently only capable of processing
+    .xlsx (XSSF 2007 OOXML file format) Excel documents and not older .xls (HSSF '97(-2007)
+    file format) documents. This processor also expects well formatted CSV content
+    and will not escape cell's containing invalid content such as newlines or additional
+    commas., zh: 使用Microsoft Excel文档并将每个工作表转换为csv。来自传入Excel文档的每个工作表将生成一个新的流文件，该流文件将从此处理器输出。每个输出流文件的内容将被格式化为csv文件，其中excel表中的每一行将作为csv文件中的新行输出。此处理器目前只能处理.xlsx（XSSF
+    2007 OOXML文件格式）Excel文档，而不能处理较旧的.xls（HSSF'97（-2007）文件格式）文档。此处理器还需要格式良好的CSV内容，并且不会转义包含无效内容（如换行符或附加逗号）的单元格。}
+properties:
+  excel-extract-first-row:
+    en: {displayName: Number of Rows to Skip, description: 'The row number of the
+        first row to start processing.Use this to skip over rows of data at the top
+        of your worksheet that are not part of the dataset.Empty rows of data anywhere
+        in the spreadsheet will always be skipped, no matter what this value is set
+        to.'}
+    zh: {description: 要开始处理的第一行的行号。使用此选项可以跳过工作表顶部不属于数据集的数据行。无论该值设置为什么，电子表格中任何位置的空行数据都将被跳过。,
+      displayName: 要跳过的行数}
+  excel-extract-column-to-skip:
+    en: {displayName: Columns To Skip, description: Comma delimited list of column
+        numbers to skip. Use the columns number and not the letter designation. Use
+        this to skip over columns anywhere in your worksheet that you don't want extracted
+        as part of the record.}
+    zh: {description: 要跳过的列编号的逗号分隔列表。使用列编号，而不是字母名称。使用此选项可以跳过工作表中任何不希望作为记录一部分提取的列。,
+      displayName: 要跳过的列}
+  CSV Format:
+    en: {displayName: CSV Format, description: 'Specifies which "format" the CSV data
+        is in, or specifies if custom formatting should be used.'}
+    zh: {description: 指定CSV数据的“格式”，或指定是否应使用自定义格式。, displayName: CSV格式}
+  Quote Character:
+    en: {displayName: Quote Character, description: 'The character that is used to
+        quote values so that escape characters do not have to be used. If the property
+        has been specified via Expression Language but the expression gets evaluated
+        to an invalid Quote Character at runtime, then it will be skipped and the
+        default Quote Character will be used.'}
+    zh: {description: 用于引用值的字符，以便不必使用转义字符。如果已通过表达式语言指定了属性，但表达式在运行时被计算为无效的引号字符，则将跳过该属性，并使用默认的引号字符。,
+      displayName: 引号字符}
+  Include Header Line:
+    en: {displayName: Include Header Line, description: Specifies whether or not the
+        CSV column names should be written out as the first line.}
+    zh: {description: 指定CSV列名是否应作为第一行写出。, displayName: 包括标题行}
+  Value Separator:
+    en: {displayName: Value Separator, description: 'The character that is used to
+        separate values/fields in a CSV Record. If the property has been specified
+        via Expression Language but the expression gets evaluated to an invalid Value
+        Separator at runtime, then it will be skipped and the default Value Separator
+        will be used.'}
+    zh: {description: 用于分隔CSV记录中的值/字段的字符。如果已通过表达式语言指定属性，但表达式在运行时被计算为无效的值分隔符，则将跳过该属性，并使用默认值分隔符。,
+      displayName: 值分隔符}
+  Record Separator:
+    en: {displayName: Record Separator, description: Specifies the characters to use
+        in order to separate CSV Records}
+    zh: {description: 指定用于分隔CSV记录的字符, displayName: 记录分隔符}
+  Escape Character:
+    en: {displayName: Escape Character, description: 'The character that is used to
+        escape characters that would otherwise have a specific meaning to the CSV
+        Parser. If the property has been specified via Expression Language but the
+        expression gets evaluated to an invalid Escape Character at runtime, then
+        it will be skipped and the default Escape Character will be used. Setting
+        it to an empty string means no escape character should be used.'}
+    zh: {description: 用于转义否则对CSV解析器具有特定意义的字符的字符。如果已通过表达式语言指定了属性，但表达式在运行时被计算为无效的转义符，则将跳过该属性，并使用默认的转义符。将其设置为空字符串意味着不应使用转义符。,
+      displayName: 转义符}
+  extract-sheets:
+    en: {displayName: Sheets to Extract, description: Comma separated list of Excel
+        document sheet names that should be extracted from the excel document. If
+        this property is left blank then all of the sheets will be extracted from
+        the Excel document. The list of names is case in-sensitive. Any sheets not
+        specified in this value will be ignored. A bulletin will be generated if a
+        specified sheet(s) are not found.}
+    zh: {description: 应从Excel文档中提取的Excel文档工作表名称的逗号分隔列表。如果此属性为空，则将从Excel文档中提取所有工作表。名称列表区分大小写。将忽略此值中未指定的任何工作表。如果找不到指定的工作表，将生成公告。,
+      displayName: 要提取的图纸}
+  excel-format-values:
+    en: {displayName: Format Cell Values, description: 'Should the cell values be
+        written to CSV using the formatting applied in Excel, or should they be printed
+        as raw values.'}
+    zh: {description: 应使用Excel中应用的格式将单元格值写入CSV，还是应将其作为原始值打印。, displayName: 设置单元格值格式}
+  Null String:
+    en: {displayName: Null String, description: 'Specifies a String that, if present
+        as a value in the CSV, should be considered a null field instead of using
+        the literal value.'}
+    zh: {description: 指定一个字符串，如果该字符串作为CSV中的值存在，则应将其视为空字段，而不是使用文本值。, displayName: Null字符串}
+  Trim Fields:
+    en: {displayName: Trim Fields, description: Whether or not white space should
+        be removed from the beginning and end of fields}
+    zh: {description: 是否应从字段的开头和结尾删除空白, displayName: 修剪字段}
+  Comment Marker:
+    en: {displayName: Comment Marker, description: The character that is used to denote
+        the start of a comment. Any line that begins with this comment will be ignored.}
+    zh: {description: 用于表示注释开头的字符。任何以该注释开头的行都将被忽略。, displayName: 注释标记}
+  Quote Mode:
+    en: {displayName: Quote Mode, description: Specifies how fields should be quoted
+        when they are written}
+    zh: {description: 指定写入字段时应如何引用字段, displayName: 报价模式}
+  Include Trailing Delimiter:
+    en: {displayName: Include Trailing Delimiter, description: 'If true, a trailing
+        delimiter will be added to each CSV Record that is written. If false, the
+        trailing delimiter will be omitted.'}
+    zh: {description: 如果为true，则将向写入的每个CSV记录添加尾随分隔符。如果为false，将省略尾随分隔符。, displayName: 包括尾随分隔符}
+writeAttributes:
+  numrows: {en: The number of rows in this Excel Sheet, zh: 此Excel工作表中的行数}
+  sourcefilename: {en: The name of the Excel document file that this data originated
+      from, zh: 此数据源自的Excel文档文件的名称}
+  sheetname: {en: The name of the Excel sheet that this particular row of data came
+      from in the Excel document, zh: Excel文档中此特定数据行所来自的Excel工作表的名称}
+  convertexceltocsvprocessor.error: {en: Error message that was encountered on a per
+      Excel sheet basis. This attribute is only populated if an error was occured
+      while processing the particular sheet. Having the error present at the sheet
+      level will allow for the end user to better understand what syntax errors in
+      their excel doc on a larger scale caused the error., zh: 每个Excel工作表遇到的错误消息。只有在处理特定工作表时发生错误时，才会填充此属性。在表单级别出现错误将允许最终用户更好地理解excel文档中的语法错误是什么导致了错误。}
+tags:
+  en: [excel, csv, poi]
+  zh: [擅长, csv格式, 波伊]

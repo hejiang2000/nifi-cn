@@ -1,0 +1,30 @@
+capabilityDescription: {en: Lookup a record from Kudu Server associated with the specified
+    key. Binary columns are base64 encoded. Only one matched row will be returned,
+  zh: 从Kudu服务器查找与指定密钥关联的记录。二进制列采用base64编码。只返回一个匹配的行}
+properties:
+  kudu-lu-kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials to use for authentication}
+    zh: {description: 指定用于身份验证的Kerberos凭据, displayName: Kerberos凭据服务}
+  kudu-lu-operations-timeout-ms:
+    en: {displayName: Kudu Operation Timeout, description: Default timeout used for
+        user operations (using sessions and scanners)}
+    zh: {description: 用于用户操作的默认超时（使用会话和扫描仪）, displayName: Kudu操作超时}
+  kudu-lu-return-cols:
+    en: {displayName: Kudu Return Columns, description: A comma-separated list of
+        columns to return when scanning. To return all columns set to "*"}
+    zh: {description: 扫描时要返回的列的逗号分隔列表。返回所有设置为“*”的列, displayName: Kudu返回列}
+  kudu-lu-replica-selection:
+    en: {displayName: Kudu Replica Selection, description: Policy with which to choose
+        amongst multiple replicas}
+    zh: {description: 用于在多个副本中选择的策略, displayName: Kudu复制副本选择}
+  kudu-lu-table-name:
+    en: {displayName: Kudu Table Name, description: Name of the table to access.}
+    zh: {description: 要访问的表的名称。, displayName: Kudu桌}
+  kudu-lu-masters:
+    en: {displayName: Kudu Masters, description: Comma separated addresses of the
+        Kudu masters to connect to.}
+    zh: {description: 要连接的Kudu主机的逗号分隔地址。, displayName: 库杜大师}
+tags:
+  en: [lookup, enrich, key, value, kudu]
+  zh: [查找, 充实, 钥匙, 价值, 库杜语]

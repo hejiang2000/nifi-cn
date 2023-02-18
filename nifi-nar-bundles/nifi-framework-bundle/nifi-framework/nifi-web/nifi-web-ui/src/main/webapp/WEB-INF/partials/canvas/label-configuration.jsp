@@ -18,13 +18,13 @@
 <div id="label-configuration" class="hidden medium-dialog">
     <div id="label-configuration-contents" class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Label Value</div>
+            <div class="setting-name">标签值</div>
             <div class="setting-field">
                 <textarea cols="30" rows="4" id="label-value" class="setting-input"></textarea>
             </div>
         </div>
         <div class="setting">
-            <div class="setting-name">Font Size</div>
+            <div class="setting-name">字体大小</div>
             <div class="setting-field">
                 <div id="label-font-size"></div>
             </div>

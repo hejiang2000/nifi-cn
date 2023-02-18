@@ -1,0 +1,37 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship if it is properly parsed
+      as HL7 and its attributes extracted, zh: 如果FlowFile被正确解析为HL7并提取其属性，则将其路由到此关系}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be mapped to
+      FlowFile Attributes. This would happen if the FlowFile does not contain valid
+      HL7 data, zh: 如果FlowFile无法映射到FlowFile属性，则将其路由到此关系。如果FlowFile不包含有效的HL7数据，就会发生这种情况}
+capabilityDescription: {en: 'Extracts information from an HL7 (Health Level 7) formatted
+    FlowFile and adds the information as FlowFile Attributes. The attributes are named
+    as <Segment Name> <dot> <Field Index>. If the segment is repeating, the naming
+    will be <Segment Name> <underscore> <Segment Index> <dot> <Field Index>. For example,
+    we may have an attribute named "MHS.12" with a value of "2.1" and an attribute
+    named "OBX_11.3" with a value of "93000^CPT4".', zh: 从HL7（健康级别7）格式的流文件中提取信息，并将信息添加为流文件属性。属性命名为<Segment
+    Name><dot><Field Index>。如果段是重复的，则命名将为＜段名称＞＜下划线＞＜段索引＞＜点＞＜字段索引＞。例如，我们可能有一个名为“MHS.12”的属性，其值为“2.1”，而一个名“OBX_11.3”的属性的值为“93000^CPT4”。}
+properties:
+  hl7-input-version:
+    en: {displayName: HL7 Input Version, description: The HL7 version to use for parsing
+        and validation}
+    zh: {description: 用于分析和验证的HL7版本, displayName: HL7输入版本}
+  use-segment-names:
+    en: {displayName: Use Segment Names, description: Whether or not to use HL7 segment
+        names in attributes}
+    zh: {description: 是否在属性中使用HL7段名称, displayName: 使用段名称}
+  skip-validation:
+    en: {displayName: Skip Validation, description: Whether or not to validate HL7
+        message values}
+    zh: {description: 是否验证HL7消息值, displayName: 跳过验证}
+  parse-segment-fields:
+    en: {displayName: Parse Segment Fields, description: Whether or not to parse HL7
+        segment fields into attributes}
+    zh: {description: 是否将HL7段字段解析为属性, displayName: 分析段字段}
+  Character Encoding:
+    en: {displayName: Character Encoding, description: The Character Encoding that
+        is used to encode the HL7 data}
+    zh: {description: 用于编码HL7数据的字符编码, displayName: 字符编码}
+tags:
+  en: [HL7, health level 7, healthcare, extract, attributes]
+  zh: [第7层, 健康等级7, 医疗保健, 摘录, 属性]

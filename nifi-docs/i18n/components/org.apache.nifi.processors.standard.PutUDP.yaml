@@ -1,0 +1,39 @@
+relationships:
+  success: {en: FlowFiles that are sent successfully to the destination are sent out
+      this relationship., zh: 成功发送到目标的FlowFiles将发送到此关系。}
+  failure: {en: FlowFiles that failed to send to the destination are sent out this
+      relationship., zh: 未能发送到目标的FlowFiles将发送到此关系。}
+capabilityDescription: {en: The PutUDP processor receives a FlowFile and packages
+    the FlowFile content into a single UDP datagram packet which is then transmitted
+    to the configured UDP server. The user must ensure that the FlowFile content being
+    fed to this processor is not larger than the maximum size for the underlying UDP
+    transport. The maximum transport size will vary based on the platform setup but
+    is generally just under 64KB. FlowFiles will be marked as failed if their content
+    is larger than the maximum transport size., zh: PutUDP处理器接收流文件并将流文件内容打包成单个UDP数据报包，然后将其发送到配置的UDP服务器。用户必须确保馈送到此处理器的FlowFile内容不大于基础UDP传输的最大大小。最大传输大小将根据平台设置而变化，但通常略低于64KB。如果FlowFiles的内容大于最大传输大小，则将其标记为失败。}
+properties:
+  Idle Connection Expiration:
+    en: {displayName: Idle Connection Expiration, description: The amount of time
+        a connection should be held open without being used before closing the connection.
+        A value of 0 seconds will disable this feature.}
+    zh: {description: 在关闭连接之前，连接应保持打开而不使用的时间。值为0秒将禁用此功能。, displayName: 空闲连接到期}
+  Max Size of Socket Send Buffer:
+    en: {displayName: Max Size of Socket Send Buffer, description: 'The maximum size
+        of the socket send buffer that should be used. This is a suggestion to the
+        Operating System to indicate how big the socket buffer should be. If this
+        value is set too low, the buffer may fill up before the data can be read,
+        and incoming data will be dropped.'}
+    zh: {description: 应使用的套接字发送缓冲区的最大大小。这是给操作系统的一个建议，说明套接字缓冲区应该有多大。如果该值设置得太低，缓冲区可能会在读取数据之前填满，并且传入的数据将被丢弃。,
+      displayName: 套接字发送缓冲区的最大大小}
+  Timeout:
+    en: {displayName: Timeout, description: The timeout for connecting to and communicating
+        with the destination. Does not apply to UDP}
+    zh: {description: 连接到目标并与目标通信的超时。不适用于UDP, displayName: 超时}
+  Port:
+    en: {displayName: Port, description: The port on the destination.}
+    zh: {description: 目的地上的端口。, displayName: 港口城市}
+  Hostname:
+    en: {displayName: Hostname, description: The ip address or hostname of the destination.}
+    zh: {description: 目标的ip地址或主机名。, displayName: 主机名}
+tags:
+  en: [remote, egress, put, udp]
+  zh: [遥远的, 出口, 放, 通用数据包]

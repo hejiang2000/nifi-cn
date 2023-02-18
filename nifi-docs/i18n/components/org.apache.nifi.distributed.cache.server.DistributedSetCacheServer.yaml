@@ -1,0 +1,32 @@
+capabilityDescription: {en: Provides a set (collection of unique values) cache that
+    can be accessed over a socket. Interaction with this service is typically accomplished
+    via a DistributedSetCacheClient service., zh: 提供可通过套接字访问的一组（唯一值的集合）缓存。与此服务的交互通常通过DistributedSetCacheClient服务完成。}
+properties:
+  Eviction Strategy:
+    en: {displayName: Eviction Strategy, description: Determines which strategy should
+        be used to evict values from the cache to make room for new entries}
+    zh: {description: 确定应使用哪个策略从缓存中逐出值，以便为新条目腾出空间, displayName: 驱逐战略}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'If specified, this service
+        will be used to create an SSL Context that will be used to secure communications;
+        if not specified, communications will not be secure'}
+    zh: {description: 如果指定，此服务将用于创建SSL上下文，该上下文将用于保护通信；如果未指定，通信将不安全, displayName: SSL上下文服务}
+  Persistence Directory:
+    en: {displayName: Persistence Directory, description: 'If specified, the cache
+        will be persisted in the given directory; if not specified, the cache will
+        be in-memory only'}
+    zh: {description: 如果指定，缓存将持久化在给定目录中；如果未指定，缓存将仅在内存中, displayName: 持久性目录}
+  maximum-read-size:
+    en: {displayName: Maximum Read Size, description: The maximum number of network
+        bytes to read for a single cache item}
+    zh: {description: 单个缓存项要读取的最大网络字节数, displayName: 最大读取大小}
+  Port:
+    en: {displayName: Port, description: The port to listen on for incoming connections}
+    zh: {description: 侦听传入连接的端口, displayName: 港口城市}
+  Maximum Cache Entries:
+    en: {displayName: Maximum Cache Entries, description: The maximum number of cache
+        entries that the cache can hold}
+    zh: {description: 缓存可容纳的最大缓存条目数, displayName: 最大缓存条目数}
+tags:
+  en: [distributed, set, distinct, cache, server]
+  zh: [分布式的, 设置, 不同的, 隐藏物, 服务器]

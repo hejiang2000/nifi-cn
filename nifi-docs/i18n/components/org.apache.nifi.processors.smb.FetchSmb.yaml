@@ -1,0 +1,24 @@
+relationships:
+  success: {en: A flowfile will be routed here for each successfully fetched file.,
+    zh: 每个成功获取的文件都将在此处路由一个流文件。}
+  failure: {en: A flowfile will be routed here when failed to fetch its content.,
+    zh: 当无法获取流文件的内容时，将在此处路由流文件。}
+capabilityDescription: {en: Fetches files from a SMB Share. Designed to be used in
+    tandem with ListSmb., zh: 从SMB共享获取文件。设计用于与ListSmb一起使用。}
+properties:
+  smb-client-provider-service:
+    en: {displayName: SMB Client Provider Service, description: Specifies the SMB
+        client provider to use for creating SMB connections.}
+    zh: {description: 指定用于创建SMB连接的SMB客户端提供程序。, displayName: SMB客户端提供程序服务}
+  remote-file:
+    en: {displayName: Remote File, description: The full path of the file to be retrieved
+        from the remote server. Expression language is supported.}
+    zh: {description: 要从远程服务器检索的文件的完整路径。支持表达式语言。, displayName: 远程文件}
+writeAttributes:
+  error.message: {en: The error message returned by SMB when the fetch of a file fails.,
+    zh: SMB在获取文件失败时返回的错误消息。}
+  error.code: {en: The error code returned by SMB when the fetch of a file fails.,
+    zh: SMB在获取文件失败时返回的错误代码。}
+tags:
+  en: [samba, smb, cifs, files, fetch]
+  zh: [桑巴舞, 表面粗糙度, 到岸价, 文件夹, 取来]

@@ -1,0 +1,38 @@
+relationships:
+  success: {en: Successfully flattened/unflattened files go to this relationship.,
+    zh: 已成功展平/未展平的文件转到此关系。}
+  failure: {en: Files that cannot be flattened/unflattened go to this relationship.,
+    zh: 无法展平/未展平的文件属于此关系。}
+capabilityDescription: {en: 'Provides the user with the ability to take a nested JSON
+    document and flatten it into a simple key/value pair document. The keys are combined
+    at each level with a user-defined separator that defaults to ''.''. This Processor
+    also allows to unflatten back the flattened json. It supports four kinds of flatten
+    mode such as normal, keep-arrays, dot notation for MongoDB query and keep-primitive-arrays.
+    Default flatten mode is ''keep-arrays''.', zh: 为用户提供获取嵌套的JSON文档并将其展平为简单的键/值对文档的能力。这些键在每个级别都使用默认为“.”的用户定义分隔符组合。此处理器还允许取消对已展平的json的修饰。它支持四种扁平化模式，如normal、keep数组、MongoDB查询的点符号和keep基元数组。默认展平模式为“保持阵列”。}
+properties:
+  ignore-reserved-characters:
+    en: {displayName: Ignore Reserved Characters, description: 'If true, reserved
+        characters in keys will be ignored'}
+    zh: {description: 如果为true，将忽略键中的保留字符, displayName: 忽略保留字符}
+  flatten-mode:
+    en: {displayName: Flatten Mode, description: Specifies how json should be flattened/unflattened}
+    zh: {description: 指定json应如何展平/取消展平, displayName: 展平模式}
+  flatten-json-separator:
+    en: {displayName: Separator, description: The separator character used for joining
+        keys. Must be a JSON-legal character.}
+    zh: {description: 用于连接键的分隔符。必须是JSON合法字符。, displayName: 分离器}
+  flatten-json-pretty-print-json:
+    en: {displayName: Pretty Print JSON, description: Specifies whether or not resulted
+        json should be pretty printed}
+    zh: {description: 指定结果json是否应精确打印, displayName: 漂亮打印JSON}
+  flatten-json-return-type:
+    en: {displayName: Return Type, description: Specifies the desired return type
+        of json such as flatten/unflatten}
+    zh: {description: 指定所需的json返回类型，如flatten/unflatten, displayName: 返回类型}
+  flatten-json-character-set:
+    en: {displayName: Character Set, description: The Character Set in which file
+        is encoded}
+    zh: {description: 编码文件的字符集, displayName: 字符集}
+tags:
+  en: [json, flatten, unflatten]
+  zh: [json文件, 压平, 无光泽的]

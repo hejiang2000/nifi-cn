@@ -1,0 +1,33 @@
+relationships:
+  found: {en: Where to route flow files after successfully enriching attributes with
+      data provided by database, zh: 使用数据库提供的数据成功丰富属性后，将流文件路由到何处}
+  not found: {en: Where to route flow files after unsuccessfully enriching attributes
+      because no data was found, zh: 由于找不到数据，未能成功丰富属性后将流文件路由到何处}
+capabilityDescription: {en: 'Looks up ISP information for an IP address and adds the
+    information to FlowFile attributes. The ISP data is provided as a MaxMind ISP
+    database (Note that this is NOT the same as the GeoLite database utilizedby some
+    geo enrichment tools). The attribute that contains the IP address to lookup is
+    provided by the ''IP Address Attribute'' property. If the name of the attribute
+    provided is ''X'', then the the attributes added by enrichment will take the form
+    X.isp.<fieldName>', zh: 查找IP地址的ISP信息，并将信息添加到FlowFile属性中。ISP数据作为MaxMind ISP数据库提供（注意，这与某些地理富集工具使用的GeoLite数据库不同）。包含要查找的IP地址的属性由“IP地址属性”属性提供。如果提供的属性的名称为“X”，则通过扩展添加的属性将采用X.isp的形式。＜fieldName＞}
+properties:
+  Geo Database File:
+    en: {displayName: MaxMind Database File, description: Path to Maxmind IP Enrichment
+        Database File}
+    zh: {description: Maxmind IP扩展数据库文件的路径, displayName: MaxMind数据库文件}
+  IP Address Attribute:
+    en: {displayName: IP Address Attribute, description: The name of an attribute
+        whose value is a dotted decimal IP address for which enrichment should occur}
+    zh: {description: 一个属性的名称，其值是一个应该进行浓缩的十进制IP地址, displayName: IP地址属性}
+writeAttributes:
+  X.isp.name: {en: The name of the ISP associated with the IP address provided, zh: 与提供的IP地址关联的ISP的名称}
+  X.isp.asn: {en: The Autonomous System Number (ASN) identified for the IP address,
+    zh: 为IP地址标识的自治系统编号（ASN）}
+  X.isp.lookup.micros: {en: The number of microseconds that the geo lookup took, zh: 地理查找所用的微秒数}
+  X.isp.asn.organization: {en: The Organization Associated with the ASN identified,
+    zh: 与ASN相关的组织}
+  X.isp.organization: {en: The Organization associated with the IP address provided,
+    zh: 与提供的IP地址关联的组织}
+tags:
+  en: [ISP, enrich, ip, maxmind]
+  zh: [网络服务提供商, 充实, ip地址, 马克西姆]

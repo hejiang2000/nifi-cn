@@ -1,0 +1,20 @@
+capabilityDescription: {en: Checks the amount of storage space available for the specified
+    directory and warns (via a log message and a System-Level Bulletin) if the partition
+    on which it lives exceeds some configurable threshold of storage space, zh: 检查指定目录的可用存储空间量，并在其所在的分区超过某个可配置的存储空间阈值时发出警告（通过日志消息和系统级别公告）}
+properties:
+  Directory Location:
+    en: {displayName: Directory Location, description: The directory path of the partition
+        to be monitored.}
+    zh: {description: 要监视的分区的目录路径。, displayName: 目录位置}
+  Directory Display Name:
+    en: {displayName: Directory Display Name, description: The name to display for
+        the directory in alerts.}
+    zh: {description: 要在警报中为目录显示的名称。, displayName: 目录显示名称}
+  Threshold:
+    en: {displayName: Threshold, description: The threshold at which a bulletin will
+        be generated to indicate that the disk usage of the partition on which the
+        directory found is of concern}
+    zh: {description: 生成公告的阈值，以指示在其上找到目录的分区的磁盘使用情况值得关注, displayName: 门槛}
+tags:
+  en: [disk, storage, warning, monitoring, repo]
+  zh: [磁盘, 存储, 警告, 监测, 回购，回购]

@@ -1,0 +1,97 @@
+relationships:
+  success: {en: A FlowFile is transferred to this relationship if the operation completed
+      successfully., zh: 如果操作成功完成，FlowFile将传输到此关系。}
+  failure: {en: A FlowFile is transferred to this relationship if the operation failed.,
+    zh: 如果操作失败，FlowFile将传输到此关系。}
+  retry: {en: A FlowFile is transferred to this relationship if the operation cannot
+      be completed but attempting it again may succeed., zh: 如果操作无法完成，则将FlowFile传输到此关系，但再次尝试可能会成功。}
+systemResourceConsiderations:
+  en: [An instance of this component can cause high usage of this system resource.  Multiple
+      instances or high concurrency settings may result a degradation of performance.]
+  zh: [此组件的实例可能会导致此系统资源的大量使用。多个实例或高并发设置可能会导致性能下降。]
+capabilityDescription: {en: 'Execute provided Cassandra Query Language (CQL) statement
+    on a Cassandra 1.x, 2.x, or 3.0.x cluster. The content of an incoming FlowFile
+    is expected to be the CQL command to execute. The CQL command may use the ? to
+    escape parameters. In this case, the parameters to use must exist as FlowFile
+    attributes with the naming convention cql.args.N.type and cql.args.N.value, where
+    N is a positive integer. The cql.args.N.type is expected to be a lowercase string
+    indicating the Cassandra type.', zh: 在Cassandra 1.x、2.x或3.0.x集群上执行提供的Cassandra查询语言（CQL）语句。传入FlowFile的内容应为要执行的CQL命令。CQL命令可以使用？以转义参数。在这种情况下，要使用的参数必须作为FlowFile属性存在，命名约定为cql.args.N.type和cql.args.N.value，其中N是正整数。cql.args.N.type应为小写字符串，指示Cassandra类型。}
+readAttributes:
+  cql.args.N.value: {en: 'Incoming FlowFiles are expected to be parameterized CQL
+      statements. The value of the parameters are specified as cql.args.1.value, cql.args.2.value,
+      cql.args.3.value, and so on. The  type of the cql.args.1.value parameter is
+      specified by the cql.args.1.type attribute.', zh: 传入的FlowFiles应为参数化的CQL语句。参数的值指定为cql.args.1.value、cql.args.2.value、cql.args.3.value等。cql.args.1.value参数的类型由cql.args.c.type属性指定。}
+  cql.args.N.type: {en: 'Incoming FlowFiles are expected to be parameterized CQL statements.
+      The type of each parameter is specified as a lowercase string corresponding
+      to the Cassandra data type (text, int, boolean, e.g.). In the case of collections,
+      the primitive type(s) of the elements in the collection should be comma-delimited,
+      follow the collection type, and be enclosed in angle brackets (< and >), for
+      example set<text> or map<timestamp, int>.', zh: 传入的FlowFiles应为参数化的CQL语句。每个参数的类型都指定为与Cassandra数据类型（text、int、boolean等）相对应的小写字符串。对于集合，集合中元素的基元类型应以逗号分隔，跟随集合类型，并用尖括号（<和>）括起来，例如set＜text＞或map＜timestamp，int＞。}
+properties:
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username to access the Cassandra cluster}
+    zh: {description: 访问Cassandra群集的用户名, displayName: 用户名}
+  Max Wait Time:
+    en: {displayName: Max Wait Time, description: 'The maximum amount of time allowed
+        for a running CQL select query. Must be of format <duration> <TimeUnit> where
+        <duration> is a non-negative integer and TimeUnit is a supported Time Unit,
+        such as: nanos, millis, secs, mins, hrs, days. A value of zero means there
+        is no limit. '}
+    zh: {description: 运行CQL选择查询所允许的最长时间。必须采用<duration><TimeUnit>格式，其中<duration>是非负整数，TimeUnit是受支持的时间单位，例如：纳米、毫秒、秒、分钟、小时、天。值为零表示没有限制。,
+      displayName: 最长等待时间}
+  Consistency Level:
+    en: {displayName: Consistency Level, description: The strategy for how many replicas
+        must respond before results are returned.}
+    zh: {description: 返回结果之前必须响应多少副本的策略。, displayName: 一致性级别}
+  Compression Type:
+    en: {displayName: Compression Type, description: Enable compression at transport-level
+        requests and responses}
+    zh: {description: 在传输级别启用压缩请求和响应, displayName: 压缩类型}
+  Keyspace:
+    en: {displayName: Keyspace, description: 'The Cassandra Keyspace to connect to.
+        If no keyspace is specified, the query will need to include the keyspace name
+        before any table reference, in case of ''query'' native processors or if the
+        processor exposes the ''Table'' property, the keyspace name has to be provided
+        with the table name in the form of <KEYSPACE>.<TABLE>'}
+    zh: {description: 要连接到的Cassandra密钥空间。如果未指定密钥空间，则查询需要在任何表引用之前包含密钥空间名称，如果是“query”本机处理器，或者如果处理器公开了“table”属性，则必须以＜Keyspace＞的形式将密钥空间名称与表名称一起提供。＜table＞,
+      displayName: 密钥空间}
+  cassandra-connection-provider:
+    en: {displayName: Cassandra Connection Provider, description: Specifies the Cassandra
+        connection providing controller service to be used to connect to Cassandra
+        cluster.}
+    zh: {description: 指定用于连接到Cassandra群集的Cassandra连接提供控制器服务。, displayName: Cassandra连接提供程序}
+  Client Auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        record data.}
+    zh: {description: 指定记录数据的字符集。, displayName: 字符集}
+  Cassandra Contact Points:
+    en: {displayName: Cassandra Contact Points, description: 'Contact points are addresses
+        of Cassandra nodes. The list of contact points should be comma-separated and
+        in hostname:port format. Example node1:port,node2:port,.... The default client
+        port for Cassandra is 9042, but the port(s) must be explicitly specified.'}
+    zh: {description: '联系点是Cassandra节点的地址。联系人列表应以逗号分隔，并采用主机名：端口格式。示例node1:port，node2:port，….Cassandra的默认客户端端口是9042，但必须显式指定端口。',
+      displayName: Cassandra联络点}
+  Password:
+    en: {displayName: Password, description: Password to access the Cassandra cluster}
+    zh: {description: 访问Cassandra群集的密码, displayName: 暗语}
+  putcql-stmt-cache-size:
+    en: {displayName: Statement Cache Size, description: 'The maximum number of CQL
+        Prepared Statements to cache. This can improve performance if many incoming
+        flow files have the same CQL statement with different values for the parameters.
+        If this property is set to zero, the cache is effectively disabled.'}
+    zh: {description: 要缓存的CQL准备语句的最大数量。如果许多传入流文件具有相同的CQL语句，并且参数值不同，则这可以提高性能。如果此属性设置为零，则缓存将被有效禁用。,
+      displayName: 语句缓存大小}
+tags:
+  en: [cassandra, cql, put, insert, update, set]
+  zh: [卡桑德拉, cql公司, 放, 插入, 使现代化, 设置]

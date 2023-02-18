@@ -1,0 +1,40 @@
+dynamicProperties:
+  The name of a Connection Factory configuration property.:
+    en: {description: 'The properties that are set following Java Beans convention
+        where a property name is derived from the ''set*'' method of the vendor specific
+        ConnectionFactory''s implementation. For example, ''com.ibm.mq.jms.MQConnectionFactory.setChannel(String)''
+        would imply ''channel'' property and ''com.ibm.mq.jms.MQConnectionFactory.setTransportType(int)''
+        would imply ''transportType'' property.', value: The value of a given Connection
+        Factory configuration property.}
+    zh: {description: 根据JavaBeans约定设置的属性，其中属性名称是从特定于供应商的ConnectionFactory实现的“set*”方法派生的。例如，'com.ibm.mq.jms.MQConnectionFactory。setChannel（String）”将暗示“channel”属性和“com.ibm.mq.jms.MQConnectionFactory”。setTransportType（int）”将暗示“transportType”属性。,
+      value: 给定连接工厂配置属性的值。}
+capabilityDescription: {en: Provides a generic service to create vendor specific javax.jms.ConnectionFactory
+    implementations. The Connection Factory can be served once this service is configured
+    successfully., zh: 提供通用服务以创建特定于供应商的javax.jms。ConnectionFactory实现。成功配置此服务后，即可为连接工厂提供服务。}
+properties:
+  cflib:
+    en: {displayName: JMS Client Libraries, description: 'Path to the directory with
+        additional resources (eg. JARs, configuration files etc.) to be added to the
+        classpath (defined as a comma separated list of values). Such resources typically
+        represent target JMS client libraries for the ConnectionFactory implementation.'}
+    zh: {description: 包含要添加到类路径的其他资源（例如JAR、配置文件等）的目录路径（定义为逗号分隔的值列表）。这些资源通常表示ConnectionFactory实现的目标JMS客户端库。,
+      displayName: JMS客户端库}
+  SSL Context Service:
+    en: {displayName: JMS SSL Context Service, description: The SSL Context Service
+        used to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: JMS SSL上下文服务}
+  cf:
+    en: {displayName: JMS Connection Factory Implementation Class, description: The
+        fully qualified name of the JMS ConnectionFactory implementation class (eg.
+        org.apache.activemq.ActiveMQConnectionFactory).}
+    zh: {description: JMS ConnectionFactory实现类的完全限定名称（例如org.apache.activemq.ActiveMQConnectionFactory）。,
+      displayName: JMS连接工厂实现类}
+  broker:
+    en: {displayName: JMS Broker URI, description: 'URI pointing to the network location
+        of the JMS Message broker. Example for ActiveMQ: ''tcp://myhost:61616''. Examples
+        for IBM MQ: ''myhost(1414)'' and ''myhost01(1414),myhost02(1414)''.'}
+    zh: {description: '指向JMS消息代理的网络位置的URI。ActiveMQ示例：''tcp://myhost:61616''. IBM MQ的示例：“myhost（1414）”和“myhost01（1414。',
+      displayName: JMS代理URI}
+tags:
+  en: [jms, messaging, integration, queue, topic, publish, subscribe]
+  zh: [jms公司, 消息传递, 集成, 队列, 话题, 出版, 订阅]

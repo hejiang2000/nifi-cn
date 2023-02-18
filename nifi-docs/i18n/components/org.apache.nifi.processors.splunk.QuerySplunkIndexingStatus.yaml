@@ -1,0 +1,73 @@
+relationships:
+  success: {en: A FlowFile is transferred to this relationship when the acknowledgement
+      was successful., zh: 确认成功后，FlowFile将传输到此关系。}
+  undetermined: {en: A FlowFile is transferred to this relationship when the acknowledgement
+      state is not determined. FlowFiles transferred to this relationship might be
+      penalized. This happens when Splunk returns with HTTP 200 but with false response
+      for the acknowledgement id in the flow file attribute., zh: 当确认状态未确定时，FlowFile将传输到此关系。传输到此关系的FlowFiles可能会受到惩罚。当Splunk返回HTTP
+      200但流文件属性中的确认id响应错误时，就会发生这种情况。}
+  failure: {en: A FlowFile is transferred to this relationship when the acknowledgement
+      was not successful due to errors during the communication. FlowFiles are timing
+      out or unknown by the Splunk server will transferred to "undetermined" relationship.,
+    zh: 当由于通信过程中的错误导致确认失败时，FlowFile将传输到此关系。FlowFiles超时或未知，Splunk服务器将转移到“待定”关系。}
+  unacknowledged: {en: A FlowFile is transferred to this relationship when the acknowledgement
+      was not successful. This can happen when the acknowledgement did not happened
+      within the time period set for Maximum Waiting Time. FlowFiles with acknowledgement
+      id unknown for the Splunk server will be transferred to this relationship after
+      the Maximum Waiting Time is reached., zh: 当确认未成功时，FlowFile将传输到此关系。当确认未在为“最大等待时间”设置的时间段内发生时，可能会发生这种情况。Splunk服务器的确认id未知的FlowFiles将在达到最大等待时间后传输到此关系。}
+capabilityDescription: {en: Queries Splunk server in order to acquire the status of
+    indexing acknowledgement., zh: 查询Splunk服务器以获取索引确认的状态。}
+readAttributes:
+  splunk.responded.at: {en: The time of the response of put request for Splunk., zh: Splunk的put请求的响应时间。}
+  splunk.acknowledgement.id: {en: The indexing acknowledgement id provided by Splunk.,
+    zh: Splunk提供的索引确认id。}
+properties:
+  Owner:
+    en: {displayName: Owner, description: The owner to pass to Splunk.}
+    zh: {description: 要传递给Splunk的所有者。, displayName: 物主}
+  request-channel:
+    en: {displayName: Splunk Request Channel, description: Identifier of the used
+        request channel.}
+    zh: {description: 使用的请求通道的标识符。, displayName: Splunk请求通道}
+  Scheme:
+    en: {displayName: Scheme, description: The scheme for connecting to Splunk.}
+    zh: {description: 连接到Splunk的方案。, displayName: 计划}
+  Username:
+    en: {displayName: Username, description: The username to authenticate to Splunk.}
+    zh: {description: 要向Splunk进行身份验证的用户名。, displayName: 用户名}
+  Port:
+    en: {displayName: HTTP Event Collector Port, description: The HTTP Event Collector
+        HTTP Port Number.}
+    zh: {description: HTTP事件收集器HTTP端口号。, displayName: HTTP事件收集器端口}
+  Hostname:
+    en: {displayName: Hostname, description: The ip address or hostname of the Splunk
+        server.}
+    zh: {description: Splunk服务器的ip地址或主机名。, displayName: 主机名}
+  max-query-size:
+    en: {displayName: Maximum Query Size, description: The maximum number of acknowledgement
+        identifiers the outgoing query contains in one batch. It is recommended not
+        to set it too low in order to reduce network communication.}
+    zh: {description: 传出查询在一个批处理中包含的最大确认标识符数。建议不要将其设置得太低，以减少网络通信。, displayName: 最大查询大小}
+  Token:
+    en: {displayName: HTTP Event Collector Token, description: HTTP Event Collector
+        token starting with the string Splunk. For example 'Splunk 1234578-abcd-1234-abcd-1234abcd'}
+    zh: {description: 以字符串Splunk开头的HTTP事件收集器令牌。例如“Splunk 1234578-abcd-1234-abcd-1234abbcd”,
+      displayName: HTTP事件收集器令牌}
+  ttl:
+    en: {displayName: Maximum Waiting Time, description: 'The maximum time the processor
+        tries to acquire acknowledgement confirmation for an index, from the point
+        of registration. After the given amount of time, the processor considers the
+        index as not acknowledged and transfers the FlowFile to the "unacknowledged"
+        relationship.'}
+    zh: {description: 处理器尝试从注册点获取索引的确认确认的最长时间。在给定的时间量之后，处理器认为索引未被确认，并将FlowFile转换为“未确认”关系。,
+      displayName: 最长等待时间}
+  Security Protocol:
+    en: {displayName: Security Protocol, description: The security protocol to use
+        for communicating with Splunk.}
+    zh: {description: 用于与Splunk通信的安全协议。, displayName: 安全协议}
+  Password:
+    en: {displayName: Password, description: The password to authenticate to Splunk.}
+    zh: {description: 用于向Splunk进行身份验证的密码。, displayName: 暗语}
+tags:
+  en: [splunk, logs, http, acknowledgement]
+  zh: [挥霍，挥霍, 日志, http, 确认]

@@ -221,8 +221,8 @@
 
         if (parameterProvider.name === '') {
             nfDialog.showOkDialog({
-                headerText: 'Configuration Error',
-                dialogContent: 'The name of the Parameter Provider must be specified.'
+                headerText: '配置错误',
+                dialogContent: '必须指定参数提供者名称.'
             });
             return false;
         }
@@ -231,8 +231,8 @@
         var parameterProviderNameRegex = /^[a-zA-Z0-9-_. ]+$/;
         if (!parameterProviderNameRegex.test(parameterProvider.name)) {
             nfDialog.showOkDialog({
-                headerText: 'Configuration Error',
-                dialogContent: 'The name of the Parameter Provider appears to have an invalid character or characters. Only alpha-numeric characters (a-z, A-Z, 0-9), hyphens (-), underscores (_), periods (.), and spaces ( ) are accepted.'
+                headerText: '配置错误',
+                dialogContent: '参数提供者名称包含无效字符. 只能使用 (a-z, A-Z, 0-9), 连字符 (-), 下划线 (_), 英文句点 (.), 和空格 ( ) 等字符.'
             });
             return false;
         }
@@ -257,8 +257,8 @@
             return true;
         } else {
             nfDialog.showOkDialog({
-                headerText: 'Parameter Provider Exists',
-                dialogContent: 'A Parameter Provider with this name already exists.'
+                headerText: '参数提供者已存在',
+                dialogContent: '同名参数提供者已存在.'
             });
         }
         return false;
@@ -292,8 +292,8 @@
             if (isSaveRequired()) {
                 // see if those changes should be saved
                 nfDialog.showYesNoDialog({
-                    headerText: 'Save',
-                    dialogContent: 'Save changes before going to this Controller Service?',
+                    headerText: '保存',
+                    dialogContent: '跳转到该控制器服务前保存修改?',
                     noHandler: function () {
                         deferred.resolve();
                     },
@@ -412,7 +412,7 @@
             // updates the button model to show the close button
             var updateToCloseButtonModel = function () {
                 fetchParametersDialog.modal('setButtonModel', [{
-                    buttonText: 'Close',
+                    buttonText: '关闭',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -429,7 +429,7 @@
 
             var updateToApplyOrCancelButtonModel = function () {
                 fetchParametersDialog.modal('setButtonModel', [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -444,7 +444,7 @@
                         }
                     }
                 }, {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -463,7 +463,7 @@
 
             // update the button model to show the cancel button
             fetchParametersDialog.modal('setButtonModel', [{
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -522,7 +522,7 @@
                         if (updateRequest.complete === true) {
                             if (errored) {
                                 nfDialog.showOkDialog({
-                                    headerText: 'Apply Parameter Provider Error',
+                                    headerText: '应用参数提供者错误',
                                     dialogContent: 'Unable to complete parameter provider update request: ' + nfCommon.escapeHtml(updateRequest.failureReason)
                                 });
                             }
@@ -605,10 +605,10 @@
      */
     var confirmCancelDialog = function (dialog) {
         nfDialog.showYesNoDialog({
-            headerText: 'Fetch Parameters',
-            dialogContent: 'Are you sure you want to cancel?',
-            noText: 'Cancel',
-            yesText: 'Yes',
+            headerText: '获取参数',
+            dialogContent: '你确定要取消吗?',
+            noText: '取消',
+            yesText: '是',
             yesHandler: function () {
                 closeModal(dialog);
             }
@@ -631,14 +631,14 @@
             $('#fetch-parameters-name').text(nfCommon.getComponentName(updatedParameterProviderEntity));
 
             // set parameters contexts to be updated to none
-            $('<div class="parameter-contexts-to-create"><span class="unset">None</span></div>')
+            $('<div class="parameter-contexts-to-create"><span class="unset">无</span></div>')
                 .appendTo($('#parameter-contexts-to-create-container'));
 
             // list parameter contexts to update
             var parameterContextsToUpdate = $('#parameter-contexts-to-update-container').empty();
 
             if (!updatedParameterProviderEntity.component.referencingParameterContexts) {
-                $('<div class="parameter-contexts-to-update"><span class="unset">None</span></div>')
+                $('<div class="parameter-contexts-to-update"><span class="unset">无</span></div>')
                     .appendTo(parameterContextsToUpdate);
             } else {
                 // populate contexts to be updated
@@ -668,7 +668,7 @@
 
             // build the button model
             var buttons = [{
-                buttonText: 'Apply',
+                buttonText: '应用',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -686,7 +686,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -1100,7 +1100,7 @@
             // referencing component will be undefined when a new parameter is added
             if (nfCommon.isUndefined(referencingComponents)) {
                 // set to pending
-                $('<div class="referencing-component-container"><span class="unset">Pending Apply</span></div>').appendTo(parameterReferencingComponentsContainer);
+                $('<div class="referencing-component-container"><span class="unset">暂未生效</span></div>').appendTo(parameterReferencingComponentsContainer);
             } else {
                 // bin the referencing components according to their type
                 $.each(referencingComponents, function (_, referencingComponentEntity) {
@@ -1186,7 +1186,7 @@
 
                 if (nfCommon.isEmpty(referencingProcessGroupsArray)) {
                     // set to none
-                    $('<div class="referencing-component-container"><span class="unset">None</span></div>').appendTo(parameterReferencingComponentsContainer);
+                    $('<div class="referencing-component-container"><span class="unset">无</span></div>').appendTo(parameterReferencingComponentsContainer);
                 } else {
                     //sort alphabetically
                     var sortedReferencingProcessGroups = referencingProcessGroupsArray.sort(function (a, b) {
@@ -1231,7 +1231,7 @@
                                     var unauthorizedComponentsContainer = groupTwist.find('.fetch-parameters-referencing-unauthorized-components').empty();
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].referencingProcessors.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(processorContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(processorContainer);
                                     } else {
                                         // sort the referencing processors
                                         referencingProcessGroups[$(this).data('processGroupId')].referencingProcessors.sort(nameComparator);
@@ -1243,7 +1243,7 @@
                                     }
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].referencingControllerServices.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(controllerServiceContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(controllerServiceContainer);
                                     } else {
                                         // sort the referencing controller services
                                         referencingProcessGroups[$(this).data('processGroupId')].referencingControllerServices.sort(nameComparator);
@@ -1255,7 +1255,7 @@
                                     }
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].unauthorizedReferencingComponents.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(unauthorizedComponentsContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(unauthorizedComponentsContainer);
                                     } else {
                                         // sort the unauthorized referencing components
                                         referencingProcessGroups[$(this).data('processGroupId')].unauthorizedReferencingComponents.sort(function (a, b) {
@@ -1356,7 +1356,7 @@
         var parameterProviderComponent = parameterProviderEntity;
 
         if (nfCommon.isEmpty(parameterProviderComponent.referencingParameterContexts)) {
-            parameterProviderReferencingComponentsContainer.append('<div class="unset">No referencing components.</div>');
+            parameterProviderReferencingComponentsContainer.append('<div class="unset">无引用组件.</div>');
             return;
         }
 
@@ -1449,7 +1449,7 @@
         });
 
         if (parameterContextNames.length === 0) {
-            $('<div class="parameter-contexts-to-create"><span class="unset">None</span></div>')
+            $('<div class="parameter-contexts-to-create"><span class="unset">无</span></div>')
                 .appendTo(parameterContextsToCreate);
         } else {
             parameterContextNames.sort();
@@ -1521,8 +1521,8 @@
                 } else {
                     // see if those changes should be saved
                     nfDialog.showYesNoDialog({
-                        headerText: 'Fetch Parameters',
-                        dialogContent: 'Save changes before leaving parameters configuration?',
+                        headerText: '获取参数',
+                        dialogContent: '离开参数配置前保持修改?',
                         noHandler: function () {
                             close();
                             deferred.resolve();
@@ -1738,7 +1738,7 @@
                 createParamContextContainer = $('<div id="create-parameter-context-container" class="string-check-container setting" style="display:block;"></div>');
 
                 $('<div class="setting">' +
-                    '<div class="setting-name">Parameter Context Name</div>' +
+                    '<div class="setting-name">参数上下文名称</div>' +
                     '<div class="setting-field">' +
                     '<div id="referencing-parameter-context-name">' + nfCommon.escapeHtml(fetchedGroup.parameterContextName) + '</div>' +
                     '</div>').appendTo(createParamContextContainer);
@@ -1780,7 +1780,7 @@
 
                 // create the input
                 $('<div class="setting">' +
-                    '<div class="setting-name">Parameter Context Name</div>' +
+                    '<div class="setting-name">参数上下文名称</div>' +
                     '<div class="setting-field required">' +
                     '<input id="create-parameter-context-input" type="text" name="parameter-context-name"/></div>' +
                     '</div>').appendTo(createParamContextContainer);
@@ -1811,7 +1811,7 @@
             })
         } else {
             // set to none
-            $('<div><span class="unset">None</span></div>').appendTo(fetchedParametersContainer);
+            $('<div><span class="unset">无</span></div>').appendTo(fetchedParametersContainer);
         }
 
         // update the border if necessary
@@ -2007,7 +2007,7 @@
             // referencing component will be undefined when a new parameter is added
             if (_.isEmpty(referencingComponents)) {
                 // set to pending
-                $('<div class="referencing-component-container"><span class="unset">None</span></div>').appendTo(fetchParameterReferencingComponentsContainer);
+                $('<div class="referencing-component-container"><span class="unset">无</span></div>').appendTo(fetchParameterReferencingComponentsContainer);
             } else {
                 // bin the referencing components according to their type
                 $.each(referencingComponents.parameter.parameter.referencingComponents, function (_, referencingComponentEntity) {
@@ -2093,7 +2093,7 @@
 
                 if (nfCommon.isEmpty(referencingProcessGroupsArray)) {
                     // set to none
-                    $('<div class="referencing-component-container"><span class="unset">None</span></div>').appendTo(fetchParameterReferencingComponentsContainer);
+                    $('<div class="referencing-component-container"><span class="unset">无</span></div>').appendTo(fetchParameterReferencingComponentsContainer);
                 } else {
                     //sort alphabetically
                     var sortedReferencingProcessGroups = referencingProcessGroupsArray.sort(function (a, b) {
@@ -2138,7 +2138,7 @@
                                     var unauthorizedComponentsContainer = groupTwist.find('.fetch-parameters-referencing-unauthorized-components').empty();
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].referencingProcessors.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(processorContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(processorContainer);
                                     } else {
                                         // sort the referencing processors
                                         referencingProcessGroups[$(this).data('processGroupId')].referencingProcessors.sort(nameComparator);
@@ -2150,7 +2150,7 @@
                                     }
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].referencingControllerServices.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(controllerServiceContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(controllerServiceContainer);
                                     } else {
                                         // sort the referencing controller services
                                         referencingProcessGroups[$(this).data('processGroupId')].referencingControllerServices.sort(nameComparator);
@@ -2162,7 +2162,7 @@
                                     }
 
                                     if (referencingProcessGroups[$(this).data('processGroupId')].unauthorizedReferencingComponents.length === 0) {
-                                        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(unauthorizedComponentsContainer);
+                                        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(unauthorizedComponentsContainer);
                                     } else {
                                         // sort the unauthorized referencing components
                                         referencingProcessGroups[$(this).data('processGroupId')].unauthorizedReferencingComponents.sort(function (a, b) {
@@ -2452,7 +2452,7 @@
         // define the column models for the table
         var nameColumnDefinition = {
             id: 'name',
-            name: 'Parameter Name',
+            name: '参数名称',
             field: 'name',
             formatter: nameFormatter,
             sortable: true,
@@ -2718,7 +2718,7 @@
         var groupsColumn = [
             {
                 id: 'name',
-                name: 'Parameter Group Name',
+                name: '参数组名称',
                 field: 'name',
                 formatter: nameFormatter,
                 sortable: true,
@@ -2855,10 +2855,10 @@
         lastSelectedParameterId = null;
 
         // indicate no referencing components
-        $('<div class="referencing-component-container"><span class="unset">None</span></div>').appendTo(fetchParameterRefComponentsContainer);
-        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(processorContainer);
-        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(controllerServiceContainer);
-        $('<li class="referencing-component-container"><span class="unset">None</span></li>').appendTo(unauthorizedComponentsContainer);
+        $('<div class="referencing-component-container"><span class="unset">无</span></div>').appendTo(fetchParameterRefComponentsContainer);
+        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(processorContainer);
+        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(controllerServiceContainer);
+        $('<li class="referencing-component-container"><span class="unset">无</span></li>').appendTo(unauthorizedComponentsContainer);
     };
 
     var currentParameterProviderEntity = null;
@@ -2880,13 +2880,13 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Settings',
+                    name: '设置',
                     tabContentId: 'parameter-provider-standard-settings-tab-content'
                 }, {
-                    name: 'Properties',
+                    name: '属性',
                     tabContentId: 'parameter-provider-properties-tab-content'
                 }, {
-                    name: 'Comments',
+                    name: '说明',
                     tabContentId: 'parameter-provider-comments-tab-content'
                 }],
                 select: function () {
@@ -2894,7 +2894,7 @@
                     nfUniversalCapture.removeAllPropertyDetailDialogs();
 
                     // update the property table size in case this is the first time its rendered
-                    if ($(this).text() === 'Properties') {
+                    if ($(this).text() === '属性') {
                         $('#parameter-provider-properties').propertytable('resetTableSize');
                     }
 
@@ -2906,7 +2906,7 @@
             // initialize the parameter provider configuration dialog
             $('#parameter-provider-configuration').data('mode', config.edit).modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Configure Parameter Provider',
+                headerText: '配置参数提供者',
                 handler: {
                     close: function () {
                         // cancel any active edits
@@ -2959,7 +2959,7 @@
 
             // initialize the fetch parameters dialog
             $('#fetch-parameters-dialog').modal({
-                headerText: 'Fetch Parameters',
+                headerText: '获取参数',
                 scrollableContentStyle: 'scrollable',
                 handler: {
                     close: function () {
@@ -3015,7 +3015,7 @@
         showConfiguration: function (parameterProviderEntity) {
             var parameterProviderDialog = $('#parameter-provider-configuration');
 
-            parameterProviderDialog.find('.dialog-header .dialog-header-text').text('Configure Parameter Provider');
+            parameterProviderDialog.find('.dialog-header .dialog-header-text').text('配置参数提供者');
             if (parameterProviderDialog.data('mode') === config.readOnly) {
                 // update the visibility
                 $('#parameter-provider-configuration .parameter-provider-read-only').hide();
@@ -3078,7 +3078,7 @@
                 loadParameterProviderReferencingComponents($('#parameter-provider-referencing-components'), parameterProvider);
 
                 var buttons = [{
-                    buttonText: 'Apply',
+                    buttonText: '应用',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -3101,7 +3101,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',
@@ -3117,7 +3117,7 @@
                 // determine if we should show the advanced button
                 if (nfCommon.isDefinedAndNotNull(parameterProvider.customUiUrl) && parameterProvider.customUiUrl !== '') {
                     buttons.push({
-                        buttonText: 'Advanced',
+                        buttonText: '高级',
                         clazz: 'fa fa-cog button-icon',
                         color: {
                             base: '#E3E8EB',
@@ -3152,8 +3152,8 @@
                                 if (isSaveRequired()) {
                                     // see if those changes should be saved
                                     nfDialog.showYesNoDialog({
-                                        headerText: 'Save',
-                                        dialogContent: 'Save changes before opening the advanced configuration?',
+                                        headerText: '保存',
+                                        dialogContent: '打开高级配置前保存修改?',
                                         noHandler: openCustomUi,
                                         yesHandler: function () {
                                             saveParameterProvider(parameterProviderEntity).done(function () {
@@ -3247,7 +3247,7 @@
                 loadParameterProviderReferencingComponents($('#parameter-provider-referencing-components'), parameterProvider);
 
                 var buttons = [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -3264,7 +3264,7 @@
                 // determine if we should show the advanced button
                 if (nfCommon.isDefinedAndNotNull(nfCustomUi) && nfCommon.isDefinedAndNotNull(parameterProvider.customUiUrl) && parameterProvider.customUiUrl !== '') {
                     buttons.push({
-                        buttonText: 'Advanced',
+                        buttonText: '高级',
                         clazz: 'fa fa-cog button-icon',
                         color: {
                             base: '#E3E8EB',
@@ -3339,8 +3339,8 @@
         promptToDeleteParameterProvider: function (parameterProviderEntity) {
             // prompt for deletion
             nfDialog.showYesNoDialog({
-                headerText: 'Delete Parameter Provider',
-                dialogContent: 'Delete parameter provider \'' + nfCommon.escapeHtml(parameterProviderEntity.component.name) + '\'?',
+                headerText: '删除参数提供者',
+                dialogContent: '删除参数提供者 \'' + nfCommon.escapeHtml(parameterProviderEntity.component.name) + '\'?',
                 yesHandler: function () {
                     nfParameterProvider.remove(parameterProviderEntity);
                 }

@@ -1,0 +1,116 @@
+relationships:
+  success: {en: FlowFiles are routed to this relationship after a successful Google
+      Cloud Storage operation., zh: 在成功的Google云存储操作之后，FlowFiles被路由到此关系。}
+  failure: {en: FlowFiles are routed to this relationship if the Google Cloud Storage
+      operation fails., zh: 如果Google云存储操作失败，FlowFiles将路由到此关系。}
+dynamicProperties:
+  The name of a User-Defined Metadata field to add to the GCS Object:
+    en: {description: Allows user-defined metadata to be added to the GCS object as
+        key/value pairs, value: The value of a User-Defined Metadata field to add
+        to the GCS Object}
+    zh: {description: 允许将用户定义的元数据作为键/值对添加到GCS对象, value: 要添加到GCS对象的用户定义元数据字段的值}
+capabilityDescription: {en: Puts flow files to a Google Cloud Bucket., zh: 将流文件放入Google
+    Cloud Bucket。}
+readAttributes:
+  filename: {en: Uses the FlowFile's filename as the filename for the GCS object,
+    zh: 使用FlowFile的文件名作为GCS对象的文件名}
+  mime.type: {en: Uses the FlowFile's MIME type as the content-type for the GCS object,
+    zh: 使用FlowFile的MIME类型作为GCS对象的内容类型}
+properties:
+  gcp-proxy-host:
+    en:
+      displayName: Proxy host
+      description: |-
+        IP or hostname of the proxy to be used.
+         You might need to set the following properties in bootstrap for https proxy usage:
+        -Djdk.http.auth.tunneling.disabledSchemes=
+        -Djdk.http.auth.proxying.disabledSchemes=
+    zh: {description: 要使用的代理的IP或主机名。, displayName: 代理主机}
+  gcs-content-disposition-type:
+    en: {displayName: Content Disposition Type, description: Type of RFC-6266 Content
+        Disposition to be attached to the object}
+    zh: {description: 要附加到对象的RFC-6266内容处置类型, displayName: 内容处置类型}
+  gcp-retry-count:
+    en: {displayName: Number of retries, description: How many retry attempts should
+        be made before routing to the failure relationship.}
+    zh: {description: 在路由到失败关系之前应进行多少次重试尝试。, displayName: 重试次数}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN, displayName: 代理配置服务}
+  gcs-server-side-encryption-key:
+    en: {displayName: Server Side Encryption Key, description: An AES256 Encryption
+        Key (encoded in base64) for server-side encryption of the object.}
+    zh: {description: 用于对象服务器端加密的AES256加密密钥（以base64编码）。, displayName: 服务器端加密密钥}
+  gcs-overwrite-object:
+    en: {displayName: Overwrite Object, description: 'If false, the upload to GCS
+        will succeed only if the object does not exist.'}
+    zh: {description: 如果为假，则仅当对象不存在时，才能成功上传到GCS。, displayName: 覆盖对象}
+  gcp-proxy-user-name:
+    en: {displayName: HTTP Proxy Username, description: HTTP Proxy Username}
+    zh: {description: HTTP代理用户名, displayName: HTTP代理用户名}
+  gcs-object-md5:
+    en: {displayName: MD5 Hash, description: MD5 Hash (encoded in Base64) of the file
+        for server-side validation.}
+    zh: {description: 用于服务器端验证的文件的MD5哈希（以Base64编码）。, displayName: MD5哈希}
+  gcs-content-type:
+    en: {displayName: Content Type, description: 'Content Type for the file, i.e.
+        text/plain'}
+    zh: {description: 文件的内容类型，即文本/纯文本, displayName: 内容类型}
+  gcs-object-crc32c:
+    en: {displayName: CRC32C Checksum, description: 'CRC32C Checksum (encoded in Base64,
+        big-Endian order) of the file for server-side validation.'}
+    zh: {description: 用于服务器端验证的文件的CRC32C校验和（以Base64、大Endian顺序编码）。, displayName: CRC32C校验和}
+  gcp-project-id:
+    en: {displayName: Project ID, description: Google Cloud Project ID}
+    zh: {description: 谷歌云项目ID, displayName: 项目ID}
+  GCP Credentials Provider Service:
+    en: {displayName: GCP Credentials Provider Service, description: The Controller
+        Service used to obtain Google Cloud Platform credentials.}
+    zh: {description: 用于获取Google云平台凭据的控制器服务。, displayName: GCP凭据提供程序服务}
+  gcs-key:
+    en: {displayName: Key, description: Name of the object.}
+    zh: {description: 对象的名称。, displayName: 钥匙}
+  gcp-proxy-user-password:
+    en: {displayName: HTTP Proxy Password, description: HTTP Proxy Password}
+    zh: {description: HTTP代理密码, displayName: HTTP代理密码}
+  gcp-proxy-port:
+    en: {displayName: Proxy port, description: Proxy port number}
+    zh: {description: 代理端口号, displayName: 代理服务器端口}
+  gcs-bucket:
+    en: {displayName: Bucket, description: Bucket of the object.}
+    zh: {description: 对象的Bucket。, displayName: 水桶}
+  gcs-object-acl:
+    en: {displayName: Object ACL, description: Access Control to be attached to the
+        object uploaded. Not providing this will revert to bucket defaults.}
+    zh: {description: 要附加到上载对象的访问控制。不提供此选项将恢复为存储桶默认值。, displayName: 对象ACL}
+writeAttributes:
+  gcs.owner: {en: The owner (uploader) of the object., zh: 对象的所有者（上传者）。}
+  gcs.cache.control: {en: Data cache control of the object., zh: 对象的数据缓存控制。}
+  gcs.bucket: {en: Bucket of the object., zh: 对象的Bucket。}
+  gcs.metageneration: {en: The metageneration of the object., zh: 对象的元生成。}
+  gcs.content.language: {en: The content language of the object., zh: 对象的内容语言。}
+  gcs.encryption.algorithm: {en: The algorithm used to encrypt the object., zh: 用于加密对象的算法。}
+  gcs.size: {en: Size of the object., zh: 对象的大小。}
+  gcs.update.time: {en: The last modification time of the object (milliseconds), zh: 对象的上次修改时间（毫秒）}
+  gcs.uri: {en: The URI of the object as a string., zh: 字符串形式的对象的URI。}
+  mime.type: {en: The MIME/Content-Type of the object, zh: 对象的MIME/Content-Type}
+  gcs.crc32c: {en: 'The CRC32C checksum of object''s data, encoded in base64 in big-endian
+      order.', zh: 对象数据的CRC32C校验和，按大端顺序以base64编码。}
+  gcs.generation: {en: The data generation of the object., zh: 对象的数据生成。}
+  gcs.content.encoding: {en: The content encoding of the object., zh: 对象的内容编码。}
+  gcs.media.link: {en: The media download link to the object., zh: 指向对象的媒体下载链接。}
+  gcs.component.count: {en: The number of components which make up the object., zh: 构成对象的组件数。}
+  gcs.key: {en: Name of the object., zh: 对象的名称。}
+  gcs.content.disposition: {en: The data content disposition of the object., zh: 对象的数据内容处置。}
+  gcs.generated.id: {en: The service-generated for the object, zh: 为对象生成的服务}
+  gcs.etag: {en: The HTTP 1.1 Entity tag for the object., zh: 对象的HTTP 1.1实体标记。}
+  gcs.md5: {en: The MD5 hash of the object's data encoded in base64., zh: 以base64编码的对象数据的MD5哈希。}
+  gcs.encryption.sha256: {en: The SHA256 hash of the key used to encrypt the object,
+    zh: 用于加密对象的密钥的SHA256哈希}
+  gcs.create.time: {en: The creation time of the object (milliseconds), zh: 对象的创建时间（毫秒）}
+  gcs.owner.type: {en: The ACL entity type of the uploader of the object., zh: 对象上载器的ACL实体类型。}
+tags:
+  en: [google, google cloud, gcs, archive, put]
+  zh: [谷歌, 谷歌云, 通用计算机系统, 档案文件, 放]

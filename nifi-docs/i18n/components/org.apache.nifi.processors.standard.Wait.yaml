@@ -1,0 +1,122 @@
+relationships:
+  wait: {en: A FlowFile with no matching release signal in the cache will be routed
+      to this relationship, zh: 缓存中没有匹配释放信号的FlowFile将被路由到此关系}
+  expired: {en: A FlowFile that has exceeded the configured Expiration Duration will
+      be routed to this relationship, zh: 超过配置的过期持续时间的FlowFile将路由到此关系}
+  success: {en: A FlowFile with a matching release signal in the cache will be routed
+      to this relationship, zh: 缓存中具有匹配释放信号的FlowFile将路由到此关系}
+  failure: {en: 'When the cache cannot be reached, or if the Release Signal Identifier
+      evaluates to null or empty, FlowFiles will be routed to this relationship',
+    zh: 当无法访问缓存时，或者如果释放信号标识符的计算结果为null或空，FlowFiles将被路由到此关系}
+capabilityDescription: {en: 'Routes incoming FlowFiles to the ''wait'' relationship
+    until a matching release signal is stored in the distributed cache from a corresponding
+    Notify processor. When a matching release signal is identified, a waiting FlowFile
+    is routed to the ''success'' relationship. The release signal entry is then removed
+    from the cache. The attributes of the FlowFile that produced the release signal
+    are copied to the waiting FlowFile if the Attribute Cache Regex property of the
+    corresponding Notify processor is set properly. If there are multiple release
+    signals in the cache identified by the Release Signal Identifier, and the Notify
+    processor is configured to copy the FlowFile attributes to the cache, then the
+    FlowFile passing the Wait processor receives the union of the attributes of the
+    FlowFiles that produced the release signals in the cache (identified by Release
+    Signal Identifier). Waiting FlowFiles will be routed to ''expired'' if they exceed
+    the Expiration Duration. If you need to wait for more than one signal, specify
+    the desired number of signals via the ''Target Signal Count'' property. This is
+    particularly useful with processors that split a source FlowFile into multiple
+    fragments, such as SplitText. In order to wait for all fragments to be processed,
+    connect the ''original'' relationship to a Wait processor, and the ''splits''
+    relationship to a corresponding Notify processor. Configure the Notify and Wait
+    processors to use the ''${fragment.identifier}'' as the value of ''Release Signal
+    Identifier'', and specify ''${fragment.count}'' as the value of ''Target Signal
+    Count'' in the Wait processor.It is recommended to use a prioritizer (for instance
+    First In First Out) when using the ''wait'' relationship as a loop.', zh: '将传入的FlowFiles路由到“等待”关系，直到匹配的释放信号从相应的Notify处理器存储在分布式缓存中。当识别到匹配的释放信号时，等待的FlowFile被路由到“成功”关系。然后从缓存中删除释放信号条目。如果相应Notify处理器的Attribute
+    Cache Regex属性设置正确，则生成释放信号的FlowFile的属性将复制到等待的FlowFile。如果在缓存中存在由释放信号标识符标识的多个释放信号，并且通知处理器被配置为将流文件属性复制到缓存，则通过等待处理器的流文件接收在缓存中生成释放信号的流文件的属性的并集（由释放信号标识标识）。如果等待流文件超过过期持续时间，则将其路由到“过期”。如果需要等待多个信号，请通过“目标信号计数”属性指定所需的信号数。这对于将源FlowFile拆分为多个片段（如SplitText）的处理器尤其有用。为了等待处理所有片段，将“原始”关系连接到“等待”处理器，将“拆分”关系连接至相应的“通知”处理器。将Notify和Wait处理器配置为使用“$｛fragment.identifier｝”作为“Release
+    Signal identifier”的值，并在Wait处理器中指定“${fragment.count｝”为“Target Signal count”的值。当使用“等待”关系作为循环时，建议使用优先级设置器（例如先进先出）。'}
+properties:
+  wait-buffer-count:
+    en: {displayName: Wait Buffer Count, description: 'Specify the maximum number
+        of incoming FlowFiles that can be buffered to check whether it can move forward.
+        The more buffer can provide the better performance, as it reduces the number
+        of interactions with cache service by grouping FlowFiles by signal identifier.
+        Only a signal identifier can be processed at a processor execution.'}
+    zh: {description: 指定可以缓冲的传入FlowFiles的最大数量，以检查其是否可以向前移动。缓冲区越多可以提供更好的性能，因为它通过按信号标识符分组FlowFiles来减少与缓存服务的交互次数。在处理器执行时只能处理信号标识符。,
+      displayName: 等待缓冲区计数}
+  wait-mode:
+    en: {displayName: Wait Mode, description: Specifies how to handle a FlowFile waiting
+        for a notify signal}
+    zh: {description: 指定如何处理等待通知信号的FlowFile, displayName: 等待模式}
+  attribute-copy-mode:
+    en: {displayName: Attribute Copy Mode, description: Specifies how to handle attributes
+        copied from FlowFiles entering the Notify processor}
+    zh: {description: 指定如何处理从FlowFiles复制到Notify处理器的属性, displayName: 属性复制模式}
+  distributed-cache-service:
+    en: {displayName: Distributed Cache Service, description: The Controller Service
+        that is used to check for release signals from a corresponding Notify processor}
+    zh: {description: 用于检查来自相应Notify处理器的释放信号的控制器服务, displayName: 分布式缓存服务}
+  releasable-flowfile-count:
+    en: {displayName: Releasable FlowFile Count, description: 'A value, or the results
+        of an Attribute Expression Language statement, which will be evaluated against
+        a FlowFile in order to determine the releasable FlowFile count. This specifies
+        how many FlowFiles can be released when a target count reaches target signal
+        count. Zero (0) has a special meaning, any number of FlowFiles can be released
+        as long as signal count matches target.'}
+    zh: {description: 属性表达式语言语句的值或结果，将根据FlowFile进行计算，以确定可发布的FlowFile计数。这指定当目标计数达到目标信号计数时可以释放多少FlowFiles。零（0）具有特殊含义，只要信号计数与目标匹配，就可以释放任意数量的FlowFiles。,
+      displayName: 可释放流文件计数}
+  release-signal-id:
+    en: {displayName: Release Signal Identifier, description: 'A value that specifies
+        the key to a specific release signal cache. To decide whether the FlowFile
+        that is being processed by the Wait processor should be sent to the ''success''
+        or the ''wait'' relationship, the processor checks the signals in the cache
+        specified by this key.'}
+    zh: {description: 指定特定释放信号缓存的键的值。要决定等待处理器正在处理的FlowFile是否应发送到“成功”或“等待”关系，处理器将检查此键指定的缓存中的信号。,
+      displayName: 释放信号标识符}
+  signal-counter-name:
+    en: {displayName: Signal Counter Name, description: 'Within the cache (specified
+        by the Release Signal Identifier) the signals may belong to different counters.
+        If this property is specified, the processor checks the number of signals
+        in the cache that belong to this particular counter. If not specified, the
+        processor checks the total number of signals in the cache.'}
+    zh: {description: 在高速缓存（由释放信号标识符指定）内，信号可能属于不同的计数器。如果指定了此属性，处理器将检查缓存中属于此特定计数器的信号数。如果未指定，处理器将检查缓存中的信号总数。,
+      displayName: 信号计数器名称}
+  expiration-duration:
+    en: {displayName: Expiration Duration, description: Indicates the duration after
+        which waiting FlowFiles will be routed to the 'expired' relationship}
+    zh: {description: 指示等待的FlowFiles将路由到“过期”关系的持续时间, displayName: 到期持续时间}
+  target-signal-count:
+    en: {displayName: Target Signal Count, description: 'The number of signals that
+        need to be in the cache (specified by the Release Signal Identifier) in order
+        for the FlowFile processed by the Wait processor to be sent to the ‘success’
+        relationship. If the number of signals in the cache has reached this number,
+        the FlowFile is routed to the ''success'' relationship and the number of signals
+        in the cache is decreased by this value. If Signal Counter Name is specified,
+        this processor checks a particular counter, otherwise checks against the total
+        number of signals in the cache.'}
+    zh: {description: 缓存中需要的信号数（由释放信号标识符指定），以便等待处理器处理的FlowFile发送到“成功”关系。如果缓存中的信号数已达到此值，则FlowFile将被路由到“成功”关系，缓存中信号数将减少此值。如果指定了“信号计数器名称”，则此处理器将检查特定计数器，否则将检查缓存中的信号总数。,
+      displayName: 目标信号计数}
+  wait-penalty-duration:
+    en: {displayName: Wait Penalty Duration, description: 'If configured, after a
+        signal identifier got processed but did not meet the release criteria, the
+        signal identifier is penalized and FlowFiles having the signal identifier
+        will not be processed again for the specified period of time, so that the
+        signal identifier will not block others to be processed. This can be useful
+        for use cases where a Wait processor is expected to process multiple signal
+        identifiers, and each signal identifier has multiple FlowFiles, and also the
+        order of releasing FlowFiles is important within a signal identifier. The
+        FlowFile order can be configured with Prioritizers. IMPORTANT: There is a
+        limitation of number of queued signals can be processed, and Wait processor
+        may not be able to check all queued signal ids. See additional details for
+        the best practice.'}
+    zh: {description: 如果配置，在信号标识符被处理但不符合释放标准之后，该信号标识符将受到惩罚，并且具有该信号标识符的FlowFiles将在指定的时间段内不再被处理，从而该信号标识符不会阻止其他待处理的信号。这对于期望等待处理器处理多个信号标识符，并且每个信号标识符具有多个FlowFiles，并且释放FlowFiles的顺序在信号标识符中很重要的使用情况非常有用。FlowFile顺序可以使用Prioritters进行配置。重要事项：可以处理的排队信号数量有限，等待处理器可能无法检查所有排队信号ID。有关最佳实践，请参阅其他详细信息。,
+      displayName: 等待惩罚持续时间}
+writeAttributes:
+  wait.start.timestamp: {en: 'All FlowFiles will have an attribute ''wait.start.timestamp'',
+      which sets the initial epoch timestamp when the file first entered this processor.  This
+      is used to determine the expiration time of the FlowFile.  This attribute is
+      not written when the FlowFile is transferred to failure, expired or success',
+    zh: 所有FlowFiles都将具有属性'wait.start。timestamp”，设置文件首次进入此处理器时的初始时间戳。这用于确定FlowFile的过期时间。当FlowFile传输失败、过期或成功时，不会写入此属性}
+  wait.counter.<counterName>: {en: The name of each counter for which at least one
+      signal has been present in the cache since the last time the cache was empty
+      gets copied to the current FlowFile as an attribute., zh: 自上次缓存为空以来，缓存中至少存在一个信号的每个计数器的名称将作为属性复制到当前FlowFile。}
+tags:
+  en: [map, cache, wait, hold, distributed, signal, release]
+  zh: [地图, 隐藏物, 等待, 持有, 分布式的, 信号, 释放]

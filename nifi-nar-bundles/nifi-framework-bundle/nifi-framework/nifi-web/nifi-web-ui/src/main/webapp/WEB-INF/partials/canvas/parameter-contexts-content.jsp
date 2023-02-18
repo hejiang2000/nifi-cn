@@ -16,15 +16,15 @@
 --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <div id="parameter-contexts" class="hidden">
-    <button id="new-parameter-context" class="add-button fa fa-plus" title="Create a new parameter context" style="display: block;"></button>
-    <div id="parameter-contexts-header-text" class="parameter-contexts-header-text">NiFi Parameter Contexts</div>
+    <button id="new-parameter-context" class="add-button fa fa-plus" title="创建新参数上下文" style="display: block;"></button>
+    <div id="parameter-contexts-header-text" class="parameter-contexts-header-text">NiFi 参数上下文</div>
     <div class="parameter-contexts-container">
         <div id="parameter-contexts-table" class="parameter-contexts-table"></div>
     </div>
     <div id="parameter-contexts-refresh-container">
-        <button id="parameter-contexts-refresh-button" class="refresh-button pointer fa fa-refresh" title="Refresh"></button>
+        <button id="parameter-contexts-refresh-button" class="refresh-button pointer fa fa-refresh" title="刷新"></button>
         <div id="parameter-contexts-last-refreshed-container" class="last-refreshed-container">
-            Last updated:&nbsp;<span id="parameter-contexts-last-refreshed" class="value-color"></span>
+            最后更新:&nbsp;<span id="parameter-contexts-last-refreshed" class="value-color"></span>
         </div>
         <div id="parameter-contexts-loading-container" class="loading-container"></div>
         <div class="clear"></div>

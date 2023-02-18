@@ -1,0 +1,54 @@
+relationships:
+  success: {en: Sucessful FlowFiles are routed to this relationship, zh: 成功的FlowFiles被路由到此关系}
+  failure: {en: Failed FlowFiles are routed to this relationship, zh: 失败的FlowFiles路由到此关系}
+  not_found: {en: Document not found are routed to this relationship, zh: 未找到的文档将发送到此关系}
+capabilityDescription: {en: 'Processor to remove a JSON document from RethinkDB (https://www.rethinkdb.com/)
+    using the document id.', zh: '处理器从RethinkDB中删除JSON文档(https://www.rethinkdb.com/)使用文档id。'}
+properties:
+  rethinkdb-password:
+    en: {displayName: Password, description: Password for user}
+    zh: {description: 用户的密码, displayName: 暗语}
+  rethinkdb-return-result:
+    en: {displayName: Return deleted value, description: Return old value which were
+        deleted}
+    zh: {description: 返回已删除的旧值, displayName: 返回删除的值}
+  rethinkdb-table:
+    en: {displayName: Table name, description: RethinkDB table to connect to}
+    zh: {description: 重新思考要连接到的DB表, displayName: 表名称}
+  rethinkdb-document-identifier:
+    en: {displayName: Document Identifier, description: 'A FlowFile attribute, or
+        attribute expression used for determining RethinkDB key for the Flow File
+        content'}
+    zh: {description: 用于确定流文件内容的RethinkDB键的FlowFile属性或属性表达式, displayName: 文件标识}
+  rethinkdb-username:
+    en: {displayName: Username, description: Username for accessing RethinkDB}
+    zh: {description: 访问RethinkDB的用户名, displayName: 用户名}
+  rethinkdb-charset:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        document data.}
+    zh: {description: 指定文档数据的字符集。, displayName: 字符集}
+  rethinkdb-port:
+    en: {displayName: DB Port, description: RethinkDB database port to connect to}
+    zh: {description: 重新思考要连接到的数据库端口, displayName: DB端口}
+  rethinkdb-dbname:
+    en: {displayName: DB Name, description: RethinkDB database to connect to}
+    zh: {description: 重新思考要连接到的数据库, displayName: 数据库名称}
+  rethinkdb-host:
+    en: {displayName: Hostname, description: RethinkDB hostname}
+    zh: {description: 重新思考DB主机名, displayName: 主机名}
+  rethinkdb-durability:
+    en: {displayName: Durablity of documents, description: Durability of documents
+        being inserted}
+    zh: {description: 插入文件的耐久性, displayName: 文件的耐久性}
+writeAttributes:
+  rethinkdb.delete.deleted: {en: Number of documents deleted, zh: 删除的文档数}
+  rethinkdb.delete.inserted: {en: Number of documents inserted, zh: 插入的文档数}
+  rethinkdb.error.message: {en: RethinkDB error message, zh: RethinkDB错误消息}
+  rethinkdb.delete.replaced: {en: Number of documents replaced, zh: 替换的文件数量}
+  rethinkdb.delete.skipped: {en: Number of documents skipped, zh: 跳过的文档数}
+  rethinkdb.delete.unchanged: {en: Number of documents unchanged since they already
+      existed, zh: 自已存在以来未更改的文档数}
+  rethinkdb.delete.errors: {en: Error count while delete documents, zh: 删除文档时的错误计数}
+tags:
+  en: [rethinkdb, delete, remove]
+  zh: [重新链接数据库, 删去, 去除]

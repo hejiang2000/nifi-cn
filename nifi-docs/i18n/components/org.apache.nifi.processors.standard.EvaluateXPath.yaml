@@ -1,0 +1,62 @@
+relationships:
+  failure: {en: 'FlowFiles are routed to this relationship when the XPath cannot be
+      evaluated against the content of the FlowFile; for instance, if the FlowFile
+      is not valid XML, or if the Return Type is ''nodeset'' and the XPath evaluates
+      to multiple nodes', zh: 当无法根据FlowFile的内容计算XPath时，FlowFiles被路由到此关系；例如，如果FlowFile不是有效的XML，或者Return
+      Type是“nodeset”并且XPath计算结果为多个节点}
+  matched: {en: FlowFiles are routed to this relationship when the XPath is successfully
+      evaluated and the FlowFile is modified as a result, zh: 当成功计算XPath并因此修改FlowFile时，FlowFiles将路由到此关系}
+  unmatched: {en: FlowFiles are routed to this relationship when the XPath does not
+      match the content of the FlowFile and the Destination is set to flowfile-content,
+    zh: 当XPath与FlowFile的内容不匹配，并且Destination设置为FlowFile内容时，FlowFiles将路由到此关系}
+dynamicProperties:
+  A FlowFile attribute(if <Destination> is set to 'flowfile-attribute':
+    en: {description: If <Destination>='flowfile-attribute' then the FlowFile attribute
+        is set to the result of the XPath Expression.  If <Destination>='flowfile-content'
+        then the FlowFile content is set to the result of the XPath Expression., value: An
+        XPath expression}
+    zh: {description: 如果<Destination>='flowfile-attribute'，则flowfile属性设置为XPath表达式的结果。如果<Destination>='flowfile-content'，则flowfile内容设置为XPath表达式的结果。,
+      value: XPath表达式}
+systemResourceConsiderations:
+  en: [Processing requires reading the entire FlowFile into memory]
+  zh: [处理需要将整个FlowFile读入内存]
+capabilityDescription: {en: 'Evaluates one or more XPaths against the content of a
+    FlowFile. The results of those XPaths are assigned to FlowFile Attributes or are
+    written to the content of the FlowFile itself, depending on configuration of the
+    Processor. XPaths are entered by adding user-defined properties; the name of the
+    property maps to the Attribute Name into which the result will be placed (if the
+    Destination is flowfile-attribute; otherwise, the property name is ignored). The
+    value of the property must be a valid XPath expression. If the XPath evaluates
+    to more than one node and the Return Type is set to ''nodeset'' (either directly,
+    or via ''auto-detect'' with a Destination of ''flowfile-content''), the FlowFile
+    will be unmodified and will be routed to failure. If the XPath does not evaluate
+    to a Node, the FlowFile will be routed to ''unmatched'' without having its contents
+    modified. If Destination is flowfile-attribute and the expression matches nothing,
+    attributes will be created with empty strings as the value, and the FlowFile will
+    always be routed to ''matched''', zh: 根据FlowFile的内容计算一个或多个XPath。根据处理器的配置，这些XPaths的结果分配给FlowFile属性或写入FlowFile本身的内容。通过添加用户定义的属性来输入XPath；属性的名称映射到结果将放置到其中的“属性名称”（如果“目标”是flowfile属性，则忽略属性名称）。属性的值必须是有效的XPath表达式。如果XPath的计算结果为多个节点，且返回类型设置为“nodeset”（直接或通过“autodetect”，目标为“flowfile
+    content”），则flowfile将被修改并路由失败。如果XPath的计算结果不是节点，则FlowFile将被路由到“不匹配”，而不修改其内容。如果Destination是flowfile属性，并且表达式不匹配任何属性，则将以空字符串作为值创建属性，并且flowfile将始终路由到“匹配”}
+properties:
+  Destination:
+    en: {displayName: Destination, description: 'Indicates whether the results of
+        the XPath evaluation are written to the FlowFile content or a FlowFile attribute;
+        if using attribute, must specify the Attribute Name property. If set to flowfile-content,
+        only one XPath may be specified, and the property name is ignored.'}
+    zh: {description: 指示XPath计算结果是写入FlowFile内容还是写入FlowFile属性；如果使用属性，则必须指定“属性名称”属性。如果设置为流文件内容，则只能指定一个XPath，并且忽略属性名称。,
+      displayName: 目的地}
+  Return Type:
+    en: {displayName: Return Type, description: 'Indicates the desired return type
+        of the Xpath expressions.  Selecting ''auto-detect'' will set the return type
+        to ''nodeset'' for a Destination of ''flowfile-content'', and ''string'' for
+        a Destination of ''flowfile-attribute''.'}
+    zh: {description: 指示Xpath表达式所需的返回类型。选择“自动检测”将为“flowfile content”的目标设置返回类型为“nodeset”，为“flowfileattribute”的目标将返回类型设置为“string”。,
+      displayName: 返回类型}
+  Validate DTD:
+    en: {displayName: Allow DTD, description: Allow embedded Document Type Declaration
+        in XML. This feature should be disabled to avoid XML entity expansion vulnerabilities.}
+    zh: {description: 允许在XML中嵌入文档类型声明。应禁用此功能以避免XML实体扩展漏洞。, displayName: 允许DTD}
+writeAttributes:
+  user-defined: {en: This processor adds user-defined attributes if the <Destination>
+      property is set to flowfile-attribute., zh: 如果＜Destination＞属性设置为flowfile属性，则此处理器将添加用户定义的属性。}
+tags:
+  en: [XML, evaluate, XPath]
+  zh: [XML格式, 估计, XPath]

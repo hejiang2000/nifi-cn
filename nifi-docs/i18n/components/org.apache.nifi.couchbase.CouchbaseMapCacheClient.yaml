@@ -1,0 +1,15 @@
+capabilityDescription: {en: Provides the ability to communicate with a Couchbase Server
+    cluster as a DistributedMapCacheServer. This can be used in order to share a Map
+    between nodes in a NiFi cluster. Couchbase Server cluster can provide a high available
+    and persistent cache storage., zh: 提供作为DistributedMapCacheServer与Couchbase Server集群通信的能力。这可以用于在NiFi集群中的节点之间共享映射。Couchbase服务器集群可以提供高可用性和持久性缓存存储。}
+properties:
+  cluster-controller-service:
+    en: {displayName: Couchbase Cluster Controller Service, description: A Couchbase
+        Cluster Controller Service which manages connections to a Couchbase cluster.}
+    zh: {description: Couchbase群集控制器服务，用于管理与Couchbase集群的连接。, displayName: Couchbase群集控制器服务}
+  bucket-name:
+    en: {displayName: Bucket Name, description: The name of bucket to access.}
+    zh: {description: 要访问的存储桶的名称。, displayName: Bucket名称}
+tags:
+  en: [distributed, cache, map, cluster, couchbase]
+  zh: [分布式的, 隐藏物, 地图, 簇, 泊位底座]

@@ -1,0 +1,73 @@
+relationships:
+  success: {en: All status updates will be routed to this relationship, zh: 所有状态更新都将路由到此关系}
+deprecationNotice: {en: 'GetTwitter relies on the Twitter Hosebird client, which is
+    not maintained. This processor will be removed in future releases.', zh: GetTwitter依赖于未维护的Twitter
+    Hosebird客户端。此处理器将在以后的版本中删除。}
+dynamicProperties:
+  The name of a query parameter to add to the Twitter query:
+    en: {description: Allows users to specify the name/value of a query parameter
+        to add to the Twitter query, value: The value of a query parameter to add
+        to the Twitter query}
+    zh: {description: 允许用户指定要添加到Twitter查询的查询参数的名称/值, value: 要添加到Twitter查询的查询参数的值}
+capabilityDescription: {en: 'Pulls status changes from Twitter''s streaming API. In
+    versions starting with 1.9.0, the Consumer Key and Access Token are marked as
+    sensitive according to https://developer.twitter.com/en/docs/basics/authentication/guides/securing-keys-and-tokens',
+  zh: '从Twitter的流API获取状态更改。在从1.9.0开始的版本中，根据https://developer.twitter.com/en/docs/basics/authentication/guides/securing-keys-and-tokens'}
+properties:
+  Consumer Key:
+    en: {displayName: Consumer Key, description: The Consumer Key provided by Twitter}
+    zh: {description: Twitter提供的消费者密钥, displayName: 消费者密钥}
+  Consumer Secret:
+    en: {displayName: Consumer Secret, description: The Consumer Secret provided by
+        Twitter}
+    zh: {description: Twitter提供的消费者秘密, displayName: 消费者秘密}
+  Access Token:
+    en: {displayName: Access Token, description: The Access Token provided by Twitter}
+    zh: {description: Twitter提供的访问令牌, displayName: 访问令牌}
+  max-client-error-retries:
+    en: {displayName: Max Client Error Retries, description: The maximum number of
+        retries to attempt when client experience retryable connection errors. Client
+        continues attempting to reconnect using an exponential back-off pattern until
+        it successfully reconnects or until it reaches the retry limit.  It is recommended
+        to raise this value when client is getting rate limited by Twitter API. Default
+        value is 5.}
+    zh: {description: 客户端遇到可重试连接错误时尝试的最大重试次数。客户端继续尝试使用指数回退模式重新连接，直到成功重新连接或达到重试限制。当客户端受到Twitter
+        API的速率限制时，建议提高该值。默认值为5。, displayName: 最大客户端错误重试次数}
+  Languages:
+    en: {displayName: Languages, description: A comma-separated list of languages
+        for which tweets should be fetched}
+    zh: {description: 以逗号分隔的语言列表，用于获取推文, displayName: 语言文字}
+  IDs to Follow:
+    en: {displayName: IDs to Follow, description: A comma-separated list of Twitter
+        User ID's to follow. Ignored unless Endpoint is set to 'Filter Endpoint'.}
+    zh: {description: Twitter用户ID的逗号分隔列表。除非终结点设置为“筛选器终结点”，否则忽略。, displayName: 要遵循的ID}
+  Twitter Endpoint:
+    en: {displayName: Twitter Endpoint, description: Specifies which endpoint data
+        should be pulled from}
+    zh: {description: 指定应从中提取端点数据, displayName: Twitter端点}
+  Locations to Filter On:
+    en: {displayName: Locations to Filter On, description: 'A comma-separated list
+        of coordinates specifying one or more bounding boxes to filter on.Each bounding
+        box is specified by a pair of coordinates in the format: swLon,swLat,neLon,neLat.
+        Multiple bounding boxes can be specified as such: swLon1,swLat1,neLon1,neLat1,swLon2,swLat2,neLon2,neLat2.Ignored
+        unless Endpoint is set to ''Filter Endpoint''.'}
+    zh: {description: 以逗号分隔的坐标列表，指定一个或多个要过滤的边界框。每个边界框由一对坐标指定，格式为：swLon、swLat、neLon、neLat。可以这样指定多个边界框：swLon1、swLat1、neLon1、neLat1、swLon2、swLat2、neLon2、neLat2。除非Endpoint设置为“Filter
+        Endpoint”，否则忽略。, displayName: 要过滤的位置}
+  Terms to Filter On:
+    en: {displayName: Terms to Filter On, description: 'A comma-separated list of
+        terms to filter on. Ignored unless Endpoint is set to ''Filter Endpoint''.
+        The filter works such that if any term matches, the status update will be
+        retrieved; multiple terms separated by a space function as an ''AND''. I.e.,
+        ''it was, hello'' will retrieve status updates that have either ''hello''
+        or both ''it'' AND ''was'''}
+    zh: {description: 要筛选的术语的逗号分隔列表。除非Endpoint设置为“filter Endpoint”，否则忽略。该过滤器的工作方式是，如果任何术语匹配，将检索状态更新；由空间函数分隔为“AND”的多个项。一、
+        例如，“it was，hello”将检索具有“hello”或同时具有“it”和“was”的状态更新, displayName: 要筛选的条件}
+  Access Token Secret:
+    en: {displayName: Access Token Secret, description: The Access Token Secret provided
+        by Twitter}
+    zh: {description: Twitter提供的访问令牌密钥, displayName: 访问令牌密钥}
+writeAttributes:
+  mime.type: {en: Sets mime type to application/json, zh: 将mime类型设置为application/json}
+tags:
+  en: [twitter, tweets, social media, status, json]
+  zh: [啁啾, 推特, 社会化媒体, 地位, json文件]

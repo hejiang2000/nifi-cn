@@ -1,0 +1,37 @@
+relationships:
+  original: {en: 'Upon successful completion, the original FlowFile will be routed
+      to this relationship.', zh: 成功完成后，原始FlowFile将路由到此关系。}
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+capabilityDescription: {en: Trigger a AWS Translate job. It should be followed by
+    GetAwsTranslateJobStatus processor in order to monitor job status., zh: 触发AWS翻译作业。它后面应该是GetAwsTranslateJobStatus处理器，以便监视作业状态。}
+properties:
+  json-payload:
+    en: {displayName: JSON Payload, description: JSON request for AWS Machine Learning
+        services. The Processor will use FlowFile content for the request when this
+        property is not specified.}
+    zh: {description: AWS机器学习服务的JSON请求。当未指定此属性时，处理器将对请求使用FlowFile内容。, displayName: JSON负载}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  aws-region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+tags:
+  en: [Amazon, AWS, ML, Machine Learning, Translate]
+  zh: [亚马逊, 自动售货机, 毫升, 机器学习, 翻译]

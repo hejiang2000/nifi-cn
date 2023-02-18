@@ -1,0 +1,12 @@
+capabilityDescription: {en: 'A reloadable XML file-based lookup service. This service
+    uses Apache Commons Configuration. Example XML configuration file and how to access
+    specific configuration can be found at http://commons.apache.org/proper/commons-configuration/userguide/howto_hierarchical.html.
+    External entity processing is disabled.', zh: '一个可重新加载的基于XML文件的查找服务。此服务使用Apache
+    Commons配置。示例XML配置文件和如何访问特定配置可以在http://commons.apache.org/proper/commons-configuration/userguide/howto_hierarchical.html.已禁用外部实体处理。'}
+properties:
+  configuration-file:
+    en: {displayName: Configuration File, description: A configuration file}
+    zh: {description: 配置文件, displayName: 配置文件}
+tags:
+  en: [lookup, cache, enrich, join, xml, reloadable, key, value]
+  zh: [查找, 隐藏物, 充实, 参加, xml格式, 可重新加载的, 钥匙, 价值]

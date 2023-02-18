@@ -1,0 +1,34 @@
+dynamicProperties:
+  Script Engine Binding property:
+    en: {description: Updates a script engine property specified by the Dynamic Property's
+        key with the value specified by the Dynamic Property's value, value: Binding
+        property value passed to Script Runner}
+    zh: {description: 使用动态属性的值指定的值更新由动态属性的键指定的脚本引擎属性, value: 传递给脚本运行程序的绑定属性值}
+capabilityDescription: {en: 'Allows the user to provide a scripted LookupService instance
+    in order to enrich records from an incoming flow file. The script is expected
+    to return an optional string value rather than an arbitrary object (record, e.g.).
+    Also the scripted lookup service should implement StringLookupService, otherwise
+    the getValueType() method must be implemented even though it will be ignored,
+    as SimpleScriptedLookupService returns String as the value type on the script''s
+    behalf. Please note that due to a bug in Jython that remains unresolved, it is
+    not possible to use Jython to write a script for this service in Python.', zh: 允许用户提供脚本化LookupService实例，以丰富传入流文件中的记录。脚本应返回可选字符串值，而不是任意对象（例如记录）。此外，脚本化查找服务应该实现StringLookupService，否则，getValueType（）方法必须实现，即使它将被忽略，因为SimpleScriptedLookupService代表脚本返回String作为值类型。请注意，由于Jython中的一个尚未解决的错误，无法使用Jython在Python中为该服务编写脚本。}
+properties:
+  Script File:
+    en: {displayName: Script File, description: Path to script file to execute. Only
+        one of Script File or Script Body may be used}
+    zh: {description: 要执行的脚本文件的路径。只能使用脚本文件或脚本正文之一, displayName: 脚本文件}
+  Script Engine:
+    en: {displayName: Script Engine, description: Language Engine for executing scripts}
+    zh: {description: 用于执行脚本的语言引擎, displayName: 脚本引擎}
+  Script Body:
+    en: {displayName: Script Body, description: Body of script to execute. Only one
+        of Script File or Script Body may be used}
+    zh: {description: 要执行的脚本体。只能使用脚本文件或脚本正文之一, displayName: 脚本正文}
+  Module Directory:
+    en: {displayName: Module Directory, description: Comma-separated list of paths
+        to files and/or directories which contain modules required by the script.}
+    zh: {description: 包含脚本所需模块的文件和/或目录路径的逗号分隔列表。, displayName: 模块目录}
+tags:
+  en: [lookup, script, invoke, groovy, python, jython, jruby, ruby, javascript, js,
+    lua, luaj]
+  zh: [查找, 剧本, 援引, 常规的, 蟒蛇, jython公司, 杰鲁比, 红宝石, javascript语言, js文件, 卢阿, 玩]

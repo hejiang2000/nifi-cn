@@ -1,0 +1,104 @@
+capabilityDescription: {en: Writes the contents of a RecordSet in Parquet format.,
+  zh: 以Parquet格式写入记录集的内容。}
+properties:
+  schema-branch:
+    en: {displayName: Schema Branch, description: 'Specifies the name of the branch
+        to use when looking up the schema in the Schema Registry property. If the
+        chosen Schema Registry does not support branching, this value will be ignored.'}
+    zh: {description: 指定在“架构注册表”属性中查找架构时要使用的分支的名称。如果所选的架构注册表不支持分支，则将忽略此值。, displayName: 架构分支}
+  max-padding-size:
+    en: {displayName: Max Padding Size, description: 'The maximum amount of padding
+        that will be used to align row groups with blocks in the underlying filesystem.
+        If the underlying filesystem is not a block filesystem like HDFS, this has
+        no effect. The value is specified in the format of <Data Size> <Data Unit>
+        where Data Unit is one of B, KB, MB, GB, TB.'}
+    zh: {description: 用于将行组与底层文件系统中的块对齐的最大填充量。如果底层文件系统不是像HDFS那样的块文件系统，那么这不会产生任何影响。该值以＜数据大小＞＜数据单元＞的格式指定，其中数据单元是B、KB、MB、GB、TB之一。,
+      displayName: 最大衬垫尺寸}
+  avro-write-old-list-structure:
+    en: {displayName: Avro Write Old List Structure, description: Specifies the value
+        for 'parquet.avro.write-old-list-structure' in the underlying Parquet library}
+    zh: {description: 指定'parquet.avro的值。在底层Parquet库中写入旧列表结构, displayName: Avro写入旧列表结构}
+  row-group-size:
+    en: {displayName: Row Group Size, description: 'The row group size used by the
+        Parquet writer. The value is specified in the format of <Data Size> <Data
+        Unit> where Data Unit is one of B, KB, MB, GB, TB.'}
+    zh: {description: Parquet编写器使用的行组大小。该值以＜数据大小＞＜数据单元＞的格式指定，其中数据单元是B、KB、MB、GB、TB之一。,
+      displayName: 行组大小}
+  schema-cache:
+    en: {displayName: Schema Cache, description: Specifies a Schema Cache to add the
+        Record Schema to so that Record Readers can quickly lookup the schema.}
+    zh: {description: 指定要向其中添加记录架构的架构缓存，以便记录读取器可以快速查找架构。, displayName: 架构缓存}
+  enable-dictionary-encoding:
+    en: {displayName: Enable Dictionary Encoding, description: Specifies whether dictionary
+        encoding should be enabled for the Parquet writer}
+    zh: {description: 指定是否应为Parquet编写器启用字典编码, displayName: 启用字典编码}
+  Schema Write Strategy:
+    en: {displayName: Schema Write Strategy, description: Specifies how the schema
+        for a Record should be added to the data.}
+    zh: {description: 指定应如何将记录的架构添加到数据中。, displayName: 架构写入策略}
+  page-size:
+    en: {displayName: Page Size, description: 'The page size used by the Parquet writer.
+        The value is specified in the format of <Data Size> <Data Unit> where Data
+        Unit is one of B, KB, MB, GB, TB.'}
+    zh: {description: Parquet编写器使用的页面大小。该值以＜数据大小＞＜数据单元＞的格式指定，其中数据单元是B、KB、MB、GB、TB之一。,
+      displayName: 页面大小}
+  writer-version:
+    en: {displayName: Writer Version, description: Specifies the version used by Parquet
+        writer}
+    zh: {description: 指定Parquet编写器使用的版本, displayName: Writer版本}
+  compression-type:
+    en: {displayName: Compression Type, description: The type of compression for the
+        file being written.}
+    zh: {description: 正在写入的文件的压缩类型。, displayName: 压缩类型}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  cache-size:
+    en: {displayName: Cache Size, description: Specifies how many Schemas should be
+        cached}
+    zh: {description: 指定应缓存多少架构, displayName: 缓存大小}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry}
+    zh: {description: 指定用于架构注册表的控制器服务, displayName: 架构注册表}
+  enable-validation:
+    en: {displayName: Enable Validation, description: Specifies whether validation
+        should be enabled for the Parquet writer}
+    zh: {description: 指定是否应为Parquet编写器启用验证, displayName: 启用验证}
+  dictionary-page-size:
+    en: {displayName: Dictionary Page Size, description: 'The dictionary page size
+        used by the Parquet writer. The value is specified in the format of <Data
+        Size> <Data Unit> where Data Unit is one of B, KB, MB, GB, TB.'}
+    zh: {description: Parquet作者使用的字典页面大小。该值以＜数据大小＞＜数据单元＞的格式指定，其中数据单元是B、KB、MB、GB、TB之一。,
+      displayName: 字典页面大小}
+  int96-fields:
+    en: {displayName: INT96 Fields, description: List of fields with full path that
+        should be treated as INT96 timestamps.}
+    zh: {description: 应视为INT96时间戳的具有完整路径的字段列表。, displayName: INT96字段}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that is to be used for interpreting the data.}
+    zh: {description: 指定如何获取用于解释数据的架构。, displayName: 架构访问策略}
+  schema-protocol-version:
+    en: {displayName: Schema Protocol Version, description: 'The protocol version
+        to be used for Schema Write Strategies that require a protocol version, such
+        as Hortonworks Schema Registry strategies. Valid protocol versions for Hortonworks
+        Schema Registry are integer values 1, 2, or 3.'}
+    zh: {description: 用于需要协议版本的架构写入策略的协议版本，例如Hortonworks架构注册表策略。Hortonworks Schema
+        Registry的有效协议版本为整数值1、2或3。, displayName: 架构协议版本}
+  schema-version:
+    en: {displayName: Schema Version, description: Specifies the version of the schema
+        to lookup in the Schema Registry. If not specified then the latest version
+        of the schema will be retrieved.}
+    zh: {description: 指定要在架构注册表中查找的架构的版本。如果未指定，则将检索架构的最新版本。, displayName: 架构版本}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+  avro-add-list-element-records:
+    en: {displayName: Avro Add List Element Records, description: Specifies the value
+        for 'parquet.avro.add-list-element-records' in the underlying Parquet library}
+    zh: {description: 指定'parquet.avro的值。在基础Parquet库中添加列表元素记录, displayName: Avro添加列表元素记录}
+tags:
+  en: [parquet, result, set, writer, serializer, record, recordset, row]
+  zh: [拼花地板, 后果, 设置, 作家, 串行化器, 记录, 记录集, 一行]

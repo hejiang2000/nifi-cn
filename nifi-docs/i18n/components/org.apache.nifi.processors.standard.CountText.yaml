@@ -1,0 +1,59 @@
+relationships:
+  success: {en: The flowfile contains the original content with one or more attributes
+      added containing the respective counts, zh: 流文件包含原始内容，其中添加了一个或多个包含各自计数的属性}
+  failure: {en: 'If the flowfile text cannot be counted for some reason, the original
+      file will be routed to this destination and nothing will be routed elsewhere',
+    zh: 如果由于某种原因无法计算流文件文本，则原始文件将被路由到此目的地，而不会被路由到其他地方}
+capabilityDescription: {en: Counts various metrics on incoming text. The requested
+    results will be recorded as attributes. The resulting flowfile will not have its
+    content modified., zh: 统计传入文本的各种度量。请求的结果将记录为属性。生成的流文件将不会修改其内容。}
+properties:
+  ajust-immediately:
+    en: {displayName: Call Immediate Adjustment, description: 'If true, the counter
+        will be updated immediately, without regard to whether the ProcessSession
+        is commit or rolled back;otherwise, the counter will be incremented only if
+        and when the ProcessSession is committed.'}
+    zh: {description: 如果为true，计数器将立即更新，而不考虑ProcessSession是提交还是回滚；否则，只有在提交ProcessSession时，计数器才会递增。,
+      displayName: 呼叫即时调整}
+  character-encoding:
+    en: {displayName: Character Encoding, description: Specifies a character encoding
+        to use.}
+    zh: {description: 指定要使用的字符编码。, displayName: 字符编码}
+  text-line-count:
+    en: {displayName: Count Lines, description: 'If enabled, will count the number
+        of lines present in the incoming text.'}
+    zh: {description: 如果启用，将计算传入文本中的行数。, displayName: 计数行数}
+  text-character-count:
+    en: {displayName: Count Characters, description: 'If enabled, will count the number
+        of characters (including whitespace and symbols, but not including newlines
+        and carriage returns) present in the incoming text.'}
+    zh: {description: 如果启用，将计算传入文本中存在的字符数（包括空格和符号，但不包括换行符和回车符）。, displayName: 计数字符数}
+  text-line-nonempty-count:
+    en: {displayName: Count Non-Empty Lines, description: 'If enabled, will count
+        the number of lines that contain a non-whitespace character present in the
+        incoming text.'}
+    zh: {description: 如果启用，将计算传入文本中包含非空白字符的行数。, displayName: 计数非空行}
+  text-word-count:
+    en: {displayName: Count Words, description: 'If enabled, will count the number
+        of words (alphanumeric character groups bounded by whitespace) present in
+        the incoming text. Common logical delimiters [_-.] do not bound a word unless
+        ''Split Words on Symbols'' is true.'}
+    zh: {description: '如果启用，将计算传入文本中存在的单词数（以空格为界的字母数字字符组）。通用逻辑分隔符[_-.]不绑定单词，除非“符号上的拆分单词”为真。',
+      displayName: 计数单词}
+  split-words-on-symbols:
+    en: {displayName: Split Words on Symbols, description: 'If enabled, the word count
+        will identify strings separated by common logical delimiters [ _ - . ] as
+        independent words (ex. split-words-on-symbols = 4 words).'}
+    zh: {description: '如果启用，单词计数会将由公共逻辑分隔符[_-.]分隔的字符串标识为独立单词（例如，符号上的拆分单词=4个单词）。',
+      displayName: 在符号上拆分单词}
+writeAttributes:
+  text.line.nonempty.count: {en: The number of lines of text (with at least one non-whitespace
+      character) present in the original FlowFile, zh: 原始FlowFile中存在的文本行数（至少包含一个非空白字符）}
+  text.word.count: {en: The number of words present in the original FlowFile, zh: 原始FlowFile中存在的单词数}
+  text.line.count: {en: The number of lines of text present in the FlowFile content,
+    zh: FlowFile内容中存在的文本行数}
+  text.character.count: {en: The number of characters (given the specified character
+      encoding) present in the original FlowFile, zh: 原始FlowFile中存在的字符数（给定指定的字符编码）}
+tags:
+  en: [count, text, line, word, character]
+  zh: [计数, 文本, 线, 单词, 性格]

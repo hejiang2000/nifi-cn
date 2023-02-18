@@ -90,8 +90,8 @@
         // ensure every component is writable
         if (nfCanvasUtils.canModify(selectedConnections) === false || nfCanvasUtils.canModify(selectedComponents) === false) {
             nfDialog.showOkDialog({
-                headerText: 'Component Position',
-                dialogContent: 'Must be authorized to modify every component selected.'
+                headerText: '组件位置',
+                dialogContent: '没有修改每个组件的权限.'
             });
             return;
         }
@@ -135,15 +135,15 @@
 
         if (nfCanvasUtils.canModify(selection) === false) {
             nfDialog.showOkDialog({
-                headerText: 'Component Position',
-                dialogContent: 'Must be authorized to modify every component selected.'
+                headerText: '组件位置',
+                dialogContent: '没有修改每个组件的权限.'
             });
             return;
         }
         if (nfCanvasUtils.canModify(group) === false) {
             nfDialog.showOkDialog({
-                headerText: 'Component Position',
-                dialogContent: 'Not authorized to modify the destination group.'
+                headerText: '组件位置',
+                dialogContent: '未授权修改目标组.'
             });
             return;
         }

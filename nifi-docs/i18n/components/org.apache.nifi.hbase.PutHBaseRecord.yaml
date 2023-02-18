@@ -1,0 +1,100 @@
+relationships:
+  success: {en: A FlowFile is routed to this relationship after it has been successfully
+      stored in HBase, zh: FlowFile成功存储在HBase中后，将被路由到此关系}
+  failure: {en: A FlowFile is routed to this relationship if it cannot be sent to
+      HBase, zh: 如果FlowFile无法发送到HBase，则将其路由到此关系}
+dynamicProperties:
+  visibility.<COLUMN FAMILY>:
+    en: {description: Visibility label for everything under that column family when
+        a specific label for a particular column qualifier is not available., value: visibility
+        label for <COLUMN FAMILY>}
+    zh: {description: 当特定列限定符的特定标签不可用时，该列族下所有内容的可见性标签。, value: <COLUMN FAMILY>的可见性标签}
+  visibility.<COLUMN FAMILY>.<COLUMN QUALIFIER>:
+    en: {description: Visibility label for the specified column qualifier qualified
+        by a configured column family., value: 'visibility label for <COLUMN FAMILY>:<COLUMN
+        QUALIFIER>.'}
+    zh: {description: 由配置的列族限定的指定列限定符的可见性标签。, value: <COLUMN FAMILY>的可见性标签：<COLUMN-QUALIFIER>。}
+capabilityDescription: {en: Adds rows to HBase based on the contents of a flowfile
+    using a configured record reader., zh: 使用配置的记录读取器根据流文件的内容向HBase添加行。}
+readAttributes:
+  restart.index: {en: Reads restart.index when it needs to replay part of a record
+      set that did not get into HBase., zh: 读取重新启动。当它需要重放未进入HBase的记录集的一部分时。}
+properties:
+  Table Name:
+    en: {displayName: Table Name, description: The name of the HBase Table to put
+        data into}
+    zh: {description: 要将数据放入的HBase表的名称, displayName: 表名称}
+  Row Identifier Field Name:
+    en: {displayName: Row Identifier Field Name, description: Specifies the name of
+        a record field whose value should be used as the row id for the given record.}
+    zh: {description: 指定其值应用作给定记录的行id的记录字段的名称。, displayName: 行标识符字段名称}
+  hbase-record-null-field-strategy:
+    en: {displayName: Null Field Strategy, description: Handle null field values as
+        either an empty string or skip them altogether.}
+    zh: {description: 将空字段值处理为空字符串或完全跳过它们。, displayName: 空字段策略}
+  Column Family:
+    en: {displayName: Column Family, description: The Column Family to use when inserting
+        data into HBase}
+    zh: {description: 在HBase中插入数据时要使用的列系列, displayName: 柱族}
+  put-hb-rec-visibility-record-path:
+    en: {displayName: Visibility String Record Path Root, description: A record path
+        that points to part of the record which contains a path to a mapping of visibility
+        strings to record paths}
+    zh: {description: 指向部分记录的记录路径，该部分记录包含指向可见性字符串到记录路径映射的路径, displayName: 可见性字符串记录路径根}
+  Row Identifier Encoding Strategy:
+    en: {displayName: Row Identifier Encoding Strategy, description: 'Specifies the
+        data type of Row ID used when inserting data into HBase. The default behavior
+        is to convert the row id to a UTF-8 byte array. Choosing Binary will convert
+        a binary formatted string to the correct byte[] representation. The Binary
+        option should be used if you are using Binary row keys in HBase'}
+    zh: {description: '指定将数据插入HBase时使用的行ID的数据类型。默认行为是将行id转换为UTF-8字节数组。选择Binary将将二进制格式的字符串转换为正确的byte[]表示形式。如果在HBase中使用Binary行键，则应使用Binary选项',
+      displayName: 行标识符编码策略}
+  Complex Field Strategy:
+    en: {displayName: Complex Field Strategy, description: 'Indicates how to handle
+        complex fields, i.e. fields that do not have a single text value.'}
+    zh: {description: 指示如何处理复杂字段，即没有单个文本值的字段。, displayName: 复杂现场策略}
+  Batch Size:
+    en: {displayName: Batch Size, description: The maximum number of records to be
+        sent to HBase at any one time from the record set.}
+    zh: {description: 记录集中任何一次发送到HBase的最大记录数。, displayName: 批量大小}
+  hbase-default-vis-string:
+    en: {displayName: Default Visibility String, description: 'When using visibility
+        labels, any value set in this field will be applied to all cells that are
+        written unless an attribute with the convention "visibility.COLUMN_FAMILY.COLUMN_QUALIFIER"
+        is present on the flowfile. If this field is left blank, it will be assumed
+        that no visibility is to be set unless visibility-related attributes are set.
+        NOTE: this configuration will have no effect on your data if you have not
+        enabled visibility labels in the HBase cluster.'}
+    zh: {description: 使用可见性标签时，除非流文件中存在约定为“visibility.COLUMN_FAMILY.COLUMN_QUALIFIER”的属性，否则此字段中设置的任何值都将应用于所有写入的单元格。如果此字段留空，则假定除非设置了与可见性相关的属性，否则不设置可见性。注意：如果您没有在HBase集群中启用可见性标签，则此配置将不会影响您的数据。,
+      displayName: 默认可见性字符串}
+  Field Encoding Strategy:
+    en: {displayName: Field Encoding Strategy, description: 'Indicates how to store
+        the value of each field in HBase. The default behavior is to convert each
+        value from the record to a String, and store the UTF-8 bytes. Choosing Bytes
+        will interpret the type of each field from the record, and convert the value
+        to the byte representation of that type, meaning an integer will be stored
+        as the byte representation of that integer.'}
+    zh: {description: 指示如何在HBase中存储每个字段的值。默认行为是将记录中的每个值转换为字符串，并存储UTF-8字节。选择Bytes将解释记录中每个字段的类型，并将值转换为该类型的字节表示，这意味着将存储一个整数作为该整数的字节表示。,
+      displayName: 字段编码策略}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务, displayName: 记录读取器}
+  HBase Client Service:
+    en: {displayName: HBase Client Service, description: Specifies the Controller
+        Service to use for accessing HBase.}
+    zh: {description: 指定用于访问HBase的控制器服务。, displayName: HBase客户端服务}
+  timestamp-field-name:
+    en: {displayName: Timestamp Field Name, description: 'Specifies the name of a
+        record field whose value should be used as the timestamp for the cells in
+        HBase. The value of this field must be a number, string, or date that can
+        be converted to a long. If this field is left blank, HBase will use the current
+        time.'}
+    zh: {description: 指定记录字段的名称，其值应用作HBase中单元格的时间戳。此字段的值必须是可以转换为长的数字、字符串或日期。如果此字段留空，HBase将使用当前时间。,
+      displayName: 时间戳字段名称}
+writeAttributes:
+  restart.index: {en: Writes restart.index when a batch fails to be insert into HBase,
+    zh: 写入重新启动。无法将批插入HBase时的索引}
+tags:
+  en: [hadoop, hbase, put, record]
+  zh: [hadoop公司, 数据库, 放, 记录]

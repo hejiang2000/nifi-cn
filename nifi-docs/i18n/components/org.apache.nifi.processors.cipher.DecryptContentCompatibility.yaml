@@ -1,0 +1,28 @@
+relationships:
+  success: {en: Decryption succeeded, zh: 解密成功}
+  failure: {en: Decryption failed, zh: 解密失败}
+capabilityDescription: {en: Decrypt content using password-based encryption schemes
+    with legacy algorithms supporting historical compatibility modes., zh: 使用基于密码的加密方案和支持历史兼容模式的传统算法对内容进行解密。}
+properties:
+  encryption-scheme:
+    en: {displayName: Encryption Scheme, description: 'Password-Based Encryption Scheme
+        including PBES1 described in RFC 8018, and others defined according to PKCS12
+        and Bouncy Castle implementations'}
+    zh: {description: 基于密码的加密方案，包括RFC 8018中描述的PBES1，以及根据PKCS12和Bouncy Castle实现定义的其他方案,
+      displayName: 加密方案}
+  key-derivation-strategy:
+    en: {displayName: Key Derivation Strategy, description: Strategy for reading salt
+        from encoded contents and deriving the decryption key according to the number
+        of function iterations}
+    zh: {description: 从编码内容中读取salt并根据函数迭代次数导出解密密钥的策略, displayName: 关键衍生策略}
+  password:
+    en: {displayName: Password, description: Password required for Password-Based
+        Encryption Schemes}
+    zh: {description: 基于密码的加密方案需要密码, displayName: 暗语}
+writeAttributes:
+  pbe.digest.algorithm: {en: Password-Based Encryption Digest Algorithm, zh: 基于密码的加密摘要算法}
+  pbe.symmetric.cipher: {en: Password-Based Encryption Block Cipher, zh: 基于密码的加密块密码}
+  pbe.scheme: {en: Password-Based Encryption Scheme, zh: 基于密码的加密方案}
+tags:
+  en: [cryptography, decipher, decrypt, Jasypt, OpenSSL, PKCS5, PBES1]
+  zh: [密码学, 破译, 解密, 茉莉花, OpenSSL, PKCS5, PBES1]

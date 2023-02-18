@@ -1,0 +1,27 @@
+capabilityDescription: {en: 'A service that runs embedded Hazelcast and provides cache
+    instances backed by that. The server does not ask for authentication, it is recommended
+    to run it within secured network.', zh: 一个运行嵌入式Hazelcast并提供其支持的缓存实例的服务。服务器不要求身份验证，建议在安全网络中运行。}
+properties:
+  hazelcast-port:
+    en: {displayName: Hazelcast Port, description: Port for the Hazelcast instance
+        to use.}
+    zh: {description: Hazelcast实例要使用的端口。, displayName: Hazelcast港}
+  hazelcast-clustering-strategy:
+    en: {displayName: Hazelcast Clustering Strategy, description: Specifies with what
+        strategy the Hazelcast cluster should be created.}
+    zh: {description: 指定创建Hazelcast集群的策略。, displayName: Hazelcast聚类策略}
+  hazelcast-instances:
+    en: {displayName: Hazelcast Instances, description: Only used with "Explicit"
+        Clustering Strategy! List of NiFi instance host names which should be part
+        of the Hazelcast cluster. Host names are separated by comma. The port specified
+        in the "Hazelcast Port" property will be used as server port. The list must
+        contain every instance that will be part of the cluster. Other instances will
+        join the Hazelcast cluster as clients.}
+    zh: {description: 仅用于“显式”聚类策略！应属于Hazelcast集群的NiFi实例主机名列表。主机名用逗号分隔。“Hazelcast port”属性中指定的端口将用作服务器端口。列表必须包含将成为群集一部分的每个实例。其他实例将作为客户端加入Hazelcast集群。,
+      displayName: Hazelcast实例}
+  hazelcast-cluster-name:
+    en: {displayName: Hazelcast Cluster Name, description: Name of the Hazelcast cluster.}
+    zh: {description: Hazelcast群集的名称。, displayName: Hazelcast群集名称}
+tags:
+  en: [hazelcast, cache]
+  zh: [榛属植物, 隐藏物]

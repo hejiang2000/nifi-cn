@@ -1,0 +1,47 @@
+relationships:
+  success: {en: Any FlowFile that is successfully parsed as a Syslog message will
+      be to this Relationship., zh: 成功解析为Syslog消息的任何FlowFile都将属于此关系。}
+  failure: {en: Any FlowFile that could not be parsed as a Syslog message will be
+      transferred to this Relationship without any attributes being added, zh: 无法解析为Syslog消息的任何FlowFile都将传输到此关系，而不添加任何属性}
+capabilityDescription: {en: 'Attempts to parse the contents of a well formed Syslog
+    message in accordance to RFC5424 format and adds attributes to the FlowFile for
+    each of the parts of the Syslog message, including Structured Data.Structured
+    Data will be written to attributes as one attribute per item id + parameter see
+    https://tools.ietf.org/html/rfc5424.Note: ParseSyslog5424 follows the specification
+    more closely than ParseSyslog.  If your Syslog producer does not follow the spec
+    closely, with regards to using ''-'' for missing header entries for example, those
+    logs will fail with this parser, where they would not fail with ParseSyslog.',
+  zh: '尝试根据RFC5424格式解析格式良好的Syslog消息的内容，并将Syslog消息每个部分（包括结构化数据）的属性添加到FlowFile中。结构化数据将作为每个项目id+参数的一个属性写入属性，请参见https://tools.ietf.org/html/rfc5424.Note:ParseSyslog5424比ParseSyslog更符合规范。如果您的Syslog生成器没有严格遵循规范，例如，对于缺少的头项使用“-”，这些日志将在这个解析器中失败，而在ParseSyslog中不会失败。'}
+properties:
+  include_policy:
+    en: {displayName: Include Message Body in Attributes, description: 'If true, then
+        the Syslog Message body will be included in the attributes.'}
+    zh: {description: 如果为true，则Syslog消息体将包含在属性中。, displayName: 在属性中包含消息正文}
+  nil_policy:
+    en: {displayName: NIL Policy, description: Defines how NIL values are handled
+        for header fields.}
+    zh: {description: 定义如何处理头字段的NIL值。, displayName: NIL政策}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies which character set of
+        the Syslog messages}
+    zh: {description: 指定Syslog消息的字符集, displayName: 字符集}
+writeAttributes:
+  syslog.procid: {en: The procid of the Syslog message., zh: Syslog消息的procid。}
+  syslog.sender: {en: The hostname of the Syslog server that sent the message., zh: 发送消息的Syslog服务器的主机名。}
+  syslog.severity: {en: The severity of the Syslog message derived from the priority.,
+    zh: 从优先级派生的Syslog消息的严重性。}
+  syslog.version: {en: The optional version from the Syslog message., zh: Syslog消息中的可选版本。}
+  syslog.timestamp: {en: The timestamp of the Syslog message., zh: Syslog消息的时间戳。}
+  syslog.body: {en: 'The body of the Syslog message, everything after the hostname.',
+    zh: Syslog消息的正文，主机名之后的所有内容。}
+  syslog.priority: {en: The priority of the Syslog message., zh: Syslog消息的优先级。}
+  syslog.structuredData: {en: Multiple entries per structuredData of the Syslog message.,
+    zh: Syslog消息的每个structuredData有多个条目。}
+  syslog.messageid: {en: The messageid the Syslog message., zh: messageid为Syslog消息。}
+  syslog.facility: {en: The facility of the Syslog message derived from the priority.,
+    zh: 从优先级派生的Syslog消息的功能。}
+  syslog.hostname: {en: The hostname or IP address of the Syslog message., zh: Syslog消息的主机名或IP地址。}
+  syslog.appname: {en: The appname of the Syslog message., zh: Syslog消息的appname。}
+tags:
+  en: [logs, syslog, syslog5424, attributes, system, event, message]
+  zh: [日志, 系统日志, 系统日志5424, 属性, 系统, 事件, 消息]

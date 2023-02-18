@@ -1,0 +1,52 @@
+properties:
+  el-cs-suppress-nulls:
+    en: {displayName: Suppress Null/Empty Values, description: Specifies how the writer
+        should handle null and empty fields (including objects and arrays)}
+    zh: {description: 指定编写器应如何处理空字段和空字段（包括对象和数组）, displayName: 抑制空值}
+  el-cs-http-hosts:
+    en: {displayName: HTTP Hosts, description: A comma-separated list of HTTP hosts
+        that host Elasticsearch query nodes.}
+    zh: {description: 托管Elasticsearch查询节点的HTTP主机的逗号分隔列表。, displayName: HTTP主机}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        HTTP'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：HTTP, displayName: 代理配置服务}
+  el-cs-charset:
+    en: {displayName: Charset, description: The charset to use for interpreting the
+        response from Elasticsearch.}
+    zh: {description: 用于解释Elasticsearch响应的字符集。, displayName: 字符集}
+  api-key-id:
+    en: {displayName: API Key ID, description: Unique identifier of the API key.}
+    zh: {description: API密钥的唯一标识符。, displayName: API密钥ID}
+  el-cs-username:
+    en: {displayName: Username, description: The username to use with XPack security.}
+    zh: {description: 用于XPack安全的用户名。, displayName: 用户名}
+  el-cs-retry-timeout:
+    en: {displayName: Retry timeout, description: 'Controls the amount of time, in
+        milliseconds, before a timeout occurs when retrying the operation.'}
+    zh: {description: 控制重试操作时发生超时之前的时间量（以毫秒为单位）。, displayName: 重试超时}
+  el-cs-password:
+    en: {displayName: Password, description: The password to use with XPack security.}
+    zh: {description: 用于XPack安全的密码。, displayName: 暗语}
+  api-key:
+    en: {displayName: API Key, description: Encoded API key.}
+    zh: {description: 编码的API密钥。, displayName: API密钥}
+  authorization-scheme:
+    en: {displayName: Authorization Scheme, description: Authorization Scheme used
+        for optional authentication to Elasticsearch.}
+    zh: {description: 用于Elasticsearch可选身份验证的授权方案。, displayName: 授权方案}
+  el-cs-connect-timeout:
+    en: {displayName: Connect timeout, description: 'Controls the amount of time,
+        in milliseconds, before a timeout occurs when trying to connect.'}
+    zh: {description: 控制尝试连接时发生超时之前的时间量（以毫秒为单位）。, displayName: 连接超时}
+  el-cs-socket-timeout:
+    en: {displayName: Read timeout, description: 'Controls the amount of time, in
+        milliseconds, before a timeout occurs when waiting for a response.'}
+    zh: {description: 控制等待响应时发生超时之前的时间量（以毫秒为单位）。, displayName: 读取超时}
+  el-cs-ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections. This service
+        only applies if the Elasticsearch endpoint(s) have been secured with TLS/SSL.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。此服务仅适用于Elasticsearch端点已通过TLS/SSL进行安全保护的情况。,
+      displayName: SSL上下文服务}

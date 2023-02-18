@@ -1,0 +1,62 @@
+relationships:
+  success: {en: All FlowFiles are routed to this relationship, zh: 所有FlowFiles都路由到此关系}
+capabilityDescription: {en: Emits attributes of the FlowFile at the specified log
+    level, zh: 在指定的日志级别发出FlowFile的属性}
+properties:
+  Log prefix:
+    en: {displayName: Log prefix, description: Log prefix appended to the log lines.
+        It helps to distinguish the output of multiple LogAttribute processors.}
+    zh: {description: 附加到日志行的日志前缀。它有助于区分多个LogAttribute处理器的输出。, displayName: 日志前缀}
+  character-set:
+    en: {displayName: Character Set, description: The name of the CharacterSet to
+        use}
+    zh: {description: 要使用的CharacterSet的名称, displayName: 字符集}
+  Log FlowFile Properties:
+    en: {displayName: Log FlowFile Properties, description: 'Specifies whether or
+        not to log FlowFile "properties", such as Entry Date, Lineage Start Date,
+        and content size'}
+    zh: {description: 指定是否记录FlowFile“属性”，如输入日期、线型开始日期和内容大小, displayName: 日志流文件属性}
+  Log Level:
+    en: {displayName: Log Level, description: The Log Level to use when logging the
+        Attributes}
+    zh: {description: 记录属性时要使用的日志级别, displayName: 日志级别}
+  attributes-to-ignore-regex:
+    en: {displayName: Attributes to Ignore by Regular Expression, description: 'A
+        regular expression indicating the Attributes to Ignore. If not specified,
+        no attributes will be ignored unless `Attributes to Ignore` is modified. There''s
+        an OR relationship between the two properties.'}
+    zh: {description: 表示要忽略的属性的正则表达式。如果未指定，则除非修改“要忽略的属性”，否则不会忽略任何属性。这两个属性之间存在OR关系。,
+      displayName: 正则表达式要忽略的属性}
+  Attributes to Ignore:
+    en: {displayName: Attributes to Ignore, description: 'A comma-separated list of
+        Attributes to ignore. If not specified, no attributes will be ignored unless
+        `Attributes to Ignore by Regular Expression` is modified. There''s an OR relationship
+        between the two properties.'}
+    zh: {description: 要忽略的属性的逗号分隔列表。如果未指定，则除非修改“要由正则表达式忽略的属性”，否则不会忽略任何属性。这两个属性之间存在OR关系。,
+      displayName: 要忽略的属性}
+  Attributes to Log:
+    en: {displayName: Attributes to Log, description: 'A comma-separated list of Attributes
+        to Log. If not specified, all attributes will be logged unless `Attributes
+        to Log by Regular Expression` is modified. There''s an AND relationship between
+        the two properties.'}
+    zh: {description: 要记录的属性的逗号分隔列表。如果未指定，则将记录所有属性，除非修改了“要通过正则表达式记录的属性”。这两个属性之间存在AND关系。,
+      displayName: 要记录的属性}
+  attributes-to-log-regex:
+    en: {displayName: Attributes to Log by Regular Expression, description: 'A regular
+        expression indicating the Attributes to Log. If not specified, all attributes
+        will be logged unless `Attributes to Log` is modified. There''s an AND relationship
+        between the two properties.'}
+    zh: {description: 表示要记录的属性的正则表达式。如果未指定，则将记录所有属性，除非修改了“要记录的属性”。这两个属性之间存在AND关系。,
+      displayName: 按正则表达式记录的属性}
+  Output Format:
+    en: {displayName: Output Format, description: Specifies the format to use for
+        logging FlowFile attributes}
+    zh: {description: 指定用于记录FlowFile属性的格式, displayName: 输出格式}
+  Log Payload:
+    en: {displayName: Log Payload, description: 'If true, the FlowFile''s payload
+        will be logged, in addition to its attributes; otherwise, just the Attributes
+        will be logged.'}
+    zh: {description: 如果为true，除了其属性外，还将记录FlowFile的有效载荷；否则，只记录属性。, displayName: 日志有效负载}
+tags:
+  en: [attributes, logging]
+  zh: [属性, 登录中]

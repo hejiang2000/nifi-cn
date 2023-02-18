@@ -18,7 +18,7 @@
 <div id="remote-port-configuration" class="hidden medium-dialog">
     <div class="dialog-content">
         <div class="setting">
-            <div class="setting-name">Name</div>
+            <div class="setting-name">名称</div>
             <div class="setting-field">
                 <span id="remote-port-id" class="hidden"></span>
                 <span id="remote-port-type" class="hidden"></span>
@@ -27,26 +27,26 @@
         </div>
         <div class="setting">
             <div class="setting-name">
-                Concurrent tasks
-                <div class="fa fa-question-circle" alt="Info" title="The number of tasks that should be concurrently scheduled for this port."></div>
+                并行任务
+                <div class="fa fa-question-circle" alt="Info" title="该端口应该被并行调度的任务数量."></div>
             </div>
             <div class="setting-field">
                 <input id="remote-port-concurrent-tasks" type="text"/>
                 <div id="remote-port-use-compression-container">
                     <div id="remote-port-use-compression" class="nf-checkbox"></div>
-                    <span class="nf-checkbox-label">Compressed</span>
+                    <span class="nf-checkbox-label">压缩</span>
                 </div>
             </div>
             <div class="clear"></div>
         </div>
         <div class="batch-settings">
             <div class="setting-name">
-                Batch Settings:
+                批量设置:
             </div>
             <div class="setting batch-setting">
                 <div class="setting-name">
-                    Count
-                    <div class="fa fa-question-circle" alt="Info" title="The preferred number of flow files to include in a transaction for this port."></div>
+                    数量
+                    <div class="fa fa-question-circle" alt="Info" title="该端口一个事务的最佳 FlowFile 数量."></div>
                 </div>
                 <div class="setting-field">
                     <input id="remote-port-batch-count" type="text"/>
@@ -54,8 +54,8 @@
             </div>
             <div class="setting batch-setting">
                 <div class="setting-name">
-                    Size
-                    <div class="fa fa-question-circle" alt="Info" title="The preferred number of bytes to include in a transaction for this port."></div>
+                    大小
+                    <div class="fa fa-question-circle" alt="Info" title="该端口一个事务的最佳字节数."></div>
                 </div>
                 <div class="setting-field">
                     <input id="remote-port-batch-size" type="text"/>
@@ -63,8 +63,8 @@
             </div>
             <div class="setting batch-setting">
                 <div class="setting-name">
-                    Duration
-                    <div class="fa fa-question-circle" alt="Info" title="The preferred amount of time that a transaction should span for this port."></div>
+                    持续时间
+                    <div class="fa fa-question-circle" alt="Info" title="该端口一个事务的最佳时长."></div>
                 </div>
                 <div class="setting-field">
                     <input id="remote-port-batch-duration" type="text"/>

@@ -1,0 +1,43 @@
+relationships:
+  original: {en: The original FlowFile will be sent to this relationship, zh: 原始FlowFile将发送到此关系}
+  segments: {en: 'All segments will be sent to this relationship. If the file was
+      small enough that it was not segmented, a copy of the original is sent to this
+      relationship as well as original', zh: 所有段都将发送到此关系。如果文件小到无法分割，则会将原始文件的副本和原始文件一起发送到此关系}
+capabilityDescription: {en: 'Segments a FlowFile into multiple smaller segments on
+    byte boundaries. Each segment is given the following attributes: fragment.identifier,
+    fragment.index, fragment.count, segment.original.filename; these attributes can
+    then be used by the MergeContent processor in order to reconstitute the original
+    FlowFile', zh: 在字节边界上将FlowFile分段为多个较小的分段。每个片段都具有以下属性：片段。标识符、片段。索引，片段。计数、分段或原始。文件名；然后，MergeContent处理器可以使用这些属性来重建原始FlowFile}
+properties:
+  Segment Size:
+    en: {displayName: Segment Size, description: The maximum data size in bytes for
+        each segment}
+    zh: {description: 每个段的最大数据大小（字节）, displayName: 段大小（Segment Size）}
+writeAttributes:
+  segment.count: {en: 'The number of segments generated from the parent FlowFile.
+      This attribute is added to maintain backward compatibility, but the fragment.count
+      is preferred, as it is designed to work in conjunction with the MergeContent
+      Processor', zh: 从父FlowFile生成的段数。添加此属性是为了保持向后兼容性，但片段。count是首选项，因为它被设计为与MergeContent
+      Processor一起工作}
+  segment.identifier: {en: 'All segments produced from the same parent FlowFile will
+      have the same randomly generated UUID added for this attribute. This attribute
+      is added to maintain backward compatibility, but the fragment.identifier is
+      preferred, as it is designed to work in conjunction with the MergeContent Processor',
+    zh: 从同一父FlowFile生成的所有段都将为此属性添加相同的随机生成UUID。添加此属性是为了保持向后兼容性，但片段。标识符是首选的，因为它被设计为与MergeContent
+      Processor一起工作}
+  'segment.original.filename ': {en: 'The filename will be updated to include the
+      parent''s filename, the segment index, and the segment count', zh: 将更新文件名，以包括父文件名、段索引和段计数}
+  fragment.identifier: {en: All segments produced from the same parent FlowFile will
+      have the same randomly generated UUID added for this attribute, zh: 从同一父FlowFile生成的所有段都将为此属性添加相同的随机生成UUID}
+  fragment.index: {en: A one-up number that indicates the ordering of the segments
+      that were created from a single parent FlowFile, zh: 一个向上的数字，表示从单个父FlowFile创建的段的顺序}
+  fragment.count: {en: The number of segments generated from the parent FlowFile,
+    zh: 从父FlowFile生成的段数}
+  segment.index: {en: 'A one-up number that indicates the ordering of the segments
+      that were created from a single parent FlowFile. This attribute is added to
+      maintain backward compatibility, but the fragment.index is preferred, as it
+      is designed to work in conjunction with the MergeContent Processor', zh: 一个向上的数字，表示从单个父FlowFile创建的段的顺序。添加此属性是为了保持向后兼容性，但片段。索引是首选项，因为它被设计为与MergeContent
+      Processor一起使用}
+tags:
+  en: [segment, split]
+  zh: [段, 分裂]

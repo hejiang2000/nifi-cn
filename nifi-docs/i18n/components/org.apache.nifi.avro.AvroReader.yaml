@@ -1,0 +1,37 @@
+capabilityDescription: {en: 'Parses Avro data and returns each Avro record as an separate
+    Record object. The Avro data may contain the schema itself, or the schema can
+    be externalized and accessed by one of the methods offered by the ''Schema Access
+    Strategy'' property.', zh: 分析Avro数据并将每个Avro记录作为单独的record对象返回。Avro数据可能包含模式本身，或者可以通过“模式访问策略”属性提供的方法之一外部化和访问模式。}
+properties:
+  schema-branch:
+    en: {displayName: Schema Branch, description: 'Specifies the name of the branch
+        to use when looking up the schema in the Schema Registry property. If the
+        chosen Schema Registry does not support branching, this value will be ignored.'}
+    zh: {description: 指定在“架构注册表”属性中查找架构时要使用的分支的名称。如果所选的架构注册表不支持分支，则将忽略此值。, displayName: 架构分支}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  cache-size:
+    en: {displayName: Cache Size, description: Specifies how many Schemas should be
+        cached}
+    zh: {description: 指定应缓存多少架构, displayName: 缓存大小}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry}
+    zh: {description: 指定用于架构注册表的控制器服务, displayName: 架构注册表}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that is to be used for interpreting the data.}
+    zh: {description: 指定如何获取用于解释数据的架构。, displayName: 架构访问策略}
+  schema-version:
+    en: {displayName: Schema Version, description: Specifies the version of the schema
+        to lookup in the Schema Registry. If not specified then the latest version
+        of the schema will be retrieved.}
+    zh: {description: 指定要在架构注册表中查找的架构的版本。如果未指定，则将检索架构的最新版本。, displayName: 架构版本}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+tags:
+  en: [avro, parse, record, row, reader, delimited, comma, separated, values]
+  zh: [我没有吗？, 作语法分析, 记录, 一行, 读者, 定界的, 逗号, 分离的，分离的, 价值观]

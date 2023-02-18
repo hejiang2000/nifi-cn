@@ -1,0 +1,47 @@
+relationships:
+  success: {en: Any FlowFile that is successfully fetched from the file system will
+      be transferred to this Relationship., zh: 从文件系统成功提取的任何FlowFile都将传输到此关系。}
+  permission.denied: {en: Any FlowFile that could not be fetched from the file system
+      due to the user running NiFi not having sufficient permissions will be transferred
+      to this Relationship., zh: 由于运行NiFi的用户没有足够的权限而无法从文件系统中提取的任何FlowFile都将传输到此关系。}
+  failure: {en: Any FlowFile that could not be fetched from the file system for any
+      reason other than insufficient permissions or the file not existing will be
+      transferred to this Relationship., zh: 由于权限不足或文件不存在以外的任何原因无法从文件系统中提取的任何FlowFile都将被传输到此关系。}
+  not.found: {en: Any FlowFile that could not be fetched from the file system because
+      the file could not be found will be transferred to this Relationship., zh: 由于找不到文件而无法从文件系统中提取的任何FlowFile都将传输到此关系。}
+capabilityDescription: {en: 'Reads the contents of a file from disk and streams it
+    into the contents of an incoming FlowFile. Once this is done, the file is optionally
+    moved elsewhere or deleted to help keep the file system organized.', zh: 从磁盘读取文件的内容，并将其流式传输到传入FlowFile的内容中。完成此操作后，可以选择将文件移动到其他位置或删除，以帮助保持文件系统的有序性。}
+properties:
+  Move Conflict Strategy:
+    en: {displayName: Move Conflict Strategy, description: 'If Completion Strategy
+        is set to Move File and a file already exists in the destination directory
+        with the same name, this property specifies how that naming conflict should
+        be resolved'}
+    zh: {description: 如果“完成策略”设置为“移动文件”，并且目标目录中已存在同名文件，则此属性指定如何解决命名冲突, displayName: 移动冲突策略}
+  Log level when file not found:
+    en: {displayName: Log level when file not found, description: Log level to use
+        in case the file does not exist when the processor is triggered}
+    zh: {description: 触发处理器时文件不存在时使用的日志级别, displayName: 找不到文件时的日志级别}
+  Move Destination Directory:
+    en: {displayName: Move Destination Directory, description: 'The directory to the
+        move the original file to once it has been fetched from the file system. This
+        property is ignored unless the Completion Strategy is set to "Move File".
+        If the directory does not exist, it will be created.'}
+    zh: {description: 从文件系统中提取原始文件后，将其移动到的目录。除非“完成策略”设置为“移动文件”，否则将忽略此属性。如果目录不存在，将创建该目录。,
+      displayName: 移动目标目录}
+  Log level when permission denied:
+    en: {displayName: Log level when permission denied, description: Log level to
+        use in case user hejia does not have sufficient permissions to read the file}
+    zh: {description: 在用户hejia没有足够的权限读取文件时使用的日志级别, displayName: 权限被拒绝时的日志级别}
+  File to Fetch:
+    en: {displayName: File to Fetch, description: The fully-qualified filename of
+        the file to fetch from the file system}
+    zh: {description: 要从文件系统获取的文件的完全限定文件名, displayName: 要获取的文件}
+  Completion Strategy:
+    en: {displayName: Completion Strategy, description: Specifies what to do with
+        the original file on the file system once it has been pulled into NiFi}
+    zh: {description: 指定将原始文件拉入NiFi后，如何处理文件系统上的原始文件, displayName: 完成策略}
+tags:
+  en: [local, files, filesystem, ingest, ingress, get, source, input, fetch]
+  zh: [地方的, 文件夹, 文件系统, 摄入, 进入, 收到, 来源, 输入, 取来]

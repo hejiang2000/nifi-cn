@@ -1,0 +1,44 @@
+relationships:
+  not-found: {en: Any FlowFile that cannot be matched to an existing hash will be
+      sent to this Relationship., zh: 无法与现有哈希匹配的任何FlowFile都将发送到此关系。}
+  found: {en: Any FlowFile that is successfully matched to an existing hash will be
+      sent to this Relationship., zh: 成功匹配现有哈希的任何FlowFile都将发送到此关系。}
+  failure: {en: 'Any FlowFile that cannot be matched, e.g. (lacks the attribute) will
+      be sent to this Relationship.', zh: 任何无法匹配的FlowFile，例如（缺少属性）都将发送到此关系。}
+capabilityDescription: {en: 'Compares an attribute containing a Fuzzy Hash against
+    a file containing a list of fuzzy hashes, appending an attribute to the FlowFile
+    in case of a successful match.', zh: 将包含模糊哈希的属性与包含模糊哈希列表的文件进行比较，如果匹配成功，则将属性附加到FlowFile。}
+properties:
+  ATTRIBUTE_NAME:
+    en: {displayName: Hash Attribute Name, description: The name of the FlowFile Attribute
+        that should hold the Fuzzy Hash Value}
+    zh: {description: 应包含模糊哈希值的FlowFile属性的名称, displayName: 哈希属性名称}
+  HASH_LIST_FILE:
+    en: {displayName: Hash List Source File, description: Path to the file containing
+        hashes to be validated against}
+    zh: {description: 包含要验证的哈希的文件的路径, displayName: 哈希列表源文件}
+  HASH_ALGORITHM:
+    en: {displayName: Hashing Algorithm, description: The hashing algorithm utilised}
+    zh: {description: 使用的哈希算法, displayName: 哈希算法}
+  MATCH_THRESHOLD:
+    en: {displayName: Match Threshold, description: The similarity score must exceed
+        or be equal to in order formatch to be considered true. Refer to Additional
+        Information for differences between TLSH and SSDEEP scores and how they relate
+        to this property.}
+    zh: {description: 相似性分数必须大于或等于，格式才能被视为真。有关TLSH和SSDEEP分数之间的差异以及它们与此属性的关系，请参阅其他信息。,
+      displayName: 匹配阈值}
+  MATCHING_MODE:
+    en: {displayName: Matching Mode, description: Defines if the Processor should
+        try to match as many entries as possible (multi-match) or if it should stop
+        after the first match (single)}
+    zh: {description: 定义处理器是否应尝试匹配尽可能多的条目（多重匹配）或是否应在第一次匹配后停止（单个）, displayName: 匹配模式}
+writeAttributes:
+  XXXX.N.similarity: {en: 'The similarity score between this flowfileand its match
+      of the same number N. Note that: ''XXX'' gets replaced with the <Hash Attribute
+      Name>', zh: 此流文件与其匹配的相同数字N之间的相似度得分。请注意：“XXX”被替换为＜Hash属性名称＞}
+  XXXX.N.match: {en: 'The match that resembles the attribute specified by the <Hash
+      Attribute Name> property. Note that: ''XXX'' gets replaced with the <Hash Attribute
+      Name>', zh: 与＜Hash attribute Name＞属性指定的属性相似的匹配。注意：“XXX”被替换为＜哈希属性名称＞}
+tags:
+  en: [hashing, fuzzy-hashing, cyber-security]
+  zh: [散列, 模糊散列, 网络安全]

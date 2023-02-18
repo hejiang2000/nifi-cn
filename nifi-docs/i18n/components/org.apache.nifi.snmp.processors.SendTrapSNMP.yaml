@@ -1,0 +1,92 @@
+relationships:
+  success: {en: All FlowFiles that have been successfully used to perform SNMP Set
+      are routed to this relationship, zh: 已成功用于执行SNMP设置的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot received from the SNMP agent are routed
+      to this relationship, zh: 无法从SNMP代理接收的所有FlowFiles都将路由到此关系}
+capabilityDescription: {en: Sends information to SNMP Manager., zh: 向SNMP管理器发送信息。}
+properties:
+  snmp-trap-manager-port:
+    en: {displayName: SNMP Manager Port, description: The port where the SNMP Manager
+        listens to the incoming traps.}
+    zh: {description: SNMP管理器侦听传入陷阱的端口。, displayName: SNMP管理器端口}
+  snmp-security-level:
+    en: {displayName: SNMP Security Level, description: SNMP version 3 provides extra
+        security with User Based Security Model (USM). The three levels of security
+        is 1. Communication without authentication and encryption (NoAuthNoPriv).
+        2. Communication with authentication and without encryption (AuthNoPriv).
+        3. Communication with authentication and encryption (AuthPriv).}
+    zh: {description: SNMP版本3通过基于用户的安全模型（USM）提供了额外的安全性。三个安全级别是1.无身份验证和加密的通信（NoAuthNoPriv）。2.具有身份验证且无加密的通信（AuthNoPriv）。3.使用身份验证和加密（AuthPriv）进行通信。,
+      displayName: SNMP安全级别}
+  snmp-authentication-passphrase:
+    en: {displayName: SNMP Authentication Passphrase, description: Passphrase used
+        for SNMP authentication protocol.}
+    zh: {description: 用于SNMP身份验证协议的密码短语。, displayName: SNMP身份验证密码短语}
+  snmp-retries:
+    en: {displayName: Number of Retries, description: Set the number of retries when
+        requesting the SNMP Agent.}
+    zh: {description: 设置请求SNMP代理时的重试次数。, displayName: 重试次数}
+  snmp-trap-oid-value:
+    en: {displayName: Trap OID Value, description: The value of the trap OID.}
+    zh: {description: 陷阱OID的值。, displayName: 陷阱OID值}
+  snmp-private-protocol-passphrase:
+    en: {displayName: SNMP Privacy Passphrase, description: Passphrase used for SNMP
+        privacy protocol.}
+    zh: {description: 用于SNMP隐私协议的密码短语。, displayName: SNMP隐私密码短语}
+  snmp-trap-specific-type:
+    en: {displayName: Specific Trap Type, description: Specific trap type is a number
+        that further specifies the nature of the event that generated the trap in
+        the case of traps of generic type 6 (enterpriseSpecific). The interpretation
+        of this code is vendor-specific.}
+    zh: {description: 特定陷阱类型是一个数字，在一般类型6（enterpriseSpecific）陷阱的情况下，该数字进一步指定生成陷阱的事件的性质。此代码的解释因供应商而异。,
+      displayName: 特定陷阱类型}
+  snmp-security-name:
+    en: {displayName: SNMP Security Name, description: User name used for SNMP v3
+        Authentication.}
+    zh: {description: 用于SNMP v3身份验证的用户名。, displayName: SNMP安全名称}
+  snmp-private-protocol:
+    en: {displayName: SNMP Privacy Protocol, description: Privacy allows for encryption
+        of SNMP v3 messages to ensure confidentiality of data.}
+    zh: {description: 隐私允许对SNMP v3消息进行加密，以确保数据的机密性。, displayName: SNMP隐私协议}
+  snmp-trap-agent-address:
+    en: {displayName: SNMP Trap Agent Address, description: The address where the
+        SNMP Manager sends the trap.}
+    zh: {description: SNMP管理器发送陷阱的地址。, displayName: SNMP陷阱代理地址}
+  snmp-trap-enterprise-oid:
+    en: {displayName: Enterprise OID, description: Enterprise is the vendor identification
+        (OID) for the network management sub-system that generated the trap.}
+    zh: {description: Enterprise是生成陷阱的网络管理子系统的供应商标识（OID）。, displayName: 企业OID}
+  snmp-community:
+    en: {displayName: SNMP Community, description: 'SNMPv1 and SNMPv2 use communities
+        to establish trust between managers and agents. Most agents support three
+        community names, one each for read-only, read-write and trap. These three
+        community strings control different types of activities. The read-only community
+        applies to get requests. The read-write community string applies to set requests.
+        The trap community string applies to receipt of traps.'}
+    zh: {description: SNMPv1和SNMPv2使用社区在管理者和代理之间建立信任。大多数代理都支持三个社区名称，其中一个用于只读、读写和陷阱。这三个社区字符串控制不同类型的活动。只读社区应用于获取请求。读写团体字符串适用于设置请求。陷阱社区字符串适用于接收陷阱。,
+      displayName: SNMP共同体}
+  snmp-trap-manager-host:
+    en: {displayName: SNMP Manager Host, description: The host where the SNMP Manager
+        sends the trap.}
+    zh: {description: SNMP管理器发送陷阱的主机。, displayName: SNMP管理器主机}
+  snmp-version:
+    en: {displayName: SNMP Version, description: 'Three significant versions of SNMP
+        have been developed and deployed. SNMPv1 is the original version of the protocol.
+        More recent versions, SNMPv2c and SNMPv3, feature improvements in performance,
+        flexibility and security.'}
+    zh: {description: 已经开发和部署了三个重要版本的SNMP。SNMPv1是协议的原始版本。最新版本SNMPv2c和SNMPv3在性能、灵活性和安全性方面有所改进。,
+      displayName: SNMP版本}
+  snmp-trap-generic-type:
+    en: {displayName: Generic Trap Type, description: Generic trap type is an integer
+        in the range of 0 to 6. See processor usage for details.}
+    zh: {description: 通用陷阱类型是0到6范围内的整数。有关详细信息，请参阅处理器用法。, displayName: 通用陷阱类型}
+  snmp-timeout:
+    en: {displayName: Timeout (ms), description: Set the timeout in ms when requesting
+        the SNMP Agent.}
+    zh: {description: 设置请求SNMP代理时的超时（毫秒）。, displayName: 超时（毫秒）}
+  snmp-authentication-protocol:
+    en: {displayName: SNMP Authentication Protocol, description: Hash based authentication
+        protocol for secure authentication.}
+    zh: {description: 用于安全身份验证的基于哈希的身份验证协议。, displayName: SNMP身份验证协议}
+tags:
+  en: [snmp, send, trap]
+  zh: [snmp协议, 邮寄, 陷阱]

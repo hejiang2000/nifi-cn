@@ -1,0 +1,40 @@
+relationships:
+  success: {en: 'FlowFiles that have been successfully updated are routed to this
+      relationship, as well as FlowFiles whose content does not match the given Regular
+      Expression', zh: 已成功更新的FlowFiles以及其内容与给定正则表达式不匹配的FlowFiles将路由到此关系}
+  failure: {en: FlowFiles that could not be updated are routed to this relationship,
+    zh: 无法更新的FlowFiles被路由到此关系}
+capabilityDescription: {en: Updates the content of a FlowFile by evaluating a Regular
+    Expression against it and replacing the section of the content that matches the
+    Regular Expression with some alternate value provided in a mapping file., zh: 通过对FlowFile的正则表达式进行求值并用映射文件中提供的某个替换值替换与正则表达式匹配的内容部分，更新FlowFile的内容。}
+properties:
+  Regular Expression:
+    en: {displayName: Regular Expression, description: The Regular Expression to search
+        for in the FlowFile content}
+    zh: {description: 要在FlowFile内容中搜索的正则表达式, displayName: 正则表达式}
+  Matching Group:
+    en: {displayName: Matching Group, description: The number of the matching group
+        of the provided regex to replace with the corresponding value from the mapping
+        file (if it exists).}
+    zh: {description: 要用映射文件中的相应值替换的所提供正则表达式的匹配组的编号（如果存在）。, displayName: 匹配的组}
+  Mapping File Refresh Interval:
+    en: {displayName: Mapping File Refresh Interval, description: The polling interval
+        in seconds to check for updates to the mapping file. The default is 60s.}
+    zh: {description: 检查映射文件更新的轮询间隔（秒）。默认值为60s。, displayName: 映射文件刷新间隔}
+  Mapping File:
+    en: {displayName: Mapping File, description: The name of the file (including the
+        full path) containing the Mappings.}
+    zh: {description: 包含映射的文件的名称（包括完整路径）。, displayName: 映射文件}
+  Character Set:
+    en: {displayName: Character Set, description: The Character Set in which the file
+        is encoded}
+    zh: {description: 文件编码的字符集, displayName: 字符集}
+  Maximum Buffer Size:
+    en: {displayName: Maximum Buffer Size, description: 'Specifies the maximum amount
+        of data to buffer (per file) in order to apply the regular expressions. If
+        a FlowFile is larger than this value, the FlowFile will be routed to ''failure'''}
+    zh: {description: 指定要缓冲的最大数据量（每个文件），以便应用正则表达式。如果FlowFile大于此值，则FlowFile将被路由到“failure”,
+      displayName: 最大缓冲区大小}
+tags:
+  en: [Text, Regular Expression, Update, Change, Replace, Modify, Regex, Mapping]
+  zh: [文本, 正则表达式, 使现代化, 改变, 代替, 修改, Regex公司, 映射]

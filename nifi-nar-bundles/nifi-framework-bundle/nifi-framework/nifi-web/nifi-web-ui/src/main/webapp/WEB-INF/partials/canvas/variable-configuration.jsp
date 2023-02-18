@@ -20,7 +20,7 @@
         <div class="settings-left">
             <div class="setting">
                 <div style="float: left;">
-                    <div class="setting-name">Process Group</div>
+                    <div class="setting-name">处理组</div>
                     <div class="setting-field">
                         <span id="process-group-variable-registry"></span>
                         <span id="variable-registry-process-group-id" class="hidden"></span>
@@ -33,7 +33,7 @@
             <div id="variable-update-status" class="hidden">
                 <div class="setting">
                     <div class="setting-name">
-                        Steps to update variables
+                        更新变量步骤
                     </div>
                     <div class="setting-field">
                         <ol id="variable-update-steps"></ol>
@@ -45,7 +45,7 @@
         <div class="settings-right">
             <div class="setting">
                 <div class="setting-name">
-                    Variables
+                    变量
                     <div class="referencing-components-loading"></div>
                 </div>
                 <div class="setting-field">
@@ -54,8 +54,8 @@
             </div>
             <div class="setting">
                 <div class="setting-name">
-                    Referencing Processors
-                    <div class="fa fa-question-circle" alt="Info" title="Processors referencing this variable."></div>
+                    引用处理器
+                    <div class="fa fa-question-circle" alt="Info" title="引用该变量的处理器."></div>
             </div>
                 <div class="setting-field">
                     <ul id="variable-registry-affected-processors"></ul>
@@ -63,8 +63,8 @@
             </div>
             <div class="setting">
                 <div class="setting-name">
-                    Referencing Controller Services
-                    <div class="fa fa-question-circle" alt="Info" title="Controller Services referencing this variable."></div>
+                    引用控制器服务
+                    <div class="fa fa-question-circle" alt="Info" title="引用该变量的控制器服务."></div>
                 </div>
                 <div class="setting-field">
                     <ul id="variable-registry-affected-controller-services"></ul>
@@ -72,8 +72,8 @@
             </div>
             <div class="setting">
                 <div class="setting-name">
-                    Unauthorized referencing components
-                    <div class="fa fa-question-circle" alt="Info" title="Referencing components for which READ or WRITE permissions are not granted."></div>
+                    未授权的组件引用
+                    <div class="fa fa-question-circle" alt="Info" title="没有引用组件的读写权限."></div>
                 </div>
                 <div class="setting-field">
                     <ul id="variable-registry-affected-unauthorized-components"></ul>
@@ -81,14 +81,14 @@
             </div>
         </div>
     </div>
-    <div id="variable-message" class="ellipsis" title="Parameters are replacing variables. Learn more about the greater power and security of parameters.">
-        Parameters are replacing variables. <span id="parameters-documentation-link" class="link" title="Learn more about parameters">Learn more</span> about the greater power and security of parameters.
+    <div id="variable-message" class="ellipsis" title="参数是可替换变量. 了解更多关于参数的安全性和强大功能的详情.">
+        参数是可替换变量. <span id="parameters-documentation-link" class="link" title="了解关于参数的更多信息">了解更多信息</span> 关于参数的安全性和强大功能.
     </div>
 </div>
 <div id="new-variable-dialog" class="dialog cancellable small-dialog hidden">
     <div class="dialog-content">
         <div>
-            <div class="setting-name">Variable name</div>
+            <div class="setting-name">变量名称</div>
             <div class="setting-field new-variable-name-container">
                 <input id="new-variable-name" type="text"/>
             </div>

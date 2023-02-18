@@ -1,0 +1,99 @@
+relationships:
+  original: {en: 'Both of the incoming FlowFiles (''original'' and ''enrichment'')
+      will be routed to this Relationship. I.e., this is the ''original'' version
+      of both of these FlowFiles.', zh: 两个传入的流文件（“原始”和“富集”）都将路由到此关系。一、 例如，这是这两个FlowFiles的“原始”版本。}
+  joined: {en: The resultant FlowFile with Records joined together from both the original
+      and enrichment FlowFiles will be routed to this relationship, zh: 原始流文件和浓缩流文件的记录合并在一起的结果流文件将发送到此关系}
+  failure: {en: 'If both the ''original'' and ''enrichment'' FlowFiles arrive at the
+      processor but there was a failure in joining the records, both of those FlowFiles
+      will be routed to this relationship.', zh: 如果“原始”和“充实”流文件都到达处理器，但在连接记录时失败，则这两个流文件都将被路由到此关系。}
+  timeout: {en: 'If one of the incoming FlowFiles (i.e., the ''original'' FlowFile
+      or the ''enrichment'' FlowFile) arrives to this Processor but the other does
+      not arrive within the configured Timeout period, the FlowFile that did arrive
+      is routed to this relationship.', zh: 如果一个传入的流文件（即“原始”流文件或“充实”流文件）到达此处理器，但另一个未在配置的超时时间内到达，则已到达的流文件将路由到此关系。}
+systemResourceConsiderations:
+  en: ['This Processor will load into heap all FlowFiles that are on its incoming
+      queues. While it loads the FlowFiles themselves, and not their content, the
+      FlowFile attributes can be very memory intensive. Additionally, if the Join
+      Strategy is set to SQL, the SQL engine may require buffering the entire contents
+      of the enrichment FlowFile for each concurrent task. See Processor''s Additional
+      Details for more details and for steps on how to mitigate these concerns.']
+  zh: [此处理器将将其传入队列中的所有FlowFiles加载到堆中。当它加载FlowFile本身而不是其内容时，FlowFile属性可能会占用大量内存。此外，如果Join
+      Strategy设置为SQL，则SQL引擎可能需要缓冲每个并发任务的充实FlowFile的全部内容。有关如何减轻这些担忧的更多详细信息和步骤，请参阅处理器的其他详细信息。]
+capabilityDescription: {en: 'Joins together Records from two different FlowFiles where
+    one FlowFile, the ''original'' contains arbitrary records and the second FlowFile,
+    the ''enrichment'' contains additional data that should be used to enrich the
+    first. See Additional Details for more information on how to configure this processor
+    and the different use cases that it aims to accomplish.', zh: 将来自两个不同FlowFile的记录合并在一起，其中一个FlowFile（“原始”）包含任意记录，而第二个FlowFile，“丰富”包含应用于丰富第一个的附加数据。有关如何配置此处理器及其目标实现的不同用例的更多信息，请参阅其他详细信息。}
+properties:
+  dbf-default-precision:
+    en: {displayName: Default Decimal Precision, description: 'When a DECIMAL/NUMBER
+        value is written as a ''decimal'' Avro logical type, a specific ''precision''
+        denoting number of available digits is required. Generally, precision is defined
+        by column data type definition or database engines default. However undefined
+        precision (0) can be returned from some database engines. ''Default Decimal
+        Precision'' is used when writing those undefined precision numbers.'}
+    zh: {description: 当DECIMAL/NUMBER值写为“十进制”Avro逻辑类型时，需要一个表示可用位数的特定“精度”。通常，精度由列数据类型定义或数据库引擎默认值定义。但是，某些数据库引擎可以返回未定义的精度（0）写入那些未定义的精度数字时使用“默认十进制精度”。,
+      displayName: 默认小数精度}
+  Join Strategy:
+    en: {displayName: Join Strategy, description: Specifies how to join the two FlowFiles
+        into a single FlowFile}
+    zh: {description: 指定如何将两个FlowFile合并为一个FlowFile, displayName: 加入策略}
+  Insertion Record Path:
+    en: {displayName: Insertion Record Path, description: 'Specifies where in the
+        ''original'' Record the ''enrichment'' Record''s fields should be inserted.
+        Note that if the RecordPath does not point to any existing field in the original
+        Record, the enrichment will not be inserted.'}
+    zh: {description: 指定“原始”记录中应插入“丰富”记录字段的位置。请注意，如果RecordPath未指向原始记录中的任何现有字段，则不会插入充实。,
+      displayName: 插入记录路径}
+  Timeout:
+    en: {displayName: Timeout, description: 'Specifies the maximum amount of time
+        to wait for the second FlowFile once the first arrives at the processor, after
+        which point the first FlowFile will be routed to the ''timeout'' relationship.'}
+    zh: {description: 指定第一个流文件到达处理器后等待第二个流文件的最长时间，在此之后，第一个流将被路由到“超时”关系。, displayName: 超时}
+  Original Record Reader:
+    en: {displayName: Original Record Reader, description: The Record Reader for reading
+        the 'original' FlowFile}
+    zh: {description: 读取“原始”FlowFile的记录读取器, displayName: 原始记录读取器}
+  Record Writer:
+    en: {displayName: Record Writer, description: 'The Record Writer to use for writing
+        the results. If the Record Writer is configured to inherit the schema from
+        the Record, the schema that it will inherit will be the result of merging
+        both the ''original'' record schema and the ''enrichment'' record schema.'}
+    zh: {description: 用于写入结果的记录编写器。如果记录编写器配置为从记录继承架构，则它将继承的架构将是合并“原始”记录架构和“丰富”记录架构的结果。,
+      displayName: 记录编写器}
+  Enrichment Record Reader:
+    en: {displayName: Enrichment Record Reader, description: The Record Reader for
+        reading the 'enrichment' FlowFile}
+    zh: {description: 用于读取“富集”FlowFile的记录读取器, displayName: 扩展记录读取器}
+  dbf-default-scale:
+    en: {displayName: Default Decimal Scale, description: 'When a DECIMAL/NUMBER value
+        is written as a ''decimal'' Avro logical type, a specific ''scale'' denoting
+        number of available decimal digits is required. Generally, scale is defined
+        by column data type definition or database engines default. However when undefined
+        precision (0) is returned, scale can also be uncertain with some database
+        engines. ''Default Decimal Scale'' is used when writing those undefined numbers.
+        If a value has more decimals than specified scale, then the value will be
+        rounded-up, e.g. 1.53 becomes 2 with scale 0, and 1.5 with scale 1.'}
+    zh: {description: 当DECIMAL/NUMBER值写为“十进制”Avro逻辑类型时，需要一个表示可用十进制位数的特定“刻度”。通常，比例由列数据类型定义或数据库引擎默认值定义。然而，当返回未定义的精度（0）时，某些数据库引擎的规模也可能不确定写入未定义的数字时使用“默认小数位数”。如果某个值的小数位数比指定的小数位数多，则该值将向上舍入，例如，1.53在小数位数为0时变为2，在小数位数1时变为1.5。,
+      displayName: 默认小数位数}
+  Maximum number of Bins:
+    en: {displayName: Maximum number of Bins, description: Specifies the maximum number
+        of bins that can be held in memory at any one time}
+    zh: {description: 指定一次可以保存在内存中的最大箱数, displayName: 最大箱数}
+  SQL:
+    en: {displayName: SQL, description: 'The SQL SELECT statement to evaluate. Expression
+        Language may be provided, but doing so may result in poorer performance. Because
+        this Processor is dealing with two FlowFiles at a time, it''s also important
+        to understand how attributes will be referenced. If both FlowFiles have an
+        attribute with the same name but different values, the Expression Language
+        will resolve to the value provided by the ''enrichment'' FlowFile.'}
+    zh: {description: 要计算的SQL SELECT语句。可以提供表达式语言，但这样做可能会导致较差的性能。由于此处理器一次处理两个FlowFiles，因此了解如何引用属性也很重要。如果两个FlowFile都具有相同名称但不同值的属性，则表达式语言将解析为“充实”FlowFile提供的值。,
+      displayName: SQL语言}
+writeAttributes:
+  record.count: {en: The number of records in the FlowFile, zh: FlowFile中的记录数}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer, zh: 设置mime。type属性设置为记录编写器指定的MIME类型}
+tags:
+  en: [fork, join, enrichment, record, sql, wrap, recordpath, merge, combine, streams]
+  zh: [叉, 参加, 丰富, 记录, sql语言, 包, 记录路径, 合并, 结合, 溪流]

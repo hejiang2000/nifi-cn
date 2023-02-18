@@ -1,0 +1,51 @@
+relationships:
+  failure: {en: All flowfiles that fail for reasons unrelated to server availability
+      go to this relationship., zh: 由于与服务器可用性无关的原因而失败的所有流文件都属于此关系。}
+  document: {en: Fetched documents are routed to this relationship., zh: 提取的文档将路由到此关系。}
+  not_found: {en: A FlowFile is routed to this relationship if the specified document
+      does not exist in the Elasticsearch cluster., zh: 如果Elasticsearch集群中不存在指定的文档，则将FlowFile路由到此关系。}
+  retry: {en: All flowfiles that fail due to server/cluster availability go to this
+      relationship., zh: 由于服务器/群集可用性而失败的所有流文件都属于此关系。}
+dynamicProperties:
+  The name of a URL query parameter to add:
+    en: {description: Adds the specified property name/value as a query parameter
+        in the Elasticsearch URL used for processing., value: The value of the URL
+        query parameter}
+    zh: {description: 在用于处理的Elasticsearch URL中添加指定的属性名称/值作为查询参数。, value: URL查询参数的值}
+capabilityDescription: {en: Elasticsearch get processor that uses the official Elastic
+    REST client libraries to fetch a single document from Elasticsearch by _id. Note
+    that the full body of the document will be read into memory before being written
+    to a FlowFile for transfer., zh: Elasticsearch获取处理器，它使用官方ElasticREST客户端库从Elasticearch中按_id获取单个文档。请注意，在写入FlowFile进行传输之前，文档的全部内容将被读入内存。}
+properties:
+  el-rest-fetch-index:
+    en: {displayName: Index, description: The name of the index to use.}
+    zh: {description: 要使用的索引的名称。, displayName: 指数}
+  get-es-id:
+    en: {displayName: Document Id, description: The _id of the document to retrieve.}
+    zh: {description: 要检索的文档的id。, displayName: 文档Id}
+  el-rest-client-service:
+    en: {displayName: Client Service, description: An Elasticsearch client service
+        to use for running queries.}
+    zh: {description: 用于运行查询的Elasticsearch客户端服务。, displayName: 客户端服务}
+  el-rest-type:
+    en: {displayName: Type, description: The type of this document (used by Elasticsearch
+        for indexing and searching).}
+    zh: {description: 此文档的类型（Elasticsearch用于索引和搜索）。, displayName: 类型}
+  get-es-attribute-name:
+    en: {displayName: Attribute Name, description: The name of the FlowFile attribute
+        to use for the retrieved document output.}
+    zh: {description: 用于检索文档输出的FlowFile属性的名称。, displayName: 属性名称}
+  get-es-destination:
+    en: {displayName: Destination, description: Indicates whether the retrieved document
+        is written to the FlowFile content or a FlowFile attribute.}
+    zh: {description: 指示检索到的文档是写入FlowFile内容还是写入FlowFile属性。, displayName: 目的地}
+writeAttributes:
+  elasticsearch.get.error: {en: The error message provided by Elasticsearch if there
+      is an error fetching the document., zh: Elasticsearch在获取文档时出错时提供的错误消息。}
+  filename: {en: The filename attribute is set to the document identifier, zh: 文件名属性设置为文档标识符}
+  elasticsearch.index: {en: The Elasticsearch index containing the document, zh: 包含文档的Elasticsearch索引}
+  elasticsearch.type: {en: The Elasticsearch document type, zh: Elasticsearch文档类型}
+tags:
+  en: [json, elasticsearch, elasticsearch5, elasticsearch6, elasticsearch7, elasticsearch8,
+    put, index, record]
+  zh: [json文件, 弹性搜索, 弹性搜索5, 弹性搜索6, 弹性搜索7, 弹性搜索8, 放, 指数, 记录]

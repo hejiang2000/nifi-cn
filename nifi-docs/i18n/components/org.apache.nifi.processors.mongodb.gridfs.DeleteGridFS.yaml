@@ -1,0 +1,38 @@
+relationships:
+  success: {en: 'When the operation succeeds, the flowfile is sent to this relationship.',
+    zh: 操作成功后，流程文件将发送到此关系。}
+  failure: {en: 'When there is a failure processing the flowfile, it goes to this
+      relationship.', zh: 当处理流文件失败时，将转到此关系。}
+capabilityDescription: {en: Deletes a file from GridFS using a file name or a query.,
+  zh: 使用文件名或查询从GridFS中删除文件。}
+properties:
+  delete-gridfs-query:
+    en: {displayName: Query, description: A valid MongoDB query to use to find and
+        delete one or more files from GridFS.}
+    zh: {description: 用于从GridFS中查找和删除一个或多个文件的有效MongoDB查询。, displayName: 查询}
+  gridfs-file-name:
+    en: {displayName: File Name, description: The name of the file in the bucket that
+        is the target of this processor. GridFS file names do not include path information
+        because GridFS does not sort files into folders within a bucket.}
+    zh: {description: 存储桶中作为此处理器目标的文件的名称。GridFS文件名不包含路径信息，因为GridFS不会将文件排序到存储桶中的文件夹中。,
+      displayName: 文件名}
+  gridfs-client-service:
+    en: {displayName: Client Service, description: The MongoDB client service to use
+        for database connections.}
+    zh: {description: 用于数据库连接的MongoDB客户端服务。, displayName: 客户端服务}
+  mongo-query-attribute:
+    en: {displayName: Query Output Attribute, description: 'If set, the query will
+        be written to a specified attribute on the output flowfiles.'}
+    zh: {description: 如果设置，查询将写入输出流文件上的指定属性。, displayName: 查询输出属性}
+  gridfs-database-name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  gridfs-bucket-name:
+    en: {displayName: Bucket Name, description: 'The GridFS bucket where the files
+        will be stored. If left blank, it will use the default value ''fs'' that the
+        MongoDB client driver uses.'}
+    zh: {description: 存储文件的GridFS存储桶。如果留空，它将使用MongoDB客户端驱动程序使用的默认值“fs”。, displayName: Bucket名称}
+tags:
+  en: [gridfs, delete, mongodb]
+  zh: [格里弗斯, 删去, 数据库]

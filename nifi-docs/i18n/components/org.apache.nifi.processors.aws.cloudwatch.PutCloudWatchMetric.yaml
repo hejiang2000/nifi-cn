@@ -1,0 +1,96 @@
+relationships:
+  success: {en: FlowFiles are routed to success relationship, zh: FlowFiles路由到成功关系}
+  failure: {en: FlowFiles are routed to failure relationship, zh: FlowFiles路由到故障关系}
+dynamicProperties:
+  Dimension Name:
+    en: {description: Allows dimension name/value pairs to be added to the metric.
+        AWS supports a maximum of 10 dimensions., value: Dimension Value}
+    zh: {description: 允许将维度名称/值对添加到度量中。AWS最多支持10个维度。, value: 维度值}
+capabilityDescription: {en: 'Publishes metrics to Amazon CloudWatch. Metric can be
+    either a single value, or a StatisticSet comprised of minimum, maximum, sum and
+    sample count.', zh: 向Amazon CloudWatch发布指标。度量可以是单个值，也可以是由最小值、最大值、总和和样本计数组成的StatisticSet。}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: Proxy host name or IP}
+    zh: {description: 代理主机名或IP, displayName: 代理主机}
+  Access Key:
+    en: {displayName: Access Key ID, description: ''}
+    zh: {description: '', displayName: 访问密钥ID}
+  Endpoint Override URL:
+    en: {displayName: Endpoint Override URL, description: 'Endpoint URL to use instead
+        of the AWS default including scheme, host, port, and path. The AWS libraries
+        select an endpoint URL based on the AWS region, but this property overrides
+        the selected endpoint URL, allowing use with other S3-compatible endpoints.'}
+    zh: {description: 要使用的端点URL，而不是AWS默认值，包括方案、主机、端口和路径。AWS库根据AWS区域选择一个端点URL，但此属性覆盖所选的端点URL，允许与其他S3兼容的端点一起使用。,
+      displayName: 终结点覆盖URL}
+  sum:
+    en: {displayName: Sum, description: The sum of values for the sample set. Must
+        be a double}
+    zh: {description: 样本集的值之和。必须是双人间, displayName: 总和}
+  Unit:
+    en: {displayName: Unit, description: 'The unit of the metric. (e.g Seconds, Bytes,
+        Megabytes, Percent, Count,  Kilobytes/Second, Terabits/Second, Count/Second)
+        For details see http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDatum.html'}
+    zh: {description: '公制单位。（例如秒、字节、兆字节、百分比、计数、千字节/秒、兆比特/秒、计数/秒）有关详细信息，请参阅http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDatum.html',
+      displayName: 单元}
+  Timestamp:
+    en: {displayName: Timestamp, description: 'A point in time expressed as the number
+        of milliseconds since Jan 1, 1970 00:00:00 UTC. If not specified, the default
+        value is set to the time the metric data was received'}
+    zh: {description: '一个时间点，表示为自1970年1月1日00:00:00 UTC以来的毫秒数。如果未指定，则默认值设置为接收度量数据的时间',
+      displayName: 时间戳}
+  Namespace:
+    en: {displayName: Namespace, description: The namespace for the metric data for
+        CloudWatch}
+    zh: {description: CloudWatch度量数据的命名空间, displayName: 命名空间}
+  AWS Credentials Provider service:
+    en: {displayName: AWS Credentials Provider Service, description: The Controller
+        Service that is used to obtain aws credentials provider}
+    zh: {description: 用于获取aws凭据提供程序的控制器服务, displayName: AWS凭据提供商服务}
+  sampleCount:
+    en: {displayName: Sample Count, description: The number of samples used for the
+        statistic set. Must be a double}
+    zh: {description: 用于统计集的样本数。必须是双人间, displayName: 样本计数}
+  MetricName:
+    en: {displayName: Metric Name, description: The name of the metric}
+    zh: {description: 度量的名称, displayName: 度量名称}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'Specifies an optional SSL
+        Context Service that, if provided, will be used to create connections'}
+    zh: {description: 指定可选的SSL上下文服务（如果提供），将用于创建连接, displayName: SSL上下文服务}
+  proxy-user-password:
+    en: {displayName: Proxy Password, description: Proxy password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  Value:
+    en: {displayName: Value, description: The value for the metric. Must be a double}
+    zh: {description: 度量值。必须是双人间, displayName: 价值}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: ''}
+    zh: {description: '', displayName: 通信超时}
+  maximum:
+    en: {displayName: Maximum, description: The maximum value of the sample set. Must
+        be a double}
+    zh: {description: 样本集的最大值。必须是双人间, displayName: 最大限度}
+  Region:
+    en: {displayName: Region, description: ''}
+    zh: {description: '', displayName: 区域}
+  Secret Key:
+    en: {displayName: Secret Access Key, description: ''}
+    zh: {description: '', displayName: 秘密访问密钥}
+  Credentials File:
+    en: {displayName: Credentials File, description: Path to a file containing AWS
+        access key and secret key in properties file format.}
+    zh: {description: 包含属性文件格式的AWS访问密钥和密钥的文件的路径。, displayName: 凭据文件}
+  proxy-user-name:
+    en: {displayName: Proxy Username, description: Proxy username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  minimum:
+    en: {displayName: Minimum, description: The minimum value of the sample set. Must
+        be a double}
+    zh: {description: 样本集的最小值。必须是双人间, displayName: 最低限度}
+  Proxy Host Port:
+    en: {displayName: Proxy Host Port, description: Proxy host port}
+    zh: {description: 代理主机端口, displayName: 代理主机端口}
+tags:
+  en: [amazon, aws, cloudwatch, metrics, put, publish]
+  zh: [亚马逊, 自动售货机, 云监控, 韵律学, 放, 出版]

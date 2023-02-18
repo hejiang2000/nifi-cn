@@ -1,0 +1,49 @@
+dynamicProperties:
+  A Spring Vault configuration property name:
+    en: {description: 'Allows any Spring Vault property keys to be specified, as described
+        in (https://docs.spring.io/spring-vault/docs/2.3.x/reference/html/#vault.core.environment-vault-configuration).
+        See Additional Details for more information.', value: The property value}
+    zh: {description: '允许指定任何Spring Vault特性键，如中所述(https://docs.spring.io/spring-vault/docs/2.3.x/reference/html/#vault.core.environment-vault配置）。有关详细信息，请参阅其他详细信息。',
+      value: 属性值}
+capabilityDescription: {en: A controller service for interacting with HashiCorp Vault.,
+  zh: 用于与HashiCorp Vault交互的控制器服务。}
+properties:
+  configuration-strategy:
+    en: {displayName: Configuration Strategy, description: Specifies the source of
+        the configuration properties.}
+    zh: {description: 指定配置属性的源。, displayName: 配置策略}
+  vault.ssl.context.service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections to the HashiCorp
+        Vault server.}
+    zh: {description: SSL上下文服务用于为到HashiCorp Vault服务器的TLS/SSL连接提供客户端证书信息。, displayName: SSL上下文服务}
+  vault.connection.timeout:
+    en: {displayName: Connection Timeout, description: The connection timeout for
+        the HashiCorp Vault client}
+    zh: {description: HashiCorp Vault客户端的连接超时, displayName: 连接超时}
+  vault.properties.files:
+    en: {displayName: Vault Properties Files, description: 'A comma-separated list
+        of files containing HashiCorp Vault configuration properties, as described
+        in the Spring Vault Environment Configuration documentation (https://docs.spring.io/spring-vault/docs/2.3.x/reference/html/#vault.core.environment-vault-configuration).
+        All of the Spring property keys and authentication-specific property keys
+        are supported.'}
+    zh: {description: '包含HashiCorp Vault配置属性的文件的逗号分隔列表，如Spring Vault环境配置文档中所述(https://docs.spring.io/spring-vault/docs/2.3.x/reference/html/#vault.core.environment-vault配置）。支持所有Spring属性密钥和特定于身份验证的属性密钥。',
+      displayName: Vault特性文件}
+  vault.uri:
+    en: {displayName: Vault URI, description: 'The URI of the HashiCorp Vault server
+        (e.g., http://localhost:8200).  Required if not specified in the Bootstrap
+        HashiCorp Vault Configuration File.'}
+    zh: {description: 'HashiCorp Vault服务器的URI（例如。，http://localhost:8200).  如果未在Bootstrap
+        HashiCorp Vault配置文件中指定，则为必填项。', displayName: 保管库URI}
+  vault.read.timeout:
+    en: {displayName: Read Timeout, description: The read timeout for the HashiCorp
+        Vault client}
+    zh: {description: HashiCorp Vault客户端的读取超时, displayName: 读取超时}
+  vault.authentication:
+    en: {displayName: Vault Authentication, description: 'Vault authentication method,
+        as described in the Spring Vault Environment Configuration documentation (https://docs.spring.io/spring-vault/docs/2.3.x/reference/html/#vault.core.environment-vault-configuration).'}
+    zh: {description: 'Vault身份验证方法，如Spring Vault环境配置文档中所述(https://docs.spring.io/spring-vault/docs/2.3.x/reference/html/#vault.core.environment-vault配置）。',
+      displayName: Vault身份验证}
+tags:
+  en: [hashicorp, vault, client]
+  zh: [哈希公司, 金库, 客户]

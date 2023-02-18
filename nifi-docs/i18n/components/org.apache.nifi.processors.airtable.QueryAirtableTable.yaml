@@ -1,0 +1,78 @@
+relationships:
+  success: {en: For FlowFiles created as a result of a successful query., zh: 对于查询成功后创建的FlowFiles。}
+capabilityDescription: {en: Query records from an Airtable table. Records are incrementally
+    retrieved based on the last modified time of the records. Records can also be
+    further filtered by setting the 'Custom Filter' property which supports the formulas
+    provided by the Airtable API. This processor is intended to be run on the Primary
+    Node only., zh: 从Airtable表中查询记录。根据记录的上次修改时间，以增量方式检索记录。还可以通过设置支持Airtable API提供的公式的“自定义筛选器”属性来进一步筛选记录。此处理器只能在主节点上运行。}
+statefulDescription: {en: 'The last successful query''s time is stored in order to
+    enable incremental loading. The initial query returns all the records in the table
+    and each subsequent query filters the records by their last modified time. In
+    other words, if a record is updated after the last successful query only the updated
+    records will be returned in the next query. State is stored across the cluster,
+    so this Processor can run only on the Primary Node and if a new Primary Node is
+    selected, the new node can pick up where the previous one left off without duplicating
+    the data.', zh: 存储上次成功查询的时间，以便启用增量加载。初始查询返回表中的所有记录，每个后续查询按记录的上次修改时间过滤记录。换句话说，如果在上一次成功查询之后更新了记录，那么在下一次查询中只会返回更新的记录。状态存储在整个集群中，因此此处理器只能在主节点上运行，如果选择了新的主节点，则新节点可以在不复制数据的情况下恢复上一个主节点的状态。}
+properties:
+  query-time-window-lag:
+    en: {displayName: Query Time Window Lag, description: The amount of lag to be
+        applied to the query time window's end point. Set this property to avoid missing
+        records when the clock of your local machines and Airtable servers' clock
+        are not in sync. Must be greater than or equal to 1 second.}
+    zh: {description: 要应用于查询时间窗口终点的滞后量。设置此属性以避免在本地计算机的时钟与Airtable服务器的时钟不同步时丢失记录。必须大于或等于1秒。,
+      displayName: 查询时间窗口滞后}
+  api-key:
+    en: {displayName: API Key, description: The REST API key to use in queries. Should
+        be generated on Airtable's account page.}
+    zh: {description: 要在查询中使用的REST API键。应在Airtable的账户页面上生成。, displayName: API密钥}
+  api-url:
+    en: {displayName: API URL, description: 'The URL for the Airtable REST API including
+        the domain and the path to the API (e.g. https://api.airtable.com/v0).'}
+    zh: {description: 'Airtable REST API的URL，包括域和API的路径（例如。https://api.airtable.com/v0).',
+      displayName: API URL}
+  custom-filter:
+    en: {displayName: Custom Filter, description: Filter records by Airtable's formulas.}
+    zh: {description: 根据Airtable的公式过滤记录。, displayName: 自定义筛选器}
+  query-page-size:
+    en: {displayName: Query Page Size, description: Number of records to be fetched
+        in a page. Should be between 1 and 100 inclusively.}
+    zh: {description: 页面中要提取的记录数。应介于1和100之间（包括1和100）。, displayName: 查询页面大小}
+  table-id:
+    en: {displayName: Table ID, description: The name or the ID of the Airtable table
+        to be queried.}
+    zh: {description: 要查询的Airtable表的名称或ID。, displayName: 表ID}
+  max-records-per-flowfile:
+    en: {displayName: Max Records Per FlowFile, description: 'The maximum number of
+        result records that will be included in a single FlowFile. This will allow
+        you to break up very large result sets into multiple FlowFiles. If no value
+        specified, then all records are returned in a single FlowFile.'}
+    zh: {description: 单个FlowFile中包含的最大结果记录数。这将允许您将非常大的结果集分解为多个FlowFiles。如果未指定值，则在单个FlowFile中返回所有记录。,
+      displayName: 每个流文件的最大记录数}
+  base-id:
+    en: {displayName: Base ID, description: The ID of the Airtable base to be queried.}
+    zh: {description: 要查询的Airtable库的ID。, displayName: 基本ID}
+  fields:
+    en: {displayName: Fields, description: Comma-separated list of fields to query
+        from the table. Both the field's name and ID can be used.}
+    zh: {description: 要从表中查询的字段的逗号分隔列表。字段的名称和ID都可以使用。, displayName: 领域}
+  web-client-service-provider:
+    en: {displayName: Web Client Service Provider, description: Web Client Service
+        Provider to use for Airtable REST API requests}
+    zh: {description: 用于Airtable REST API请求的Web客户端服务提供程序, displayName: Web客户端服务提供商}
+writeAttributes:
+  record.count: {en: Sets the number of records in the FlowFile., zh: 设置FlowFile中的记录数。}
+  fragment.identifier: {en: If 'Max Records Per FlowFile' is set then all FlowFiles
+      from the same query result set will have the same value for the fragment.identifier
+      attribute. This can then be used to correlate the results., zh: 如果设置了“每个FlowFile的最大记录数”，则来自同一查询结果集的所有FlowFiles将具有相同的片段值。标识符属性。然后，这可以用于关联结果。}
+  fragment.index: {en: If 'Max Records Per FlowFile' is set then the position of this
+      FlowFile in the list of outgoing FlowFiles that were all derived from the same
+      result set FlowFile. This can be used in conjunction with the fragment.identifier
+      attribute to know which FlowFiles originated from the same query result set
+      and in what order FlowFiles were produced, zh: 如果设置了“每个FlowFile的最大记录数”，则该FlowFile在所有来自同一结果集FlowFile的传出FlowFile列表中的位置。这可以与片段一起使用。identifier属性，以了解哪些FlowFiles源自同一查询结果集以及FlowFiles的生成顺序}
+  fragment.count: {en: If 'Max Records Per FlowFile' is set then this is the total
+      number of FlowFiles produced by a single ResultSet. This can be used in conjunction
+      with the fragment.identifier attribute in order to know how many FlowFiles belonged
+      to the same incoming ResultSet., zh: 如果设置了“每个FlowFile的最大记录数”，则这是单个ResultSet生成的FlowFile总数。这可以与片段一起使用。identifier属性，以便知道有多少FlowFiles属于同一传入ResultSet。}
+tags:
+  en: [airtable, query, database]
+  zh: [可充气的, 查询, 数据库]

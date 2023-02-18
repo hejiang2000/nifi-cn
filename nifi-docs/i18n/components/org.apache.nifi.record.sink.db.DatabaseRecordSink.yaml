@@ -1,0 +1,56 @@
+capabilityDescription: {en: Provides a service to write records using a configured
+    database connection., zh: 提供使用配置的数据库连接写入记录的服务。}
+properties:
+  db-record-sink-translate-field-names:
+    en: {displayName: Translate Field Names, description: 'If true, the Processor
+        will attempt to translate field names into the appropriate column names for
+        the table specified. If false, the field names must match the column names
+        exactly, or the column will not be updated'}
+    zh: {description: 如果为true，处理器将尝试将字段名转换为指定表的适当列名。如果为false，则字段名必须与列名完全匹配，否则将不会更新该列,
+      displayName: 翻译字段名称}
+  db-record-sink-query-timeout:
+    en: {displayName: Max Wait Time, description: 'The maximum amount of time allowed
+        for a running SQL statement , zero means there is no limit. Max time less
+        than 1 second will be equal to zero.'}
+    zh: {description: 运行SQL语句所允许的最长时间，零表示没有限制。小于1秒的最大时间将等于零。, displayName: 最长等待时间}
+  db-record-sink-schema-name:
+    en: {displayName: Schema Name, description: 'The name of the schema that the table
+        belongs to. This may not apply for the database that you are updating. In
+        this case, leave the field empty'}
+    zh: {description: 表所属的架构的名称。这可能不适用于正在更新的数据库。在这种情况下，将字段留空, displayName: 架构名称}
+  db-record-sink-quoted-identifiers:
+    en: {displayName: Quote Column Identifiers, description: 'Enabling this option
+        will cause all column names to be quoted, allowing you to use reserved words
+        as column names in your tables.'}
+    zh: {description: 启用此选项将导致所有列名都被引用，从而允许您在表中使用保留字作为列名。, displayName: 引用列标识符}
+  db-record-sink-quoted-table-identifiers:
+    en: {displayName: Quote Table Identifiers, description: Enabling this option will
+        cause the table name to be quoted to support the use of special characters
+        in the table name.}
+    zh: {description: 启用此选项将导致引用表名，以支持在表名中使用特殊字符。, displayName: 报价表标识符}
+  db-record-sink-catalog-name:
+    en: {displayName: Catalog Name, description: 'The name of the catalog that the
+        statement should update. This may not apply for the database that you are
+        updating. In this case, leave the field empty'}
+    zh: {description: 语句应更新的目录的名称。这可能不适用于您正在更新的数据库。在这种情况下，将字段留空, displayName: 目录名称}
+  db-record-sink-unmatched-column-behavior:
+    en: {displayName: Unmatched Column Behavior, description: 'If an incoming record
+        does not have a field mapping for all of the database table''s columns, this
+        property specifies how to handle the situation'}
+    zh: {description: 如果传入记录没有数据库表的所有列的字段映射，则此属性指定如何处理这种情况, displayName: 不匹配的列行为}
+  db-record-sink-unmatched-field-behavior:
+    en: {displayName: Unmatched Field Behavior, description: 'If an incoming record
+        has a field that does not map to any of the database table''s columns, this
+        property specifies how to handle the situation'}
+    zh: {description: 如果传入记录的字段未映射到数据库表的任何列，则此属性指定如何处理这种情况, displayName: 不匹配的字段行为}
+  db-record-sink-table-name:
+    en: {displayName: Table Name, description: The name of the table that the statement
+        should affect.}
+    zh: {description: 语句应影响的表的名称。, displayName: 表名称}
+  db-record-sink-dcbp-service:
+    en: {displayName: Database Connection Pooling Service, description: The Controller
+        Service that is used to obtain a connection to the database for sending records.}
+    zh: {description: 用于获取数据库连接以发送记录的控制器服务。, displayName: 数据库连接池服务}
+tags:
+  en: [db, jdbc, database, connection, record]
+  zh: [数据库, jdbc语言, 数据库, 联系, 记录]

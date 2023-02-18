@@ -1,0 +1,40 @@
+capabilityDescription: {en: 'Reports metrics in Prometheus format by creating a /metrics
+    HTTP(S) endpoint which can be used for external monitoring of the application.
+    The reporting task reports a set of metrics regarding the JVM (optional) and the
+    NiFi instance. Note that if the underlying Jetty server (i.e. the Prometheus endpoint)
+    cannot be started (for example if two PrometheusReportingTask instances are started
+    on the same port), this may cause a delay in shutting down NiFi while it waits
+    for the server resources to be cleaned up.', zh: 通过创建/metrics HTTP（S）端点以Prometheus格式报告度量，该端点可用于应用程序的外部监控。报告任务报告关于JVM（可选）和NiFi实例的一组度量。请注意，如果基础Jetty服务器（即Prometheus端点）无法启动（例如，如果两个PrometheusReportingTask实例在同一端口上启动），这可能会导致NiFi在等待清理服务器资源时延迟关闭。}
+properties:
+  prometheus-reporting-task-metrics-endpoint-port:
+    en: {displayName: Prometheus Metrics Endpoint Port, description: The Port where
+        prometheus metrics can be accessed}
+    zh: {description: 可以访问普罗米修斯度量的端口, displayName: Prometheus度量端点端口}
+  prometheus-reporting-task-ssl-context:
+    en: {displayName: SSL Context Service, description: 'The SSL Context Service to
+        use in order to secure the server. If specified, the server willaccept only
+        HTTPS requests; otherwise, the server will accept only HTTP requests'}
+    zh: {description: 用于保护服务器的SSL上下文服务。如果指定，服务器将仅接受HTTPS请求；否则，服务器将只接受HTTP请求, displayName: SSL上下文服务}
+  prometheus-reporting-task-metrics-strategy:
+    en: {displayName: Metrics Reporting Strategy, description: 'The granularity on
+        which to report metrics. Options include only the root process group, all
+        process groups, or all components'}
+    zh: {description: 报告度量的粒度。选项仅包括根进程组、所有进程组或所有组件, displayName: 度量报告策略}
+  prometheus-reporting-task-instance-id:
+    en: {displayName: Instance ID, description: Id of this NiFi instance to be included
+        in the metrics sent to Prometheus}
+    zh: {description: 发送给普罗米修斯的度量中包含的此NiFi实例的Id, displayName: 实例ID}
+  prometheus-reporting-task-client-auth:
+    en: {displayName: Client Authentication, description: Specifies whether or not
+        the Reporting Task should authenticate clients. This value is ignored if the
+        <SSL Context Service> Property is not specified or the SSL Context provided
+        uses only a KeyStore and not a TrustStore.}
+    zh: {description: 指定报告任务是否应验证客户端。如果未指定＜SSL上下文服务＞属性，或者提供的SSL上下文仅使用KeyStore而不使用TrustStore，则忽略此值。,
+      displayName: 客户端身份验证}
+  prometheus-reporting-task-metrics-send-jvm:
+    en: {displayName: Send JVM metrics, description: Send JVM metrics in addition
+        to the NiFi metrics}
+    zh: {description: 除了NiFi指标外，还发送JVM指标, displayName: 发送JVM度量}
+tags:
+  en: [reporting, prometheus, metrics, time series data]
+  zh: [报告, 普罗米修斯, 韵律学, 时间序列数据]

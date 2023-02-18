@@ -1,0 +1,104 @@
+relationships:
+  success: {en: A flow file with updated information about a specific event will be
+      sent to this relationship., zh: 包含特定事件更新信息的流文件将发送到此关系。}
+capabilityDescription: {en: 'This processor polls the notification events provided
+    by the HdfsAdmin API. Since this uses the HdfsAdmin APIs it is required to run
+    as an HDFS super user. Currently there are six types of events (append, close,
+    create, metadata, rename, and unlink). Please see org.apache.hadoop.hdfs.inotify.Event
+    documentation for full explanations of each event. This processor will poll for
+    new events based on a defined duration. For each event received a new flow file
+    will be created with the expected attributes and the event itself serialized to
+    JSON and written to the flow file''s content. For example, if event.type is APPEND
+    then the content of the flow file will contain a JSON file containing the information
+    about the append event. If successful the flow files are sent to the ''success''
+    relationship. Be careful of where the generated flow files are stored. If the
+    flow files are stored in one of processor''s watch directories there will be a
+    never ending flow of events. It is also important to be aware that this processor
+    must consume all events. The filtering must happen within the processor. This
+    is because the HDFS admin''s event notifications API does not have filtering.',
+  zh: 此处理器轮询HdfsAdmin API提供的通知事件。由于它使用HdfsAdminAPI，因此需要作为HDFS超级用户运行。目前有六种类型的事件（追加、关闭、创建、元数据、重命名和取消链接）。请参阅org.apache.hadoop.hdfs.notify。每个事件的完整解释的事件文档。此处理器将根据定义的持续时间轮询新事件。对于接收到的每个事件，将使用预期属性创建一个新的流文件，并将事件本身序列化为JSON并写入流文件的内容。例如，if事件。类型为APPEND，则流文件的内容将包含一个JSON文件，该文件包含有关APPEND事件的信息。如果成功，则将流文件发送到“成功”关系。请注意生成的流文件的存储位置。如果流文件存储在处理器的一个监视目录中，则会有一个永不结束的事件流。还要注意，此处理器必须使用所有事件。过滤必须在处理器内进行。这是因为HDFS管理员的事件通知API没有过滤。}
+statefulDescription: {en: 'The last used transaction id is stored. This is used ',
+  zh: 存储上次使用的事务id。这是使用的}
+properties:
+  Hadoop Configuration Resources:
+    en: {displayName: Hadoop Configuration Resources, description: 'A file or comma
+        separated list of files which contains the Hadoop file system configuration.
+        Without this, Hadoop will search the classpath for a ''core-site.xml'' and
+        ''hdfs-site.xml'' file or will revert to a default configuration. To use swebhdfs,
+        see ''Additional Details'' section of PutHDFS''s documentation.'}
+    zh: {description: 包含Hadoop文件系统配置的文件或逗号分隔的文件列表。否则，Hadoop将在类路径中搜索“核心站点”。xml'和'hdfs站点。xml文件，或将恢复为默认配置。要使用swebhdfs，请参阅PutHDFS文档的“其他详细信息”部分。,
+      displayName: Hadoop配置资源}
+  IOException Retries During Event Polling:
+    en: {displayName: IOException Retries During Event Polling, description: According
+        to the HDFS admin API for event polling it is good to retry at least a few
+        times. This number defines how many times the poll will be retried if it throws
+        an IOException.}
+    zh: {description: 根据事件轮询的HDFS管理API，最好至少重试几次。此数字定义如果引发IOException，轮询将重试多少次。, displayName: 事件轮询期间IOException重试次数}
+  Additional Classpath Resources:
+    en: {displayName: Additional Classpath Resources, description: 'A comma-separated
+        list of paths to files and/or directories that will be added to the classpath
+        and used for loading native libraries. When specifying a directory, all files
+        with in the directory will be added to the classpath, but further sub-directories
+        will not be included.'}
+    zh: {description: 以逗号分隔的文件和/或目录路径列表，这些路径将添加到类路径中并用于加载本机库。指定目录时，目录中的所有文件都将添加到类路径中，但不包括其他子目录。,
+      displayName: 其他Classpath资源}
+  Poll Duration:
+    en: {displayName: Poll Duration, description: The time before the polling method
+        returns with the next batch of events if they exist. It may exceed this amount
+        of time by up to the time required for an RPC to the NameNode.}
+    zh: {description: 轮询方法返回下一批事件（如果存在）之前的时间。它可能会超过此时间量，最长可达到NameNode的RPC所需的时间。, displayName: 轮询持续时间}
+  kerberos-credentials-service:
+    en: {displayName: Kerberos Credentials Service, description: Specifies the Kerberos
+        Credentials Controller Service that should be used for authenticating with
+        Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos凭据控制器服务, displayName: Kerberos凭据服务}
+  Kerberos Password:
+    en: {displayName: Kerberos Password, description: Kerberos password associated
+        with the principal.}
+    zh: {description: 与主体关联的Kerberos密码。, displayName: Kerberos密码}
+  Kerberos Keytab:
+    en: {displayName: Kerberos Keytab, description: Kerberos keytab associated with
+        the principal. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 与主体关联的Kerberos密钥表。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos密钥选项卡}
+  HDFS Path to Watch:
+    en: {displayName: HDFS Path to Watch, description: The HDFS path to get event
+        notifications for. This property accepts both expression language and regular
+        expressions. This will be evaluated during the OnScheduled phase.}
+    zh: {description: 获取事件通知的HDFS路径。此属性同时接受表达式语言和正则表达式。这将在OnScheduled阶段进行评估。, displayName: HDFS监视路径}
+  Kerberos Principal:
+    en: {displayName: Kerberos Principal, description: Kerberos principal to authenticate
+        as. Requires nifi.kerberos.krb5.file to be set in your nifi.properties}
+    zh: {description: 要作为身份验证的Kerberos主体。需要在nifi.properties中设置nifi.krberos.krb5.file,
+      displayName: Kerberos主体}
+  kerberos-user-service:
+    en: {displayName: Kerberos User Service, description: Specifies the Kerberos User
+        Controller Service that should be used for authenticating with Kerberos}
+    zh: {description: 指定应用于Kerberos身份验证的Kerberos用户控制器服务, displayName: Kerberos用户服务}
+  Ignore Hidden Files:
+    en: {displayName: Ignore Hidden Files, description: If true and the final component
+        of the path associated with a given event starts with a '.' then that event
+        will not be processed.}
+    zh: {description: 如果为true，则与给定事件关联的路径的最终组件以“.”开头则不会处理该事件。, displayName: 忽略隐藏文件}
+  Kerberos Relogin Period:
+    en:
+      displayName: Kerberos Relogin Period
+      description: |-
+        Period of time which should pass before attempting a kerberos relogin.
+
+        This property has been deprecated, and has no effect on processing. Relogins now occur automatically.
+    zh: {description: 在尝试kerberos重新登录之前应该经过的时间段。, displayName: Kerberos时钟周期}
+  Event Types to Filter On:
+    en: {displayName: Event Types to Filter On, description: 'A comma-separated list
+        of event types to process. Valid event types are: append, close, create, metadata,
+        rename, and unlink. Case does not matter.'}
+    zh: {description: 要处理的事件类型的逗号分隔列表。有效的事件类型包括：追加、关闭、创建、元数据、重命名和取消链接。情况无关紧要。, displayName: 要筛选的事件类型}
+writeAttributes:
+  hdfs.inotify.event.type: {en: 'This will specify the specific HDFS notification
+      event type. Currently there are six types of events (append, close, create,
+      metadata, rename, and unlink).', zh: 这将指定特定的HDFS通知事件类型。目前有六种类型的事件（追加、关闭、创建、元数据、重命名和取消链接）。}
+  mime.type: {en: This is always application/json., zh: 这始终是application/json。}
+  hdfs.inotify.event.path: {en: The specific path that the event is tied to., zh: 事件绑定到的特定路径。}
+tags:
+  en: [hadoop, events, inotify, notifications, filesystem]
+  zh: [hadoop公司, 事件, 使人反感, 通知, 文件系统]

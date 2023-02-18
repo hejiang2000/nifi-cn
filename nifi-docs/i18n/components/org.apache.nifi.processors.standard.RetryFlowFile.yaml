@@ -1,0 +1,72 @@
+relationships:
+  retries_exceeded: {en: 'Input FlowFile has exceeded the configured maximum retry
+      count, do not pass this relationship back to the input Processor to terminate
+      the limited feedback loop.', zh: 输入FlowFile已超过配置的最大重试计数，请不要将此关系传递回输入处理器以终止有限的反馈循环。}
+  failure: {en: The processor is configured such that a non-numerical value on 'Retry
+      Attribute' results in a failure instead of resetting that value to '1'. This
+      will immediately terminate the limited feedback loop. Might also include when
+      'Maximum Retries' contains attribute expression language that does not resolve
+      to an Integer., zh: 处理器配置为“重试属性”上的非数值将导致失败，而不是将该值重置为“1”。这将立即终止有限反馈回路。当“最大重试次数”包含不解析为整数的属性表达式语言时，也可能包括。}
+  retry: {en: 'Input FlowFile has not exceeded the configured maximum retry count,
+      pass this relationship back to the input Processor to create a limited feedback
+      loop.', zh: 输入FlowFile未超过配置的最大重试计数，请将此关系传递回输入处理器以创建有限的反馈循环。}
+dynamicProperties:
+  Exceeded FlowFile Attribute Key:
+    en: {description: One or more dynamic properties can be used to add attributes
+        to FlowFiles passed to the 'retries_exceeded' relationship, value: The value
+        of the attribute added to the FlowFile}
+    zh: {description: 一个或多个动态属性可用于向传递给“retries_exceeded”关系的FlowFiles添加属性, value: 添加到FlowFile的属性值}
+capabilityDescription: {en: 'FlowFiles passed to this Processor have a ''Retry Attribute''
+    value checked against a configured ''Maximum Retries'' value. If the current attribute
+    value is below the configured maximum, the FlowFile is passed to a retry relationship.
+    The FlowFile may or may not be penalized in that condition. If the FlowFile''s
+    attribute value exceeds the configured maximum, the FlowFile will be passed to
+    a ''retries_exceeded'' relationship. WARNING: If the incoming FlowFile has a non-numeric
+    value in the configured ''Retry Attribute'' attribute, it will be reset to ''1''.
+    You may choose to fail the FlowFile instead of performing the reset. Additional
+    dynamic properties can be defined for any attributes you wish to add to the FlowFiles
+    transferred to ''retries_exceeded''. These attributes support attribute expression
+    language.', zh: 传递到此处理器的FlowFiles的“重试属性”值与配置的“最大重试次数”值进行了比较。如果当前属性值低于配置的最大值，则将FlowFile传递给重试关系。在这种情况下，FlowFile可能会受到处罚，也可能不会受到处罚。如果FlowFile的属性值超过了配置的最大值，则FlowFile将传递给“retries_exceeded”关系。警告：如果传入的FlowFile在配置的“重试属性”属性中具有非数字值，则它将重置为“1”。您可以选择使FlowFile失败，而不是执行重置。可以为要添加到传输到“retries_exceeded”的FlowFiles的任何属性定义其他动态属性。这些属性支持属性表达式语言。}
+readAttributes:
+  Retry Attribute: {en: Will read the attribute or attribute expression language result
+      as defined in 'Retry Attribute', zh: 将读取“重试属性”中定义的属性或属性表达式语言结果}
+properties:
+  penalize-retries:
+    en: {displayName: Penalize Retries, description: 'If set to ''true'', this Processor
+        will penalize input FlowFiles before passing them to the ''retry'' relationship.
+        This does not apply to the ''retries_exceeded'' relationship.'}
+    zh: {description: 如果设置为“true”，则此处理器将在将输入FlowFiles传递到“重试”关系之前对其进行惩罚。这不适用于“retries_exceeded”关系。,
+      displayName: 惩罚重试}
+  maximum-retries:
+    en: {displayName: Maximum Retries, description: The maximum number of times a
+        FlowFile can be retried before being passed to the 'retries_exceeded' relationship}
+    zh: {description: FlowFile在传递到“retries_exceeded”关系之前可以重试的最大次数, displayName: 最大重试次数}
+  Fail on Non-numerical Overwrite:
+    en: {displayName: Fail on Non-numerical Overwrite, description: 'If the FlowFile
+        already has the attribute defined in ''Retry Attribute'' that is *not* a number,
+        fail the FlowFile instead of resetting that value to ''1'''}
+    zh: {description: 如果FlowFile已经具有在“重试属性”中定义的属性，该属性不是数字，则使FlowFile失败，而不是将该值重置为“1”,
+      displayName: 非数字覆盖失败}
+  reuse-mode:
+    en: {displayName: Reuse Mode, description: Defines how the Processor behaves if
+        the retry FlowFile has a different retry UUID than the instance that received
+        the FlowFile. This generally means that the attribute was not reset after
+        being successfully retried by a previous instance of this processor.}
+    zh: {description: 定义如果重试FlowFile具有与接收FlowFile的实例不同的重试UUID，则处理器的行为。这通常意味着该属性在该处理器的上一个实例成功重试后未重置。,
+      displayName: 重用模式}
+  retry-attribute:
+    en: {displayName: Retry Attribute, description: 'The name of the attribute that
+        contains the current retry count for the FlowFile. WARNING: If the name matches
+        an attribute already on the FlowFile that does not contain a numerical value,
+        the processor will either overwrite that attribute with ''1'' or fail based
+        on configuration.'}
+    zh: {description: 包含FlowFile当前重试计数的属性的名称。警告：如果名称与FlowFile中已存在的不包含数值的属性匹配，处理器将使用“1”覆盖该属性，或根据配置失败。,
+      displayName: 重试属性}
+writeAttributes:
+  Retry Attribute: {en: User defined retry attribute is updated with the current retry
+      count, zh: 使用当前重试计数更新用户定义的重试属性}
+  Retry Attribute .uuid: {en: User defined retry attribute with .uuid that determines
+      what processor retried the FlowFile last, zh: 用户定义的具有.uuid的重试属性，用于确定上次重试FlowFile的处理器}
+tags:
+  en: [Retry, FlowFile]
+  zh: [重试, 流文件]

@@ -1,0 +1,99 @@
+capabilityDescription: {en: A service that provides connections to Redis., zh: 提供到Redis的连接的服务。}
+properties:
+  Pool - Min Evictable Idle Time:
+    en: {displayName: Pool - Min Evictable Idle Time, description: The minimum amount
+        of time an object may sit idle in the pool before it is eligible for eviction.}
+    zh: {description: 对象可以在池中闲置的最短时间，然后才有资格被逐出。, displayName: 池-最小可收回空闲时间}
+  Pool - Test On Borrow:
+    en: {displayName: Pool - Test On Borrow, description: Whether or not connections
+        should be tested upon borrowing from the pool.}
+    zh: {description: 是否应在从池中借用时测试连接。, displayName: 水池-取土试验}
+  Pool - Test On Return:
+    en: {displayName: Pool - Test On Return, description: Whether or not connections
+        should be tested upon returning to the pool.}
+    zh: {description: 返回池时是否应测试连接。, displayName: 池-返回时测试}
+  Redis Mode:
+    en: {displayName: Redis Mode, description: 'The type of Redis being communicated
+        with - standalone, sentinel, or clustered.'}
+    zh: {description: 与之通信的Redis的类型-独立、哨兵或集群。, displayName: Redis模式}
+  Pool - Max Idle:
+    en: {displayName: Pool - Max Idle, description: 'The maximum number of idle connections
+        that can be held in the pool, or a negative value if there is no limit.'}
+    zh: {description: 池中可以保留的最大空闲连接数，如果没有限制，则为负值。, displayName: 池-最大空闲}
+  Pool - Block When Exhausted:
+    en: {displayName: Pool - Block When Exhausted, description: Whether or not clients
+        should block and wait when trying to obtain a connection from the pool when
+        the pool has no available connections. Setting this to false means an error
+        will occur immediately when a client requests a connection and none are available.}
+    zh: {description: 当池没有可用连接时，客户端在尝试从池获取连接时是否应阻止并等待。将此设置为false意味着当客户端请求连接但没有可用连接时，将立即发生错误。,
+      displayName: 池-耗尽时阻塞}
+  Cluster Max Redirects:
+    en: {displayName: Cluster Max Redirects, description: The maximum number of redirects
+        that can be performed when clustered.}
+    zh: {description: 群集时可以执行的最大重定向数。, displayName: 群集最大重定向数}
+  Pool - Num Tests Per Eviction Run:
+    en: {displayName: Pool - Num Tests Per Eviction Run, description: The number of
+        connections to tests per eviction attempt. A negative value indicates to test
+        all connections.}
+    zh: {description: 每次驱逐尝试到测试的连接数。负值表示测试所有连接。, displayName: Pool-每次逐出运行的测试数}
+  Connection String:
+    en: {displayName: Connection String, description: 'The connection string for Redis.
+        In a standalone instance this value will be of the form hostname:port. In
+        a sentinel instance this value will be the comma-separated list of sentinels,
+        such as host1:port1,host2:port2,host3:port3. In a clustered instance this
+        value will be the comma-separated list of cluster masters, such as host1:port,host2:port,host3:port.'}
+    zh: {description: 'Redis的连接字符串。在独立实例中，该值的格式为hostname:port。在sentinel实例中，此值将是以逗号分隔的sentinel列表，例如host1:port1、host2:port2、host3:port3。在集群实例中，该值将是群集主机的逗号分隔列表，例如，host1:port、host2:port、host3:port。',
+      displayName: 连接字符串}
+  Pool - Max Total:
+    en: {displayName: Pool - Max Total, description: 'The maximum number of connections
+        that can be allocated by the pool (checked out to clients, or idle awaiting
+        checkout). A negative value indicates that there is no limit.'}
+    zh: {description: 池可以分配的最大连接数（签出给客户端，或空闲等待签出）。负值表示没有限制。, displayName: 池-最大总数}
+  Pool - Test On Create:
+    en: {displayName: Pool - Test On Create, description: Whether or not connections
+        should be tested upon creation.}
+    zh: {description: 是否应在创建时测试连接。, displayName: 池-创建时测试}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'If specified, this service
+        will be used to create an SSL Context that will be used to secure communications;
+        if not specified, communications will not be secure'}
+    zh: {description: 如果指定，此服务将用于创建SSL上下文，该上下文将用于保护通信；如果未指定，通信将不安全, displayName: SSL上下文服务}
+  Pool - Min Idle:
+    en: {displayName: Pool - Min Idle, description: 'The target for the minimum number
+        of idle connections to maintain in the pool. If the configured value of Min
+        Idle is greater than the configured value for Max Idle, then the value of
+        Max Idle will be used instead.'}
+    zh: {description: 池中要维护的最小空闲连接数的目标。如果配置的最小空闲值大于配置的最大空闲值，则将使用最大空闲值。, displayName: 池-最小空闲}
+  Pool - Test While Idle:
+    en: {displayName: Pool - Test While Idle, description: Whether or not connections
+        should be tested while idle.}
+    zh: {description: 是否应在空闲时测试连接。, displayName: 池-空闲时测试}
+  Pool - Time Between Eviction Runs:
+    en: {displayName: Pool - Time Between Eviction Runs, description: The amount of
+        time between attempting to evict idle connections from the pool.}
+    zh: {description: 尝试从池中逐出空闲连接之间的时间量。, displayName: 池-逐出运行之间的时间}
+  Communication Timeout:
+    en: {displayName: Communication Timeout, description: The timeout to use when
+        attempting to communicate with Redis.}
+    zh: {description: 尝试与Redis通信时使用的超时。, displayName: 通信超时}
+  Pool - Max Wait Time:
+    en: {displayName: Pool - Max Wait Time, description: The amount of time to wait
+        for an available connection when Block When Exhausted is set to true.}
+    zh: {description: 当Block when Exhausted设置为true时，等待可用连接的时间。, displayName: 池-最长等待时间}
+  Database Index:
+    en: {displayName: Database Index, description: 'The database index to be used
+        by connections created from this connection pool. See the databases property
+        in redis.conf, by default databases 0-15 will be available.'}
+    zh: {description: 从此连接池创建的连接要使用的数据库索引。请参见redis中的数据库属性。conf，默认情况下，数据库0-15将可用。,
+      displayName: 数据库索引}
+  Sentinel Master:
+    en: {displayName: Sentinel Master, description: 'The name of the sentinel master,
+        require when Mode is set to Sentinel'}
+    zh: {description: 哨兵主机的名称，当模式设置为哨兵时需要, displayName: 哨兵大师}
+  Password:
+    en: {displayName: Password, description: The password used to authenticate to
+        the Redis server. See the requirepass property in redis.conf.}
+    zh: {description: 用于向Redis服务器进行身份验证的密码。请参阅redis.conf中的requirepas属性。, displayName: 暗语}
+tags:
+  en: [redis, cache]
+  zh: [Redis公司, 隐藏物]

@@ -1,0 +1,70 @@
+relationships:
+  failure: {en: 'FlowFiles are routed to this relationship when the JsonPath cannot
+      be evaluated against the content of the FlowFile; for instance, if the FlowFile
+      is not valid JSON', zh: 当JsonPath无法根据FlowFile的内容进行评估时，FlowFiles被路由到此关系；例如，如果FlowFile不是有效的JSON}
+  matched: {en: FlowFiles are routed to this relationship when the JsonPath is successfully
+      evaluated and the FlowFile is modified as a result, zh: 成功评估JsonPath并因此修改FlowFile时，FlowFiles将路由到此关系}
+  unmatched: {en: FlowFiles are routed to this relationship when the JsonPath does
+      not match the content of the FlowFile and the Destination is set to flowfile-content,
+    zh: 当JsonPath与FlowFile的内容不匹配，并且目标设置为FlowFile内容时，FlowFiles将路由到此关系}
+dynamicProperties:
+  A FlowFile attribute(if <Destination> is set to 'flowfile-attribute'):
+    en: {description: If <Destination>='flowfile-attribute' then that FlowFile attribute
+        will be set to any JSON objects that match the JsonPath.  If <Destination>='flowfile-content'
+        then the FlowFile content will be updated to any JSON objects that match the
+        JsonPath., value: A JsonPath expression}
+    zh: {description: 如果<Destination>='flowfile-attribute'，则flowfile属性将设置为与JsonPath匹配的任何JSON对象。如果<Destination>='flowfile-content'，则flowfile内容将更新为与JsonPath匹配的任何JSON对象。,
+      value: JsonPath表达式}
+capabilityDescription: {en: 'Evaluates one or more JsonPath expressions against the
+    content of a FlowFile. The results of those expressions are assigned to FlowFile
+    Attributes or are written to the content of the FlowFile itself, depending on
+    configuration of the Processor. JsonPaths are entered by adding user-defined properties;
+    the name of the property maps to the Attribute Name into which the result will
+    be placed (if the Destination is flowfile-attribute; otherwise, the property name
+    is ignored). The value of the property must be a valid JsonPath expression. A
+    Return Type of ''auto-detect'' will make a determination based off the configured
+    destination. When ''Destination'' is set to ''flowfile-attribute,'' a return type
+    of ''scalar'' will be used. When ''Destination'' is set to ''flowfile-content,''
+    a return type of ''JSON'' will be used.If the JsonPath evaluates to a JSON array
+    or JSON object and the Return Type is set to ''scalar'' the FlowFile will be unmodified
+    and will be routed to failure. A Return Type of JSON can return scalar values
+    if the provided JsonPath evaluates to the specified value and will be routed as
+    a match.If Destination is ''flowfile-content'' and the JsonPath does not evaluate
+    to a defined path, the FlowFile will be routed to ''unmatched'' without having
+    its contents modified. If Destination is ''flowfile-attribute'' and the expression
+    matches nothing, attributes will be created with empty strings as the value unless
+    ''Path Not Found Behaviour'' is set to ''skip'', and the FlowFile will always
+    be routed to ''matched.''', zh: 根据FlowFile的内容计算一个或多个JsonPath表达式。这些表达式的结果分配给FlowFile属性，或写入FlowFile本身的内容，具体取决于处理器的配置。JsonPaths是通过添加用户定义的财产来输入的；属性的名称映射到结果将放置到其中的属性名称（如果Destination是flowfile属性，则忽略属性名称）。属性的值必须是有效的JsonPath表达式。“自动检测”的返回类型将根据配置的目的地进行确定。当“Destination”设置为“flowfile属性”时，将使用“scalar”的返回类型。当“Destination”设置为“flowfile
+    content”时，将使用“JSON”的返回类型。如果JsonPath的计算结果为JSON数组或JSON对象，并且return type设置为“scalar”，则flowfile将被修改，并将被路由到失败。如果提供的JsonPath计算结果为指定值，并且将作为匹配项进行路由，则JSON的返回类型可以返回标量值。如果Destination为“flowfile
+    content”，而JsonPath未计算结果为定义的路径，则flowfile将被路由为“unmatch”，而不修改其内容。如果Destination为“flowfile属性”，并且表达式不匹配，则将使用空字符串作为值创建属性，除非“Path
+    Not Found Behavior”设置为“skip”，并且flowfile将始终路由为“matched”}
+properties:
+  Destination:
+    en: {displayName: Destination, description: 'Indicates whether the results of
+        the JsonPath evaluation are written to the FlowFile content or a FlowFile
+        attribute; if using attribute, must specify the Attribute Name property. If
+        set to flowfile-content, only one JsonPath may be specified, and the property
+        name is ignored.'}
+    zh: {description: 指示JsonPath评估结果是否写入FlowFile内容或FlowFile属性；如果使用属性，则必须指定“属性名称”属性。如果设置为流文件内容，则只能指定一个JsonPath，并且忽略属性名称。,
+      displayName: 目的地}
+  Return Type:
+    en: {displayName: Return Type, description: 'Indicates the desired return type
+        of the JSON Path expressions.  Selecting ''auto-detect'' will set the return
+        type to ''json'' for a Destination of ''flowfile-content'', and ''scalar''
+        for a Destination of ''flowfile-attribute''.'}
+    zh: {description: 指示JSON路径表达式所需的返回类型。选择“autodetect”将为“flowfile content”的目标设置返回类型为“json”，为“flowfileattribute”的目标将返回类型设置为“scalar”。,
+      displayName: 返回类型}
+  Null Value Representation:
+    en: {displayName: Null Value Representation, description: Indicates the desired
+        representation of JSON Path expressions resulting in a null value.}
+    zh: {description: 指示导致空值的JSON路径表达式的所需表示形式。, displayName: 空值表示法}
+  Path Not Found Behavior:
+    en: {displayName: Path Not Found Behavior, description: Indicates how to handle
+        missing JSON path expressions when destination is set to 'flowfile-attribute'.
+        Selecting 'warn' will generate a warning when a JSON path expression is not
+        found. Selecting 'skip' will omit attributes for any unmatched JSON path expressions.}
+    zh: {description: 指示当目标设置为“flowfile属性”时，如何处理缺少的JSON路径表达式。当未找到JSON路径表达式时，选择“warn”将生成警告。选择“跳过”将忽略任何不匹配的JSON路径表达式的属性。,
+      displayName: 未找到路径行为}
+tags:
+  en: [JSON, evaluate, JsonPath]
+  zh: [JSON文件, 估计, JsonPath（JsonPath）]

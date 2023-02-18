@@ -1,0 +1,16 @@
+capabilityDescription: {en: This reporting task reports a set of metrics regarding
+    the JVM and the NiFi instanceto a reporter. The reporter is provided by a MetricReporterService.
+    It can be optionally used for a specificprocess group if a property with the group
+    id is provided., zh: 此报告任务向报告者报告关于JVM和NiFi实例的一组度量。报告者由度量报告服务提供。如果提供了具有组id的属性，则可以选择将其用于特定的进程组。}
+properties:
+  process group id:
+    en: {displayName: Process Group ID, description: 'The id of the process group
+        to report. If not specified, metrics of the root process groupare reported.'}
+    zh: {description: 要报告的进程组的id。如果未指定，则报告根进程组的度量。, displayName: 进程组ID}
+  metric reporter service:
+    en: {displayName: Metric Reporter Service, description: The service that provides
+        a reporter for the gathered metrics}
+    zh: {description: 为收集的度量提供报告者的服务, displayName: 度量报告器服务}
+tags:
+  en: [metrics, reporting]
+  zh: [韵律学, 报告]

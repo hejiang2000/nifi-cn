@@ -1,0 +1,100 @@
+relationships:
+  success: {en: Messages received successfully will be sent out this relationship.,
+    zh: 成功接收的消息将发送到此关系。}
+capabilityDescription: {en: 'Listens for incoming TCP connections and reads data from
+    each connection using a line separator as the message demarcator. The default
+    behavior is for each message to produce a single FlowFile, however this can be
+    controlled by increasing the Batch Size to a larger value for higher throughput.
+    The Receive Buffer Size must be set as large as the largest messages expected
+    to be received, meaning if every 100kb there is a line separator, then the Receive
+    Buffer Size must be greater than 100kb. The processor can be configured to use
+    an SSL Context Service to only allow secure connections. When connected clients
+    present certificates for mutual TLS authentication, the Distinguished Names of
+    the client certificate''s issuer and subject are added to the outgoing FlowFiles
+    as attributes. The processor does not perform authorization based on Distinguished
+    Name values, but since these values are attached to the outgoing FlowFiles, authorization
+    can be implemented based on these attributes.', zh: 侦听传入的TCP连接，并使用行分隔符作为消息分隔符从每个连接读取数据。默认行为是每个消息生成一个FlowFile，但这可以通过将批大小增加到更大的值来控制，以获得更高的吞吐量。接收缓冲区大小必须设置为预期接收的最大消息的大小，这意味着如果每100kb有一个行分隔符，则接收缓冲区的大小必须大于100kb。处理器可以配置为使用SSL上下文服务，以仅允许安全连接。当连接的客户端提供用于双向TLS身份验证的证书时，客户端证书的颁发者和使用者的可分辨名称将作为属性添加到传出的FlowFiles中。处理器不会基于可分辨名称值执行授权，但由于这些值附加到传出的FlowFiles，因此可以基于这些属性执行授权。}
+properties:
+  Max Size of Socket Buffer:
+    en: {displayName: Max Size of Socket Buffer, description: 'The maximum size of
+        the socket buffer that should be used. This is a suggestion to the Operating
+        System to indicate how big the socket buffer should be. If this value is set
+        too low, the buffer may fill up before the data can be read, and incoming
+        data will be dropped.'}
+    zh: {description: 应使用的套接字缓冲区的最大大小。这是给操作系统的一个建议，说明套接字缓冲区应该有多大。如果该值设置得太低，缓冲区可能会在读取数据之前填满，并且传入的数据将被丢弃。,
+      displayName: 套接字缓冲区的最大大小}
+  Max Number of TCP Connections:
+    en: {displayName: Max Number of Worker Threads, description: The maximum number
+        of worker threads available for servicing TCP connections.}
+    zh: {description: 可用于服务TCP连接的最大工作线程数。, displayName: 最大工作线程数}
+  Local Network Interface:
+    en: {displayName: Local Network Interface, description: The name of a local network
+        interface to be used to restrict listening to a specific LAN.}
+    zh: {description: 用于限制监听特定LAN的本地网络接口的名称。, displayName: 本地网络接口}
+  Max Batch Size:
+    en: {displayName: Max Batch Size, description: 'The maximum number of messages
+        to add to a single FlowFile. If multiple messages are available, they will
+        be concatenated along with the <Message Delimiter> up to this configured maximum
+        number of messages'}
+    zh: {description: 要添加到单个FlowFile的最大消息数。如果有多条消息可用，它们将与＜消息分隔符＞一起连接，直到达到配置的最大消息数,
+      displayName: 最大批量大小}
+  Port:
+    en: {displayName: Port, description: The port to listen on for communication.}
+    zh: {description: 用于侦听通信的端口。, displayName: 港口城市}
+  max-receiving-threads:
+    en: {displayName: Max Number of Receiving Message Handler Threads, description: This
+        property is deprecated and no longer used.}
+    zh: {description: 此属性已弃用，不再使用。, displayName: 最大接收消息处理程序线程数}
+  Receive Buffer Size:
+    en: {displayName: Receive Buffer Size, description: The size of each buffer used
+        to receive messages. Adjust this value appropriately based on the expected
+        size of the incoming messages.}
+    zh: {description: 用于接收消息的每个缓冲区的大小。根据传入消息的预期大小适当调整此值。, displayName: 接收缓冲区大小}
+  Message Delimiter:
+    en: {displayName: Batching Message Delimiter, description: Specifies the delimiter
+        to place between messages when multiple messages are bundled together (see
+        <Max Batch Size> property).}
+    zh: {description: 指定当多条消息捆绑在一起时，要在消息之间放置的分隔符（请参见<Max Batch Size>属性）。, displayName: 批处理消息分隔符}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: 'The Controller Service to
+        use in order to obtain an SSL Context. If this property is set, messages will
+        be received over a secure connection.'}
+    zh: {description: 用于获取SSL上下文的控制器服务。如果设置了此属性，将通过安全连接接收消息。, displayName: SSL上下文服务}
+  idle-timeout:
+    en: {displayName: Idle Connection Timeout, description: The amount of time a client's
+        connection will remain open if no data is received. The default of 0 seconds
+        will leave connections open until they are closed by the client.}
+    zh: {description: 如果没有收到数据，客户端连接将保持打开的时间。默认值为0秒将保持连接打开，直到客户端关闭连接。, displayName: 空闲连接超时}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        received data.}
+    zh: {description: 指定接收数据的字符集。, displayName: 字符集}
+  Client Auth:
+    en: {displayName: Client Auth, description: The client authentication policy to
+        use for the SSL Context. Only used if an SSL Context Service is provided.}
+    zh: {description: 用于SSL上下文的客户端身份验证策略。仅在提供SSL上下文服务时使用。, displayName: 客户端身份验证}
+  Max Size of Message Queue:
+    en: {displayName: Max Size of Message Queue, description: 'The maximum size of
+        the internal queue used to buffer messages being transferred from the underlying
+        channel to the processor. Setting this value higher allows more messages to
+        be buffered in memory during surges of incoming messages, but increases the
+        total memory used by the processor during these surges.'}
+    zh: {description: 用于缓冲从基础通道传输到处理器的消息的内部队列的最大大小。将此值设置得更高，可以在传入消息激增期间在内存中缓冲更多消息，但会增加处理器在这些激增期间使用的总内存。,
+      displayName: 消息队列的最大大小}
+  pool-receive-buffers:
+    en: {displayName: Pool Receive Buffers, description: Enable or disable pooling
+        of buffers that the processor uses for handling bytes received on socket connections.
+        The framework allocates buffers as needed during processing.}
+    zh: {description: 启用或禁用处理器用于处理套接字连接上接收的字节的缓冲区池。框架在处理过程中根据需要分配缓冲区。, displayName: 池接收缓冲区}
+writeAttributes:
+  tcp.sender: {en: The sending host of the messages., zh: 消息的发送主机。}
+  tcp.port: {en: The sending port the messages were received., zh: 接收消息的发送端口。}
+  client.certificate.issuer.dn: {en: 'For connections using mutual TLS, the Distinguished
+      Name of the Certificate Authority that issued the client''s certificate is attached
+      to the FlowFile.', zh: 对于使用双向TLS的连接，颁发客户端证书的证书颁发机构的可分辨名称将附加到FlowFile。}
+  client.certificate.subject.dn: {en: 'For connections using mutual TLS, the Distinguished
+      Name of the client certificate''s owner (subject) is attached to the FlowFile.',
+    zh: 对于使用双向TLS的连接，将客户端证书所有者（主题）的可分辨名称附加到FlowFile。}
+tags:
+  en: [listen, tcp, tls, ssl]
+  zh: [听, tcp协议, tls公司, 安全套接字层]

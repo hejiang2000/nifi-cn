@@ -1,0 +1,77 @@
+relationships:
+  hits: {en: Search hits are routed to this relationship., zh: 搜索命中将路由到此关系。}
+  original: {en: All original flowfiles that don't cause an error to occur go to this
+      relationship., zh: 所有不会导致错误发生的原始流文件都将转到此关系。}
+  failure: {en: All flowfiles that fail for reasons unrelated to server availability
+      go to this relationship., zh: 由于与服务器可用性无关的原因而失败的所有流文件都属于此关系。}
+  aggregations: {en: Aggregations are routed to this relationship., zh: 聚合将路由到此关系。}
+dynamicProperties:
+  The name of a URL query parameter to add:
+    en: {description: Adds the specified property name/value as a query parameter
+        in the Elasticsearch URL used for processing. These parameters will override
+        any matching parameters in the query request body, value: The value of the
+        URL query parameter}
+    zh: {description: 在用于处理的Elasticsearch URL中添加指定的属性名称/值作为查询参数。这些参数将覆盖查询请求主体中的任何匹配参数,
+      value: URL查询参数的值}
+capabilityDescription: {en: 'A processor that allows the user to run a query (with
+    aggregations) written with the Elasticsearch JSON DSL. It does not automatically
+    paginate queries for the user. If an incoming relationship is added to this processor,
+    it will use the flowfile''s content for the query. Care should be taken on the
+    size of the query because the entire response from Elasticsearch will be loaded
+    into memory all at once and converted into the resulting flowfiles.', zh: 允许用户运行使用Elasticsearch
+    JSON DSL编写的查询（带有聚合）的处理器。它不会自动为用户的查询分页。如果将传入关系添加到此处理器，它将使用流文件的内容进行查询。应该注意查询的大小，因为Elasticsearch的整个响应将立即加载到内存中，并转换为生成的流文件。}
+properties:
+  el-rest-fetch-index:
+    en: {displayName: Index, description: The name of the index to use.}
+    zh: {description: 要使用的索引的名称。, displayName: 指数}
+  el-rest-output-no-hits:
+    en: {displayName: Output No Hits, description: 'Output a "hits" flowfile even
+        if no hits found for query. If true, an empty "hits" flowfile will be output
+        even if "aggregations" are output.'}
+    zh: {description: 即使未找到查询的命中，也输出“命中”流文件。如果为true，则即使输出了“聚合”，也会输出一个空的“命中”流文件。, displayName: 输出无命中}
+  el-rest-client-service:
+    en: {displayName: Client Service, description: An Elasticsearch client service
+        to use for running queries.}
+    zh: {description: 用于运行查询的Elasticsearch客户端服务。, displayName: 客户端服务}
+  el-rest-type:
+    en: {displayName: Type, description: The type of this document (used by Elasticsearch
+        for indexing and searching).}
+    zh: {description: 此文档的类型（Elasticsearch用于索引和搜索）。, displayName: 类型}
+  el-query-attribute:
+    en: {displayName: Query Attribute, description: 'If set, the executed query will
+        be set on each result flowfile in the specified attribute.'}
+    zh: {description: 如果设置，则将对指定属性中的每个结果流文件设置执行的查询。, displayName: 查询属性}
+  el-rest-format-hits:
+    en: {displayName: Search Results Format, description: Format of Hits output.}
+    zh: {description: Hits输出的格式。, displayName: 搜索结果格式}
+  el-rest-split-up-hits:
+    en: {displayName: Search Results Split, description: Output a flowfile containing
+        all hits or one flowfile for each individual hit.}
+    zh: {description: 输出包含所有命中的流文件或每个单个命中的一个流文件。, displayName: 搜索结果拆分}
+  el-rest-query:
+    en: {displayName: Query, description: 'A query in JSON syntax, not Lucene syntax.
+        Ex: {"query":{"match":{"somefield":"somevalue"}}}. If this parameter is not
+        set, the query will be read from the flowfile content.'}
+    zh: {description: 'JSON语法的查询，而不是Lucene语法。示例：｛“query”：｛”match“：｛”somefield“：”somevalue“｝｝}｝。如果未设置此参数，将从流文件内容中读取查询。',
+      displayName: 查询}
+  el-rest-split-up-aggregations:
+    en: {displayName: Aggregation Results Split, description: Output a flowfile containing
+        all aggregations or one flowfile for each individual aggregation.}
+    zh: {description: 输出包含所有聚合的流文件或每个单独聚合的一个流文件。, displayName: 聚合结果拆分}
+  el-rest-format-aggregations:
+    en: {displayName: Aggregation Results Format, description: Format of Aggregation
+        output.}
+    zh: {description: 聚合输出的格式。, displayName: 聚合结果格式}
+writeAttributes:
+  aggregation.number: {en: The number of the aggregation whose results are in the
+      output flowfile, zh: 其结果在输出流文件中的聚合数}
+  aggregation.name: {en: The name of the aggregation whose results are in the output
+      flowfile, zh: 其结果在输出流文件中的聚合的名称}
+  hit.count: {en: The number of hits that are in the output flowfile, zh: 输出流文件中的命中数}
+  mime.type: {en: application/json, zh: 应用程序/json}
+  elasticsearch.query.error: {en: The error message provided by Elasticsearch if there
+      is an error querying the index., zh: 如果查询索引时出错，Elasticsearch提供的错误消息。}
+tags:
+  en: [elasticsearch, elasticsearch5, elasticsearch6, elasticsearch7, elasticsearch8,
+    query, read, get, json]
+  zh: [弹性搜索, 弹性搜索5, 弹性搜索6, 弹性搜索7, 弹性搜索8, 查询, 阅读, 收到, json文件]

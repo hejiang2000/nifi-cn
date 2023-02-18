@@ -95,24 +95,24 @@
      */
     var getSchedulingStrategies = function (processor) {
         var strategies = [{
-            text: 'Timer driven',
+            text: '定时驱动',
             value: 'TIMER_DRIVEN',
-            description: 'Processor will be scheduled to run on an interval defined by the run schedule.'
+            description: '处理器将根据运行调度指定的间隔被调度执行.'
         }];
 
         // conditionally support event driven based on processor
         if (processor.supportsEventDriven === true) {
             strategies.push({
-                text: 'Event driven',
+                text: '事件驱动',
                 value: 'EVENT_DRIVEN',
-                description: 'Processor will be scheduled to run when triggered by an event (e.g. a FlowFile enters an incoming queue). This scheduling strategy is experimental.'
+                description: '处理器将在事件触发时被调度执行(例如一个 FlowFile 进入输入队列). 该调度策略是试验性的.'
             });
         } else if (processor.config['schedulingStrategy'] === 'EVENT_DRIVEN') {
             // the processor was once configured for event driven but no longer supports it
             strategies.push({
-                text: 'Event driven',
+                text: '事件驱动',
                 value: 'EVENT_DRIVEN',
-                description: 'Processor will be scheduled to run when triggered by an event (e.g. a FlowFile enters an incoming queue). This scheduling strategy is experimental.',
+                description: '处理器将在事件触发时被调度执行(例如一个 FlowFile 进入输入队列). 该调度策略是试验性的.',
                 disabled: true
             });
         }
@@ -120,18 +120,18 @@
         // conditionally support event driven
         if (processor.config['schedulingStrategy'] === 'PRIMARY_NODE_ONLY') {
             strategies.push({
-                text: 'On primary node',
+                text: '在主节点上',
                 value: 'PRIMARY_NODE_ONLY',
-                description: 'Processor will be scheduled on the primary node on an interval defined by the run schedule. This option has been deprecated, please use the Execution setting below.',
+                description: '处理器将会在主节点上按运行调度指定间隔调度执行. 该方式已废弃, 请使用下面的执行设置.',
                 disabled: true
             });
         }
 
         // add an option for cron driven
         strategies.push({
-            text: 'CRON driven',
+            text: 'CRON 驱动',
             value: 'CRON_DRIVEN',
-            description: 'Processor will be scheduled to run on at specific times based on the specified CRON string.'
+            description: '处理器将根据指定的 CRON 字符串被在特定的时间被调度执行.'
         });
 
         return strategies;
@@ -145,14 +145,14 @@
      */
     var getExecutionNodeOptions = function (processor) {
         return [{
-            text: 'All nodes',
+            text: '全部节点',
             value: 'ALL',
-            description: 'Processor will be scheduled to run on all nodes',
+            description: '处理器将会在全部节点上被调度执行',
             disabled: processor.executionNodeRestricted === true
         }, {
-            text: 'Primary node',
+            text: '主节点',
             value: 'PRIMARY',
-            description: 'Processor will be scheduled to run only on the primary node'
+            description: '处理器将只会在主节点上被调度执行'
         }];
     };
 
@@ -465,7 +465,7 @@
         if (errors.length > 0) {
             nfDialog.showOkDialog({
                 dialogContent: nfCommon.formatUnorderedList(errors),
-                headerText: 'Configuration Error'
+                headerText: '配置错误'
             });
             return false;
         } else {
@@ -501,8 +501,8 @@
             if (isSaveRequired()) {
                 // see if those changes should be saved
                 nfDialog.showYesNoDialog({
-                    headerText: 'Processor Configuration',
-                    dialogContent: 'Save changes before going to this Controller Service?',
+                    headerText: '处理器配置',
+                    dialogContent: '跳转到该控制器服务前保存修改?',
                     noHandler: function () {
                         deferred.resolve();
                     },
@@ -594,19 +594,19 @@
                 selectedTabStyle: 'selected-tab',
                 scrollableTabContentStyle: 'scrollable',
                 tabs: [{
-                    name: 'Settings',
+                    name: '设置',
                     tabContentId: 'processor-standard-settings-tab-content'
                 }, {
-                    name: 'Scheduling',
+                    name: '调度',
                     tabContentId: 'processor-scheduling-tab-content'
                 }, {
-                    name: 'Properties',
+                    name: '属性',
                     tabContentId: 'processor-properties-tab-content'
                 }, {
-                    name: 'Relationships',
+                    name: '输出数据流',
                     tabContentId: 'processor-relationships-tab-content'
                 }, {
-                    name: 'Comments',
+                    name: '说明',
                     tabContentId: 'processor-comments-tab-content'
                 }],
                 select: function () {
@@ -614,7 +614,7 @@
                     nfUniversalCapture.removeAllPropertyDetailDialogs();
 
                     // update the processor property table size in case this is the first time its rendered
-                    if ($(this).text() === 'Properties') {
+                    if ($(this).text() === '属性') {
                         $('#processor-properties').propertytable('resetTableSize');
                     }
 
@@ -626,7 +626,7 @@
             // initialize the processor configuration dialog
             $('#processor-configuration').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Configure Processor',
+                headerText: '配置处理器',
                 handler: {
                     close: function () {
                         // empty the relationship list
@@ -677,7 +677,7 @@
                     text: 'ERROR',
                     value: 'ERROR'
                 }, {
-                    text: 'NONE',
+                    text: '什么都没有',
                     value: 'NONE'
                 }]
             });
@@ -931,7 +931,7 @@
                             setRetryControlsDisabledState();
                         });
                     } else {
-                        $('#auto-action-relationship-names').append('<div class="unset">This processor has no relationships.</div>');
+                        $('#auto-action-relationship-names').append('<div class="unset">该处理器无输出数据流.</div>');
                     }
 
                     if (nfCommon.isDefinedAndNotNull(processor.config.backoffMechanism)) {
@@ -951,7 +951,7 @@
                     }
 
                     var buttons = [{
-                        buttonText: 'Apply',
+                        buttonText: '应用',
                         color: {
                             base: '#728E9B',
                             hover: '#004849',
@@ -980,7 +980,7 @@
                         }
                     },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',
@@ -996,7 +996,7 @@
                     // determine if we should show the advanced button
                     if (nfCommon.isDefinedAndNotNull(processor.config.customUiUrl) && processor.config.customUiUrl !== '') {
                         buttons.push({
-                            buttonText: 'Advanced',
+                            buttonText: '高级',
                             clazz: 'fa fa-cog button-icon',
                             color: {
                                 base: '#E3E8EB',
@@ -1026,8 +1026,8 @@
                                     if (isSaveRequired()) {
                                         // see if those changes should be saved
                                         nfDialog.showYesNoDialog({
-                                            headerText: 'Save',
-                                            dialogContent: 'Save changes before opening the advanced configuration?',
+                                            headerText: '保存',
+                                            dialogContent: '打开高级配置前保存修改?',
                                             noHandler: openCustomUi,
                                             yesHandler: function () {
                                                 saveProcessor(processor).done(function (deferred) {
@@ -1068,7 +1068,7 @@
                             nfCommon.getKeyValue(processorResponse,ACTIVE_THREAD_COUNT_KEY) != 0){
 
                             $("#processor-configuration-status-bar").statusbar('buttons',[{
-                                buttonText: 'Terminate',
+                                buttonText: '终止',
                                 clazz: 'fa fa-hourglass-end button-icon',
                                 color: {
                                     hover: '#C7D2D7',
@@ -1084,8 +1084,8 @@
                                             var p = nfProcessor.get(processor.id);
                                             if(nfCommon.getKeyValue(p,ACTIVE_THREAD_COUNT_KEY) != 0){
                                                 nfDialog.showOkDialog({
-                                                    dialogContent: 'Terminate threads request was processed, but active threads still persist. Please try again later.',
-                                                    headerText: 'Unable to Terminate'
+                                                    dialogContent: '终止线程请求已处理, 但活跃线程仍然在运行. 请稍后再试.',
+                                                    headerText: '未能终止'
                                                 });
                                             }
                                             else {
@@ -1123,7 +1123,7 @@
                     $('#processor-configuration div.relationship-name').ellipsis();
 
                     // Ensure the properties table has rendered correctly if initially selected
-                    if ($('#processor-configuration-tabs').find('.selected-tab').text() === 'Properties') {
+                    if ($('#processor-configuration-tabs').find('.selected-tab').text() === '属性') {
                         $('#processor-properties').propertytable('resetTableSize');
                     }
 

@@ -113,9 +113,9 @@
                         input.prop('disabled', false).val(previousValue);
                     }
                 }).appendTo(stringCheckPanel);
-            $('<span class="string-check-label nf-checkbox-label">&nbsp;Set empty string</span>').appendTo(stringCheckPanel);
+            $('<span class="string-check-label nf-checkbox-label">&nbsp;置为空字符串</span>').appendTo(stringCheckPanel);
 
-            var ok = $('<div class="button">Ok</div>').css({
+            var ok = $('<div class="button">确定</div>').css({
                 'color': '#fff',
                 'background': '#728E9B'
             }).hover(
@@ -124,7 +124,7 @@
                 }, function () {
                     $(this).css('background', '#728E9B');
                 }).on('click', scope.save);
-            var cancel = $('<div class="secondary-button">Cancel</div>').css({
+            var cancel = $('<div class="secondary-button">取消</div>').css({
                 'color': '#004849',
                 'background': '#E3E8EB'
             }).hover(
@@ -258,7 +258,7 @@
     var initializeReferencedAttributesDialog = function () {
         $('#referenced-attributes-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Referenced Attributes',
+            headerText: '引用属性',
             handler: {
                 close: function () {
                     resetDialog();
@@ -325,7 +325,7 @@
      */
     var updateReferencedAttributesButtonModel = function (componentId, componentUri, proposedProperties, handleVerificationResults, verificationResultsContainer) {
         $('#referenced-attributes-dialog').modal('setButtonModel', [{
-            buttonText: 'Verify',
+            buttonText: '校验',
             color: {
                 base: '#728E9B',
                 hover: '#004849',
@@ -352,7 +352,7 @@
                 }
             }
         }, {
-            buttonText: 'Cancel',
+            buttonText: '取消',
             color: {
                 base: '#E3E8EB',
                 hover: '#C7D2D7',
@@ -373,7 +373,7 @@
         // configure the verification request status dialog
         $('#verification-request-status-dialog').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Verifying Properties',
+            headerText: '正在校验属性',
             handler: {
                 close: function () {
                     // clear the current button model
@@ -388,9 +388,9 @@
      */
     var initializeNewAttributeDialog = function () {
         $('#new-referenced-attribute-dialog').modal({
-            headerText: 'New Attribute',
+            headerText: '新属性',
             buttons: [{
-                buttonText: 'Ok',
+                buttonText: '确定',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -402,7 +402,7 @@
                     }
                 }
             }, {
-                buttonText: 'Cancel',
+                buttonText: '取消',
                 color: {
                     base: '#E3E8EB',
                     hover: '#C7D2D7',
@@ -481,8 +481,8 @@
             } else {
                 // if this row is currently hidden, clear the value and show it
                 nfDialog.showOkDialog({
-                    headerText: 'Attribute Exists',
-                    dialogContent: 'An attribute with this name already exists.'
+                    headerText: '属性已存在',
+                    dialogContent: '同名属性已存在.'
                 });
 
                 // select the existing properties row
@@ -495,8 +495,8 @@
             $('#new-referenced-attribute-dialog').modal('hide');
         } else {
             nfDialog.showOkDialog({
-                headerText: 'Attribute Error',
-                dialogContent: 'The name of the attribute must be specified.'
+                headerText: '属性错误',
+                dialogContent: '必须指定属性名称.'
             });
         }
     };
@@ -531,23 +531,23 @@
 
         var valueFormatter = function (row, cell, value, columnDef, dataContext) {
             if (value === '') {
-                return '<span class="table-cell blank">Empty string set</span>';
+                return '<span class="table-cell blank">已置为空字符串</span>';
             } else if (value === null) {
-                return '<span class="unset">No value set</span>';
+                return '<span class="unset">无设置值</span>';
             } else {
                 return nfCommon.escapeHtml(value);
             }
         };
 
         var actionFormatter = function (row, cell, value, columnDef, dataContext) {
-            return '<div title="Delete" class="delete-attribute pointer fa fa-trash"></div>';
+            return '<div title="删除" class="delete-attribute pointer fa fa-trash"></div>';
         };
 
         // define the column model for the referenced attributes table
         var referencedAttributesColumns = [
             {
                 id: 'name',
-                name: 'Name',
+                name: '名称',
                 field: 'name',
                 formatter: nameFormatter,
                 sortable: true,
@@ -555,7 +555,7 @@
             },
             {
                 id: 'value',
-                name: 'Value',
+                name: '值',
                 field: 'value',
                 formatter: valueFormatter,
                 sortable: true,
@@ -669,8 +669,8 @@
 
             // update the button model of the drop request status dialog
             $('#verification-request-status-dialog').modal('setButtonModel', [{
-                headerText: 'Verifying Properties',
-                buttonText: 'Stop',
+                headerText: '正在校验属性',
+                buttonText: '停止',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -713,8 +713,8 @@
 
                             // show the dialog
                             nfDialog.showOkDialog({
-                                headerText: 'Verifying Properties',
-                                dialogContent: 'There are no results.'
+                                headerText: '正在校验属性',
+                                dialogContent: '无结果.'
                             });
                         }
                     }

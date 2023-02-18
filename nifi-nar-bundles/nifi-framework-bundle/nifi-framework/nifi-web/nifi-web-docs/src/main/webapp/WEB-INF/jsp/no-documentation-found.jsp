@@ -19,14 +19,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NiFi</title>
+        <title>NiFi 中文版</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
         <link rel="shortcut icon" href="../nifi/images/nifi16.ico"/>
         <link href="../../css/component-usage.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h2>Yikes!</h2>
-        <p>Unable to locate the documentation for the selected item.</p>
+        <h2>哎呀!</h2>
+        <p>未能定位到选定条目的文档.</p>
     </body>
 </html>

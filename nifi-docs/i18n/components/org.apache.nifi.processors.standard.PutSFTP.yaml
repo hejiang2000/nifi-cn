@@ -1,0 +1,223 @@
+relationships:
+  success: {en: FlowFiles that are successfully sent will be routed to success, zh: 成功发送的FlowFiles将路由到成功}
+  reject: {en: FlowFiles that were rejected by the destination system, zh: 目标系统拒绝的FlowFiles}
+  failure: {en: FlowFiles that failed to send to the remote system; failure is usually
+      looped back to this processor, zh: 未能发送到远程系统的FlowFiles；故障通常会反馈到此处理器}
+dynamicProperties:
+  Disable Directory Listing:
+    en: {description: 'Disables directory listings before operations which might fail,
+        such as configurations which create directory structures.', value: true or
+        false}
+    zh: {description: 在可能失败的操作（例如创建目录结构的配置）之前禁用目录列表。, value: 真或假}
+capabilityDescription: {en: Sends FlowFiles to an SFTP Server, zh: 将流文件发送到SFTP服务器}
+properties:
+  Proxy Host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  Http Proxy Password:
+    en: {displayName: Http Proxy Password, description: Http Proxy Password}
+    zh: {description: Http代理密码, displayName: Http代理密码}
+  Remote Owner:
+    en: {displayName: Remote Owner, description: 'Integer value representing the User
+        ID to set on the file after transferring it. If not set, the owner will not
+        be set. You may also use expression language such as ${file.owner}. If the
+        value is invalid, the processor will not be invalid but will fail to change
+        the owner of the file.'}
+    zh: {description: '表示传输文件后要在文件上设置的用户ID的整数值。如果未设置，则不会设置所有者。您还可以使用表达式语言，例如${file.owner}。如果该值无效，处理器将不会无效，但无法更改文件的所有者。',
+      displayName: 远程所有者}
+  Port:
+    en: {displayName: Port, description: The port that the remote system is listening
+        on for file transfers}
+    zh: {description: 远程系统正在侦听文件传输的端口, displayName: 港口城市}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN,
+        SOCKS + AuthN'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN、SOCKS+AuthN,
+      displayName: 代理配置服务}
+  Create Directory:
+    en: {displayName: Create Directory, description: Specifies whether or not the
+        remote directory should be created if it does not exist.}
+    zh: {description: 指定如果远程目录不存在，是否应创建该目录。, displayName: 创建目录}
+  Conflict Resolution:
+    en: {displayName: Conflict Resolution, description: Determines how to handle the
+        problem of filename collisions}
+    zh: {description: 确定如何处理文件名冲突问题, displayName: 冲突解决方案}
+  Ciphers Allowed:
+    en: {displayName: Ciphers Allowed, description: 'A comma-separated list of Ciphers
+        allowed for SFTP connections. Leave unset to allow all. Available options
+        are: 3des-cbc, 3des-ctr, aes128-cbc, aes128-ctr, aes128-gcm@openssh.com, aes192-cbc,
+        aes192-ctr, aes256-cbc, aes256-ctr, aes256-gcm@openssh.com, arcfour, arcfour128,
+        arcfour256, blowfish-cbc, blowfish-ctr, cast128-cbc, cast128-ctr, chacha20-poly1305@openssh.com,
+        idea-cbc, idea-ctr, serpent128-cbc, serpent128-ctr, serpent192-cbc, serpent192-ctr,
+        serpent256-cbc, serpent256-ctr, twofish-cbc, twofish128-cbc, twofish128-ctr,
+        twofish192-cbc, twofish192-ctr, twofish256-cbc, twofish256-ctr'}
+    zh: {description: SFTP连接允许的逗号分隔的密码列表。保留未设置以允许所有。可用选项有：3des cbc、3des ctr、aes128
+        cbc、aes1128 ctr、，aes128-gcm@openssh.com，aes192 cbc，aes1192 ctr，aes256 cbc，aes256
+        ctr，aes256-gcm@openssh.com，arcfour，arcfour128，arcfour256，河豚cbc，河豚ctr，cast128
+        cbc，cast128 ctr，chacha20-poly1305@openssh.com，idea cbc，idea ctr，serpent128
+        cbc，serpent228 ctr，serpent192 cbc，Serpent292 ctr，蛇256 cbc，蛇256 ctr，双鱼cbc，双鱼128
+        cbc，双鱼128 ctr，双鱼192 cbc，二鱼192 ctr，二鱼256 cbc, displayName: 允许的密码}
+  Disable Directory Listing:
+    en: {displayName: Disable Directory Listing, description: 'If set to ''true'',
+        directory listing is not performed prior to create missing directories. By
+        default, this processor executes a directory listing command to see target
+        directory existence before creating missing directories. However, there are
+        situations that you might need to disable the directory listing such as the
+        following. Directory listing might fail with some permission setups (e.g.
+        chmod 100) on a directory. Also, if any other SFTP client created the directory
+        after this processor performed a listing and before a directory creation request
+        by this processor is finished, then an error is returned because the directory
+        already exists.'}
+    zh: {description: 如果设置为“true”，则在创建缺少的目录之前不会执行目录列表。默认情况下，此处理器在创建缺失的目录之前执行目录列表命令以查看目标目录的存在。但是，在某些情况下，您可能需要禁用以下目录列表。目录列表可能会因目录上的某些权限设置（例如chmod
+        100）而失败。此外，如果任何其他SFTP客户端在该处理器执行列表之后且在该处理器完成目录创建请求之前创建了目录，则会返回错误，因为该目录已经存在。,
+      displayName: 禁用目录列表}
+  Temporary Filename:
+    en: {displayName: Temporary Filename, description: 'If set, the filename of the
+        sent file will be equal to the value specified during the transfer and after
+        successful completion will be renamed to the original filename. If this value
+        is set, the Dot Rename property is ignored.'}
+    zh: {description: 如果设置，发送文件的文件名将等于传输过程中指定的值，成功完成后将重命名为原始文件名。如果设置了此值，则会忽略“点重命名”属性。,
+      displayName: 临时文件名}
+  Remote Group:
+    en: {displayName: Remote Group, description: 'Integer value representing the Group
+        ID to set on the file after transferring it. If not set, the group will not
+        be set. You may also use expression language such as ${file.group}. If the
+        value is invalid, the processor will not be invalid but will fail to change
+        the group of the file.'}
+    zh: {description: '表示传输文件后要在文件上设置的组ID的整数值。如果未设置，则不会设置组。您还可以使用表达式语言，例如${file.group}。如果该值无效，处理器将不会无效，但无法更改文件组。',
+      displayName: 远程组}
+  Proxy Type:
+    en: {displayName: Proxy Type, description: Proxy type used for file transfers}
+    zh: {description: 用于文件传输的代理类型, displayName: 代理类型}
+  Private Key Passphrase:
+    en: {displayName: Private Key Passphrase, description: Password for the private
+        key}
+    zh: {description: 私钥的密码, displayName: 私钥密码短语}
+  Connection Timeout:
+    en: {displayName: Connection Timeout, description: Amount of time to wait before
+        timing out while creating a connection}
+    zh: {description: 创建连接时超时前等待的时间量, displayName: 连接超时}
+  Permissions:
+    en: {displayName: Permissions, description: 'The permissions to assign to the
+        file after transferring it. Format must be either UNIX rwxrwxrwx with a -
+        in place of denied permissions (e.g. rw-r--r--) or an octal number (e.g. 644).
+        If not set, the permissions will not be changed. You may also use expression
+        language such as ${file.permissions}. If the value is invalid, the processor
+        will not be invalid but will fail to change permissions of the file.'}
+    zh: {description: 传输文件后要分配给该文件的权限。格式必须是UNIX rwxrwxrwx，并用-代替被拒绝的权限（例如rw-r-r-）或八进制数（例如644）。如果未设置，则不会更改权限。您还可以使用表达式语言，例如$｛file.ppermissions｝。如果该值无效，处理器将不会无效，但无法更改文件的权限。,
+      displayName: 权限}
+  Dot Rename:
+    en: {displayName: Dot Rename, description: 'If true, then the filename of the
+        sent file is prepended with a "." and then renamed back to the original once
+        the file is completely sent. Otherwise, there is no rename. This property
+        is ignored if the Temporary Filename property is set.'}
+    zh: {description: 如果为true，则发送文件的文件名将以“.”开头，然后在文件完全发送后重命名回原始文件。否则，没有重命名。如果设置了“临时文件名”属性，则忽略此属性。,
+      displayName: 点重命名}
+  Last Modified Time:
+    en: {displayName: Last Modified Time, description: 'The lastModifiedTime to assign
+        to the file after transferring it. If not set, the lastModifiedTime will not
+        be changed. Format must be yyyy-MM-dd''T''HH:mm:ssZ. You may also use expression
+        language such as ${file.lastModifiedTime}. If the value is invalid, the processor
+        will not be invalid but will fail to change lastModifiedTime of the file.'}
+    zh: {description: '传输文件后要分配给文件的lastModifiedTime。如果未设置，则不会更改lastModifiedTime。格式必须为yyyy-MM-dd''T''HH:MM:ssZ。您也可以使用表达式语言，例如${file.lastModifiedTime}。如果该值无效，处理器将不会无效，但无法更改文件的lastModifiedTime。',
+      displayName: 上次修改时间}
+  Strict Host Key Checking:
+    en: {displayName: Strict Host Key Checking, description: Indicates whether or
+        not strict enforcement of hosts keys should be applied}
+    zh: {description: 指示是否应应用主机密钥的严格强制, displayName: 严格的主机密钥检查}
+  Password:
+    en: {displayName: Password, description: Password for the user account}
+    zh: {description: 用户帐户的密码, displayName: 暗语}
+  Http Proxy Username:
+    en: {displayName: Http Proxy Username, description: Http Proxy Username}
+    zh: {description: Http代理用户名, displayName: Http代理用户名}
+  Hostname:
+    en: {displayName: Hostname, description: The fully qualified hostname or IP address
+        of the remote system}
+    zh: {description: 远程系统的完全限定主机名或IP地址, displayName: 主机名}
+  Reject Zero-Byte Files:
+    en: {displayName: Reject Zero-Byte Files, description: Determines whether or not
+        Zero-byte files should be rejected without attempting to transfer}
+    zh: {description: 确定是否应拒绝零字节文件而不尝试传输, displayName: 拒绝零字节文件}
+  Remote Path:
+    en: {displayName: Remote Path, description: The path on the remote system from
+        which to pull or push files}
+    zh: {description: 远程系统上用于提取或推送文件的路径, displayName: 远程路径}
+  Host Key File:
+    en: {displayName: Host Key File, description: 'If supplied, the given file will
+        be used as the Host Key; otherwise, if ''Strict Host Key Checking'' property
+        is applied (set to true) then uses the ''known_hosts'' and ''known_hosts2''
+        files from ~/.ssh directory else no host key file will be used'}
+    zh: {description: 如果提供，给定文件将用作主机密钥；否则，如果应用了“Strict Host Key Checking”属性（设置为true），则使用~/中的“known_hosts”和“known_Host
+        s2”文件。ssh目录，否则将不使用主机密钥文件, displayName: 主机密钥文件}
+  Use Compression:
+    en: {displayName: Use Compression, description: Indicates whether or not ZLIB
+        compression should be used when transferring files}
+    zh: {description: 指示传输文件时是否应使用ZLIB压缩, displayName: 使用压缩}
+  Message Authentication Codes Allowed:
+    en: {displayName: Message Authentication Codes Allowed, description: 'A comma-separated
+        list of Message Authentication Codes allowed for SFTP connections. Leave unset
+        to allow all. Available options are: hmac-md5, hmac-md5-96, hmac-md5-96-etm@openssh.com,
+        hmac-md5-etm@openssh.com, hmac-ripemd160, hmac-ripemd160-96, hmac-ripemd160-etm@openssh.com,
+        hmac-ripemd160@openssh.com, hmac-sha1, hmac-sha1-96, hmac-sha1-96@openssh.com,
+        hmac-sha1-etm@openssh.com, hmac-sha2-256, hmac-sha2-256-etm@openssh.com, hmac-sha2-512,
+        hmac-sha2-512-etm@openssh.com'}
+    zh: {description: 'SFTP连接允许的消息验证代码的逗号分隔列表。保留未设置以允许所有。可用的选项有：hmacmd5、hmacmd5-96、，hmac-md5-96-etm@openssh.com,
+        hmac-md5-etm@openssh.com，hmac-ripemd160，hmac-ripemd160-96，hmac-ripemd160-etm@openssh.com,
+        hmac-ripemd160@openssh.com，hmac-sha1，hmac-sha1-96，hmac-sha1-96@openssh.com,
+        hmac-sha1-etm@openssh.com，hmac-sha2-256，hmac-sha2-256-etm@openssh.com，hmac-sha2-512，hmac-sha2-512-etm@openssh.com',
+      displayName: 允许的消息验证代码}
+  Send Keep Alive On Timeout:
+    en: {displayName: Send Keep Alive On Timeout, description: Send a Keep Alive message
+        every 5 seconds up to 5 times for an overall timeout of 25 seconds.}
+    zh: {description: 每5秒发送一条Keep Alive消息，最多5次，总超时时间为25秒。, displayName: 发送保持活动超时}
+  Proxy Port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  Data Timeout:
+    en: {displayName: Data Timeout, description: 'When transferring a file between
+        the local and remote system, this value specifies how long is allowed to elapse
+        without any data being transferred between systems'}
+    zh: {description: 在本地和远程系统之间传输文件时，此值指定允许在系统之间传输任何数据的时间, displayName: 数据超时}
+  Private Key Path:
+    en: {displayName: Private Key Path, description: The fully qualified path to the
+        Private Key file}
+    zh: {description: 私钥文件的完全限定路径, displayName: 私钥路径}
+  Username:
+    en: {displayName: Username, description: Username}
+    zh: {description: 用户名, displayName: 用户名}
+  Batch Size:
+    en: {displayName: Batch Size, description: The maximum number of FlowFiles to
+        send in a single connection}
+    zh: {description: 单个连接中要发送的FlowFiles的最大数量, displayName: 批量大小}
+  Key Exchange Algorithms Allowed:
+    en: {displayName: Key Exchange Algorithms Allowed, description: 'A comma-separated
+        list of Key Exchange Algorithms allowed for SFTP connections. Leave unset
+        to allow all. Available options are: curve25519-sha256, curve25519-sha256@libssh.org,
+        diffie-hellman-group-exchange-sha1, diffie-hellman-group-exchange-sha256,
+        diffie-hellman-group1-sha1, diffie-hellman-group14-sha1, diffie-hellman-group14-sha256,
+        diffie-hellman-group14-sha256@ssh.com, diffie-hellman-group15-sha256, diffie-hellman-group15-sha256@ssh.com,
+        diffie-hellman-group15-sha384@ssh.com, diffie-hellman-group15-sha512, diffie-hellman-group16-sha256,
+        diffie-hellman-group16-sha384@ssh.com, diffie-hellman-group16-sha512, diffie-hellman-group16-sha512@ssh.com,
+        diffie-hellman-group17-sha512, diffie-hellman-group18-sha512, diffie-hellman-group18-sha512@ssh.com,
+        ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, ext-info-c'}
+    zh: {description: 'SFTP连接允许的密钥交换算法的逗号分隔列表。保留未设置以允许所有。可用选项有：curve25519-sha256，curve25519-sha256@libssh.org，diffie-hellman-group-exchange-sha1，diffie-hellman-group-exchange-sha256，diffie-shellman-grroup1-sha1，diffee-hellman-houp-14-sha1，diffie-hellman-group-14-sha256，diffie-hellman-group14-sha256@ssh.com，diffie-hellman-group15-sha256，diffie-hellman-group15-sha256@ssh.com,
+        diffie-hellman-group15-sha384@ssh.com，diffie-hellman-group15-sha512，diffie-hellman-group16-sha256，diffie-hellman-group16-sha384@ssh.com，diffie-hellman-group16-sha512，diffie-hellman-group16-sha512@ssh.com，diffie-hellman-group
+        17-sha512，diffie-hellman-grou 18-sha512，diffie-hellman-group18-sha512@ssh.com，ecdh-sha2-nistp256，ecdh-ha2-nistp384，ecdh-sa2-nistp521，ext-info-c',
+      displayName: 允许的密钥交换算法}
+  Key Algorithms Allowed:
+    en: {displayName: Key Algorithms Allowed, description: 'A comma-separated list
+        of Key Algorithms allowed for SFTP connections. Leave unset to allow all.
+        Available options are: ecdsa-sha2-nistp256, ecdsa-sha2-nistp256-cert-v01@openssh.com,
+        ecdsa-sha2-nistp384, ecdsa-sha2-nistp384-cert-v01@openssh.com, ecdsa-sha2-nistp521,
+        ecdsa-sha2-nistp521-cert-v01@openssh.com, rsa-sha2-256, rsa-sha2-512, ssh-dss,
+        ssh-dss-cert-v01@openssh.com, ssh-ed25519, ssh-ed25519-cert-v01@openssh.com,
+        ssh-rsa, ssh-rsa-cert-v01@openssh.com'}
+    zh: {description: SFTP连接允许的密钥算法的逗号分隔列表。保留未设置以允许所有。可用的选项有：ecdsa-sha2-nistp256，ecdsa-sha2-nistp256-cert-v01@openssh.com、ecdsa-sha2-nistpa84，ecdsa-sha2-nistp384-cert-v01@openssh.com、ecdsa-sha2-nistp521，ecdsa-sha2-nistp521-cert-v01@openssh.com、rsa-sha2-256、rsa-ha2-512、ssh-dss、，ssh-dss-cert-v01@openssh.com，ssh-ed25519，ssh-ed25519-cert-v01@openssh.com，ssh-rsa，ssh-rsa-cert-v01@openssh.com,
+      displayName: 允许的关键算法}
+tags:
+  en: [remote, copy, egress, put, sftp, archive, files]
+  zh: [遥远的, 复制, 出口, 放, sftp公司, 档案文件, 文件夹]

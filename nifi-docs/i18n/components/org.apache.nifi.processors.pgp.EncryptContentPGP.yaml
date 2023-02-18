@@ -1,0 +1,43 @@
+relationships:
+  success: {en: Encryption Succeeded, zh: 加密成功}
+  failure: {en: Encryption Failed, zh: 加密失败}
+capabilityDescription: {en: Encrypt contents using OpenPGP. The processor reads input
+    and detects OpenPGP messages to avoid unnecessary additional wrapping in Literal
+    Data packets., zh: 使用OpenPGP加密内容。处理器读取输入并检测OpenPGP消息，以避免文字数据包中不必要的附加包装。}
+properties:
+  public-key-service:
+    en: {displayName: Public Key Service, description: PGP Public Key Service for
+        encrypting data with Public Key Encryption}
+    zh: {description: PGP公钥服务，用于使用公钥加密加密数据, displayName: 公钥服务}
+  public-key-search:
+    en: {displayName: Public Key Search, description: PGP Public Key Search will be
+        used to match against the User ID or Key ID when formatted as uppercase hexadecimal
+        string of 16 characters}
+    zh: {description: 当格式化为16个字符的大写十六进制字符串时，PGP公钥搜索将用于匹配用户ID或密钥ID, displayName: 公钥搜索}
+  file-encoding:
+    en: {displayName: File Encoding, description: File Encoding for encryption}
+    zh: {description: 用于加密的文件编码, displayName: 文件编码}
+  passphrase:
+    en: {displayName: Passphrase, description: Passphrase used for encrypting data
+        with Password-Based Encryption}
+    zh: {description: 用于使用基于密码的加密加密数据的密码短语, displayName: 密码短语}
+  symmetric-key-algorithm:
+    en: {displayName: Symmetric-Key Algorithm, description: Symmetric-Key Algorithm
+        for encryption}
+    zh: {description: 用于加密的对称密钥算法, displayName: 对称密钥算法}
+  compression-algorithm:
+    en: {displayName: Compression Algorithm, description: Compression Algorithm for
+        encryption}
+    zh: {description: 加密压缩算法, displayName: 压缩算法}
+writeAttributes:
+  pgp.symmetric.key.algorithm.id: {en: Symmetric-Key Algorithm Identifier, zh: 对称密钥算法标识符}
+  pgp.compression.algorithm.id: {en: Compression Algorithm Identifier, zh: 压缩算法标识符}
+  pgp.symmetric.key.algorithm: {en: Symmetric-Key Algorithm, zh: 对称密钥算法}
+  pgp.symmetric.key.algorithm.block.cipher: {en: Symmetric-Key Algorithm Block Cipher,
+    zh: 对称密钥算法分组密码}
+  pgp.file.encoding: {en: File Encoding, zh: 文件编码}
+  pgp.compression.algorithm: {en: Compression Algorithm, zh: 压缩算法}
+  pgp.symmetric.key.algorithm.key.size: {en: Symmetric-Key Algorithm Key Size, zh: 对称密钥算法密钥大小}
+tags:
+  en: [PGP, GPG, OpenPGP, Encryption, RFC 4880]
+  zh: [前列腺素, 地质勘探局, 打开PGP, 加密, 射频4880]

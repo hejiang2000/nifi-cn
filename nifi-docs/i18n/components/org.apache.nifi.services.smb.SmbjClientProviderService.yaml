@@ -1,0 +1,47 @@
+capabilityDescription: {en: Provides access to SMB Sessions with shared authentication
+    credentials., zh: 提供对具有共享身份验证凭据的SMB会话的访问。}
+properties:
+  use-encryption:
+    en: {displayName: Use Encryption, description: 'Turns on/off encrypted communication
+        between the client and the server. The property''s behavior is SMB dialect
+        dependent: SMB 2.x does not support encryption and the property has no effect.
+        In case of SMB 3.x, it is a hint/request to the server to turn encryption
+        on if the server also supports it.'}
+    zh: {description: 打开/关闭客户端和服务器之间的加密通信。该属性的行为取决于SMB方言：SMB 2.x不支持加密，该属性不起作用。对于SMB
+        3.x，如果服务器也支持加密，则会向服务器提示/请求打开加密。, displayName: 使用加密}
+  hostname:
+    en: {displayName: Hostname, description: The network host of the SMB file server.}
+    zh: {description: SMB文件服务器的网络主机。, displayName: 主机名}
+  password:
+    en: {displayName: Password, description: The password used for authentication.}
+    zh: {description: 用于身份验证的密码。, displayName: 暗语}
+  port:
+    en: {displayName: Port, description: Port to use for connection.}
+    zh: {description: 用于连接的端口。, displayName: 港口城市}
+  domain:
+    en: {displayName: Domain, description: 'The domain used for authentication. Optional,
+        in most cases username and password is sufficient.'}
+    zh: {description: 用于身份验证的域。可选，在大多数情况下，用户名和密码就足够了。, displayName: 领域}
+  share:
+    en: {displayName: Share, description: 'The network share to which files should
+        be listed from. This is the "first folder"after the hostname: smb://hostname:port/[share]/dir1/dir2'}
+    zh: {description: '应从中列出文件的网络共享。这是主机名之后的“第一个文件夹”：smb://hostname:port/[共享]/dir1/dir2',
+      displayName: 共有}
+  timeout:
+    en: {displayName: Timeout, description: Timeout for read and write operations.}
+    zh: {description: 读写操作超时。, displayName: 超时}
+  username:
+    en: {displayName: Username, description: The username used for authentication.}
+    zh: {description: 用于身份验证的用户名。, displayName: 用户名}
+  smb-dialect:
+    en: {displayName: SMB Dialect, description: 'The SMB dialect is negotiated between
+        the client and the server by default to the highest common version supported
+        by both end. In some rare cases, the client-server communication may fail
+        with the automatically negotiated dialect. This property can be used to set
+        the dialect explicitly (e.g. to downgrade to a lower version), when those
+        situations would occur.'}
+    zh: {description: 默认情况下，SMB方言在客户端和服务器之间协商为两端支持的最高通用版本。在一些罕见的情况下，客户端-服务器通信可能会因自动协商的方言而失败。当出现这些情况时，此属性可用于显式设置方言（例如，降级到较低版本）。,
+      displayName: SMB方言}
+tags:
+  en: ['samba, smb, cifs, files']
+  zh: [samba、smb、cifs、文件]

@@ -1,0 +1,46 @@
+relationships:
+  found: {en: Where to route flow files after successfully enriching attributes with
+      data, zh: 成功地用数据丰富属性后，将流文件路由到何处}
+  not found: {en: Where to route flow files if data enrichment query rendered no results,
+    zh: 如果数据富集查询未呈现结果，则将流文件路由到何处}
+capabilityDescription: {en: 'A powerful DNS query processor primary designed to enrich
+    DataFlows with DNS based APIs (e.g. RBLs, ShadowServer''s ASN lookup) but that
+    can be also used to perform regular DNS lookups.', zh: 一个功能强大的DNS查询处理器，主要用于通过基于DNS的API（例如RBL、ShadowServer的ASN查找）丰富数据流，但也可用于执行常规DNS查找。}
+properties:
+  DNS_TIMEOUT:
+    en: {displayName: DNS Query Timeout, description: The amount of time to wait until
+        considering a query as failed}
+    zh: {description: 在将查询视为失败之前等待的时间量, displayName: DNS查询超时}
+  QUERY_INPUT:
+    en: {displayName: Lookup value, description: The value that should be used to
+        populate the query}
+    zh: {description: 应用于填充查询的值, displayName: 查找值}
+  QUERY_PARSER_INPUT:
+    en:
+      displayName: Parser RegEx
+      description: |-
+        Choice between a splitter and regex matcher used to parse the results of the query into attribute groups.
+        NOTE: This is a multiline regular expression, therefore, the DFM should decide how to handle trailing new line characters.
+    zh: {description: 用于将查询结果解析为属性组的拆分器和正则表达式匹配器之间的选择。, displayName: 分析器RegEx}
+  DNS_RETRIES:
+    en: {displayName: DNS Query Retries, description: The number of attempts before
+        giving up and moving on}
+    zh: {description: 放弃并继续前进之前的尝试次数, displayName: DNS查询重试次数}
+  QUERY_PARSER:
+    en: {displayName: Results Parser, description: The method used to slice the results
+        into attribute groups}
+    zh: {description: 用于将结果划分为属性组的方法, displayName: 结果分析器}
+  DNS_QUERY_TYPE:
+    en: {displayName: DNS Query Type, description: 'The DNS query type to be used
+        by the processor (e.g. TXT, A)'}
+    zh: {description: 处理器要使用的DNS查询类型（例如TXT、A）, displayName: DNS查询类型}
+  DNS_SERVER:
+    en: {displayName: DNS Servers, description: A comma separated list of  DNS servers
+        to be used. (Defaults to system wide if none is used)}
+    zh: {description: 要使用的DNS服务器的逗号分隔列表。（如果未使用，则默认为系统范围）, displayName: DNS服务器}
+writeAttributes:
+  enrich.dns.record*.group*: {en: The captured fields of the DNS query response for
+      each of the records received, zh: 接收到的每个记录的DNS查询响应的捕获字段}
+tags:
+  en: [dns, enrich, ip]
+  zh: [域名解析系统, 充实, ip地址]

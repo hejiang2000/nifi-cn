@@ -1,0 +1,71 @@
+relationships:
+  success: {en: Any FlowFile that is successfully received from the event hub will
+      be transferred to this Relationship., zh: 从事件中心成功接收到的任何FlowFile都将传输到此关系。}
+capabilityDescription: {en: 'Receives messages from Microsoft Azure Event Hubs, writing
+    the contents of the Azure message to the content of the FlowFile. Note: Please
+    be aware that this processor creates a thread pool of 4 threads for Event Hub
+    Client. They will be extra threads other than the concurrent tasks scheduled for
+    this processor.', zh: 从Microsoft Azure事件中心接收消息，将Azure消息的内容写入FlowFile的内容。注意：请注意，此处理器为事件中心客户端创建了一个由4个线程组成的线程池。它们将是为该处理器计划的并发任务以外的额外线程。}
+properties:
+  Event Hub Name:
+    en: {displayName: Event Hub Name, description: Name of Azure Event Hubs source}
+    zh: {description: Azure事件中心源的名称, displayName: 事件中心名称}
+  use-managed-identity:
+    en: {displayName: Use Azure Managed Identity, description: Choose whether or not
+        to use the managed identity of Azure VM/VMSS}
+    zh: {description: 选择是否使用Azure VM/VMSS的托管标识, displayName: 使用Azure托管身份}
+  Service Bus Endpoint:
+    en: {displayName: Service Bus Endpoint, description: To support namespaces not
+        in the default windows.net domain.}
+    zh: {description: 支持不在默认窗口中的命名空间。net域。, displayName: 服务总线终结点}
+  Shared Access Policy Name:
+    en: {displayName: Shared Access Policy Name, description: The name of the shared
+        access policy. This policy must have Listen claims.}
+    zh: {description: 共享访问策略的名称。此策略必须具有Listen声明。, displayName: 共享访问策略名称}
+  Shared Access Policy Primary Key:
+    en: {displayName: Shared Access Policy Primary Key, description: The primary key
+        of the shared access policy}
+    zh: {description: 共享访问策略的主键, displayName: 共享访问策略主键}
+  Event Hub Namespace:
+    en: {displayName: Event Hub Namespace, description: Namespace of Azure Event Hubs
+        prefixed to Service Bus Endpoint domain}
+    zh: {description: 前缀为服务总线终结点域的Azure事件中心命名空间, displayName: 事件中心命名空间}
+  Partition Receiver Timeout (millseconds):
+    en: {displayName: Partition Receiver Timeout, description: The amount of time
+        in milliseconds a Partition Receiver should wait to receive the Fetch Size
+        before returning. The default is 60000}
+    zh: {description: 分区接收器在返回之前等待接收“获取大小”的时间（以毫秒为单位）。默认值为60000, displayName: 分区接收器超时}
+  Event Hub Consumer Group:
+    en: {displayName: Consumer Group, description: The name of the consumer group
+        to use when pulling events}
+    zh: {description: 拉取事件时要使用的使用者组的名称, displayName: 消费者群体}
+  Number of Event Hub Partitions:
+    en: {displayName: Number of Event Hub Partitions, description: This property is
+        deprecated and no longer used.}
+    zh: {description: 此属性已弃用，不再使用。, displayName: 事件中心分区数}
+  Event Hub Message Enqueue Time:
+    en: {displayName: Message Enqueue Time, description: 'A timestamp (ISO-8601 Instant)
+        formatted as YYYY-MM-DDThhmmss.sssZ (2016-01-01T01:01:01.000Z) from which
+        messages should have been enqueued in the Event Hub to start reading from'}
+    zh: {description: '时间戳（ISO-8601即时）格式为YYYY MM DDThhmmss。sssZ（2016-01-01T01:01:01.000Z），消息本应在事件中心中排队以开始读取',
+      displayName: 消息排队时间}
+  Partition Recivier Fetch Size:
+    en: {displayName: Partition Receiver Fetch Size, description: The number of events
+        that a receiver should fetch from an Event Hubs partition before returning.
+        The default is 100}
+    zh: {description: 接收器在返回之前应从事件中心分区获取的事件数。默认值为100, displayName: 分区接收器获取大小}
+writeAttributes:
+  eventhub.sequence: {en: The Azure sequence number associated with the message, zh: 与消息关联的Azure序列号}
+  eventhub.property.*: {en: 'The application properties of this message. IE: ''application''
+      would be ''eventhub.property.application''', zh: '此消息的应用程序属性。IE:“application”将是“eventhub.properties.application”'}
+  eventhub.partition: {en: The name of the event hub partition from which the message
+      was pulled, zh: 从中提取消息的事件中心分区的名称}
+  eventhub.name: {en: The name of the event hub from which the message was pulled,
+    zh: 从中提取消息的事件中心的名称}
+  eventhub.enqueued.timestamp: {en: 'The time (in milliseconds since epoch, UTC) at
+      which the message was enqueued in the event hub', zh: 消息在事件中心排队的时间（以毫秒为单位，自epoch，UTC）}
+  eventhub.offset: {en: The offset into the partition at which the message was stored,
+    zh: 存储消息的分区的偏移量}
+tags:
+  en: [azure, microsoft, cloud, eventhub, events, streaming, streams]
+  zh: [蔚蓝色的, 微软, 云, Eventhub, 事件, 流动, 溪流]

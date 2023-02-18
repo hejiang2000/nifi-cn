@@ -1,0 +1,78 @@
+relationships:
+  success: {en: All FlowFiles that are written to MongoDB are routed to this relationship,
+    zh: 写入MongoDB的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be written to MongoDB are routed to this
+      relationship, zh: 无法写入MongoDB的所有FlowFiles都将路由到此关系}
+capabilityDescription: {en: This processor is a record-aware processor for inserting/upserting
+    data into MongoDB. It uses a configured record reader and schema to read an incoming
+    record set from the body of a flowfile and then inserts/upserts batches of those
+    records into a configured MongoDB collection. This processor does not support
+    deletes. The number of documents to insert/upsert at a time is controlled by the
+    "Batch Size" configuration property. This value should be set to a reasonable
+    size to ensure that MongoDB is not overloaded with too many operations at once.,
+  zh: 该处理器是一个记录感知处理器，用于向MongoDB中插入/重新启动数据。它使用配置的记录读取器和模式从流文件的主体读取传入的记录集，然后将这些记录的批插入/追加到配置的MongoDB集合中。此处理器不支持删除。一次插入/追加发送的文档数量由“批量大小”配置属性控制。该值应设置为合理的大小，以确保MongoDB不会同时过载过多的操作。}
+readAttributes:
+  mongodb.update.mode: {en: Configurable parameter for controlling update mode on
+      a per-flowfile basis. Acceptable values are 'one' and 'many' and controls whether
+      a single incoming record should update a single or multiple Mongo documents.,
+    zh: 可配置参数，用于基于每个流文件控制更新模式。可接受的值为“一”和“多”，并控制单个传入记录是否应更新单个或多个Mongo文档。}
+properties:
+  mongo-client-service:
+    en: {displayName: Client Service, description: 'If configured, this property will
+        use the assigned client service for connection pooling.'}
+    zh: {description: 如果已配置，此属性将使用分配的客户端服务进行连接池。, displayName: 客户端服务}
+  ordered:
+    en: {displayName: Ordered, description: Perform ordered or unordered operations}
+    zh: {description: 执行有序或无序操作, displayName: 命令}
+  ssl-context-service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。, displayName: SSL上下文服务}
+  ssl-client-auth:
+    en: {displayName: Client Auth, description: 'Client authentication policy when
+        connecting to secure (TLS/SSL) cluster. Possible values are REQUIRED, WANT,
+        NONE. This property is only used when an SSL Context has been defined and
+        enabled.'}
+    zh: {description: 连接到安全（TLS/SSL）群集时的客户端身份验证策略。可能的值为REQUIRED、WANT、NONE。此属性仅在已定义并启用SSL上下文时使用。,
+      displayName: 客户端身份验证}
+  update-mode:
+    en: {displayName: Update Mode, description: Choose between updating a single document
+        or multiple documents per incoming record.}
+    zh: {description: 在每个传入记录更新单个文档或多个文档之间进行选择。, displayName: 更新模式}
+  Mongo Database Name:
+    en: {displayName: Mongo Database Name, description: The name of the database to
+        use}
+    zh: {description: 要使用的数据库的名称, displayName: Mongo数据库名称}
+  insert_count:
+    en: {displayName: Batch Size, description: The number of records to group together
+        for one single insert/upsert operation against MongoDB.}
+    zh: {description: 针对MongoDB的一次插入/追加启动操作要分组在一起的记录数。, displayName: 批量大小}
+  update-key-fields:
+    en: {displayName: Update Key Fields, description: Comma separated list of fields
+        based on which to identify documents that need to be updated. If this property
+        is set NiFi will attempt an upsert operation on all documents. If this property
+        is not set all documents will be inserted.}
+    zh: {description: 用逗号分隔的字段列表，根据这些字段来识别需要更新的文档。如果设置了此属性，NiFi将尝试对所有文档进行重新启动操作。如果未设置此属性，将插入所有文档。,
+      displayName: 更新关键字段}
+  Mongo URI:
+    en: {displayName: Mongo URI, description: 'MongoURI, typically of the form: mongodb://host1[:port1][,host2[:port2],...]'}
+    zh: {description: 'MongoURI，通常形式为：mongodb://host1[：端口1][，主机2[：端口2]，…]', displayName: Mongo
+        URI}
+  Mongo Collection Name:
+    en: {displayName: Mongo Collection Name, description: The name of the collection
+        to use}
+    zh: {description: 要使用的集合的名称, displayName: Mongo集合名称}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for parsing incoming data and determining the data's schema}
+    zh: {description: 指定用于分析传入数据和确定数据架构的控制器服务, displayName: 记录读取器}
+  bypass-validation:
+    en: {displayName: Bypass Validation, description: Bypass schema validation during
+        insert/upsert}
+    zh: {description: 插入/追加启动期间跳过架构验证, displayName: 绕过验证}
+  Write Concern:
+    en: {displayName: Write Concern, description: The write concern to use}
+    zh: {description: 要使用的书面关注点, displayName: 写入问题}
+tags:
+  en: [mongodb, insert, update, upsert, record, put]
+  zh: [数据库, 插入, 使现代化, 沮丧的, 记录, 放]

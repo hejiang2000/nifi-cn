@@ -1,0 +1,27 @@
+relationships:
+  matched: {en: FlowFiles that match at least one term in the dictionary are routed
+      to this relationship, zh: 与字典中至少一个术语匹配的FlowFiles将路由到此关系}
+  unmatched: {en: FlowFiles that do not match any term in the dictionary are routed
+      to this relationship, zh: 与字典中任何术语不匹配的FlowFiles将路由到此关系}
+capabilityDescription: {en: 'Scans the content of FlowFiles for terms that are found
+    in a user-supplied dictionary. If a term is matched, the UTF-8 encoded version
+    of the term will be added to the FlowFile using the ''matching.term'' attribute',
+  zh: 扫描FlowFiles的内容，查找用户提供的词典中的术语。如果某个术语匹配，则该术语的UTF-8编码版本将使用“匹配”添加到FlowFile中。term属性}
+properties:
+  Dictionary Encoding:
+    en: {displayName: Dictionary Encoding, description: 'Indicates how the dictionary
+        is encoded. If ''text'', dictionary terms are new-line delimited and UTF-8
+        encoded; if ''binary'', dictionary terms are denoted by a 4-byte integer indicating
+        the term length followed by the term itself'}
+    zh: {description: 指示字典的编码方式。如果为“text”，则字典术语为换行符和UTF-8编码；如果“binary”，则字典术语由一个4字节整数表示，该整数表示术语长度，后跟术语本身,
+      displayName: 字典编码}
+  Dictionary File:
+    en: {displayName: Dictionary File, description: The filename of the terms dictionary}
+    zh: {description: 术语词典的文件名, displayName: 字典文件}
+writeAttributes:
+  matching.term: {en: 'The term that caused the Processor to route the FlowFile to
+      the ''matched'' relationship; if FlowFile is routed to the ''unmatched'' relationship,
+      this attribute is not added', zh: 导致处理器将FlowFile路由到“匹配”关系的术语；如果FlowFile路由到“不匹配”关系，则不会添加此属性}
+tags:
+  en: [aho-corasick, scan, content, byte sequence, search, find, dictionary]
+  zh: [珊瑚虫病, 扫描, 所容纳之物, 字节序列, 搜索, 发现, 词典]

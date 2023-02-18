@@ -1,0 +1,28 @@
+relationships:
+  success: {en: A FlowFile will be routed here for each successfully fetched File.,
+    zh: 对于每个成功获取的文件，将在此处路由FlowFile。}
+  failure: {en: A FlowFile will be routed here for each File for which fetch was attempted
+      but failed., zh: 对于尝试获取但失败的每个文件，将在此处路由FlowFile。}
+capabilityDescription: {en: Fetches files from a Box Folder. Designed to be used in
+    tandem with ListBoxFile., zh: 从Box文件夹中提取文件。设计用于与ListBoxFile一起使用。}
+readAttributes:
+  box.id: {en: The id of the file, zh: 文件的id}
+properties:
+  box-client-service:
+    en: {displayName: Box Client Service, description: Controller Service used to
+        obtain a Box API connection.}
+    zh: {description: 用于获取Box API连接的控制器服务。, displayName: Box客户端服务}
+  box-file-id:
+    en: {displayName: File ID, description: The ID of the File to fetch}
+    zh: {description: 要获取的文件的ID, displayName: 文件ID}
+writeAttributes:
+  box.id: {en: The id of the file, zh: 文件的id}
+  path: {en: The folder path where the file is located, zh: 文件所在的文件夹路径}
+  filename: {en: The name of the file, zh: 文件的名称}
+  error.message: {en: The error message returned by Box, zh: Box返回的错误消息}
+  box.timestamp: {en: The last modified time of the file, zh: 文件的上次修改时间}
+  box.size: {en: The size of the file, zh: 文件的大小}
+  error.code: {en: The error code returned by Box, zh: Box返回的错误代码}
+tags:
+  en: [box, storage, fetch]
+  zh: [盒, 存储, 取来]

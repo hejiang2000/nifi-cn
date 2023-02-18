@@ -1,0 +1,43 @@
+dynamicProperties:
+  Script Engine Binding property:
+    en: {description: Updates a script engine property specified by the Dynamic Property's
+        key with the value specified by the Dynamic Property's value, value: Binding
+        property value passed to Script Runner}
+    zh: {description: 使用动态属性的值指定的值更新由动态属性的键指定的脚本引擎属性, value: 传递给脚本运行程序的绑定属性值}
+capabilityDescription: {en: 'Experimental - Invokes a script engine for a Processor
+    defined in the given script. The script must define a valid class that implements
+    the Processor interface, and it must set a variable ''processor'' to an instance
+    of the class. Processor methods such as onTrigger() will be delegated to the scripted
+    Processor instance. Also any Relationships or PropertyDescriptors defined by the
+    scripted processor will be added to the configuration dialog. The scripted processor
+    can implement public void setLogger(ComponentLog logger) to get access to the
+    parent logger, as well as public void onScheduled(ProcessContext context) and
+    public void onStopped(ProcessContext context) methods to be invoked when the parent
+    InvokeScriptedProcessor is scheduled or stopped, respectively.  NOTE: The script
+    will be loaded when the processor is populated with property values, see the Restrictions
+    section for more security implications.  Experimental: Impact of sustained usage
+    not yet verified.', zh: 实验性-为给定脚本中定义的处理器调用脚本引擎。脚本必须定义实现Processor接口的有效类，并且必须将变量“Processor”设置为该类的实例。处理器方法（如onTrigger（））将被委托给脚本化的Processor实例。此外，脚本处理器定义的任何Relationships或PropertyDescriptor都将添加到配置对话框中。脚本处理器可以实现public
+    void setLogger（ComponentLog logger）以访问父记录器，以及分别在父InvokeScriptedProcessor被调度或停止时调用的public
+    void onScheduled（ProcessContext上下文）和public void onStopped（Process上下文上下文）方法。注意：当处理器填充了属性值时，将加载脚本，请参阅“限制”部分以了解更多安全含义。实验性：持续使用的影响尚未验证。}
+statefulDescription: {en: Scripts can store and retrieve state using the State Management
+    APIs. Consult the State Manager section of the Developer's Guide for more details.,
+  zh: 脚本可以使用状态管理API存储和检索状态。有关详细信息，请参阅《开发人员指南》的“状态管理器”部分。}
+properties:
+  Script File:
+    en: {displayName: Script File, description: Path to script file to execute. Only
+        one of Script File or Script Body may be used}
+    zh: {description: 要执行的脚本文件的路径。只能使用脚本文件或脚本正文之一, displayName: 脚本文件}
+  Script Engine:
+    en: {displayName: Script Engine, description: Language Engine for executing scripts}
+    zh: {description: 用于执行脚本的语言引擎, displayName: 脚本引擎}
+  Script Body:
+    en: {displayName: Script Body, description: Body of script to execute. Only one
+        of Script File or Script Body may be used}
+    zh: {description: 要执行的脚本体。只能使用脚本文件或脚本正文之一, displayName: 脚本正文}
+  Module Directory:
+    en: {displayName: Module Directory, description: Comma-separated list of paths
+        to files and/or directories which contain modules required by the script.}
+    zh: {description: 包含脚本所需模块的文件和/或目录路径的逗号分隔列表。, displayName: 模块目录}
+tags:
+  en: [script, invoke, groovy, python, jython, jruby, ruby, javascript, js, lua, luaj]
+  zh: [剧本, 援引, 常规的, 蟒蛇, jython公司, 杰鲁比, 红宝石, javascript语言, js文件, 卢阿, 玩]

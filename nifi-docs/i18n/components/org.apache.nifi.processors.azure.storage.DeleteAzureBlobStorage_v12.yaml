@@ -1,0 +1,35 @@
+relationships:
+  success: {en: All successfully processed FlowFiles are routed to this relationship,
+    zh: 所有成功处理的FlowFiles都将路由到此关系}
+  failure: {en: Unsuccessful operations will be transferred to the failure relationship.,
+    zh: 未成功的操作将转移到失败关系。}
+capabilityDescription: {en: Deletes the specified blob from Azure Blob Storage. The
+    processor uses Azure Blob Storage client library v12., zh: 从Azure blob存储中删除指定的blob。处理器使用Azure
+    Blob Storage客户端库v12。}
+properties:
+  delete-snapshots-option:
+    en: {displayName: Delete Snapshots Option, description: Specifies the snapshot
+        deletion options to be used when deleting a blob.}
+    zh: {description: 指定删除blob时要使用的快照删除选项。, displayName: 删除快照选项}
+  blob-name:
+    en: {displayName: Blob Name, description: The full name of the blob}
+    zh: {description: blob的全名, displayName: Blob名称}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. Supported proxies:
+        HTTP, SOCKS In case of SOCKS, it is not guaranteed that the selected SOCKS
+        Version will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。支持的代理：HTTP、SOCKS如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  storage-credentials-service:
+    en: {displayName: Storage Credentials, description: Controller Service used to
+        obtain Azure Blob Storage Credentials.}
+    zh: {description: 用于获取Azure Blob存储凭据的控制器服务。, displayName: 存储凭据}
+  container-name:
+    en: {displayName: Container Name, description: 'Name of the Azure storage container.
+        In case of PutAzureBlobStorage processor, container can be created if it does
+        not exist.'}
+    zh: {description: Azure存储容器的名称。对于PutAzureBlobStorage处理器，如果容器不存在，则可以创建容器。, displayName: 容器名称}
+tags:
+  en: [azure, microsoft, cloud, storage, blob]
+  zh: [蔚蓝色的, 微软, 云, 存储, 斑点]

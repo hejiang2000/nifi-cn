@@ -1,0 +1,105 @@
+relationships:
+  success: {en: All FlowFiles that are read from Elasticsearch are routed to this
+      relationship., zh: 从Elasticsearch读取的所有FlowFiles都将路由到此关系。}
+  failure: {en: All FlowFiles that cannot be read from Elasticsearch are routed to
+      this relationship. Note that only incoming flow files will be routed to failure.,
+    zh: 无法从Elasticsearch读取的所有FlowFiles都将路由到此关系。请注意，只有传入的流文件将被路由到失败。}
+  not found: {en: 'A FlowFile is routed to this relationship if the specified document
+      does not exist in the Elasticsearch cluster. Note that if the processor has
+      no incoming connections, flow files may still be sent to this relationship based
+      on the processor properties and the results of the fetch operation.', zh: 如果Elasticsearch集群中不存在指定的文档，则将FlowFile路由到此关系。请注意，如果处理器没有传入连接，则流文件仍可能根据处理器属性和提取操作的结果发送到此关系。}
+  retry: {en: 'A FlowFile is routed to this relationship if the document cannot be
+      fetched but attempting the operation again may succeed. Note that if the processor
+      has no incoming connections, flow files may still be sent to this relationship
+      based on the processor properties and the results of the fetch operation.',
+    zh: 如果无法获取文档，则FlowFile将路由到此关系，但再次尝试操作可能会成功。请注意，如果处理器没有传入连接，则流文件仍可能根据处理器属性和提取操作的结果发送到此关系。}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+dynamicProperties:
+  A URL query parameter:
+    en: {description: Adds the specified property name/value as a query parameter
+        in the Elasticsearch URL used for processing, value: The value to set it to}
+    zh: {description: 在用于处理的Elasticsearch URL中添加指定的属性名称/值作为查询参数, value: 要将其设置为的值}
+capabilityDescription: {en: Retrieves a document from Elasticsearch using the specified
+    connection properties and the identifier of the document to retrieve. Note that
+    the full body of the document will be read into memory before being written to
+    a Flow File for transfer., zh: 使用指定的连接属性和要检索的文档的标识符从Elasticsearch检索文档。请注意，在写入流文件进行传输之前，文档的全部内容将被读入内存。}
+properties:
+  elasticsearch-http-response-timeout:
+    en: {displayName: Response Timeout, description: Max wait time for a response
+        from the Elasticsearch REST API.}
+    zh: {description: Elasticsearch REST API响应的最长等待时间。, displayName: 响应超时}
+  fetch-es-doc-id:
+    en: {displayName: Document Identifier, description: The identifier of the document
+        to be fetched}
+    zh: {description: 要提取的文档的标识符, displayName: 文件标识}
+  fetch-es-index:
+    en: {displayName: Index, description: The name of the index to read from.}
+    zh: {description: 要读取的索引的名称。, displayName: 指数}
+  proxy-configuration-service:
+    en: {displayName: Proxy Configuration Service, description: 'Specifies the Proxy
+        Configuration Controller Service to proxy network requests. If set, it supersedes
+        proxy settings configured per component. Supported proxies: HTTP + AuthN,
+        SOCKS In case of SOCKS, it is not guaranteed that the selected SOCKS Version
+        will be used by the processor.'}
+    zh: {description: 指定代理配置控制器服务以代理网络请求。如果设置，它将取代每个组件配置的代理设置。支持的代理：HTTP+AuthN，SOCKS如果是SOCKS，则不保证处理器将使用所选的SOCKS版本。,
+      displayName: 代理配置服务}
+  elasticsearch-http-url:
+    en: {displayName: Elasticsearch URL, description: 'Elasticsearch URL which will
+        be connected to, including scheme (http, e.g.), host, and port. The default
+        port for the REST API is 9200.'}
+    zh: {description: 将连接到的Elasticsearch URL，包括scheme（例如http）、host和port。REST API的默认端口是9200。,
+      displayName: 弹性搜索URL}
+  fetch-es-fields:
+    en: {displayName: Fields, description: 'A comma-separated list of fields to retrieve
+        from the document. If the Fields property is left blank, then the entire document''s
+        source will be retrieved.'}
+    zh: {description: 要从文档中检索的字段的逗号分隔列表。如果Fields属性为空，则将检索整个文档的源。, displayName: 领域}
+  fetch-es-type:
+    en: {displayName: Type, description: 'The type of document/fetch (if unset, the
+        first document matching the identifier across _all types will be retrieved).
+        This should be unset, ''_doc'' or ''_source'' for Elasticsearch 7.0+.'}
+    zh: {description: 文档/获取的类型（如果未设置，将检索所有类型中与标识符匹配的第一个文档）。对于Elasticsearch 7.0+，应为unset、“_doc”或“_source”。,
+      displayName: 类型}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The SSL Context Service used
+        to provide client certificate information for TLS/SSL connections. This service
+        only applies if the Elasticsearch endpoint(s) have been secured with TLS/SSL.}
+    zh: {description: 用于为TLS/SSL连接提供客户端证书信息的SSL上下文服务。此服务仅适用于Elasticsearch端点已通过TLS/SSL进行安全保护的情况。,
+      displayName: SSL上下文服务}
+  elasticsearch-http-connect-timeout:
+    en: {displayName: Connection Timeout, description: Max wait time for the connection
+        to the Elasticsearch REST API.}
+    zh: {description: 连接到Elasticsearch REST API的最长等待时间。, displayName: 连接超时}
+  Username:
+    en: {displayName: Username, description: Username to access the Elasticsearch
+        cluster}
+    zh: {description: 访问Elasticsearch集群的用户名, displayName: 用户名}
+  elasticsearch-http-proxy-host:
+    en: {displayName: Proxy Host, description: The fully qualified hostname or IP
+        address of the proxy server}
+    zh: {description: 代理服务器的完全限定主机名或IP地址, displayName: 代理主机}
+  proxy-username:
+    en: {displayName: Proxy Username, description: Proxy Username}
+    zh: {description: 代理用户名, displayName: 代理用户名}
+  proxy-password:
+    en: {displayName: Proxy Password, description: Proxy Password}
+    zh: {description: 代理密码, displayName: 代理密码}
+  elasticsearch-http-proxy-port:
+    en: {displayName: Proxy Port, description: The port of the proxy server}
+    zh: {description: 代理服务器的端口, displayName: 代理服务器端口}
+  Character Set:
+    en: {displayName: Character Set, description: Specifies the character set of the
+        document data.}
+    zh: {description: 指定文档数据的字符集。, displayName: 字符集}
+  Password:
+    en: {displayName: Password, description: Password to access the Elasticsearch
+        cluster}
+    zh: {description: 访问Elasticsearch集群的密码, displayName: 暗语}
+writeAttributes:
+  filename: {en: The filename attribute is set to the document identifier, zh: 文件名属性设置为文档标识符}
+  es.type: {en: The Elasticsearch document type, zh: Elasticsearch文档类型}
+  es.index: {en: The Elasticsearch index containing the document, zh: 包含文档的Elasticsearch索引}
+tags:
+  en: [elasticsearch, fetch, read, get, http]
+  zh: [弹性搜索, 取来, 阅读, 收到, http]

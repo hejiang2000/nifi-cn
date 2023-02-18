@@ -1,0 +1,82 @@
+relationships:
+  success: {en: All FlowFiles that are sent to the JMS destination are routed to this
+      relationship, zh: 发送到JMS目标的所有FlowFiles都将路由到此关系}
+  failure: {en: All FlowFiles that cannot be routed to the JMS destination are routed
+      to this relationship, zh: 无法路由到JMS目标的所有FlowFiles都将路由到此关系}
+deprecationNotice: {en: This processor is deprecated and may be removed in future
+    releases., zh: 此处理器已弃用，可能会在将来的版本中删除。}
+capabilityDescription: {en: Creates a JMS Message from the contents of a FlowFile
+    and sends the message to a ActiveMQ JMS Server., zh: 从FlowFile的内容创建JMS消息，并将消息发送到ActiveMQ
+    JMS服务器。}
+properties:
+  Reply-To Queue:
+    en: {displayName: Reply-To Queue, description: The name of the queue to which
+        a reply to should be added}
+    zh: {description: 应向其添加答复的队列的名称, displayName: 答复队列}
+  Message Time to Live:
+    en: {displayName: Message Time to Live, description: 'The amount of time that
+        the message should live on the destination before being removed; if not specified,
+        the message will never expire.'}
+    zh: {description: 消息在删除之前应在目标上驻留的时间；如果未指定，消息将永不过期。, displayName: 消息生存时间}
+  Destination Name:
+    en: {displayName: Destination Name, description: The name of the JMS Topic or
+        queue to use}
+    zh: {description: 要使用的JMS主题或队列的名称, displayName: 目标名称}
+  Copy Attributes to JMS Properties:
+    en: {displayName: Copy Attributes to JMS Properties, description: 'Whether or
+        not FlowFile Attributes should be translated into JMS Message Properties.
+        If true, all attributes starting with ''jms.'' will be set as Properties on
+        the JMS Message (without the ''jms.'' prefix). If an attribute exists that
+        starts with the same value but ends in ''.type'', that attribute will be used
+        to determine the JMS Message Property type.'}
+    zh: {description: 是否应将FlowFile属性转换为JMS消息属性。如果为true，则所有以“jms”开头的属性将设置为JMS消息上的属性（不带“JMS.”前缀）。如果存在以相同值开头但以“”结尾的属性。type”，该属性将用于确定JMS消息属性类型。,
+      displayName: 将属性复制到JMS属性}
+  URL:
+    en: {displayName: URL, description: The URL of the JMS Server}
+    zh: {description: JMS服务器的URL, displayName: 统一资源定位地址}
+  Message Type:
+    en: {displayName: Message Type, description: The Type of JMS Message to Construct}
+    zh: {description: 要构造的JMS消息类型, displayName: 消息类型}
+  Message Priority:
+    en: {displayName: Message Priority, description: The Priority of the Message}
+    zh: {description: 消息的优先级, displayName: 消息优先级}
+  SSL Context Service:
+    en: {displayName: SSL Context Service, description: The Controller Service to
+        use in order to obtain an SSL Context.}
+    zh: {description: 用于获取SSL上下文的控制器服务。, displayName: SSL上下文服务}
+  Username:
+    en: {displayName: Username, description: Username used for authentication and
+        authorization}
+    zh: {description: 用于身份验证和授权的用户名, displayName: 用户名}
+  Max Buffer Size:
+    en: {displayName: Max Buffer Size, description: 'The maximum amount of data that
+        can be buffered for a JMS Message. If a FlowFile''s size exceeds this value,
+        the FlowFile will be routed to failure.'}
+    zh: {description: JMS消息可缓冲的最大数据量。如果FlowFile的大小超过此值，则FlowFile将路由失败。, displayName: 最大缓冲区大小}
+  Communications Timeout:
+    en: {displayName: Communications Timeout, description: The amount of time to wait
+        when attempting to receive a message before giving up and assuming failure}
+    zh: {description: 在放弃并假设失败之前尝试接收消息时等待的时间, displayName: 通信超时}
+  Destination Type:
+    en: {displayName: Destination Type, description: The type of the JMS Destination
+        to use}
+    zh: {description: 要使用的JMS目标的类型, displayName: 目的地类型}
+  Message Batch Size:
+    en: {displayName: Message Batch Size, description: The number of messages to pull/push
+        in a single iteration of the processor}
+    zh: {description: 在处理器的一次迭代中要拉/推的消息数, displayName: 消息批大小}
+  Client ID Prefix:
+    en: {displayName: Client ID Prefix, description: A human-readable ID that can
+        be used to associate connections with yourself so that the maintainers of
+        the JMS Server know who to contact if problems arise}
+    zh: {description: 一个人类可读的ID，可用于将连接与自己关联起来，以便JMS服务器的维护人员知道在出现问题时应该联系谁, displayName: 客户端ID前缀}
+  JMS Provider:
+    en: {displayName: JMS Provider, description: The Provider used for the JMS Server}
+    zh: {description: 用于JMS服务器的提供程序, displayName: 提供者}
+  Password:
+    en: {displayName: Password, description: Password used for authentication and
+        authorization}
+    zh: {description: 用于身份验证和授权的密码, displayName: 暗语}
+tags:
+  en: [jms, send, put]
+  zh: [jms公司, 邮寄, 放]

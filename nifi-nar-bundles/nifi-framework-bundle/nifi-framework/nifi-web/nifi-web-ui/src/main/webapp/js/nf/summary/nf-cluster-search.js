@@ -59,9 +59,9 @@
             // configure the view single node dialog
             $('#view-single-node-dialog').modal({
                 scrollableContentStyle: 'scrollable',
-                headerText: 'Select node',
+                headerText: '选中节点',
                 buttons: [{
-                    buttonText: 'Ok',
+                    buttonText: '确定',
                     color: {
                         base: '#728E9B',
                         hover: '#004849',
@@ -97,8 +97,8 @@
                                 // ensure the search found some results
                                 if (!$.isArray(searchResults) || searchResults.length === 0) {
                                     nfDialog.showOkDialog({
-                                        headerText: 'Cluster Search',
-                                        dialogContent: 'No nodes match \'' + nfCommon.escapeHtml(clusterSearchTerm) + '\'.'
+                                        headerText: '集群搜索',
+                                        dialogContent: '没有匹配 \'' + nfCommon.escapeHtml(clusterSearchTerm) + '\' 的节点.'
                                     });
                                 } else if (searchResults.length > 1) {
                                     var exactMatch = false;
@@ -118,8 +118,8 @@
                                         $('#view-single-node-dialog').modal('hide');
                                     } else {
                                         nfDialog.showOkDialog({
-                                            headerText: 'Cluster Search',
-                                            dialogContent: 'More than one node matches \'' + nfCommon.escapeHtml(clusterSearchTerm) + '\'.'
+                                            headerText: '集群搜索',
+                                            dialogContent: '多个节点匹配 \'' + nfCommon.escapeHtml(clusterSearchTerm) + '\'.'
                                         });
                                     }
                                 } else if (searchResults.length === 1) {
@@ -133,7 +133,7 @@
                     }
                 },
                     {
-                        buttonText: 'Cancel',
+                        buttonText: '取消',
                         color: {
                             base: '#E3E8EB',
                             hover: '#C7D2D7',
@@ -182,7 +182,7 @@
 
                     // ensure there were some results
                     if (ul.children().length === 0) {
-                        ul.append('<li class="unset search-no-matches">No nodes matched the search terms</li>');
+                        ul.append('<li class="unset search-no-matches">无匹配搜索条件的节点</li>');
                     }
                 },
                 _resizeMenu: function () {
@@ -238,7 +238,7 @@
                 nfSummaryTable.loadSummaryTable();
 
                 // update the header
-                $('#summary-header-text').text('NiFi Summary');
+                $('#summary-header-text').text('NiFi 信息汇总');
             });
 
             // show the view links

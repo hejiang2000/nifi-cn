@@ -1,0 +1,132 @@
+relationships:
+  success: {en: A FlowFile containing records routed to this relationship after the
+      record has been successfully transmitted to the database., zh: 包含记录成功传输到数据库后路由到此关系的记录的FlowFile。}
+  failure: {en: A FlowFile containing records routed to this relationship if the record
+      could not be transmitted to the database., zh: 如果记录无法传输到数据库，则包含路由到此关系的记录的FlowFile。}
+capabilityDescription: {en: 'This processor uses a JDBC connection and incoming records
+    to generate any database table changes needed to support the incoming records.
+    It expects a ''flat'' record layout, meaning none of the top-level record fields
+    has nested fields that are intended to become columns themselves.', zh: 该处理器使用JDBC连接和传入记录来生成支持传入记录所需的任何数据库表更改。它需要一个“平面”记录布局，这意味着没有一个顶级记录字段具有要成为列本身的嵌套字段。}
+properties:
+  updatedatabasetable-table-name:
+    en: {displayName: Table Name, description: 'The name of the database table to
+        update. If the table does not exist, then it will either be created or an
+        error thrown, depending on the value of the Create Table property.'}
+    zh: {description: 要更新的数据库表的名称。如果该表不存在，则将根据CreateTable属性的值创建该表或引发错误。, displayName: 表名称}
+  updatedatabasetable-query-timeout:
+    en: {displayName: Query Timeout, description: 'Sets the number of seconds the
+        driver will wait for a query to execute. A value of 0 means no timeout. NOTE:
+        Non-zero values may not be supported by the driver.'}
+    zh: {description: 设置驱动程序等待查询执行的秒数。值为0表示没有超时。注意：驱动程序可能不支持非零值。, displayName: 查询超时}
+  updatedatabasetable-create-table:
+    en: {displayName: Create Table Strategy, description: 'Specifies how to process
+        the target table when it does not exist (create it, fail, e.g.).'}
+    zh: {description: 指定当目标表不存在时如何处理该表（例如，创建它，失败）。, displayName: 创建表格策略}
+  updatedatabasetable-update-field-names:
+    en: {displayName: Update Field Names, description: 'This property indicates whether
+        to update the output schema such that the field names are set to the exact
+        column names from the specified table. This should be used if the incoming
+        record field names may not match the table''s column names in terms of upper-
+        and lower-case. For example, this property should be set to true if the output
+        FlowFile is destined for Oracle e.g., which expects the field names to match
+        the column names exactly. NOTE: The value of the ''Translate Field Names''
+        property is ignored when updating field names; instead they are updated to
+        match the column name as returned by the database.'}
+    zh: {description: 此属性指示是否更新输出架构，以便将字段名设置为指定表中的确切列名。如果传入的记录字段名在大小写方面可能与表的列名不匹配，则应使用此选项。例如，如果输出FlowFile的目标是Oracle（例如，Oracle希望字段名与列名完全匹配），则应将此属性设置为true。注意：更新字段名时，将忽略“Translate
+        Field Names”属性的值；而是更新它们以匹配数据库返回的列名。, displayName: 更新字段名称}
+  updatedatabasetable-quoted-column-identifiers:
+    en: {displayName: Quote Column Identifiers, description: 'Enabling this option
+        will cause all column names to be quoted, allowing you to use reserved words
+        as column names in your tables and/or forcing the record field names to match
+        the column names exactly.'}
+    zh: {description: 启用此选项将导致所有列名被引用，允许您在表中使用保留字作为列名，和/或强制记录字段名称与列名完全匹配。, displayName: 引用列标识符}
+  updatedatabasetable-schema-name:
+    en: {displayName: Schema Name, description: 'The name of the database schema that
+        the table belongs to. This may not apply for the database that you are updating.
+        In this case, leave the field empty. Note that if the property is set and
+        the database is case-sensitive, the schema name must match the database''s
+        schema name exactly.'}
+    zh: {description: 表所属的数据库架构的名称。这可能不适用于您正在更新的数据库。在这种情况下，将字段留空。注意，如果设置了属性并且数据库区分大小写，则模式名称必须与数据库的模式名称完全匹配。,
+      displayName: 架构名称}
+  updatedatabasetable-dbcp-service:
+    en: {displayName: Database Connection Pooling Service, description: The Controller
+        Service that is used to obtain connection(s) to the database}
+    zh: {description: 用于获取数据库连接的控制器服务, displayName: 数据库连接池服务}
+  updatedatabasetable-translate-field-names:
+    en: {displayName: Translate Field Names, description: 'If true, the Processor
+        will attempt to translate field names into the corresponding column names
+        for the table specified, for the purposes of determining whether the field
+        name exists as a column in the target table. NOTE: If the target table does
+        not exist and is to be created, this property is ignored and the field names
+        will be used as-is. If false, the field names must match the column names
+        exactly, or the column may not be found and instead an error my be reported
+        that the column already exists.'}
+    zh: {description: 如果为true，处理器将尝试将字段名转换为指定表的相应列名，以确定字段名是否作为列存在于目标表中。注意：如果目标表不存在并且要创建，则忽略此属性，并按原样使用字段名。如果为false，则字段名必须与列名完全匹配，否则可能找不到该列，而是报告该列已存在的错误。,
+      displayName: 翻译字段名称}
+  updatedatabasetable-catalog-name:
+    en: {displayName: Catalog Name, description: 'The name of the catalog that the
+        statement should update. This may not apply for the database that you are
+        updating. In this case, leave the field empty. Note that if the property is
+        set and the database is case-sensitive, the catalog name must match the database''s
+        catalog name exactly.'}
+    zh: {description: 语句应更新的目录的名称。这可能不适用于您正在更新的数据库。在这种情况下，将字段留空。请注意，如果设置了属性并且数据库区分大小写，则目录名称必须与数据库的目录名称完全匹配。,
+      displayName: 目录名称}
+  updatedatabasetable-primary-keys:
+    en: {displayName: Primary Key Fields, description: 'A comma-separated list of
+        record field names that uniquely identifies a row in the database. This property
+        is only used if the specified table needs to be created, in which case the
+        Primary Key Fields will be used to specify the primary keys of the newly-created
+        table. IMPORTANT: Primary Key Fields must match the record field names exactly
+        unless ''Quote Column Identifiers'' is false and the database allows for case-insensitive
+        column names. In practice it is best to specify Primary Key Fields that exactly
+        match the record field names, and those will become the column names in the
+        created table.'}
+    zh: {description: 以逗号分隔的记录字段名列表，用于唯一标识数据库中的行。此属性仅在需要创建指定表时使用，在这种情况下，主键字段将用于指定新创建表的主键。重要提示：主键字段必须与记录字段名称完全匹配，除非“报价列标识符”为false，并且数据库允许不区分大小写的列名。实际上，最好指定与记录字段名称完全匹配的主键字段，这些字段将成为所创建表中的列名。,
+      displayName: 主键字段}
+  db-type:
+    en: {displayName: Database Type, description: 'The type/flavor of database, used
+        for generating database-specific code. In many cases the Generic type should
+        suffice, but some databases (such as Oracle) require custom SQL clauses.'}
+    zh: {description: 数据库的类型/风格，用于生成特定于数据库的代码。在许多情况下，Generic类型应该足够了，但一些数据库（如Oracle）需要自定义SQL子句。,
+      displayName: 数据库类型}
+  record-reader:
+    en: {displayName: Record Reader, description: 'The service for reading incoming
+        flow files. The reader is only used to determine the schema of the records,
+        the actual records will not be processed.'}
+    zh: {description: 用于读取传入流文件的服务。读取器仅用于确定记录的模式，不会处理实际记录。, displayName: 记录读取器}
+  updatedatabasetable-quoted-table-identifiers:
+    en: {displayName: Quote Table Identifiers, description: Enabling this option will
+        cause the table name to be quoted to support the use of special characters
+        in the table name and/or forcing the value of the Table Name property to match
+        the target table name exactly.}
+    zh: {description: 启用此选项将导致引用表名以支持在表名中使用特殊字符和/或强制表名属性的值与目标表名完全匹配。, displayName: 报价表标识符}
+  updatedatabasetable-record-writer:
+    en: {displayName: Record Writer, description: 'Specifies the Controller Service
+        to use for writing results to a FlowFile. The Record Writer should use Inherit
+        Schema to emulate the inferred schema behavior, i.e. an explicit schema need
+        not be defined in the writer, and will be supplied by the same logic used
+        to infer the schema from the column types. If Create Table Strategy is set
+        ''Create If Not Exists'', the Record Writer''s output format must match the
+        Record Reader''s format in order for the data to be placed in the created
+        table location. Note that this property is only used if ''Update Field Names''
+        is set to true and the field names do not all match the column names exactly.
+        If no update is needed for any field names (or ''Update Field Names'' is false),
+        the Record Writer is not used and instead the input FlowFile is routed to
+        success or failure without modification.'}
+    zh: {description: 指定用于将结果写入FlowFile的控制器服务。记录编写器应使用继承模式来模拟推断的模式行为，即，不需要在编写器中定义显式模式，而是由用于从列类型推断模式的相同逻辑提供。如果“创建表策略”设置为“如果不存在则创建”，则记录编写器的输出格式必须与记录读取器的格式匹配，以便将数据放置在创建的表位置。请注意，只有当“Update
+        Field Names”设置为true并且字段名不完全与列名匹配时，才使用此属性。如果任何字段名不需要更新（或“更新字段名”为false），则不使用记录编写器，而是将输入FlowFile路由到成功或失败，而不进行修改。,
+      displayName: 记录编写器}
+writeAttributes:
+  output.path: {en: 'This attribute is written on the flow files routed to the ''success''
+      and ''failure'' relationships, and contains the path on the file system to the
+      table (or partition location if the table is partitioned).', zh: 此属性写入路由到“成功”和“失败”关系的流文件中，并包含文件系统上到表的路径（如果表已分区，则为分区位置）。}
+  record.count: {en: 'Sets the number of records in the FlowFile, only if a Record
+      Writer is specified and Update Field Names is ''true''.', zh: 仅当指定了记录编写器且更新字段名称为“true”时，设置FlowFile中的记录数。}
+  mime.type: {en: 'Sets the mime.type attribute to the MIME Type specified by the
+      Record Writer, only if a Record Writer is specified and Update Field Names is
+      ''true''.', zh: 设置mime。type属性设置为记录编写器指定的MIME类型，仅当指定了记录编写器且更新字段名称为“true”时。}
+  output.table: {en: 'This attribute is written on the flow files routed to the ''success''
+      and ''failure'' relationships, and contains the target table name.', zh: 此属性将写入路由到“成功”和“失败”关系的流文件中，并包含目标表名。}
+tags:
+  en: [metadata, jdbc, database, table, update, alter]
+  zh: [元数据, jdbc语言, 数据库, 桌子, 使现代化, 改变]

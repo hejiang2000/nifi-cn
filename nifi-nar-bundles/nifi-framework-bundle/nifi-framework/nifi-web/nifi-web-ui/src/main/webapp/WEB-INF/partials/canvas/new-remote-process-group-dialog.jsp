@@ -19,7 +19,7 @@
     <div class="dialog-content">
         <div class="setting">
             <div class="setting-name">URLs
-                <div class="fa fa-question-circle" alt="Info" title="Specify the remote target NiFi URLs. Multiple URLs can be specified in comma-separated format. Different protocols cannot be mixed. If remote NiFi is a cluster, two or more node URLs are recommended for better connection establishment availability."></div>
+                <div class="fa fa-question-circle" alt="Info" title="指定远程目标 NiFi URL. 多个 URL 之间用逗号(,)隔开. 不能混用不同协议. 如果远程 NiFi 是一个集群, 推荐设置两个或更多节点的 URL, 获得更好的连接可用性."></div>
              </div>
             <div class="setting-field">
                 <input id="new-remote-process-group-uris" type="text" placeholder="https://remotehost:8443/nifi"/>
@@ -28,8 +28,8 @@
         <div class="setting">
             <div class="remote-process-group-setting-left">
                 <div class="setting-name">
-                    Transport Protocol
-                    <div class="fa fa-question-circle" alt="Info" title="Specify the transport protocol to use for this Remote Process Group communication."></div>
+                    传输协议
+                    <div class="fa fa-question-circle" alt="Info" title="指定该远程处理组所用的传输协议."></div>
                 </div>
                 <div class="setting-field">
                     <div id="new-remote-process-group-transport-protocol-combo"></div>
@@ -37,8 +37,8 @@
             </div>
             <div class="remote-process-group-setting-right">
                 <div class="setting-name">
-                    Local Network Interface
-                    <div class="fa fa-question-circle" alt="Info" title="The local network interface to send/receive data. If not specified, any local address is used. If clustered, all nodes must have an interface with this identifier."></div>
+                    本地网络接口
+                    <div class="fa fa-question-circle" alt="Info" title="发送/接收数据的本地网络接口. 如果未指定, 将使用任意本地地址. 对于集群, 所有节点必须存在这里指定的网络接口."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" class="small-setting-input" id="new-remote-process-group-local-network-interface"/>
@@ -49,8 +49,8 @@
         <div class="setting">
             <div class="remote-process-group-setting-left">
                 <div class="setting-name">
-                    HTTP Proxy server hostname
-                    <div class="fa fa-question-circle" alt="Info" title="Specify the proxy server's hostname to use. If not specified, HTTP traffics are sent directly to the target NiFi instance."></div>
+                    HTTP 代理服务器主机
+                    <div class="fa fa-question-circle" alt="Info" title="指定代理服务器主机. 如果未指定, 将会直接与 NiFi 实例通信."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" class="small-setting-input" id="new-remote-process-group-proxy-host"/>
@@ -58,8 +58,8 @@
             </div>
             <div class="remote-process-group-setting-right">
                 <div class="setting-name">
-                    HTTP Proxy server port
-                    <div class="fa fa-question-circle" alt="Info" title="Specify the proxy server's port number, optional. If not specified, default port 80 will be used."></div>
+                    HTTP 代理服务器端口
+                    <div class="fa fa-question-circle" alt="Info" title="指定代理服务器端口, 可选. 如果未指定, 将使用默认的 80 端口."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" class="small-setting-input" id="new-remote-process-group-proxy-port"/>
@@ -70,8 +70,8 @@
         <div class="setting">
             <div class="remote-process-group-setting-left">
                 <div class="setting-name">
-                    HTTP Proxy user
-                    <div class="fa fa-question-circle" alt="Info" title="Specify an user name to connect to the proxy server, optional."></div>
+                    HTTP 代理用户
+                    <div class="fa fa-question-circle" alt="Info" title="指定连接到代理服务器的用户名, 可选."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" class="small-setting-input" id="new-remote-process-group-proxy-user"/>
@@ -79,8 +79,8 @@
             </div>
             <div class="remote-process-group-setting-right">
                 <div class="setting-name">
-                    HTTP Proxy password
-                    <div class="fa fa-question-circle" alt="Info" title="Specify an user password to connect to the proxy server, optional."></div>
+                    HTTP 代理密码
+                    <div class="fa fa-question-circle" alt="Info" title="指定连接到服务器的密码, 可选."></div>
                 </div>
                 <div class="setting-field">
                     <input type="password" class="small-setting-input" id="new-remote-process-group-proxy-password"/>
@@ -91,8 +91,8 @@
         <div class="setting">
             <div class="remote-process-group-setting-left">
                 <div class="setting-name">
-                    Communications timeout
-                    <div class="fa fa-question-circle" alt="Info" title="When communication with this remote process group takes longer than this amount of time, it will timeout."></div>
+                    通信超时
+                    <div class="fa fa-question-circle" alt="Info" title="与该远程处理组通信超过该指定时间阈值, 将被视为超时."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" class="small-setting-input" id="new-remote-process-group-timeout"/>
@@ -100,8 +100,8 @@
             </div>
             <div class="remote-process-group-setting-right">
                 <div class="setting-name">
-                    Yield duration
-                    <div class="fa fa-question-circle" alt="Info" title="When communication with this remote process group fails, it will not be scheduled again until this amount of time elapses."></div>
+                    放弃时长
+                    <div class="fa fa-question-circle" alt="Info" title="当与该远程处理组通信失败后, 在该指定时间阈值到达前, 不会被再次调度执行."></div>
                 </div>
                 <div class="setting-field">
                     <input type="text" class="small-setting-input" id="new-remote-process-group-yield-duration"/>

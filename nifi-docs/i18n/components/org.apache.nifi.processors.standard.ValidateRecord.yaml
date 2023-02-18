@@ -1,0 +1,104 @@
+relationships:
+  valid: {en: Records that are valid according to the schema will be routed to this
+      relationship, zh: 根据架构有效的记录将路由到此关系}
+  failure: {en: 'If the records cannot be read, validated, or written, for any reason,
+      the original FlowFile will be routed to this relationship', zh: 如果由于任何原因无法读取、验证或写入记录，原始FlowFile将被路由到此关系}
+  invalid: {en: Records that are not valid according to the schema will be routed
+      to this relationship, zh: 根据架构无效的记录将路由到此关系}
+capabilityDescription: {en: 'Validates the Records of an incoming FlowFile against
+    a given schema. All records that adhere to the schema are routed to the "valid"
+    relationship while records that do not adhere to the schema are routed to the
+    "invalid" relationship. It is therefore possible for a single incoming FlowFile
+    to be split into two individual FlowFiles if some records are valid according
+    to the schema and others are not. Any FlowFile that is routed to the "invalid"
+    relationship will emit a ROUTE Provenance Event with the Details field populated
+    to explain why records were invalid. In addition, to gain further explanation
+    of why records were invalid, DEBUG-level logging can be enabled for the "org.apache.nifi.processors.standard.ValidateRecord"
+    logger.', zh: 根据给定架构验证传入FlowFile的记录。所有符合架构的记录都将路由到“有效”关系，而不符合架构的所有记录都将被路由到“无效”关系。因此，如果某些记录根据架构有效而其他记录无效，则单个传入的FlowFile可能被拆分为两个单独的FlowFile。任何路由到“无效”关系的FlowFile都将发出一个ROUTE普罗旺斯事件，并填充详细信息字段以解释记录无效的原因。此外，为了进一步解释记录无效的原因，可以为“org.apache.nifi.processors.standard.ValideRecord”记录器启用DEBUG级别的日志记录。}
+properties:
+  allow-extra-fields:
+    en: {displayName: Allow Extra Fields, description: 'If the incoming data has fields
+        that are not present in the schema, this property determines whether or not
+        the Record is valid. If true, the Record is still valid. If false, the Record
+        will be invalid due to the extra fields.'}
+    zh: {description: 如果传入数据包含架构中不存在的字段，则此属性确定记录是否有效。如果为真，则记录仍然有效。如果为false，则记录将因额外字段而无效。,
+      displayName: 允许额外字段}
+  strict-type-checking:
+    en: {displayName: Strict Type Checking, description: 'If the incoming data has
+        a Record where a field is not of the correct type, this property determines
+        how to handle the Record. If true, the Record will be considered invalid.
+        If false, the Record will be considered valid and the field will be coerced
+        into the correct type (if possible, according to the type coercion supported
+        by the Record Writer). This property controls how the data is validated against
+        the validation schema.'}
+    zh: {description: 如果传入数据具有字段类型不正确的记录，则此属性决定如何处理该记录。如果为真，记录将被视为无效。如果为false，则记录将被视为有效，字段将被强制为正确的类型（如果可能，根据记录编写器支持的强制类型）。此属性控制如何根据验证架构验证数据。,
+      displayName: 严格类型检查}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  record-writer:
+    en: {displayName: Record Writer, description: 'Specifies the Controller Service
+        to use for writing out the records. Regardless of the Controller Service schema
+        access configuration, the schema that is used to validate record is used to
+        write the valid results.'}
+    zh: {description: 指定用于写入记录的控制器服务。无论控制器服务模式访问配置如何，用于验证记录的模式都用于写入有效结果。, displayName: 记录编写器}
+  invalid-record-writer:
+    en: {displayName: Record Writer for Invalid Records, description: 'If specified,
+        this Controller Service will be used to write out any records that are invalid.
+        If not specified, the writer specified by the "Record Writer" property will
+        be used with the schema used to read the input records. This is useful, for
+        example, when the configured Record Writer cannot write data that does not
+        adhere to its schema (as is the case with Avro) or when it is desirable to
+        keep invalid records in their original format while converting valid records
+        to another format.'}
+    zh: {description: 如果指定，此控制器服务将用于写入任何无效记录。如果未指定，则“记录编写器”属性指定的编写器将与用于读取输入记录的架构一起使用。例如，当配置的记录写入器无法写入不符合其模式的数据时（如Avro的情况），或者在将有效记录转换为另一种格式时，希望将无效记录保留为其原始格式时，这是非常有用的。,
+      displayName: 无效记录的记录写入程序}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry. This is necessary only if the Schema Access
+        Strategy is set to "Use 'Schema Name' Property".}
+    zh: {description: 指定用于架构注册表的控制器服务。只有当架构访问策略设置为“使用'架构名称'属性”时，这才是必要的。, displayName: 架构注册表}
+  coerce-types:
+    en: {displayName: Force Types From Reader's Schema, description: 'If enabled,
+        the processor will coerce every field to the type specified in the Reader''s
+        schema. If the value of a field cannot be coerced to the type, the field will
+        be skipped (will not be read from the input data), thus will not appear in
+        the output. If not enabled, then every field will appear in the output but
+        their types may differ from what is specified in the schema. For details please
+        see the Additional Details page of the processor''s Help. This property controls
+        how the data is read by the specified Record Reader.'}
+    zh: {description: 如果启用，处理器将强制每个字段为Reader模式中指定的类型。如果字段的值不能强制为该类型，则该字段将被跳过（不会从输入数据中读取），因此不会出现在输出中。如果未启用，则输出中将显示每个字段，但它们的类型可能与模式中指定的不同。有关详细信息，请参阅处理器帮助的“其他详细信息”页面。此属性控制指定的记录读取器读取数据的方式。,
+      displayName: 来自读取器架构的强制类型}
+  validation-details-attribute-name:
+    en: {displayName: Validation Details Attribute Name, description: 'If specified,
+        when a validation error occurs, this attribute name will be used to leave
+        the details. The number of characters will be limited by the property ''Maximum
+        Validation Details Length''.'}
+    zh: {description: 如果指定，则在发生验证错误时，将使用此属性名称保留详细信息。字符数将受到属性“最大验证详细信息长度”的限制。, displayName: 验证详细信息属性名称}
+  record-reader:
+    en: {displayName: Record Reader, description: Specifies the Controller Service
+        to use for reading incoming data}
+    zh: {description: 指定用于读取传入数据的控制器服务, displayName: 记录读取器}
+  maximum-validation-details-length:
+    en: {displayName: Maximum Validation Details Length, description: Specifies the
+        maximum number of characters that validation details value can have. Any characters
+        beyond the max will be truncated. This property is only used if 'Validation
+        Details Attribute Name' is set}
+    zh: {description: 指定验证详细信息值可以包含的最大字符数。超出最大值的任何字符都将被截断。仅当设置了“验证详细信息属性名称”时才使用此属性,
+      displayName: 最大验证详细信息长度}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that should be used to validate records}
+    zh: {description: 指定如何获取应用于验证记录的架构, displayName: 架构访问策略}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+writeAttributes:
+  record.count: {en: The number of records in the FlowFile routed to a relationship,
+    zh: 路由到关系的FlowFile中的记录数}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer, zh: 设置mime。type属性设置为记录编写器指定的MIME类型}
+tags:
+  en: [record, schema, validate]
+  zh: [记录, 模式, 验证]

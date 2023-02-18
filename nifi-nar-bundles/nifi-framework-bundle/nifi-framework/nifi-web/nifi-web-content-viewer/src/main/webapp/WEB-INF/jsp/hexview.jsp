@@ -29,4 +29,4 @@
         <input type="hidden" name="caption" value="" />
     </form>
 </div>
-<div id="truncation-message">Showing up to 1.5 KB</div>
+<div id="truncation-message">显示前 1.5 KB</div>

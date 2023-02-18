@@ -1,0 +1,64 @@
+capabilityDescription: {en: Writes the contents of a RecordSet in Binary Avro format.,
+  zh: 以二进制Avro格式写入记录集的内容。}
+properties:
+  compression-format:
+    en: {displayName: Compression Format, description: Compression type to use when
+        writing Avro files. Default is None.}
+    zh: {description: 写入Avro文件时要使用的压缩类型。默认值为“无”。, displayName: 压缩格式}
+  Schema Write Strategy:
+    en: {displayName: Schema Write Strategy, description: Specifies how the schema
+        for a Record should be added to the data.}
+    zh: {description: 指定应如何将记录的架构添加到数据中。, displayName: 架构写入策略}
+  schema-branch:
+    en: {displayName: Schema Branch, description: 'Specifies the name of the branch
+        to use when looking up the schema in the Schema Registry property. If the
+        chosen Schema Registry does not support branching, this value will be ignored.'}
+    zh: {description: 指定在“架构注册表”属性中查找架构时要使用的分支的名称。如果所选的架构注册表不支持分支，则将忽略此值。, displayName: 架构分支}
+  schema-name:
+    en: {displayName: Schema Name, description: Specifies the name of the schema to
+        lookup in the Schema Registry property}
+    zh: {description: 指定要在“架构注册表”属性中查找的架构的名称, displayName: 架构名称}
+  cache-size:
+    en: {displayName: Cache Size, description: Specifies how many Schemas should be
+        cached}
+    zh: {description: 指定应缓存多少架构, displayName: 缓存大小}
+  schema-registry:
+    en: {displayName: Schema Registry, description: Specifies the Controller Service
+        to use for the Schema Registry}
+    zh: {description: 指定用于架构注册表的控制器服务, displayName: 架构注册表}
+  schema-access-strategy:
+    en: {displayName: Schema Access Strategy, description: Specifies how to obtain
+        the schema that is to be used for interpreting the data.}
+    zh: {description: 指定如何获取用于解释数据的架构。, displayName: 架构访问策略}
+  schema-protocol-version:
+    en: {displayName: Schema Protocol Version, description: 'The protocol version
+        to be used for Schema Write Strategies that require a protocol version, such
+        as Hortonworks Schema Registry strategies. Valid protocol versions for Hortonworks
+        Schema Registry are integer values 1, 2, or 3.'}
+    zh: {description: 用于需要协议版本的架构写入策略的协议版本，例如Hortonworks架构注册表策略。Hortonworks Schema
+        Registry的有效协议版本为整数值1、2或3。, displayName: 架构协议版本}
+  schema-version:
+    en: {displayName: Schema Version, description: Specifies the version of the schema
+        to lookup in the Schema Registry. If not specified then the latest version
+        of the schema will be retrieved.}
+    zh: {description: 指定要在架构注册表中查找的架构的版本。如果未指定，则将检索架构的最新版本。, displayName: 架构版本}
+  encoder-pool-size:
+    en: {displayName: Encoder Pool Size, description: 'Avro Writers require the use
+        of an Encoder. Creation of Encoders is expensive, but once created, they can
+        be reused. This property controls the maximum number of Encoders that can
+        be pooled and reused. Setting this value too small can result in degraded
+        performance, but setting it higher can result in more heap being used. This
+        property is ignored if the Avro Writer is configured with a Schema Write Strategy
+        of ''Embed Avro Schema''.'}
+    zh: {description: Avro Writer需要使用编码器。编码器的创建是昂贵的，但一旦创建，它们就可以重复使用。此属性控制可合并和重用的编码器的最大数量。将此值设置得太小可能会导致性能下降，但将其设置得更高可能会导致使用更多的堆。如果Avro
+        Writer配置了“嵌入Avro架构”的架构写入策略，则忽略此属性。, displayName: 编码器池大小}
+  schema-cache:
+    en: {displayName: Schema Cache, description: Specifies a Schema Cache to add the
+        Record Schema to so that Record Readers can quickly lookup the schema.}
+    zh: {description: 指定要向其中添加记录架构的架构缓存，以便记录读取器可以快速查找架构。, displayName: 架构缓存}
+  schema-text:
+    en: {displayName: Schema Text, description: The text of an Avro-formatted Schema}
+    zh: {description: Avro格式架构的文本, displayName: 架构文本}
+tags:
+  en: [avro, result, set, writer, serializer, record, recordset, row]
+  zh: [我没有吗？, 后果, 设置, 作家, 串行化器, 记录, 记录集, 一行]

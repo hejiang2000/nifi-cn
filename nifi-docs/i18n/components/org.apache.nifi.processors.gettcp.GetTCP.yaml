@@ -1,0 +1,50 @@
+relationships:
+  Partial: {en: 'The relationship that all incomplete messages from the endpoint will
+      be sent to. Incomplete message is the message that doesn''t end with ''End of
+      message delimiter byte''. This can happen when ''Receive Buffer Size'' is smaller
+      then the incoming message. If that happens that the subsequent message that
+      completes the previous incomplete message will also end up in this relationship,
+      after which subsequent ''complete'' messages will go to ''success''.', zh: 来自终结点的所有不完整消息将发送到的关系。不完整消息是不以“消息结尾分隔符字节”结尾的消息。当“接收缓冲区大小”小于传入消息时，可能会发生这种情况。如果发生这种情况，则完成前一个不完整消息的后续消息也将结束此关系，之后，后续“完整”消息将转到“成功”。}
+  Success: {en: The relationship that all sucessful messages from the endpoint will
+      be sent to., zh: 来自终结点的所有成功消息将发送到的关系。}
+dynamicProperties:
+  A FlowFile attribute to set:
+    en: {description: Sets a FlowFile attribute specified by the Dynamic Property's
+        key with the value specified by the Dynamic Property's value, value: The value
+        to set it to}
+    zh: {description: 使用动态属性的值指定的值设置由动态属性的键指定的FlowFile属性, value: 要将其设置为的值}
+capabilityDescription: {en: Connects over TCP to the provided endpoint(s). Received
+    data will be written as content to the FlowFile, zh: 通过TCP连接到提供的端点。接收的数据将作为内容写入FlowFile}
+properties:
+  receive-buffer-size:
+    en: {displayName: Receive Buffer Size, description: The size of the buffer to
+        receive data in. Default 16384 (16MB).}
+    zh: {description: 要在其中接收数据的缓冲区的大小。默认16384（16MB）。, displayName: 接收缓冲区大小}
+  endpoint-list:
+    en: {displayName: Endpoint List, description: 'A comma delimited list of the endpoints
+        to connect to. The format should be <server_address>:<port>. Only one server
+        will be connected to at a time, the others will be used as fail overs.'}
+    zh: {description: 要连接到的端点的逗号分隔列表。格式应为＜server_address＞：＜port＞。一次只能连接一台服务器，其他服务器将用作故障转移。,
+      displayName: 终结点列表}
+  connection-attempt-timeout:
+    en: {displayName: Connection Attempt Count, description: 'The number of times
+        to try and establish a connection, before using a backup host if available.
+        This same attempt count would be used for a backup host as well.'}
+    zh: {description: 在使用备份主机（如果可用）之前尝试并建立连接的次数。同样的尝试计数也将用于备份主机。, displayName: 连接尝试计数}
+  reconnect-interval:
+    en: {displayName: Reconnect interval, description: The number of seconds to wait
+        before attempting to reconnect to the endpoint.}
+    zh: {description: 尝试重新连接到终结点之前等待的秒数。, displayName: 重新连接间隔}
+  end-of-message-byte:
+    en: {displayName: End of message delimiter byte, description: 'Byte value which
+        denotes end of message. Must be specified as integer within the valid byte
+        range (-128 thru 127). For example, ''13'' = Carriage return and ''10'' =
+        New line. Default ''13''.'}
+    zh: {description: 表示消息结束的字节值。必须指定为有效字节范围内的整数（-128到127）。例如，“13”=回车，“10”=换行。默认值为“13”。,
+      displayName: 消息结尾分隔符字节}
+writeAttributes:
+  source.endpoint: {en: The address of the source endpoint the message came from,
+    zh: 消息来自的源终结点的地址}
+tags:
+  en: [get, fetch, poll, tcp, ingest, source, input]
+  zh: [收到, 取来, 投票, tcp协议, 摄入, 来源, 输入]

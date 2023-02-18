@@ -64,10 +64,10 @@
      */
     var initRemotePortConfigurationDialog = function () {
         $('#remote-port-configuration').modal({
-            headerText: 'Configure Remote Port',
+            headerText: '配置远程端口',
             scrollableContentStyle: 'scrollable',
             buttons: [{
-                buttonText: 'Apply',
+                buttonText: '应用',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -112,7 +112,7 @@
 
                             // determine the type of port this is
                             var portContextPath = '/output-ports/';
-                            if ($('#remote-port-type').text() === 'input') {
+                            if ($('#remote-port-type').text() === '输入') {
                                 portContextPath = '/input-ports/';
                             }
 
@@ -151,7 +151,7 @@
                             }).fail(nfErrorHandler.handleConfigurationUpdateAjaxError);
                         } else {
                             nfDialog.showOkDialog({
-                                headerText: 'Configuration Error',
+                                headerText: '配置错误',
                                 dialogContent: portValidationErrors.reduce(function (prev, curr) {
                                     return typeof(prev) === 'string' ? prev + ' ' + curr : curr;
                                 })
@@ -161,7 +161,7 @@
                 }
             },
                 {
-                    buttonText: 'Cancel',
+                    buttonText: '取消',
                     color: {
                         base: '#E3E8EB',
                         hover: '#C7D2D7',
@@ -194,9 +194,9 @@
     var initRemoteProcessGroupConfigurationDialog = function () {
         $('#remote-process-group-ports').modal({
             scrollableContentStyle: 'scrollable',
-            headerText: 'Remote Process Group Ports',
+            headerText: '远程处理组端口',
             buttons: [{
-                buttonText: 'Close',
+                buttonText: '关闭',
                 color: {
                     base: '#728E9B',
                     hover: '#004849',
@@ -315,7 +315,7 @@
                     var editRemotePort = $('<button class="button edit-remote-port fa fa-pencil"></button>').click(function () {
                         var portName = $('#' + portId + '-name').text();
                         var portConcurrentTasks = $('#' + portId + '-concurrent-tasks').text();
-                        var portCompression = $('#' + portId + '-compression').text() === 'Yes';
+                        var portCompression = $('#' + portId + '-compression').text() === '是';
                         var batchCount = $('#' + portId + '-batch-count').text();
                         var batchSize = $('#' + portId + '-batch-size').text();
                         var batchDuration = $('#' + portId + '-batch-duration').text();
@@ -334,7 +334,7 @@
                     $('<div class="remote-port-removed" />').appendTo(portContainerEditContainer).qtip($.extend({},
                         nfCommon.config.tooltipConfig,
                         {
-                            content: 'This port has been removed.'
+                            content: '该端口已被移除.'
                         }));
                 }
             }
@@ -444,7 +444,7 @@
 
         // add the comments for this port
         if (nfCommon.isBlank(port.comments)) {
-            $('<div class="remote-port-description unset">No description specified.</div>').appendTo(portContainerDetailsContainer);
+            $('<div class="remote-port-description unset">无说明.</div>').appendTo(portContainerDetailsContainer);
         } else {
             $('<div class="remote-port-description"></div>').text(port.comments).appendTo(portContainerDetailsContainer);
         }
@@ -466,7 +466,7 @@
             '</div>').append(concurrentTasks).appendTo(concurrentTasksContainer).find('div.concurrent-tasks-info').qtip($.extend({},
             nfCommon.config.tooltipConfig,
             {
-                content: 'The number of tasks that should be concurrently scheduled for this port.'
+                content: '该端口应该被并行调度的任务数.'
             }));
 
         var compressionContainer = $('<div class="compression-container"></div>').appendTo(portContainerDetailsContainer);
@@ -653,7 +653,7 @@
                         });
 
                         if (nfCommon.isEmpty(connectedInputPorts) && nfCommon.isEmpty(disconnectedInputPorts)) {
-                            $('<div class="unset"></div>').text("No ports to display").appendTo(inputPortContainer);
+                            $('<div class="unset"></div>').text("无端口").appendTo(inputPortContainer);
                         }
 
                         var connectedOutputPorts = [];
@@ -684,7 +684,7 @@
                         });
 
                         if (nfCommon.isEmpty(connectedOutputPorts) && nfCommon.isEmpty(disconnectedOutputPorts)) {
-                            $('<div class="unset"></div>').text("No ports to display").appendTo(outputPortContainer);
+                            $('<div class="unset"></div>').text("无端口").appendTo(outputPortContainer);
                         }
                     }
 

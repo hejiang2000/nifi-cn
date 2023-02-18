@@ -1,0 +1,31 @@
+relationships:
+  success: {en: Any FlowFile that is successfully hashed will be sent to this Relationship.,
+    zh: 任何成功哈希的FlowFile都将发送到此关系。}
+  failure: {en: Any FlowFile that is successfully hashed will be sent to this Relationship.,
+    zh: 任何成功哈希的FlowFile都将发送到此关系。}
+capabilityDescription: {en: 'Calculates a fuzzy/locality-sensitive hash value for
+    the Content of a FlowFile and puts that hash value on the FlowFile as an attribute
+    whose name is determined by the <Hash Attribute Name> property.Note: this processor
+    only offers non-cryptographic hash algorithms. And it should be not be seen as
+    a replacement to the HashContent processor.Note: The underlying library loads
+    the entirety of the streamed content into and performs result evaluations in memory.
+    Accordingly, it is important to consider the anticipated profile of content being
+    evaluated by this processor and the hardware supporting it especially when working
+    against large files.', zh: 计算FlowFile的内容的模糊/位置敏感哈希值，并将该哈希值作为一个属性放在FlowFile上，该属性的名称由＜hash
+    attribute name＞属性确定。注意：此处理器仅提供非加密哈希算法。它不应被视为HashContent处理器的替代品。注意：底层库将所有流式内容加载到内存中，并在内存中执行结果评估。因此，特别是在处理大型文件时，必须考虑由该处理器评估的内容的预期配置文件以及支持它的硬件。}
+properties:
+  ATTRIBUTE_NAME:
+    en: {displayName: Hash Attribute Name, description: The name of the FlowFile Attribute
+        that should hold the Fuzzy Hash Value}
+    zh: {description: 应包含模糊哈希值的FlowFile属性的名称, displayName: 哈希属性名称}
+  HASH_ALGORITHM:
+    en: {displayName: Hashing Algorithm, description: The hashing algorithm utilised}
+    zh: {description: 使用的哈希算法, displayName: 哈希算法}
+writeAttributes:
+  <Hash Attribute Name>: {en: This Processor adds an attribute whose value is the
+      result of Hashing the existing FlowFile content. The name of this attribute
+      is specified by the <Hash Attribute Name> property, zh: 此处理器添加一个属性，其值是哈希现有FlowFile内容的结果。此属性的名称由＜Hash
+      attribute name＞属性指定}
+tags:
+  en: [hashing, fuzzy-hashing, cyber-security]
+  zh: [散列, 模糊散列, 网络安全]

@@ -1,0 +1,44 @@
+relationships:
+  success: {en: The FlowFile with transformed content will be routed to this relationship,
+    zh: 具有转换内容的FlowFile将路由到此关系}
+  failure: {en: 'If a FlowFile fails processing for any reason (for example, the FlowFile
+      is not valid JSON), it will be routed to this relationship', zh: 如果FlowFile由于任何原因（例如，FlowFile不是有效的JSON）而处理失败，它将被路由到此关系}
+capabilityDescription: {en: 'Applies a list of Jolt specifications to the flowfile
+    JSON payload. A new FlowFile is created with transformed content and is routed
+    to the ''success'' relationship. If the JSON transform fails, the original FlowFile
+    is routed to the ''failure'' relationship.', zh: 将Jolt规范列表应用于流文件JSON负载。使用转换后的内容创建新的FlowFile，并将其路由到“成功”关系。如果JSON转换失败，原始FlowFile将被路由到“failure”关系。}
+properties:
+  jolt-spec:
+    en: {displayName: Jolt Specification, description: Jolt Specification for transform
+        of JSON data. This value is ignored if the Jolt Sort Transformation is selected.}
+    zh: {description: JSON数据转换的Jolt规范。如果选择了Jolt排序转换，则忽略此值。, displayName: Jolt规范}
+  jolt-transform:
+    en: {displayName: Jolt Transformation DSL, description: Specifies the Jolt Transformation
+        that should be used with the provided specification.}
+    zh: {description: 指定应与提供的规范一起使用的Jolt转换。, displayName: Jolt变换DSL}
+  jolt-custom-class:
+    en: {displayName: Custom Transformation Class Name, description: Fully Qualified
+        Class Name for Custom Transformation}
+    zh: {description: 自定义转换的完全限定类名, displayName: 自定义转换类名}
+  jolt-custom-modules:
+    en: {displayName: Custom Module Directory, description: Comma-separated list of
+        paths to files and/or directories which contain modules containing custom
+        transformations (that are not included on NiFi's classpath).}
+    zh: {description: 以逗号分隔的文件和/或目录路径列表，其中包含包含自定义转换的模块（不包含在NiFi的类路径中）。, displayName: 自定义模块目录}
+  pretty_print:
+    en: {displayName: Pretty Print, description: Apply pretty print formatting to
+        the output of the Jolt transform}
+    zh: {description: 对Jolt变换的输出应用漂亮的打印格式, displayName: 漂亮的印花}
+  Transform Cache Size:
+    en: {displayName: Transform Cache Size, description: 'Compiling a Jolt Transform
+        can be fairly expensive. Ideally, this will be done only once. However, if
+        the Expression Language is used in the transform, we may need a new Transform
+        for each FlowFile. This value controls how many of those Transforms we cache
+        in memory in order to avoid having to compile the Transform each time.'}
+    zh: {description: 编译Jolt变换可能相当昂贵。理想情况下，这将只进行一次。但是，如果在转换中使用表达式语言，我们可能需要为每个FlowFile创建一个新的转换。该值控制我们缓存在内存中的这些变换的数量，以避免每次都编译变换。,
+      displayName: 变换缓存大小}
+writeAttributes:
+  mime.type: {en: Always set to application/json, zh: 始终设置为application/json}
+tags:
+  en: [json, jolt, transform, shiftr, chainr, defaultr, removr, cardinality, sort]
+  zh: [json文件, 颠簸, 使改变, 换档器, 链条, 违约, 远程, 基数, 分类]

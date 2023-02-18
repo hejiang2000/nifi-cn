@@ -1,0 +1,48 @@
+relationships:
+  success: {en: FlowFiles that are successfully created will be routed to this relationship,
+    zh: 成功创建的FlowFiles将路由到此关系}
+dynamicProperties:
+  Field name in generated record:
+    en: {description: Custom properties define the generated record schema using configured
+        field names and value data types in absence of the Schema Text property, value: Faker
+        category for generated record values}
+    zh: {description: 在没有schema Text属性的情况下，自定义财产使用配置的字段名和值数据类型定义生成的记录架构, value: 生成的记录值的伪类别}
+capabilityDescription: {en: 'This processor creates FlowFiles with records having
+    random value for the specified fields. GenerateRecord is useful for testing, configuration,
+    and simulation. It uses either user-defined properties to define a record schema
+    or a provided schema and generates the specified number of records using random
+    data for the fields in the schema.', zh: 此处理器创建具有指定字段随机值的记录的FlowFiles。GenerateRecord可用于测试、配置和模拟。它使用用户定义的财产定义记录模式或提供的模式，并使用模式中字段的随机数据生成指定数量的记录。}
+properties:
+  nullable-fields:
+    en: {displayName: Nullable Fields, description: 'Whether the generated fields
+        will be nullable. Note that this property is ignored if Schema Text is set.
+        Also it only affects the schema of the generated data, not whether any values
+        will be null. If this property is true, see ''Null Value Percentage'' to set
+        the probability that any generated field will be null.'}
+    zh: {description: 生成的字段是否可以为空。请注意，如果设置了“架构文本”，则忽略此属性。此外，它只影响生成数据的模式，而不影响任何值是否为空。如果此属性为真，请参阅“Null值百分比”以设置任何生成字段为空的概率。,
+      displayName: 可为空的字段}
+  number-of-records:
+    en: {displayName: Number of Records, description: Specifies how many records will
+        be generated for each outgoing FlowFile.}
+    zh: {description: 指定将为每个传出FlowFile生成多少记录。, displayName: 记录的数量}
+  record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records}
+    zh: {description: 指定用于写入记录的控制器服务, displayName: 记录编写器}
+  schema-text:
+    en: {displayName: Schema Text, description: 'The text of an Avro-formatted Schema
+        used to generate record data. If this property is set, any user-defined properties
+        are ignored.'}
+    zh: {description: 用于生成记录数据的Avro格式架构的文本。如果设置了此属性，则会忽略任何用户定义的财产。, displayName: 架构文本}
+  null-percentage:
+    en: {displayName: Null Value Percentage, description: 'The percent probability
+        (0-100%) that a generated value for any nullable field will be null. Set this
+        property to zero to have no null values, or 100 to have all null values.'}
+    zh: {description: 为任何可空字段生成的值为空的百分比概率（0-100%）。将此属性设置为零表示没有空值，或设置为100表示所有空值。, displayName: 空值百分比}
+writeAttributes:
+  record.count: {en: The number of records in the FlowFile, zh: FlowFile中的记录数}
+  mime.type: {en: Sets the mime.type attribute to the MIME Type specified by the Record
+      Writer, zh: 设置mime。type属性设置为记录编写器指定的MIME类型}
+tags:
+  en: [test, random, generate, fake]
+  zh: [测验, 随机的, 生成, 伪造的]

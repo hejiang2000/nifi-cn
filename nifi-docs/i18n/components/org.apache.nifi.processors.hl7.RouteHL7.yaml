@@ -1,0 +1,26 @@
+relationships:
+  original: {en: 'The original FlowFile that comes into this processor will be routed
+      to this relationship, unless it is routed to ''failure''', zh: 进入此处理器的原始FlowFile将被路由到此关系，除非它被路由到“失败”}
+  failure: {en: Any FlowFile that cannot be parsed as HL7 will be routed to this relationship,
+    zh: 无法解析为HL7的任何FlowFile都将路由到此关系}
+dynamicProperties:
+  Name of a Relationship:
+    en: {description: 'If a FlowFile matches the query, it will be routed to a relationship
+        with the name of the property', value: An HL7 Query Language query}
+    zh: {description: 如果FlowFile与查询匹配，它将被路由到具有属性名称的关系, value: HL7查询语言查询}
+capabilityDescription: {en: 'Routes incoming HL7 data according to user-defined queries.
+    To add a query, add a new property to the processor. The name of the property
+    will become a new relationship for the processor, and the value is an HL7 Query
+    Language query. If a FlowFile matches the query, a copy of the FlowFile will be
+    routed to the associated relationship.', zh: 根据用户定义的查询路由传入的HL7数据。要添加查询，请向处理器添加新属性。属性的名称将成为处理器的新关系，其值是HL7查询语言查询。如果FlowFile与查询匹配，则FlowFile的副本将路由到关联关系。}
+properties:
+  Character Encoding:
+    en: {displayName: Character Encoding, description: The Character Encoding that
+        is used to encode the HL7 data}
+    zh: {description: 用于编码HL7数据的字符编码, displayName: 字符编码}
+writeAttributes:
+  RouteHL7.Route: {en: The name of the relationship to which the FlowFile was routed,
+    zh: FlowFile路由到的关系的名称}
+tags:
+  en: [HL7, healthcare, route, Health Level 7]
+  zh: [第7层, 医疗保健, 路线, 健康等级7]

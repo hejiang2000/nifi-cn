@@ -1,0 +1,16 @@
+capabilityDescription: {en: This controller service provides a way of working with
+    access and refresh tokens via the password and client_credential grant flows in
+    the OAuth2 specification. It is meant to provide a way for components to get a
+    token from an oauth2 provider and pass that token as a part of a header to another
+    service., zh: 此控制器服务提供了一种通过OAuth2规范中的密码和client_credential授权流处理访问和刷新令牌的方法。它的目的是为组件提供一种从oauth2提供程序获取令牌并将该令牌作为头的一部分传递给另一个服务的方法。}
+properties:
+  oauth2-access-token-url:
+    en: {displayName: Access Token Url, description: The full endpoint of the URL
+        where access tokens are handled.}
+    zh: {description: 处理访问令牌的URL的完整端点。, displayName: 访问令牌Url}
+  oauth2-ssl-context:
+    en: {displayName: SSL Context, description: ''}
+    zh: {description: '', displayName: SSL上下文}
+tags:
+  en: [oauth2, provider, authorization]
+  zh: [Oauth2, 供应商, 批准]

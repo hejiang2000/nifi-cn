@@ -1,0 +1,21 @@
+capabilityDescription: {en: Lookup a record from Couchbase Server associated with
+    the specified key. The coordinates that are passed to the lookup must contain
+    the key 'key'., zh: 从Couchbase服务器查找与指定密钥关联的记录。传递给查找的坐标必须包含键“key”。}
+properties:
+  cluster-controller-service:
+    en: {displayName: Couchbase Cluster Controller Service, description: A Couchbase
+        Cluster Controller Service which manages connections to a Couchbase cluster.}
+    zh: {description: Couchbase群集控制器服务，用于管理与Couchbase集群的连接。, displayName: Couchbase群集控制器服务}
+  bucket-name:
+    en: {displayName: Bucket Name, description: The name of bucket to access.}
+    zh: {description: 要访问的存储桶的名称。, displayName: Bucket名称}
+  record-reader:
+    en: {displayName: Record Reader, description: The Record Reader to use for parsing
+        fetched document from Couchbase Server.}
+    zh: {description: 用于解析从Couchbase服务器获取的文档的记录读取器。, displayName: 记录读取器}
+  document-type:
+    en: {displayName: Document Type, description: The type of contents.}
+    zh: {description: 内容的类型。, displayName: 文档类型}
+tags:
+  en: [lookup, enrich, couchbase]
+  zh: [查找, 充实, 泊位底座]

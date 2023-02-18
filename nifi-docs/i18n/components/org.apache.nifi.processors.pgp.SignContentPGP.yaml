@@ -1,0 +1,41 @@
+relationships:
+  success: {en: Content signing succeeded, zh: 内容签名成功}
+  failure: {en: Content signing failed, zh: 内容签名失败}
+capabilityDescription: {en: Sign content using OpenPGP Private Keys, zh: 使用OpenPGP私钥对内容进行签名}
+properties:
+  private-key-service:
+    en: {displayName: Private Key Service, description: PGP Private Key Service for
+        generating content signatures}
+    zh: {description: 用于生成内容签名的PGP私钥服务, displayName: 私钥服务}
+  signing-strategy:
+    en: {displayName: Signing Strategy, description: Strategy for writing files to
+        success after signing}
+    zh: {description: 签名后成功写入文件的策略, displayName: 签署策略}
+  private-key-id:
+    en: {displayName: Private Key ID, description: PGP Private Key Identifier formatted
+        as uppercase hexadecimal string of 16 characters used for signing}
+    zh: {description: PGP私钥标识符，格式为16个字符的大写十六进制字符串，用于签名, displayName: 私钥ID}
+  file-encoding:
+    en: {displayName: File Encoding, description: File Encoding for signing}
+    zh: {description: 用于签名的文件编码, displayName: 文件编码}
+  hash-algorithm:
+    en: {displayName: Hash Algorithm, description: Hash Algorithm for signing}
+    zh: {description: 用于签名的哈希算法, displayName: 哈希算法}
+  compression-algorithm:
+    en: {displayName: Compression Algorithm, description: Compression Algorithm for
+        signing}
+    zh: {description: 用于签名的压缩算法, displayName: 压缩算法}
+writeAttributes:
+  pgp.signature.algorithm: {en: Signature Algorithm including key and hash algorithm
+      names, zh: 签名算法，包括密钥和哈希算法名称}
+  pgp.signature.hash.algorithm.id: {en: Signature Hash Algorithm Identifier, zh: 签名哈希算法标识符}
+  pgp.compression.algorithm.id: {en: Compression Algorithm Identifier, zh: 压缩算法标识符}
+  pgp.signature.version: {en: Signature Version Number, zh: 签名版本号}
+  pgp.signature.key.id: {en: Signature Public Key Identifier, zh: 签名公钥标识符}
+  pgp.file.encoding: {en: File Encoding, zh: 文件编码}
+  pgp.compression.algorithm: {en: Compression Algorithm, zh: 压缩算法}
+  pgp.signature.key.algorithm.id: {en: Signature Key Algorithm Identifier, zh: 签名密钥算法标识符}
+  pgp.signature.type.id: {en: Signature Type Identifier, zh: 签名类型标识符}
+tags:
+  en: [PGP, GPG, OpenPGP, Encryption, Signing, RFC 4880]
+  zh: [前列腺素, 地质勘探局, 打开PGP, 加密, 签字, 射频4880]

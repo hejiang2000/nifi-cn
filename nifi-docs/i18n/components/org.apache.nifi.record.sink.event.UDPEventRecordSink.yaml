@@ -1,0 +1,20 @@
+capabilityDescription: {en: Format and send Records as UDP Datagram Packets to a configurable
+    destination, zh: 将记录格式化并作为UDP数据报数据包发送到可配置的目标}
+properties:
+  hostname:
+    en: {displayName: Hostname, description: Destination hostname or IP address}
+    zh: {description: 目标主机名或IP地址, displayName: 主机名}
+  port:
+    en: {displayName: Port, description: Destination port number}
+    zh: {description: 目标端口号, displayName: 港口城市}
+  sender-threads:
+    en: {displayName: Sender Threads, description: Number of worker threads allocated
+        for handling socket communication}
+    zh: {description: 分配用于处理套接字通信的工作线程数, displayName: 发件人线程}
+  record-sink-record-writer:
+    en: {displayName: Record Writer, description: Specifies the Controller Service
+        to use for writing out the records.}
+    zh: {description: 指定用于写入记录的控制器服务。, displayName: 记录编写器}
+tags:
+  en: [UDP, event, record, sink]
+  zh: [通用数据包, 事件, 记录, 下沉]

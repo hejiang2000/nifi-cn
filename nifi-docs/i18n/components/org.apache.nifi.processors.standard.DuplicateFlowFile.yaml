@@ -1,0 +1,20 @@
+relationships:
+  success: {en: The original FlowFile and all copies will be sent to this relationship,
+    zh: 原始FlowFile和所有副本将发送到此关系}
+capabilityDescription: {en: 'Intended for load testing, this processor will create
+    the configured number of copies of each incoming FlowFile. The original FlowFile
+    as well as all generated copies are sent to the ''success'' relationship. In addition,
+    each FlowFile gets an attribute ''copy.index'' set to the copy number, where the
+    original FlowFile gets a value of zero, and all copies receive incremented integer
+    values.', zh: 用于负载测试，此处理器将创建每个传入FlowFile的配置数量的副本。原始FlowFile以及所有生成的副本将发送到“成功”关系。此外，每个FlowFile都会获得一个属性副本。index'设置为副本编号，其中原始FlowFile的值为零，所有副本都接收递增的整数值。}
+properties:
+  Number of Copies:
+    en: {displayName: Number of Copies, description: Specifies how many copies of
+        each incoming FlowFile will be made}
+    zh: {description: 指定每个传入FlowFile的副本数量, displayName: 副本数量}
+writeAttributes:
+  copy.index: {en: A zero-based incrementing integer value based on which copy the
+      FlowFile is., zh: FlowFile副本所基于的从零开始的递增整数值。}
+tags:
+  en: [test, load, duplicate]
+  zh: [测验, 负载, 复制]

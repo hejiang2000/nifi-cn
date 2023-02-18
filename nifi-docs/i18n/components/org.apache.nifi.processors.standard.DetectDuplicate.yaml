@@ -1,0 +1,54 @@
+relationships:
+  failure: {en: 'If unable to communicate with the cache, the FlowFile will be penalized
+      and routed to this relationship', zh: 如果无法与缓存通信，FlowFile将受到惩罚并路由到此关系}
+  non-duplicate: {en: 'If a FlowFile''s Cache Entry Identifier was not found in the
+      cache, it will be routed to this relationship', zh: 如果在缓存中找不到FlowFile的缓存条目标识符，它将被路由到此关系}
+  duplicate: {en: 'If a FlowFile has been detected to be a duplicate, it will be routed
+      to this relationship', zh: 如果检测到FlowFile重复，则将其路由到此关系}
+capabilityDescription: {en: 'Caches a value, computed from FlowFile attributes, for
+    each incoming FlowFile and determines if the cached value has already been seen.
+    If so, routes the FlowFile to ''duplicate'' with an attribute named ''original.identifier''
+    that specifies the original FlowFile''s "description", which is specified in the
+    <FlowFile Description> property. If the FlowFile is not determined to be a duplicate,
+    the Processor routes the FlowFile to ''non-duplicate''', zh: 为每个传入的FlowFile缓存从FlowFile属性计算的值，并确定是否已看到缓存的值。如果是，则使用名为“original”的属性将FlowFile路由到“duplicate”。identifier”，指定原始FlowFile的“描述”，该描述在<FlowFile
+    description>属性中指定。如果FlowFile未被确定为重复，则处理器将FlowFile路由到“非重复”}
+properties:
+  Cache Entry Identifier:
+    en: {displayName: Cache Entry Identifier, description: 'A FlowFile attribute,
+        or the results of an Attribute Expression Language statement, which will be
+        evaluated against a FlowFile in order to determine the value used to identify
+        duplicates; it is this value that is cached'}
+    zh: {description: FlowFile属性或属性表达式语言语句的结果，将根据FlowFile进行评估，以确定用于标识重复项的值；缓存的就是这个值,
+      displayName: 缓存条目标识符}
+  Cache The Entry Identifier:
+    en: {displayName: Cache The Entry Identifier, description: 'When true this cause
+        the processor to check for duplicates and cache the Entry Identifier. When
+        false, the processor would only check for duplicates and not cache the Entry
+        Identifier, requiring another processor to add identifiers to the distributed
+        cache.'}
+    zh: {description: 如果为true，则会导致处理器检查重复项并缓存条目标识符。如果为false，处理器将只检查重复项，而不缓存条目标识符，这需要另一个处理器将标识符添加到分布式缓存中。,
+      displayName: 缓存条目标识符}
+  Age Off Duration:
+    en: {displayName: Age Off Duration, description: Time interval to age off cached
+        FlowFiles}
+    zh: {description: 缓存FlowFiles老化的时间间隔, displayName: 停用时间}
+  FlowFile Description:
+    en: {displayName: FlowFile Description, description: 'When a FlowFile is added
+        to the cache, this value is stored along with it so that if a duplicate is
+        found, this description of the original FlowFile will be added to the duplicate''s
+        "original.flowfile.description" attribute'}
+    zh: {description: 将FlowFile添加到缓存中时，该值将与其一起存储，以便如果发现重复项，原始FlowFile的描述将添加到重复项的“original.FlowFile.description”属性中,
+      displayName: 流文件描述}
+  Distributed Cache Service:
+    en: {displayName: Distributed Cache Service, description: 'The Controller Service
+        that is used to cache unique identifiers, used to determine duplicates'}
+    zh: {description: 用于缓存唯一标识符的控制器服务，用于确定重复项, displayName: 分布式缓存服务}
+writeAttributes:
+  original.flowfile.description: {en: All FlowFiles routed to the duplicate relationship
+      will have an attribute added named original.flowfile.description. The value
+      of this attribute is determined by the attributes of the original copy of the
+      data and by the FlowFile Description property., zh: 路由到重复关系的所有FlowFiles都将添加一个名为original.flowfile.description的属性。此属性的值由数据原始副本的属性和FlowFile
+      Description属性确定。}
+tags:
+  en: [hash, dupe, duplicate, dedupe]
+  zh: [搞砸, 欺骗, 复制, 重复数据消除]
